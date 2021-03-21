@@ -1,5 +1,5 @@
 <div
-    class="govuk-form-group @if($errors->get($field .'-day') || $errors->get($field .'-month') || $errors->get($field .'-year')) govuk-form-group--error @endif"
+    class="govuk-form-group @if($errors->get($field .'-day') || $errors->get($field .'-month') || $errors->get($field .'-year') || $errors->get($field)) govuk-form-group--error @endif"
     aria-describedby="@if($hint){{ $field }}-hint @endif @error($field) {{ $field }}-year-error @enderror">
 
     <fieldset class="govuk-fieldset">

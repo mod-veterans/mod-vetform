@@ -4,6 +4,8 @@
 namespace App\Services\Forms;
 
 
+use App\Services\Application;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 /**
@@ -30,11 +32,6 @@ abstract class BasePage
     protected $hasSummary = false;
 
     /**
-     * @var array
-     */
-    protected $questions = [];
-
-    /**
      * @var string
      */
     protected $name = '';
@@ -42,7 +39,7 @@ abstract class BasePage
     /**
      * @var string
      */
-    protected $title = '';
+    protected $_title = '';
 
     /**
      * @var string
@@ -74,8 +71,8 @@ abstract class BasePage
      */
     public function __construct($namespace, $data = [])
     {
-        $this->_namespace =  $namespace . '/' . $this->getId();
-        $this->_data      = $data;
+        $this->_namespace = $namespace . '/' . $this->getId();
+        $this->_data = $data;
 
         $this->setQuestions();
     }
@@ -101,43 +98,79 @@ abstract class BasePage
     }
 
     /**
-     * @return array
-     */
-    private function questions(): array
-    {
-        if (is_null($this->_questions)) {
-            $this->_questions = [];
-
-            foreach ($this->questions as $question) {
-                array_push($this->_questions, $question);
-            }
-        }
-
-        return $this->_questions;
-    }
-
-    /**
      * @param $index
      * @param $name
      */
-    public function namespaceQuetion($index, $name): void
+    public function namespaceQuestion($index, $name): void
     {
         $this->_questions[$index]['options']['field'] = $name;
     }
 
-    public function saveResponses()
+    /**
+     * @param array $data
+     */
+    public function storeResponse($data = [], $stackID = null)
     {
+        if ($stackID) {
+            $task = Application::getInstance()->getTaskForPageByNamespace($this->namespace);
+            if ($task->isStackable()) {
+                if ($task->isValidStack($stackID)) {
+                    $stack = $task->stack;
 
+                    foreach ($this->_questions as $questionIndex => $question) {
+                        $field = $this->_questions[$questionIndex]['options']['field'];
+
+                        if (($data[$field] instanceof UploadedFile)) {
+                            /** @var UploadedFile $data */
+                            $stack[$stackID][$field] = [];
+                            $stack[$stackID][$field]['filename'] = $data[$field. '::filename'];;
+                            $stack[$stackID][$field]['mnemonic'] = $data[$field. '::mnemonic'];
+                        } else {
+                            $stack[$stackID][$field] = $data[$field] ?? null;
+                        }
+                    }
+
+                    session([$task->stackName => $stack]);
+                }
+            }
+        } else {
+            foreach ($this->_questions as $questionIndex => $question) {
+                $field = $this->_questions[$questionIndex]['options']['field'];
+
+                if (($data[$field] instanceof UploadedFile)) {
+                    /** @var UploadedFile $data */
+                    $stack[$field] = [];
+                    $stack[$field]['filename'] = $data[$field. '::filename'];;
+                    $stack[$field]['mnemonic'] = $data[$field. '::mnemonic'];
+                } else {
+                    $stack[$field] = $data[$field] ?? null;
+                }
+
+                session([$field => $stack[$field]]);
+            }
+        }
     }
 
+    /**
+     * @return bool
+     */
+    public function isStackable()
+    {
+        return key_exists('App\Services\Traits\Stackable', class_uses($this));
+    }
+
+    /**
+     * @param $value
+     * @return array|string
+     */
     public function __get($value)
     {
         switch ($value) {
             case 'questions':
-                return $this->questions();
+                return $this->_questions ?? [];
 
             case 'title';
-                return $this->title;
+                return $this->_title;
 
             case 'namespace';
                 return $this->_namespace;

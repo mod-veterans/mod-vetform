@@ -3,6 +3,7 @@
 
 namespace App\View\Components;
 
+use App\Services\Application;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
@@ -72,6 +73,11 @@ abstract class FormField extends Component
      * @var bool
      */
     public $hideLabel = false;
+
+    /**
+     * @var bool
+     */
+    public $stackValue = null;
 
     /**
      * Create a new component instance.

@@ -4,7 +4,6 @@
 namespace App\Services\Forms;
 
 
-use App\Services\Constant;
 use Illuminate\Support\Str;
 
 abstract class BaseForm
@@ -44,34 +43,6 @@ abstract class BaseForm
     protected function init($name)
     {
         ksort($this->groups);
-
-        // dd('KK');
-
-        $tree = session(Constant::TREE_NAME, []);
-
-        if (!is_array($tree)) {
-            $tree = [];
-        }
-
-        if (!key_exists($name, $tree)) {
-            $tree[$name] = [];
-        }
-
-
-        session([Constant::TREE_NAME => $tree]);
-
-//        if ($tree->documentElement) {
-//            if ($tree->documentElement->nodeName !== $name) {
-//                $tree = new \DOMDocument();
-//                $root = $tree->createElement($name);
-//                $tree->appendChild($root);
-//            }
-//        } else {
-//            $root = $tree->createElement($name);
-//            $tree->appendChild($root);
-//        }
-
-        session([Constant::TREE_NAME => $tree]);
     }
 
     /**
@@ -87,12 +58,6 @@ abstract class BaseForm
      */
     public function groups(): array
     {
-//        $groups = [];
-//
-//        foreach ($this->groups as $group) {
-//            array_push($group);
-//        }
-
         return $this->groups;
     }
 
@@ -104,5 +69,26 @@ abstract class BaseForm
         $completed = 0;
 
         return $completed;
+    }
+
+    /**
+     * @param $namespace
+     * @return mixed|null
+     */
+    public function getStackClass($namespace)
+    {
+        foreach ($this->groups() as $group) {
+            if ($group->namesapce == $namespace) {
+                return $group;
+            }
+
+            foreach ($group->tasks ?? [] as $task) {
+                if ($task->namespace == $namespace) {
+                    return $task;
+                }
+            }
+        }
+
+        return null;
     }
 }

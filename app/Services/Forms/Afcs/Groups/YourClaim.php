@@ -15,17 +15,12 @@ class YourClaim extends BaseGroup
     protected $name = 'Your claim';
 
     /**
-     * @var ClaimDetails[]|array
-     */
-    protected $tasks = [];
-
-    /**
      * YourClaim constructor.
      * @param $namespace
      */
     public function __construct($namespace)
     {
-        $this->tasks = [
+        $this->_tasks = [
             new ClaimDetails($this->namespace),
         ];
 

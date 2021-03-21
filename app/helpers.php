@@ -1,10 +1,11 @@
 <?php
 
+use App\Services\Application;
+
 if (!function_exists('form_name')) {
     function form_name()
     {
-        $formClass = session('form_class', false);
-        return new $formClass;
+        return Application::getInstance()->form;
     }
 }
 
@@ -16,13 +17,18 @@ if (!function_exists('task_name')) {
     }
 }
 
+if (!function_exists('is_stackable_task')) {
+    function is_stackable_task(\App\Services\Forms\BaseTask $task)
+    {
+        return false;
+    }
+}
+
 if (!function_exists('task_forms')) {
     function task_forms(): array
     {
-        $formClass = session('form_class', false);
-
         /** @var \App\Services\Forms\BaseForm $form */
-        return (new $formClass)->getTaskForms();
+        return Application::getInstance()->form->getTaskForms();
     }
 }
 
@@ -33,9 +39,25 @@ if (!function_exists('groups')) {
      */
     function groups()
     {
-        dd(session()->all());
-        $form = session('form_class', false);
-        return $form->groups();
+        return Application::getInstance()->form->groups();
+    }
+}
+
+
+if (!function_exists('group_task_count')) {
+    /**
+     * @return \App\Services\Forms\BaseGroup[]
+     */
+    function group_task_count()
+    {
+        $groups = Application::getInstance()->form->groups();
+        $total = 0;
+
+        foreach ($groups as $group) {
+            $total = $total + sizeof($group->tasks);
+        }
+
+        return $total;
     }
 }
 
@@ -46,8 +68,7 @@ if (!function_exists('tasks')) {
      */
     function tasks()
     {
-        $form = session('form_class', false);
-        return (new $form)->getTasks();
+        return Application::getInstance()->form->getTasks();
     }
 }
 
@@ -55,8 +76,7 @@ if (!function_exists('tasks')) {
 if (!function_exists('task_pages')) {
     function task_pages(): array
     {
-        $formClass = session('form_class', false);
-        return (new $formClass)->getTasks();
+        return Application::getInstance()->form->getTasks();
     }
 }
 
@@ -66,10 +86,6 @@ if (!function_exists('task_id')) {
         $class = new $className;
 
         return $class->getId();
-
-
-        $formClass = session('form_class', false);
-        return (new $formClass)->getPages();
     }
 }
 
@@ -77,35 +93,42 @@ if (!function_exists('task_id')) {
 if (!function_exists('task_pages_completed')) {
     function task_pages_completed(): int
     {
-        $formClass = session('form_class', false);
-        return (new $formClass)->countCompletedTasks();
+        return Application::getInstance()->form->countCompletedTasks();
     }
 }
 
 if (!function_exists('can_start')) {
     function can_start($className): bool
     {
-        $formClass = (new $className);
         return true;
     }
 }
-
 
 if (!function_exists('has_started')) {
     function has_started($className): bool
     {
-        $formClass = (new $className);
         return true;
     }
 }
 
 
-if (!function_exists('get_status_label')) {
-    function get_status_label($className): bool
+if (!function_exists('crumbs')) {
+    function crumbs($namespace): array
     {
-        $formClass = (new $className);
-        return 'Completed';
+        return Application::getInstance()->getBreadcrumbTrail($namespace) ?? [];
     }
 }
 
+if (!function_exists('group_for_task')) {
+    function group_for_task($task): \App\Services\Forms\BaseGroup
+    {
+        return Application::getInstance()->getGroupForTaskByNamespace($task->namespace);
+    }
+}
 
+if (!function_exists('stored_response')) {
+    function stored_response($field)
+    {
+        return Application::getInstance()->questionValue($field);
+    }
+}

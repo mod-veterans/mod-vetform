@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-class PersistenceController extends Controller
+class ProgressController extends Controller
 {
     public function save()
     {
-        return view('persistence.save');
+        return view('save-progress');
     }
 
     public function store()
@@ -15,6 +15,7 @@ class PersistenceController extends Controller
 
     public function retrieve()
     {
+        return view('restore-progress');
     }
 
     public function restore()

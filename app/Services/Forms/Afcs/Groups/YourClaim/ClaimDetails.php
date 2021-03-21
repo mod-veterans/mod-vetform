@@ -4,6 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\YourClaim;
 
 
+use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimIllness;
+use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimIllnessAddress;
+use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimIllnessCondition;
 use App\Services\Forms\BaseTask;
 use App\Services\Traits\Stackable;
 
@@ -12,16 +15,56 @@ class ClaimDetails extends BaseTask
     use Stackable;
 
     protected $summaryPage = null;
-    protected $preTask = null;
     protected $postTask = null;
 
     protected $name = 'Claim and medical details';
 
+    protected $_title = 'Claim and medical details';
+
+    protected $_addStackLabel = 'Add a claim';
+
+    protected $_preTask = [
+        [
+            'type' => 'body',
+            'content' => 'This form allows you to make multiple claims based on individual injuries, illnesses or conditions that have occured at different points in time as a result of your service.'
+        ],
+        [
+            'type' => 'body',
+            'content' => 'For a specific accident or incident you can add all of the injuries and conditions sustained in a single claim.'
+        ],
+    ];
+
+
     /**
-     * @return mixed
+     * @return void
      */
-    protected function setPages()
+    function setPages(): void
     {
-        // TODO: Implement setPages() method.
+        $this->_pages = [
+            0 => [
+                'page' => new ClaimIllness($this->namespace),
+                'next' => function () {
+                    session()->save();
+                    $field = $this->pages[0]['page']->questions[0]['options']['field'];
+                    $answers = $this->getStackBranch(request('stack'));
+
+                    if ($answers[$field] == 'A condition, injury or illness that is the result of a specific accident or incident')
+                        return 'claim-accident-condition';
+
+                    return 'claim-illness-condition';
+                },
+            ],
+            'claim-illness-condition' => [
+                'page' => new ClaimIllnessCondition($this->namespace),
+                'next' => 'claim-illness-surgery-address',
+            ],
+            'claim-illness-surgery-address' => [
+                'page' => new ClaimIllnessAddress($this->namespace)
+            ],
+
+            'claim-accident-condition' => [
+
+            ]
+        ];
     }
 }

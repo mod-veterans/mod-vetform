@@ -6,14 +6,19 @@ use Illuminate\View\Component;
 
 class Hint extends Component
 {
+    public $hint = null;
+
+    public $field = null;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($hint = null, $field = null)
     {
-        //
+        $this->hint = $hint;
+        $this->field = $field;
     }
 
     /**

@@ -14,17 +14,12 @@ class PaymentDetails extends BaseGroup
     protected $name = 'Your payment details';
 
     /**
-     * @var PaymentDetails\PaymentDetails[]|array
-     */
-    protected $tasks = [];
-
-    /**
      * PaymentDetails constructor.
      * @param $namespace
      */
     public function __construct($namespace)
     {
-        $this->tasks = [
+        $this->_tasks = [
             new PaymentDetails\PaymentDetails($this->namespace),
         ];
 

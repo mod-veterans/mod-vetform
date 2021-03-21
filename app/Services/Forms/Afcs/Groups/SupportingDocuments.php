@@ -15,17 +15,12 @@ class SupportingDocuments extends BaseGroup
     protected $name = 'Supporting documents';
 
     /**
-     * @var Documents[]|array
-     */
-    protected $tasks = [];
-
-    /**
      * SupportingDocuments constructor.
      * @param $namespace
      */
     public function __construct($namespace)
     {
-        $this->tasks = [
+        $this->_tasks = [
             new Documents($this->namespace),
         ];
 

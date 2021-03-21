@@ -12,17 +12,12 @@ class NominateRepresentative extends \App\Services\Forms\BaseGroup
     protected $name = 'Nominate a representative';
 
     /**
-     * @var NominateRepresentative\NominateRepresentative[]|array
-     */
-    protected $tasks = [];
-
-    /**
      * NominateRepresentative constructor.
      * @param $namespace
      */
     public function __construct($namespace)
     {
-        $this->tasks = [
+        $this->_tasks = [
             new \App\Services\Forms\Afcs\Groups\NominateRepresentative\NominateRepresentative($this->namespace),
         ];
 

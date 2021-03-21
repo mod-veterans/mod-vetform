@@ -25,45 +25,17 @@ abstract class BaseGroup
     private $_namespace;
 
     /**
-     * @var
+     * @var array
      */
-    protected $_tree;
+    public $_tasks;
 
+    /**
+     * BaseGroup constructor.
+     * @param $namespace
+     */
     public function __construct($namespace)
     {
         $this->_namespace = $namespace . '/' . $this->getId();
-
-        /** @var \DOMDocument $tree */
-        $tree = session(Constant::TREE_NAME);
-        // dd($tree);
-        // dd(session(Constant::TREE_NAME));
-
-        $form = session('form');
-
-        dd($form);
-        // if($tree[$form])
-
-        if (!$tree->hasChildNodes()) {
-            $groupNode = $tree->createElement($this->getId());
-            $tree->appendChild($groupNode);
-        } else {
-            $nodePresent = false;
-            foreach ($tree->childNodes as $node) {
-                if ($node->nodeName === $this->getId()) {
-                    $nodePresent = true;
-                    break;
-                }
-            }
-
-            if (!$nodePresent) {
-                $groupNode = $tree->createElement($this->getId());
-                $tree->appendChild($groupNode);
-            }
-        }
-
-        session([Constant::TREE_NAME => $tree]);
-
-       // dd(session()->all());
     }
 
     /**
@@ -89,11 +61,6 @@ abstract class BaseGroup
     protected $postTask = null;
 
     /**
-     * @var array
-     */
-    protected $tasks = [];
-
-    /**
      * @var string
      */
     protected $name = '';
@@ -104,20 +71,6 @@ abstract class BaseGroup
     public function __toString()
     {
         return $this->name;
-    }
-
-    /**
-     * @return array
-     */
-    public function tasks(): array
-    {
-//        $tasks = [];
-//
-//        foreach ($this->tasks as $task) {
-//            array_push($tasks, (new $task));
-//        }
-
-        return $this->tasks ?? [];
     }
 
     public function getStatus()
@@ -149,6 +102,9 @@ abstract class BaseGroup
         switch ($value) {
             case 'namespace':
                 return $this->_namespace;
+
+            case 'tasks':
+                return $this->_tasks ?? [];
         }
     }
 }

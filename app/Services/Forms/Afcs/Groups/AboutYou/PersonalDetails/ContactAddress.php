@@ -12,7 +12,7 @@ class ContactAddress extends BasePage
     /**
      * @var string
      */
-    public $title = 'What is your contact address?';
+    protected $_title = 'What is your contact address?';
 
     /**
      * @var string
@@ -21,6 +21,7 @@ class ContactAddress extends BasePage
 
     function setQuestions(): void
     {
-        $this->_questions = array_merge((new Address($this->namesapce))->fields());
+        $address = new Address($this->namespace);
+        $this->_questions = array_merge($address->fields());
     }
 }

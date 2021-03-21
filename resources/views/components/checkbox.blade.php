@@ -1,13 +1,13 @@
 <div class="govuk-checkboxes__item">
     @if(is_bool($value))
         <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ (int)!$value }}">
-    @elseif($value === \App\Models\Constant::YES)
-        <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ \App\Models\Constant::NO }}">
-    @elseif($value === \App\Models\Constant::NO)
-        <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ \App\Models\Constant::YES }}">
+    @elseif($value === \App\Services\Constant::YES)
+        <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ \App\Services\Constant::NO }}">
+    @elseif($value === \App\Services\Constant::NO)
+        <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ \App\Services\Constant::YES }}">
     @endif
     <input class="govuk-checkboxes__input" id="{{ $_id }}" name="{{ $field }}" type="checkbox"
-           value="{{ $value }}" @if(old($field, session($field)) == $value) checked @endif
+           value="{{ $value }}" @if(old($field, $value ?? session($field, stored_response($field))) == $value) checked @endif
            @if($children) data-aria-controls="conditional-{{ $_id }}" @endif>
     <label class="govuk-label govuk-checkboxes__label" for="{{ $_id }}">{{ $label }}</label>
 </div>

@@ -15,11 +15,10 @@ class CheckBefore extends BaseGroup
 
     protected $name = 'Check before you start';
 
-    protected $tasks = [];
 
     public function __construct($namespace)
     {
-        $this->tasks = [
+        $this->_tasks = [
             new ThingsToKnow($this->namespace)
         ];
 

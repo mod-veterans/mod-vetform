@@ -8,25 +8,7 @@ use App\Services\Forms\BasePage;
 
 class YourName extends BasePage
 {
-    protected $title = 'What is your name?';
-
-    protected $stack =  [
-        'AboutYou' => [
-            'PersonalDetails' => [
-                'YourName' => '',
-            ]
-        ],
-        'SupportingDocuments' => [
-            'Documents' => [
-                [
-                    'Document' => ''
-                ],
-                [
-                    'Document' => ''
-                ]
-            ]
-        ]
-    ];
+    protected $_title = 'What is your name?';
 
     function setQuestions(): void
     {

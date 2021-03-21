@@ -18,7 +18,7 @@
             class="govuk-input govuk-date-input__input {{ $period === 'year' ? 'govuk-input--width-4' : 'govuk-input--width-2' }} @error($field .'-' . $period) govuk-input--error @enderror"
             id="{{ !$hideLabel ? $field . '-' . $period : $field }}"
             name="{{ $field }}-{{ $period }}" type="text" pattern="[0-9]*" inputmode="numeric"
-            value="{{ old($field . '-' . $period, session($field. '-' . $period)) }}">
+            value="{{ old($field . '-' . $period, session($field. '-' . $period, stored_response($field. '-' . $period))) }}">
 
     </div>
 </div>

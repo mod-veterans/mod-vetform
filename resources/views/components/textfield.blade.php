@@ -23,7 +23,7 @@
         @if(!$spellcheck)spellcheck="false" @endif @if($autocomplete)autocomplete="{{ $autocomplete }}"
         @endif @if(!$maxlength) maxlength="120" @endif @if($autocomplete === 'tel') inputmode="numeric" pattern="[0-9]*"
         @endif
-        value="{{ old($field, session($field)) }}"
+        value="{{ old($field, $value ?? session($field, stored_response($field))) }}"
         @if($ariaDescribedBy)
         aria-describedby="{{ join(' ', $ariaDescribedBy) }}"
         @endif

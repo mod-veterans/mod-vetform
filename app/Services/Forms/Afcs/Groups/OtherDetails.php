@@ -6,6 +6,7 @@ namespace App\Services\Forms\Afcs\Groups;
 
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherCompensation;
+use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment;
 use App\Services\Forms\BaseGroup;
 
 class OtherDetails extends BaseGroup
@@ -16,19 +17,15 @@ class OtherDetails extends BaseGroup
     protected $name = 'Other details';
 
     /**
-     * @var string[]
-     */
-    protected $tasks = [];
-
-    /**
      * OtherDetails constructor.
      * @param $namespace
      */
     public function __construct($namespace)
     {
-        $this->tasks = [
+        $this->_tasks = [
+            new OtherMedicalTreatment($this->namespace),
             new OtherCompensation($this->namespace),
-            new OtherBenefits($this->getId()),
+            new OtherBenefits($this->namespace),
         ];
         parent::__construct($namespace);
     }

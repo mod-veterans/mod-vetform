@@ -14,10 +14,6 @@ class ApplicationSubmission extends BaseGroup
      */
     protected $name = 'Declaration and application submission';
 
-    /**
-     * @var Submission[]|array
-     */
-    protected $tasks = [];
 
     /**
      * ApplicationSubmission constructor.
@@ -25,7 +21,7 @@ class ApplicationSubmission extends BaseGroup
      */
     public function __construct($namespace)
     {
-        $this->tasks = [
+        $this->_tasks = [
             new Submission($this->namespace, $this->_tree),
         ];
 

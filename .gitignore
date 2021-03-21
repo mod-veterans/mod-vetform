@@ -6,8 +6,11 @@
 .env
 .env.backup
 .phpunit.result.cache
+.idea
+.DS_Store
 docker-compose.override.yml
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+docker/pgsql

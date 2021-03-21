@@ -10,7 +10,7 @@
         <option></option>
         @foreach($countries as $country)
             <option value="{{ $country[0] }}"
-                    @if(old($field, session($field)) === $country[0]) selected @endif >{{ $country[0] }}</option>
+                    @if(old($field, session($field, stored_response($field))) === $country[0]) selected @endif >{{ $country[0] }}</option>
         @endforeach
     </select>
 </div>

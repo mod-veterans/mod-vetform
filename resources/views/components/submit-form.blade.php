@@ -1,7 +1,7 @@
 @props([
-'submitLabel' => 'Save and continue',
-'cancelLabel' => 'Cancel application',
-'canCancel' => true
+    'submitLabel' => 'Save and continue',
+    'cancelLabel' => 'Cancel application',
+    'canCancel' => true
 ])
 <div class="govuk-form-group">
     @csrf
@@ -13,6 +13,6 @@
         </a>
     @endif
     <p class="govuk-body">
-        <a class="govuk-link hidden-print" href="/ipo-apply/page/saveForLater">Save for later</a>
+        <a class="govuk-link hidden-print" href="{{ route('save.progress') }}">Save for later</a>
     </p>
 </div>

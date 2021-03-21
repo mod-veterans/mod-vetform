@@ -35,6 +35,18 @@ Route::view('/accessibility-statement', 'accessibility-statement')->name('access
 Route::view('/privacy-policy', 'privacy-policy')->name('privacy-policy');
 Route::view('/accessibility-statement', 'accessibility-statement')->name('accessibility-statement');
 
-Route::get('/{group}/{task}/{page}', [\App\Http\Controllers\FormController::class, 'index'])->name('load.form');
-Route::get('/{group}/{task}', [\App\Http\Controllers\FormController::class, 'index'])->name('load.form');
+Route::get( '/stack/add/', [\App\Http\Controllers\StackController::class, 'add'])->name('add.stack');
+Route::get( '/stack/drop/', [\App\Http\Controllers\StackController::class, 'drop'])->name('drop.stack');
+
+Route::get('/load-progress', [\App\Http\Controllers\ProgressController::class, 'load'])->name('load.progress');
+Route::get('/save-progress', [\App\Http\Controllers\ProgressController::class, 'index'])->name('save.progress');
+
+Route::get( '/summarise/{group}/{task}', [\App\Http\Controllers\FormController::class, 'summarise'])->name('summarise.form');
+Route::get( '/{group}/{task}/{page}/?return=summarise#{question}', [\App\Http\Controllers\FormController::class, 'change'])->name('update.form');
+Route::get( '/{group}/{task}/{page}', [\App\Http\Controllers\FormController::class, 'index'])->name('load.form');
+Route::get( '/{group}/{task}', [\App\Http\Controllers\FormController::class, 'index'])->name('load.form');
 Route::post('/{group}/{task}/{page}', [\App\Http\Controllers\FormController::class, 'save'])->name('save.form');
+//Route::get('/{group}/{task}/{page}/{stack}', [\App\Http\Controllers\FormController::class, 'index'])
+//    ->name('load.form')->whereUuid('stack');
+//Route::post('/{group}/{task}/{page}/{stack}', [\App\Http\Controllers\FormController::class, 'save'])
+//    ->name('save.form')->whereUuid('stack');;

@@ -1,6 +1,6 @@
 <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="{{ $_id }}" name="{{ $field }}" type="radio"
-           value="{{ $value }}" @if(old($field, session($field)) === $value) checked @endif
+           value="{{ $value }}" @if(old($field, session($field, stored_response($field))) == $value) checked @endif
            @if($children) data-aria-controls="conditional-{{ $_id }}" aria-expanded="false"@endif>
     <label class="govuk-label govuk-radios__label" for="{{ $_id }}">{{ $label }}</label>
 </div>
