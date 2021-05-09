@@ -1,6 +1,11 @@
 <?php
 
-use Illuminate\Support\Str;
+
+$dbCredentialsUrl = $_ENV['DATABASE_URL'] ?? null;
+$dbCredentials = parse_url($dbCredentialsUrl);
+
+
+postgres://uw1laj67skhb6rm5:J5oAFhvmsfRs99fRxwepmhwCrPQvjZFT@rdsbroker-ed175070-f68a-444f-babc-4f7bbd64e05c.coowcrpgh5fz.eu-west-2.rds.amazonaws.com:5432/rdsbroker_ed175070_f68a_444f_babc_4f7bbd64e05c
 
 return [
 
@@ -15,7 +20,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,10 +47,9 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
+            'url' => env('DATABASE_URL', $_ENV['DATABASE_URL'] ?? null),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -62,22 +66,20 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST', $dbCredentials['host'] ?? 'localhost'),
+            'port' => env('DB_PORT', $dbCredentials['port'] ?? 5432),
+            'database' => env('DB_DATABASE', trim($dbCredentials['path'] ?? 'localhost', '/')),
+            'username' => env('DB_USERNAME', $dbCredentials['user'] ?? 'postgres'),
+            'password' => env('DB_PASSWORD', $dbCredentials['pass'] ?? 'postgres'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
-
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DATABASE_URL'),
@@ -90,7 +92,6 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
-
     ],
 
     /*
@@ -119,36 +120,36 @@ return [
 
     'redis' => [
 
-        'client' => env('REDIS_CLIENT', 'phpredis'),
-
-        'options' => [
-            'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
-        ],
-
-        'default' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_DB', '0'),
-        ],
-
-        'cache' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', '6379'),
-            'database' => env('REDIS_CACHE_DB', '1'),
-        ],
-
-        'session' => [
-            'url' => env('REDIS_URL'),
-            'host' => env('REDIS_HOST', '127.0.0.1'),
-            'password' => env('REDIS_PASSWORD', null),
-            'port' => env('REDIS_PORT', 6379),
-            'database' =>  env('REDIS_SESSION_DB', '2'),
-        ],
+//        'client' => env('REDIS_CLIENT', 'phpredis'),
+//
+//        'options' => [
+//            'cluster' => vcap('REDIS_HOST', env('REDIS_CLUSTER', 'redis')),
+//            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'modforms'), '_') . '_database_'),
+//        ],
+//
+//        'default' => [
+//            'url' => vcap('REDIS_URL', env('REDIS_URL')),
+//            'host' => vcap('REDIS_HOST', env('REDIS_HOST', '127.0.0.1')),
+//            'password' => vcap('REDIS_PASSWORD', env('REDIS_PASSWORD', null)),
+//            'port' => vcap('REDIS_PORT', env('REDIS_PORT', 6379)),
+//            'database' => env('REDIS_DB', '0'),
+//        ],
+//
+//        'cache' => [
+//            'url' => vcap('REDIS_HOST', env('REDIS_URL')),
+//            'host' => vcap('REDIS_HOST', env('REDIS_HOST', '127.0.0.1')),
+//            'password' => vcap('REDIS_HOST', env('REDIS_PASSWORD', null)),
+//            'port' => vcap('REDIS_HOST', env('REDIS_PORT', 6379)),
+//            'database' => env('REDIS_CACHE_DB', '1'),
+//        ],
+//
+//        'session' => [
+//            'url' => vcap('REDIS_HOST', env('REDIS_URL')),
+//            'host' => vcap('REDIS_HOST', env('REDIS_HOST', '127.0.0.1')),
+//            'password' => vcap('REDIS_HOST', env('REDIS_PASSWORD', null)),
+//            'port' => vcap('REDIS_HOST', env('REDIS_PORT', 6379)),
+//            'database' => env('REDIS_SESSION_DB', '2'),
+//        ],
 
     ],
 

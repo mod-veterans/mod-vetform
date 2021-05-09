@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class ContactNumber extends BasePage
 {
-    protected $_title = 'What is your contact number?';
+    protected string $_title = 'What is your contact number?';
 
     function setQuestions(): void
     {
@@ -35,7 +35,6 @@ class ContactNumber extends BasePage
                     'autocomplete' => 'tel'
                 ],
             ],
-
         ];
     }
 }

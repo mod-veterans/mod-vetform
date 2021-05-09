@@ -20,6 +20,12 @@ class Controller extends BaseController
      */
     public function callAction($method, $parameters)
     {
+        if(!session('form', false)) {
+            $form = "App\Services\Forms\Afcs\Afcs";
+
+            session(['form' => $form]);
+            session()->save();
+        }
         return parent::callAction($method, $parameters);
     }
 

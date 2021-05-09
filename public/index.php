@@ -6,6 +6,17 @@ use Illuminate\Http\Request;
 define('LARAVEL_START', microtime(true));
 
 /*
+ /-------------------------------------------------------------------------
+ / Check for VCAP Services and set the string to usable environment vars
+ /-------------------------------------------------------------------------
+*/
+//$vcapServices = getenv('VCAP_SERVICES');
+//if ($vcapServices) {
+//    $vcapServices = json_decode($vcapServices);
+//    var_dump($_ENV);
+//}
+
+/*
 |--------------------------------------------------------------------------
 | Check If BaseService Is Under Maintenance
 |--------------------------------------------------------------------------
@@ -16,8 +27,8 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
-    require __DIR__.'/../storage/framework/maintenance.php';
+if (file_exists(__DIR__ . '/../storage/framework/maintenance.php')) {
+    require __DIR__ . '/../storage/framework/maintenance.php';
 }
 
 /*
@@ -31,7 +42,7 @@ if (file_exists(__DIR__.'/../storage/framework/maintenance.php')) {
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +55,7 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 

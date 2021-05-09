@@ -12,7 +12,7 @@ class SupportingDocuments extends BaseGroup
     /**
      * @var string
      */
-    protected $name = 'Supporting documents';
+    protected string $name = 'Supporting documents';
 
     /**
      * SupportingDocuments constructor.

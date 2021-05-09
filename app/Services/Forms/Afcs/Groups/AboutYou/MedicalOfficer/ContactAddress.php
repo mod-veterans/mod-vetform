@@ -17,8 +17,7 @@ class ContactAddress extends BasePage
     /**
      * @var string
      */
-    protected $_title = 'What is the name and address of your current Medical Officer or GP?';
-
+    protected string $_title = 'What is the name and address of your current Medical Officer or GP?';
 
     function setQuestions(): void
     {

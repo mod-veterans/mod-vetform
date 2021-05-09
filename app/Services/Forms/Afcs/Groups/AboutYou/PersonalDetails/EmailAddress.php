@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class EmailAddress extends BasePage
 {
-    protected $_title = 'Email address';
+    protected string $_title = 'Email address';
 
     function setQuestions(): void
     {

@@ -9,7 +9,7 @@ use App\Services\Forms\BasePage;
 
 class FastPayment extends BasePage
 {
-    protected $_title = 'Have you received an AFCS Fast Payment?';
+    protected string $_title = 'Have you received an AFCS Fast Payment?';
 
     function setQuestions(): void
     {

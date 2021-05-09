@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class YourName extends BasePage
 {
-    protected $_title = 'What is your name?';
+    protected string $_title = 'What is your name?';
 
     function setQuestions(): void
     {

@@ -6,7 +6,7 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 class ClaimIllness extends \App\Services\Forms\BasePage
 {
-    protected $_title = 'What type of medical condition, injury or illness you are claiming for?';
+    protected string $_title = 'What type of medical condition, injury or illness you are claiming for?';
 
     function setQuestions(): void
     {

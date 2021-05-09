@@ -1,7 +1,30 @@
 ---
 applications:
-  - name: srrdigital-dev
+  - name: modforms-dev
     memory: 256M
-    buildpack: https://github.com/cloudfoundry/php-buildpack.git#v4.3.78
+    buildpacks:
+      - https://github.com/andy-paine/env-map-buildpack
+      - https://github.com/cloudfoundry/php-buildpack.git#v4.4.34
     routes:
-      - route: modvets-dev.london.cloudapps.digital
+      - route: modvets-dev2.london.cloudapps.digital
+    services:
+      - mydb
+    env:
+      CF_STAGING_TIMEOUT: 15
+      CF_STARTUP_TIMEOUT: 15
+      APP_NAME: "MoD Veterans"
+      APP_ENV: local
+      APP_KEY: base64:DykIILG50laGHJBYv78MSCx+LEahCgMxYsSPpqPSgOM=
+      APP_DEBUG: true
+      APP_URL: https://modvets-dev2.london.cloudapps.digital
+      LOG_CHANNEL: stack
+      LOG_LEVEL: debug
+      SESSION_DRIVER: database
+      SESSION_LIFETIME: 120
+      SESSION_CONNECTION: pgsql
+      BROADCAST_DRIVER: log
+      DB_CONNECTION: pgsql
+      CACHE_DRIVER: file
+      QUEUE_CONNECTION: sync
+      FILESYSTEM_DRIVER: s3
+      PATH: /home/vcap/app/php/bin:/bin:/usr/bin

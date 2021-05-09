@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class NationalInsurance extends BasePage
 {
-    protected $_title = 'What is your National Insurance number?';
+    protected string $_title = 'What is your National Insurance number?';
 
     function setQuestions(): void
     {

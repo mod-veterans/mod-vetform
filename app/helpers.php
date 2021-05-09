@@ -46,7 +46,7 @@ if (!function_exists('groups')) {
 
 if (!function_exists('group_task_count')) {
     /**
-     * @return \App\Services\Forms\BaseGroup[]
+     * @return int
      */
     function group_task_count()
     {
@@ -55,6 +55,27 @@ if (!function_exists('group_task_count')) {
 
         foreach ($groups as $group) {
             $total = $total + sizeof($group->tasks);
+        }
+
+        return $total;
+    }
+}
+
+if (!function_exists('groups_task_complete_count')) {
+    /**
+     * @return int
+     */
+    function groups_task_complete_count()
+    {
+        $groups = Application::getInstance()->form->groups();
+        $total = 0;
+
+        foreach ($groups as $group) {
+            foreach ($group->tasks as $task) {
+                if ($task->status === \App\Services\Forms\BaseTask::STATUS_COMPLETED) {
+                    $total++;
+                }
+            }
         }
 
         return $total;
@@ -130,5 +151,36 @@ if (!function_exists('stored_response')) {
     function stored_response($field)
     {
         return Application::getInstance()->questionValue($field);
+    }
+}
+
+if (!function_exists('vcap')) {
+    function vcap($field, $default = null)
+    {
+        $vcapServices = getenv('VCAP_SERVICES');
+        if ($vcapServices) {
+            $vcapServices = json_decode($vcapServices);
+        } else {
+            return $default;
+        }
+
+        $redis = $vcapServices['redis'][0]['credentials'];
+
+        switch ($field) {
+            case'REDIS_HOST':
+                $redis->host;
+                break;
+            case'REDIS_URL':
+                $redis->uri;
+                break;
+            case'REDIS_PASSWORD':
+                $redis->password;
+                break;
+            case'REDIS_PORT':
+                $redis->port;
+                break;
+        }
+
+        return $default;
     }
 }

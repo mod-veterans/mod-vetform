@@ -13,7 +13,7 @@ class CheckBefore extends BaseGroup
     protected $preTask = null;
     protected $postTask = null;
 
-    protected $name = 'Check before you start';
+    protected string $name = 'Check before you start';
 
 
     public function __construct($namespace)

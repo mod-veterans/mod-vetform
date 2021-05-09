@@ -42,7 +42,7 @@ abstract class BaseTask
     /**
      * @var string
      */
-    protected $name = '';
+    protected string $name = '';
 
     /**
      * @var string
@@ -104,21 +104,58 @@ abstract class BaseTask
      */
     public function nextPage($fromIndex)
     {
-        if ($this->pages[$fromIndex]) {
-            $nextPage = $this->pages[$fromIndex]['next'] ?? null;
+        if (is_string($fromIndex) || is_int($fromIndex)) {
+            if (key_exists($fromIndex, $this->pages)) {
+                if ($this->pages[$fromIndex]) {
+                    $nextPage = $this->pages[$fromIndex]['next'] ?? null;
 
-            if (is_numeric($nextPage)) {
-                return $this->pages[$nextPage];
-            }
+                    if ($nextPage instanceof \Closure) {
+                        $nextPage = $nextPage();
+                        if (!is_null($nextPage)) {
+                            return $this->pages[$nextPage];
+                        }
+                    }
 
-            if ($nextPage instanceof \Closure) {
-                return $this->pages[$nextPage()];
-            }
+                    if (isset($nextPage)) {
+                        return $this->pages[$nextPage];
+                    }
 
-            if ($nextPage === BasePage::SUMMARY_PAGE) {
-                return BasePage::SUMMARY_PAGE;
+                    if ($nextPage === BasePage::SUMMARY_PAGE) {
+                        return BasePage::SUMMARY_PAGE;
+                    }
+                }
             }
         }
+
+        return null;
+    }
+
+    /**
+     * @param $fromIndex
+     */
+    public function nextPageIndex($fromIndex)
+    {
+        if (is_string($fromIndex) || is_int($fromIndex)) {
+            if (key_exists($fromIndex, $this->pages)) {
+                if ($this->pages[$fromIndex]) {
+                    $nextPage = $this->pages[$fromIndex]['next'] ?? null;
+
+                    if ($nextPage instanceof \Closure) {
+                        $nextPage = $nextPage();
+                    }
+
+                    if (isset($nextPage)) {
+                        return $nextPage;
+                    }
+
+                    if ($nextPage === BasePage::SUMMARY_PAGE) {
+                        return BasePage::SUMMARY_PAGE;
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -126,6 +163,7 @@ abstract class BaseTask
      */
     protected function getStatus()
     {
+
         $this->setPages();
         $requiredFields = 0;
         $completedRequiredFields = 0;
@@ -133,48 +171,83 @@ abstract class BaseTask
         $completedSections = 0;
         $pages = $this->pages;
 
+
         if ($this->isStackable()) {
-            $pages= [];
-        }
+            $pages = [];
+        } else {
+            if (sizeof($pages) === 0) {
+                return self::STATUS_CANNOT_START;
+            }
 
-            foreach ($pages as $page) {
-                $page = $page['page'];
-                foreach ($page->questions ?? [] as $question) {
-                    $options = $question['options'];
-                    $field = $options['field'];
-                    $validation = $options['validation'] ?? [];
-                    $isRequired = false;
+            $pageIndex = 0;
+            do {
+                $page = $this->pages[$pageIndex];
+                $questions = $page['page']->questions;
 
-                    if (is_string($validation)) $validation = array_flip(explode('|', $validation));
-
-                    if (key_exists('required', $validation)) {
-                        $requiredFields++;
-                        $isRequired = true;
-                    }
-
-                    if (!is_null(session($field, null))) {
-                        $completedFields++;
+                if (sizeof($questions) > 0) {
+                    foreach ($questions as $question) {
+                        $options = $question['options'];
+                        $field = $options['field'];
+                        $validation = explode('|', $options['validation'] ?? '');
+                        $isRequired = in_array('required', $validation);
 
                         if ($isRequired) {
-                            $completedRequiredFields++;
+                            $value = session($field, null);
+                            if (is_null($value)) {
+                                if ($pageIndex === 0) {
+                                    return self::STATUS_NOT_STARTED;
+                                } else {
+                                    return self::STATUS_IN_PROGRESS;
+                                }
+                            }
                         }
                     }
                 }
-            }
 
-        if ($completedRequiredFields > 0) {
-            if ($completedRequiredFields === $requiredFields) {
-                return self::STATUS_COMPLETED;
-            } else {
-                return self::STATUS_IN_PROGRESS;
-            }
+                $pageIndex = $this->nextPageIndex($pageIndex);
+            } while (!is_null($pageIndex));
         }
 
-        if ($completedFields > 0) {
-            return self::STATUS_IN_PROGRESS;
-        }
+        return self::STATUS_COMPLETED;
 
-        return self::STATUS_NOT_STARTED;
+//        foreach ($pages as $page) {
+//            $page = $page['page'] ?? [];
+//            foreach ($page->questions ?? [] as $question) {
+//                $options = $question['options'];
+//                $field = $options['field'];
+//                $validation = $options['validation'] ?? [];
+//                $isRequired = false;
+//
+//                if (is_string($validation)) $validation = array_flip(explode('|', $validation));
+//
+//                if (key_exists('required', $validation)) {
+//                    $requiredFields++;
+//                    $isRequired = true;
+//                }
+//
+//                if (!is_null(session($field, null))) {
+//                    $completedFields++;
+//
+//                    if ($isRequired) {
+//                        $completedRequiredFields++;
+//                    }
+//                }
+//            }
+//        }
+//
+//        if ($completedRequiredFields > 0) {
+//            if ($completedRequiredFields === $requiredFields) {
+//                return self::STATUS_COMPLETED;
+//            } else {
+//                return self::STATUS_IN_PROGRESS;
+//            }
+//        }
+//
+//        if ($completedFields > 0) {
+//            return self::STATUS_IN_PROGRESS;
+//        }
+//
+//        return self::STATUS_NOT_STARTED;
     }
 
     protected function getResponses()
@@ -183,7 +256,7 @@ abstract class BaseTask
 
         $responses = [];
         foreach ($this->pages as $page) {
-            $page = $page['page'];
+            $page = $page['page'] ?? [];
 
             foreach ($page->questions ?? [] as $question) {
                 $component = $question['component'];
@@ -243,6 +316,8 @@ abstract class BaseTask
                 return $this->getStatus();
             case 'responses';
                 return $this->getResponses();
+            case 'preTask';
+                return $this->_preTask;
             default:
                 if (property_exists($this, '_' . $value)) {
                     $value = '_' . $value;

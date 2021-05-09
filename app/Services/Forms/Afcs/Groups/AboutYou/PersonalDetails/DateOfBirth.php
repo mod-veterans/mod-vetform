@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class DateOfBirth extends BasePage
 {
-    protected $_title = 'What is your date of birth?';
+    protected string $_title = 'What is your date of birth?';
 
     function setQuestions(): void
     {

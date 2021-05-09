@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class PensionScheme extends BasePage
 {
-    protected $_title = 'Which armed forces pension scheme are you a member of?';
+    protected string $_title = 'Which armed forces pension scheme are you a member of?';
 
     function setQuestions(): void
     {

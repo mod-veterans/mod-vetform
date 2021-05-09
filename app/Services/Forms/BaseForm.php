@@ -25,12 +25,17 @@ abstract class BaseForm
     /**
      * @var string
      */
-    protected $name = '';
+    protected string $name = '';
 
     /**
      * @var array
      */
     protected $groups = [];
+
+    /**
+     * @var string|null
+     */
+    protected string $_consentPage;
 
 
     /**
@@ -90,5 +95,17 @@ abstract class BaseForm
         }
 
         return null;
+    }
+
+    /**
+     * @param $value
+     * @return null
+     */
+    public function __get($value)
+    {
+        switch ($value) {
+            case 'consentPage':
+                return $this->_consentPage;
+        }
     }
 }

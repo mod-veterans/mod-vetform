@@ -35,4 +35,8 @@ class StackController extends Controller
         $stack->dropFromStack(request('id'));
         return back();
     }
+
+    public function skip() {
+
+    }
 }

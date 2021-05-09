@@ -34,27 +34,32 @@ abstract class BasePage
     /**
      * @var string
      */
-    protected $name = '';
+    protected string $name = '';
 
     /**
      * @var string
      */
-    protected $_title = '';
+    protected string $_title = '';
 
     /**
      * @var string
      */
-    protected $summary = '';
+    protected string $summary = '';
+
+    /**
+     * @var string
+     */
+    protected string $closingStatement = '';
 
     /**
      * @var array
      */
-    protected $_questions = [];
+    protected array $_questions = [];
 
     /**
      * @var string
      */
-    private $_namespace;
+    private string $_namespace;
 
     /**
      * @var mixed|null
@@ -120,13 +125,15 @@ abstract class BasePage
                     foreach ($this->_questions as $questionIndex => $question) {
                         $field = $this->_questions[$questionIndex]['options']['field'];
 
-                        if (($data[$field] instanceof UploadedFile)) {
-                            /** @var UploadedFile $data */
-                            $stack[$stackID][$field] = [];
-                            $stack[$stackID][$field]['filename'] = $data[$field. '::filename'];;
-                            $stack[$stackID][$field]['mnemonic'] = $data[$field. '::mnemonic'];
-                        } else {
-                            $stack[$stackID][$field] = $data[$field] ?? null;
+                        if (isset($data[$field])) {
+                            if (($data[$field] instanceof UploadedFile)) {
+                                /** @var UploadedFile $data */
+                                $stack[$stackID][$field] = [];
+                                $stack[$stackID][$field]['filename'] = $data[$field . '::filename'];;
+                                $stack[$stackID][$field]['mnemonic'] = $data[$field . '::mnemonic'];
+                            } else {
+                                $stack[$stackID][$field] = $data[$field] ?? null;
+                            }
                         }
                     }
 
@@ -140,8 +147,8 @@ abstract class BasePage
                 if (($data[$field] instanceof UploadedFile)) {
                     /** @var UploadedFile $data */
                     $stack[$field] = [];
-                    $stack[$field]['filename'] = $data[$field. '::filename'];;
-                    $stack[$field]['mnemonic'] = $data[$field. '::mnemonic'];
+                    $stack[$field]['filename'] = $data[$field . '::filename'];;
+                    $stack[$field]['mnemonic'] = $data[$field . '::mnemonic'];
                 } else {
                     $stack[$field] = $data[$field] ?? null;
                 }

@@ -6,7 +6,7 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 class ClaimIllnessCondition extends \App\Services\Forms\BasePage
 {
-    protected $_title = 'What medical condition are you claiming for?';
+    protected string $_title = 'What medical condition are you claiming for?';
 
 //    protected $summary = 'Where you have a specific medical diagnosis, please include this here';
 
@@ -16,7 +16,7 @@ class ClaimIllnessCondition extends \App\Services\Forms\BasePage
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/claim-illness-condition',
+                    'field' => $this->namespace . '/claim-illness-claiming-for',
                     'label' => 'Medical condition claiming',
                     'hideLabel' => true,
                     'hint' => 'Where you have a specific medical diagnosis, please include this here',

@@ -9,9 +9,13 @@
         <x-error-message :field="$field"></x-error-message>
         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             @foreach($options as $option)
-                <x-checkbox :label="$option['label']" :value="$option['value'] ?? $option['label']"
-                            :field="$field . ( $option['field'] ?? '[]')"
-                            :is-grouped="true" :children="$option['children']"></x-checkbox>
+                <x-checkbox :options="[
+                    'label' => $option['label'],
+                    'value' => $option['value'] ?? $option['label'],
+                    'field' => $field . ( $option['field'] ?? '[]'),
+                    'isGrouped' => true,
+                    'children' => $option['children']
+                ]"></x-checkbox>
             @endforeach
         </div>
     </fieldset>

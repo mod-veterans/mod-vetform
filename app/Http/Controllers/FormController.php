@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\Application;
 use App\Services\Forms\BasePage;
 use App\Services\Forms\BaseTask;
+use App\Services\Notify;
 use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Uuid;
 
@@ -49,6 +50,7 @@ class FormController extends Controller
         $group = request('group', null);
         $task = request('task', null);
         $page = request('page', null);
+        $stack = request('stack', null);
 
         foreach ($form->groups() as $groupClass) {
             if ($groupClass->getId() === $group) {
@@ -139,11 +141,13 @@ class FormController extends Controller
             }
 
             if ($question['component'] === 'date-field') {
-                request()->merge([$field => sprintf('%04d-%02d-%02d',
-                    request($field . '-year'),
-                    request($field . '-month'),
-                    request($field . '-day'),
-                )]);
+                if (request($field . '-year') || request($field . '-month') || request($field . '-day')) {
+                    request()->merge([$field => sprintf('%04d-%02d-%02d',
+                        request($field . '-year'),
+                        request($field . '-month'),
+                        request($field . '-day'),
+                    )]);
+                }
             }
         }
 
@@ -168,12 +172,27 @@ class FormController extends Controller
         $this->_page->storeResponse(request()->all(), $this->_stack);
         $nextPage = $this->_task->nextPage($this->_pageIndex);
 
-        if (is_null($nextPage)) {
+        if (is_null($nextPage) || empty($nextPage)) {
+            $consentPage = \App\Services\Application::getInstance()->form->consentPage;
+            $group = get_class(\App\Services\Application::getInstance()->getGroupForPageByNamespace($this->_page->namespace));
+
+            if ($consentPage == $group) {
+
+//                Notify::getInstance()
+//                    ->setData()
+//                    ->
+
+                dd('OK, Let\'s go Notify!');
+
+
+            }
+
             if (request('redirect')) {
                 if ($this->_task->hasSummary) {
                     return redirect()->route('summarise.form', [
                         'group' => request('group'),
                         'task' => request('task'),
+                        'stack' => request('stack')
                     ]);
                 }
             }
@@ -181,32 +200,37 @@ class FormController extends Controller
             if ($this->_task->isStackable()) {
                 return redirect()->route('load.form', [
                     'group' => request('group'),
-                    'task' => request('task'),
+                    'task' => request('task')
                 ]);
             }
 
-            if($this->_task->hasSummary) {
+            if ($this->_task->hasSummary) {
                 return redirect()->route('summarise.form', [
                     'group' => request('group'),
                     'task' => request('task'),
+                    'stack' => request('stack')
                 ]);
             }
+
+            return redirect()->route('home');
         }
 
-//        dd($nextPage['page']->getId());
 
         return redirect()->route('load.form', [
             'group' => request('group'),
             'task' => request('task'),
             'page' => $nextPage['page']->getId(),
+            'stack' => request('stack')
         ]);
     }
 
+    /**
+     * @param $page
+     */
     private function getPage($page)
     {
         if ($this->_task instanceof BaseTask) {
             if ($this->_task->pages) {
-
                 $this->_pageIndex = $this->_task->getPageIndex($page) ?? 0;
                 $view = $this->_task->pages[$this->_pageIndex];
                 $page = $page ?? $view['page']->getId();

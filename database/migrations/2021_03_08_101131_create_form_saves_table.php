@@ -15,6 +15,11 @@ class CreateFormSavesTable extends Migration
     {
         Schema::create('form_saves', function (Blueprint $table) {
             $table->id();
+            $table->string('email');
+            $table->string('mobile');
+            $table->string('code');
+            $table->dateTime('code_expiry');
+            $table->jsonb('data');
             $table->timestamps();
         });
     }

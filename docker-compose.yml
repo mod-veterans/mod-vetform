@@ -4,13 +4,13 @@ networks:
   modvets_forms:
 
 services:
-  nginx:
-    image: nginx:stable-alpine
-    container_name: modvets_nginx
-    ports:
-      - '8080:80'
-    networks:
-      modvets_forms:
+#  nginx:
+#    image: nginx:stable-alpine
+#    container_name: modvets_nginx
+#    ports:
+#      - '8080:80'
+#    networks:
+#      modvets_forms:
 
   pgsql:
     image: postgres
@@ -28,11 +28,11 @@ services:
     networks:
       modvets_forms:
 
-  redis:
-    image: redis
-    container_name: modvets_redis
-    restart: always
-    ports:
-      - '6379:6379'
-    networks:
-      modvets_forms:
+#  redis:
+#    image: redis
+#    container_name: modvets_redis
+#    restart: always
+#    ports:
+#      - '6379:6379'
+#    networks:
+#      modvets_forms:

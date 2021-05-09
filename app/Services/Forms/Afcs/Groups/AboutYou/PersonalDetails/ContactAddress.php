@@ -12,12 +12,12 @@ class ContactAddress extends BasePage
     /**
      * @var string
      */
-    protected $_title = 'What is your contact address?';
+    protected string $_title = 'What is your contact address?';
 
     /**
      * @var string
      */
-    public $summary = 'We will send any postal correspondence to this address.';
+    public string $summary = 'We will send any postal correspondence to this address.';
 
     function setQuestions(): void
     {

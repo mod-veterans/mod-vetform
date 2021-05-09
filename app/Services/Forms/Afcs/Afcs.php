@@ -30,7 +30,8 @@ class Afcs extends BaseForm
     /**
      * @var string
      */
-    protected $name = 'Apply for the Armed Forces Compensation Scheme';
+    protected string $name = 'Apply for the Armed Forces Compensation Scheme';
+
 
     /**
      * @var string[]
@@ -42,14 +43,19 @@ class Afcs extends BaseForm
     {
         $this->init(self::NAME);
 
+        /**
+         * Class which when flow ends, submits form
+         */
+        $this->_consentPage = ApplicationSubmission::class;
+
         $this->groups = [
             self::SECTION_CHECK_BEFORE => new CheckBefore(self::NAME, []),
+            self::SECTION_NOMINATE_REP => new NominateRepresentative(self::NAME, []),
             self::SECTION_ABOUT_YOU => new AboutYou(self::NAME, []),
             self::SECTION_YOUR_CLAIM => new YourClaim(self::NAME),
             self::SECTION_OTHER_DETAILS => new OtherDetails(self::NAME, []),
             self::SECTION_PAYMENT_DETAILS => new PaymentDetails(self::NAME, []),
             self::SECTION_SUPPORTING_DOCS => new SupportingDocuments(self::NAME, []),
-            self::SECTION_NOMINATE_REP => new NominateRepresentative(self::NAME, []),
             self::SECTION_DECLARATION => new ApplicationSubmission(self::NAME, [])
         ];
 

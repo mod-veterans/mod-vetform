@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class Document extends BasePage
 {
-    protected $_title = 'Supporting documents';
+    protected string $_title = 'Supporting documents';
 
     /**
      *

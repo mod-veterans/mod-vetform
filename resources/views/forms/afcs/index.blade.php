@@ -4,7 +4,8 @@
     </x-slot>
     <x-slot name="body">
         <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
-        <p class="govuk-body govuk-!-margin-bottom-7">You have completed 4 of {{ group_task_count() }} sections.</p>
+        <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ groups_task_complete_count() }}
+            of {{ group_task_count() }} sections.</p>
         <ol class="app-task-list">
             @foreach(groups() as $group)
                 <li>

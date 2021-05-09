@@ -12,7 +12,7 @@ class YourClaim extends BaseGroup
     /**
      * @var string
      */
-    protected $name = 'Your claim';
+    protected string $name = 'Your claim';
 
     /**
      * YourClaim constructor.

@@ -17,7 +17,7 @@ class MedicalOfficer extends BaseTask
     protected $_hasSummary = true;
 
 
-    protected $name = 'Medical Officer';
+    protected string $name = 'Medical Officer';
 
     /**
      * @return mixed

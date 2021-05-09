@@ -4,6 +4,7 @@
 namespace App\Services\Forms\Afcs\Groups\CheckBefore;
 
 
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow\Overview;
 use App\Services\Forms\BaseTask;
 
 class ThingsToKnow extends BaseTask
@@ -12,13 +13,19 @@ class ThingsToKnow extends BaseTask
     protected $preTask = null;
     protected $postTask = null;
 
-    protected $name = 'Things to know before you start';
+    protected string $name = 'Things to know before you start';
+    protected string $_title = 'Things to know before you start';
+
 
     /**
      * @return mixed
      */
     protected function setPages()
     {
-        // TODO: Implement setPages() method.
+        $this->pages = [
+            0 => [
+                'page' => new Overview($this->namespace),
+            ]
+        ];
     }
 }

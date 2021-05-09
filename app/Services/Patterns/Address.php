@@ -6,16 +6,37 @@ namespace App\Services\Patterns;
 
 class Address
 {
+    /**
+     * @var string
+     */
     private $namespace;
 
-    private $possessive;
+    /**
+     * @var string
+     */
+    private $possessive = 'your';
 
-    public function __construct($namespace, $possessive = 'your')
+    /**
+     * @var string
+     */
+    private $optional = false;
+
+    /**
+     * Address constructor.
+     * @param $namespace
+     * @param string $possessive
+     * @param false $optional
+     */
+    public function __construct($namespace, $possessive = 'your', $optional = false)
     {
         $this->namespace = $namespace;
         $this->possessive = $possessive;
+        $this->optional = $optional;
     }
 
+    /**
+     * @return array[]
+     */
     public function fields(): array
     {
         return [
@@ -25,7 +46,7 @@ class Address
                     'field' => $this->namespace . '/address-line-1',
                     'label' => 'Building and street',
                     'labelExtra' => 'line 1 of 2',
-                    'validation' => 'required',
+                    'validation' => $this->optional ? 'required' : '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' building and street'
                     ],
@@ -48,7 +69,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/town',
                     'label' => 'Town or city',
-                    'validation' => 'required',
+                    'validation' => $this->optional ? 'required' : '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' town or city'
                     ],
@@ -60,7 +81,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/county',
                     'label' => 'County',
-                    'validation' => 'required',
+                    'validation' => $this->optional ? 'required' : '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' county'
                     ],
@@ -72,7 +93,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/country',
                     'label' => 'Country',
-                    'validation' => 'required',
+                    'validation' => $this->optional ? 'required' : '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' country'
                     ],
@@ -84,7 +105,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/postcode',
                     'label' => 'Postcode',
-                    'validation' => 'required',
+                    'validation' => $this->optional ? 'required' : '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' postcode'
                     ],

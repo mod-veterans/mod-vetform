@@ -14,7 +14,7 @@ class OtherDetails extends BaseGroup
     /**
      * @var string
      */
-    protected $name = 'Other details';
+    protected string $name = 'Other details';
 
     /**
      * OtherDetails constructor.

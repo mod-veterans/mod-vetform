@@ -9,7 +9,7 @@ use App\Services\Forms\BasePage;
 
 class PreviousClaim extends BasePage
 {
-    protected $_title = 'Have you made a WPS or AFCS claim previously?';
+    protected string $_title = 'Have you made a WPS or AFCS claim previously?';
 
     function setQuestions(): void
     {

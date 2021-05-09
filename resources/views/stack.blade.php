@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout :view="$view">
     <x-slot name="title">{{ $view->title }}</x-slot>
 
     <x-slot name="body">
@@ -10,8 +10,28 @@
                         <div class="govuk-inset-text">{{ $preTask['content'] }}</div>
                         @break
 
+                        @case('list')
+                        <ul class="govuk-list govuk-list--bullet">
+                            @foreach($preTask['content'] as $item)
+                                <li>{!! $item !!}</li>
+                            @endforeach
+                        </ul>
+                        @break
+
+                        @case('address')
+                        <address>
+                            @foreach($preTask['content'] as $item)
+                                {!! $item !!}<br>
+                            @endforeach
+                        </address>
+                        @break
+
                         @default
-                        <p class="govuk-body">{{ $preTask['content'] }}</p>
+                        @if(is_array($preTask['content']))
+                           {{ dd($preTask['content']) }}
+                        @else
+                            <p class="govuk-body">{{ $preTask['content'] }}</p>
+                        @endif
                     @endswitch
                 @endforeach
             @else
@@ -54,6 +74,10 @@
             <a class="govuk-button" href="{{ route('add.stack', ['stack' =>  $view->namespace ]) }}">
                 {{ $view->addStackLabel ??  'Add to stack' }}
             </a>
+
+            <br>
+
+            <a class="govuk-link" href="{{route('home')}}">Return to summary</a>
         </div>
 
         @if($view->postTask)

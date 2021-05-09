@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\Application;
 use App\Services\Forms\BaseForm;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -12,8 +13,21 @@ class HomeController extends Controller
      */
     public function index()
     {
+//        $files = Storage::disk('s3')->allFiles();
+
+//        foreach($files as $file) {
+//            print Storage::url($file) . '<br>';
+//        }
+
+//        dd($files);
+//        $files = Storage::files();
+//        // dd($files);
+//        $file = Storage::url('/some_file.jpg');
+//        dd($file);
+
+
         if (request('form', false)) {
-            $form = app_path() . '/Services/Forms/' . request('form', null);
+            $form = app_path() . '/Services/Forms/' . request('form', 'Afcs');
 
             if (is_dir($form)) {
                 if (request('flush')) {
@@ -33,7 +47,10 @@ class HomeController extends Controller
         abort(404);
     }
 
-    public function catchall()
-    {
+    public function start() {
+        $form = 'App\Services\Forms\Afcs\Afcs';
+        session(['form' => $form]);
+
+        return view('forms.' . Application::getInstance()->form->getId() . '.start');
     }
 }

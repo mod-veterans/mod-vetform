@@ -4,7 +4,8 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails;
 
 
-use App\Services\Forms\Afcs\Groups\AboutYou\MedicalOfficer\ContactAddress;
+use App\Services\Forms\Afcs\Groups\MedicalTreatment;
+use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\TreatmentStatus;
 use App\Services\Forms\BaseTask;
 use App\Services\Traits\Stackable;
 
@@ -16,8 +17,8 @@ class OtherMedicalTreatment extends BaseTask
     protected $preTask = null;
     protected $postTask = null;
 
-    protected $name = 'Other medical treatment';
-    protected $_title = 'Other medical treatment';
+    protected string $name = 'Other medical treatment';
+    protected string $_title = 'Other medical treatment';
     protected $_addStackLabel = 'Add a Medical Treatment';
 
     protected $_preTask = [
@@ -38,7 +39,16 @@ class OtherMedicalTreatment extends BaseTask
     {
         $this->pages = [
             0 => [
-                'page' => new ContactAddress($this->namespace),
+                'page' => new TreatmentStatus($this->namespace),
+                'next' => function () {
+                    session()->save();
+                    $field = $this->pages[0]['page']->questions[0]['options']['field'];
+
+                    return session($field, null) == 'No' ? null : 'medical-treatment';
+                },
+            ],
+            'medical-treatment' => [
+                'page' => new MedicalTreatment($this->namespace),
             ]
         ];
     }

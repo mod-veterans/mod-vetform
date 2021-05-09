@@ -24,18 +24,6 @@ class Textfield extends FormField
      */
     public $ariaDescribedBy = [];
 
-//    public function __construct($field = null, $label = 'Option', $value = null, $hint = false, $selected = null,
-//                                $options = [], $labelExtra = null, $mandatory = true, $characterLimit = false,
-//                                $fullWidth = false, $autocomplete = false, $hideLabel = false, $spellcheck = true,
-//                                $maxlength = 120, $type = 'text')
-//    {
-//        parent::__construct($field, $label, $value, $hint, $selected, $options, $labelExtra, $mandatory, $characterLimit, $fullWidth, $autocomplete, $hideLabel);
-//
-//        $this->spellcheck = $spellcheck;
-//        $this->maxlength = $maxlength;
-//        $this->type = $type;
-//    }
-
     /**
      * Get the view / contents that represent the component.
      *

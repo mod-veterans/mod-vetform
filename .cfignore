@@ -1,0 +1,12 @@
+.idea
+.env
+docker
+vendor
+node_modules
+
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+!storage/framework/cache/.gitkeep
+!storage/framework/sessions/.gitkeep
+!storage/framework/views/.gitkeep

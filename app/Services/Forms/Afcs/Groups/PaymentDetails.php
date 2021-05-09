@@ -11,7 +11,7 @@ class PaymentDetails extends BaseGroup
     /**
      * @var string
      */
-    protected $name = 'Your payment details';
+    protected string $name = 'Your payment details';
 
     /**
      * PaymentDetails constructor.

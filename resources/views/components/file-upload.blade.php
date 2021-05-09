@@ -5,5 +5,6 @@
     <input class="govuk-file-upload @error($field) govuk-file-upload--error @enderror" id="{{ $field }}"
            name="{{ $field }}" type="file"
            aria-describedby="{{ $field }}-hint @error($field) {{ $field }}-error @enderror"
-           value="{{ old($field, session($field, stored_response($field))) }}">
+{{--           value="{{ old($field, session($field, stored_response($field))) }}"--}}
+    >
 </div>

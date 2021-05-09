@@ -14,7 +14,7 @@ class AboutYou extends BaseGroup
     /**
      * @var string
      */
-    protected $name = 'About you';
+    protected string $name = 'About you';
 
     /**
      * AboutYou constructor.

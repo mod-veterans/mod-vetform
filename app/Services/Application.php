@@ -90,6 +90,22 @@ class Application
     }
 
     /**
+     * Pass the namespace for a task and get the Group it belongs to
+     * @param $namespace
+     * @return BaseGroup|null
+     */
+    public function getGroupForPageByNamespace($namespace)
+    {
+        $task = $this->getTaskForPageByNamespace($namespace);
+
+        if ($task) {
+            return $this->getGroupForTaskByNamespace($task->namespace);
+        }
+
+        return null;
+    }
+
+    /**
      * @param $namespaces
      * @return BaseTask|null
      */
@@ -115,8 +131,10 @@ class Application
         foreach ($this->_form->groups() as $group) {
             foreach ($group->tasks as $task) {
                 foreach ($task->pages as $page) {
-                    if ($page['page']->namespace == $namespace) {
-                        return $task;
+                    if (key_exists('page', $page)) {
+                        if ($page['page']->namespace == $namespace) {
+                            return $task;
+                        }
                     }
                 }
             }
@@ -137,15 +155,17 @@ class Application
             foreach ($group->tasks as $task) {
                 $crumbs = [];
                 foreach ($task->pages as $page) {
-                    if ($page['page']->namespace == $namespace) {
-                        return $crumbs;
-                    }
+                    if (key_exists('page', $page)) {
+                        if ($page['page']->namespace == $namespace) {
+                            return $crumbs;
+                        }
 
-                    $crumbs[route('load.form', [
-                        'group' => $group->getId(),
-                        'task' => $task->getId(),
-                        'page' => $page['page']->getId(),
-                    ])] = $page['page']->title;
+                        $crumbs[route('load.form', [
+                            'group' => $group->getId(),
+                            'task' => $task->getId(),
+                            'page' => $page['page']->getId(),
+                        ])] = $page['page']->title;
+                    }
                 }
             }
         }
@@ -180,8 +200,8 @@ class Application
                     }
                 } else {
                     /** @var BasePage $page */
-                    foreach ($task->pages as $page) {
-                        foreach ($page['page']->questions as $question) {
+                    foreach ($task->pages ?? [] as $page) {
+                        foreach ($page['page']->questions ?? [] as $question) {
                             //  dump($question['options']['field'] . ' :: ' . $field);
                         }
                         // dd($page);

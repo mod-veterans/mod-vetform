@@ -4,7 +4,7 @@
     <x-slot name="body">
         @if($view)
             @if($view->summary)
-                <p class="govuk-body">{{ $view->summary }}</p>
+                {!! $view->summary !!}
             @endif
 
             <form method="post" enctype="multipart/form-data" novalidate
@@ -21,8 +21,14 @@
                 @if($redirect)
                     <input type="hidden" name="redirect" value="{{ $redirect }}">
                 @endif
+
+                @if($view->closingStatement)
+                    {!! $view->closingStatement !!}
+                @endif
+
                 <x-submit-form></x-submit-form>
             </form>
+
         @endif
     </x-slot>
 </x-layout>
