@@ -7,9 +7,10 @@
         <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ \App\Services\Constant::YES }}">
     @endif
     <input class="govuk-checkboxes__input" id="{{ $_id }}" name="{{ $field }}" type="checkbox"
-           value="{{ $value }}" @if(old($field, $value ?? session($field, stored_response($field))) == $value) checked @endif
+           value="{{ $value }}" @if(old($field, session($field, stored_response($field))) == $value) checked @endif
            @if($children) data-aria-controls="conditional-{{ $_id }}" @endif>
     <label class="govuk-label govuk-checkboxes__label" for="{{ $_id }}">{{ $label }}</label>
+
 </div>
 @if($children)
     <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-{{ $_id }}">
