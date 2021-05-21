@@ -7,9 +7,9 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 use App\Services\Constant;
 use App\Services\Forms\BasePage;
 
-class ClaimAccidentCondition extends BasePage
+class ClaimAccidentSportingAuthorise extends BasePage
 {
-    protected string $_title = 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?';
+    protected string $_title = 'Were you representing your Unit?';
 
     function setQuestions(): void
     {
@@ -17,16 +17,17 @@ class ClaimAccidentCondition extends BasePage
             [
                 'component' => 'radio-group',
                 'options' => [
-                    'field' => $this->namespace . '/claim-accident-condition',
-                    'label' => 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?',
+                    'field' => $this->namespace . '/sporting-authorise',
+                    'label' => 'Were you representing your Unit?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
-                        ['label' => Constant::YES, 'children' => []],
+                        ['label' => Constant::YES . ' (Please send us copies of part 1 orders/admin instructions/authorisation. You can upload a copy later in the application)',
+                            'value' => Constant::YES, 'children' => []],
                         ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
-                        'required' => 'Select a condition which applies',
+                        'required' => 'Select an option which applies',
                     ],
                 ],
             ]

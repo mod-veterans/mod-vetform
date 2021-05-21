@@ -7,9 +7,12 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 use App\Services\Constant;
 use App\Services\Forms\BasePage;
 
-class ClaimAccidentCondition extends BasePage
+class ClaimAccidentFirstAid extends BasePage
 {
-    protected string $_title = 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?';
+    protected string $_title = 'Did you receive first aid treatment at the time?';
+
+    public string $summary = '<p class="govuk-body">Please only tell us about treatment you received for the
+                              injury/condition that you are claiming for</p>';
 
     function setQuestions(): void
     {
@@ -17,8 +20,8 @@ class ClaimAccidentCondition extends BasePage
             [
                 'component' => 'radio-group',
                 'options' => [
-                    'field' => $this->namespace . '/claim-accident-condition',
-                    'label' => 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?',
+                    'field' => $this->namespace . '/sporting-first-aid',
+                    'label' => 'Did you receive first aid treatment at the time?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
@@ -26,7 +29,7 @@ class ClaimAccidentCondition extends BasePage
                         ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
-                        'required' => 'Select a condition which applies',
+                        'required' => 'Select an option which applies',
                     ],
                 ],
             ]

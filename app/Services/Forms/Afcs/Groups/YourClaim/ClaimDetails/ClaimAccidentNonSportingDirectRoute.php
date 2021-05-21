@@ -7,9 +7,12 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 use App\Services\Constant;
 use App\Services\Forms\BasePage;
 
-class ClaimAccidentCondition extends BasePage
+class ClaimAccidentNonSportingDirectRoute extends BasePage
 {
-    protected string $_title = 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?';
+    protected string $_title = 'Were you on a direct route?';
+
+    public string $summary = '<p class="govuk-body">A direct route means you took a reasonable route from start to end
+                              and did not divert for personal reasons, e.g. to visit a friend.</p>';
 
     function setQuestions(): void
     {
@@ -17,8 +20,8 @@ class ClaimAccidentCondition extends BasePage
             [
                 'component' => 'radio-group',
                 'options' => [
-                    'field' => $this->namespace . '/claim-accident-condition',
-                    'label' => 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?',
+                    'field' => $this->namespace . '/non-sporting-direct-route',
+                    'label' => 'Were you on a direct route?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
@@ -26,7 +29,7 @@ class ClaimAccidentCondition extends BasePage
                         ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
-                        'required' => 'Select a condition which applies',
+                        'required' => 'Select an option which applies',
                     ],
                 ],
             ]

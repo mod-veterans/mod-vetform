@@ -7,9 +7,9 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 use App\Services\Constant;
 use App\Services\Forms\BasePage;
 
-class ClaimAccidentCondition extends BasePage
+class ClaimAccidentDowngraded extends BasePage
 {
-    protected string $_title = 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?';
+    protected string $_title = 'Were you downgraded for any of the conditions on this claim?';
 
     function setQuestions(): void
     {
@@ -17,8 +17,8 @@ class ClaimAccidentCondition extends BasePage
             [
                 'component' => 'radio-group',
                 'options' => [
-                    'field' => $this->namespace . '/claim-accident-condition',
-                    'label' => 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?',
+                    'field' => $this->namespace . '/sporting-downgraded',
+                    'label' => 'Were you downgraded for any of the conditions on this claim?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
@@ -26,7 +26,7 @@ class ClaimAccidentCondition extends BasePage
                         ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
-                        'required' => 'Select a condition which applies',
+                        'required' => 'Select an option which applies',
                     ],
                 ],
             ]

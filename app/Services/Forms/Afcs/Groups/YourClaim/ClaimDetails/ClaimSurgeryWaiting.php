@@ -4,12 +4,11 @@
 namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 
-use App\Services\Constant;
 use App\Services\Forms\BasePage;
 
-class ClaimAccidentCondition extends BasePage
+class ClaimSurgeryWaiting extends BasePage
 {
-    protected string $_title = 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?';
+    protected string $_title = 'Are you on the waiting list for surgery for this condition/illness';
 
     function setQuestions(): void
     {
@@ -17,8 +16,8 @@ class ClaimAccidentCondition extends BasePage
             [
                 'component' => 'radio-group',
                 'options' => [
-                    'field' => $this->namespace . '/claim-accident-condition',
-                    'label' => 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?',
+                    'field' => $this->namespace . '/claim-surgery-waiting',
+                    'label' => 'Are you on the waiting list for surgery for this condition/illness',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
@@ -26,7 +25,7 @@ class ClaimAccidentCondition extends BasePage
                         ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
-                        'required' => 'Select a condition which applies',
+                        'required' => 'Select an option which applies',
                     ],
                 ],
             ]

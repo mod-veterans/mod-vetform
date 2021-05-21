@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 
-class ClaimIllnessDueto extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class ClaimIllnessDueto extends BasePage
 {
     protected string $_title = 'Is your condition due to exposure to?';
 
@@ -21,6 +23,7 @@ class ClaimIllnessDueto extends \App\Services\Forms\BasePage
                         ['label' => "Heat", 'children' => []],
                         ['label' => "Noise", 'children' => []],
                         ['label' => "Vibration", 'children' => []],
+                        ['label' => "Chemical exposure", 'children' => []],
                     ]
                 ],
             ],
