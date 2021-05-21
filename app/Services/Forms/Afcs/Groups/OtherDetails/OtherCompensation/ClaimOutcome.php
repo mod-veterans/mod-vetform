@@ -4,7 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails\OtherCompensation;
 
 
-class ClaimOutcome extends \App\Services\Forms\BasePage
+use App\Services\Constant;
+use App\Services\Forms\BasePage;
+
+class ClaimOutcome extends BasePage
 {
     /**
      * @var string
@@ -14,41 +17,43 @@ class ClaimOutcome extends \App\Services\Forms\BasePage
     /**
      * @var string
      */
-    protected string $_title = 'Please include any reference numbers you have.';
+    protected string $_title = 'Who did you claim from and what was the outcome of the claim?';
 
     /**
      * @inheritdoc
      */
     function setQuestions(): void
     {
-        $this->questions = [
-            [
-                'component' => 'radio-group',
-                'options' => [
-                    'field' => $this->namespace . '/claim-from',
-                    'label' => 'Did you receive a payment as a result of this claim?',
-                    'validation' => 'required',
-                    'options' => [
-                        ['label' => 'Yes', 'children' => []],
-                        ['label' => 'No', 'children' => []],
-                    ],
-                    'messages' => [
-                        'required' => 'Make a selection',
-                    ],
-                ],
-            ],
+        $this->_questions = [
             [
                 'component' => 'text-area',
                 'options' => [
-                    'field' => $this->namespace . '/medical-condition',
-                    'label' => 'Who did you claim from and what was the outcome of the claim?',
+                    'field' => $this->namespace . '/claim-outcome-benefactor',
+                    'label' => 'Please include any reference numbers you have.',
                     'characterLimit' => 500,
                     'validation' => 'required',
                     'messages' => [
-                        'required' => 'Enter your medical conditions',
+                        'required' => 'Enter who you claimed from and the outcome',
                     ],
                 ],
-            ]
+            ],
+
+            [
+                'component' => 'radio-group',
+                'options' => [
+                    'field' => $this->namespace . '/claim-outcome-payment-result',
+                    'label' => 'Did you receive a payment as a result of this claim?',
+                    'validation' => 'required',
+                    'options' => [
+                        ['label' => Constant::YES, 'children' => []],
+                        ['label' => Constant::NO, 'children' => []],
+                    ],
+                    'messages' => [
+                        'required' => 'Make a selection if you received a payment as a result of this claim',
+                    ],
+                ],
+            ],
+
         ];
     }
 }

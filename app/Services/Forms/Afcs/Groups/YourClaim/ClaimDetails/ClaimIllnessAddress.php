@@ -4,9 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 
+use App\Services\Forms\BasePage;
 use App\Services\Patterns\Address;
 
-class ClaimIllnessAddress extends \App\Services\Forms\BasePage
+class ClaimIllnessAddress extends BasePage
 {
     protected string $_title = 'Which Medical Practioner gave you the diagnosis (if known)?';
 

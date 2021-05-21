@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 
-class ClaimIllnessRelated extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class ClaimIllnessRelated extends BasePage
 {
     protected string $_title = 'What is your Illness/Condition related to?';
 

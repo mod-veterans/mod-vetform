@@ -5,8 +5,9 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 
 use App\Services\Constant;
+use App\Services\Forms\BasePage;
 
-class ClaimIllnessDate extends \App\Services\Forms\BasePage
+class ClaimIllnessDate extends BasePage
 {
     protected string $_title = 'What was the date your condition started?';
 
