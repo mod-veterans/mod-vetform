@@ -24,7 +24,7 @@ class MedicalOfficer extends BaseTask
      */
     protected function setPages()
     {
-        $this->pages = [
+        $this->_pages = [
             0 => [
                 'page' => new ContactAddress($this->namespace),
             ]

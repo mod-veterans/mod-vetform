@@ -1,7 +1,5 @@
 <x-layout>
-    <x-slot name="title">
-        Apply for the Armed Forces Compensation Scheme
-    </x-slot>
+    <x-slot name="title">Apply for the Armed Forces Compensation Scheme</x-slot>
     <x-slot name="body">
         <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ groups_task_complete_count() }}
@@ -17,10 +15,14 @@
                         @foreach($group->tasks as $task)
                             <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
+{{--                                    @if($task->status !== \App\Services\Forms\BaseTask::STATUS_CANNOT_START)--}}
                                     <a href="/{{ $group->getId() }}/{{ $task->getId() }}" class="govuk-link"
                                        aria-describedby="eligibility-status">
                                         {{ $task }}
                                     </a>
+{{--                                    @else--}}
+{{--                                        {{ $task }}--}}
+{{--                                    @endif--}}
                                 </span>
                                 <x-status-tag status="{{ $task->status }}" field="{{ $task->getId() }}"></x-status-tag>
                             </li>

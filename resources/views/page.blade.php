@@ -1,6 +1,5 @@
-<x-layout :view="$view">
+<x-layout :view="$view" :questions="$view->questions ?? null">
     <x-slot name="title">{{ $view->title ?? 'Missing title' }}</x-slot>
-
     <x-slot name="body">
         @if($view)
             @if($view->summary)
@@ -26,7 +25,7 @@
                     {!! $view->closingStatement !!}
                 @endif
 
-                <x-submit-form></x-submit-form>
+                <x-submit-form :submitLabel="$view->submitLabel ?? 'Save and continue'"></x-submit-form>
             </form>
 
         @endif

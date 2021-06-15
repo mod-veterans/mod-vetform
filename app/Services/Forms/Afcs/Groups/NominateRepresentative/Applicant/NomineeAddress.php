@@ -4,9 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
 
 
+use App\Services\Forms\BasePage;
 use App\Services\Patterns\Address;
 
-class NomineeAddress extends \App\Services\Forms\BasePage
+class NomineeAddress extends BasePage
 {
     protected string $_title = 'What are your own details?';
 

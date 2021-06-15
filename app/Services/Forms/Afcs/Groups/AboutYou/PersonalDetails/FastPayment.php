@@ -22,8 +22,8 @@ class FastPayment extends BasePage
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
-                        ['label' => 'Yes', 'value' => Constant::YES, 'children' => []],
-                        ['label' => 'No', 'value' => Constant::NO, 'children' => []],
+                        ['label' => Constant::YES, 'children' => []],
+                        ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
                         'required' => 'Select if you have recieved an AFCS Fast Payment',

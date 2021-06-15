@@ -6,32 +6,28 @@ namespace App\Services\Patterns;
 
 class Address
 {
-    /**
-     * @var string
-     */
-    private $namespace;
+    private string $namespace;
 
-    /**
-     * @var string
-     */
-    private $possessive = 'your';
+    private string $namespacePrefix;
 
-    /**
-     * @var string
-     */
-    private $optional = false;
+    private string $possessive;
 
-    /**
-     * Address constructor.
-     * @param $namespace
-     * @param string $possessive
-     * @param false $optional
-     */
-    public function __construct($namespace, $possessive = 'your', $optional = false)
+    private bool $optional;
+
+    private array $options;
+
+    public function __construct(string $namespace, string $possessive = 'your', bool $optional = false, string $namespacePrefix = '', $options = [])
     {
         $this->namespace = $namespace;
         $this->possessive = $possessive;
         $this->optional = $optional;
+        $this->options = $options;
+
+        if ($namespacePrefix) {
+            $this->namespacePrefix = $namespacePrefix . '__';
+        } else {
+            $this->namespacePrefix = '';
+        }
     }
 
     /**
@@ -43,10 +39,11 @@ class Address
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/address-line-1',
+                    'field' => $this->namespace . '/' . $this->namespacePrefix . 'address-line-1',
                     'label' => 'Building and street',
                     'labelExtra' => 'line 1 of 2',
                     'validation' => $this->optional ? 'required' : '',
+                    'hint' => $this->options['hint']['address-line-1'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' building and street'
                     ],
@@ -57,8 +54,9 @@ class Address
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/address-line-2',
+                    'field' => $this->namespace . '/' . $this->namespacePrefix . 'address-line-2',
                     'label' => 'Building and street line 2 of 2',
+                    'hint' => $this->options['hint']['address-line-2'] ?? '',
                     'hideLabel' => true,
                     'autocomplete' => 'address-line2',
                     'fullWidth' => true,
@@ -67,9 +65,10 @@ class Address
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/town',
+                    'field' => $this->namespace . '/' . $this->namespacePrefix . 'town',
                     'label' => 'Town or city',
                     'validation' => $this->optional ? 'required' : '',
+                    'hint' => $this->options['hint']['town'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' town or city'
                     ],
@@ -79,9 +78,10 @@ class Address
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/county',
+                    'field' => $this->namespace . '/' . $this->namespacePrefix . 'county',
                     'label' => 'County',
                     'validation' => $this->optional ? 'required' : '',
+                    'hint' => $this->options['hint']['county'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' county'
                     ],
@@ -91,9 +91,10 @@ class Address
             [
                 'component' => 'country',
                 'options' => [
-                    'field' => $this->namespace . '/country',
+                    'field' => $this->namespace . '/' . $this->namespacePrefix . 'country',
                     'label' => 'Country',
                     'validation' => $this->optional ? 'required' : '',
+                    'hint' => $this->options['hint']['country'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' country'
                     ],
@@ -103,9 +104,10 @@ class Address
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/postcode',
+                    'field' => $this->namespace . '/' . $this->namespacePrefix . 'postcode',
                     'label' => 'Postcode',
                     'validation' => $this->optional ? 'required' : '',
+                    'hint' => $this->options['hint']['postcode'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' postcode'
                     ],

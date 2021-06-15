@@ -8,7 +8,7 @@ use App\Services\Forms\BasePage;
 
 class ClaimAccidentNonSportingActivity extends BasePage
 {
-    protected string $_title = 'What were you doing at the time the incident occured?';
+    protected string $_title = 'What were you doing at the time the incident occurred?';
 
     function setQuestions(): void
     {
@@ -17,7 +17,7 @@ class ClaimAccidentNonSportingActivity extends BasePage
                 'component' => 'radio-group',
                 'options' => [
                     'field' => $this->namespace . '/non-sporting-activity',
-                    'label' => 'Was an accident form completed?',
+                    'label' => 'What were you doing at the time the incident occurred?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [

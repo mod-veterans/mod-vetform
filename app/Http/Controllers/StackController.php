@@ -13,7 +13,7 @@ class StackController extends Controller
      */
     public function add()
     {
-        $application  = Application::getInstance();
+        $application = Application::getInstance();
         $form = $application->form;
         $task = $form->getStackClass(request('stack'));
         $group = $application->getGroupForTaskByNamespace($task->namespace);
@@ -36,7 +36,20 @@ class StackController extends Controller
         return back();
     }
 
-    public function skip() {
+    /**
+     * Skip this stack and mark as Complete
+     */
+    public function skip()
+    {
+        $stack = request('stack');
+        if(!$stack) {
+            abort(404);
+        }
 
+        if (!session('skip_stack', false))
+            session(['skip_stack' => []]);
+
+        session()->push('skip_stack', $stack);
+        return redirect()->route('home');
     }
 }

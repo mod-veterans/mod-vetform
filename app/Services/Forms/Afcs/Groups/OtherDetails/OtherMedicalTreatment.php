@@ -4,7 +4,13 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails;
 
 
+use App\Services\Constant;
 use App\Services\Forms\Afcs\Groups\MedicalTreatment;
+use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentAddress;
+use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentCondition;
+use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentEndDate;
+use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentStartDate;
+use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentType;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\TreatmentStatus;
 use App\Services\Forms\BaseTask;
 use App\Services\Traits\Stackable;
@@ -32,24 +38,49 @@ class OtherMedicalTreatment extends BaseTask
         ],
     ];
 
+    public function __construct($namespace)
+    {
+        $this->_stackTriggerPage = 0;
+        $this->_stackTriggerQuestion = 0;
+        $this->_stackTriggerAnswer = Constant::YES;
+        $this->_stackSkipTriggerQuestion = true;
+
+        parent::__construct($namespace);
+    }
+
     /**
      * @return mixed
      */
     protected function setPages()
     {
-        $this->pages = [
+        $this->_pages = [
             0 => [
-                'page' => new TreatmentStatus($this->namespace),
+                'page' => new TreatmentStatus($this->namepace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages[0]['page']->questions[0]['options']['field'];
-
-                    return session($field, null) == 'No' ? null : 'medical-treatment';
-                },
+                    $answer = session($field, null);
+                    return ($answer == $this->_stackTriggerAnswer) ? 'other-medical-treatment-address' : null;
+                }
             ],
-            'medical-treatment' => [
-                'page' => new MedicalTreatment($this->namespace),
-            ]
+            'other-medical-treatment-address' => [
+                'page' => new OtherMedicalTreatmentAddress($this->namepace),
+                'next' => 'other-medical-treatment-start-date'
+            ],
+            'other-medical-treatment-start-date' => [
+                'page' => new OtherMedicalTreatmentStartDate($this->namepace),
+                'next' => 'other-medical-treatment-end-date'
+            ],
+            'other-medical-treatment-end-date' => [
+                'page' => new OtherMedicalTreatmentEndDate($this->namepace),
+                'next' => 'other-medical-treatment-type',
+            ],
+            'other-medical-treatment-type' => [
+                'page' => new OtherMedicalTreatmentType($this->namepace),
+                'next' => 'other-medical-treatment-condition',
+            ],
+            'other-medical-treatment-condition' => [
+                'page' => new OtherMedicalTreatmentCondition($this->namepace),
+            ],
         ];
     }
 }

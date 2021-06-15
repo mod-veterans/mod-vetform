@@ -26,7 +26,7 @@ class ClaimAccidentSportingSurgeryAddress extends BasePage
                         ],
                     ]
                 ],
-                (new Address($this->namespace . 'surgery-address', 'the'))->fields(),
+                (new Address($this->namespace . 'surgery-address', 'the', false, 'claim-accident-sporting-surgery-address'))->fields(),
                 [
                     [
                         'component' => 'textfield',

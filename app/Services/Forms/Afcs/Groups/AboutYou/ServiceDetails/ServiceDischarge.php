@@ -28,13 +28,13 @@ class ServiceDischarge extends BasePage
             1 => [
                 'component' => 'date-field',
                 'options' => [
-                    'field' => $this->namespace . '/date-of-condition',
-                    'label' => 'Date of birth',
+                    'field' => $this->namespace . '/date-of-discharge',
+                    'label' => 'Date of discharge',
                     'hint' => 'For example 27 3 2007',
-                    'validation' => 'nullable|date',
+                    'validation' => 'required_if:'.$this->namespace . '/service-is-serving'.',' . Constant::NO .  '|date',
                     'messages' => [
-                        'required' => 'Enter the date your condition started',
-                        'date' => 'Enter the date your condition started',
+                        'required_if' => 'Enter the date your service discharge',
+                        'date' => 'Enter the date your service discharge',
                     ],
                 ],
             ],

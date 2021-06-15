@@ -17,6 +17,7 @@ class ClaimAccidentNonSportingReportTo extends BasePage
                 'component' => 'checkbox-group',
                 'options' => [
                     'field' => $this->namespace . '/claim-accident-non-sporting-report-to',
+                    'label' => 'Who did you report the incident to?',
                     'hint' => 'Select all that apply.',
                     'options' => [
                         ['label' => "Unit medic", 'children' => []],

@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits;
 
 
-class PaymentDetails extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class OtherPaymentDetails extends BasePage
 {
     /**
      * @var string

@@ -6,7 +6,7 @@
                 <legend
                     class="govuk-fieldset__legend govuk-fieldset__legend--m{{ $hideLabel ? ' govuk-visually-hidden': '' }}">
                     <{{ $questionTag }} class
-                    ="govuk-fieldset__heading">{{ $label }}{{ !$mandatory ? ' (optional)' : '' }}</{{ $questionTag }}>
+                    ="govuk-fieldset__heading">{{ $label }}{{ $mandatory ? ' (required)' : '' }}</{{ $questionTag }}>
                 </legend>
             @endif
         @endif

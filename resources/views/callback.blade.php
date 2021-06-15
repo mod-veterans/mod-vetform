@@ -11,22 +11,7 @@
                     {{ $response->email }}
                 </dd>
             </div>
-{{--            <div class="govuk-summary-list__row">--}}
-{{--                <dt class="govuk-summary-list__key">--}}
-{{--                    Family name--}}
-{{--                </dt>--}}
-{{--                <dd class="govuk-summary-list__value">--}}
-{{--                    5 January 1978--}}
-{{--                </dd>--}}
-{{--            </div>--}}
-{{--            <div class="govuk-summary-list__row">--}}
-{{--                <dt class="govuk-summary-list__key">--}}
-{{--                    Forename--}}
-{{--                </dt>--}}
-{{--                <dd class="govuk-summary-list__value">--}}
-{{--                    72 Guild Street<br>London<br>SE23 6FH--}}
-{{--                </dd>--}}
-{{--            </div>--}}
         </dl>
+        <a href="https://modvets-dev2.london.cloudapps.digital/summary" class="govuk-button">Continue</a>
     </x-slot>
 </x-layout>

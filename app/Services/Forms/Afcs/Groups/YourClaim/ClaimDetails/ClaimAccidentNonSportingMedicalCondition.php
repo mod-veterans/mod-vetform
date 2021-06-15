@@ -22,7 +22,7 @@ class ClaimAccidentNonSportingMedicalCondition extends BasePage
                 'component' => 'text-area',
                 'options' => [
                     'field' => $this->namespace . '/claim-accident-non-sporting-medical-condition',
-                    'label' => 'Was the Incident/Accident related to Sporting/Adventure Training/Physical Training?',
+                    'label' => 'What medical condition(s) are you claiming for?',
                     'hideLabel' => true,
                     'hint' => 'Please include all claimed medical conditions you think are linked to the incident, even if they developed afterwards.
                                Tell us which side of the body is affected where needed (e.g. left arm)',

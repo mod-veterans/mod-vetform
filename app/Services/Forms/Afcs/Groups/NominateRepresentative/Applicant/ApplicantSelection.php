@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
 
 
-class ApplicantSelection extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class ApplicantSelection extends BasePage
 {
     /**
      * @var string

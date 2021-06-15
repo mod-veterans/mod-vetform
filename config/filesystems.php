@@ -55,7 +55,6 @@ return [
             'region' => $aws['aws_region'] ?? '',
             'bucket' => $aws['bucket_name'] ?? ''
         ],
-
     ],
 
     /*

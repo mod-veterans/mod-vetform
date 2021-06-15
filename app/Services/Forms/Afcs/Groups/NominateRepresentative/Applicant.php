@@ -13,17 +13,19 @@ class Applicant extends BaseTask
 {
     protected string $name = 'Who is making this application?';
 
+    protected $_hasSummary = true;
+
+
     /**
      * @return mixed
      */
     protected function setPages()
     {
-        $this->pages = [
+        $this->_pages = [
             0 => [
                 'page' => new ApplicantSelection($this->namespace),
                 'next' => function () {
-                    session()->save();
-                    $field = $this->pages[0]['page']->questions[0]['options']['field'];
+                    $field = $this->_pages[0]['page']->questions[0]['options']['field'];
 
                     return session($field, null) == 'The person named on this claim is making the application.' ? null : 'nominee-address';
                 },

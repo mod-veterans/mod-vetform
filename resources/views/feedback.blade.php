@@ -6,7 +6,7 @@
             <x-radio-group :options="[
                 'label' => 'Overall how do you feel about the service you received today?',
                 'field' => 'feedback-satisfaction',
-                'mandatory'=>true
+                'mandatory'=>true,
                 'options' => [
                            ['label' => 'Very satisfied', 'children' => []],
                            ['label' => 'Satisfied', 'children' => []],

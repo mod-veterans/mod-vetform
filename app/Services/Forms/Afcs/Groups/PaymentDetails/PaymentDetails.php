@@ -24,12 +24,11 @@ class PaymentDetails extends BaseTask
      */
     protected function setPages()
     {
-        $this->pages = [
+        $this->_pages = [
             0 => [
                 'page' => new BankDetails($this->namespace),
                 'next' => function () {
-                    session()->save();
-                    $field = $this->pages[0]['page']->questions[0]['options']['field'];
+                    $field = $this->_pages[0]['page']->questions[0]['options']['field'];
 
                     return session($field, null) == Constant::YES ? 'bank-location' : null;
                 },
@@ -37,7 +36,6 @@ class PaymentDetails extends BaseTask
             'bank-location' => [
                 'page' => new BankLocation($this->namespace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages['bank-location']['page']->questions[0]['options']['field'];
 
                     return session($field, null) == 'In the United Kingdom' ? 'bank-united-kingdom' : 'bank-overseas';

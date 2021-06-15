@@ -17,6 +17,10 @@ trait Stackable
     protected $_stackName = '';
     protected $_stack = [];
     protected $_mnemonic = '';
+    protected $_stackTriggerPage = null;
+    protected $_stackTriggerQuestion = null;
+    protected $_stackTriggerAnswer = null;
+    protected bool $_stackSkipTriggerQuestion = false;
 
     /**
      *
@@ -27,7 +31,6 @@ trait Stackable
 
         if (!session()->exists($this->_stackName)) {
             session([$this->_stackName => []]);
-            session()->save();
         }
 
         $this->_stack = session($this->_stackName);
@@ -38,12 +41,20 @@ trait Stackable
      */
     public function addToStack()
     {
+        $skip = session('skip_stack', []);
+        $skipIndex = array_search($this->namespace, $skip);
+
+        if($skipIndex !== false) {
+            unset($skip[$skipIndex]);
+        }
+
+        session(['skip_stack' => $skip]);
+
         $stackKey = Uuid::uuid6()->toString();
         $stack = session($this->_stackName);
         if (!isset($stack[$stackKey])) {
             $stack[$stackKey] = [];
             session([$this->_stackName => $stack]);
-            session()->save();
         }
 
         $this->_stack = $stack;
@@ -58,7 +69,6 @@ trait Stackable
         if (isset($this->_stack[$index])) {
             unset($this->_stack[$index]);
             session([$this->_stackName => $this->_stack]);
-            session()->save();
         }
 
         return true;
@@ -68,10 +78,11 @@ trait Stackable
      * @param $index
      * @return array|mixed
      */
-    public function getStackBranch($index) {
+    public function getStackBranch($index)
+    {
         $this->_stack = session($this->_stackName);
 
-        if(isset($this->_stack[$index])) {
+        if (isset($this->_stack[$index])) {
             return $this->_stack[$index];
         }
 
@@ -89,16 +100,35 @@ trait Stackable
     public function __get($value)
     {
         switch ($value) {
-            case 'mnemonic':
-                if ($this->_mnemonic) {
 
-                } else {
-                    return false;
-                }
-                break;
+            case 'stack':
+                return $this->_stack;
 
             default:
                 return parent::__get($value);
         }
+    }
+
+    /**
+     * @param $stackItem
+     */
+    public function renderMnemonic($stackItem)
+    {
+        $mnemonic = $this->mnemonic;
+
+        if (is_array($mnemonic)) {
+            $key = key($mnemonic);
+            $value = $mnemonic[$key];
+
+            if (array_key_exists($key, $stackItem)) {
+                return $stackItem[$key][$value];
+            }
+        }
+
+        if (is_string($mnemonic) && array_key_exists($mnemonic, $stackItem)) {
+            return $stackItem[$mnemonic];
+        }
+
+        return 'Incomplete Item';
     }
 }

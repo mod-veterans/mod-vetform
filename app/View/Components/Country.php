@@ -3,6 +3,8 @@
 namespace App\View\Components;
 
 
+use Illuminate\Contracts\View\View;
+
 class Country extends FormField
 {
     /**
@@ -21,7 +23,7 @@ class Country extends FormField
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|string
+     * @return View|string
      */
     public function render()
     {

@@ -9,7 +9,7 @@ use App\Services\Forms\BasePage;
 
 class PreviousClaim extends BasePage
 {
-    protected string $_title = 'Have you made a WPS or AFCS claim previously?';
+    protected string $_title = 'Have you made a war pension or armed forces compensation scheme claim previously?';
 
     function setQuestions(): void
     {
@@ -22,8 +22,8 @@ class PreviousClaim extends BasePage
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
-                        ['label' => 'Yes', 'value' => Constant::YES, 'children' => []],
-                        ['label' => 'No', 'value' => Constant::NO, 'children' => []],
+                        ['label' => Constant::YES, 'children' => []],
+                        ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
                         'required' => 'Select if you have previously made a claim',
@@ -33,10 +33,3 @@ class PreviousClaim extends BasePage
         ];
     }
 }
-
-
-//<x-radio-group label="Which service did they last serve in?"
-//                       field="service"
-//                       :questionTag="'h2'"
-//                       :selected="session('service', null)"
-//                       :options="$branches"></x-radio-group>

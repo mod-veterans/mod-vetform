@@ -17,7 +17,7 @@ class YourName extends BasePage
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/last-name',
-                    'label' => 'Last name',
+                    'label' => 'Surname or family name',
                     'validation' => 'required',
                     'messages' => [
                         'required' => 'Enter your last name'
@@ -29,7 +29,7 @@ class YourName extends BasePage
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/other-names',
-                    'label' => 'Other names',
+                    'label' => 'All other names in full',
                     'validation' => 'required',
                     'messages' => [
                         'required' => 'Enter other names'

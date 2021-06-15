@@ -4,7 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 
 
-class RepresentativeSelection extends \App\Services\Forms\BasePage
+use App\Services\Constant;
+use App\Services\Forms\BasePage;
+
+class RepresentativeSelection extends BasePage
 {
     /**
      * @var string
@@ -35,8 +38,8 @@ class RepresentativeSelection extends \App\Services\Forms\BasePage
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
-                        ['label' => 'Yes', 'children' => []],
-                        ['label' => 'No', 'children' => []],
+                        ['label' => Constant::YES, 'children' => []],
+                        ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
                         'required' => 'Select if you would like to nominate a representative',

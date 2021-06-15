@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\PaymentDetails\PaymentDetails;
 
 
-class BankOverseas extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class BankOverseas extends BasePage
 {
     protected string $_title = 'Overseas bank account details';
 

@@ -17,13 +17,20 @@ class ClaimIllnessDueto extends BasePage
                 'component' => 'checkbox-group',
                 'options' => [
                     'field' => $this->namespace . '/claim-illness-due-to',
+                    'label' => 'Is your condition due to exposure to?',
+                    'hideLabel' => true,
                     'hint' => 'Select all that apply.',
+                    'validation' => 'required',
+                    'message' => [
+                        'require' => 'Select an option which applies to you'
+                    ],
                     'options' => [
                         ['label' => "Cold", 'children' => []],
                         ['label' => "Heat", 'children' => []],
                         ['label' => "Noise", 'children' => []],
                         ['label' => "Vibration", 'children' => []],
                         ['label' => "Chemical exposure", 'children' => []],
+                        ['label' => "None of the above", 'children' => []],
                     ]
                 ],
             ],

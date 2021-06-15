@@ -5,8 +5,12 @@ namespace App\Services\Forms;
 
 
 use App\Services\Application;
+use App\Services\Constant;
+use Closure;
+use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use ReflectionObject;
 
 /**
  * Class BaseTask
@@ -37,7 +41,7 @@ abstract class BaseTask
     /**
      * @var bool
      */
-    protected $hasSummary = false;
+    protected $_hasSummary = true;
 
     /**
      * @var string
@@ -47,7 +51,13 @@ abstract class BaseTask
     /**
      * @var string
      */
-    private $_namespace;
+    private string $_namespace;
+
+    /**
+     * List of tasks that must be complete before this task can be accessed
+     * @var array
+     */
+    protected array $_requiredTasks = [];
 
     /**
      * BaseTask constructor.
@@ -56,6 +66,9 @@ abstract class BaseTask
     {
         $this->_namespace = $namespace . '/' . $this->getId();
         $this->setPages();
+        $this->cleanPages();
+
+//        echo($this->_namespace  . '<br>');
 
         if (method_exists($this, 'initStack')) {
             $this->initStack();
@@ -90,13 +103,15 @@ abstract class BaseTask
     {
         foreach ($this->pages as $index => $page) {
             if (isset($page['page'])) {
-                if ($page['page']->getId() == $pageName) {
-                    return $index;
+                if (is_object($page['page'])) {
+                    if ($page['page']->getId() == $pageName) {
+                        return $index;
+                    }
                 }
             }
         }
 
-        return 0;
+        return array_key_first($this->pages);
     }
 
     /**
@@ -109,7 +124,7 @@ abstract class BaseTask
                 if ($this->pages[$fromIndex]) {
                     $nextPage = $this->pages[$fromIndex]['next'] ?? null;
 
-                    if ($nextPage instanceof \Closure) {
+                    if ($nextPage instanceof Closure) {
                         $nextPage = $nextPage();
                         if (!is_null($nextPage)) {
                             return $this->pages[$nextPage];
@@ -140,7 +155,7 @@ abstract class BaseTask
                 if ($this->pages[$fromIndex]) {
                     $nextPage = $this->pages[$fromIndex]['next'] ?? null;
 
-                    if ($nextPage instanceof \Closure) {
+                    if ($nextPage instanceof Closure) {
                         $nextPage = $nextPage();
                     }
 
@@ -163,7 +178,6 @@ abstract class BaseTask
      */
     protected function getStatus()
     {
-
         $this->setPages();
         $requiredFields = 0;
         $completedRequiredFields = 0;
@@ -171,17 +185,82 @@ abstract class BaseTask
         $completedSections = 0;
         $pages = $this->pages;
 
+        if (count($this->_requiredTasks) > 0) {
+            foreach ($this->_requiredTasks as $blockingTask) {
+                $task = Application::getInstance()->getTaskByClassName($blockingTask);
+                if ($task->getStatus() != self::STATUS_COMPLETED) {
+                    return self::STATUS_CANNOT_START;
+                }
+            }
+        }
 
         if ($this->isStackable()) {
             $pages = [];
+
+            if ($skip = session('skip_stack', false)) {
+                if (in_array($this->_namespace, $skip)) {
+                    return self::STATUS_COMPLETED;
+                }
+            }
+
+            if (sizeof($this->stack) === 0) {
+                if ($this->_namespace === '/other-medical-treatment') {
+                    if (session('/treatment-status/treatment-status', Constant::NO) === Constant::YES) {
+                        return self::STATUS_COMPLETED;
+                    }
+                }
+                return self::STATUS_NOT_STARTED;
+            } else {
+                foreach ($this->stack as $stackID => $stackItem) {
+                    Application::getInstance()->trackStackId($stackID);
+
+                    if (!empty($stackItem)) {
+                        $pageIndex = 0;
+                        do {
+                            $page = $this->pages[$pageIndex];
+                            $questions = $page['page']->questions;
+
+                            if (sizeof($questions) > 0) {
+                                foreach ($questions as $question) {
+                                    $options = $question['options'];
+                                    $field = $options['field'];
+                                    $validation = explode('|', $options['validation'] ?? '');
+                                    $isRequired = in_array('required', $validation);
+
+                                    if ($isRequired) {
+                                        $value = $stackItem[$field] ?? null;
+                                        if (is_null($value)) {
+                                            if ($pageIndex === 0) {
+//                                                if ($this->_namespace === '/other-medical-treatment') {
+//                                                    dd(__LINE__, $validation, $questions, $stackItem, $stackID, $this->stack);
+//                                                }
+                                                return self::STATUS_NOT_STARTED;
+                                            } else {
+                                                return self::STATUS_IN_PROGRESS;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            $pageIndex = $this->nextPageIndex($pageIndex);
+                        } while (!is_null($pageIndex));
+                    } else {
+                        unset($this->_stack[$stackID]);
+                    }
+                }
+            }
         } else {
             if (sizeof($pages) === 0) {
                 return self::STATUS_CANNOT_START;
             }
 
             $pageIndex = 0;
+            $hasProvidedAnswers = false;
+
             do {
                 $page = $this->pages[$pageIndex];
+
                 $questions = $page['page']->questions;
 
                 if (sizeof($questions) > 0) {
@@ -197,8 +276,14 @@ abstract class BaseTask
                                 if ($pageIndex === 0) {
                                     return self::STATUS_NOT_STARTED;
                                 } else {
-                                    return self::STATUS_IN_PROGRESS;
+                                    if ($hasProvidedAnswers) {
+                                        return self::STATUS_IN_PROGRESS;
+                                    } else {
+                                        return self::STATUS_NOT_STARTED;
+                                    }
                                 }
+                            } else {
+                                $hasProvidedAnswers = true;
                             }
                         }
                     }
@@ -209,50 +294,18 @@ abstract class BaseTask
         }
 
         return self::STATUS_COMPLETED;
-
-//        foreach ($pages as $page) {
-//            $page = $page['page'] ?? [];
-//            foreach ($page->questions ?? [] as $question) {
-//                $options = $question['options'];
-//                $field = $options['field'];
-//                $validation = $options['validation'] ?? [];
-//                $isRequired = false;
-//
-//                if (is_string($validation)) $validation = array_flip(explode('|', $validation));
-//
-//                if (key_exists('required', $validation)) {
-//                    $requiredFields++;
-//                    $isRequired = true;
-//                }
-//
-//                if (!is_null(session($field, null))) {
-//                    $completedFields++;
-//
-//                    if ($isRequired) {
-//                        $completedRequiredFields++;
-//                    }
-//                }
-//            }
-//        }
-//
-//        if ($completedRequiredFields > 0) {
-//            if ($completedRequiredFields === $requiredFields) {
-//                return self::STATUS_COMPLETED;
-//            } else {
-//                return self::STATUS_IN_PROGRESS;
-//            }
-//        }
-//
-//        if ($completedFields > 0) {
-//            return self::STATUS_IN_PROGRESS;
-//        }
-//
-//        return self::STATUS_NOT_STARTED;
     }
 
+    /**
+     * @return array
+     */
     protected function getResponses()
     {
         $this->setPages();
+
+        if ($this->isStackable()) {
+            Application::getInstance()->trackStackId;
+        }
 
         $responses = [];
         foreach ($this->pages as $page) {
@@ -263,24 +316,58 @@ abstract class BaseTask
                 $options = $question['options'];
                 $field = $options['field'];
 
-                $response = session($field, null);
+                if ($this->isStackable()) {
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
+                    if (array_key_exists($field, $answers)) {
+                        $response = $answers[$field];
+                    } else {
+                        $response = null;
+                    }
+                } else {
+                    $response = session($field, null);
+                }
+
                 if (!is_null($response)) {
                     if ($component == 'date-field') {
                         $response = Carbon::createFromFormat('Y-m-d', $response)->format('j F Y');
                     }
 
-                    list($form, $group, $task, $page, $field) = explode('/', $field);
-                    array_push($responses, [
-                        'label' => $options['label'],
-                        'value' => $response,
-                        'change' => $options['label'],
-                        'route' => route('update.form', [
-                            'group' => $group,
-                            'task' => $task,
-                            'page' => $page,
-                            'question' => $question['options']['field']
-                        ])
-                    ]);
+                    try {
+                        // Half a chance the $field element will not be present
+                        // list($form, $group, $task, $page) = explode('/', $field);
+
+                    } catch (Exception $e) {
+                    }
+
+                    $group = Application::getInstance()->getGroupFromField($field);
+                    $task = Application::getInstance()->getTaskFromField($field);
+                    $page = Application::getInstance()->getPageFromField($field);
+
+                    try {
+                        array_push($responses, [
+                            'label' => $options['label'] ?? '',
+                            'value' => $response,
+                            'change' => $options['label'] ?? '',
+                            'route' => route('update.form', [
+                                'group' => $group->getId(),
+                                'task' => $task->getId(),
+                                'page' => $page->getId(),
+                                'question' => $question['options']['field'],
+                                'stack' => Application::getInstance()->trackStackId ?? '',
+                            ])
+                        ]);
+//                        dd(__FILE__, __LINE__, $responses, $task, $field);
+                    } catch (Exception $e) {
+                        dd(__LINE__, $e->getMessage());
+
+                        dd([
+                            'group' => $group->namespace,
+                            'task' => $task->namespace,
+                            'page' => $page->namespace,
+                            'question' => $question['options']['field'],
+                            'stack' => Application::getInstance()->trackStackId,
+                        ]);
+                    }
                 }
             }
         }
@@ -293,8 +380,10 @@ abstract class BaseTask
      */
     public function getGroup()
     {
-        $group = (new \ReflectionObject($this))->getNamespaceName();
-        Application::getInstance()->form->getGroupByNameSpace($group);
+        $group = (new ReflectionObject($this))->getNamespaceName();
+        // dd(__LINE__ , $group, Application::getInstance()->getGroupByNamespace($group));
+        return 'thing';
+        return Application::getInstance()->getGroupByNamespace($group);
     }
 
     /**
@@ -302,7 +391,35 @@ abstract class BaseTask
      */
     public function isStackable()
     {
-        return key_exists('App\Services\Traits\Stackable', class_uses($this));
+        $usesStackable = key_exists('App\Services\Traits\Stackable', class_uses($this));
+
+        if ($usesStackable) {
+            if (is_null($this->_stackTriggerPage) || !array_key_exists($this->_stackTriggerPage, $this->_pages)) {
+                return true;
+            }
+
+            $field = $this->_pages[$this->_stackTriggerPage]['page']
+                ->questions[$this->_stackTriggerQuestion]['options']['field'];
+
+            return (session($field, null) == $this->_stackTriggerAnswer);
+        }
+
+        return false;
+    }
+
+
+    private function cleanPages()
+    {
+        $usesStackable = key_exists('App\Services\Traits\Stackable', class_uses($this));
+
+        if ($usesStackable && !is_null($this->_stackTriggerPage)) {
+            $field = $this->_pages[$this->_stackTriggerPage]['page']
+                ->questions[$this->_stackTriggerQuestion]['options']['field'];
+
+            if (session($field, null) == $this->_stackTriggerAnswer) {
+                array_shift($this->_pages);
+            }
+        }
     }
 
     /**
@@ -318,6 +435,10 @@ abstract class BaseTask
                 return $this->getResponses();
             case 'preTask';
                 return $this->_preTask;
+            case 'pages':
+                return $this->_pages;
+            case 'name':
+                return $this->name ?? get_class($this);
             default:
                 if (property_exists($this, '_' . $value)) {
                     $value = '_' . $value;

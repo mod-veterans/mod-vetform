@@ -5,8 +5,9 @@ namespace App\Services\Forms\Afcs\Groups\ApplicationSubmission\Declaration;
 
 
 use App\Services\Constant;
+use App\Services\Forms\BasePage;
 
-class Submission extends \App\Services\Forms\BasePage
+class Submission extends BasePage
 {
     /**
      * @var string
@@ -68,7 +69,7 @@ class Submission extends \App\Services\Forms\BasePage
     please click the button below. Please note that you will not be able to change any of the information you have
     entered after a claim is submitted.</p>';
 
-    public string $submitLabel = 'Submit your claim';
+    public string $submitLabel = 'Submit your application';
 
     function setQuestions(): void
     {
@@ -79,7 +80,10 @@ class Submission extends \App\Services\Forms\BasePage
                     'field' => $this->namespace . '/declaration-agreed',
                     'label' => 'I have read and understood the above declaration',
                     'value' => Constant::YES,
-                    'validation' => 'required',
+                    'validation' => 'required|in:'.Constant::YES,
+                    'messages' => [
+                        'in' => 'You must read and understand this declaration'
+                    ]
                 ],
             ]
         ];

@@ -46,16 +46,18 @@
 
 <div class="govuk-width-container ">
     <x-phase-banner></x-phase-banner>
-    {{--    <x-back-button></x-back-button>--}}
+        <x-back-button></x-back-button>
 
-    @if($view)
-    <x-breadcrumb :crumbs="crumbs($view->namespace)"></x-breadcrumb>
-    @endif
+{{--    @if($view)--}}
+{{--    <x-breadcrumb :crumbs="crumbs($view->namespace)"></x-breadcrumb>--}}
+{{--    @endif--}}
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                @if(strlen($title) > 0)
                 <h1 class="govuk-heading-xl">{{ $title ?? 'AFCS' }}</h1>
+                @endif
                 {{ $body }}
             </div>
         </div>

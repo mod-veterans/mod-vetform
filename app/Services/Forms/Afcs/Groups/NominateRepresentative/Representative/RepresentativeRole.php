@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 
 
-class RepresentativeRole extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class RepresentativeRole extends BasePage
 {
     /**
      * @var string

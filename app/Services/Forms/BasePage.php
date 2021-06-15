@@ -14,6 +14,7 @@ use Illuminate\Support\Str;
  *
  * @property $title string
  * @property $questions array
+ * @property $namespace string
  */
 abstract class BasePage
 {
@@ -129,7 +130,7 @@ abstract class BasePage
                             if (($data[$field] instanceof UploadedFile)) {
                                 /** @var UploadedFile $data */
                                 $stack[$stackID][$field] = [];
-                                $stack[$stackID][$field]['filename'] = $data[$field . '::filename'];;
+                                $stack[$stackID][$field]['filename'] = $data[$field . '::filename'];
                                 $stack[$stackID][$field]['mnemonic'] = $data[$field . '::mnemonic'];
                             } else {
                                 $stack[$stackID][$field] = $data[$field] ?? null;
@@ -144,16 +145,18 @@ abstract class BasePage
             foreach ($this->_questions as $questionIndex => $question) {
                 $field = $this->_questions[$questionIndex]['options']['field'];
 
-                if (($data[$field] instanceof UploadedFile)) {
-                    /** @var UploadedFile $data */
-                    $stack[$field] = [];
-                    $stack[$field]['filename'] = $data[$field . '::filename'];;
-                    $stack[$field]['mnemonic'] = $data[$field . '::mnemonic'];
-                } else {
-                    $stack[$field] = $data[$field] ?? null;
-                }
+                if(isset($data[$field])) {
+                    if (($data[$field] instanceof UploadedFile)) {
+                        /** @var UploadedFile $data */
+                        $stack[$field] = [];
+                        $stack[$field]['filename'] = $data[$field . '::filename'];
+                        $stack[$field]['mnemonic'] = $data[$field . '::mnemonic'];
+                    } else {
+                        $stack[$field] = $data[$field] ?? null;
+                    }
 
-                session([$field => $stack[$field]]);
+                    session([$field => $stack[$field]]);
+                }
             }
         }
     }
@@ -177,6 +180,9 @@ abstract class BasePage
                 return $this->_questions ?? [];
 
             case 'title';
+                return $this->_title;
+
+            case 'name';
                 return $this->_title;
 
             case 'namespace';

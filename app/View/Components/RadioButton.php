@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 
 class RadioButton extends FormField
@@ -26,7 +27,7 @@ class RadioButton extends FormField
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|string
+     * @return View|string
      */
     public function render()
     {

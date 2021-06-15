@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails\OtherCompensation;
 
 
-class CompensationCondition extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class CompensationCondition extends BasePage
 {
     /**
      * @var string
@@ -21,7 +23,8 @@ class CompensationCondition extends \App\Services\Forms\BasePage
      */
     function setQuestions(): void
     {
-        $this->questions = [
+        // @todo fix namepsace of question
+                $this->_questions = [
             0 => [
                 'component' => 'text-area',
                 'options' => [

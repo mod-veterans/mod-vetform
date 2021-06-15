@@ -6,8 +6,8 @@ namespace App\Services;
 
 class Constant
 {
-    const YES = 'yes';
-    const NO = 'no';
+    const YES = 'Yes';
+    const NO = 'No';
 
     const TREE_NAME = 'formerly';
 }

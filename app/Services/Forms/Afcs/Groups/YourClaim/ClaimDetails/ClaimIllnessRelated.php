@@ -17,6 +17,8 @@ class ClaimIllnessRelated extends BasePage
                 'component' => 'checkbox-group',
                 'options' => [
                     'field' => $this->namespace . '/claim-illness-related',
+                    'label' => 'What is your Illness/Condition related to?',
+                    'hideLabel' => true,
                     'hint' => 'Select all that apply.',
                     'options' => [
                         ['label' => "Duties - Operations overseas", 'children' => []],

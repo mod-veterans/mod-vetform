@@ -4,7 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails\OtherCompensation;
 
 
-class ReceivedCompensation extends \App\Services\Forms\BasePage
+use App\Services\Constant;
+use App\Services\Forms\BasePage;
+
+class ReceivedCompensation extends BasePage
 {
     /**
      * @var string
@@ -27,7 +30,7 @@ class ReceivedCompensation extends \App\Services\Forms\BasePage
 
     function setQuestions(): void
     {
-        $this->questions = [
+        $this->_questions = [
             [
                 'component' => 'radio-group',
                 'options' => [
@@ -36,8 +39,8 @@ class ReceivedCompensation extends \App\Services\Forms\BasePage
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
-                        ['label' => 'Yes', 'children' => []],
-                        ['label' => 'No', 'children' => []],
+                        ['label' => Constant::YES, 'children' => []],
+                        ['label' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
                         'required' => 'Have you received other compensation',

@@ -18,7 +18,8 @@ class ClaimPaymentDate extends BasePage
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/claim-payment-date',
-                    'label' => 'Date of birth',
+                    'label' => 'When did you receive this payment?',
+                    'hideLabel' => true,
                     'hint' => 'For example 27 3 2007',
                     'validation' => 'required|date',
                     'messages' => [

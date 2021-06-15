@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
 
 
-class NomineeDetails extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class NomineeDetails extends BasePage
 {
     protected string $_title = 'What legal authority do you have to make a claim on behalf of the person named on?';
 

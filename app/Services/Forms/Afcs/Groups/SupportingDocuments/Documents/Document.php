@@ -10,6 +10,11 @@ class Document extends BasePage
 {
     protected string $_title = 'Supporting documents';
 
+    public string $summary = '
+    <p class="govuk-body">You can upload PDF, PNG, JPG or DOCX file to support your application</p>
+    <p class="govuk-body">Your file must be no larger than 5Mb</p>
+    ';
+
     /**
      *
      */
@@ -21,6 +26,7 @@ class Document extends BasePage
                 'options' => [
                     'field' => $this->namespace . '/file',
                     'label' => 'Upload file',
+                    'hideLabel' => true,
                     'validation' => 'required|file',
                 ]
             ]

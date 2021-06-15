@@ -14,11 +14,11 @@ class HomeController extends Controller
     public function index()
     {
 //        $files = Storage::disk('s3')->allFiles();
-
+//
 //        foreach($files as $file) {
 //            print Storage::url($file) . '<br>';
 //        }
-
+//
 //        dd($files);
 //        $files = Storage::files();
 //        // dd($files);
@@ -26,21 +26,26 @@ class HomeController extends Controller
 //        dd($file);
 
 
-        if (request('form', false)) {
-            $form = app_path() . '/Services/Forms/' . request('form', 'Afcs');
 
-            if (is_dir($form)) {
-                if (request('flush')) {
-                    session()->flush();
-                }
-
-                $formName = request('form');
-                $form = "App\Services\Forms\\" . $formName . '\\' . $formName;
-                session(['form' => $form]);
-
-                return redirect('/');
-            }
-        } elseif (Application::getInstance()->form instanceof BaseForm) {
+//        if (request('form', false)) {
+//            dd('OK!');
+//            $form = app_path() . '/Services/Forms/' . request('form', 'Afcs');
+//
+//            if (is_dir($form)) {
+//                if (request('flush')) {
+//                    session()->flush();
+//                    session()->save();
+//                    dd('Flushing');
+//                }
+//
+//                $formName = request('form');
+//                $form = "App\Services\Forms\\" . $formName . '\\' . $formName;
+//                session(['form' => $form]);
+//
+//                return redirect('/');
+//            }
+//        } else
+if (Application::getInstance()->form instanceof BaseForm) {
             return view('forms.' . Application::getInstance()->form->getId() . '.index');
         }
 
@@ -48,8 +53,8 @@ class HomeController extends Controller
     }
 
     public function start() {
-        $form = 'App\Services\Forms\Afcs\Afcs';
-        session(['form' => $form]);
+//        $form = 'App\Services\Forms\Afcs\Afcs';
+//        session(['form' => $form]);
 
         return view('forms.' . Application::getInstance()->form->getId() . '.start');
     }

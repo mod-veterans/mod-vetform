@@ -19,7 +19,7 @@ class ClaimTreatmentAddress extends BasePage
      */
     protected string $_title = 'What is the full address of where you had/will have this treatment?';
 
-    function setQuestions(): void
+    public function setQuestions(): void
     {
         $this->_questions = (new Address($this->namespace, 'the'))->fields();
     }

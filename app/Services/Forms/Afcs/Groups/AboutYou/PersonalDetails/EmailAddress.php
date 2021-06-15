@@ -8,7 +8,13 @@ use App\Services\Forms\BasePage;
 
 class EmailAddress extends BasePage
 {
-    protected string $_title = 'Email address';
+    protected string $_title = 'What is your Email address';
+
+    public string $summary = '
+    <p class="govuk-body">
+Please tell us the email address you would prefer us to contact you at.  We will only use this to get in touch about your claim.
+    </p>
+    ';
 
     function setQuestions(): void
     {
@@ -17,7 +23,7 @@ class EmailAddress extends BasePage
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/email-address',
-                    'label' => 'Email address',
+                    'label' => 'What is your email address',
                     'hideLabel' => true,
                     'hint' => 'We will send confirmation of your claim to this address',
                     'type' => 'email',

@@ -4,7 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits;
 
 
-class ReceivingPayments extends \App\Services\Forms\BasePage
+use App\Services\Constant;
+use App\Services\Forms\BasePage;
+
+class ReceivingPayments extends BasePage
 {
     /**
      * @var string
@@ -21,6 +24,23 @@ class ReceivingPayments extends \App\Services\Forms\BasePage
 
     function setQuestions(): void
     {
-        // TODO: Implement setQuestions() method.
+        $this->_questions = [
+            [
+                'component' => 'radio-group',
+                'options' => [
+                    'field' => $this->namespace . '/payments',
+                    'label' => 'Have you ever been paid any of the following?',
+                    'hideLabel' => true,
+                    'validation' => 'required',
+                    'options' => [
+                        ['label' => Constant::YES, 'children' => []],
+                        ['label' => Constant::NO, 'children' => []],
+                    ],
+                    'messages' => [
+                        'required' => 'Make a selection',
+                    ],
+                ],
+            ]
+        ];
     }
 }

@@ -83,7 +83,7 @@ abstract class BaseForm
     public function getStackClass($namespace)
     {
         foreach ($this->groups() as $group) {
-            if ($group->namesapce == $namespace) {
+            if ($group->namespace == $namespace) {
                 return $group;
             }
 

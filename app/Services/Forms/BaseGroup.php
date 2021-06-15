@@ -105,6 +105,9 @@ abstract class BaseGroup
 
             case 'tasks':
                 return $this->_tasks ?? [];
+
+            case 'name':
+                return $this->name ?? get_class($this);
         }
     }
 }

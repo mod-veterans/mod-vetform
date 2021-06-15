@@ -8,7 +8,7 @@
             Feedback submission complete
         </h1>
         <div class="govuk-panel__body">
-            Thank you for your feedback on the {{ env('APP_NAME', 'Apply for a deceased persons military record') }} service
+            Thank you for your feedback on the {{ env('APP_NAME', 'AFCS') }} service
         </div>
     </div>
 @endsection

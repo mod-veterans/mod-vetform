@@ -4,7 +4,11 @@
 namespace App\Services\Forms\Afcs\Groups;
 
 
-class NominateRepresentative extends \App\Services\Forms\BaseGroup
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
+use App\Services\Forms\BaseGroup;
+
+class NominateRepresentative extends BaseGroup
 {
     /**
      * @var string
@@ -18,8 +22,8 @@ class NominateRepresentative extends \App\Services\Forms\BaseGroup
     public function __construct($namespace)
     {
         $this->_tasks = [
-            new \App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant($this->namespace),
-            new \App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative($this->namespace),
+            new Applicant($this->namespace),
+            new Representative($this->namespace),
         ];
 
         parent::__construct($namespace);

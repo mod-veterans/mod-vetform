@@ -18,7 +18,7 @@ class ClaimIllnessDate extends BasePage
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/date-of-condition',
-                    'label' => 'Date of birth',
+                    'label' => 'What was the date your condition started',
                     'hint' => 'For example 27 3 2007',
                     'validation' => 'nullable|date',
                     'messages' => [

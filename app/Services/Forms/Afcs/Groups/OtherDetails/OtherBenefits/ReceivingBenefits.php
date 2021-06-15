@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits;
 
 
-class ReceivingBenefits extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class ReceivingBenefits extends BasePage
 {
     /**
      * @var string
@@ -19,6 +21,20 @@ class ReceivingBenefits extends \App\Services\Forms\BasePage
 
     function setQuestions(): void
     {
-        $this->questions = [];
+        $this->_questions = [
+            [
+                'component' => 'checkbox-group',
+                'options' => [
+                    'field' => $this->namespace . '/receiving-benefits',
+                    'label' => 'Are you receiving any of the following?',
+                    'hideLabel' => true,
+                    'options' => [
+                        ['label' => 'Tax credits paid to you or your family', 'children' => []],
+                        ['label' => 'Housing Benefit or Council Tax Benefit', 'children' => []],
+                        ['label' => 'Industrial Injuries Disablement Benefit', 'children' => []],
+                    ],
+                ],
+            ]
+        ];
     }
 }

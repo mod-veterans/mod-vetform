@@ -24,15 +24,6 @@ services:
       - ./docker/pgsql/data:/var/lib/postgresql/data
       - ./docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
     ports:
-      - '5432:5432'
+      - '5434:5432'
     networks:
       modvets_forms:
-
-#  redis:
-#    image: redis
-#    container_name: modvets_redis
-#    restart: always
-#    ports:
-#      - '6379:6379'
-#    networks:
-#      modvets_forms:

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use Illuminate\View\Component;
 
@@ -17,10 +18,21 @@ class Checkbox extends FormField
      */
     public $children = [];
 
+    public function __construct($options = []) {
+        parent::__construct($options);
+
+        if(!array_key_exists('value', $options)) {
+            $this->value = $options['label'];
+        }
+
+        // $this->_id = str_replace('/', '-', ltrim($this->field, '/'));
+        $this->_id = uniqid();
+    }
+
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\Contracts\View\View|string
+     * @return View|string
      */
     public function render()
     {

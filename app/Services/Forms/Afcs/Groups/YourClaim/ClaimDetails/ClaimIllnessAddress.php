@@ -13,14 +13,24 @@ class ClaimIllnessAddress extends BasePage
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'their', false);
+        $address = new Address($this->namespace, 'their', false, 'claim-illness-address');
         $this->_questions = array_merge(
+            [
+            [
+                'component' => 'textfield',
+                'options' => [
+                    'field' => $this->namespace . '/claim-illness-address-contact-name',
+                    'label' => 'Medical Practitioners full name',
+                    'autocomplete' => 'name'
+                ],
+            ]
+            ],
             $address->fields(),
             [
                 [
                     'component' => 'textfield',
                     'options' => [
-                        'field' => $this->namespace . '/contact-number',
+                        'field' => $this->namespace . '/claim-illness-address-contact-number',
                         'label' => 'Telephone number',
                         'type' => 'tel',
                         'autocomplete' => 'tel',
@@ -34,7 +44,7 @@ class ClaimIllnessAddress extends BasePage
                 [
                     'component' => 'textfield',
                     'options' => [
-                        'field' => $this->namespace . '/contact-email',
+                        'field' => $this->namespace . '/claim-illness-address-contact-email',
                         'label' => 'Email address',
                         'type' => 'email',
                         'autocomplete' => 'email',

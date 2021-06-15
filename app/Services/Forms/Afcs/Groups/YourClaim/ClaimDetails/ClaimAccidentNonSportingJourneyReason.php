@@ -18,7 +18,7 @@ class ClaimAccidentNonSportingJourneyReason extends BasePage
                 'component' => 'radio-group',
                 'options' => [
                     'field' => $this->namespace . '/non-sporting-journey-reason',
-                    'label' => 'Was an accident form completed?',
+                    'label' => 'What was the reason for your journey?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [

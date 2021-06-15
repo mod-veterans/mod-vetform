@@ -22,11 +22,11 @@ class TreatmentStatus extends BasePage
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [
-                        ['label' => 'Yes', 'value' => Constant::YES, 'children' => []],
+                        ['label' => Constant::YES, 'children' => []],
                         ['label' => 'No - I have not received any further medical treatment.', 'value' => Constant::NO, 'children' => []],
                     ],
                     'messages' => [
-                        'required' => 'Select if you have recieved an AFCS Fast Payment',
+                        'required' => 'Select if you have received an AFCS Fast Payment',
                     ],
                 ],
             ],

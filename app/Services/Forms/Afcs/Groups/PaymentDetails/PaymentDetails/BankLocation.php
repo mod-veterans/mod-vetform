@@ -5,8 +5,9 @@ namespace App\Services\Forms\Afcs\Groups\PaymentDetails\PaymentDetails;
 
 
 use App\Services\Constant;
+use App\Services\Forms\BasePage;
 
-class BankLocation extends \App\Services\Forms\BasePage
+class BankLocation extends BasePage
 {
     protected string $_title = 'Where is your bank account located?';
 

@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
 
 
-class Overview extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class Overview extends BasePage
 {
     protected string $_title = 'Things you need to know before you start';
 

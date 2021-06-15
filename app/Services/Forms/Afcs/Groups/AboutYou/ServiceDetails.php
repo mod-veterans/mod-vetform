@@ -46,13 +46,20 @@ class ServiceDetails extends BaseTask
 
     ];
 
+    public function __get($property) {
+        if($property == 'mnemonic') {
+            return 'afcs/about-you/service-details/service-branch/service-branch';
+        } else {
+            return parent::__get($property);
+        }
+    }
 
     /**
      * @return mixed
      */
     protected function setPages()
     {
-        $this->pages = [
+        $this->_pages = [
             0 => [
                 'page' => new ServiceName($this->namespace),
                 'next' => 'service-number',

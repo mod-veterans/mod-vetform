@@ -102,11 +102,11 @@ abstract class FormField extends Component
         }
 
         $validationRules = is_string($options['validation'] ?? []) ? explode('|', $options['validation']) : $options['validation'] ?? [];
-        $this->mandatory = (in_array('required', $validationRules, true));
+        $this->mandatory = in_array('required', $validationRules, true);
 
         $this->_id = Str::lower(Str::snake(
             str_replace(['/'], ' or ',
-                str_replace(['(', ')'], '', $label ?? 'Option')
+                str_replace(['(', ')'], '', $option['field'] ?? 'Option')
             )
         ));
     }

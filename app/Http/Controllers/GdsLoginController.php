@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Support\Facades\Log;
 use Jumbojett\OpenIDConnectClient;
 
@@ -74,7 +75,7 @@ class GdsLoginController extends Controller
     /**
      * Get a token from GDS
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      */
     public function login()
     {

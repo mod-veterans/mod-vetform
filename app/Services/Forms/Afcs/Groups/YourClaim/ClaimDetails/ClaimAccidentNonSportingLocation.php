@@ -4,7 +4,6 @@
 namespace App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails;
 
 
-use App\Services\Constant;
 use App\Services\Forms\BasePage;
 
 class ClaimAccidentNonSportingLocation extends BasePage
@@ -18,7 +17,7 @@ class ClaimAccidentNonSportingLocation extends BasePage
                 'component' => 'radio-group',
                 'options' => [
                     'field' => $this->namespace . '/non-sporting-location',
-                    'label' => 'Was an accident form completed?',
+                    'label' => 'Where were you when the incident happened?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [

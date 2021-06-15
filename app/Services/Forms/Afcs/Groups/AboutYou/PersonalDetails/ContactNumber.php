@@ -8,7 +8,9 @@ use App\Services\Forms\BasePage;
 
 class ContactNumber extends BasePage
 {
-    protected string $_title = 'What is your contact number?';
+    protected string $_title = 'What is your telephone number?';
+
+    public string $summary= '<p>We\'ll use this to contact you if we have any questions about your claim</p>';
 
     function setQuestions(): void
     {
@@ -16,21 +18,19 @@ class ContactNumber extends BasePage
             0 => [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/contact-number',
-                    'label' => 'Daytime telephone number',
+                    'field' => $this->namespace . '/mobile-number',
+                    'label' => 'Mobile telephone number',
+                    'hint' => 'For overseas numbers include the country code',
                     'type' => 'tel',
                     'autocomplete' => 'tel',
-                    'validation' => 'required',
-                    'messages' => [
-                        'required' => 'Enter your daytime telephone number',
-                    ],
                 ],
             ],
-            1 => [
+            2 => [
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/alternative-number',
                     'label' => 'Alternative telephone number',
+                    'hint' => 'For overseas numbers include the country code',
                     'type' => 'tel',
                     'autocomplete' => 'tel'
                 ],

@@ -29,7 +29,7 @@ class ClaimDowngradedDates extends BasePage
             1 => [
                 'component' => 'date-field',
                 'options' => [
-                    'field' => $this->namespace . '/date-from',
+                    'field' => $this->namespace . '/date-to',
                     'label' => 'Date to',
                     'hint' => 'For example 27 3 2007',
                     'validation' => 'required|date|before:today',

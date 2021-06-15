@@ -4,6 +4,8 @@
 namespace App\Services;
 
 
+use GuzzleHttp\Psr7\Request;
+
 class Authentication
 {
     private $instance = null;
@@ -30,7 +32,7 @@ class Authentication
         // {"type":"User"...'
 
         // Send an asynchronous request.
-        $request = new \GuzzleHttp\Psr7\Request('GET', 'http://httpbin.org');
+        $request = new Request('GET', 'http://httpbin.org');
         $promise = $client->sendAsync($request)->then(function ($response) {
             echo 'I completed! ' . $response->getBody();
         });

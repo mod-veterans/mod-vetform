@@ -17,11 +17,16 @@ class ContactAddress extends BasePage
     /**
      * @var string
      */
-    public string $summary = 'We will send any postal correspondence to this address.';
+    public string $summary = '<p class="govuk-body">We will send any postal correspondence to this address.</p>';
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace);
+        $address = new Address($this->namespace, 'your', true, '', [
+            'hint' => [
+                'address-line-1' => 'Base name for military establishments'
+            ]
+        ]);
+
         $this->_questions = array_merge($address->fields());
     }
 }

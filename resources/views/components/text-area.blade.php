@@ -3,7 +3,7 @@
 @endif
     <div class="govuk-form-group">
         <x-label :field="$field" :label="$label" :extra="$labelExtra" :mandatory="$mandatory"
-                 :hidden="false"></x-label>
+                 :hidden="$hideLabel"></x-label>
         <x-hint :hint="$hint" :field="$field"></x-hint>
         <textarea class="govuk-textarea @if($characterLimit) govuk-js-character-count @endif" id="{{ $field }}"
                   name="{{ $field }}" rows="5"

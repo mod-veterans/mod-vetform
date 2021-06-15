@@ -1,6 +1,9 @@
 <?php
 
 use App\Services\Application;
+use App\Services\Forms\BaseForm;
+use App\Services\Forms\BaseGroup;
+use App\Services\Forms\BaseTask;
 
 if (!function_exists('form_name')) {
     function form_name()
@@ -18,7 +21,7 @@ if (!function_exists('task_name')) {
 }
 
 if (!function_exists('is_stackable_task')) {
-    function is_stackable_task(\App\Services\Forms\BaseTask $task)
+    function is_stackable_task(BaseTask $task)
     {
         return false;
     }
@@ -27,7 +30,7 @@ if (!function_exists('is_stackable_task')) {
 if (!function_exists('task_forms')) {
     function task_forms(): array
     {
-        /** @var \App\Services\Forms\BaseForm $form */
+        /** @var BaseForm $form */
         return Application::getInstance()->form->getTaskForms();
     }
 }
@@ -35,7 +38,7 @@ if (!function_exists('task_forms')) {
 
 if (!function_exists('groups')) {
     /**
-     * @return \App\Services\Forms\BaseGroup[]
+     * @return BaseGroup[]
      */
     function groups()
     {
@@ -72,7 +75,7 @@ if (!function_exists('groups_task_complete_count')) {
 
         foreach ($groups as $group) {
             foreach ($group->tasks as $task) {
-                if ($task->status === \App\Services\Forms\BaseTask::STATUS_COMPLETED) {
+                if ($task->status === BaseTask::STATUS_COMPLETED) {
                     $total++;
                 }
             }
@@ -85,7 +88,7 @@ if (!function_exists('groups_task_complete_count')) {
 
 if (!function_exists('tasks')) {
     /**
-     * @return \App\Services\Forms\BaseGroup[]
+     * @return BaseGroup[]
      */
     function tasks()
     {
@@ -141,7 +144,7 @@ if (!function_exists('crumbs')) {
 }
 
 if (!function_exists('group_for_task')) {
-    function group_for_task($task): \App\Services\Forms\BaseGroup
+    function group_for_task($task): BaseGroup
     {
         return Application::getInstance()->getGroupForTaskByNamespace($task->namespace);
     }

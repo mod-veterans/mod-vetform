@@ -9,7 +9,8 @@ use App\Services\Forms\BasePage;
 
 class ClaimAccidentNonSportingDuty extends BasePage
 {
-    protected string $_title = 'Was the incident a Road Traffic Accident?';
+    // protected string $_title = 'Was the incident a Road Traffic Accident?';
+    protected string $_title = 'Were you on duty at the time of incident?';
 
     function setQuestions(): void
     {
@@ -17,8 +18,8 @@ class ClaimAccidentNonSportingDuty extends BasePage
             [
                 'component' => 'radio-group',
                 'options' => [
-                    'field' => $this->namespace . '/non-sporting-road-traffic-accident',
-                    'label' => 'Was the incident a Road Traffic Accident?',
+                    'field' => $this->namespace . '/non-sporting-duty',
+                    'label' => 'Were you on duty at the time of incident?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [

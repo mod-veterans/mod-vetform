@@ -15,14 +15,14 @@ class ThingsToKnow extends BaseTask
 
     protected string $name = 'Things to know before you start';
     protected string $_title = 'Things to know before you start';
-
+    protected $_hasSummary = false;
 
     /**
      * @return mixed
      */
     protected function setPages()
     {
-        $this->pages = [
+        $this->_pages = [
             0 => [
                 'page' => new Overview($this->namespace),
             ]

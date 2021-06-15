@@ -20,7 +20,7 @@ class ServiceType extends BasePage
                 'component' => 'radio-group',
                 'options' => [
                     'field' => $this->namespace . '/service-type',
-                    'label' => 'Select your service branch',
+                    'label' => 'What was/is your service type?',
                     'hideLabel' => true,
                     'validation' => 'required',
                     'options' => [

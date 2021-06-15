@@ -14,7 +14,7 @@ class PensionScheme extends BasePage
     {
         $this->_questions = [
             0 => [
-                'component' => 'radio-group',
+                'component' => 'checkbox-group',
                 'options' => [
                     'field' => $this->namespace . '/pension-scheme',
                     'label' => 'Pension scheme',
@@ -27,6 +27,7 @@ class PensionScheme extends BasePage
                         ['label' => 2015, 'value' => 2015, 'children' => []],
                         ['label' => 'None', 'value' => 'None', 'children' => []],
                         ['label' => 'Other', 'value' => 'Other', 'children' => []],
+                        ['label' => 'Don\'t Know', 'value' => 'Other', 'children' => []],
                     ],
                     'messages' => [
                         'required' => 'Select your pension scheme',

@@ -4,7 +4,9 @@
 namespace App\Services;
 
 
-class Tree extends \DOMDocument
+use DOMDocument;
+
+class Tree extends DOMDocument
 {
     /**
      * @var Tree
@@ -12,7 +14,7 @@ class Tree extends \DOMDocument
     private static $instance = null;
 
     /**
-     * @var \DOMDocument
+     * @var DOMDocument
      */
     private $_dom;
 

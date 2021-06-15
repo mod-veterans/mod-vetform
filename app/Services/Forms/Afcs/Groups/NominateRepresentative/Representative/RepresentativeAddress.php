@@ -4,9 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 
 
+use App\Services\Forms\BasePage;
 use App\Services\Patterns\Address;
 
-class RepresentativeAddress extends \App\Services\Forms\BasePage
+class RepresentativeAddress extends BasePage
 {
     protected string $_title = 'Please provide contact details for your nominated representative';
 

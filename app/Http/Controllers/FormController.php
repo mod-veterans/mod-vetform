@@ -6,8 +6,13 @@ use App\Services\Application;
 use App\Services\Forms\BasePage;
 use App\Services\Forms\BaseTask;
 use App\Services\Notify;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
+use Symfony\Component\HttpFoundation\Response;
 
 class FormController extends Controller
 {
@@ -39,7 +44,7 @@ class FormController extends Controller
     /**
      * @param string $method
      * @param array $parameters
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function callAction($method, $parameters)
     {
@@ -84,7 +89,7 @@ class FormController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|Factory|View
      */
     public function index()
     {
@@ -111,17 +116,21 @@ class FormController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     * @return \Illuminate\Contracts\Foundation\Application|Factory|View
      */
     public function summarise()
     {
+        if ($this->_task->isStackable() && request('stack')) {
+            Application::getInstance()->trackStackId(request('stack'));
+        }
+
         return view('summary', ['task' => $this->_task]);
     }
 
     /**
-     * @throws \Illuminate\Validation\ValidationException
+     * @throws ValidationException
      */
-    public function save()
+    public function save(Request $request)
     {
         $rules = $messages = [];
 
@@ -151,7 +160,12 @@ class FormController extends Controller
             }
         }
 
-        Validator::make(request()->all(), $rules, $messages)->validate();
+        $validator = Validator::make(request()->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            request()->flash();
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         if (sizeof(request()->files) > 0) {
             foreach ($this->_page->questions as $index => $question) {
@@ -173,18 +187,60 @@ class FormController extends Controller
         $nextPage = $this->_task->nextPage($this->_pageIndex);
 
         if (is_null($nextPage) || empty($nextPage)) {
-            $consentPage = \App\Services\Application::getInstance()->form->consentPage;
-            $group = get_class(\App\Services\Application::getInstance()->getGroupForPageByNamespace($this->_page->namespace));
+            $consentPage = Application::getInstance()->form->consentPage;
+            $group = get_class(Application::getInstance()->getGroupForPageByNamespace($this->_page->namespace));
 
             if ($consentPage == $group) {
+                $reference_number = Application::getInstance()->getReference();
+                $responses = Application::getInstance()->collateResponses();
 
-//                Notify::getInstance()
-//                    ->setData()
-//                    ->
+                $content = [];
+                foreach ($responses as $section => $pages) {
+                    array_push($content, '# ' . $section);
+                    foreach ($pages as $page => $reply) {
+                        if (is_array($reply)) {
+                            foreach ($reply as $question => $response) {
+                                if (is_array($response)) {
+                                    array_push($content, $question . ': ' . join("\n", $response));
+                                } else {
+                                    array_push($content, $question . ': ' . $response);
+                                }
+                            }
+                        } else {
+                            array_push($content, $page . ': ' . $reply);
+                        }
+                    }
 
-                dd('OK, Let\'s go Notify!');
+                    array_push($content, '');
+                }
 
+                $content = join("\n", $content);
+                //dd($content);
 
+                if (session('form') == 'App\Services\Forms\Afcs\Afcs') {
+
+                    Notify::getInstance()
+                        ->setData([
+                            'reference_number' => $reference_number,
+                            'content' => $content
+                        ])
+                        ->sendEmail('toby@codesure.co.uk', env('NOTIFY_CLAIM_SUBMITTED'))
+                        ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
+                        ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
+                        ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+
+                    Notify::getInstance()
+                        ->setData([
+                            'reference_number' => $reference_number,
+                            'content' => $content
+                        ])
+                        ->sendEmail('toby@codesure.co.uk', env('NOTIFY_USER_CONFIRMATION'))
+                        ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
+                        ->sendEmail(session('afcs/about-you/personal-details/email-address/email-address', 'toby@codesure.co.uk'), env('NOTIFY_USER_CONFIRMATION'))
+                        ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
+                        ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+                }
+                return redirect()->route('application.complete');
             }
 
             if (request('redirect')) {
@@ -198,6 +254,14 @@ class FormController extends Controller
             }
 
             if ($this->_task->isStackable()) {
+                if ($this->_task->hasSummary) {
+                    return redirect()->route('summarise.form', [
+                        'group' => request('group'),
+                        'task' => request('task'),
+                        'stack' => request('stack')
+                    ]);
+                }
+
                 return redirect()->route('load.form', [
                     'group' => request('group'),
                     'task' => request('task')
@@ -212,16 +276,51 @@ class FormController extends Controller
                 ]);
             }
 
+
             return redirect()->route('home');
         }
 
+        if ($this->_task->isStackable() && !$this->_stack) {
+            return redirect()->route('add.stack', ['stack' => $this->_task->namespace]);
+        }
 
         return redirect()->route('load.form', [
             'group' => request('group'),
             'task' => request('task'),
-            'page' => $nextPage['page']->getId(),
+            'page' => $nextPage['page']->getId() ?? null,
             'stack' => request('stack')
         ]);
+    }
+
+    /**
+     *
+     */
+    public function cancel()
+    {
+        return view('cancel-application');
+    }
+
+    public function cancelConfirmation()
+    {
+        session()->flush();
+        return redirect()->route('start');
+    }
+
+    public function complete()
+    {
+        $form = session('form');
+        $applicationReference = session('application-reference');
+        session()->flush();
+        session(['form' => $form]);
+        session(['application-reference' => $applicationReference]);
+
+        if (view()->exists('forms.' . Application::getInstance()->form->getId() . '.complete')) {
+            $view = 'forms.' . Application::getInstance()->form->getId() . '.complete';
+        } else {
+            $view = 'complete';
+        }
+
+        return view($view);
     }
 
     /**
@@ -231,7 +330,8 @@ class FormController extends Controller
     {
         if ($this->_task instanceof BaseTask) {
             if ($this->_task->pages) {
-                $this->_pageIndex = $this->_task->getPageIndex($page) ?? 0;
+                $this->_pageIndex = $this->_task->getPageIndex($page) ?? array_key_first($this->_task->pages);
+
                 $view = $this->_task->pages[$this->_pageIndex];
                 $page = $page ?? $view['page']->getId();
                 request()->merge(['page' => $page]);

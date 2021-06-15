@@ -4,6 +4,7 @@
 namespace App\Services\Forms\Afcs\Groups\YourClaim;
 
 
+use App\Services\Application;
 use App\Services\Constant;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentDowngraded;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentFirstAid;
@@ -21,6 +22,7 @@ use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentNonSporti
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentNonSportingReportedTo;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentNonSportingReportTo;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentNonSportingRoadTraffic;
+use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentNonSportingSurgeryAddress;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentPoliceRef;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentSportingActivity;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentSportingAuthorise;
@@ -58,7 +60,7 @@ class ClaimDetails extends BaseTask
 {
     use Stackable;
 
-    protected $summaryPage = null;
+    protected $summaryPage = true;
     protected $postTask = null;
 
     protected string $name = 'Claim details';
@@ -78,7 +80,6 @@ class ClaimDetails extends BaseTask
         ],
     ];
 
-
     /**
      * @return void
      */
@@ -88,9 +89,8 @@ class ClaimDetails extends BaseTask
             0 => [
                 'page' => new ClaimIllness($this->namespace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->_pages[0]['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
 
                     try {
                         if ($answers[$field] == 'A condition, injury or illness that is the result of a specific accident or incident')
@@ -122,12 +122,11 @@ class ClaimDetails extends BaseTask
             'claim-illness-condition-dueto' => [
                 'page' => new ClaimIllnessDueto($this->namespace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages['claim-illness-condition-dueto']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
-                        return in_array('Chemical exposure', $answers[$field]) ?
-                            'claim-illness-condition-chemical-exposure' :
-                            'claim-illness-first-medical-attention-date';
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
+                    return in_array('Chemical exposure', $answers[$field]) ?
+                        'claim-illness-condition-chemical-exposure' :
+                        'claim-illness-first-medical-attention-date';
                 }
             ],
 
@@ -143,10 +142,9 @@ class ClaimDetails extends BaseTask
             'claim-downgraded' => [
                 'page' => new ClaimDowngraded($this->namespace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages['claim-downgraded']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
-                    return ($answers[$field]) ? 'claim-downgraded-dates' : 'claim-note';
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
+                    return ($answers[$field] == Constant::YES) ? 'claim-downgraded-dates' : 'claim-note';
                 }
             ],
             'claim-downgraded-dates' => [
@@ -161,19 +159,15 @@ class ClaimDetails extends BaseTask
             'claim-accident-condition' => [
                 'page' => new ClaimAccidentCondition($this->namespace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages['claim-accident-condition']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
-                    // return ($answers[$field] == Constant::YES) ? 'claim-accident-sporting-medical-condition' : 'claim-accident-non-sporting-medical-condition';
-                    return 'claim-accident-sporting-medical-condition';
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
+                    return ($answers[$field] == Constant::YES) ? 'claim-accident-sporting-medical-condition' : 'claim-accident-non-sporting-medical-condition';
                 }
             ],
-
-//            'claim-accident-non-sporting-medical-condition' => [
-//                'page' => '',
-//                'next' => 'claim-accident-non-sporting-surgery-address'
-//            ],
-
+            'claim-accident-non-sporting-medical-condition' => [
+                'page' => new ClaimAccidentNonSportingMedicalCondition($this->namespace),
+                'next' => 'claim-accident-non-sporting-surgery-address'
+            ],
             'claim-accident-sporting-medical-condition' => [
                 'page' => new ClaimAccidentSportingMedicalCondition($this->namespace),
                 'next' => 'claim-accident-sporting-surgery-address'
@@ -195,12 +189,11 @@ class ClaimDetails extends BaseTask
                 'next' => 'claim-accident-sporting-related'
             ],
             'claim-accident-sporting-related' => [
-                'page' =>  new ClaimAccidentSportingRelated($this->namespace),
+                'page' => new ClaimAccidentSportingRelated($this->namespace),
                 'next' => 'claim-accident-witness'
             ],
-
             'claim-accident-non-sporting-surgery-address' => [
-                'page' => new ClaimAccidentNonSportingMedicalCondition($this->namespace),
+                'page' => new ClaimAccidentNonSportingSurgeryAddress($this->namespace),
                 'next' => 'claim-accident-non-sporting-date',
             ],
             'claim-accident-non-sporting-date' => [
@@ -229,7 +222,13 @@ class ClaimDetails extends BaseTask
             ],
             'claim-accident-non-sporting-road-traffic' => [
                 'page' => new ClaimAccidentNonSportingRoadTraffic($this->namespace),
-                'next' => 'claim-accident-non-sporting-journey-reason'
+//                'next' => 'claim-accident-non-sporting-journey-reason'
+
+                'next' => function () {
+                    $field = $this->pages['claim-accident-non-sporting-road-traffic']['page']->questions[0]['options']['field'];
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
+                    return ($answers[$field] == Constant::YES) ? 'claim-accident-non-sporting-journey-reason' : 'claim-accident-non-sporting-reported-to';
+                }
             ],
             'claim-accident-non-sporting-journey-reason' => [
                 'page' => new ClaimAccidentNonSportingJourneyReason($this->namespace),
@@ -250,9 +249,8 @@ class ClaimDetails extends BaseTask
             'claim-accident-non-sporting-reported-to' => [
                 'page' => new ClaimAccidentNonSportingReportedTo($this->namespace),
                 'next' => function () {
-                    session()->save();
-                    $field = $this->pages['claim-accident-condition']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
+                    $field = $this->pages['claim-accident-non-sporting-reported-to']['page']->questions[0]['options']['field'];
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
                     return ($answers[$field] == Constant::YES) ? 'claim-accident-police-ref' : 'claim-accident-non-sporting-leave';
                 }
             ],
@@ -275,44 +273,28 @@ class ClaimDetails extends BaseTask
             'claim-accident-hospital-facility' => [
                 'page' => new ClaimAccidentHospitalFacility($this->namespace),
                 'next' => function () {
-                    session()->save();
-                    $field = $this->pages['claim-accident-condition']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
+                    $field = $this->pages['claim-accident-hospital-facility']['page']->questions[0]['options']['field'];
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
                     return ($answers[$field] == Constant::YES) ? 'claim-accident-hospital-address' : 'claim-downgraded';
                 }
             ],
-
             'claim-hospital' => [
                 'page' => new ClaimHospital($this->namespace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages['claim-hospital']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
                     return ($answers[$field] == Constant::YES) ? 'hospital-visit-subtask' : 'claim-surgery-waiting';
                 }
             ],
             'claim-accident-hospital-address' => [
-              'page' =>  new ClaimAccidentSportingHospitalAddress($this->namespace),
+                'page' => new ClaimAccidentSportingHospitalAddress($this->namespace),
                 'next' => 'claim-downgraded',
             ],
-//            'hospital-visit-subtask' => [
-//                'page' => '',
-//                'next' => 'claim-surgery-waiting'
-//            ],
-//            'claim-hospital-record' => [
-//                'page' => '',
-//                'next' => 'claim-hospital-visit-dates'
-//            ],
-//            'claim-hospital-visit-dates' => [
-//                'page' => '',
-//                'next' => ''
-//            ],
             'claim-surgery-waiting' => [
                 'page' => '',
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages['claim-surgery-waiting']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
                     return ($answers[$field] == Constant::YES) ? 'claim-treatment-date' : 'claim-other-date';
                 }
             ],
@@ -327,9 +309,8 @@ class ClaimDetails extends BaseTask
             'claim-other-treatment' => [
                 'page' => new ClaimOtherTreatment($this->namespace),
                 'next' => function () {
-                    session()->save();
                     $field = $this->pages['claim-other-treatment']['page']->questions[0]['options']['field'];
-                    $answers = $this->getStackBranch(request('stack'));
+                    $answers = $this->getStackBranch(request('stack', Application::getInstance()->trackStackId));
                     return ($answers[$field] == Constant::YES) ? 'claim-treatment-type' : null;
                 }
             ],

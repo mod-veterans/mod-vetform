@@ -4,7 +4,9 @@
 namespace App\Services\Forms\Afcs\Groups\PaymentDetails\PaymentDetails;
 
 
-class BankUnitedKingdom extends \App\Services\Forms\BasePage
+use App\Services\Forms\BasePage;
+
+class BankUnitedKingdom extends BasePage
 {
     protected string $_title = 'UK bank or building society account details';
 
@@ -34,6 +36,18 @@ class BankUnitedKingdom extends \App\Services\Forms\BasePage
                     'validation' => 'required',
                     'messages' => [
                         'required' => 'Enter the sort code',
+                    ],
+                ],
+            ],
+            [
+                'component' => 'textfield',
+                'options' => [
+                    'field' => $this->namespace . '/bank-account-number',
+                    'label' => 'Account number',
+                    'type' => 'numeric',
+                    'validation' => 'required',
+                    'messages' => [
+                        'required' => 'Enter the account number',
                     ],
                 ],
             ],

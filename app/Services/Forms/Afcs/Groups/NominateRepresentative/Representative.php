@@ -5,6 +5,7 @@ namespace App\Services\Forms\Afcs\Groups\NominateRepresentative;
 
 
 use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative\RepresentativeAddress;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative\RepresentativeRole;
 use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative\RepresentativeSelection;
 use App\Services\Forms\BaseTask;
 
@@ -17,12 +18,11 @@ class Representative extends BaseTask
      */
     protected function setPages()
     {
-        $this->pages = [
+        $this->_pages = [
             0 => [
                 'page' => new RepresentativeSelection($this->namespace),
                 'next' => function () {
-                    session()->save();
-                    $field = $this->pages[0]['page']->questions[0]['options']['field'];
+                    $field = $this->_pages[0]['page']->questions[0]['options']['field'];
 
                     return session($field, null) == 'No' ? null : 'representative-address';
                 },
@@ -32,7 +32,7 @@ class Representative extends BaseTask
                 'next' => 'representative-role'
             ],
             'representative-role' => [
-                'page' => new RepresentativeAddress($this->namespace),
+                'page' => new RepresentativeRole($this->namespace),
             ]
         ];
     }

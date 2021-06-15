@@ -2,10 +2,18 @@
     <x-slot name="title">{{ $view->title }}</x-slot>
 
     <x-slot name="body">
-        @if($view->preTask)
+        @php
+            $stackButtonRendered = false;
+        @endphp
+        @if($view->preTask && !$view->stack)
             @if(is_array($view->preTask))
                 @foreach($view->preTask as $preTask)
                     @switch($preTask['type'])
+
+                        @case('title')
+                        <h2>{{ $preTask['content'] }}</h2>
+                        @break
+
                         @case('inset')
                         <div class="govuk-inset-text">{{ $preTask['content'] }}</div>
                         @break
@@ -19,7 +27,7 @@
                         @break
 
                         @case('address')
-                        <address>
+                        <address class="govuk-address govuk-!-font-size-19 govuk-!-margin-bottom-4">
                             @foreach($preTask['content'] as $item)
                                 {!! $item !!}<br>
                             @endforeach
@@ -30,7 +38,27 @@
                         @if(is_array($preTask['content']))
                            {{ dd($preTask['content']) }}
                         @else
-                            <p class="govuk-body">{{ $preTask['content'] }}</p>
+                            <p class="govuk-body">
+                                @switch($preTask['content'])
+                                    @case('__stackButton__')
+                                        @php
+                                            $stackButtonRendered = true;
+                                        @endphp
+                                        <a class="govuk-button govuk-!-margin-bottom-2" href="{{ route('add.stack', ['stack' => $view->namespace ]) }}">
+                                            {{ $view->addStackLabel ??  'Add to stack' }}
+                                        </a>
+                                    @break
+
+                                    @case('__continueButton__')
+                                        <a class="govuk-link govuk-!-margin-bottom-2" href="/stack/skip/?stack={{ $view->namespace }}">
+                                            {{ $view->continueLabel ??  'Return to task list' }}
+                                        </a>
+                                    @break
+
+                                    @default
+                                        {{ $preTask['content'] }}
+                                    @endswitch
+                            </p>
                         @endif
                     @endswitch
                 @endforeach
@@ -46,7 +74,7 @@
                         <dt class="govuk-summary-list__value">
                             @if(is_array($stack))
                                 @if($view->mnemonic)
-                                    {{ current($stack)[$view->mnemonic] }}
+                                    {{ $view->renderMnemonic($stack) }}
                                 @else
                                     Item {{ $loop->index + 1 }}
                                 @endif
@@ -59,7 +87,6 @@
                                href="{{ route('drop.stack', ['stack'=>$view->namespace, 'id'=>$stackID]) }}">Delete<span
                                     class="govuk-visually-hidden"> name</span>
                             </a>
-
                             <a class="govuk-link"
                                href="{{ route('load.form', ['group' => group_for_task($view)->getId(), 'task' => $view->getId(), 'stack' => $stackID ]) }}">
                                 Change<span class="govuk-visually-hidden"> name</span>
@@ -70,15 +97,15 @@
             </dl>
         @endif
 
+        @if(!$stackButtonRendered)
         <div class="govuk-form-group govuk-!-margin-top-4">
             <a class="govuk-button" href="{{ route('add.stack', ['stack' =>  $view->namespace ]) }}">
                 {{ $view->addStackLabel ??  'Add to stack' }}
             </a>
-
             <br>
-
-            <a class="govuk-link" href="{{route('home')}}">Return to summary</a>
+            <a class="govuk-link" href="{{route('home')}}">Return to Task List</a>
         </div>
+        @endif
 
         @if($view->postTask)
             @if(is_array($view->postTask))
