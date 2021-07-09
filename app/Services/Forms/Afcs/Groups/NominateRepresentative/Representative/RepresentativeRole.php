@@ -25,7 +25,7 @@ class RepresentativeRole extends BasePage
                     'validation' => 'required',
                     'options' => [
                         ['label' => 'Veterans UK welfare manager', 'children' => []],
-                        ['label' => 'Charity welfare manage', 'children' => []],
+                        ['label' => 'Charity welfare manager', 'children' => []],
                         ['label' => 'Solicitor', 'children' => []],
                         ['label' => 'Friend or relative', 'children' => []],
                         ['label' => 'Other', 'children' => []],

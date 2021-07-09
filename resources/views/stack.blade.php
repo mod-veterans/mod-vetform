@@ -51,7 +51,7 @@
 
                                     @case('__continueButton__')
                                         <a class="govuk-link govuk-!-margin-bottom-2" href="/stack/skip/?stack={{ $view->namespace }}">
-                                            {{ $view->continueLabel ??  'Return to task list' }}
+                                            {{ $view->continueLabel ??  'Continue without uploading a document' }}
                                         </a>
                                     @break
 

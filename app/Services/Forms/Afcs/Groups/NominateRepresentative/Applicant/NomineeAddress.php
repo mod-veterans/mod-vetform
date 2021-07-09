@@ -39,7 +39,7 @@ class NomineeAddress extends BasePage
                     'label' => 'Telephone number',
                     'type' => 'tel',
                     'autocomplete' => 'tel',
-                    'validation' => 'required',
+                    //'validation' => 'required',
                     'messages' => [
                         'required' => 'Enter your telephone number',
                     ],
@@ -52,7 +52,7 @@ class NomineeAddress extends BasePage
                     'label' => 'Email address',
                     'type' => 'email',
                     'autocomplete' => 'email',
-                    'validation' => 'required',
+                    // 'validation' => 'required',
                     'messages' => [
                         'required' => 'Enter an email address in the correct format, like name@example.com',
                     ],

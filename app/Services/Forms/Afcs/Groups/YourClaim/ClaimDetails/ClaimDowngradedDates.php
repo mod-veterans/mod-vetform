@@ -13,33 +13,57 @@ class ClaimDowngradedDates extends BasePage
     function setQuestions(): void
     {
         $this->_questions = [
-            0 => [
+            [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/date-from-year',
+                    'validation' => [
+                        'required',
+                    ],
+                    'messages' => [
+                        'required' => 'Enter a date from year, even if it’s approximate',
+                    ],
+                ],
+            ],
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/date-from',
                     'label' => 'Date from',
-                    'hint' => 'For example 27 3 2007',
-                    'validation' => 'required|date|before:today',
+                    'hint' => 'For example 27 3 2007. If you can’t remember, enter an approximate year.',
+                    // 'validation' => 'required|date|before:today',
                     'messages' => [
                         'required' => 'Enter the date your illness was downgraded from',
                         'date' => 'Enter the date your illness was downgraded from',
                     ],
                 ],
             ],
-            1 => [
+            [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/date-to-year',
+                    'validation' => [
+                        'required',
+                    ],
+                    'messages' => [
+                        'required' => 'Enter a date to year, even if it’s approximate',
+                    ],
+                ],
+            ],
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/date-to',
                     'label' => 'Date to',
-                    'hint' => 'For example 27 3 2007',
-                    'validation' => 'required|date|before:today',
+                    'hint' => 'For example 27 3 2007. If you can’t remember, enter an approximate year.',
+                    // 'validation' => 'required|date|before:today',
                     'messages' => [
                         'required' => 'Enter the date your illness was downgraded to',
                         'date' => 'Enter the date your illness was downgraded to',
                     ],
                 ],
             ],
-            2 => [
+            [
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/from-medical-category',
@@ -51,7 +75,7 @@ class ClaimDowngradedDates extends BasePage
                     ],
                 ],
             ],
-            3 => [
+             [
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/to-medical-category',

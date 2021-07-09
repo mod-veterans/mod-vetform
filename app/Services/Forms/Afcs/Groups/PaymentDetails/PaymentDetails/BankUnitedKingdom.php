@@ -16,6 +16,19 @@ class BankUnitedKingdom extends BasePage
             [
                 'component' => 'textfield',
                 'options' => [
+                    'field' => $this->namespace . '/bank-name',
+                    'label' => 'Name of bank, building society or other account provider',
+                    'validation' => 'required|string|max:50',
+                    'messages' => [
+                        'required' => 'Enter the name of bank, building society or other account provider',
+                        'max' => 'Name of bank, building society or other account provider must be 50 characters or fewer'
+                    ],
+                ],
+            ],
+
+            [
+                'component' => 'textfield',
+                'options' => [
                     'field' => $this->namespace . '/bank-account-name',
                     'label' => 'Name on the account',
                     'autocomplete' => 'name',

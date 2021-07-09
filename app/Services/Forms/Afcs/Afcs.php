@@ -30,7 +30,7 @@ class Afcs extends BaseForm
     /**
      * @var string
      */
-    protected string $name = 'Apply for the Armed Forces Compensation Scheme';
+    protected string $name = 'Apply for an Armed Forces Compensation or War Pension Payment';
 
 
     /**

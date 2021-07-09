@@ -17,13 +17,34 @@ class OtherMedicalTreatmentStartDate extends \App\Services\Forms\BasePage
     {
         $this->_questions = [
             [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/medical-treatment-start-completed',
+                    'value' => 1,
+                    'validation' => 'required',
+                ],
+            ],
+
+            [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/medical-treatment-start-date-year',
+                    'validation' => [
+                        'required_unless:'.$this->namespace . '/medical-treatment-start-date-waiting-list'.',I am still on a waiting list to attend',
+                    ],
+                    'messages' => [
+                        'required_unless' => 'Enter a year, even if it’s approximate',
+                    ],
+                ],
+            ],
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/medical-treatment-start-date',
                     'label' => 'Date your treatment started. If you are not sure, just enter a year.',
                     'hideLabel' => true,
-                    'hint' => 'For example 27 3 2007',
-                    'validation' => 'nullable|date|before:today',
+                    'hint' => 'For example 27 3 2007. If you can’t remember, enter an approximate year.',
+                   // 'validation' => 'nullable|date|before:today',
                     'messages' => [
                         'date' => 'Enter the date your treatment started',
                         'before' => 'Enter a date before today'

@@ -15,13 +15,35 @@ class OtherMedicalTreatmentEndDate extends \App\Services\Forms\BasePage
     {
         $this->_questions = [
             [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/medical-treatment-ended-completed',
+                    'value' => 1,
+                    'validation' => 'required',
+                ],
+            ],
+
+            [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/medical-treatment-end-date-year',
+
+                        'validation' => [
+                            'required_unless:'.$this->namespace . '/medical-treatment-not-ended'.',This treatment has not yet ended',
+                        ],
+                        'messages' => [
+                            'required_unless' => 'Enter a year, even if it’s approximate',
+                        ],
+                ],
+            ],
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/medical-treatment-end-date',
                     'label' => 'Date your treatment ended',
                     'hideLabel' => true,
                     'hint' => 'For example 27 3 2007. If you are not sure, just enter a year.',
-                    'validation' => 'nullable|date|before:today',
+                    // 'validation' => 'nullable|date|before:today',
                     'messages' => [
                         'required' => 'Enter the date your treatment ended',
                         'date' => 'Enter the date your treatment ended',

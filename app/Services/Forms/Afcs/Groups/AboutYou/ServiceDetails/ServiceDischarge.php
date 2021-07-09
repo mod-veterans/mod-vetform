@@ -17,7 +17,7 @@ class ServiceDischarge extends BasePage
     function setQuestions(): void
     {
         $this->_questions = [
-            0 => [
+            [
                 'component' => 'checkbox',
                 'options' => [
                     'field' => $this->namespace . '/service-is-serving',
@@ -25,20 +25,32 @@ class ServiceDischarge extends BasePage
                     'value' => Constant::YES
                 ],
             ],
-            1 => [
+            [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/date-of-discharge-year',
+                    'validation' => [
+                        'required_if:'.$this->namespace . '/service-is-serving'.',' . Constant::NO,
+                    ],
+                    'messages' => [
+                        'required_if' => 'Enter a year, even if it’s approximate',
+                    ],
+                ],
+            ],
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/date-of-discharge',
                     'label' => 'Date of discharge',
-                    'hint' => 'For example 27 3 2007',
-                    'validation' => 'required_if:'.$this->namespace . '/service-is-serving'.',' . Constant::NO .  '|date',
-                    'messages' => [
-                        'required_if' => 'Enter the date your service discharge',
-                        'date' => 'Enter the date your service discharge',
-                    ],
+                    'hint' => 'For example 27 3 2007. If you can’t remember, enter an approximate year.',
+//                    'validation' => 'required_if:'.$this->namespace . '/service-is-serving'.',' . Constant::NO .  '|date',
+//                    'messages' => [
+//                        'required_if' => 'Enter the date your service discharge',
+//                        'date' => 'Enter the date your service discharge',
+//                    ],
                 ],
             ],
-            2 => [
+           [
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/service-discharge-reason',

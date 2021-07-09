@@ -2,6 +2,8 @@
 'rows' => [],
 ])
 
+
+@if(sizeof($rows) > 0)
 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     @foreach($rows as $row)
         <div class="govuk-summary-list__row">
@@ -22,3 +24,6 @@
         </div>
     @endforeach
 </dl>
+@else
+<p class="govuk-body govuk-!-margin-bottom-8">You have chosen to not provide any answers to this section</p>
+@endif

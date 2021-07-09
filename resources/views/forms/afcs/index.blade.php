@@ -15,14 +15,22 @@
                         @foreach($group->tasks as $task)
                             <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-{{--                                    @if($task->status !== \App\Services\Forms\BaseTask::STATUS_CANNOT_START)--}}
-                                    <a href="/{{ $group->getId() }}/{{ $task->getId() }}" class="govuk-link"
-                                       aria-describedby="eligibility-status">
+                                    @if($task->status !== \App\Services\Forms\BaseTask::STATUS_CANNOT_START)
+                                        <a href="/{{ $group->getId() }}/{{ $task->getId() }}" class="govuk-link"
+                                           aria-describedby="eligibility-status">
                                         {{ $task }}
                                     </a>
-{{--                                    @else--}}
-{{--                                        {{ $task }}--}}
-{{--                                    @endif--}}
+                                    @else
+                                        @if(request()->getHttpHost() == 'localhost:8000'
+                                         || request()->getHttpHost() == 'modvets-dev2.london.cloudapps.digital')
+                                            <a href="/{{ $group->getId() }}/{{ $task->getId() }}" class="govuk-link"
+                                               aria-describedby="eligibility-status">
+                                                {{ $task }}
+                                            </a>
+                                        @else
+                                            {{ $task }}
+                                        @endif
+                                    @endif
                                 </span>
                                 <x-status-tag status="{{ $task->status }}" field="{{ $task->getId() }}"></x-status-tag>
                             </li>

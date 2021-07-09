@@ -27,6 +27,7 @@ class ClaimAccidentSportingRelated extends BasePage
                         ['label' => 'Trade', 'children' => []],
                         ['label' => 'Misconduct by others', 'children' => []],
                         ['label' => 'Consequential to another medical condition', 'children' => []],
+                        ['label' => 'Fitness training', 'children' => []],
                     ],
                     'messages' => [
                         'required' => 'Select an option which applies',

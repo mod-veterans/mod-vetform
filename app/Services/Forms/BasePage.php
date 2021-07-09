@@ -126,6 +126,8 @@ abstract class BasePage
                     foreach ($this->_questions as $questionIndex => $question) {
                         $field = $this->_questions[$questionIndex]['options']['field'];
 
+                        unset($stack[$stackID][$field]);
+                        session()->forget($task->stackName . '.' . $stackID . '.' . $field);
                         if (isset($data[$field])) {
                             if (($data[$field] instanceof UploadedFile)) {
                                 /** @var UploadedFile $data */
@@ -133,7 +135,7 @@ abstract class BasePage
                                 $stack[$stackID][$field]['filename'] = $data[$field . '::filename'];
                                 $stack[$stackID][$field]['mnemonic'] = $data[$field . '::mnemonic'];
                             } else {
-                                $stack[$stackID][$field] = $data[$field] ?? null;
+                                $stack[$stackID][$field] = $data[$field] ?? '';
                             }
                         }
                     }
@@ -145,6 +147,7 @@ abstract class BasePage
             foreach ($this->_questions as $questionIndex => $question) {
                 $field = $this->_questions[$questionIndex]['options']['field'];
 
+                session()->forget($field);
                 if(isset($data[$field])) {
                     if (($data[$field] instanceof UploadedFile)) {
                         /** @var UploadedFile $data */

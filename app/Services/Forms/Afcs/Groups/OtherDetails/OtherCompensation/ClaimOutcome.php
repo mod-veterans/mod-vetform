@@ -29,7 +29,7 @@ class ClaimOutcome extends BasePage
                 'component' => 'text-area',
                 'options' => [
                     'field' => $this->namespace . '/claim-outcome-benefactor',
-                    'label' => 'Please include any reference numbers you have.',
+                    'label' => 'Who did you claim from/amount?',
                     'characterLimit' => 500,
                     'validation' => 'required',
                     'messages' => [

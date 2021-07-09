@@ -1,12 +1,12 @@
 ---
 applications:
-  - name: modforms-dev
+  - name: mod-veterans-uat
     memory: 256M
     buildpacks:
       - https://github.com/andy-paine/env-map-buildpack
       - https://github.com/cloudfoundry/php-buildpack.git#v4.4.34
     routes:
-      - route: modvets-dev2.london.cloudapps.digital
+      - route: modvets-uat.london.cloudapps.digital
     services:
       - mod-veterans-db
       - mod-veterans-s3
@@ -17,7 +17,7 @@ applications:
       APP_ENV: local
       APP_KEY: base64:DykIILG50laGHJBYv78MSCx+LEahCgMxYsSPpqPSgOM=
       APP_DEBUG: true
-      APP_URL: https://modvets-dev2.london.cloudapps.digital
+      APP_URL: https://modvets-uat.london.cloudapps.digital
       LOG_CHANNEL: stack
       LOG_LEVEL: debug
       SESSION_DRIVER: database

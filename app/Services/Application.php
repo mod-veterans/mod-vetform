@@ -7,10 +7,12 @@ namespace App\Services;
 use App\Services\Forms\BaseGroup;
 use App\Services\Forms\BasePage;
 use App\Services\Forms\BaseTask;
+use DateTime;
 use Exception;
 use Illuminate\Http\Client\HttpClientException;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 /**
  * Class Application
@@ -70,16 +72,22 @@ class Application
         $formName = session('form');
         $formParts = explode('\\', $formName);
 
-        $reference = strtoupper(end($formParts)) . '/' . time();
+        $reference = 'WPS/' . strtoupper(end($formParts)) . '/' . time();
         session(['application-reference' => $reference]);
-        return strtoupper(end($formParts)) . '/' . time();
+        return 'WPS/' . strtoupper(end($formParts)) . '/' . time();
     }
 
+    /**
+     * @param $stackId
+     */
     public function trackStackId($stackId)
     {
         $this->_trackStackId = $stackId;
     }
 
+    /**
+     * @return string|null
+     */
     public function getTrackStackId()
     {
         return $this->_trackStackId ?? null;
@@ -104,26 +112,24 @@ class Application
                             foreach ($questions as $question) {
                                 if ($question['component'] !== 'hidden-field') {
                                     $reply = session($question['options']['field'], null);
-                                    $label = $question['options']['label'];
+                                    $label = $question['options']['label'] ?? '';
                                     $component = $question['component'];
 
-//                                    if($question['options']['field'] === 'afcs/about-you/personal-details/pension-scheme/pension-scheme') {
-//                                        ;
-//                                    }
+                                    if ($component !== 'hidden-field') {
+                                        if (session($question['options']['field'], null)) {
+                                            if ($component == 'date-field') {
+                                                $reply = $this->formatDateResponse($reply);
+                                            }
 
-                                    if (session($question['options']['field'], null)) {
-                                        if ($component == 'date-field') {
-                                            $reply = Carbon::createFromFormat('Y-m-d', $reply)->format('j F Y');
-                                        }
-
-                                        if ($component !== 'file-upload') {
-                                            if($component === 'checkbox-group') {
-                                                $responses[$task->name][$page->name][$label] = join(', ', $reply);
-                                            } else {
-                                                if (sizeof($questions) === 1) {
-                                                    $responses[$task->name][$page->name] = $reply;
+                                            if ($component !== 'file-upload') {
+                                                if ($component === 'checkbox-group') {
+                                                    $responses[$task->name][$page->name][$label] = join(', ', $reply);
                                                 } else {
-                                                    $responses[$task->name][$page->name][$label] = $reply;
+                                                    if (sizeof($questions) === 1) {
+                                                        $responses[$task->name][$page->name] = $reply;
+                                                    } else {
+                                                        $responses[$task->name][$page->name][$label] = $reply;
+                                                    }
                                                 }
                                             }
                                         }
@@ -134,22 +140,23 @@ class Application
                             if (sizeof($task->stack) > 0) {
                                 foreach ($task->stack as $stackId => $stackItem) {
                                     $mnemonic = $task->renderMnemonic($stackItem);
+                                    $mnemonic .= ' ' . $stackId;
 
                                     foreach ($stackItem as $fieldname => $response) {
-                                        // dd($fieldname);
-
                                         $question = $this->getQuestionByFieldname($fieldname);
-                                        $label = $question['options']['label'];
+                                        $label = $question['options']['label'] ?? 'PIFFLE';
                                         $component = $question['component'];
 
                                         if ($component === 'fileUpload') {
                                             $responses[$task->name][$page->name][] = Storage::url('uploads/' . $response['filename']);
                                         } else {
                                             if ($component == 'date-field') {
-                                                $response = Carbon::createFromFormat('Y-m-d', $response)->format('j F Y');
+                                                $response = $this->formatDateResponse($response);
                                             }
 
-                                            $responses[$task->name][$mnemonic][$label] = (is_array($response)) ? join(', ', $response) : $response;
+                                            if ($component != 'hidden-field') {
+                                                $responses[$task->name][$mnemonic][$label] = (is_array($response)) ? join(', ', $response) : $response;
+                                            }
                                         }
                                     }
                                 }
@@ -161,69 +168,6 @@ class Application
                 }
             }
         }
-
-        return $responses;
-
-        /** @var BaseGroup $group */
-        foreach ($this->_form->groups() as $group) {
-            foreach ($group->tasks as $task) {
-                if (!key_exists($task->name, $responses)) {
-                    $responses[$task->name] = [];
-                }
-
-                if ($task->isStackable()) {
-                    if (sizeof($task->stack) > 0) {
-                        foreach ($task->stack as $stack) {
-                            foreach ($task->pages as $page) {
-                                if (isset($page['page'])) {
-                                    $page = $page['page'];
-                                    if ($page instanceof BasePage) {
-                                        foreach ($page->questions as $question) {
-                                            if ($question['component'] !== 'file-upload') {
-                                                if ($question['component'] !== 'hidden-field') {
-                                                    if (array_key_exists('label', $question['options'])) {
-                                                        $responses[$task->name][$task->renderMnemonic($stack)][$page->name][$question['options']['label']] = $stack[$question['options']['field']] ?? 'Unanswered';
-                                                    } else {
-                                                        $responses[$task->name][$task->renderMnemonic($stack)][$page->name][$question['options']['label']] = $stack[$question['options']['field']] ?? 'Unanswered';
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    /** @var BasePage $page */
-                    foreach ($task->pages as $page) {
-                        if (isset($page['page'])) {
-                            $page = $page['page'];
-                            if ($page instanceof BasePage) {
-                                if (sizeof($page->questions) > 1) {
-                                    foreach ($page->questions as $question) {
-                                        if ($question['component'] !== 'file-upload') {
-                                            if ($question['component'] !== 'hidden-field') {
-                                                $responses[$task->name][$page->name][$question['options']['label']] = session($question['options']['field'], 'Not answered');
-                                            }
-                                        }
-                                    }
-                                } else {
-                                    $question = $page->questions[array_key_first($page->questions)];
-                                    if ($question['component'] !== 'file-upload') {
-                                        if ($question['component'] !== 'hidden-field') {
-                                            $responses[$task->name][$page->name] = session($question['options']['field'], 'Not answered');
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        array_shift($responses);
 
         return $responses;
     }
@@ -263,21 +207,14 @@ class Application
      */
     public function getGroupByNamespace($namespace)
     {
-        //  dd($this->_form->groups());
         $names = [];
 
         foreach ($this->_form->groups() as $group) {
             array_push($names, $group->namespace);
         }
-        //dd($names);
-//            if ($group->namespace == $namespace) {
-//                return $group;
-//            }
-//        }
 
         return null;
     }
-
 
     /**
      * Pass the namespace for a task and get the Group it belongs to
@@ -330,6 +267,10 @@ class Application
         return null;
     }
 
+    /**
+     * @param $fieldname
+     * @return mixed
+     */
     public function getQuestionByFieldname($fieldname)
     {
         foreach ($this->_form->groups() as $group) {
@@ -349,6 +290,10 @@ class Application
         }
     }
 
+    /**
+     * @param $field
+     * @return mixed|null
+     */
     public function getGroupFromField($field)
     {
         foreach ($this->_form->groups() as $group) {
@@ -372,6 +317,10 @@ class Application
         return null;
     }
 
+    /**
+     * @param $field
+     * @return mixed|null
+     */
     public function getTaskFromField($field)
     {
         foreach ($this->_form->groups() as $group) {
@@ -395,6 +344,10 @@ class Application
         return null;
     }
 
+    /**
+     * @param $field
+     * @return BasePage|null
+     */
     public function getPageFromField($field)
     {
         foreach ($this->_form->groups() as $group) {
@@ -450,7 +403,6 @@ class Application
                                 return $task;
                             }
                         } catch (Exception $e) {
-                            // dd($page);
                         }
                     }
                 }
@@ -510,7 +462,6 @@ class Application
                         if ($stack) {
                             foreach ($stack as $fieldName => $fieldValue) {
                                 if ($fieldName == $field && request('stack') == $stackID) {
-
                                     return $fieldValue;
                                 }
                             }
@@ -522,7 +473,6 @@ class Application
                         foreach ($page['page']->questions ?? [] as $question) {
                             //  dump($question['options']['field'] . ' :: ' . $field);
                         }
-                        // dd($page);
                     }
                 }
             }
@@ -530,6 +480,28 @@ class Application
 
         return null;
     }
+
+    /**
+     * @param $response
+     * @return string
+     */
+    public function formatDateResponse($response)
+    {
+        list($year, $month, $day) = explode('-', $response);
+        $dateResponse = [];
+        if ($year == '0000' || $month == '00' || $day == '00') {
+            if ($day !== '00') array_push($dateResponse, $day);
+
+            array_push($dateResponse,
+                ($month !== '00') ? (DateTime::createFromFormat('!m', $month))->format('F')
+                    : (($day !== '00') ? 'Unknown month' : false));
+
+            if ($year !== '0000') array_push($dateResponse, $year);
+        }
+
+        return (sizeof($dateResponse) > 0) ? trim(join(' ', $dateResponse)) : 'Not answered';
+    }
+
 
     /**
      * @param $value

@@ -10,6 +10,7 @@
     "require": {
         "php": ">=7.4",
         "ext-calendar": "*",
+        "ext-curl": "*",
         "ext-dom": "*",
         "ext-json": "*",
         "ext-pdo": "*",
@@ -23,7 +24,7 @@
         "laravel/tinker": "^2.5",
         "league/flysystem-aws-s3-v3": "~1.0",
         "predis/predis": "^1.1",
-        "ext-curl": "*"
+        "sentry/sentry-laravel": "^2.7"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

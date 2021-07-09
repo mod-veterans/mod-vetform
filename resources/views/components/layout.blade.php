@@ -66,5 +66,14 @@
 
 @include('partials.footer')
 @stack('scripts')
+
+<script async src="imageproxy?token=214e4cc2a2c4dfbc30b45fbad04f260cd18cd6b368bd9d50a63445436803121d&url=https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS') }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ env('GOOGLE_ANALYTICS') }}');
+</script>
+
 </body>
 </html>

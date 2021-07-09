@@ -194,6 +194,7 @@ class FormController extends Controller
                 $reference_number = Application::getInstance()->getReference();
                 $responses = Application::getInstance()->collateResponses();
 
+//                dd($responses);
                 $content = [];
                 foreach ($responses as $section => $pages) {
                     array_push($content, '# ' . $section);
@@ -206,6 +207,7 @@ class FormController extends Controller
                                     array_push($content, $question . ': ' . $response);
                                 }
                             }
+                            array_push($content, str_repeat('&mdash;', 28));
                         } else {
                             array_push($content, $page . ': ' . $reply);
                         }
@@ -214,32 +216,50 @@ class FormController extends Controller
                     array_push($content, '');
                 }
 
-                $content = join("\n", $content);
-                //dd($content);
+
+                $content = trim(join("\n", $content));
 
                 if (session('form') == 'App\Services\Forms\Afcs\Afcs') {
 
-                    Notify::getInstance()
-                        ->setData([
-                            'reference_number' => $reference_number,
-                            'content' => $content
-                        ])
-                        ->sendEmail('toby@codesure.co.uk', env('NOTIFY_CLAIM_SUBMITTED'))
-                        ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
-                        ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
-                        ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+                    if(request()->getHttpHost() == 'modvets-dev2.london.cloudapps.digital') {
+                        Notify::getInstance()
+                            ->setData([
+                                'reference_number' => $reference_number,
+                                'content' => $content
+                            ])
+                            ->sendEmail('toby@codesure.co.uk', env('NOTIFY_CLAIM_SUBMITTED'))
+                            ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
+                            ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
+                            ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 
-                    Notify::getInstance()
-                        ->setData([
-                            'reference_number' => $reference_number,
-                            'content' => $content
-                        ])
-                        ->sendEmail('toby@codesure.co.uk', env('NOTIFY_USER_CONFIRMATION'))
-                        ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
-                        ->sendEmail(session('afcs/about-you/personal-details/email-address/email-address', 'toby@codesure.co.uk'), env('NOTIFY_USER_CONFIRMATION'))
-                        ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
-                        ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+                        Notify::getInstance()
+                            ->setData([
+                                'reference_number' => $reference_number,
+                                'content' => $content
+                            ])
+                            ->sendEmail('toby@codesure.co.uk', env('NOTIFY_USER_CONFIRMATION'))
+                            ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
+                            ->sendEmail(session('afcs/about-you/personal-details/email-address/email-address', 'toby@codesure.co.uk'), env('NOTIFY_USER_CONFIRMATION'))
+                            ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
+                            ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+                    } else {
+                        Notify::getInstance()
+                            ->setData([
+                                'reference_number' => $reference_number,
+                                'content' => $content
+                            ])
+                            ->sendEmail('DBSVets-Modernisation-ContactUs@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+
+                        Notify::getInstance()
+                            ->setData([
+                                'reference_number' => $reference_number,
+                                'content' => $content
+                            ])
+                            ->sendEmail(session('afcs/about-you/personal-details/email-address/email-address', 'DBSVets-Modernisation-ContactUs@mod.gov.uk'), env('NOTIFY_USER_CONFIRMATION'));
+                    }
+
                 }
+
                 return redirect()->route('application.complete');
             }
 
@@ -284,6 +304,16 @@ class FormController extends Controller
             return redirect()->route('add.stack', ['stack' => $this->_task->namespace]);
         }
 
+        if (request('redirect')) {
+            if ($this->_task->hasSummary) {
+                return redirect()->route('summarise.form', [
+                    'group' => request('group'),
+                    'task' => request('task'),
+                    'stack' => request('stack')
+                ]);
+            }
+        }
+
         return redirect()->route('load.form', [
             'group' => request('group'),
             'task' => request('task'),
@@ -300,12 +330,18 @@ class FormController extends Controller
         return view('cancel-application');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function cancelConfirmation()
     {
         session()->flush();
         return redirect()->route('start');
     }
 
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|Factory|View
+     */
     public function complete()
     {
         $form = session('form');

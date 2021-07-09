@@ -27,12 +27,24 @@ class ClaimIllnessConditionChemicalExposure extends BasePage
                 ],
             ],
             [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/exposure-date-year',
+                    'validation' => [
+                        'required',
+                    ],
+                    'messages' => [
+                        'required' => 'Enter a year, even if it’s approximate',
+                    ],
+                ],
+            ],
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/exposure-date',
                     'label' => 'Date you were first exposed to these?',
-                    'hint' => 'If unknown give approx date. For example, 27 3 2007',
-                    'validation' => 'nullable|date',
+                    'hint' => 'If unknown give approx date. For example, 27 3 2007. If you can’t remember, enter an approximate year',
+                    // 'validation' => 'nullable|date',
                     'messages' => [
                         'date' => 'Enter the date your were exposed to the substance',
                     ],

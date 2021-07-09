@@ -4,6 +4,7 @@
 namespace App\Services\Forms\Afcs\Groups\OtherDetails;
 
 
+use App\Services\Application;
 use App\Services\Constant;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits\OtherPaymentDates;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits\OtherPaymentDetails;
@@ -33,6 +34,14 @@ class OtherBenefits extends BaseTask
                 'page' => new ReceivingPayments($this->namespace),
                 'next' => function () {
                     $field = $this->pages['other-payment-details']['page']->questions[0]['options']['field'];
+
+                    if(session($field, null) == Constant::NO) {
+                        session()->forget([
+                            '/other-benefits/other-payment-dates/service-discharge-reason',
+                            '/other-benefits/other-payment-dates/diffuse-mesothelioma-2014-scheme',
+                            '/other-benefits/other-payment-dates/diffuse-mesothelioma-2008-scheme'
+                        ]);
+                    }
 
                     return session($field, null) == Constant::YES ? 'other-payment-dates' : null;
                 },

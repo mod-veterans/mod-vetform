@@ -14,13 +14,25 @@ class ClaimAccidentSportingDate extends BasePage
     function setQuestions(): void
     {
         $this->_questions = [
-            0 => [
+            [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/date-of-injury-incident-year',
+                    'validation' => [
+                        'required',
+                    ],
+                    'messages' => [
+                        'required' => 'Enter a year, even if it’s approximate',
+                    ],
+                ],
+            ],
+             [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/date-of-injury-incident',
                     'label' => 'What was the date of injury/incident?',
-                    'hint' => 'For example 27 3 2007',
-                    'validation' => 'nullable|date',
+                    'hint' => 'For example 27 3 2007. If you can’t remember, enter an approximate year.',
+                    // 'validation' => 'nullable|date',
                     'messages' => [
                         'required' => 'Enter the date of injury/incident?',
                         'date' => 'Enter the date of injury/incident?',

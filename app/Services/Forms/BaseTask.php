@@ -7,6 +7,7 @@ namespace App\Services\Forms;
 use App\Services\Application;
 use App\Services\Constant;
 use Closure;
+use DateTime;
 use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
@@ -209,6 +210,7 @@ abstract class BaseTask
                         return self::STATUS_COMPLETED;
                     }
                 }
+
                 return self::STATUS_NOT_STARTED;
             } else {
                 foreach ($this->stack as $stackID => $stackItem) {
@@ -221,20 +223,34 @@ abstract class BaseTask
                             $questions = $page['page']->questions;
 
                             if (sizeof($questions) > 0) {
+
                                 foreach ($questions as $question) {
                                     $options = $question['options'];
                                     $field = $options['field'];
-                                    $validation = explode('|', $options['validation'] ?? '');
+                                    $validation = is_array($options['validation'] ?? []) ?
+                                        $options['validation'] ?? [] :
+                                        explode('|', $options['validation'] ?? '');
                                     $isRequired = in_array('required', $validation);
 
+
+//                                    if ($this->_namespace === '/other-medical-treatment') {
+//                                        dd($this->isStackable(), $this->stack, $questions, $stackItem, $field);
+//                                    }
                                     if ($isRequired) {
+
+
                                         $value = $stackItem[$field] ?? null;
                                         if (is_null($value)) {
                                             if ($pageIndex === 0) {
 //                                                if ($this->_namespace === '/other-medical-treatment') {
 //                                                    dd(__LINE__, $validation, $questions, $stackItem, $stackID, $this->stack);
 //                                                }
-                                                return self::STATUS_NOT_STARTED;
+
+                                                if ($this->_namespace !== '/other-medical-treatment') {
+                                                    return self::STATUS_NOT_STARTED;
+                                                } elseif ($field == '/treatment-status/treatment-status' && session($field) === Constant::NO) {
+                                                    return self::STATUS_COMPLETED;
+                                                }
                                             } else {
                                                 return self::STATUS_IN_PROGRESS;
                                             }
@@ -242,6 +258,7 @@ abstract class BaseTask
                                     }
                                 }
                             }
+
 
                             $pageIndex = $this->nextPageIndex($pageIndex);
                         } while (!is_null($pageIndex));
@@ -267,7 +284,9 @@ abstract class BaseTask
                     foreach ($questions as $question) {
                         $options = $question['options'];
                         $field = $options['field'];
-                        $validation = explode('|', $options['validation'] ?? '');
+                        $validation = is_array($options['validation'] ?? []) ?
+                            $options['validation'] ?? [] :
+                            explode('|', $options['validation'] ?? '');
                         $isRequired = in_array('required', $validation);
 
                         if ($isRequired) {
@@ -328,45 +347,40 @@ abstract class BaseTask
                 }
 
                 if (!is_null($response)) {
-                    if ($component == 'date-field') {
-                        $response = Carbon::createFromFormat('Y-m-d', $response)->format('j F Y');
-                    }
+                    if ($component !== 'hidden-field') {
+                        if ($component == 'date-field') {
+                            $response = Application::getInstance()->formatDateResponse($response);
+                        }
 
-                    try {
-                        // Half a chance the $field element will not be present
-                        // list($form, $group, $task, $page) = explode('/', $field);
+                        $group = Application::getInstance()->getGroupFromField($field);
+                        $task = Application::getInstance()->getTaskFromField($field);
+                        $page = Application::getInstance()->getPageFromField($field);
 
-                    } catch (Exception $e) {
-                    }
+                        try {
+                            array_push($responses, [
+                                'label' => $options['label'] ?? '',
+                                'value' => $response,
+                                'change' => $options['label'] ?? '',
+                                'route' => route('update.form', [
+                                    'group' => $group->getId(),
+                                    'task' => $task->getId(),
+                                    'page' => $page->getId(),
+                                    'question' => $question['options']['field'],
+                                    'stack' => Application::getInstance()->trackStackId ?? '',
+                                ])
+                            ]);
 
-                    $group = Application::getInstance()->getGroupFromField($field);
-                    $task = Application::getInstance()->getTaskFromField($field);
-                    $page = Application::getInstance()->getPageFromField($field);
+                        } catch (Exception $e) {
+                            dd(__LINE__, $e->getMessage());
 
-                    try {
-                        array_push($responses, [
-                            'label' => $options['label'] ?? '',
-                            'value' => $response,
-                            'change' => $options['label'] ?? '',
-                            'route' => route('update.form', [
-                                'group' => $group->getId(),
-                                'task' => $task->getId(),
-                                'page' => $page->getId(),
+                            dd([
+                                'group' => $group->namespace,
+                                'task' => $task->namespace,
+                                'page' => $page->namespace,
                                 'question' => $question['options']['field'],
-                                'stack' => Application::getInstance()->trackStackId ?? '',
-                            ])
-                        ]);
-//                        dd(__FILE__, __LINE__, $responses, $task, $field);
-                    } catch (Exception $e) {
-                        dd(__LINE__, $e->getMessage());
-
-                        dd([
-                            'group' => $group->namespace,
-                            'task' => $task->namespace,
-                            'page' => $page->namespace,
-                            'question' => $question['options']['field'],
-                            'stack' => Application::getInstance()->trackStackId,
-                        ]);
+                                'stack' => Application::getInstance()->trackStackId,
+                            ]);
+                        }
                     }
                 }
             }

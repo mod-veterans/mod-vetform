@@ -18,7 +18,7 @@ class UnitAddress extends BasePage
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'your');
+        $address = new Address($this->namespace, 'your', false, '', ['label' => ['address-line-1' => 'Base, Building and Street',]]);
         $this->_questions = array_merge($address->fields());
     }
 }

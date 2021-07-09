@@ -19,7 +19,7 @@ class OtherPaymentDates extends BasePage
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/service-discharge-reason',
+                    'field' => $this->namespace . '/diffuse-mesothelioma-2014-scheme',
                     'label' => 'Diffuse Mesothelioma 2014 Scheme',
                     'validation' => 'max:100',
 //                    'messages' => [
@@ -30,7 +30,7 @@ class OtherPaymentDates extends BasePage
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/service-discharge-reason',
+                    'field' => $this->namespace . '/diffuse-mesothelioma-2008-scheme',
                     'label' => 'Diffuse Mesothelioma 2008 Scheme',
                     'validation' => 'max:100',
 //                    'messages' => [
@@ -41,7 +41,7 @@ class OtherPaymentDates extends BasePage
             [
                 'component' => 'textfield',
                 'options' => [
-                    'field' => $this->namespace . '/service-discharge-reason',
+                    'field' => $this->namespace . '/the-workers-compensation-1979-pneumoconiosis-act',
                     'label' => 'The Workers Compensation 1979 Pneumoconiosis Act',
                     'validation' => 'max:100',
 //                    'messages' => [

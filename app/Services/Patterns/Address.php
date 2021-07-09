@@ -40,7 +40,7 @@ class Address
                 'component' => 'textfield',
                 'options' => [
                     'field' => $this->namespace . '/' . $this->namespacePrefix . 'address-line-1',
-                    'label' => 'Building and street',
+                    'label' => $this->options['label']['address-line-1'] ?? 'Building and street',
                     'labelExtra' => 'line 1 of 2',
                     'validation' => $this->optional ? 'required' : '',
                     'hint' => $this->options['hint']['address-line-1'] ?? '',

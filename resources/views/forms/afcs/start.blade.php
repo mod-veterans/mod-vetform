@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="title">
-        Claim an Armed Forces Compensation Scheme or War Pension payment
+        Apply for an Armed Forces Compensation or War Pension Payment
     </x-slot>
     <x-slot name="body">
         <p class="govuk-body">You can use this service to claim for an Armed Forces Compensation Scheme (AFCS) or a War
@@ -13,7 +13,6 @@
             conditions you are claiming for. It will help if you have information ready about the dates you served;
             medical treatment you have received; GP/MO and hospital details; details of other benefits or compensation
             you have received and your bank account information (not required for those still serving).</p>
-
 
         <h3>Please note:</h3>
         <p class="govuk-body">We don't need you to get any new information you do not already have. We can't refund any
@@ -47,6 +46,7 @@
                 </a>
             </div>
 
+            {{--
             <div style="align-content: center; flex: 1">
                 <div style="text-align: center">
                     <h3>
@@ -58,6 +58,7 @@
                     </a>
                 </div>
             </div>
+            --}}
         </div>
 
         <h2>Help with making a claim</h2>

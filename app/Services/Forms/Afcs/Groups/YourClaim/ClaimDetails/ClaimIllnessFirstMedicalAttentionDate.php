@@ -13,18 +13,30 @@ class ClaimIllnessFirstMedicalAttentionDate extends BasePage
     function setQuestions(): void
     {
         $this->_questions = [
-            0 => [
+            [
+                'component' => 'hidden-field',
+                'options' => [
+                    'field' => $this->namespace . '/claim-surgery-treatment-date-year',
+                    'validation' => [
+                        'required',
+                    ],
+                    'messages' => [
+                        'required' => 'Enter a year, even if it’s approximate',
+                    ],
+                ],
+            ],
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/claim-surgery-treatment-date',
                     'label' => 'When did you first seek medical attention for the condition(s)?',
-                    'hint' => 'For example 27 3 2007',
+                    'hint' => 'For example 27 3 2007. If you can’t remember, enter an approximate year.',
                     'hideLabel' => true,
-                    'validation' => 'required|date|before:today',
+                    // 'validation' => 'required|date|before:today',
                     'messages' => [
-                        'required' => 'Enter your date this surgery is due',
-                        'date' => 'Enter your date this surgery is due',
-                        'before' => 'Enter your date before today\'s date',
+                        'required' => 'Enter your date when you first sought medical attention for the condition(s)',
+                        'date' => 'Enter your date when you first sought medical attention for the condition(s)',
+                        'before' => 'Enter a date before today\'s date',
                     ],
                 ],
             ],
