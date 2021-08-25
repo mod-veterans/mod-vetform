@@ -49,8 +49,13 @@ class Notify
         return $this;
     }
 
-    public function sendSms($data)
+    public function sendSms($mobileNumber, $templateID)
     {
+        $this->client->sendSms(
+            $mobileNumber, $templateID, $this->data
+        );
+
+        return $this;
     }
 
     public function sendEmail($emailAddress, $templateID)

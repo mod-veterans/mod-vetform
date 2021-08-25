@@ -20,6 +20,7 @@ class ClaimPaymentDate extends BasePage
                     'field' => $this->namespace . '/claim-payment-date-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y')
                     ],
                     'messages' => [
                         'required' => 'Enter a year, even if it’s approximate',

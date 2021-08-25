@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Services\Application;
+use App\Services\Forms\BaseForm;
 use App\Services\Forms\BasePage;
 use App\Services\Forms\BaseTask;
 use App\Services\Notify;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\Request;
@@ -42,6 +44,11 @@ class FormController extends Controller
     private $_stackingPage = false;
 
     /**
+     * @var Application
+     */
+    private $_application;
+
+    /**
      * @param string $method
      * @param array $parameters
      * @return Response
@@ -51,7 +58,8 @@ class FormController extends Controller
         $form = app_path() . '/Forms/' . request('form', null);
         if ($form) $this->formName = request('form', null);
 
-        $form = Application::getInstance()->form;
+        $this->_application = Application::getInstance();
+        $form = $this->_application->form;
         $group = request('group', null);
         $task = request('task', null);
         $page = request('page', null);
@@ -194,7 +202,6 @@ class FormController extends Controller
                 $reference_number = Application::getInstance()->getReference();
                 $responses = Application::getInstance()->collateResponses();
 
-//                dd($responses);
                 $content = [];
                 foreach ($responses as $section => $pages) {
                     array_push($content, '# ' . $section);
@@ -216,49 +223,27 @@ class FormController extends Controller
                     array_push($content, '');
                 }
 
-
                 $content = trim(join("\n", $content));
+                $system_email = explode('|', env('SYSTEM_EMAIL_ADDRESS', ''));
 
-                if (session('form') == 'App\Services\Forms\Afcs\Afcs') {
+                $storedSessionQuery = DB::table('stored_sessions');
+                $storeResponseIdentifier = Application::getInstance()->form->identifier ?? [];
 
-                    if(request()->getHttpHost() == 'modvets-dev2.london.cloudapps.digital') {
-                        Notify::getInstance()
-                            ->setData([
-                                'reference_number' => $reference_number,
-                                'content' => $content
-                            ])
-                            ->sendEmail('toby@codesure.co.uk', env('NOTIFY_CLAIM_SUBMITTED'))
-                            ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
-                            ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'))
-                            ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-
-                        Notify::getInstance()
-                            ->setData([
-                                'reference_number' => $reference_number,
-                                'content' => $content
-                            ])
-                            ->sendEmail('toby@codesure.co.uk', env('NOTIFY_USER_CONFIRMATION'))
-                            ->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
-                            ->sendEmail(session('afcs/about-you/personal-details/email-address/email-address', 'toby@codesure.co.uk'), env('NOTIFY_USER_CONFIRMATION'))
-                            ->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'))
-                            ->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
-                    } else {
-                        Notify::getInstance()
-                            ->setData([
-                                'reference_number' => $reference_number,
-                                'content' => $content
-                            ])
-                            ->sendEmail('DBSVets-Modernisation-ContactUs@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-
-                        Notify::getInstance()
-                            ->setData([
-                                'reference_number' => $reference_number,
-                                'content' => $content
-                            ])
-                            ->sendEmail(session('afcs/about-you/personal-details/email-address/email-address', 'DBSVets-Modernisation-ContactUs@mod.gov.uk'), env('NOTIFY_USER_CONFIRMATION'));
-                    }
-
+                foreach ($storeResponseIdentifier as $identifier) {
+                    $storedSessionQuery->where('identifier->' . $identifier, strtolower(session($identifier)));
                 }
+
+                $stored_session = $storedSessionQuery->first();
+                $notification = Notify::getInstance()
+                    ->setData([
+                        'reference_number' => $reference_number, 'content' => $content]);
+
+                foreach($system_email as $email) {
+                    $notification->sendEmail($email, env('NOTIFY_CLAIM_SUBMITTED'));
+                    $notification->sendEmail($email, env('NOTIFY_USER_CONFIRMATION'));
+                }
+
+                $notification->sendEmail(session($this->_application->form->userEmail,'noreply@example.com'), env('NOTIFY_USER_CONFIRMATION'));
 
                 return redirect()->route('application.complete');
             }
@@ -296,7 +281,6 @@ class FormController extends Controller
                 ]);
             }
 
-
             return redirect()->route('home');
         }
 
@@ -304,7 +288,7 @@ class FormController extends Controller
             return redirect()->route('add.stack', ['stack' => $this->_task->namespace]);
         }
 
-        if (request('redirect')) {
+        if (request('redirect') && $this->_task->status === BaseTask::STATUS_COMPLETED) {
             if ($this->_task->hasSummary) {
                 return redirect()->route('summarise.form', [
                     'group' => request('group'),
@@ -346,9 +330,12 @@ class FormController extends Controller
     {
         $form = session('form');
         $applicationReference = session('application-reference');
-        session()->flush();
-        session(['form' => $form]);
-        session(['application-reference' => $applicationReference]);
+
+        // DB::table('stored_sessions')->where('identifier', '')
+
+//        session()->flush();
+//        session(['form' => $form]);
+//        session(['application-reference' => $applicationReference]);
 
         if (view()->exists('forms.' . Application::getInstance()->form->getId() . '.complete')) {
             $view = 'forms.' . Application::getInstance()->form->getId() . '.complete';

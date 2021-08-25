@@ -27,7 +27,11 @@ class Document extends BasePage
                     'field' => $this->namespace . '/file',
                     'label' => 'Upload file',
                     'hideLabel' => true,
-                    'validation' => 'required|file',
+                    'validation' => 'required|file|mimes:jpeg,jpg,png,docx,pdf|max:5000',
+                    'messages' => [
+                        'mimes' => 'Upload a permitted file type.',
+                        'max' => 'Maximum upload is 5Mb.',
+                    ]
                 ]
             ]
         ];

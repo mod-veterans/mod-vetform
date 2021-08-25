@@ -7,6 +7,7 @@ use App\Http\Controllers\GdsLoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\StackController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,7 +20,22 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/migrate', function() { return Artisan::call('migrate'); });
 Route::get('/stack/skip', [StackController::class, 'skip'])->name('skip.stack');
+Route::get('/restore-application', [ProgressController::class, 'restore'])->name('restore-application');
+Route::post('/restore-application', [ProgressController::class, 'confirm'])->name('restore-application');
+Route::get('/restore-application/two-factor-sms', [ProgressController::class, 'authcode'])->name('restore-application-2fa');
+Route::post('/restore-application/two-factor-sms', [ProgressController::class, 'authenticate'])->name('restore-application-2fa');
+Route::get('/text-not-receive', function() {
+    $form  = App\Services\Application::getInstance()->form;
+    $view = 'text-not-received';
+    if (view()->exists('forms.' . $form->getId() . '.' . $view)) {
+        $view = 'forms.' . $form->getId() . '.' . $view;
+    }
+
+    return view($view);
+})->name('text-not-received');
+Route::post('/text-not-receive', [ProgressController::class, 'resend'])->name('text-not-received');
 
 
 Route::get('/gds-test', [GdsLoginController::class, 'index'])->name('gds');

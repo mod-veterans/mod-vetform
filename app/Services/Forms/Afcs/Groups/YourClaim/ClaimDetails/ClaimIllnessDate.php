@@ -20,6 +20,7 @@ class ClaimIllnessDate extends BasePage
                     'field' => $this->namespace . '/date-of-condition-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y'),
                     ],
                     'messages' => [
                         'required' => 'Enter a year, even if it’s approximate',

@@ -14,7 +14,7 @@ class ClaimSolicitorDetails extends BasePage
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'their', false,  'claim-solicitor', []);
+        $address = new Address($this, 'their', false,  'claim-solicitor', []);
         $this->_questions = array_merge([
             [
                 'component' => 'textfield',

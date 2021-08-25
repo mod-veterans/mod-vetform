@@ -6394,3 +6394,37 @@ body .govuk-form-group--error .autocomplete__input:focus, html .govuk-form-group
     margin-bottom: 0;
   }
 }
+
+#global-cookie-message {
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+
+.gem-c-cookie-banner__confirmation-message:focus {
+  border: none;
+}
+
+.govuk-hide-button {
+  float: right;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
+  border: none;
+  outline: none;
+  font-family: "GDS Transport", arial, sans-serif;
+}
+.govuk-hide-button :focus {
+  border: none;
+  outline: none;
+}
+
+.govuk-cookie-message__accepted {
+  display: none;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  outline: none;
+  overflow: hidden;
+}
+.govuk-cookie-message__accepted .govuk-body {
+  float: left;
+  margin: 0;
+}

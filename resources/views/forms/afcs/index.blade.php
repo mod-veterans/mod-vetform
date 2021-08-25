@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot name="title">Apply for the Armed Forces Compensation Scheme</x-slot>
+    <x-slot name="title">Apply for an armed forces or war pension payment</x-slot>
     <x-slot name="body">
         <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{ groups_task_complete_count() }}
@@ -22,6 +22,9 @@
                                     </a>
                                     @else
                                         @if(request()->getHttpHost() == 'localhost:8000'
+                                         || request()->getHttpHost() == 'localhost:8080'
+                                         || request()->getHttpHost() == '127.0.0.1:8000'
+                                         || request()->getHttpHost() == '127.0.0.1:8080'
                                          || request()->getHttpHost() == 'modvets-dev2.london.cloudapps.digital')
                                             <a href="/{{ $group->getId() }}/{{ $task->getId() }}" class="govuk-link"
                                                aria-describedby="eligibility-status">

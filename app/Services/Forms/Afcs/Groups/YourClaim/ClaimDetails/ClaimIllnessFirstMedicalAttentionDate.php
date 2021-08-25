@@ -19,6 +19,7 @@ class ClaimIllnessFirstMedicalAttentionDate extends BasePage
                     'field' => $this->namespace . '/claim-surgery-treatment-date-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y'),
                     ],
                     'messages' => [
                         'required' => 'Enter a year, even if it’s approximate',

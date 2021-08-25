@@ -12,7 +12,6 @@ class Application extends Model
 
     public $fillable = [];
 
-
     public function encyrypt($data = []) {
         return Crypt::encrypt($data);
     }

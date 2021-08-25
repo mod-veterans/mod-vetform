@@ -10,39 +10,34 @@
     $oldValue = old($field . '-' . $period, session($field. '-' . $period, stored_response($field. '-' . $period)));
 
     $fullDate = false;
-    if(!$oldValue) {
-        $fullDate = session($field, stored_response($field));
+    $day = '00';
+    $month = '00';
+    $year = '0000';
 
+    if(!$oldValue) {
+        $fullDate = session($field, stored_response($field, '0000-00-00'));
         if($fullDate) {
           list($year, $month, $day) = explode('-', $fullDate);
           if($day ==  '00') {
-            $day = null;
+            $day = false;
             $fullDate = false;
           }
           if($month ==  '00') {
-            $month = null;
+            $month = false;
             $fullDate = false;
           }
-          if($year ==  '00') {
-            $year = null;
+          if($year ==  '0000') {
+            $year = false;
             $fullDate = false;
           }
         }
+
+        $parts = ['day' => $day,'month' => $month, 'year' => $year];
+        $oldValue = ['day' => $day,'month' => $month, 'year' => $year][$period];
     }
 
-    if($fullDate) {
-      $date = \Carbon\Carbon::createFromFormat('Y-m-d', $fullDate);
-      $oldValue = [
-        'year' => $date->format('Y'),
-        'month' => $date->format('m'),
-        'day' => $date->format('d')
-      ][$period];
-    } else {
-         $oldValue = [
-        'year' => $year ?? null,
-        'month' => $month ?? null,
-        'day' => $day ?? null
-      ][$period];
+    if($oldValue == '00' || $oldValue == '0000') {
+      $oldValue = false;
     }
 
     $fieldId = !$hideLabel ? $field . '-' . $period : $field
@@ -67,7 +62,7 @@
     <script>
         document.getElementById('{{ $fieldId }}')
             .addEventListener('keydown', (e) => {
-                if (isNaN(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Enter'&& e.key !== 'Tab') {
+                if (isNaN(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight' && e.key !== 'Enter' && e.key !== 'Tab') {
                     e.preventDefault();
                 }
             })

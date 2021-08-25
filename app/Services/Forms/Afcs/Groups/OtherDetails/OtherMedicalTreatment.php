@@ -5,7 +5,11 @@ namespace App\Services\Forms\Afcs\Groups\OtherDetails;
 
 
 use App\Services\Constant;
+use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
 use App\Services\Forms\Afcs\Groups\MedicalTreatment;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentAddress;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentCondition;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherMedicalTreatment\OtherMedicalTreatmentEndDate;
@@ -25,7 +29,6 @@ class OtherMedicalTreatment extends BaseTask
 
     protected string $name = 'Other medical treatment';
     protected string $_title = 'Other medical treatment';
-    protected $_addStackLabel = 'Add a Medical Treatment';
 
     protected $_preTask = [
         [
@@ -38,6 +41,13 @@ class OtherMedicalTreatment extends BaseTask
         ],
     ];
 
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
+
     public function __construct($namespace)
     {
         $this->_stackTriggerPage = 0;
@@ -45,7 +55,21 @@ class OtherMedicalTreatment extends BaseTask
         $this->_stackTriggerAnswer = Constant::YES;
         $this->_stackSkipTriggerQuestion = true;
 
+        $this->mnemonic = 'Hospital';
+        $this->mnemonicCount = true;
+        $this->_addStackLabel = 'Add a Medical Treatment';
+        $this->_addSubsequentStackLabel = 'Add another Medical Treatment';
+
         parent::__construct($namespace);
+    }
+
+    public function __get($value)
+    {
+        if ($value == 'mnemonic') {
+            return 'Hospital';
+        } else {
+            return parent::__get($value);
+        }
     }
 
     /**

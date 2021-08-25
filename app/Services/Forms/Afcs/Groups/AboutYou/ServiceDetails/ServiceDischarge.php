@@ -31,6 +31,7 @@ class ServiceDischarge extends BasePage
                     'field' => $this->namespace . '/date-of-discharge-year',
                     'validation' => [
                         'required_if:'.$this->namespace . '/service-is-serving'.',' . Constant::NO,
+                        'max:' . date('Y')
                     ],
                     'messages' => [
                         'required_if' => 'Enter a year, even if it’s approximate',

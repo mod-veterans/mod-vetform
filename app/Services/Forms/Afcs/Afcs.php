@@ -30,14 +30,29 @@ class Afcs extends BaseForm
     /**
      * @var string
      */
-    protected string $name = 'Apply for an Armed Forces Compensation or War Pension Payment';
-
+//    protected string $name = 'Apply for an Armed Forces Compensation or War Pension Payment';
+    protected string $name = 'Apply for an armed forces or war pension payment';
 
     /**
      * @var string[]
      */
     protected $groups = [
     ];
+
+    /**
+     * @var array|string[]
+     */
+    protected array $_identifier = [
+        'afcs/about-you/personal-details/your-name/last-name',
+        'afcs/about-you/personal-details/date-of-birth/date-of-birth',
+        'afcs/about-you/personal-details/national-insurance/ni-number'
+    ];
+
+    protected string $_identifierEmail = 'afcs/about-you/personal-details/email-address/email-address';
+
+    protected string $_identifierMobile = 'afcs/about-you/personal-details/contact-number/mobile-number';
+
+    protected string $_userEmailField   = 'afcs/about-you/personal-details/email-address/email-address';
 
     public function __construct()
     {

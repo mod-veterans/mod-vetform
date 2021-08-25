@@ -55,7 +55,7 @@ class Application
     /**
      * @return Application|null
      */
-    public static function getInstance()
+    public static function getInstance(): Application
     {
         if (self::$instance === null) {
             self::$instance = new Application();
@@ -110,12 +110,20 @@ class Application
                     try {
                         if (!$task->isStackable()) {
                             foreach ($questions as $question) {
-                                if ($question['component'] !== 'hidden-field') {
+
+
+                                if ($question['component'] !== 'hidden-field' || strlen($question['options']['label'] ?? '') > 0) {
                                     $reply = session($question['options']['field'], null);
-                                    $label = $question['options']['label'] ?? '';
+
+                                    if(key_exists('summaryLabel', $question['options'])) {
+                                        $label = $question['options']['summaryLabel'];
+                                    } else {
+                                        $label = $question['options']['label'] ?? '';
+                                    }
+
                                     $component = $question['component'];
 
-                                    if ($component !== 'hidden-field') {
+                                    if ($component !== 'hidden-field' || strlen($label) > 0) {
                                         if (session($question['options']['field'], null)) {
                                             if ($component == 'date-field') {
                                                 $reply = $this->formatDateResponse($reply);
@@ -126,7 +134,12 @@ class Application
                                                     $responses[$task->name][$page->name][$label] = join(', ', $reply);
                                                 } else {
                                                     if (sizeof($questions) === 1) {
-                                                        $responses[$task->name][$page->name] = $reply;
+                                                        if ($component === 'checkbox') {
+                                                            $responses[$task->name][$question['options']['summaryLabel'] ?? $question['options']['label']] = $reply;
+                                                        } else {
+                                                            $responses[$task->name][$page->name] = $reply;
+                                                        }
+
                                                     } else {
                                                         $responses[$task->name][$page->name][$label] = $reply;
                                                     }
@@ -144,7 +157,7 @@ class Application
 
                                     foreach ($stackItem as $fieldname => $response) {
                                         $question = $this->getQuestionByFieldname($fieldname);
-                                        $label = $question['options']['label'] ?? 'PIFFLE';
+                                        $label = $question['options']['label'] ?? '';
                                         $component = $question['component'];
 
                                         if ($component === 'fileUpload') {
@@ -186,15 +199,11 @@ class Application
             foreach ($task->pages as $page) {
 
                 $page = $page['page'];
-
                 foreach ($page->questions as $question) {
-
                     if ($question['component'] == 'file-upload') {
                         array_push($responses, $question['options']['label'] . ': ' . session($question['options']['field']));
                     }
-
                 }
-
             }
         }
 
@@ -497,11 +506,12 @@ class Application
                     : (($day !== '00') ? 'Unknown month' : false));
 
             if ($year !== '0000') array_push($dateResponse, $year);
+        } else {
+            $dateResponse = explode('-', Carbon::createFromFormat('Y-m-d', $response)->format('d F Y'));
         }
 
         return (sizeof($dateResponse) > 0) ? trim(join(' ', $dateResponse)) : 'Not answered';
     }
-
 
     /**
      * @param $value

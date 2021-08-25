@@ -31,6 +31,7 @@ class OtherMedicalTreatmentStartDate extends \App\Services\Forms\BasePage
                     'field' => $this->namespace . '/medical-treatment-start-date-year',
                     'validation' => [
                         'required_unless:'.$this->namespace . '/medical-treatment-start-date-waiting-list'.',I am still on a waiting list to attend',
+                        'max:' . date('Y'),
                     ],
                     'messages' => [
                         'required_unless' => 'Enter a year, even if it’s approximate',

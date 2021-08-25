@@ -22,6 +22,7 @@ class ServiceEnlistmentDate extends BasePage
                     'field' => $this->namespace . '/enlistment-date-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y')
                     ],
                     'messages' => [
                         'required' => 'Enter a year, even if it’s approximate',
@@ -34,11 +35,6 @@ class ServiceEnlistmentDate extends BasePage
                     'field' => $this->namespace . '/enlistment-date',
                     'label' => 'Date of enlistment',
                     'hint' => 'For example 27 3 2007. If you can’t remember, enter an approximate year.',
-//                    'validation' => 'required|date',
-//                    'messages' => [
-//                        'required' => 'Enter your date of enlistment',
-//                        'date' => 'Enter your date of enlistment',
-//                    ],
                 ],
             ],
         ];

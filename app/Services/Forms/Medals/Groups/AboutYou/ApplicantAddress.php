@@ -15,7 +15,7 @@ class ApplicantAddress extends BaseTask
     {
         $this->_pages = [
             0 => [
-                'page' => new Address($this->namespace)
+                'page' => new Address($this)
             ]
         ];
     }

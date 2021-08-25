@@ -19,6 +19,7 @@ class ClaimDowngradedDates extends BasePage
                     'field' => $this->namespace . '/date-from-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y'),
                     ],
                     'messages' => [
                         'required' => 'Enter a date from year, even if it’s approximate',
@@ -44,6 +45,7 @@ class ClaimDowngradedDates extends BasePage
                     'field' => $this->namespace . '/date-to-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y'),
                     ],
                     'messages' => [
                         'required' => 'Enter a date to year, even if it’s approximate',

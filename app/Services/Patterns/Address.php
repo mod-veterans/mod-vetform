@@ -4,6 +4,8 @@
 namespace App\Services\Patterns;
 
 
+use App\Services\Forms\BasePage;
+
 class Address
 {
     private string $namespace;
@@ -12,21 +14,25 @@ class Address
 
     private string $possessive;
 
-    private bool $optional;
+    private bool $mandatory;
 
     private array $options;
 
-    public function __construct(string $namespace, string $possessive = 'your', bool $optional = false, string $namespacePrefix = '', $options = [])
+    public function __construct(BasePage $parent, string $possessive = 'your', bool $mandatory = false, string $namespacePrefix = '', $options = [])
     {
-        $this->namespace = $namespace;
+        $this->namespace = $parent->namespace;
         $this->possessive = $possessive;
-        $this->optional = $optional;
+        $this->mandatory = $mandatory;
         $this->options = $options;
 
         if ($namespacePrefix) {
             $this->namespacePrefix = $namespacePrefix . '__';
         } else {
             $this->namespacePrefix = '';
+        }
+
+        if(!$mandatory) {
+            $parent->appendToSummary('<p class="govuk-body">Enter details to your best knowledge. If you can\'t remember, you can leave blank any sections not marked "required".</p>');
         }
     }
 
@@ -42,7 +48,7 @@ class Address
                     'field' => $this->namespace . '/' . $this->namespacePrefix . 'address-line-1',
                     'label' => $this->options['label']['address-line-1'] ?? 'Building and street',
                     'labelExtra' => 'line 1 of 2',
-                    'validation' => $this->optional ? 'required' : '',
+                    'validation' => $this->mandatory ? 'required' : '',
                     'hint' => $this->options['hint']['address-line-1'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' building and street'
@@ -67,7 +73,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/' . $this->namespacePrefix . 'town',
                     'label' => 'Town or city',
-                    'validation' => $this->optional ? 'required' : '',
+                    'validation' => $this->mandatory ? 'required' : '',
                     'hint' => $this->options['hint']['town'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' town or city'
@@ -80,7 +86,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/' . $this->namespacePrefix . 'county',
                     'label' => 'County',
-                    'validation' => $this->optional ? 'required' : '',
+                    'validation' => $this->mandatory ? 'required' : '',
                     'hint' => $this->options['hint']['county'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' county'
@@ -93,7 +99,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/' . $this->namespacePrefix . 'country',
                     'label' => 'Country',
-                    'validation' => $this->optional ? 'required' : '',
+                    'validation' => $this->mandatory ? 'required' : '',
                     'hint' => $this->options['hint']['country'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' country'
@@ -106,7 +112,7 @@ class Address
                 'options' => [
                     'field' => $this->namespace . '/' . $this->namespacePrefix . 'postcode',
                     'label' => 'Postcode',
-                    'validation' => $this->optional ? 'required' : '',
+                    'validation' => $this->mandatory ? 'required' : '',
                     'hint' => $this->options['hint']['postcode'] ?? '',
                     'messages' => [
                         'required' => 'Enter ' . $this->possessive . ' postcode'

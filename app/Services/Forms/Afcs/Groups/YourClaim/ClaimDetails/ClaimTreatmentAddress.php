@@ -21,6 +21,6 @@ class ClaimTreatmentAddress extends BasePage
 
     public function setQuestions(): void
     {
-        $this->_questions = (new Address($this->namespace, 'the'))->fields();
+        $this->_questions = (new Address($this, 'the'))->fields();
     }
 }

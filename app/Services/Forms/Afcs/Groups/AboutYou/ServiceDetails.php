@@ -13,6 +13,10 @@ use App\Services\Forms\Afcs\Groups\AboutYou\ServiceDetails\ServiceRank;
 use App\Services\Forms\Afcs\Groups\AboutYou\ServiceDetails\ServiceTrade;
 use App\Services\Forms\Afcs\Groups\AboutYou\ServiceDetails\ServiceType;
 use App\Services\Forms\Afcs\Groups\AboutYou\ServiceDetails\UnitAddress;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
+use App\Services\Forms\BasePage;
 use App\Services\Forms\BaseTask;
 use App\Services\Traits\Stackable;
 
@@ -27,8 +31,6 @@ class ServiceDetails extends BaseTask
     protected string $name = 'Service details';
 
     protected string $_title = 'Service details';
-
-    protected $_addStackLabel = 'Add a period of service';
 
     protected $_preTask = [
         [
@@ -46,11 +48,28 @@ class ServiceDetails extends BaseTask
 
     ];
 
-    public function __get($property) {
-        if($property == 'mnemonic') {
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
+
+    public function __construct($namespace)
+    {
+        $this->mnemonic = 'afcs/about-you/service-details/service-branch/service-branch';
+        $this->mnemonicCount = true;
+        $this->_addStackLabel = 'Add a period of service';
+        $this->_addSubsequentStackLabel = 'Add another period of service';
+
+        parent::__construct($namespace);
+    }
+
+    public function __get($value) {
+        if($value == 'mnemonic') {
             return 'afcs/about-you/service-details/service-branch/service-branch';
         } else {
-            return parent::__get($property);
+            return parent::__get($value);
         }
     }
 

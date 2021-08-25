@@ -34,17 +34,10 @@
             contacted by emailing <a href="mailto:MAB-J1-Disclosures-ISA-Mailbox@mod.gov.uk">MAB-J1-Disclosures-ISA-Mailbox@mod.gov.uk</a>.
         </p>
 
-        <div style="display: flex; flex-direction: row">
-            <div style="margin-right: auto; justify-content: center; flex: 1; align-content: center; align-items: center; justify-items: center">
-                <a href="{{ route('home') }}" role="button" draggable="false" data-module="govuk-button"
-                   class="govuk-button govuk-button--start govuk-!-margin-top-9">
-                    Start now
-                    <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19"
-                         viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-                        <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
-                    </svg>
-                </a>
-            </div>
+{{--        <div style="display: flex; flex-direction: row">--}}
+{{--            <div style="margin-right: auto; justify-content: center; flex: 1; align-content: center; align-items: center; justify-items: center">--}}
+{{--                --}}
+{{--            </div>--}}
 
             {{--
             <div style="align-content: center; flex: 1">
@@ -59,7 +52,20 @@
                 </div>
             </div>
             --}}
-        </div>
+{{--        </div>--}}
+
+        <a href="{{ route('home') }}" role="button" draggable="false" data-module="govuk-button"
+                 class="govuk-button govuk-button--start govuk-!-margin-top-4">
+            Start now
+            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19"
+                 viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"/>
+            </svg>
+        </a>
+
+        <p class="govuk-body">
+        <a href="{{ route('restore-application') }}" class="govuk-link">Return to an application already started</a>
+        </p>
 
         <h2>Help with making a claim</h2>
         <p class="govuk-body">If you need help making a claim, please contact the Veterans UK Helpline for assistance.

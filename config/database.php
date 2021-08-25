@@ -4,9 +4,6 @@
 $dbCredentialsUrl = $_ENV['DATABASE_URL'] ?? null;
 $dbCredentials = parse_url($dbCredentialsUrl);
 
-
-postgres://uw1laj67skhb6rm5:J5oAFhvmsfRs99fRxwepmhwCrPQvjZFT@rdsbroker-ed175070-f68a-444f-babc-4f7bbd64e05c.coowcrpgh5fz.eu-west-2.rds.amazonaws.com:5432/rdsbroker_ed175070_f68a_444f_babc_4f7bbd64e05c
-
 return [
 
     /*

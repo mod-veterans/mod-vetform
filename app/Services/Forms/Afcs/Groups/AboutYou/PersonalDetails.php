@@ -13,7 +13,11 @@ use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails\NationalInsurance;
 use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails\PensionScheme;
 use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails\PreviousClaim;
 use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails\PreviousClaimReference;
+use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails\SaveAndReturn;
 use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails\YourName;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\BaseTask;
 
 class PersonalDetails extends BaseTask
@@ -37,6 +41,12 @@ class PersonalDetails extends BaseTask
      * @var string
      */
     protected string $name = 'Personal details';
+
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class
+    ];
 
     /**
      * @inheritDoc
@@ -66,7 +76,7 @@ class PersonalDetails extends BaseTask
             ],
             'national-insurance' => [
                 'page' => new NationalInsurance($this->namespace),
-                'next' => 'pension-scheme',
+                'next' => 'pension-scheme'
             ],
             'pension-scheme' => [
                 'page' => new PensionScheme($this->namespace),
@@ -77,11 +87,15 @@ class PersonalDetails extends BaseTask
                 'next' => function () {
                     $field = $this->_pages['previous-claim']['page']->questions[0]['options']['field'];
 
-                    return session($field, null) == Constant::YES ? 'previous-claim-reference' : null;
+                    return session($field, null) == Constant::YES ? 'previous-claim-reference' : 'save-and-return';
                 },
             ],
             'previous-claim-reference' => [
-                'page' => new PreviousClaimReference($this->namespace)
+                'page' => new PreviousClaimReference($this->namespace),
+                'next' => 'save-and-return'
+            ],
+            'save-and-return' => [
+                'page' => new SaveAndReturn($this->namespace)
             ]
         ];
     }

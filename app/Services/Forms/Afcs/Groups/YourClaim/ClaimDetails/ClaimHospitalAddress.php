@@ -13,7 +13,7 @@ class ClaimHospitalAddress extends BasePage
 
     function setQuestions(): void
     {
-        $this->_questions =  (new Address($this->namespace, 'the hospital', false))->fields();
+        $this->_questions =  (new Address($this, 'the hospital', false))->fields();
     }
 }
 

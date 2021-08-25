@@ -5,8 +5,9 @@ namespace App\Services\Forms\Afcs\Groups\AboutYou;
 
 
 use App\Services\Forms\Afcs\Groups\AboutYou\MedicalOfficer\ContactAddress;
-use App\Services\Forms\Afcs\Groups\AboutYou\ServiceDetails\ServiceName;
-use App\Services\Forms\Afcs\Groups\AboutYou\ServiceDetails\ServiceNumber;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\BaseTask;
 
 class MedicalOfficer extends BaseTask
@@ -16,8 +17,14 @@ class MedicalOfficer extends BaseTask
      */
     protected $_hasSummary = true;
 
-
     protected string $name = 'Medical Officer';
+
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
 
     /**
      * @return mixed

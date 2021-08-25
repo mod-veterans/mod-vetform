@@ -21,12 +21,12 @@ class ClaimAccidentSportingSurgeryAddress extends BasePage
                     [
                         'component' => 'textfield',
                         'options' => [
-                            'field' => $this->namespace . '/claim-accident-sporting-surgery-address',
+                            'field' => $this->namespace . '/claim-accident-sporting-surgery-practitioner',
                             'label' => 'Name of the Medical Practitioner (if known)'
                         ],
                     ]
                 ],
-                (new Address($this->namespace . 'surgery-address', 'the', false, 'claim-accident-sporting-surgery-address'))->fields(),
+                (new Address($this, 'the', false, 'claim-accident-sporting-surgery-address'))->fields(),
                 [
                     [
                         'component' => 'textfield',

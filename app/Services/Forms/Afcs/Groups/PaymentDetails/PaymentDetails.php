@@ -5,6 +5,10 @@ namespace App\Services\Forms\Afcs\Groups\PaymentDetails;
 
 
 use App\Services\Constant;
+use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\Afcs\Groups\PaymentDetails\PaymentDetails\BankDetails;
 use App\Services\Forms\Afcs\Groups\PaymentDetails\PaymentDetails\BankLocation;
 use App\Services\Forms\Afcs\Groups\PaymentDetails\PaymentDetails\BankOverseas;
@@ -18,6 +22,13 @@ class PaymentDetails extends BaseTask
     protected $postTask = null;
 
     protected string $name = 'Payment details';
+
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
 
     /**
      * @return mixed

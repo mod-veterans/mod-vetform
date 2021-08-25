@@ -180,10 +180,6 @@ abstract class BaseTask
     protected function getStatus()
     {
         $this->setPages();
-        $requiredFields = 0;
-        $completedRequiredFields = 0;
-        $completedFields = 0;
-        $completedSections = 0;
         $pages = $this->pages;
 
         if (count($this->_requiredTasks) > 0) {
@@ -198,6 +194,9 @@ abstract class BaseTask
         if ($this->isStackable()) {
             $pages = [];
 
+            $seekNS = 'afcs/about-you/service-details';
+
+
             if ($skip = session('skip_stack', false)) {
                 if (in_array($this->_namespace, $skip)) {
                     return self::STATUS_COMPLETED;
@@ -210,6 +209,8 @@ abstract class BaseTask
                         return self::STATUS_COMPLETED;
                     }
                 }
+
+
 
                 return self::STATUS_NOT_STARTED;
             } else {
@@ -237,8 +238,6 @@ abstract class BaseTask
 //                                        dd($this->isStackable(), $this->stack, $questions, $stackItem, $field);
 //                                    }
                                     if ($isRequired) {
-
-
                                         $value = $stackItem[$field] ?? null;
                                         if (is_null($value)) {
                                             if ($pageIndex === 0) {
@@ -247,6 +246,9 @@ abstract class BaseTask
 //                                                }
 
                                                 if ($this->_namespace !== '/other-medical-treatment') {
+//                                                    if($this->_namespace == $seekNS) {
+//                                                        dd('Nuffin', $stackItem, $field, $this->stack);
+//                                                    }
                                                     return self::STATUS_NOT_STARTED;
                                                 } elseif ($field == '/treatment-status/treatment-status' && session($field) === Constant::NO) {
                                                     return self::STATUS_COMPLETED;
@@ -358,7 +360,7 @@ abstract class BaseTask
 
                         try {
                             array_push($responses, [
-                                'label' => $options['label'] ?? '',
+                                'label' => $options['summaryLabel'] ?? $options['label'] ?? '',
                                 'value' => $response,
                                 'change' => $options['label'] ?? '',
                                 'route' => route('update.form', [
@@ -371,15 +373,6 @@ abstract class BaseTask
                             ]);
 
                         } catch (Exception $e) {
-                            dd(__LINE__, $e->getMessage());
-
-                            dd([
-                                'group' => $group->namespace,
-                                'task' => $task->namespace,
-                                'page' => $page->namespace,
-                                'question' => $question['options']['field'],
-                                'stack' => Application::getInstance()->trackStackId,
-                            ]);
                         }
                     }
                 }

@@ -6,6 +6,10 @@ namespace App\Services\Forms\Afcs\Groups\OtherDetails;
 
 use App\Services\Constant;
 use App\Services\Forms\Afcs\Groups\AboutYou\MedicalOfficer\ContactAddress;
+use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherCompensation\ClaimOutcome;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherCompensation\ClaimPaymentDate;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherCompensation\ClaimPaymentType;
@@ -23,6 +27,13 @@ class OtherCompensation extends BaseTask
     protected $postTask = null;
 
     protected string $name = 'Other compensation';
+
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
 
     /**
      * @return mixed

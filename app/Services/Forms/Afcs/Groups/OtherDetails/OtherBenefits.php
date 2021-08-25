@@ -6,6 +6,10 @@ namespace App\Services\Forms\Afcs\Groups\OtherDetails;
 
 use App\Services\Application;
 use App\Services\Constant;
+use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits\OtherPaymentDates;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits\OtherPaymentDetails;
 use App\Services\Forms\Afcs\Groups\OtherDetails\OtherBenefits\ReceivingOtherBenefits;
@@ -19,6 +23,13 @@ class OtherBenefits extends BaseTask
     protected $postTask = null;
 
     protected string $name = 'Other benefits, allowances or entitlement';
+
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
 
     /**
      * @return mixed

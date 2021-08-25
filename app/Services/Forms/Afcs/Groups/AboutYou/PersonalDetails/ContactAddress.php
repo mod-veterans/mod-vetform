@@ -21,7 +21,7 @@ class ContactAddress extends BasePage
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'your', true, '', [
+        $address = new Address($this, 'your', true, '', [
             'hint' => [
                 'address-line-1' => 'Base name for military establishments'
             ]

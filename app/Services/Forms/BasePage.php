@@ -4,8 +4,12 @@
 namespace App\Services\Forms;
 
 
+use App\Models\StoredSession;
 use App\Services\Application;
+use App\Services\Forms\Afcs\Groups\PaymentDetails;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 /**
@@ -148,7 +152,7 @@ abstract class BasePage
                 $field = $this->_questions[$questionIndex]['options']['field'];
 
                 session()->forget($field);
-                if(isset($data[$field])) {
+                if (isset($data[$field])) {
                     if (($data[$field] instanceof UploadedFile)) {
                         /** @var UploadedFile $data */
                         $stack[$field] = [];
@@ -162,6 +166,81 @@ abstract class BasePage
                 }
             }
         }
+
+        (new StoredSession())->storeApplication();
+    }
+
+    public function storeSession()
+    {
+        $application = Application::getInstance();
+        $form = $application->form;
+
+        $storeResponseIdentifier = $form->identifier ?? [];
+        $storeResponseEmail = $form->identifierEmail ?? null;
+        $storeResponseMobile = $form->identifierMobile ?? null;
+        $storedSessionQuery = DB::table('stored_sessions');
+        $storedSessionQueryAttributes = [];
+
+        if ($storeResponseIdentifier) {
+            if (is_array($storeResponseIdentifier)) {
+                $canStore = true;
+                foreach ($storeResponseIdentifier as $identifier) {
+                    $response = session($identifier, false);
+                    if (!$response) {
+                        $canStore = false;
+                        break;
+                    } else {
+                        $response = Crypt::encryptString(strtolower($response));
+                        $storedSessionQuery->where('identifier->' . $identifier, $response);
+                        $storedSessionQueryAttributes[$identifier] = $response;
+                    }
+                }
+
+                if ($canStore) {
+                    $payload = DB::table('sessions')->where('id', session()->getId())->first();
+                    $storedSession = $storedSessionQuery->first();
+
+                     // dd($storedSessionQueryAttributes);
+
+                    if ($payload) {
+                        $payload = Crypt::encrypt(session()->all(), true);
+                        $email = Crypt::encryptString(session($form->identifierEmail ?? ''));
+                        $mobile = Crypt::encryptString(session($form->identifierMobile ?? ''));
+
+                        if (!is_null($storedSession)) {
+                            $storedSessionQuery->update([
+                                'payload' => $payload,
+                                'email' => $email,
+                                'mobile' => $mobile,
+                                'updated_at' => now()
+                            ]);
+                        } else {
+                            $storedSessionQuery->insert([
+                                'identifier' => json_encode($storedSessionQueryAttributes),
+                                'payload' => $payload,
+                                'email' => $email,
+                                'mobile' => $mobile,
+                                'created_at' => now(),
+                                'updated_at' => now()
+                            ]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public function prependToSummary($extraSummary = '')
+    {
+        $this->summary = $extraSummary . $this->summary;
+    }
+
+    /**
+     * @param string $extraSummary
+     */
+    public function appendToSummary($extraSummary = '')
+    {
+        $this->summary .= $extraSummary;
     }
 
     /**
@@ -183,8 +262,6 @@ abstract class BasePage
                 return $this->_questions ?? [];
 
             case 'title';
-                return $this->_title;
-
             case 'name';
                 return $this->_title;
 

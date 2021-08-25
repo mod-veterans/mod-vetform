@@ -36,6 +36,19 @@ if (!function_exists('task_forms')) {
 }
 
 
+if(!function_exists('get_calling_class')) {
+    function get_calling_class() {
+        $trace = debug_backtrace();
+        $class = $trace[1]['class'];
+
+        for ( $i=1; $i<count( $trace ); $i++ ) {
+            if ( isset( $trace[$i] ) ) // is it set?
+                if ( $class != $trace[$i]['class'] ) // is it a different class
+                    return $trace[$i]['class'];
+        }
+    }
+}
+
 if (!function_exists('groups')) {
     /**
      * @return BaseGroup[]

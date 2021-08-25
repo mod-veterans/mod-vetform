@@ -74,7 +74,7 @@
                         <dt class="govuk-summary-list__value">
                             @if(is_array($stack))
                                 @if($view->mnemonic)
-                                    {{ $view->renderMnemonic($stack) }}
+                                    {{ $view->renderMnemonic($stack, $loop->index + 1) }}
                                 @else
                                     Item {{ $loop->index + 1 }}
                                 @endif

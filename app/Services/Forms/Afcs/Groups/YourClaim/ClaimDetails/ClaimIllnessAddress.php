@@ -9,11 +9,11 @@ use App\Services\Patterns\Address;
 
 class ClaimIllnessAddress extends BasePage
 {
-    protected string $_title = 'Which Medical Practioner gave you the diagnosis (if known)?';
+    protected string $_title = 'Which Medical Practitioner gave you the diagnosis (if known)?';
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'their', false, 'claim-illness-address');
+        $address = new Address($this, 'their', false, 'claim-illness-address');
         $this->_questions = array_merge(
             [
             [

@@ -4,6 +4,10 @@
 namespace App\Services\Forms\Afcs\Groups\SupportingDocuments;
 
 
+use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\Afcs\Groups\SupportingDocuments\Documents\Document;
 use App\Services\Forms\BaseTask;
 use App\Services\Traits\Stackable;
@@ -19,8 +23,6 @@ class Documents extends BaseTask
     protected $postTask = null;
 
     protected string $_title = 'Uploading supporting documents';
-
-    protected $_addStackLabel = 'Upload a document';
 
     protected $_hasSummary = false;
 
@@ -52,16 +54,35 @@ class Documents extends BaseTask
         ['type' => 'body', 'content' => 'Please include a covering letter quoting your name, address, date of birth and National Insurance Number on it.'],
     ];
 
-    public function __get($property)
+    public function __construct($namespace) {
+
+        $this->mnemonic =  [
+            '/documents/document/file' => 'mnemonic'
+        ];
+        $this->mnemonicCount = false;
+        $this->_addStackLabel = 'Upload a document';
+        $this->_addSubsequentStackLabel = 'Upload another document';
+
+        parent::__construct($namespace);
+    }
+
+    public function __get($value)
     {
-        if ($property == 'mnemonic') {
+        if ($value == 'mnemonic') {
             return [
                 '/documents/document/file' => 'mnemonic'
             ];
         } else {
-            return parent::__get($property);
+            return parent::__get($value);
         }
     }
+
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
 
     /**
      * @return mixed

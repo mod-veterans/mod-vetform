@@ -6,6 +6,10 @@ namespace App\Services\Forms\Afcs\Groups\YourClaim;
 
 use App\Services\Application;
 use App\Services\Constant;
+use App\Services\Forms\Afcs\Groups\AboutYou\PersonalDetails;
+use App\Services\Forms\Afcs\Groups\CheckBefore\ThingsToKnow;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Applicant;
+use App\Services\Forms\Afcs\Groups\NominateRepresentative\Representative;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentDowngraded;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentFirstAid;
 use App\Services\Forms\Afcs\Groups\YourClaim\ClaimDetails\ClaimAccidentNonSportingActivity;
@@ -61,13 +65,13 @@ class ClaimDetails extends BaseTask
     use Stackable;
 
     protected $summaryPage = true;
+
     protected $postTask = null;
 
     protected string $name = 'Claim details';
 
     protected string $_title = 'Claim details';
 
-    protected $_addStackLabel = 'Add a claim';
 
     protected $_preTask = [
         [
@@ -79,6 +83,32 @@ class ClaimDetails extends BaseTask
             'content' => 'For a specific accident or incident you can add all of the injuries and conditions sustained in a single claim.'
         ],
     ];
+
+    protected array $_requiredTasks = [
+        ThingsToKnow::class,
+        Applicant::class,
+        Representative::class,
+        PersonalDetails::class
+    ];
+
+    public function __construct($namespace)
+    {
+        $this->mnemonic = 'Claim';
+        $this->mnemonicCount = true;
+        $this->_addStackLabel = 'Add a claim';
+        $this->_addSubsequentStackLabel = 'Add another claim';
+
+        parent::__construct($namespace);
+    }
+
+    public function __get($value)
+    {
+        if ($value == 'mnemonic') {
+            return 'Claim';
+        } else {
+            return parent::__get($value);
+        }
+    }
 
     /**
      * @return void

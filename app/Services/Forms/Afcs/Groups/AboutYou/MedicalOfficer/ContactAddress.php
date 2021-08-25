@@ -23,7 +23,7 @@ class ContactAddress extends BasePage
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'their');
+        $address = new Address($this, 'their');
         $this->_questions = array_merge([
             [
                 'component' => 'hidden-field',

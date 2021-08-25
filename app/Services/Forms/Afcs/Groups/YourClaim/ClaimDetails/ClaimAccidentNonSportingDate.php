@@ -20,6 +20,7 @@ class ClaimAccidentNonSportingDate extends BasePage
                     'field' => $this->namespace . '/date-of-injury-incident-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y'),
                     ],
                     'messages' => [
                         'required' => 'Enter a year, even if it’s approximate',

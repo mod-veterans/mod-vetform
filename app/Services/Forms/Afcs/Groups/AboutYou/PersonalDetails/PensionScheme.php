@@ -27,7 +27,7 @@ class PensionScheme extends BasePage
                         ['label' => 2015, 'value' => 2015, 'children' => []],
                         ['label' => 'None', 'value' => 'None', 'children' => []],
                         ['label' => 'Other', 'value' => 'Other', 'children' => []],
-                        ['label' => 'Don\'t Know', 'value' => 'Other', 'children' => []],
+                        ['label' => 'Don\'t Know', 'value' => 'Don\'t Know', 'children' => []],
                     ],
                     'messages' => [
                         'required' => 'Select your pension scheme',

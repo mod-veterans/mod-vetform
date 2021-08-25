@@ -6,10 +6,10 @@
         <h2 class="govuk-heading-m">Your application has been submitted</h2>
         <p class="govuk-body">Thank you for completing an application for an Armed Forces Compensation or War Pension payment.</p>
         <p class="govuk-body">Your online claim reference number is {{ session('application-reference') }}.</p>
-        <p class="govuk-body">We have sent a copy of your application to your email address. Please note that as your
-            claim has now been fully submitted, you can no longer access your application online. If you need to make
-            any changes to your application, please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact us</a>.
-            However, please note you will need to tell us your National Insurance Number if you contact us.</p>
+        <p class="govuk-body">Please note that as your claim has now been fully submitted, you can no longer access your
+            application online. If you need to make any changes to your application, or would like a copy of it, please
+            <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact us</a>. However, please note you will
+            need to tell us your National Insurance Number if you contact us.</p>
 
         <h2 class="govuk-heading-m">We welcome your feedback</h2>
         <p class="govuk-body">We would like to know your views about using our online claims service today. Please

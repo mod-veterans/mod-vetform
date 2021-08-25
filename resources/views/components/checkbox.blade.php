@@ -1,3 +1,13 @@
+@php
+    $search_field = $field;
+    if(Str::endsWith($search_field, '[]')) {
+      $search_field = rtrim($search_field, '[]');
+    }
+
+    $oldValue = (old($search_field, session($search_field, stored_response($search_field))));
+    $checked = is_array($oldValue) ? in_array($value, $oldValue) : ($oldValue == $value);
+@endphp
+
 <div class="govuk-checkboxes__item">
     @if(is_bool($value))
         <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ (int)!$value }}">
@@ -7,7 +17,7 @@
         <input id="{{ $_id }}--default" name="{{ $field }}" type="hidden" value="{{ \App\Services\Constant::YES }}">
     @endif
     <input class="govuk-checkboxes__input" id="{{ $_id }}" name="{{ $field }}" type="checkbox"
-           value="{{ $value }}" @if(old($field, session($field, stored_response($field))) == $value) checked @endif
+           value="{{ $value }}" @if($checked) checked @endif
            @if($children) data-aria-controls="conditional-{{ $_id }}" @endif>
     <label class="govuk-label govuk-checkboxes__label" for="{{ $_id }}">{{ $label }}</label>
 </div>

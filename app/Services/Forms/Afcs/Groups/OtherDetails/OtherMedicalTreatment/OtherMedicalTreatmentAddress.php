@@ -31,7 +31,7 @@ class OtherMedicalTreatmentAddress extends \App\Services\Forms\BasePage
                         ],
                     ]
                 ],
-                (new Address($this->namespace, 'the'))->fields(),
+                (new Address($this, 'the'))->fields(),
                 [
                     [
                         'component' => 'textfield',

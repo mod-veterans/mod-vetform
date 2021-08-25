@@ -32,6 +32,7 @@ class ClaimIllnessConditionChemicalExposure extends BasePage
                     'field' => $this->namespace . '/exposure-date-year',
                     'validation' => [
                         'required',
+                        'max:' . date('Y'),
                     ],
                     'messages' => [
                         'required' => 'Enter a year, even if it’s approximate',

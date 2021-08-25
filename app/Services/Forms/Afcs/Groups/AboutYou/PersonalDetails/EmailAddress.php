@@ -28,9 +28,10 @@ Please tell us the email address you would prefer us to contact you at.  We will
                     'hint' => 'We will send confirmation of your claim to this address',
                     'type' => 'email',
                     'autocomplete' => 'email',
-                    'validation' => 'required',
+                    'validation' => 'required|email',
                     'messages' => [
                         'required' => 'Enter an email address in the correct format, like name@example.com',
+                        'email' => 'Enter an email address in the correct format, like name@example.com',
                     ],
                 ],
             ],

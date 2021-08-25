@@ -13,7 +13,7 @@ class RepresentativeAddress extends BasePage
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'your representatives', true);
+        $address = new Address($this, 'your representatives', true);
         $this->_questions = array_merge([
             [
                 'component' => 'textfield',

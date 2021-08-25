@@ -27,9 +27,9 @@ class OtherMedicalTreatmentEndDate extends \App\Services\Forms\BasePage
                 'component' => 'hidden-field',
                 'options' => [
                     'field' => $this->namespace . '/medical-treatment-end-date-year',
-
                         'validation' => [
                             'required_unless:'.$this->namespace . '/medical-treatment-not-ended'.',This treatment has not yet ended',
+                            'max:' . date('Y'),
                         ],
                         'messages' => [
                             'required_unless' => 'Enter a year, even if it’s approximate',

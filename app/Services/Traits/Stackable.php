@@ -16,11 +16,15 @@ trait Stackable
 {
     protected $_stackName = '';
     protected $_stack = [];
-    protected $_mnemonic = '';
     protected $_stackTriggerPage = null;
     protected $_stackTriggerQuestion = null;
     protected $_stackTriggerAnswer = null;
+    protected $_addStackLabel = 'Add an item';
+    protected $_addSubsequentStackLabel = 'Add another item';
     protected bool $_stackSkipTriggerQuestion = false;
+
+    protected $mnemonic = '';
+    protected $mnemonicCount = false;
 
     /**
      *
@@ -44,7 +48,7 @@ trait Stackable
         $skip = session('skip_stack', []);
         $skipIndex = array_search($this->namespace, $skip);
 
-        if($skipIndex !== false) {
+        if ($skipIndex !== false) {
             unset($skip[$skipIndex]);
         }
 
@@ -104,6 +108,9 @@ trait Stackable
             case 'stack':
                 return $this->_stack;
 
+            case 'addStackLabel':
+                return !$this->_stack ? $this->_addStackLabel : $this->_addSubsequentStackLabel ;
+
             default:
                 return parent::__get($value);
         }
@@ -112,7 +119,7 @@ trait Stackable
     /**
      * @param $stackItem
      */
-    public function renderMnemonic($stackItem)
+    public function renderMnemonic($stackItem, $index = 0)
     {
         $mnemonic = $this->mnemonic;
 
@@ -125,8 +132,14 @@ trait Stackable
             }
         }
 
-        if (is_string($mnemonic) && array_key_exists($mnemonic, $stackItem)) {
-            return $stackItem[$mnemonic];
+        if (is_string($mnemonic)) {
+            if (array_key_exists($mnemonic, $stackItem)) return $stackItem[$mnemonic];
+
+            if ($this->mnemonicCount) {
+                return $mnemonic . ' ' . $index;
+            }
+
+            return $mnemonic;
         }
 
         return 'Incomplete Item';

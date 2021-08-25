@@ -17,7 +17,7 @@ class NomineeAddress extends BasePage
 
     function setQuestions(): void
     {
-        $address = new Address($this->namespace, 'your', true);
+        $address = new Address($this, 'your', true);
         $this->_questions = array_merge([
             [
                 'component' => 'textfield',

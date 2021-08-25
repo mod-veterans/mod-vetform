@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ $errors->any() ? 'Error: ' : '' }}{{ $title ?? '' }} - {{ env('APP_NAME', 'The best place to find government services and information') }}
+    <title>{{ isset($errors) ? ( $errors->any() ? 'Error: ' : '' ) : '' }}{{ $title ?? '' }} - {{ env('APP_NAME', 'The best place to find government services and information') }}
         - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
@@ -42,15 +42,13 @@
 </script>
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
+<x-cookie-banner></x-cookie-banner>
+
 @include('partials.header')
 
 <div class="govuk-width-container ">
     <x-phase-banner></x-phase-banner>
-        <x-back-button></x-back-button>
-
-{{--    @if($view)--}}
-{{--    <x-breadcrumb :crumbs="crumbs($view->namespace)"></x-breadcrumb>--}}
-{{--    @endif--}}
+    <x-back-button></x-back-button>
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
@@ -64,10 +62,19 @@
     </main>
 </div>
 
-@include('partials.footer')
-@stack('scripts')
 
-<script async src="imageproxy?token=214e4cc2a2c4dfbc30b45fbad04f260cd18cd6b368bd9d50a63445436803121d&url=https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS') }}"></script>
+
+@include('partials.footer')
+
+<script src="{{ asset('js/govuk.js') }}"></script>
+<script src="{{ mix('js/app.js') }}"></script>
+<script>
+    window.GOVUKFrontend.initAll()
+    window.GOVUKFrontend.CookieBanner.init()
+</script>
+
+@stack('scripts')
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS') }}"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}

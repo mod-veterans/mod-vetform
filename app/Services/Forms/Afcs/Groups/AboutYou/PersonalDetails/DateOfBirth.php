@@ -16,19 +16,7 @@ class DateOfBirth extends BasePage
     function setQuestions(): void
     {
         $this->_questions = [
-//            0 => [
-//                'component' => 'hidden-field',
-//                'options' => [
-//                    'field' => $this->namespace . '/date-of-birth-year',
-//                    'validation' => [
-//                        'required',
-//                    ],
-//                    'messages' => [
-//                        'required' => 'Enter a year, even if it’s approximate',
-//                    ],
-//                ],
-//            ],
-            1 => [
+            [
                 'component' => 'date-field',
                 'options' => [
                     'field' => $this->namespace . '/date-of-birth',
