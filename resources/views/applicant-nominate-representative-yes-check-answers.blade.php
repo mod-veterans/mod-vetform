@@ -1,0 +1,152 @@
+@php
+
+
+if (!empty($_POST)) {
+
+
+
+            header("Location: /tasklist");
+            die();
+
+
+}
+
+@endphp
+
+
+
+
+@include('framework.header')
+
+
+
+    <a href="#" onclick="window.history.back()" class="govuk-back-link">Back</a>
+
+    <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
+        <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                                <h1 class="govuk-heading-xl">Check your answers</h1>
+                                <h2 class="govuk-heading-m">Do you want to nominate a representative?</h2>
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Would you like to nominate a representative?</dt>
+            <dd class="govuk-summary-list__value">
+                                    Yes
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative/?return=summarise&amp;stack=#/representative/representative-selection/nominated-representative">Change<span
+                        class="govuk-visually-hidden"> Would you like to nominate a representative?</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Their full name</dt>
+            <dd class="govuk-summary-list__value">
+                                    kpo
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/representative-name">Change<span
+                        class="govuk-visually-hidden"> Their full name</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Building and street</dt>
+            <dd class="govuk-summary-list__value">
+                                    okpk
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/address-line-1">Change<span
+                        class="govuk-visually-hidden"> Building and street</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
+            <dd class="govuk-summary-list__value">
+                                    okp
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/address-line-2">Change<span
+                        class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Town or city</dt>
+            <dd class="govuk-summary-list__value">
+                                    kopkpo
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/town">Change<span
+                        class="govuk-visually-hidden"> Town or city</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">County</dt>
+            <dd class="govuk-summary-list__value">
+                                    kopkpok
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/county">Change<span
+                        class="govuk-visually-hidden"> County</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Country</dt>
+            <dd class="govuk-summary-list__value">
+                                    United Kingdom
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/country">Change<span
+                        class="govuk-visually-hidden"> Country</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Postcode</dt>
+            <dd class="govuk-summary-list__value">
+                                    okok
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/postcode">Change<span
+                        class="govuk-visually-hidden"> Postcode</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Telephone number</dt>
+            <dd class="govuk-summary-list__value">
+                                    okok
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/representative-number">Change<span
+                        class="govuk-visually-hidden"> Telephone number</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Email address</dt>
+            <dd class="govuk-summary-list__value">
+                                    okokokoko
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-details/?return=summarise&amp;stack=#/representative/representative-address/representative-email-address">Change<span
+                        class="govuk-visually-hidden"> Email address</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">What is your representative&#039;s role?</dt>
+            <dd class="govuk-summary-list__value">
+                                    Other
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/nominate-a-representative-role/?return=summarise&amp;stack=#/representative/representative-role/representative-role">Change<span
+                        class="govuk-visually-hidden"> What is your representative&#039;s role?</span></a>
+            </dd>
+        </div>
+    </dl>
+                    <a href="/tasklist" class="govuk-button" data-module="govuk-button">Continue</a>
+            </div>
+        </div>
+    </main>
+</div>
+
+
+
+
+
+@include('framework.footer')

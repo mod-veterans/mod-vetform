@@ -52,7 +52,7 @@
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/nominate-representative/representative" class="govuk-link"
+                                                                            <a href="/applicant/nominate-a-representative" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Do you want to nominate a representative?
                                     </a>
@@ -71,7 +71,7 @@
                     <ul class="app-task-list__items">
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/about-you/personal-details" class="govuk-link"
+                                                                            <a href="/applicant/about-you/name" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Personal details
                                     </a>
@@ -82,7 +82,7 @@
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/about-you/medical-officer" class="govuk-link"
+                                                                            <a href="/applicant/about-you/medical-officer" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Medical Officer
                                     </a>
@@ -93,7 +93,7 @@
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/about-you/service-details" class="govuk-link"
+                                                                            <a href="/applicant/about-you/service-details" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Service details
                                     </a>
@@ -131,7 +131,7 @@
                     <ul class="app-task-list__items">
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/other-details/other-medical-treatment" class="govuk-link"
+                                                                            <a href="/applicant/other-details/other-medical-treatment" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Other medical treatment
                                     </a>
@@ -142,7 +142,7 @@
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/other-details/other-compensation" class="govuk-link"
+                                                                            <a href="/applicant/other-details/other-compensation" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Other compensation
                                     </a>
