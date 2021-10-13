@@ -112,7 +112,7 @@
                     <ul class="app-task-list__items">
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/your-claim/claim-details" class="govuk-link"
+                                                                            <a href="/applicant/claims" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Claim details
                                     </a>
@@ -153,7 +153,7 @@
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/other-details/other-benefits" class="govuk-link"
+                                                                            <a href="/applicant/other-details/benefits" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Other benefits, allowances or entitlement
                                     </a>
@@ -172,7 +172,7 @@
                     <ul class="app-task-list__items">
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/payment-details/payment-details" class="govuk-link"
+                                                                            <a href="/applicant/payment-details" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Payment details
                                     </a>
@@ -191,7 +191,7 @@
                     <ul class="app-task-list__items">
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                            <a href="/supporting-documents/documents" class="govuk-link"
+                                                                            <a href="/applicant/supporting-documents/" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Supporting documents
                                     </a>
@@ -210,7 +210,8 @@
                     <ul class="app-task-list__items">
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
-                                                                                                                        Complete your application
+                                                                                                                       <a href="/applicant/declaration" class="govuk-link"
+                                           aria-describedby="eligibility-status"> Complete your application</a>
                                                                                                             </span>
                                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="declaration-status">
     Cannot start yet

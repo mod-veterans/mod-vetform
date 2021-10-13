@@ -3,7 +3,7 @@
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/other-details/other-medical-treatment/condition");
+        header("Location: /applicant/other-details/other-compensation/conditions");
         die();
 
 }
