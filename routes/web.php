@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+/*
+
+Note: All blades currently accept POST and GET. This should be reviewed as each is wired up to accept appropriate inputs only.
+
+*/
+
+
+
 Route::get('/', function () {
     return view('home');
 });
