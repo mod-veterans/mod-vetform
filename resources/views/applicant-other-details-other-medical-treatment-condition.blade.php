@@ -3,7 +3,7 @@
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/other-details/other-medical-treatment/check-answers");
+        header("Location: /applicant/other-details/other-medical-treatment/treatment-start");
         die();
 
 }
@@ -24,6 +24,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What condition was this treatment for?</h1>
+                                <p class="govuk-body">Remember you only need to tell us about the conditions you are claiming for</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

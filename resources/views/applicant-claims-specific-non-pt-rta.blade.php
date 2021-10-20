@@ -29,17 +29,13 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Was the incident a Road Traffic Accident?</h1>
+                                <h1 class="govuk-heading-xl">Was the incident a road traffic accident?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
     <a id="/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic"></a>
     <fieldset class="govuk-fieldset">
-                                    <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
-                    <h1 class
-                    ="govuk-fieldset__heading">Was the incident a Road Traffic Accident? (required)</h1>
-                </legend>
+
                                             <div
             class="govuk-radios govuk-radios--inline"
             >

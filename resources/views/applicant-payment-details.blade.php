@@ -31,8 +31,7 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Providing your bank account details</h1>
                                 <p class="govuk-body">Providing your bank account details now will speed up the payment process if your claim is successful.
                        If you would prefer not to provide your account details now, we will contact you again if any money
-                       is due to you after your claim is assessed, although this will mean any payment will take longer
-                       to be received by you.</p>
+                       is due to you after your claim is assessed.  This may mean any payment due could take longer to be received by you.</p>
                        <p class="govuk-body">
                            <strong>Note for Serving Personnel only:</strong>
                            If you are currently serving and receive your pay via the JPA system, we will pay any money due into the account your salary is paid into.

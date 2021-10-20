@@ -22,6 +22,7 @@ die();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What is your name?</h1>
+                                <p class="govuk-body">Name of the person providing help</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

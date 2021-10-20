@@ -26,8 +26,8 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What was the date of your enlistment?</h1>
-                                <p class="govuk-body">Please tell us the date for this period of service.
-                       If you can&#39;t remember exactly, include an estimated date even if this is only the year.</p>
+                                <p class="govuk-body">Please tell us the date this period of service started.
+                       If you can't remember exactly, include an estimated date even if this is only the year.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -89,6 +89,15 @@ if (!empty($_POST)) {
     </div>
 </div>
                                     </div>
+
+<br />
+        <div class="govuk-checkboxes__item">
+            <input id="615ff47dd0131--default" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="hidden" value="No">
+        <input class="govuk-checkboxes__input" id="615ff47dd0131" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="checkbox"
+           value="Yes"            >
+    <label class="govuk-label govuk-checkboxes__label" for="615ff47dd0131">This date is approximate</label>
+</div>
+
     </fieldset>
 </div>
 

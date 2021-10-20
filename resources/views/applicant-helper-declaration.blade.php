@@ -30,7 +30,10 @@ die();
                                 <li>Is clear that they are the named person making the application.</li>
                                 <li>Is clear they are agreeing to the legal declaration in the last section.</li>
                               </ul>
-                              <p class="govuk-body">If the person named on this application also wishes to make you a nominated representative, so that we can send you a copy of letters we send them about their claim, this can be done in the next section.</p>
+                              <p class="govuk-body">If the person named on this application also wishes to make you a nominated representative, so that we can send you a copy of letters we send to them about their claim, this can be done in the next section.</p>
+
+<h3>Note for those serving or having served in Special Forces:</h3>
+<p class="govuk-body">If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing  <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.</p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate >

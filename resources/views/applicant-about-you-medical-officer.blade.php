@@ -24,8 +24,8 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What is the name and address of your current Medical Officer or GP?</h1>
-                                <p class="govuk-body">If you are not registered with a Doctor, please write "Not Registered" in "Building and Street" below.</p><p class="govuk-body">Enter details to your best knowledge. If you can't remember, you can leave blank any sections not marked "required".</p>
+                                <h1 class="govuk-heading-xl">What is the name and address of your current GP, or Medical Officer if serving?</h1>
+                                <p class="govuk-body">If you do not have a named doctor, you can provide the surgery or practice details. If you are not registered with a surgery or practice, please write "Not Registered" in "Building and Street" below.  If you live overseas, provide the details of your local doctor.</p><p class="govuk-body">Enter details to your best knowledge. If you can't remember, you can leave blank any sections not marked "required".</p>
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf
@@ -86,9 +86,23 @@ if (!empty($_POST)) {
                    value=""
             >
 </div>
+
+
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/postcode">
+        Postcode
+    </label>
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="afcs/about-you/medical-officer/medical-officer-contact/postcode" name="afcs/about-you/medical-officer/medical-officer-contact/postcode" type="text"
+         autocomplete="postal-code"
+                  value=""
+            >
+</div>
+
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/country">
-        Country
+        Country (if overseas)
     </label>
             <select class="govuk-select govuk-!-width-two-thirds " id="afcs/about-you/medical-officer/medical-officer-contact/country"
             name="afcs/about-you/medical-officer/medical-officer-contact/country"
@@ -654,18 +668,6 @@ if (!empty($_POST)) {
             </select>
 </div>
 
-
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/postcode">
-        Postcode
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/medical-officer/medical-officer-contact/postcode" name="afcs/about-you/medical-officer/medical-officer-contact/postcode" type="text"
-         autocomplete="postal-code"
-                  value=""
-            >
-</div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/contact-number">
         Telephone number

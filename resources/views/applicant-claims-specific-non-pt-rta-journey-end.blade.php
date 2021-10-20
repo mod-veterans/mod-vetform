@@ -35,46 +35,53 @@ if (!empty($_POST)) {
                                             <div
             class="govuk-radios"
             >
+
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-operations-location-overseas" name="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-operations-location-overseas" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Operations location overseas"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-operations-location-overseas">Operations location overseas</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-operations-location-overseas">A place where I was completing my duties on operations overseas</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-operations-location--u-k" name="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-operations-location--u-k" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Operations location - UK"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-operations-location--u-k">Operations location - UK</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-operations-location--u-k">A place where I was completing my duties on operations in the UK</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-accommodation--field" name="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--field" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Accommodation - field"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-accommodation--field">Accommodation - field</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--field">My accommodation when on operations overseas</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-accommodation--base" name="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--base" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Accommodation - base"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-accommodation--base">Accommodation - base</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--base">My usual base</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-home-base" name="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-home-base" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Home base"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-home-base">Home base</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-home-base">Home base</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-your-home" name="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-your-home" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Your home"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-your-home">Your home</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-your-home">Your home</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-an-off-duty-location" name="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-an-off-duty-location" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="An off-duty location"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-to/non-sporting-journey-to-an-off-duty-location">An off-duty location</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-an-off-duty-location">Another personal off-duty location</label>
+</div>
+
+                            <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-an-off-duty-location" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
+           value="An off-duty location"            >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-an-off-duty-location">None of the above</label>
 </div>
 
                     </div>

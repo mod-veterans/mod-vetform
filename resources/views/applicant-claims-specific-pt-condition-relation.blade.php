@@ -24,7 +24,7 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Is your illness/condition related to</h1>
+                                <h1 class="govuk-heading-xl">Where were you when the incident happened?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group ">
@@ -41,37 +41,37 @@ if (!empty($_POST)) {
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-related/sporting-related-duties--operations-overseas" name="/claim-details/claim-accident-sporting-related/sporting-related" type="radio"
            value="Duties - Operations overseas"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-duties--operations-overseas">Duties - Operations overseas</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-duties--operations-overseas">An operations location overseas</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-related/sporting-related-duties--operations-u-k" name="/claim-details/claim-accident-sporting-related/sporting-related" type="radio"
            value="Duties - Operations UK"  checked            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-duties--operations-u-k">Duties - Operations UK</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-duties--operations-u-k">An operations location UK</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-related/sporting-related-trade" name="/claim-details/claim-accident-sporting-related/sporting-related" type="radio"
            value="Trade"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-trade">Trade</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-trade">My home base</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-related/sporting-related-misconduct-by-others" name="/claim-details/claim-accident-sporting-related/sporting-related" type="radio"
            value="Misconduct by others"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-misconduct-by-others">Misconduct by others</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-misconduct-by-others">A training location</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-related/sporting-related-consequential-to-another-medical-condition" name="/claim-details/claim-accident-sporting-related/sporting-related" type="radio"
            value="Consequential to another medical condition"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-consequential-to-another-medical-condition">Consequential to another medical condition</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-consequential-to-another-medical-condition">An off-duty location</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-related/sporting-related-fitness-training" name="/claim-details/claim-accident-sporting-related/sporting-related" type="radio"
            value="Fitness training"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-fitness-training">Fitness training</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-related/sporting-related-fitness-training">Other</label>
 </div>
 
                     </div>

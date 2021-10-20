@@ -5,7 +5,7 @@ if (!empty($_POST)) {
 
 
 
-            header("Location: /applicant/legal-authority/check-answers");
+            header("Location: /applicant/legal-authority/information");
             die();
 
 
@@ -26,8 +26,6 @@ if (!empty($_POST)) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What legal authority do you have to make a claim on behalf of the person named?</h1>
                                 <p class="govuk-body">For example, Power of Attorney held.</p>
-                        <p class="govuk-body">Please upload a copy of the legal authority document you hold in the
-                         Upload Documents section later in this application.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

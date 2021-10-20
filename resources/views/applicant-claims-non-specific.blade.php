@@ -23,20 +23,19 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What medical condition are you claiming for?</h1>
+                                <h1 class="govuk-heading-xl">What medical condition(s) are you claiming for?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/claim-details/claim-illness-condition/claim-illness-claiming-for">
         <span class="govuk-visually-hidden">Medical condition claiming</span>
     </label>
-    <div id="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint" class="govuk-hint">Where you have a specific medical diagnosis, please include this here</div>
-        <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/claim-details/claim-illness-condition/claim-illness-claiming-for" name="/claim-details/claim-illness-condition/claim-illness-claiming-for" type="text"
-                   value="okok"
-                aria-describedby="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint"
-            >
+    <div id="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint" class="govuk-hint">You can claim for any medical condition you think is related to your service.  If you have a specific diagnosis, please include it here, for example, deafness, osteoarthritis.</div>
+
+    <div id="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint" class="govuk-hint">Tell us which side of the body is affected if needed, for example, deafness left ear.</div>
+<textarea class="govuk-textarea " id="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition"
+                  name="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition" rows="5"
+                                    aria-describedby=""></textarea>
 </div>
 
 

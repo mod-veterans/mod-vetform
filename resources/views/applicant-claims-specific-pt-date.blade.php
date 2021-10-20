@@ -33,11 +33,7 @@ if (!empty($_POST)) {
     aria-describedby="/claim-details/claim-accident-sporting-date/date-of-injury-incident-hint  ">
 
     <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                What was the date of injury/incident?
-            </h2>
-        </legend>
+
 
 
         <div id="/claim-details/claim-accident-sporting-date/date-of-injury-incident-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
@@ -84,6 +80,13 @@ if (!empty($_POST)) {
 </div>
                                     </div>
     </fieldset>
+        <br />
+                                        <div class="govuk-checkboxes__item">
+            <input id="6166806a32c4a--default" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="hidden" value="No">
+        <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="checkbox"
+           value="Yes"            >
+    <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">Tick if this date is approximate</label>
+</div>
 </div>
 
 

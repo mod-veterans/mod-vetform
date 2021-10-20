@@ -22,18 +22,12 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Why is your condition related to your armed forces service?</h1>
-                                <p class="govuk-body">Tell us in your own words why you feel your claimed medical condition or injury is caused or
-    made worse by your service in the Armed Forces. Include information you think is relevant but do not include details
-    of operations. If you are claiming for a Road Traffic Accident and you were not on a direct route between your
-    starting point and destination, please tell us why here.</p>
+                                <p class="govuk-body"> In your own words, tell us why you feel your claimed medical condition or injury is caused or made worse by your service in the armed forces. If your condition developed over time, tell us what activities you think were the cause.  Avoid including specific operational details.  You can also use this section to explain the impact the conditions have on you. If you want to think about your answer, you can use the ‘save and return later’ function.</p>
+                                <p class="govuk-body">If you are claiming for a road traffic accident and you were not on a direct route between your starting point and destination, please tell us why here.</p>
 
-    <p class="govuk-body"><strong>Note:</strong> You MUST NOT include information classified as Secret or above. If you
-    need to tell us information classified as Secret or above, please write "Classified  Information" we will contact
-    you after we receive your claim.</p>
-
-    <p class="govuk-body">If you have served or are serving (whether directly or in a support role) with the United
+    <p class="govuk-body"><strong>Reminder:</strong> If you have served or are serving (whether directly or in a support role) with the United
     Kingdom Special Forces (UKSF), you must seek advice from the MOD A Block Disclosure Cell BEFORE completing this
-    section. The Disclosure Cell can be contacted by emailing MAB-J1-Disclosures-ISA-Mailbox@mod.gov.uk.</p>
+    section. The Disclosure Cell can be contacted by emailing <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf

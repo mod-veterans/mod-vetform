@@ -35,11 +35,6 @@ if (!empty($_POST)) {
     aria-describedby="/claim-details/claim-illness-date/date-of-condition-hint  ">
 
     <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                What was the date your condition started
-            </h2>
-        </legend>
 
 
         <div id="/claim-details/claim-illness-date/date-of-condition-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>

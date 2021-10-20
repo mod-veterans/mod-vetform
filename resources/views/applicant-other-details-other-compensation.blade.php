@@ -26,9 +26,7 @@ if (!empty($_POST)) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Are you claiming for or have you received compensation payments from other sources?</h1>
                                 <p class="govuk-body">You only need to tell us about compensation for the medical conditions you are claiming for on this application.</p>
-         <p class="govuk-body">Compensation includes any payments from MOD for criminal injuries; civil negligence payments received via the courts;
-                               compensation from civil authorities in Great Britain and Northern Ireland for criminal injuries or any other compensation
-                               payments received for the medical conditions you are claiming for.</p>
+         <p class="govuk-body">Compensation includes any payments from MOD for criminal injuries or civil negligence payments received via the courts.  It includes compensation from civil authorities in Great Britain and Northern Ireland for criminal injuries or any other compensation payments received for the medical conditions you are claiming for.  You do not need to tell us about previous Armed Forces Compensation Scheme or War Pension payments.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

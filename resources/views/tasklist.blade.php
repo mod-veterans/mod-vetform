@@ -1,9 +1,6 @@
 @include('framework.header')
 
-        <a href="#" onclick="window.history(-1);" class="govuk-back-link">Back</a>
-
-
-
+@include('framework.backbutton')
 
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
@@ -13,6 +10,8 @@
                                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0
             of 13 sections.</p>
+
+        <p class="govuk-body govuk-!-margin-bottom-7">Click on the links below to start a section.  You will return to this page after each one is complete. We recommend working through each section in the order below. You can re-enter a completed section and make changes, providing you have not submitted your application. </p>
         <ol class="app-task-list">
                             <li>
                     <h2 class="app-task-list__section">

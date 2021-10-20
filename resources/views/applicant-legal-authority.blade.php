@@ -26,7 +26,7 @@ if (!empty($_POST)) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What are your own details?</h1>
                                 <p class="govuk-body">You have told us you are making this claim on behalf of someone else.
-            Please provide your own details and tell us why you are applying on their behalf.</p>
+            Please tell us your own details.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -674,17 +674,6 @@ if (!empty($_POST)) {
          autocomplete="tel"
            inputmode="numeric" pattern="[0-9]*"
                 value=""
-            >
-</div>
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="/applicant/nominee-address/nominee-email-address">
-        Email address
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/applicant/nominee-address/nominee-email-address" name="/applicant/nominee-address/nominee-email-address" type="email"
-         autocomplete="email"
-                  value=""
             >
 </div>
 

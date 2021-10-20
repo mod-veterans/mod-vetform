@@ -27,6 +27,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What type of payment was this?</h1>
+                                <p class="govuk-body">Was this a final settlement or an interim payment made before a full and final decision.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

@@ -17,47 +17,50 @@ die();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Things you need to know before you start</h1>
-                                <h1 class="govuk-heading-m">Use this service to:</h1>
-                        <ul>
-                            <li>make a claim for an Armed Forces Compensation Scheme or War Pension Scheme payment.</li>
-                            <li>This single claim service is for both schemes.</li>
-                        </ul>
-                        <h1 class="govuk-heading-m">Making a claim</h1>
-                        <ul>
-                            <li>You will be asked a series of questions about yourself, your service and the medical conditions you are claiming for.</li>
-                            <li>You can make multiple claims in one application by 'adding a further claim' within the 'claim' section.</li>
-                            <li>You can return to a partially completed application up to 3 months from when you started, providing you have fully completed the &#8220;Personal Details&#8221; section before you leave.</li>
-                        </ul>
-                        <h1 class="govuk-heading-m">What you need to apply</h1>
-                        <p>You'll need:</p>
-                        <ul>
-                            <li>your bank, building society or credit union account details.</li>
-                            <li>an email address.</li>
-                            <li>details about your service in the armed forces.</li>
-                            <li>information about the injury/illness you are claiming for.</li>
-                            <li>letters/reports already in your possession from medical professionals who have treated you.</li>
-                            <li>details of any other compensation you may have received. For example;
-                                <ul>
-                                    <li>Criminal Injuries Compensation.</li><li>Civil Negligence claims.</li>
-                                    <li>Industrial Injuries Disablement Benefit.</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <p><strong>We don't need you to get any new information you do not already have. We can't refund any costs involved if you do this.</strong></p>
-                        <h1 class="govuk-heading-m">Dates, addresses and contact details:</h1>
-                        <p>Several questions ask about dates and contact details relating to your service and places you have received medical treatment.
-                           Please enter details to the best of your recollection, even if they are not complete.
-                           For example, if you cannot recall exact dates, provide a best estimate even if this is just a year.
-                           You do not need to research details you do not already have and do not delay submitting your application.</p>
-                        <h1 class="govuk-heading-m">After you apply</h1>
-                        <ul>
-                            <li>We will register your claim and send you an acknowledgement.</li>
-                            <li>We will gather information and medical evidence to support your claim.</li>
-                           <li>After careful consideration of all the evidence, a decision will be made.</li>
-                            <li>We will contact you with the outcome of your claim.</li>
-                        </ul>
-                        <p>Depending on the nature of the injury/illness and the complexity of your claim, consideration of the evidence can take several months.
-                        Please be assured we will contact you as soon as a decision is made.</p>
+                               <h2>About this online claim service</h2>
+                               <ul>
+<li>There are 13 sections to complete or read before submitting your application.  Some sections are shorter than others and it will take around 45 minutes to one hour to complete all of them.</li>
+
+<li>We recommend you complete each section in order.</li>
+
+<li>Once you have completed a section, it will show as ‘complete’.  You can still re-enter a completed section and make changes if you want to, providing you have not submitted your application.</li>
+
+<li>If you are claiming for a condition related to exposure to asbestos, please read the <a href="https://www.gov.uk/guidance/help-for-veterans-diagnosed-with-diffuse-mesothelioma#how-to-claim" target="_New">guidance on GOV.UK</a> first.</li>
+
+<li>You can exit and return to a partially completed application within 3 months from when you started it by using the ‘save and return later’ function.  You must have completed all sections up to ‘personal details’ before you leave.  If you have not completed all sections up to ‘personal details’, your information will not be saved and you will have to start again.</li>
+
+<li>If you have documents or evidence you wish to attach to your application, you can upload copies of these in the ‘supporting documents’ section.</li>
+
+<li>Please do not delay completing your application to gather information.  Some payments are only made from the date your claim is submitted.  Also, there are <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs#important-information" target="_New">7-year time limits</a> for some armed forces compensation scheme claims. </li>
+</ul>
+<h2>Answering the questions</h2>
+<ul>
+<li>Please answer all questions to the best of your recollection.  If you can’t remember, you can leave blank any sections not marked “required”. </li>
+
+<li>If you can’t remember exact dates, please estimate just a year.</li>
+<li>Some sections, including ‘service details’ and ‘claim details’, allow you to add more than one set of answers to your application.  For example, you can use this to tells us about more than one period of service in the armed forces or add another claim for a different illness or injury. </li>
+
+<li>Please do not include details of military operations in your answers.</li>
+<li>You do not need to gather any information you do not already have.  Veterans UK will make all the enquiries needed to assess your claim.</li>
+</ul>
+<h2>After you apply</h2>
+<ul>
+<li>Your claim will automatically be sent to Veterans UK securely and your details will be deleted from this claim service. You will not be able to access your completed application again after it is submitted.</li>
+
+<li>You will receive an acknowledgement to the email address you have entered in ‘personal details’ with information about how your claim will be assessed. </li>
+
+<li>We are sorry but we cannot send a copy of your application to you by email.  This is because we have to protect your personal data and personal email addresses are often insecure. Please contact Veterans UK if you would like a copy of your application to be sent via the post, quoting your national insurance number.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

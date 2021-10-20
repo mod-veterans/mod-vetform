@@ -3,7 +3,7 @@
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/claims/specific/non-pt/what-doing");
+        header("Location: /applicant/claims/specific/non-pt/rta");
         die();
 
 }
@@ -28,50 +28,52 @@ if (!empty($_POST)) {
                                 @csrf
                                                     <div class="govuk-form-group ">
     <a id="/claim-details/claim-accident-non-sporting-location/non-sporting-location"></a>
-    <fieldset class="govuk-fieldset">
-                                    <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
-                    <h1 class
-                    ="govuk-fieldset__heading">Where were you when the incident happened? (required)</h1>
-                </legend>
-                                            <div
-            class="govuk-radios"
-            >
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-location/non-sporting-location-operations-location-overseas" name="/claim-details/claim-accident-non-sporting-location/non-sporting-location" type="radio"
-           value="Operations location overseas"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-location/non-sporting-location-operations-location-overseas">Operations location overseas</label>
+    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+
+                <div id="-hint" class="govuk-hint">Tick all that apply.</div>
+                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c4ce7" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Duties - Operations overseas"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4ce7">An operations location overseas</label>
+</div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c4e3d" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Duties - Operations UK"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4e3d">An operations location UK</label>
+</div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c4f40" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="duties uk - not on operations"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4f40">My home base</label>
+</div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c5031" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Training"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5031">A training location</label>
+</div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c511c" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Misconduct by others"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c511c">Accommodation</label>
+</div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Consequential to another medical condition"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">An off-duty location</label>
+</div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Consequential to another medical condition"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Travelling</label>
+</div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Other"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Other</label>
 </div>
 
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-location/non-sporting-location-operations-location-u-k" name="/claim-details/claim-accident-non-sporting-location/non-sporting-location" type="radio"
-           value="Operations location UK"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-location/non-sporting-location-operations-location-u-k">Operations location UK</label>
-</div>
 
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-location/non-sporting-location-home-base" name="/claim-details/claim-accident-non-sporting-location/non-sporting-location" type="radio"
-           value="Home base"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-location/non-sporting-location-home-base">Home base</label>
-</div>
-
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-location/non-sporting-location-accommodation-whilst-on-operations" name="/claim-details/claim-accident-non-sporting-location/non-sporting-location" type="radio"
-           value="Accommodation whilst on Operations"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-location/non-sporting-location-accommodation-whilst-on-operations">Accommodation whilst on Operations</label>
-</div>
-
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-location/non-sporting-location-accommodation-on-home-base" name="/claim-details/claim-accident-non-sporting-location/non-sporting-location" type="radio"
-           value="Accommodation on home base"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-location/non-sporting-location-accommodation-on-home-base">Accommodation on home base</label>
-</div>
-
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-location/non-sporting-location-an-off-duty-location" name="/claim-details/claim-accident-non-sporting-location/non-sporting-location" type="radio"
-           value="An off-duty location"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-location/non-sporting-location-an-off-duty-location">An off-duty location</label>
-</div>
 
                     </div>
     </fieldset>

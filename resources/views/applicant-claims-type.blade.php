@@ -48,13 +48,13 @@ if (!empty($_POST)) {
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-is-the-result-of-a-specific-accident-or-incident" name="/claim-details/claim-illness/claim-illness" type="radio"
            value="A condition, injury or illness that is the result of a specific accident or incident"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-is-the-result-of-a-specific-accident-or-incident">A condition, injury or illness that is the result of a specific accident or incident</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-is-the-result-of-a-specific-accident-or-incident">A condition, injury or illness that is the result of a specific accident or incident.  Includes mental health conditions related to a specific incident and conditions that developed later, for example arthritis.</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-started-over-a-period-of-time-and-is-not-related-to-a-specific-incident-or-accident" name="/claim-details/claim-illness/claim-illness" type="radio"
            value="A condition, injury or illness that started over a period of time and is not related to a specific incident or accident"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-started-over-a-period-of-time-and-is-not-related-to-a-specific-incident-or-accident">A condition, injury or illness that started over a period of time and is not related to a specific incident or accident</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-started-over-a-period-of-time-and-is-not-related-to-a-specific-incident-or-accident">A condition, injury or illness that started over a period of time and is not related to a specific incident or accident.  Includes mental health and other conditions that developed over time.</label>
 </div>
 
                     </div>

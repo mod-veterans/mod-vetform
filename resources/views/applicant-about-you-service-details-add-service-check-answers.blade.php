@@ -168,12 +168,12 @@ if (!empty($_POST)) {
             </dd>
         </div>
     </dl>
-                    <a class="govuk-link"
+                    <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
                href="/applicant/about-you/service-details">
-                Add a period of service
+                Add another period of service
             </a>
-            <br>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Continue</a>
+            <p class="govuk-body">or</p>
+            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Continue Application</a>
             </div>
         </div>
     </main>

@@ -26,7 +26,7 @@ if (!empty($_POST)) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">When did this treatment start?</h1>
                                 <p class="govuk-body">If you have received treatment at this hospital medical facility on
-                              more than one occasion, please tell us the first time you visited</p>
+                              more than one occasion, please tell us the first time you visited. If you are on a waiting list, tick "I am on a waiting list to attend.”</p>
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf

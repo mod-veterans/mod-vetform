@@ -3,8 +3,15 @@
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/claims/specific/non-pt/report");
-        die();
+        if ($_POST['/claim-details/claim-accident-non-sporting-duty/report'] == 'Yes') {
+            header("Location: /applicant/claims/specific/non-pt/incident-report");
+            die();
+
+        } else {
+
+            header("Location: /applicant/claims/specific/non-pt/accident-form");
+            die();
+        }
 
 }
 
@@ -24,30 +31,26 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Were you on duty at the time of incident?</h1>
+                                <h1 class="govuk-heading-xl">Did you report the incident?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
     <a id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty"></a>
     <fieldset class="govuk-fieldset">
-                                    <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
-                    <h1 class
-                    ="govuk-fieldset__heading">Were you on duty at the time of incident? (required)</h1>
-                </legend>
+
                                             <div
             class="govuk-radios govuk-radios--inline"
             >
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-yes" name="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-yes" name="/claim-details/claim-accident-non-sporting-duty/report" type="radio"
            value="Yes"  checked            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-yes">Yes</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-duty/reporty-yes">Yes</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-no" name="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-no" name="/claim-details/claim-accident-non-sporting-duty/report" type="radio"
            value="No"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-no">No</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-duty/report-no">No</label>
 </div>
 
                     </div>

@@ -25,8 +25,8 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What was the date of and reason for your discharge?</h1>
-                                <p class="govuk-body">Please tell us the date (if you are no longer serving) you left this period
-                        of service. If you can&#39;t remember exactly, include an estimated date even if this is only
+                                <p class="govuk-body">Please tell us the date (if you are no longer serving) this period
+                        of service ended. If you can't remember exactly, include an estimated date even if this is only
                         the year.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
@@ -94,13 +94,26 @@ if (!empty($_POST)) {
             value="">
     </div>
 </div>
+
+
                                     </div>
+<br />
+        <div class="govuk-checkboxes__item">
+            <input id="615ff47dd0131--default" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="hidden" value="No">
+        <input class="govuk-checkboxes__input" id="615ff47dd0131" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="checkbox"
+           value="Yes"            >
+    <label class="govuk-label govuk-checkboxes__label" for="615ff47dd0131">This date is approximate</label>
+</div>
+
+
+
     </fieldset>
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/service-details/service-discharge/service-discharge-reason">
         Discharge reason
     </label>
+        <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example, end of engagement.</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/service-details/service-discharge/service-discharge-reason" name="afcs/about-you/service-details/service-discharge/service-discharge-reason" type="text"

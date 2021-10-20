@@ -24,8 +24,8 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What was/is your full name during this period of service?</h1>
-                                <p class="govuk-body">If you used more than one name, please include all names you used.</p>
+                                <h1 class="govuk-heading-xl">Did you have a different name during this period of service?</h1>
+                                <p class="govuk-body">If you used a different name during this period of service, enter all names used below, otherwise leave this section blank. </p>
                        <p class="govuk-body">If you do not wish to disclose a name you used, please write &#8216;contact me for details&#8217; and we will get in touch with you to discuss this further if we need to.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate >

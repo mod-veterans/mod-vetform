@@ -14,7 +14,7 @@ if (!empty($_POST)) {
         break;
 
 
-        case "I am making an application on behalf of the person named claim on this and I have legal authority to act on their behalf.":
+        case "I am making an application for someone else and I have legal authority to act on their behalf.":
 
             header("Location: /applicant/legal-authority");
             die();
@@ -50,8 +50,8 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Who is making this application?</h1>
-                                <p class="govuk-body">The person named in this application must be the person who completes the declaration and
-                          final submission when all sectionp9iup0upojo jopjs are completed.</p>
+                                <p class="govuk-body">The person named in this application should be the person who completes the declaration and
+                          final submission when all sections are completed.</p>
                        <p class="govuk-body">A claim may only be submitted on behalf of someone else if you have a Power of Attorney
                           or other legal authority to act on their behalf.</p>
 
@@ -71,13 +71,13 @@ if (!empty($_POST)) {
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/applicant/applicant-selection/nominated-applicant-the-person-named-on-this-claim-is-making-the-application." name="/applicant/applicant-selection/nominated-applicant" type="radio"
            value="The person named on this claim is making the application."            >
-    <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-the-person-named-on-this-claim-is-making-the-application.">The person named on this claim is making the application.</label>
+    <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-the-person-named-on-this-claim-is-making-the-application.">I am making this application for myself.</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/applicant/applicant-selection/nominated-applicant-i-am-making-an-application-on-behalf-of-the-person-named-claim-on-this-and-i-have-legal-authority-to-act-on-their-behalf." name="/applicant/applicant-selection/nominated-applicant" type="radio"
-           value="I am making an application on behalf of the person named claim on this and I have legal authority to act on their behalf."            >
-    <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-i-am-making-an-application-on-behalf-of-the-person-named-claim-on-this-and-i-have-legal-authority-to-act-on-their-behalf.">I am making an application on behalf of the person named claim on this and I have legal authority to act on their behalf.</label>
+           value="I am making an application for someone else and I have legal authority to act on their behalf."            >
+    <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-i-am-making-an-application-on-behalf-of-the-person-named-claim-on-this-and-i-have-legal-authority-to-act-on-their-behalf.">I am making an application for someone else and I have legal authority to act on their behalf.</label>
 </div>
 
                             <div class="govuk-radios__item">

@@ -27,6 +27,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">UK bank or building society account details</h1>
+                                <div class="govuk-body">You can ask your bank or check your back statement for these details.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
@@ -66,6 +67,7 @@ if (!empty($_POST)) {
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-number">
         Account number
     </label>
+    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">Must be between 6 and 8 digits</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-united-kingdom/bank-account-number" name="/payment-details/bank-united-kingdom/bank-account-number" type="numeric"
@@ -87,7 +89,7 @@ if (!empty($_POST)) {
                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
     <div class="govuk-form-group">
         <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-confirmation">
-        If this is not your bank account, please tell us whose account it is and why you have chosen this account
+        If this is not your bank account, please tell us whose account it is and why you have chosen to have payments made into it
     </label>
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/payment-details/bank-united-kingdom/bank-account-confirmation"
                   name="/payment-details/bank-united-kingdom/bank-account-confirmation" rows="5"

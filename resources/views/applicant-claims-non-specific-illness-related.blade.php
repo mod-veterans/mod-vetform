@@ -30,30 +30,28 @@ if (!empty($_POST)) {
                                 @csrf
                                                     <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-            <h1 class="govuk-fieldset__heading">What is your Illness/Condition related to?</h1>
-        </legend>
+
                 <div id="-hint" class="govuk-hint">Select all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4ce7" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
            value="Duties - Operations overseas"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4ce7">Duties - Operations overseas</label>
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4ce7">Duties - on operations overseas</label>
 </div>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4e3d" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
            value="Duties - Operations UK"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4e3d">Duties - Operations UK</label>
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4e3d">Duties - on operations UK</label>
 </div>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4f40" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
-           value="Trade"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4f40">Trade</label>
+           value="duties uk - not on operations"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c4f40">Duties - not on operations</label>
 </div>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c5031" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
            value="Training"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5031">Training</label>
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5031">Physical training</label>
 </div>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c511c" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
@@ -63,8 +61,16 @@ if (!empty($_POST)) {
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
            value="Consequential to another medical condition"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Consequential to another medical condition</label>
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Related to another medical condition</label>
 </div>
+                            <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+           value="Other"            >
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Other</label>
+</div>
+
+
+
                     </div>
     </fieldset>
 </div>

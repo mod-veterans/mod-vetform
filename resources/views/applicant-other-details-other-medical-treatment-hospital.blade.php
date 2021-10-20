@@ -5,7 +5,7 @@ if (!empty($_POST)) {
 
 
 
-        header("Location: /applicant/other-details/other-medical-treatment/treatment-start");
+        header("Location: /applicant/other-details/other-medical-treatment/condition");
         die();
 
 
@@ -28,6 +28,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Please tell us the name and address of the hospital or facility providing the treatment?</h1>
+                                <p class="govuk-body">You can leave blank any sections you can’t remember.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

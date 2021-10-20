@@ -35,11 +35,7 @@ if (!empty($_POST)) {
     aria-describedby="/other-compensation/claim-payment-date/claim-payment-date-hint  ">
 
     <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                When did you receive this payment?
-            </h2>
-        </legend>
+
 
 
         <div id="/other-compensation/claim-payment-date/claim-payment-date-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
@@ -88,7 +84,11 @@ if (!empty($_POST)) {
     </fieldset>
 </div>
 
-
+                                    <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="61600b80d46d6" name="/other-medical-treatment-end-date/medical-treatment-end-date-estimated" type="checkbox"
+           value="This date is approximate"            >
+    <label class="govuk-label govuk-checkboxes__label" for="61600b80d46d6">This date is approximate</label>
+</div>
 
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>

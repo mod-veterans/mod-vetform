@@ -21,7 +21,7 @@ die();
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Which armed forces pension scheme are you a member of?</h1>
+                                <h1 class="govuk-heading-xl">Which armed forces pension scheme(s) are you a member of?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group">
@@ -29,7 +29,7 @@ die();
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h1 class="govuk-fieldset__heading">Pension scheme (required)</h1>
         </legend>
-                <div id="-hint" class="govuk-hint">Select your scheme.</div>
+                <div id="-hint" class="govuk-hint">Select all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="615fda2278b0d" name="afcs/about-you/personal-details/pension-scheme/pension-scheme[]" type="checkbox"

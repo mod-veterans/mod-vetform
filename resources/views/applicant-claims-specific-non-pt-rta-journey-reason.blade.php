@@ -40,25 +40,31 @@ if (!empty($_POST)) {
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--operations" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
            value="Duties - Operations"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--operations">Duties - Operations</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--operations">My duties on operations</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--trade" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
            value="Duties - Trade"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--trade">Duties - Trade</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--trade">My regular duties</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--training" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
            value="Duties - Training"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--training">Duties - Training</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--training">Training exercise</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
            value="Personal (non-duty/off-duty)"            >
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)">Personal (non-duty/off-duty)</label>
+</div>
+
+                            <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
+           value="Personal (non-duty/off-duty)"            >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)">Other</label>
 </div>
 
                     </div>

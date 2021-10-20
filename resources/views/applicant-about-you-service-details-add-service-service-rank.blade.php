@@ -25,7 +25,8 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What is your rank (if serving) or rank on discharge?</h1>
+                                <h1 class="govuk-heading-xl">What is your rank (if serving) or what was your rank on discharge?</h1>
+                                <p class="govuk-body">For example, Private, SSgt.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

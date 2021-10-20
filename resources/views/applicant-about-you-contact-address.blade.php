@@ -71,9 +71,23 @@ die();
                    value=""
             >
 </div>
+
+
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
+        Postcode
+    </label>
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="afcs/about-you/personal-details/contact-address/postcode" name="afcs/about-you/personal-details/contact-address/postcode" type="text"
+         autocomplete="postal-code"
+                  value=""
+            >
+</div>
+
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/country">
-        Country
+        Country (if overseas)
     </label>
             <select class="govuk-select govuk-!-width-two-thirds " id="afcs/about-you/personal-details/contact-address/country"
             name="afcs/about-you/personal-details/contact-address/country"
@@ -639,18 +653,6 @@ die();
             </select>
 </div>
 
-
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
-        Postcode
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/personal-details/contact-address/postcode" name="afcs/about-you/personal-details/contact-address/postcode" type="text"
-         autocomplete="postal-code"
-                  value=""
-            >
-</div>
 
 
 

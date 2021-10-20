@@ -316,12 +316,14 @@ if (!empty($_POST)) {
             </dd>
         </div>
     </dl>
-                    <a class="govuk-link"
+                    <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
                href="/applicant/claims">
-                Add a claim
+                Add another claim
             </a>
+            <br />
+            OR
             <br>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Continue</a>
+            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Confirm and Continue</a>
             </div>
         </div>
     </main>

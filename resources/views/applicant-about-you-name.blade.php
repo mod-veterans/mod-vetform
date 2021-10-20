@@ -22,11 +22,12 @@ die();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What is your name?</h1>
+                                <p class="govuk-body">The name of the person with the injury, illness or disability</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/last-name">
-        Surname or family name
+        Last name/family name
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
@@ -37,7 +38,7 @@ die();
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/other-names">
-        All other names in full
+        First name(s)/given name(s)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

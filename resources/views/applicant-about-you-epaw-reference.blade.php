@@ -4,15 +4,9 @@
 if (!empty($_POST)) {
 
 
-    if ($_POST['afcs/about-you/personal-details/previous-claim/previous-claim'] == 'Yes') {
-    header("Location: /applicant/about-you/previous-claim/claim-number");
+    header("Location: /applicant/about-you/save-return");
     die();
 
-    } else {
-    header("Location: /applicant/about-you/epaw-reference");
-    die();
-
-    }
 
 }
 
@@ -29,7 +23,8 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Have you made a war pension or armed forces compensation scheme claim before?</h1>
+                                <h1 class="govuk-heading-xl">Do you have an Express Prior Authority in Writing (EPAW) reference?</h1>
+                                <p class="govuk-body">This is a requirement for those who are serving in or who have served in UK Special Forces.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
@@ -45,18 +40,37 @@ if (!empty($_POST)) {
             >
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="afcs/about-you/personal-details/previous-claim/previous-claim-yes" name="afcs/about-you/personal-details/previous-claim/previous-claim" type="radio"
-           value="Yes"            >
-    <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/previous-claim/previous-claim-yes">Yes</label>
+           value="No – I do not have an EPAW reference number."            >
+    <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/previous-claim/previous-claim-yes">No – I do not have an EPAW reference number.</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="afcs/about-you/personal-details/previous-claim/previous-claim-no" name="afcs/about-you/personal-details/previous-claim/previous-claim" type="radio"
-           value="No"            >
-    <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/previous-claim/previous-claim-no">No</label>
+           value="Yes - I do have (or have requested) an EPAW reference number."            >
+    <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/previous-claim/previous-claim-no">Yes - I do have (or have requested) an EPAW reference number.</label>
 </div>
+
+
+
+
 
                     </div>
     </fieldset>
+<br />
+  <div class="govuk-form-group">
+    <label class="govuk-label" for="afcs/about-you/epaw-reference">
+        EPAW Reference (if received)
+    </label>
+        <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="afcs/about-you/personal-details/epaw-reference" name="afcs/about-you/personal-details/epaw-reference" type="text"
+                      value=""
+                aria-describedby="afcs/about-you/personal-details/epaw-reference"
+            >
+
+</div>
+
+
 </div>
 
 

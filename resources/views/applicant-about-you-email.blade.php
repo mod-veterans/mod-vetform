@@ -22,7 +22,7 @@ die();
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What is your Email address</h1>
                                 <p class="govuk-body">
-Please tell us the email address you would prefer us to contact you at.  We will only use this to get in touch about your claim.
+Please tell us the email address you would prefer us to contact you at.  We will only use this to get in touch about your claim. Please use a MOD email address if you have access to one.
     </p>
 
 
@@ -33,6 +33,9 @@ Please tell us the email address you would prefer us to contact you at.  We will
         <span class="govuk-visually-hidden">What is your email address</span>
     </label>
     <div id="afcs/about-you/personal-details/email-address/email-address-hint" class="govuk-hint">We will send confirmation of your claim to this address</div>
+    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
+        Email address
+    </label>
         <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/email-address/email-address" name="afcs/about-you/personal-details/email-address/email-address" type="email"
@@ -41,6 +44,21 @@ Please tell us the email address you would prefer us to contact you at.  We will
                 aria-describedby="afcs/about-you/personal-details/email-address/email-address-hint"
             >
 </div>
+
+            <div class="govuk-form-group ">
+    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
+        Confirm email address
+    </label>
+
+        <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="afcs/about-you/personal-details/email-address/email-address" name="afcs/about-you/personal-details/email-address/email-address" type="email"
+         autocomplete="email"
+                  value=""
+                aria-describedby="afcs/about-you/personal-details/email-address/email-address-hint"
+            >
+</div>
+
 
 
 

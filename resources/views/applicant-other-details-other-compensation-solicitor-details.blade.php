@@ -24,6 +24,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What was the name and address of the solicitor who helped you?</h1>
+                                <p class="govuk-body">You can leave blank any sections you can’t remember.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

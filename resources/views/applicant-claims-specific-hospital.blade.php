@@ -38,6 +38,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Did you go to, or were you taken to, a hospital or medical facility?</h1>
+                                <p class="govuk-body">For example, for treatment or assessment soon after the incident.  We will ask about further hospital treatment later.</p>
                                 <p class="govuk-body">Please only tell us about treatment you received for the
                               injury/condition that you are claiming for</p>
 

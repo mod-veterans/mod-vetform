@@ -25,8 +25,9 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What was/is the address of your current/last service unit?</h1>
-                                <p class="govuk-body">Please include details to your best recollection for this period of
+                                <p class="govuk-body">Please include details for this period of
                               service, even if the location has since closed down.</p><p class="govuk-body">Enter details to your best knowledge. If you can't remember, you can leave blank any sections not marked "required".</p>
+                              <p class="govuk-body"><strong>Special Forces: Note EPAW applies.</strong></p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -73,6 +74,20 @@ if (!empty($_POST)) {
                    value=""
             >
 </div>
+
+
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="afcs/about-you/service-details/unit-address/postcode">
+        Postcode
+    </label>
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="afcs/about-you/service-details/unit-address/postcode" name="afcs/about-you/service-details/unit-address/postcode" type="text"
+         autocomplete="postal-code"
+                  value=""
+            >
+</div>
+
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/service-details/unit-address/country">
         Country
@@ -640,20 +655,6 @@ if (!empty($_POST)) {
                      >Åland Islands</option>
             </select>
 </div>
-
-
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="afcs/about-you/service-details/unit-address/postcode">
-        Postcode
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/service-details/unit-address/postcode" name="afcs/about-you/service-details/unit-address/postcode" type="text"
-         autocomplete="postal-code"
-                  value=""
-            >
-</div>
-
 
 
                 <div class="govuk-form-group">

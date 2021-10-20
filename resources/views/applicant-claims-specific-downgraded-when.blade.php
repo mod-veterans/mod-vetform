@@ -2,7 +2,7 @@
 
 if (!empty($_POST)) {
 
-        header("Location: /applicant/claims/specific/why-related");
+        header("Location: /applicant/claims/specific/downgraded/detail");
         die();
 
 }
@@ -40,7 +40,7 @@ if (!empty($_POST)) {
         </legend>
 
 
-        <div id="/claim-details/claim-downgraded-dates/date-from-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
+        <div id="/claim-details/claim-downgraded-dates/date-from-hint" class="govuk-hint">If you were downgraded and upgraded more than once, enter the date you were first downgraded. For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="/claim-details/claim-downgraded-dates/date-from">
                                                 <div class="govuk-date-input__item">
@@ -84,6 +84,7 @@ if (!empty($_POST)) {
 </div>
                                     </div>
     </fieldset>
+
 </div>
                                     <div class="govuk-form-group ">
     <input name="/claim-details/claim-downgraded-dates/date-to-year" type="hidden" value="">
@@ -100,7 +101,7 @@ if (!empty($_POST)) {
         </legend>
 
 
-        <div id="/claim-details/claim-downgraded-dates/date-to-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
+        <div id="/claim-details/claim-downgraded-dates/date-to-hint" class="govuk-hint">If you were downgraded and upgraded more than once, enter the date your last downgrading ended. For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="/claim-details/claim-downgraded-dates/date-to">
                                                 <div class="govuk-date-input__item">
@@ -144,28 +145,26 @@ if (!empty($_POST)) {
 </div>
                                     </div>
     </fieldset>
-</div>
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="/claim-details/claim-downgraded-dates/from-medical-category">
-        From Medical Category
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/claim-details/claim-downgraded-dates/from-medical-category" name="/claim-details/claim-downgraded-dates/from-medical-category" type="text"
-                   value=""
-            >
-</div>
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="/claim-details/claim-downgraded-dates/to-medical-category">
-        To Medical Category
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/claim-details/claim-downgraded-dates/to-medical-category" name="/claim-details/claim-downgraded-dates/to-medical-category" type="text"
-                   value=""
-            >
+        <br />
+                                        <div class="govuk-checkboxes__item">
+            <input id="6166806a32c4a--default" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="hidden" value="No">
+        <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="checkbox"
+           value="Yes"            >
+    <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">Tick if these dates are approximate</label>
 </div>
 
+
+    <br />
+                                        <div class="govuk-checkboxes__item">
+            <input id="6166806a32c4a--default" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="hidden" value="No">
+        <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="checkbox"
+           value="Yes"            >
+    <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">I am still downgraded / was downgraded at discharge</label>
+</div>
+
+
+
+</div>
 
 
                 <div class="govuk-form-group">

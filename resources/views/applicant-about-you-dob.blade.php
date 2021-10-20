@@ -22,6 +22,7 @@ die();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What is your date of birth?</h1>
+                                                                <p class="govuk-body">The date of birth of the person with the injury, illness or disability.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div

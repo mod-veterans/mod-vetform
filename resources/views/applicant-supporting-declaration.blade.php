@@ -25,7 +25,7 @@
     <p class="govuk-body">If at any time in the future your email address should change then please tell us as soon as possible. Failure to tell us will result in Veterans UK being unable to release documents to you through the internet.</p>
 
     <h2 class="govuk-heading-m">Declaration</h2>
-    <p class="govuk-body">I confirm that if I have signed a UKSF Confidentiality Contract, I have been careful not to make unauthorised disclosures. I have sought advice from the Disclosure Cell and have EPAW to make such statements.</p>
+    <p class="govuk-body">I confirm that if I have signed a UKSF Confidentiality Contract, I have been careful not to make unauthorised disclosures. I have sought advice from the Disclosure Cell and have Express Prior Authority in Writing (EPAW) to make such statements.</p>
     <p class="govuk-body">I confirm the information I have given is accurate and complete to the best of my knowledge and belief.</p>
     <p class="govuk-body">I understand that the information and personal data I have provided on this form, and any information and personal data I provide subsequently may be:</p>
     <ul class="govuk-list govuk-list--bullet">

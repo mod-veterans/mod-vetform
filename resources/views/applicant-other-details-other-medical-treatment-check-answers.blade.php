@@ -158,11 +158,13 @@
             </dd>
         </div>
     </dl>
-                    <a class="govuk-link"
+                    <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
                href="/applicant/other-details/other-medical-treatment">
-                Add a Medical Treatment
+                Add another hospital/medical facility
             </a>
             <br>
+            OR
+            <br/>
             <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Continue</a>
             </div>
         </div>

@@ -25,13 +25,12 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What medical condition(s) have you received (or are you claiming) other compensation for?</h1>
+                                <p class="govuk-body">For example, deafness.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
     <div class="govuk-form-group">
-        <label class="govuk-label" for="/other-compensation/compensation-condition/medical-condition">
-        What medical condition(s) have you received (or are you claiming) other compensation for?
-    </label>
+
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/other-compensation/compensation-condition/medical-condition"
                   name="/other-compensation/compensation-condition/medical-condition" rows="5"
                                     aria-describedby="/other-compensation/compensation-condition/medical-condition-info "></textarea>

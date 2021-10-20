@@ -2,23 +2,18 @@
 
 if (!empty($_POST)) {
 
-    if ($_POST['/other-compensation/claim-solicitor-help/claim-solicitor-help'] == 'Yes') {
 
-        header("Location: /applicant/other-details/other-compensation/solicitor/details");
+    if ($_POST['/other-compensation/claim-outcome/claim-outcome-payment-result'] == 'Yes') {
+
+        header("Location: /applicant/other-details/other-compensation/amount-received");
         die();
 
     } else {
-
 
         header("Location: /applicant/other-details/other-compensation/check-answers");
         die();
 
     }
-
-
-
-
-
 
 
 
@@ -41,30 +36,29 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Did a solicitor help you?</h1>
+                                <h1 class="govuk-heading-xl">Did you receive a payment as a result of this claim? </h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
-                                                    <div class="govuk-form-group ">
-    <a id="/other-compensation/claim-solicitor-help/claim-solicitor-help"></a>
+                                                    <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
+
+    </div>
+                                    <div class="govuk-form-group ">
+    <a id="/other-compensation/claim-outcome/claim-outcome-payment-result"></a>
     <fieldset class="govuk-fieldset">
-                                    <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                    <h1 class
-                    ="govuk-fieldset__heading">Did a solicitor help you with your claim for other compensation? (required)</h1>
-                </legend>
+
                                             <div
             class="govuk-radios govuk-radios--inline"
             >
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/other-compensation/claim-solicitor-help/claim-solicitor-help-yes" name="/other-compensation/claim-solicitor-help/claim-solicitor-help" type="radio"
+    <input class="govuk-radios__input" id="/other-compensation/claim-outcome/claim-outcome-payment-result-yes" name="/other-compensation/claim-outcome/claim-outcome-payment-result" type="radio"
            value="Yes"            >
-    <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-solicitor-help/claim-solicitor-help-yes">Yes</label>
+    <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-outcome/claim-outcome-payment-result-yes">Yes</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/other-compensation/claim-solicitor-help/claim-solicitor-help-no" name="/other-compensation/claim-solicitor-help/claim-solicitor-help" type="radio"
+    <input class="govuk-radios__input" id="/other-compensation/claim-outcome/claim-outcome-payment-result-no" name="/other-compensation/claim-outcome/claim-outcome-payment-result" type="radio"
            value="No"            >
-    <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-solicitor-help/claim-solicitor-help-no">No</label>
+    <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-outcome/claim-outcome-payment-result-no">No</label>
 </div>
 
                     </div>
@@ -86,8 +80,6 @@ if (!empty($_POST)) {
         </div>
     </main>
 </div>
-
-
 
 
 @include('framework.footer')

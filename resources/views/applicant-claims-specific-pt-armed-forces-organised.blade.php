@@ -3,20 +3,8 @@
 if (!empty($_POST)) {
 
 
-
-        if ($_POST['/claim-details/claim-accident-condition/claim-accident-condition'] == 'Yes') {
-
-            header("Location: /applicant/claims/specific/pt/medical");
-            die();
-
-
-        } else {
-
-
-            header("Location: /applicant/claims/specific/non-pt/medical");
-            die();
-
-        }
+        header("Location: /applicant/claims/specific/pt/unit-representation");
+        die();
 
 }
 
@@ -35,30 +23,30 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Was the incident or accident related to sport, adventure training or physical training?</h1>
+                                <h1 class="govuk-heading-xl">Was the activity authorised / organised by the Armed Forces?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
-    <a id="/claim-details/claim-accident-condition/claim-accident-condition"></a>
+    <a id="/claim-details/claim-accident-sporting-authorise/sporting-authorise"></a>
     <fieldset class="govuk-fieldset">
                                     <legend
                     class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
                     <h1 class
-                    ="govuk-fieldset__heading">Was the incident or accident related to sport, adventure training or physical training? (required)</h1>
+                    ="govuk-fieldset__heading">Were you representing your Unit? (required)</h1>
                 </legend>
                                             <div
             class="govuk-radios govuk-radios--inline"
             >
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-condition/claim-accident-condition-yes" name="/claim-details/claim-accident-condition/claim-accident-condition" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio"
            value="Yes"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-condition/claim-accident-condition-yes">Yes</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes">Yes</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-condition/claim-accident-condition-no" name="/claim-details/claim-accident-condition/claim-accident-condition" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio"
            value="No"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-condition/claim-accident-condition-no">No</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no">No</label>
 </div>
 
                     </div>

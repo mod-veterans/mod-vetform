@@ -24,23 +24,25 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Were there any witnesses?</h1>
+                                <p class="govuk-body">Witnesses could be to the incident itself or immediate aftermath.  We do not need anyone’s details at this stage.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group ">
     <a id="/claim-details/claim-accident-witness/sporting-witnesses"></a>
     <fieldset class="govuk-fieldset">
-                                    <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
-                    <h1 class
-                    ="govuk-fieldset__heading">Were you representing your Unit? (required)</h1>
-                </legend>
+
                                             <div
-            class="govuk-radios govuk-radios--inline"
+            class="govuk-radios"
             >
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-witness/sporting-witnesses-yes" name="/claim-details/claim-accident-witness/sporting-witnesses" type="radio"
-           value="Yes"  checked            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-witness/sporting-witnesses-yes">Yes</label>
+           value="Yes detail"  checked            >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-witness/sporting-witnesses-yes-detail">Yes - and I know the witness's contact details</label>
+</div>
+                            <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-witness/sporting-witnesses-yes" name="/claim-details/claim-accident-witness/sporting-witnesses" type="radio"
+           value="Yes no det"  checked            >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-witness/sporting-witnesses-yes-nodetail">Yes - but I don't know the witness's details</label>
 </div>
 
                             <div class="govuk-radios__item">

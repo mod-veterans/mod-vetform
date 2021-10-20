@@ -31,16 +31,17 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Have you had any further hospital or medical treatment?</h1>
+                                <h1 class="govuk-heading-xl">Further hospital or medical treatment</h1>
+                                <p class="govuk-body">Thinking of the conditions you have claimed for, we need to know about any other hospital or specialist treatment you have had that you have not told us about already.  This includes where you are on a waiting list. If you have visited the same hospital or facility several times, you only need to provide the details once.  </p>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group ">
     <a id="/treatment-status/treatment-status"></a>
     <fieldset class="govuk-fieldset">
                                     <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
+                    class="govuk-fieldset__legend govuk-fieldset__legend--m">
                     <h1 class
-                    ="govuk-fieldset__heading">Have you had any further hospital or medical treatment? (required)</h1>
+                    ="govuk-fieldset__heading">Do you have any further hospital or medical treatment you need to tell us about?</h1>
                 </legend>
                                             <div
             class="govuk-radios govuk-radios--inline"

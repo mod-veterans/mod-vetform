@@ -63,6 +63,11 @@ Route::match(['get', 'post'],'/applicant/legal-authority/authority-detail', func
     return view('applicant-legal-authority-detail');
 });
 
+Route::match(['get', 'post'],'/applicant/legal-authority/information', function () {
+    return view('applicant-legal-authority-detail-information');
+});
+
+
 Route::match(['get', 'post'],'/applicant/legal-authority/check-answers', function () {
     return view('applicant-legal-authority-check-answers');
 });
@@ -137,6 +142,10 @@ Route::match(['get', 'post'],'/applicant/about-you/previous-claim', function () 
 
 Route::match(['get', 'post'],'/applicant/about-you/previous-claim/claim-number', function () {
     return view('applicant-about-you-save-return');
+});
+
+Route::match(['get', 'post'],'/applicant/about-you/epaw-reference', function () {
+    return view('applicant-about-you-epaw-reference');
 });
 
 Route::match(['get', 'post'],'/applicant/about-you/save-return', function () {
@@ -275,6 +284,11 @@ Route::match(['get', 'post'],'/applicant/claims/specific/pt/activity', function 
     return view('applicant-claims-specific-pt-activity');
 });
 
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/armed-forces-organised', function () {
+    return view('applicant-claims-specific-pt-armed-forces-organised');
+});
+
 Route::match(['get', 'post'],'/applicant/claims/specific/pt/unit-representation', function () {
     return view('applicant-claims-specific-pt-unit-representation');
 });
@@ -303,6 +317,10 @@ Route::match(['get', 'post'],'/applicant/claims/specific/downgraded', function (
     return view('applicant-claims-specific-downgraded');
 });
 
+Route::match(['get', 'post'],'/applicant/claims/specific/downgraded/detail', function () {
+    return view('applicant-claims-specific-downgraded-detail');
+});
+
 Route::match(['get', 'post'],'/applicant/claims/specific/downgraded/when', function () {
     return view('applicant-claims-specific-downgraded-when');
 });
@@ -317,6 +335,10 @@ Route::match(['get', 'post'],'/applicant/claims/specific/non-pt/on-duty', functi
 
 Route::match(['get', 'post'],'/applicant/claims/specific/non-pt/incident-report', function () {
     return view('applicant-claims-specific-non-pt-incident-report');
+});
+
+Route::match(['get', 'post'],'/applicant/claims/specific/non-pt/report', function () {
+    return view('applicant-claims-specific-non-pt-report');
 });
 
 Route::match(['get', 'post'],'/applicant/claims/specific/non-pt/accident-form', function () {
@@ -383,6 +405,10 @@ Route::match(['get', 'post'],'/applicant/claims/non-specific/exposure-related', 
     return view('applicant-claims-non-specific-exposure-related');
 });
 
+Route::match(['get', 'post'],'/applicant/claims/non-specific/chemical-exposure', function () {
+    return view('applicant-claims-non-specific-exposure-chemical');
+});
+
 Route::match(['get', 'post'],'/applicant/claims/non-specific/medical-attention-date', function () {
     return view('applicant-claims-non-specific-medical-attention-date');
 });
@@ -397,6 +423,10 @@ Route::match(['get', 'post'],'/applicant/other-details/other-compensation/condit
 
 Route::match(['get', 'post'],'/applicant/other-details/other-compensation/outcome', function () {
     return view('applicant-other-details-other-compensation-outcome');
+});
+
+Route::match(['get', 'post'],'/applicant/other-details/other-compensation/payment', function () {
+    return view('applicant-other-details-other-compensation-payment');
 });
 
 Route::match(['get', 'post'],'/applicant/other-details/other-compensation/amount-received', function () {
@@ -469,6 +499,10 @@ Route::match(['get', 'post'],'/applicant/supporting-documents/upload', function 
 
 Route::match(['get', 'post'],'/applicant/supporting-documents/manage', function () {
     return view('applicant-supporting-documents-manage');
+});
+
+Route::match(['get', 'post'],'/applicant/supporting-documents/comments', function () {
+    return view('applicant-supporting-documents-comments');
 });
 
 Route::match(['get', 'post'],'/applicant/declaration', function () {

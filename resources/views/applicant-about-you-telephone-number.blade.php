@@ -22,7 +22,7 @@ die();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What is your telephone number?</h1>
-                                <p>We'll use this to contact you if we have any questions about your claim</p>
+                                <p class="govuk-body">We'll use this to contact you if we have any questions about this claim</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -42,7 +42,7 @@ die();
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-number/alternative-number">
-        Alternative telephone number
+        Alternative telephone number (optional)
     </label>
     <div id="afcs/about-you/personal-details/contact-number/alternative-number-hint" class="govuk-hint">For overseas numbers include the country code</div>
         <input

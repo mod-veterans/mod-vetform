@@ -23,7 +23,14 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Which Medical Practitioner gave you the diagnosis (if known)?</h1>
+                                <h1 class="govuk-heading-xl">Which Medical Practitioner gave you this diagnosis?</h1>
+                                <p class="govuk-body">The doctor or medical officer who first told you the name of your condition(s).</p>
+                                <p class="govuk-body">Enter details to your best knowledge, even if this is just a hospital or practice name. If you can't remember, you can leave this page or any section blank.</p>
+
+<p class="govuk-body">If you need to add more than one medical practitioner or hospital, you can do this within the ‘Other Medical Treatment’ section later</p>
+
+
+                                </p>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group ">

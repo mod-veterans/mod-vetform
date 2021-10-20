@@ -3,7 +3,7 @@
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/claims/specific/pt/unit-representation");
+        header("Location: /applicant/claims/specific/pt/armed-forces-organised");
         die();
 
 }
