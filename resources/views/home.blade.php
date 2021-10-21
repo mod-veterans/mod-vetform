@@ -1,7 +1,5 @@
 @include('framework.header')
 
-        <a href="#" onclick="window.history.back()" class="govuk-back-link">Back</a>
-
 <form name="{Route::currentRouteName()}" action="POST">
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
@@ -15,7 +13,7 @@
 <p class="govuk-body">
 <strong>Apply online</strong><br />
 You’ll be asked about:</p>
-    <ul>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
         <li>Your own details, including your national insurance number.</li>
         <li>Anyone helping you make a claim, for example a charity or welfare adviser.</li>
         <li>Your armed forces service, including dates you served, if you know them.</li>
@@ -60,7 +58,7 @@ You can get help with making a claim by contacting the <a href="https://www.gov.
 
 <h2>Other ways to claim</h2>
 <p class="govuk-body">You can claim by filling in a paper claim form and sending it to <a href="https://www.gov.uk/government/organisations/veterans-uk" target="_New">Veterans UK</a>.  You can either:</p>
-<ul>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
     <li>Download a claim form from the <a href="https://www.gov.uk/guidance/war-pension-scheme-wps" target="_New">War Pension Scheme</a> or <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs" target="_New">Armed Forces Compensation Scheme</a> pages on GOV.UK; or</li>
 <li>Request a paper claim form and reply-paid envelope from the <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">Veterans UK helpline</a></li>
 

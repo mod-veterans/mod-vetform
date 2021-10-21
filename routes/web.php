@@ -141,7 +141,7 @@ Route::match(['get', 'post'],'/applicant/about-you/previous-claim', function () 
 });
 
 Route::match(['get', 'post'],'/applicant/about-you/previous-claim/claim-number', function () {
-    return view('applicant-about-you-save-return');
+    return view('applicant-about-you-previous-claim-number');
 });
 
 Route::match(['get', 'post'],'/applicant/about-you/epaw-reference', function () {

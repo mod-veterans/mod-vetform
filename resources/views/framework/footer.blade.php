@@ -48,7 +48,7 @@
 <script type="text/javascript" src="https://modvets-dev2.london.cloudapps.digital/js/location-autocomplete.min.js"></script>
     <script type="text/javascript">
         openregisterLocationPicker({
-            selectElement: document.getElementById('/applicant/nominee-address/country'),
+            selectElement: document.getElementById('afcs/about-you/personal-details/contact-address/country'),
             url: '/assets/data/location-autocomplete-graph.json'
         })
     </script>

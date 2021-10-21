@@ -1,6 +1,6 @@
 @include('framework.header')
 
-        <a href="#" onclick="window.history.back()" class="govuk-back-link">Back</a>
+        @include('framework.backbutton')
 
 
 
@@ -66,7 +66,7 @@
 
         <h2>Make a claim by post</h2>
         <p class="govuk-body">Veterans UK still accepts claims by post, you can either:</p>
-        <ul>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
             <li>Download a claim form from the War Pension Scheme or Armed Forces Compensation Scheme pages, complete it
                 and post it back to us, or
             </li>

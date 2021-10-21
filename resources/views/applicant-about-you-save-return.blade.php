@@ -16,7 +16,7 @@ die();
 @include('framework.header')
 
 
-    <a href="#" onclick="window.history.back()" class="govuk-back-link">Back</a>
+    @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
@@ -31,7 +31,7 @@ die();
                         <p class="govuk-body">To access your part-completed application after exiting, simply click on
                         "Return to an application already started" on the Start Page (under "Start Now").
                         Please note you will need to enter your:</p>
-                        <ul>
+                        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                             <li>Surname</li>
                             <li>Email address</li>
                             <li>National Insurance Number</li>

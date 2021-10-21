@@ -11,14 +11,14 @@ die();
 
 @include('framework.header')
 
-    <a href="#" onclick="window.history.back()" class="govuk-back-link">Back</a>
+    @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Things you need to know before you start</h1>
                                <h2>About this online claim service</h2>
-                               <ul>
+                               <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 <li>There are 13 sections to complete or read before submitting your application.  Some sections are shorter than others and it will take around 45 minutes to one hour to complete all of them.</li>
 
 <li>We recommend you complete each section in order.</li>
@@ -34,7 +34,7 @@ die();
 <li>Please do not delay completing your application to gather information.  Some payments are only made from the date your claim is submitted.  Also, there are <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs#important-information" target="_New">7-year time limits</a> for some armed forces compensation scheme claims. </li>
 </ul>
 <h2>Answering the questions</h2>
-<ul>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 <li>Please answer all questions to the best of your recollection.  If you can’t remember, you can leave blank any sections not marked “required”. </li>
 
 <li>If you can’t remember exact dates, please estimate just a year.</li>
@@ -44,7 +44,7 @@ die();
 <li>You do not need to gather any information you do not already have.  Veterans UK will make all the enquiries needed to assess your claim.</li>
 </ul>
 <h2>After you apply</h2>
-<ul>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 <li>Your claim will automatically be sent to Veterans UK securely and your details will be deleted from this claim service. You will not be able to access your completed application again after it is submitted.</li>
 
 <li>You will receive an acknowledgement to the email address you have entered in ‘personal details’ with information about how your claim will be assessed. </li>

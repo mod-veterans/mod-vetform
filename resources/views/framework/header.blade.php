@@ -7,15 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="https://modvets.web.poweredbyreason.co.uk/favicon.ico" type="image/x-icon">
-    <link rel="mask-icon" href="https://modvets.web.poweredbyreason.co.uk/images/govuk-mask-icon.svg" color="#0b0c0c">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://modvets.web.poweredbyreason.co.uk/images/govuk-apple-touch-icon-180x180.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="https://modvets.web.poweredbyreason.co.uk/images/govuk-apple-touch-icon-167x167.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="https://modvets.web.poweredbyreason.co.uk/images/govuk-apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" href="https://modvets.web.poweredbyreason.co.uk/images/govuk-apple-touch-icon.png">
+    <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/favicon.ico" type="image/x-icon">
+    <link rel="mask-icon" href="/images/govuk-mask-icon.svg" color="#0b0c0c">
+    <link rel="apple-touch-icon" sizes="180x180" href="h/images/govuk-apple-touch-icon-180x180.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/images/govuk-apple-touch-icon-167x167.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/images/govuk-apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" href="/images/govuk-apple-touch-icon.png">
     <!--[if !IE 8]><!-->
-    <link href="https://modvets.web.poweredbyreason.co.uk/css/all.css" rel="stylesheet">
-<link href="https://modvets-dev2.london.cloudapps.digital/css/location-autocomplete.min.css" rel="stylesheet">
+    <link href="/css/all.css" rel="stylesheet">
+<link href="/css/location-autocomplete.min.css" rel="stylesheet">
     <!--<![endif]-->
 
     <!--[if IE 8]>
@@ -27,7 +27,7 @@
     <![endif]-->
 
 
-    <meta property="og:image" content="https://modvets.web.poweredbyreason.co.uk/images/govuk-opengraph-image.png">
+    <meta property="og:image" content="/images/govuk-opengraph-image.png">
 
     <title>Apply for an Armed Forces Compensation or War Pension Payment</title>
 </head>

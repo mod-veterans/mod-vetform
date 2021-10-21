@@ -31,14 +31,14 @@ if (!empty($_POST)) {
 
 
 
-    <a href="#" onclick="window.history.back()" class="govuk-back-link">Back</a>
+    @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Have you ever been paid any of the following?</h1>
                                 <p class="govuk-body">These schemes make payments for certain illnesses caused by exposure to asbestos and dust.</p>
-                       <ul>
+                       <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                          <li>Diffuse Mesothelioma 2014 Scheme</li>
                          <li>Diffuse Mesothelioma 2008 Scheme</li>
                          <li>The Workers Compensation 1979 Pneumoconiosis Act</li>

@@ -11,7 +11,7 @@
 
 
 
-    <a href="#" onclick="window.history.back()" class="govuk-back-link">Back</a>
+    @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
