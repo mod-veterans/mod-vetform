@@ -36,7 +36,7 @@ if (!empty($_POST)) {
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/other-medical-treatment-address/hospital-name">
-        Hospital name if known
+        Hospital name
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

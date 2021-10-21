@@ -26,8 +26,7 @@ if (!empty($_POST)) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What was the date of and reason for your discharge?</h1>
                                 <p class="govuk-body">Please tell us the date (if you are no longer serving) this period
-                        of service ended. If you can't remember exactly, include an estimated date even if this is only
-                        the year.</p>
+                        of service ended.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -46,7 +45,7 @@ if (!empty($_POST)) {
 
     <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
+            <h2 class="govuk-fieldset__heading">
                 Date of discharge
             </h2>
         </legend>
@@ -109,9 +108,12 @@ if (!empty($_POST)) {
 
     </fieldset>
 </div>
+
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/service-details/service-discharge/service-discharge-reason">
-        Discharge reason
+                   <h2 class="govuk-fieldset__heading">
+               <strong> Discharge reason</strong>
+            </h2>
     </label>
         <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example, end of engagement.</div>
             <input

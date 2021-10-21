@@ -35,10 +35,13 @@
 
                 <div class="govuk-form-group govuk-!-margin-top-4">
             <a class="govuk-button" href="/applicant/supporting-documents/upload">
-                Upload a document
+                Upload another document
             </a>
             <br>
-            <a class="govuk-link" href="/tasklist">Return to Task List</a>
+            Or
+            <br />
+            <br />
+            <a class="govuk-button" href="/applicant/supporting-documents/comments">Save and continue</a>
         </div>
             </div>
         </div>

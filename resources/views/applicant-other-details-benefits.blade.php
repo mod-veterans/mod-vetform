@@ -23,7 +23,7 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Other benefits, allowances or entitlements you receive.</h1>
+                                <h1 class="govuk-heading-xl">Other benefits, allowances or entitlements you receive</h1>
                                 <p class="govuk-body">
     Payments from the Armed Forces Compensation Scheme and War Pension Scheme MAY affect related benefits from the Department for Work and Pensions or other authorities.
     It is your responsibility to inform the relevant Benefit Office, local authority or Tax Credit Office if you receive payments under one of their schemes.</p>
@@ -36,6 +36,7 @@ if (!empty($_POST)) {
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h1 class="govuk-fieldset__heading">Are you receiving or are you currently applying for any of the following?</h1>
         </legend>
+        <p class="govuk-body">Please tick all that apply</p>
                                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="61668e5b34e44" name="/other-benefits/receiving-other-benefits/receiving-benefits[]" type="checkbox"

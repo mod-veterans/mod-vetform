@@ -18,7 +18,7 @@
                                 <h2 class="govuk-heading-m">Other medical treatment</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Hospital name if known</dt>
+            <dt class="govuk-summary-list__key">Hospital/Medical facility</dt>
             <dd class="govuk-summary-list__value">
                                     [lpl
                             </dd>
@@ -163,9 +163,9 @@
                 Add another hospital/medical facility
             </a>
             <br>
-            OR
+            Or
             <br/>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Continue</a>
+            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Save and continue</a>
             </div>
         </div>
     </main>

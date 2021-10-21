@@ -22,7 +22,7 @@ die();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What is your telephone number?</h1>
-                                <p class="govuk-body">We'll use this to contact you if we have any questions about this claim</p>
+                                <p class="govuk-body">We'll use this to contact you if we have any questions about this claim.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

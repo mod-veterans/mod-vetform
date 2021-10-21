@@ -6,7 +6,7 @@
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Apply for the Armed Forces Compensation Scheme</h1>
+                                <h1 class="govuk-heading-xl">Apply for an armed forces compensation or war pension payment</h1>
                                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0
             of 13 sections.</p>
@@ -35,7 +35,7 @@
                             <li>
                     <h2 class="app-task-list__section">
                         <span class="app-task-list__section-number">2. </span>
-                        WHO is making this application?
+                        Who is making this application?
                     </h2>
                     <ul class="app-task-list__items">
                                                     <li class="app-task-list__item">

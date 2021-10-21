@@ -26,7 +26,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Overseas bank account details</h1>
-                                <p class="govuk-body">You can ask your bank or check your back statement for these details.</p>
+                                <p class="govuk-body">You can ask your bank or check your bank statement for these details.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
 
@@ -653,6 +653,17 @@ if (!empty($_POST)) {
             </select>
 </div>
 
+                                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-name">
+        Name of account holder
+    </label>
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="/payment-details/bank-overseas/bank-account-holder" name="/payment-details/bank-overseas/bank-account-holder" type="text"
+         autocomplete="name"
+                  value=""
+            >
+</div>
 
 
                                                     <div class="govuk-form-group ">
@@ -671,7 +682,6 @@ if (!empty($_POST)) {
     <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-iban">
         International Bank Account Number (IBAN)
     </label>
-    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">International Bank Account Number</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-iban" name="/payment-details/bank-overseas/bank-account-iban" type="numeric"
@@ -696,7 +706,7 @@ if (!empty($_POST)) {
     <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-bic">
         BIC (Business Identifier Code) or SWIFT code
     </label>
-    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">Must be between 8 amd 11 digits long.</div>
+    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">Must be between 8 and 11 digits long.</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-bic" name="/payment-details/bank-overseas/bank-account-bic" type="numeric"

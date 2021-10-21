@@ -232,6 +232,11 @@ Route::match(['get', 'post'],'/applicant/other-details/other-medical-treatment/k
     return view('applicant-other-details-other-medical-treatment-kind');
 });
 
+
+Route::match(['get', 'post'],'/applicant/other-details/other-medical-treatment/received', function () {
+    return view('applicant-other-details-other-medical-treatment-received');
+});
+
 Route::match(['get', 'post'],'/applicant/other-details/other-medical-treatment/condition', function () {
     return view('applicant-other-details-other-medical-treatment-condition');
 });
@@ -509,6 +514,9 @@ Route::match(['get', 'post'],'/applicant/declaration', function () {
     return view('applicant-supporting-declaration');
 });
 
+Route::match(['get', 'post'],'/application-complete', function () {
+    return view('application-complete');
+});
 
 
 

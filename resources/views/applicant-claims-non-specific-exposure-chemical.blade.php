@@ -30,16 +30,17 @@ if (!empty($_POST)) {
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                     <div class="govuk-form-group ">
-    <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2">
-        <span>What substances?</span>
+ <div class="govuk-form-group">
+        <label class="govuk-label" for="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition">
+        What substances?
     </label>
-            <input
-        class="govuk-input  "
-        id="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2" name="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2" type="text"
-         autocomplete="address-line2"
-                  value=""
-            >
-</div>
+                <textarea class="govuk-textarea " id="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition"
+                  name="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition" rows="5"
+                                    aria-describedby=""></textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+    You can enter up to 200 characters
+  </div>
+        </div>
 
     <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">

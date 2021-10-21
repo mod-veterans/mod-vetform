@@ -40,7 +40,7 @@ if (!empty($_POST)) {
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes" name="/claim-details/claim-accident-non-sporting-form/non-sporting-form" type="radio"
            value="Yes"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes">Yes [Please send us a copy if you have one or you can upload a copy later in this application]</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes">Yes (Please send us a copy if you have one or you can upload a copy later in this application)</label>
 </div>
 
                             <div class="govuk-radios__item">

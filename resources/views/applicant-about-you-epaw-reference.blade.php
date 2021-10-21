@@ -24,7 +24,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Do you have an Express Prior Authority in Writing (EPAW) reference?</h1>
-                                <p class="govuk-body">This is a requirement for those who are serving in or who have served in UK Special Forces.</p>
+                                <p class="govuk-body">This is a requirement for those who are serving in or who have served in UK Special Forces, including in a support role.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

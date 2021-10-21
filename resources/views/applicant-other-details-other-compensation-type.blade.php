@@ -44,7 +44,7 @@ if (!empty($_POST)) {
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/other-compensation/claim-payment-type/claim-outcome-payment-type-interim-settlement" name="/other-compensation/claim-payment-type/claim-outcome-payment-type" type="radio"
            value="Interim settlement"            >
-    <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-payment-type/claim-outcome-payment-type-interim-settlement">Interim settlement</label>
+    <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-payment-type/claim-outcome-payment-type-interim-settlement">Interim payment</label>
 </div>
 
                             <div class="govuk-radios__item">

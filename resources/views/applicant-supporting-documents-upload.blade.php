@@ -4,7 +4,7 @@
 if (!empty($_POST)) {
 
         if (!empty($_POST)) {
-        header("Location: /applicant/supporting-documents/comments");
+        header("Location: /applicant/supporting-documents/manage");
         die();
         }
 
@@ -63,7 +63,7 @@ if (!empty($_POST)) {
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
 <br />
- OR<br /> <br />                                                                     <a class="govuk-button govuk-!-margin-bottom-2" href="/tasklist">
+ Or<br /> <br />                                                                     <a class="govuk-button govuk-!-margin-bottom-2" href="/tasklist">
                                             Continue without uploading a document
                                         </a>
                                         <br />

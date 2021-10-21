@@ -28,7 +28,7 @@ if (!empty($_POST)) {
                                 <p class="govuk-body">You can claim for any medical condition you think is related to your service.  If you have a specific medical diagnosis, please include it here, for example, head injury, fracture L5 vertebrae.</p.>
 <div class="govuk-body">Please enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.</p>
 
-<div class="govuk-body">Tell us which side of the body is affected if needed, for example, gunshot wound left arm.</p>
+<div class="govuk-body">Tell us which side of the body is affected if needed, for example, broken left arm.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -39,6 +39,9 @@ if (!empty($_POST)) {
                 <textarea class="govuk-textarea " id="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition"
                   name="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition" rows="5"
                                     aria-describedby=""></textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+    You can enter up to 500 characters
+  </div>
         </div>
 
 

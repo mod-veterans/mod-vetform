@@ -173,7 +173,7 @@ if (!empty($_POST)) {
                 Add another period of service
             </a>
             <p class="govuk-body">or</p>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Continue Application</a>
+            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Save and Continue</a>
             </div>
         </div>
     </main>

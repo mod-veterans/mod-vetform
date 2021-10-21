@@ -4,7 +4,7 @@ if (!empty($_POST)) {
 
 
 
-        header("Location: /applicant/other-details/other-medical-treatment/check-answers");
+        header("Location: /applicant/other-details/other-medical-treatment/received");
         die();
 
 

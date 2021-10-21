@@ -24,7 +24,7 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What legal authority do you have to make a claim on behalf of the person named?</h1>
+                                <h1 class="govuk-heading-xl">What legal authority do you have to make a claim for someone else?</h1>
                                 <p class="govuk-body">For example, Power of Attorney held.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>

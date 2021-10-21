@@ -49,7 +49,7 @@ die();
 
 <li>You will receive an acknowledgement to the email address you have entered in ‘personal details’ with information about how your claim will be assessed. </li>
 
-<li>We are sorry but we cannot send a copy of your application to you by email.  This is because we have to protect your personal data and personal email addresses are often insecure. Please contact Veterans UK if you would like a copy of your application to be sent via the post, quoting your national insurance number.</li>
+<li>We are sorry but we cannot send a copy of your application to you by email.  This is because we have to protect your personal data and personal email addresses are often insecure. Please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">contact Veterans UK</a> if you would like a copy of your application to be sent via the post, quoting your national insurance number.</li>
 </ul>
 
 

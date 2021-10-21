@@ -5,7 +5,7 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Apply for an Armed Forces Compensation or War Pension Payment</h1>
-                                <p class="govuk-body">Apply for an <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">Armed Forces Compensation Scheme</a> or <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">War Pension</a> payment for injury, illness or disablement related to service in the UK armed forces.</p>
+                                <p class="govuk-body">Apply for an <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">Armed Forces Compensation Scheme</a> or <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">War Pension Scheme</a> payment for injury, illness or disablement related to service in the UK armed forces.</p>
 <p class="govuk-body">There is one claim process for both schemes. </p>
 <p class="govuk-body">You can make more than one claim for different injuries or illnesses in a single application.</p>
 <p class="govuk-body">Use this service for new claims.  If you have already received a payment or want to appeal a previous decision, please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact Veterans UK</a>.</p>
@@ -22,7 +22,7 @@ You’ll be asked about:</p>
         <li>Any other compensation or benefits you receive or have received for the medical conditions you are claiming for.</li>
         <li>Your bank account details.</li>
     </ul>
-<p class="govuk-body">You don't need to get any new information you do not already have. <a href="https://www.gov.uk/government/organisations/veterans-uk" tasrget="_New">Veterans UK</a> can't refund any costs involved if you do this.</p>
+<p class="govuk-body">You don't need to get any new information you do not already have. Veterans UK can't refund any costs involved if you do this.</p>
 
 
 

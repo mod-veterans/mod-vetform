@@ -35,6 +35,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Were you downgraded for any of the conditions on this claim?</h1>
+                                <p class="govuk-body">Tell us only about the conditions you are claiming for.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

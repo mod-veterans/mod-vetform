@@ -3,16 +3,13 @@
 
 if (!empty($_POST)) {
 
-        if (!empty($_POST)) {
-        header("Location: /tasklist");
-        die();
-        }
+
+
+            header("Location: /applicant/other-details/other-medical-treatment/check-answers");
+            die();
+
 
 }
-
-
-
-
 
 @endphp
 
@@ -27,13 +24,11 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Do you want to tell us anything about your documents?</h1>
-                                <p class="govuk-body">If you wish to tell us anything about the files or documents you have uploaded, please use the space below.  If you have chosen to send us any images of your condition/illness for any reason, please tell us here. (optional)  </p>
+                                <h1 class="govuk-heading-xl">What type of treatment did you receive?</h1>
+                                <p class="govuk-body">For example surgery, specialist consultation, tests, physiotherapy</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
-
-
                                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
     <div class="govuk-form-group">
         <label class="govuk-label" for="/applicant/nominee-details/nominee-details">
@@ -52,8 +47,6 @@ if (!empty($_POST)) {
 
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
-
-
             <br><a href="/cancel" class="govuk-link"
            data-module="govuk-button">
             Cancel application
@@ -68,9 +61,4 @@ if (!empty($_POST)) {
 
 
 
-
-
-
 @include('framework.footer')
-
-

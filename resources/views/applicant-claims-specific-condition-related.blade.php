@@ -38,6 +38,9 @@ if (!empty($_POST)) {
                 <textarea class="govuk-textarea " id="/claim-details/claim-illness-note/claim-illness-note"
                   name="/claim-details/claim-illness-note/claim-illness-note" rows="5"
                                     aria-describedby=""></textarea>
+  <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+    You can enter up to 2,500 characters
+  </div>
         </div>
 
 

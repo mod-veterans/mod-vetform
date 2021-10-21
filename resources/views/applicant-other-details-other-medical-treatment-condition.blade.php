@@ -23,8 +23,8 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What condition was this treatment for?</h1>
-                                <p class="govuk-body">Remember you only need to tell us about the conditions you are claiming for</p>
+                                <h1 class="govuk-heading-xl">What condition(s) did you receive treatment for?</h1>
+                                <p class="govuk-body">Remember you only need to tell us about the conditions you are claiming for.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

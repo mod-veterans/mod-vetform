@@ -23,7 +23,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What was the activity?</h1>
-                                <p class="govuk-body">(E.G. skiing/football/diving)</p>
+                                <p class="govuk-body">(For example, skiing, football, diving)</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

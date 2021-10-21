@@ -1,6 +1,12 @@
 @php
 
 
+if (!empty($_POST)) {
+    header("Location: /application-complete");
+    die();
+}
+
+
 
 @endphp
 
@@ -70,7 +76,7 @@
             <input id="6166a97ee7868--default" name="afcs/application-submission/declaration/submission/enquiries-by-email" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="6166a97ee7868" name="afcs/application-submission/declaration/submission/enquiries-by-email" type="checkbox"
            value="Yes"            >
-    <label class="govuk-label govuk-checkboxes__label" for="6166a97ee7868">I agree to Veterans UK sending claim enquiries to me via email.</label>
+    <label class="govuk-label govuk-checkboxes__label" for="6166a97ee7868">I would like Veterans UK to send claim enquiries to me via email</label>
 </div>
                                     <div class="govuk-checkboxes__item">
             <input id="6166a97ee7ad1--default" name="afcs/application-submission/declaration/submission/declaration-agreed" type="hidden" value="No">
@@ -79,13 +85,13 @@
     <label class="govuk-label govuk-checkboxes__label" for="6166a97ee7ad1">I have read and understood the above declaration</label>
 </div>
 
-
+<h2>Submit your claim</h2>
                                     <p class="govuk-body govuk-!-margin-top-4">When you are ready to submit your completed application,
     please click the button below. Please note that you will not be able to change any of the information you have
     entered after a claim is submitted.</p>
 
                 <div class="govuk-form-group">
-   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Submit your application</button>
+   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">SUBMIT YOUR CLAIM</button>
             <br><a href="/cancel" class="govuk-link"
            data-module="govuk-button">
             Cancel application

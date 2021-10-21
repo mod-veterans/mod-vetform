@@ -321,9 +321,9 @@ if (!empty($_POST)) {
                 Add another claim
             </a>
             <br />
-            OR
+            Or
             <br>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Confirm and Continue</a>
+            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Save and Continue</a>
             </div>
         </div>
     </main>

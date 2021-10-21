@@ -21,7 +21,7 @@ die();
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Helping someone make a claim.</h1>
+                                <h1 class="govuk-heading-xl">Helping someone make a claim</h1>
                                 <p class="govuk-body">Thank you for telling us you are helping someone make a claim using this service.</p>
                               <p class="govuk-body">Please be aware that unless you have legal authority to do so, you cannot submit a claim on behalf of another person.</p>
                               <p class="govuk-body">You must therefore ensure that before the claim is submitted, the person named on this application:</p>

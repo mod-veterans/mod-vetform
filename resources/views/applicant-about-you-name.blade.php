@@ -27,7 +27,7 @@ die();
                                 @csrf
                                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/last-name">
-        Last name/family name
+        Last name/family name (required)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
@@ -38,7 +38,7 @@ die();
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/other-names">
-        First name(s)/given name(s)
+        First name(s)/given name(s) (required)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

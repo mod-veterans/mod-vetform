@@ -27,7 +27,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">UK bank or building society account details</h1>
-                                <div class="govuk-body">You can ask your bank or check your back statement for these details.</p>
+                                <div class="govuk-body">You can ask your bank or check your bank statement for these details.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

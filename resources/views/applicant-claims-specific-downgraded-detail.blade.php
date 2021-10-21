@@ -30,7 +30,7 @@ if (!empty($_POST)) {
 
                                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner">
-        From medical category?
+        From medical category
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
@@ -40,7 +40,7 @@ if (!empty($_POST)) {
 
                                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner">
-        To medical category?
+        To medical category
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

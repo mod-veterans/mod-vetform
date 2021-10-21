@@ -25,7 +25,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What is the name and address of your current GP, or Medical Officer if serving?</h1>
-                                <p class="govuk-body">If you do not have a named doctor, you can provide the surgery or practice details. If you are not registered with a surgery or practice, please write "Not Registered" in "Building and Street" below.  If you live overseas, provide the details of your local doctor.</p><p class="govuk-body">Enter details to your best knowledge. If you can't remember, you can leave blank any sections not marked "required".</p>
+                                <p class="govuk-body">If you do not have a named doctor, just provide the surgery or practice details. If you are not registered with a surgery or practice, please write "Not Registered" in "Building and Street" below.  If you live overseas, tell us the details of your local doctor.</p><p class="govuk-body">Enter details to your best knowledge. If you can't remember, you can leave blank any sections not marked "required".</p>
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf

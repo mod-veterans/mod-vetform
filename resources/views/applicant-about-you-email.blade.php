@@ -20,7 +20,7 @@ die();
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What is your Email address</h1>
+                                <h1 class="govuk-heading-xl">What is your contact email address?</h1>
                                 <p class="govuk-body">
 Please tell us the email address you would prefer us to contact you at.  We will only use this to get in touch about your claim. Please use a MOD email address if you have access to one.
     </p>
