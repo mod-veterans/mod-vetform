@@ -3,14 +3,22 @@
 
 if (!empty($_POST)) {
 
+    if (!empty($_POST['afcs/about-you/personal-details/previous-claim/previous-claim'])) {
 
-    if ($_POST['afcs/about-you/personal-details/previous-claim/previous-claim'] == 'Yes') {
-    header("Location: /applicant/about-you/previous-claim/claim-number");
-    die();
+        if ($_POST['afcs/about-you/personal-details/previous-claim/previous-claim'] == 'Yes') {
+        header("Location: /applicant/about-you/previous-claim/claim-number");
+        die();
+
+        } else {
+        header("Location: /applicant/about-you/epaw-reference");
+        die();
+
+        }
 
     } else {
-    header("Location: /applicant/about-you/epaw-reference");
-    die();
+
+        header("Location: /applicant/about-you/epaw-reference");
+        die();
 
     }
 

@@ -1,15 +1,19 @@
+@include('framework.functions')
 @php
 
-
 if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
-        if (!empty($_POST)) {
-        header("Location: /tasklist");
-        die();
-        }
+    $data['sections']['supporting-documents']['completed'] = TRUE;
 
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
+    die();
 }
 
+@endphp
 
 
 
@@ -51,7 +55,12 @@ if (!empty($_POST)) {
 
 
                 <div class="govuk-form-group">
-   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+        </div>
+    </form>
 
 
             <br><a href="/cancel" class="govuk-link"

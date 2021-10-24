@@ -458,6 +458,10 @@ Route::match(['get', 'post'],'/applicant/other-details/other-compensation/check-
     return view('applicant-other-details-other-compensation-check-answers');
 });
 
+Route::match(['get', 'post'],'/applicant/other-details/other-compensation/no/check-answers', function () {
+    return view('applicant-other-details-other-compensation-no-check-answers');
+});
+
 Route::match(['get', 'post'],'/applicant/other-details/benefits', function () {
     return view('applicant-other-details-benefits');
 });

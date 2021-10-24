@@ -1,15 +1,17 @@
+@include('framework.functions')
 @php
 
 if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
+    $data['sections']['service-details']['completed'] = TRUE;
 
-    header("Location: /applicant/about-you/service-details/add-service/service-unit-address");
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
     die();
-
-
 }
-
-
 
 @endphp
 
@@ -173,7 +175,12 @@ if (!empty($_POST)) {
                 Add another period of service
             </a>
             <p class="govuk-body">or</p>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Save and Continue</a>
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+        </div>
+    </form>
             </div>
         </div>
     </main>

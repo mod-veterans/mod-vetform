@@ -3,15 +3,21 @@
 if (!empty($_POST)) {
 
 
-    if ($_POST['/claim-details/claim-illness/claim-illness'] == 'A condition, injury or illness that is the result of a specific accident or incident') {
+    if (!empty($_POST['/claim-details/claim-illness/claim-illness'])) {
 
-        header("Location: /applicant/claims/specific");
-        die();
+        if ($_POST['/claim-details/claim-illness/claim-illness'] == 'A condition, injury or illness that is the result of a specific accident or incident') {
+
+            header("Location: /applicant/claims/specific");
+            die();
+
+        } else {
+
+            header("Location: /applicant/claims/non-specific");
+            die();
+        }
 
     } else {
 
-        header("Location: /applicant/claims/non-specific");
-        die();
     }
 
 }

@@ -3,16 +3,23 @@
 if (!empty($_POST)) {
 
 
-    if ($_POST['/claim-details/claim-accident-non-sporting-reported-to/non-sporting-reported-to'] == 'Yes') {
+    if (!empty($_POST['/claim-details/claim-accident-non-sporting-reported-to/non-sporting-reported-to'])) {
 
-        header("Location: /applicant/claims/specific/non-pt/police-report/reference-number");
-        die();
+        if ($_POST['/claim-details/claim-accident-non-sporting-reported-to/non-sporting-reported-to'] == 'Yes') {
+
+            header("Location: /applicant/claims/specific/non-pt/police-report/reference-number");
+            die();
+
+        } else {
+
+            header("Location: /applicant/claims/specific/non-pt/authorised-leave");
+            die();
+        }
 
     } else {
 
-        header("Location: /applicant/claims/specific/non-pt/authorised-leave");
-        die();
     }
+
 }
 
 

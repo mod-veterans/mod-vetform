@@ -1,14 +1,26 @@
+@include('framework.functions')
 @php
 
-
 if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
-        if (!empty($_POST)) {
-        header("Location: /applicant/supporting-documents/manage");
-        die();
-        }
 
-}
+    if ( (!empty($_POST['no-upload'])) && ($_POST['no-upload'] == 'no-upload') ) {
+
+    $data['sections']['supporting-documents']['completed'] = TRUE;
+    storeData($userID,$data);
+    header("Location: /tasklist");
+    die();
+
+    }
+
+
+    storeData($userID,$data);
+    header("Location: /applicant/supporting-documents/manage");
+    die();
+
+ }
 
 
 
@@ -63,9 +75,14 @@ if (!empty($_POST)) {
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
 <br />
- Or<br /> <br />                                                                     <a class="govuk-button govuk-!-margin-bottom-2" href="/tasklist">
-                                            Continue without uploading a document
-                                        </a>
+ Or<br /> <br />
+
+     <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button" name="no-upload" value="no-upload">Continue without uploading a document</button>
+        </div>
+    </form>
                                         <br />
 
             <br><a href="/cancel" class="govuk-link"

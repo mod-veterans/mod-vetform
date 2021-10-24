@@ -1,17 +1,22 @@
+@include('framework.functions')
 @php
 
 if (!empty($_POST)) {
+$userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
-header("Location: /tasklist");
-die();
+    $data['sections']['things-to-know']['completed'] = TRUE;
 
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
+    die();
 }
 
 @endphp
 
 @include('framework.header')
-
-    @include('framework.backbutton')
+@include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">

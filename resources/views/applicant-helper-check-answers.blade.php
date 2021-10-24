@@ -1,11 +1,16 @@
+@include('framework.functions')
 @php
 
-
 if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
-header("Location: /applicant/helper/check-answers");
-die();
+    $data['sections']['applicant-who']['completed'] = TRUE;
 
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
+    die();
 }
 
 @endphp
@@ -64,8 +69,14 @@ die();
                         class="govuk-visually-hidden"> I confirm I have read and understood the above requirements.</span></a>
             </dd>
         </div>
-    </dl>
-                    <a href="/tasklist" class="govuk-button" data-module="govuk-button">Continue</a>
+<br />
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Continue</button>
+        </div>
+    </form>
             </div>
         </div>
     </main>

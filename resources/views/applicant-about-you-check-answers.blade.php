@@ -1,19 +1,16 @@
+@include('framework.functions')
 @php
 
-
 if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
+    $data['sections']['personal-details']['completed'] = TRUE;
 
-    if ($_POST['afcs/about-you/personal-details/previous-claim/previous-claim'] == 'Yes') {
-    header("Location: /applicant/about-you/previous-claim/claim-number");
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
     die();
-
-    } else {
-    header("Location: /applicant/about-you/save-return");
-    die();
-
-    }
-
 }
 
 @endphp
@@ -183,7 +180,12 @@ if (!empty($_POST)) {
             </dd>
         </div>
     </dl>
-                    <a href="/tasklist" class="govuk-button" data-module="govuk-button">Continue</a>
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Continue</button>
+        </div>
+    </form>
             </div>
         </div>
     </main>

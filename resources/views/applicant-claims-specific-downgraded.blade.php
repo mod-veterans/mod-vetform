@@ -3,17 +3,21 @@
 if (!empty($_POST)) {
 
 
+    if (!empty($_POST['/claim-details/claim-downgraded/claim-illness-downgraded'])) {
 
-    if ($_POST['/claim-details/claim-downgraded/claim-illness-downgraded'] == 'Yes') {
+        if ($_POST['/claim-details/claim-downgraded/claim-illness-downgraded'] == 'Yes') {
 
-        header("Location: /applicant/claims/specific/downgraded/when");
-        die();
+            header("Location: /applicant/claims/specific/downgraded/when");
+            die();
 
+        } else {
+
+            header("Location: /applicant/claims/specific/why-related");
+            die();
+
+
+        }
     } else {
-
-        header("Location: /applicant/claims/specific/why-related");
-        die();
-
 
     }
 

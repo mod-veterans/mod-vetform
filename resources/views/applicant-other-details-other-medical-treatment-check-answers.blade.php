@@ -1,10 +1,19 @@
+@include('framework.functions')
 @php
 
+if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
+    $data['sections']['other-medical']['completed'] = TRUE;
+
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
+    die();
+}
 
 @endphp
-
-
-
 
 @include('framework.header')
 
@@ -164,8 +173,13 @@
             </a>
             <br>
             Or
-            <br/>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Save and continue</a>
+            <br/><br />
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+        </div>
+    </form>
             </div>
         </div>
     </main>

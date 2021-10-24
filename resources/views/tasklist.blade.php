@@ -1,5 +1,32 @@
-@include('framework.header')
+@include('framework.functions')
+@php
 
+$userID = $_SESSION['vets-user'];
+
+
+    $completed = 0;
+
+    if ($data = getData($userID)) {
+
+        foreach ($data['sections'] as $section) {
+
+            if ($section['completed'] == TRUE) {
+                $completed++;
+            }
+
+        }
+    }
+
+
+
+
+
+
+
+@endphp
+
+
+@include('framework.header')
 @include('framework.backbutton')
 
 
@@ -8,8 +35,7 @@
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Apply for an armed forces compensation or war pension payment</h1>
                                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
-        <p class="govuk-body govuk-!-margin-bottom-7">You have completed 0
-            of 13 sections.</p>
+        <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{$completed}} of 13 sections.</p>
 
         <p class="govuk-body govuk-!-margin-bottom-7">Click on the links below to start a section.  You will return to this page after each one is complete. We recommend working through each section in the order below. You can re-enter a completed section and make changes, providing you have not submitted your application. </p>
         <ol class="app-task-list">
@@ -25,10 +51,21 @@
                                            aria-describedby="eligibility-status">
                                         Things to know before you start
                                     </a>
-                                                                    </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="things-to-know-status">
-    Not started
-</strong>
+                                </span>
+  @php
+  if (!empty($data['sections']['things-to-know']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="things-to-know-status">
+                                COMPLETED
+                                </strong>
+ @php } else { @endphp
+
+                                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="things-to-know-status">
+                                Not started
+                                </strong>
+
+ @php } @endphp
+
                             </li>
                                             </ul>
                 </li>
@@ -45,20 +82,29 @@
                                         Who is making this application?
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="applicant-status">
-    Not started
-</strong>
+  @php
+  if (!empty($data['sections']['things-to-know']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="applicant-status">COMPLETED</strong>
+ @php } else { @endphp
+                                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="applicant-status">Not started</strong>
+  @php } @endphp
+
                             </li>
-                                                    <li class="app-task-list__item">
+                             <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
                                                                             <a href="/applicant/nominate-a-representative" class="govuk-link"
                                            aria-describedby="eligibility-status">
                                         Do you want to nominate a representative?
-                                    </a>
-                                                                    </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="representative-status">
-    Not started
-</strong>
+                                    </a></span>
+   @php
+  if (!empty($data['sections']['nominate']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="representative-status">COMPLETED</strong>
+   @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="representative-status">Not started</strong>
+@php } @endphp
+
                             </li>
                                             </ul>
                 </li>
@@ -75,20 +121,28 @@
                                         Personal details
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag app-task-list__tag" id="personal-details-status">
-    Completed
-</strong>
+   @php
+  if (!empty($data['sections']['personal-details']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="personal-details-status">Completed</strong>
+   @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="personal-details-status">Not started</strong>
+    @php } @endphp
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
                                                                             <a href="/applicant/about-you/medical-officer" class="govuk-link"
                                            aria-describedby="eligibility-status">
-                                        Medical Officer
-                                    </a>
-                                                                    </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="medical-officer-status">
-    Not started
-</strong>
+                                        Medical Officer </a> </span>
+
+   @php
+  if (!empty($data['sections']['medical-officer']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="medical-officer-status">COMPLETED</strong>
+   @php } else { @endphp
+
+                                 <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="medical-officer-status">Not started</strong>
+     @php } @endphp
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
@@ -97,9 +151,15 @@
                                         Service details
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="service-details-status">
-    Not started
-</strong>
+   @php
+  if (!empty($data['sections']['service-details']['completed'])) {
+  @endphp
+
+                                <strong class="govuk-tag app-task-list__tag" id="service-details-status">Completed</strong>
+   @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="service-details-status">Not started</strong>
+@php } @endphp
+
                             </li>
                                             </ul>
                 </li>
@@ -116,9 +176,15 @@
                                         Claim details
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="claim-details-status">
-    Not started
-</strong>
+
+   @php
+  if (!empty($data['sections']['claims']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="claim-details-status">COMPLETED</strong>
+   @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="claim-details-status">Not started</strong>
+
+@php } @endphp
                             </li>
                                             </ul>
                 </li>
@@ -135,9 +201,14 @@
                                         Other medical treatment
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="other-medical-treatment-status">
-    Not started
-</strong>
+
+   @php
+  if (!empty($data['sections']['other-medical']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="other-medical-treatment-status">COMPLETED</strong>
+   @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="other-medical-treatment-status">Not started</strong>
+@php } @endphp
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
@@ -146,9 +217,15 @@
                                         Other compensation
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="other-compensation-status">
-    Not started
-</strong>
+    @php
+  if (!empty($data['sections']['other-compensation']['completed'])) {
+  @endphp
+
+                                <strong class="govuk-tag app-task-list__tag" id="other-compensation-status">COMPLETED</strong>
+    @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="other-compensation-status">Not started</strong>
+
+@php } @endphp
                             </li>
                                                     <li class="app-task-list__item">
                                 <span class="app-task-list__task-name">
@@ -157,9 +234,14 @@
                                         Other benefits, allowances or entitlement
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="other-benefits-status">
-    Not started
-</strong>
+    @php
+  if (!empty($data['sections']['other-benefits']['completed'])) {
+  @endphp
+                                <strong class="govuk-tag app-task-list__tag" id="other-benefits-status">Completed</strong>
+    @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="other-benefits-status">Not started</strong>
+ @php } @endphp
+
                             </li>
                                             </ul>
                 </li>
@@ -176,9 +258,15 @@
                                         Payment details
                                     </a>
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="payment-details-status">
-    Not started
-</strong>
+ @php
+  if (!empty($data['sections']['payment-details']['completed'])) {
+  @endphp
+
+                                <strong class="govuk-tag app-task-list__tag" id="payment-details-status">Completed</strong>
+    @php } else { @endphp
+
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="payment-details-status">Not started</strong>
+ @php } @endphp
                             </li>
                                             </ul>
                 </li>
@@ -194,10 +282,17 @@
                                            aria-describedby="eligibility-status">
                                         Supporting documents
                                     </a>
+
                                                                     </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="documents-status">
-    Not started
-</strong>
+ @php
+  if (!empty($data['sections']['supporting-documents']['completed'])) {
+  @endphp
+
+
+                                <strong class="govuk-tag app-task-list__tag" id="documents-status">COMPLETED</strong>
+    @php } else { @endphp
+                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="documents-status">Not started</strong>
+ @php } @endphp
                             </li>
                                             </ul>
                 </li>
@@ -207,15 +302,42 @@
                         Declaration and application submission
                     </h2>
                     <ul class="app-task-list__items">
-                                                    <li class="app-task-list__item">
-                                <span class="app-task-list__task-name">
-                                                                                                                       <a href="/applicant/declaration" class="govuk-link"
-                                           aria-describedby="eligibility-status"> Complete your application</a>
-                                                                                                            </span>
-                                <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="declaration-status">
-    Cannot start yet
-</strong>
-                            </li>
+
+@php
+
+if ($completed < 12) {
+
+
+@endphp
+
+<li class="app-task-list__item">
+    <span class="app-task-list__task-name">
+        Complete your application
+    </span>
+
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="declaration-status">Cannot start yet</strong>
+
+</li>
+
+@php
+} else {
+@endphp
+
+<li class="app-task-list__item">
+    <span class="app-task-list__task-name">
+        <a href="/applicant/declaration" class="govuk-link" aria-describedby="eligibility-status"> Complete your application</a>
+    </span>
+
+    <strong class="govuk-tag govuk-tag--grey app-task-list__tag" id="declaration-status">Not started</strong>
+
+</li>
+
+@php
+}
+@endphp
+
+
+
                                             </ul>
                 </li>
                     </ol>

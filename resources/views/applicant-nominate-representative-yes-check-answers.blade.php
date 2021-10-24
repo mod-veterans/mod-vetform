@@ -1,14 +1,16 @@
+@include('framework.functions')
 @php
 
-
 if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
+    $data['sections']['nominate']['completed'] = TRUE;
 
+    storeData($userID,$data);
 
-            header("Location: /tasklist");
-            die();
-
-
+    header("Location: /tasklist");
+    die();
 }
 
 @endphp
@@ -139,7 +141,12 @@ if (!empty($_POST)) {
             </dd>
         </div>
     </dl>
-                    <a href="/tasklist" class="govuk-button" data-module="govuk-button">Continue</a>
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Continue</button>
+        </div>
+    </form>
             </div>
         </div>
     </main>

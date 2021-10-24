@@ -3,8 +3,30 @@
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/other-details/other-compensation/conditions");
-        die();
+    if (!empty($_POST['/other-compensation/received-compensation/received-compensation'])) {
+
+        if ($_POST['/other-compensation/received-compensation/received-compensation'] == 'Yes') {
+
+            header("Location: /applicant/other-details/other-compensation/conditions");
+            die();
+
+        } else {
+
+            header("Location: /applicant/other-details/other-compensation/no/check-answers");
+            die();
+
+        }
+
+
+
+    } else {
+
+
+
+    }
+
+
+
 
 }
 

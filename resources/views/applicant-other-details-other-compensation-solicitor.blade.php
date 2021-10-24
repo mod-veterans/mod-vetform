@@ -2,20 +2,24 @@
 
 if (!empty($_POST)) {
 
-    if ($_POST['/other-compensation/claim-solicitor-help/claim-solicitor-help'] == 'Yes') {
+    if (!empty($_POST['/other-compensation/claim-solicitor-help/claim-solicitor-help'])) {
 
-        header("Location: /applicant/other-details/other-compensation/solicitor/details");
-        die();
+        if ($_POST['/other-compensation/claim-solicitor-help/claim-solicitor-help'] == 'Yes') {
+
+            header("Location: /applicant/other-details/other-compensation/solicitor/details");
+            die();
+
+        } else {
+
+
+            header("Location: /applicant/other-details/other-compensation/check-answers");
+            die();
+
+        }
 
     } else {
 
-
-        header("Location: /applicant/other-details/other-compensation/check-answers");
-        die();
-
     }
-
-
 
 
 

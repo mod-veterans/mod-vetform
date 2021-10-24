@@ -1,11 +1,7 @@
+@include('framework.functions')
 @php
 
-
-if (!empty($_POST)) {
-    header("Location: /application-complete");
-    die();
-}
-
+$_SESSION['vets-user'] = '';
 
 
 @endphp

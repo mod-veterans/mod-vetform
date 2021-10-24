@@ -5,7 +5,7 @@ if (!empty($_POST)) {
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
 
-    $data['sections']['other-medical']['completed'] = TRUE;
+    $data['sections']['other-compensation']['completed'] = TRUE;
 
     storeData($userID,$data);
 
@@ -18,24 +18,27 @@ if (!empty($_POST)) {
 @include('framework.header')
 
 
+
+
     @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
-                                <h2 class="govuk-heading-m">Other medical treatment</h2>
+                                <h2 class="govuk-heading-m">Other compensation</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Have you had any further hospital or medical treatment?</dt>
+            <dt class="govuk-summary-list__key">Are you claiming for or have you received compensation payments from other sources?</dt>
             <dd class="govuk-summary-list__value">
                                     No
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/other-details/other-medical-treatment/?return=summarise&amp;stack=#/treatment-status/treatment-status">Change<span
-                        class="govuk-visually-hidden"> Have you had any further hospital or medical treatment?</span></a>
+                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/received-compensation/?return=summarise&amp;stack=#/other-compensation/received-compensation/received-compensation">Change<span
+                        class="govuk-visually-hidden"> Are you claiming for or have you received compensation payments from other sources?</span></a>
             </dd>
         </div>
+
     </dl>
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf
@@ -47,4 +50,8 @@ if (!empty($_POST)) {
         </div>
     </main>
 </div>
+
+
+
+
 @include('framework.footer')

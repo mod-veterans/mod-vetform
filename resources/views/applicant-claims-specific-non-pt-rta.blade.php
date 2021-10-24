@@ -2,15 +2,19 @@
 
 if (!empty($_POST)) {
 
-        if ($_POST['/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic'] == 'Yes') {
 
-        header("Location: /applicant/claims/specific/non-pt/rta/journey-reason");
-        die();
+       if (!empty($_POST['/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic'])) {
+            if ($_POST['/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic'] == 'Yes') {
 
+            header("Location: /applicant/claims/specific/non-pt/rta/journey-reason");
+            die();
+
+            } else {
+
+            header("Location: /applicant/claims/specific/non-pt/police-report");
+            die();
+            }
         } else {
-
-        header("Location: /applicant/claims/specific/non-pt/police-report");
-        die();
 
         }
 }

@@ -1,13 +1,17 @@
+@include('framework.functions')
 @php
 
 if (!empty($_POST)) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
-        header("Location: /applicant/claims/check-answers");
-        die();
+    $data['sections']['claims']['completed'] = TRUE;
 
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
+    die();
 }
-
-
 
 @endphp
 
@@ -322,8 +326,13 @@ if (!empty($_POST)) {
             </a>
             <br />
             Or
-            <br>
-            <a href="/tasklist" class="govuk-button govuk-!-margin-top-5" data-module="govuk-button">Save and Continue</a>
+            <br><br />
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and Continue</button>
+        </div>
+    </form>
             </div>
         </div>
     </main>

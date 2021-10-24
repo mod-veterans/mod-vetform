@@ -1,9 +1,26 @@
+@include('framework.functions')
 @php
+
+if (!empty($_POST)) {
+
+
+    if ( (!empty($_POST['no-upload'])) && ($_POST['no-upload'] == 'no-upload') ) {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+    $data['sections']['supporting-documents']['completed'] = TRUE;
+    storeData($userID,$data);
+    header("Location: /tasklist");
+    die();
+
+    }
+
+ }
+
+
+
 
 
 @endphp
-
-
 
 
 @include('framework.header')
@@ -42,9 +59,13 @@
 
                                                                 </p>
                                                                                                                                     <p class="govuk-body">
-                                                                        <a class="govuk-button govuk-!-margin-bottom-2" href="/tasklist">
-                                            Continue without uploading a document
-                                        </a>
+                                                                            <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+        <div class="govuk-form-group">
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button" name="no-upload" value="no-upload">Continue without uploading a document</button>
+        </div>
+    </form>
+
                                                                 </p>
                                                                                                         <h2>I prefer to send copies in the post</h2>
                                                                                                                 <p class="govuk-body">

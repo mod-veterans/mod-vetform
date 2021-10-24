@@ -2,21 +2,22 @@
 
 if (!empty($_POST)) {
 
+    if (!empty($_POST['/other-compensation/claim-outcome/claim-outcome-payment-result'])) {
 
-    if ($_POST['/other-compensation/claim-outcome/claim-outcome-payment-result'] == 'Yes') {
+        if ($_POST['/other-compensation/claim-outcome/claim-outcome-payment-result'] == 'Yes') {
 
-        header("Location: /applicant/other-details/other-compensation/amount-received");
-        die();
+            header("Location: /applicant/other-details/other-compensation/amount-received");
+            die();
 
+        } else {
+
+            header("Location: /applicant/other-details/other-compensation/check-answers");
+            die();
+
+        }
     } else {
 
-        header("Location: /applicant/other-details/other-compensation/check-answers");
-        die();
-
     }
-
-
-
 
 }
 
