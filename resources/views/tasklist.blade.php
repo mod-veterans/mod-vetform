@@ -83,7 +83,7 @@ $userID = $_SESSION['vets-user'];
                                     </a>
                                                                     </span>
   @php
-  if (!empty($data['sections']['things-to-know']['completed'])) {
+  if (!empty($data['sections']['applicant-who']['completed'])) {
   @endphp
                                 <strong class="govuk-tag app-task-list__tag" id="applicant-status">COMPLETED</strong>
  @php } else { @endphp
