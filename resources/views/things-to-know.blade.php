@@ -2,7 +2,7 @@
 @php
 
 if (!empty($_POST)) {
-$userID = $_SESSION['vets-user'];
+    $userID = $_SESSION['vets-user'];
     $data = getData($userID);
 
     $data['sections']['things-to-know']['completed'] = TRUE;

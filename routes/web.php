@@ -522,5 +522,8 @@ Route::match(['get', 'post'],'/application-complete', function () {
     return view('application-complete');
 });
 
+Route::match(['get', 'post'],'/site-list', function () {
+    return view('sitelist');
+});
 
 
