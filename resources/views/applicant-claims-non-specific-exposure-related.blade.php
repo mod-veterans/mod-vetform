@@ -3,17 +3,21 @@
 if (!empty($_POST)) {
 
 
+            if (!empty($_POST['/claim-details/claim-illness-dueto/claim-illness-due-to'])) {
 
-            if (in_array('Chemical exposure', $_POST['/claim-details/claim-illness-dueto/claim-illness-due-to'])) {
+                if (in_array('Chemical exposure', $_POST['/claim-details/claim-illness-dueto/claim-illness-due-to'])) {
 
-                header("Location: /applicant/claims/non-specific/chemical-exposure");
-                die();
+                    header("Location: /applicant/claims/non-specific/chemical-exposure");
+                    die();
 
 
+                } else {
+
+                    header("Location: /applicant/claims/non-specific/medical-attention-date");
+                    die();
+                }
             } else {
 
-                header("Location: /applicant/claims/non-specific/medical-attention-date");
-                die();
             }
 
 die();
