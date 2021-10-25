@@ -1,9 +1,26 @@
+@php
+
+$url = $_SERVER['REQUEST_URI'];
+
+$url = substr($url, 1);
+
+if (empty($url)) {
+    $page_title = 'Home';
+} else {
+$url = str_replace('-',' ',$url);
+$page_title = ucwords(str_replace('/',' - ',$url));
+echo $page_title;
+}
+
+
+@endphp
+
 <!DOCTYPE html>
 <html lang="en" class="govuk-template">
 
 <head>
     <meta charset="utf-8">
-    <title>{{Request::url()}} - Apply for an Armed Forces Compensation or War Pension Payment - GOV.UK</title>
+    <title>{{$page_title}} - Apply for an Armed Forces Compensation or War Pension Payment - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
