@@ -36,7 +36,7 @@ if (!empty($_POST)) {
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h1 class="govuk-fieldset__heading">Are you receiving or are you currently applying for any of the following?</h1>
         </legend>
-        <p class="govuk-body">Please tick all that apply</p>
+        <div id="contact-hint" class="govuk-hint">Please tick all that apply.</div>
                                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="61668e5b34e44" name="/other-benefits/receiving-other-benefits/receiving-benefits[]" type="checkbox"

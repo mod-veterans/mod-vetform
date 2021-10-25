@@ -93,7 +93,7 @@ die();
             name="afcs/about-you/personal-details/contact-address/country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option></option>
+        <option>&nbsp;</option>
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"

@@ -42,13 +42,13 @@ if (!empty($_POST)) {
             class="govuk-radios govuk-radios--inline"
             >
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-yes" name="/claim-details/claim-accident-non-sporting-duty/report" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/report-yes" name="/claim-details/claim-accident-non-sporting-duty/report" type="radio"
            value="Yes"  checked            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-duty/reporty-yes">Yes</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-duty/report-yes">Yes</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-no" name="/claim-details/claim-accident-non-sporting-duty/report" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-duty/report-no" name="/claim-details/claim-accident-non-sporting-duty/report" type="radio"
            value="No"            >
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-duty/report-no">No</label>
 </div>

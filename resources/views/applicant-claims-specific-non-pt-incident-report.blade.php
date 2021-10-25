@@ -32,7 +32,7 @@ if (!empty($_POST)) {
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h1 class="govuk-fieldset__heading">Who did you report the incident to?</h1>
         </legend>
-                <div id="-hint" class="govuk-hint">Select all that apply.</div>
+                <div id="contact-hint" class="govuk-hint">Select all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="61666fc5b995f" name="/claim-details/claim-accident-non-sporting-report-to/claim-accident-non-sporting-report-to[]" type="checkbox"

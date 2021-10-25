@@ -89,7 +89,7 @@ if (!empty($_POST)) {
             name="/other-compensation/claim-solicitor-details/claim-solicitor__country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option></option>
+        <option>&nbsp;</option>
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"

@@ -42,7 +42,7 @@ die();
                                                     <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 
-                <div id="-hint" class="govuk-hint">Select all that apply.</div>
+                <div id="contact-hint" class="govuk-hint">Select all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616681290a1ae" name="/claim-details/claim-illness-dueto/claim-illness-due-to[]" type="checkbox"

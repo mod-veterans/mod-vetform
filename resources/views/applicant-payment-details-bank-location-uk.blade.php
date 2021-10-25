@@ -27,7 +27,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">UK bank or building society account details</h1>
-                                <div class="govuk-body">You can ask your bank or check your bank statement for these details.</p>
+                                <div class="govuk-body">You can ask your bank or check your bank statement for these details.</div>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
@@ -67,11 +67,11 @@ if (!empty($_POST)) {
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-number">
         Account number
     </label>
-    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">Must be between 6 and 8 digits</div>
+    <div id="/payment-details/bank-united-kingdom/bank-account-account-number-hint" class="govuk-hint">Must be between 6 and 8 digits</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-united-kingdom/bank-account-number" name="/payment-details/bank-united-kingdom/bank-account-number" type="numeric"
-                   value=""
+                   value="" aria-describedby="/payment-details/bank-united-kingdom/bank-account-account-number-hint"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -112,6 +112,7 @@ if (!empty($_POST)) {
     </div>
             </form>
             </div>
+        </div>
         </div>
     </main>
 </div>

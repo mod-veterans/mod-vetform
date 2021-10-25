@@ -34,8 +34,7 @@ if (!empty($_POST)) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Uploading supporting documents</h1>
                                 <p class="govuk-body">
-                                                                        Once submitted, your claim will be carefully assessed and we will gather any information we need to make a decision.  However, if you have supporting documents or relevant evidence <strong>already in your possession</strong>, you can upload copies here.  Documents will be held on our secure server before being passed to our office teams.   Below is a list of examples of documents that will help us make a decision.  Please only send us documents related to the circumstances of your claim or the medical condition(s) you are claiming for.
-                                                                </p>
+                                                                        Once submitted, your claim will be carefully assessed and we will gather any information we need to make a decision.  However, if you have supporting documents or relevant evidence <strong>already in your possession</strong>, you can upload copies here.  Documents will be held on our secure server before being passed to our office teams.   Below is a list of examples of documents that will help us make a decision.  Please only send us documents related to the circumstances of your claim or the medical condition(s) you are claiming for.</p>
                                                                                                         <ul class="govuk-list govuk-list--bullet">
                                                             <li><strong>Letters and reports from people who have treated you for the condition(s) you are claiming for.</strong> For example GPs, hospital consultants or other health professionals.  We only need documents that describe treatment or diagnosis and not, for example, appointment dates.  We do not need copies of in-service medical records.</li>
 <li><strong>Service documents</strong> but only if they directly support your claim, for example accident report forms, hurt certificates, incident reports.</li>
@@ -51,14 +50,10 @@ if (!empty($_POST)) {
                                         </a>
 
                         <h2>I don’t have any evidence.</h2>
-                                                                                                                <p class="govuk-body">
-                                                                        Please don’t delay your claim by gathering evidence you don’t already have. We will make our own enquiries to get the information we need.
-                                                                </p>
+                        <p class="govuk-body">Please don’t delay your claim by gathering evidence you don’t already have. We will make our own enquiries to get the information we need. </p>
 
-                                                                                                                                    <p class="govuk-body">
+                                                                <p class="govuk-body">&nbsp;</p>
 
-                                                                </p>
-                                                                                                                                    <p class="govuk-body">
                                                                             <form method="post" enctype="multipart/form-data" novalidate>
     @csrf
         <div class="govuk-form-group">
@@ -66,7 +61,7 @@ if (!empty($_POST)) {
         </div>
     </form>
 
-                                                                </p>
+
                                                                                                         <h2>I prefer to send copies in the post</h2>
                                                                                                                 <p class="govuk-body">
                                                                         If you have too many documents to upload or prefer to send them by post, please send copies (not originals) to:

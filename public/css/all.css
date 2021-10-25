@@ -976,8 +976,8 @@
 }
 @supports (margin: max(calc(0px))) {
   .govuk-width-container {
-    margin-right: max(15px, calc(15px + env(safe-area-inset-right)));
-    margin-left: max(15px, calc(15px + env(safe-area-inset-left)));
+    margin-right: max(15px, calc(15px + 10px));
+    margin-left: max(15px, calc(15px + 10px));
   }
 }
 @media (min-width: 40.0625em) {
@@ -987,8 +987,8 @@
   }
   @supports (margin: max(calc(0px))) {
     .govuk-width-container {
-      margin-right: max(30px, calc(15px + env(safe-area-inset-right)));
-      margin-left: max(30px, calc(15px + env(safe-area-inset-left)));
+      margin-right: max(30px, calc(15px + 10px));
+      margin-left: max(30px, calc(15px + 10px));
     }
   }
 }
@@ -4776,8 +4776,8 @@ x:-moz-any-link {
 }
 @supports (padding: max(calc(0px))) {
   .govuk-skip-link {
-    padding-right: max(15px, calc(15px + env(safe-area-inset-right)));
-    padding-left: max(15px, calc(15px + env(safe-area-inset-left)));
+    padding-right: max(15px, calc(15px + 10px));
+    padding-left: max(15px, calc(15px + 10px));
   }
 }
 .govuk-skip-link:focus {

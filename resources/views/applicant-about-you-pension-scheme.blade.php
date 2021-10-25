@@ -29,7 +29,7 @@ die();
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
             <h1 class="govuk-fieldset__heading">Pension scheme (required)</h1>
         </legend>
-                <div id="-hint" class="govuk-hint">Select all that apply.</div>
+                <div id="contact-hint" class="govuk-hint">Select all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="615fda2278b0d" name="afcs/about-you/personal-details/pension-scheme/pension-scheme[]" type="checkbox"

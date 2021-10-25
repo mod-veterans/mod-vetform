@@ -29,22 +29,22 @@ if (!empty($_POST)) {
                       <div class="govuk-form-group ">
 
                                                     <div class="govuk-form-group ">
-    <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner">
+    <label class="govuk-label" for="/claim-details/specific/downgraded/from-medical">
         From medical category
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner" name="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner" type="text"
+        id="/claim-details/specific/downgraded/from-medical" name="/claim-details/specific/downgraded/from-medical" type="text"
                    value="" >
 </div>
 
                                                     <div class="govuk-form-group ">
-    <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner">
+    <label class="govuk-label" for="/claim-details/specific/downgraded/to-medical">
         To medical category
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner" name="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner" type="text"
+        id="/claim-details/specific/downgraded/to-medical" name="/claim-details/specific/downgraded/to-medical" type="text"
                    value="" >
 </div>
 

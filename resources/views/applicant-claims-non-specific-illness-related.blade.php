@@ -31,7 +31,7 @@ if (!empty($_POST)) {
                                                     <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 
-                <div id="-hint" class="govuk-hint">Select all that apply.</div>
+                <div id="contact-hint" class="govuk-hint">Select all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4ce7" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
@@ -64,9 +64,9 @@ if (!empty($_POST)) {
     <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Related to another medical condition</label>
 </div>
                             <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+        <input class="govuk-checkboxes__input" id="616680a3c5207" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
            value="Other"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Other</label>
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5207">Other</label>
 </div>
 
 

@@ -62,9 +62,9 @@ if (!empty($_POST)) {
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-other" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
            value="Personal (non-duty/off-duty)"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)">Other</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-other">Other</label>
 </div>
 
                     </div>

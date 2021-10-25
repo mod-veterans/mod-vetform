@@ -40,7 +40,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Upload a document</h1>
-                                <p class="govuk-body">You can upload PDF, PNG, JPG or DOCX files.  Apple users - please do not upload .heic image files.</p>
+                                <p class="govuk-body" id="/documents/document/file-hint">You can upload PDF, PNG, JPG or DOCX files.  Apple users - please do not upload .heic image files.</p>
     <p class="govuk-body">Your file must be no larger than 5Mb</p>
 
     <p class="govuk-body">Please upload one file or document at a time.</p>
@@ -64,10 +64,9 @@ if (!empty($_POST)) {
     <label class="govuk-label" for="/documents/document/file">
         <span class="govuk-visually-hidden">Upload file</span>
     </label>
-            <input class="govuk-file-upload " id="/documents/document/file"
+            <input class="govuk-file-upload" id="/documents/document/file"
            name="/documents/document/file" type="file"
-           aria-describedby="/documents/document/file-hint "
-    >
+           aria-describedby="/documents/document/file-hint">
 </div>
 
 
@@ -77,12 +76,11 @@ if (!empty($_POST)) {
 <br />
  Or<br /> <br />
 
-     <form method="post" enctype="multipart/form-data" novalidate>
-    @csrf
+
         <div class="govuk-form-group">
             <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button" name="no-upload" value="no-upload">Continue without uploading a document</button>
         </div>
-    </form>
+
                                         <br />
 
             <br><a href="/cancel" class="govuk-link"
@@ -91,8 +89,8 @@ if (!empty($_POST)) {
         </a>
 
     </div>
+    </div>
             </form>
-            </div>
         </div>
     </main>
 </div>

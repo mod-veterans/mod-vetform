@@ -93,7 +93,7 @@ if (!empty($_POST)) {
             name="/other-compensation/claim-solicitor-details/claim-solicitor__country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option></option>
+        <option>&nbsp;</option>
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"
@@ -690,13 +690,13 @@ if (!empty($_POST)) {
 </div>
 
                                     <div class="govuk-form-group ">
-    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-iban">
+    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-bsb">
         BSB Code
     </label>
     <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">Bank State Branch Code (if used in your country)</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="/payment-details/bank-overseas/bank-account-iban" name="/payment-details/bank-overseas/bank-account-iban" type="numeric"
+        id="/payment-details/bank-overseas/bank-account-iban" name="/payment-details/bank-overseas/bank-account-bsb" type="numeric"
                    value=""
             >
 </div>
@@ -706,7 +706,7 @@ if (!empty($_POST)) {
     <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-bic">
         BIC (Business Identifier Code) or SWIFT code
     </label>
-    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">Must be between 8 and 11 digits long.</div>
+    <div id="/payment-details/bank-overseas/bank-account-bic" class="govuk-hint">Must be between 8 and 11 digits long.</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-bic" name="/payment-details/bank-overseas/bank-account-bic" type="numeric"
@@ -715,26 +715,26 @@ if (!empty($_POST)) {
 </div>
 
                                     <div class="govuk-form-group ">
-    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-bic">
+    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-transit">
         Transit Routing Number
     </label>
-    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">if used in your country</div>
+    <div id="/payment-details/bank-overseas/bank-account-transit-hint" class="govuk-hint">if used in your country</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="/payment-details/bank-overseas/bank-account-bic" name="/payment-details/bank-overseas/bank-account-bic" type="numeric"
+        id="/payment-details/bank-overseas/bank-account-transit" name="/payment-details/bank-overseas/bank-account-transit" type="numeric"
                    value=""
             >
 </div>
 
 
                                     <div class="govuk-form-group ">
-    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-bic">
+    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-type">
         Type of account
     </label>
-    <div id="/payment-details/bank-united-kingdom/bank-account-sort-code-hint" class="govuk-hint">For example, savings.</div>
+    <div id="/payment-details/bank-overseas/bank-account-type-hint" class="govuk-hint">For example, savings.</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="/payment-details/bank-overseas/bank-account-bic" name="/payment-details/bank-overseas/bank-account-bic" type="numeric"
+        id="/payment-details/bank-overseas/bank-account-type" name="/payment-details/bank-overseas/bank-account-type" type="numeric"
                    value=""
             >
 </div>

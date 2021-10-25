@@ -30,7 +30,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Which hospital or medical facility were you taken to?</h1>
-                                <p class="govuk-body">Please tell us the details to the best of your knowledge.  If you can't remember, you can leave this page or any sections blank.</a>
+                                <p class="govuk-body">Please tell us the details to the best of your knowledge.  If you can't remember, you can leave this page or any sections blank.</p>
 
            <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -95,7 +95,7 @@ if (!empty($_POST)) {
             name="/claim-details/claim-accident-sporting-hospital-address/claim-sporting-hospital-address__country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option></option>
+        <option>&nbsp;</option>
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"

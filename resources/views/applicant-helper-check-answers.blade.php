@@ -69,6 +69,7 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> I confirm I have read and understood the above requirements.</span></a>
             </dd>
         </div>
+    </dl>
 <br />
 
     <form method="post" enctype="multipart/form-data" novalidate>

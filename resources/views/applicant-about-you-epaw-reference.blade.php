@@ -58,7 +58,7 @@ if (!empty($_POST)) {
     </fieldset>
 <br />
   <div class="govuk-form-group">
-    <label class="govuk-label" for="afcs/about-you/epaw-reference">
+    <label class="govuk-label" for="afcs/about-you/personal-details/epaw-reference">
         EPAW Reference (if received)
     </label>
         <input

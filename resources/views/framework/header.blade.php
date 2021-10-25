@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Apply for an Armed Forces Compensation or War Pension Payment - GOV.UK</title>
+    <title>{{Request::url()}} - Apply for an Armed Forces Compensation or War Pension Payment - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -49,15 +49,15 @@ if (!empty($_POST)) {
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--field" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation-overseas" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Accommodation - field"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--field">My accommodation when on operations overseas</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation-overseas">My accommodation when on operations overseas</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--base" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation-operations-uk" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="Accommodation - base"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation--base">My accommodation when on operations in the UK</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-accommodation-operations-uk">My accommodation when on operations in the UK</label>
 </div>
 
                             <div class="govuk-radios__item">
@@ -86,9 +86,9 @@ if (!empty($_POST)) {
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-an-off-duty-location" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-none-of-above" name="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from" type="radio"
            value="An off-duty location"            >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-an-off-duty-location">None of the above</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-none-of-above">None of the above</label>
 </div>
 
                     </div>

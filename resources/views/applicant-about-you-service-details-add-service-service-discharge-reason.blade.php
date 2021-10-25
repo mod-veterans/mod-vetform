@@ -31,7 +31,7 @@ if (!empty($_POST)) {
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
                                                     <div class="govuk-checkboxes__item">
-            <input id="615ff47dd0131--default" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="hidden" value="No">
+            <input id="afcs/about-you/service-details/service-discharge/service-is-serving" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="615ff47dd0131" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="checkbox"
            value="Yes"            >
     <label class="govuk-label govuk-checkboxes__label" for="615ff47dd0131">I am still serving</label>
@@ -98,10 +98,10 @@ if (!empty($_POST)) {
                                     </div>
 <br />
         <div class="govuk-checkboxes__item">
-            <input id="615ff47dd0131--default" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="hidden" value="No">
+            <input id="afcs/about-you/service-details/service-discharge/service-is-serving" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="615ff47dd0131" name="afcs/about-you/service-details/service-discharge/service-is-serving" type="checkbox"
            value="Yes"            >
-    <label class="govuk-label govuk-checkboxes__label" for="615ff47dd0131">This date is approximate</label>
+    <label class="govuk-label govuk-checkboxes__label" for="afcs/about-you/service-details/service-discharge/service-is-serving">This date is approximate</label>
 </div>
 
 

@@ -17,16 +17,8 @@ if (!empty($_POST)) {
 
 
 
-
-@endphp
-
-
-
-
 @include('framework.header')
-
-
-    @include('framework.backbutton')
+@include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
@@ -55,12 +47,11 @@ if (!empty($_POST)) {
 
 
                 <div class="govuk-form-group">
-    <form method="post" enctype="multipart/form-data" novalidate>
-    @csrf
+
         <div class="govuk-form-group">
             <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
         </div>
-    </form>
+
 
 
             <br><a href="/cancel" class="govuk-link"
@@ -68,6 +59,7 @@ if (!empty($_POST)) {
             Cancel application
         </a>
 
+    </div>
     </div>
             </form>
             </div>

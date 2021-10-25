@@ -108,7 +108,7 @@ if (!empty($_POST)) {
             name="afcs/about-you/medical-officer/medical-officer-contact/country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option></option>
+        <option>&nbsp;</option>
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"

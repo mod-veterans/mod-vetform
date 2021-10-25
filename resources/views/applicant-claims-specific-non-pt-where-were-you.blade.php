@@ -30,7 +30,7 @@ if (!empty($_POST)) {
     <a id="/claim-details/claim-accident-non-sporting-location/non-sporting-location"></a>
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 
-                <div id="-hint" class="govuk-hint">Tick all that apply.</div>
+                <div id="contact-hint" class="govuk-hint">Tick all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4ce7" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
@@ -63,14 +63,14 @@ if (!empty($_POST)) {
     <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">An off-duty location</label>
 </div>
                             <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+        <input class="govuk-checkboxes__input" id="616680a3c5207" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
            value="Consequential to another medical condition"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Travelling</label>
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5207">Travelling</label>
 </div>
                             <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="616680a3c5206" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
+        <input class="govuk-checkboxes__input" id="616680a3c5208" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
            value="Other"            >
-    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5206">Other</label>
+    <label class="govuk-label govuk-checkboxes__label" for="616680a3c5208">Other</label>
 </div>
 
 

@@ -30,7 +30,6 @@ if (!empty($_POST)) {
 <p class="govuk-body">If you need to add more than one medical practitioner or hospital, you can do this within the ‘Other Medical Treatment’ section later</p>
 
 
-                                </p>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group ">
@@ -94,7 +93,7 @@ if (!empty($_POST)) {
             name="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option></option>
+        <option>&nbsp;</option>
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"

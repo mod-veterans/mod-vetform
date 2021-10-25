@@ -147,7 +147,7 @@ if (!empty($_POST)) {
     </fieldset>
         <br />
                                         <div class="govuk-checkboxes__item">
-            <input id="6166806a32c4a--default" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="hidden" value="No">
+            <input id="/claim-details/claim-illness-date/date-of-condition-estimated" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="checkbox"
            value="Yes"            >
     <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">Tick if these dates are approximate</label>
@@ -156,8 +156,8 @@ if (!empty($_POST)) {
 
     <br />
                                         <div class="govuk-checkboxes__item">
-            <input id="6166806a32c4a--default" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="hidden" value="No">
-        <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="checkbox"
+            <input id="/claim-details/claim-illness-date/still-downgraded" name="/claim-details/claim-illness-date/still-downgraded" type="hidden" value="No">
+        <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/still-downgraded" type="checkbox"
            value="Yes"            >
     <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">I am still downgraded / was downgraded at discharge</label>
 </div>

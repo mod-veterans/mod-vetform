@@ -35,7 +35,7 @@ $_SESSION['vets-user'] = '';
     <h2 class="govuk-heading-m">Do you need further help or support?</h2>
     <p class="govuk-body">All veterans and their families are entitled to free help and support from Veterans UK at any time. This includes a free helpline and Veterans Welfare Service that can assist with welfare information including benefits, help in the home, employment and financial support. More information can be found at <a href="https://www.gov.uk/guidance/urgent-help-for-veterans" target="_New">https://www.gov.uk/guidance/urgent-help-for-veterans</a> </p>
 
- <p class="govuk-body">Thank you</br >MOD Veterans UK</p>
+ <p class="govuk-body">Thank you<br />MOD Veterans UK</p>
 
 
             </div>

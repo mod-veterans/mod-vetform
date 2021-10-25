@@ -25,10 +25,10 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">What medical condition(s) are you claiming for?</h1>
-                                <p class="govuk-body">You can claim for any medical condition you think is related to your service.  If you have a specific medical diagnosis, please include it here, for example, head injury, fracture L5 vertebrae.</p.>
-<div class="govuk-body">Please enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.</p>
+                                <p class="govuk-body">You can claim for any medical condition you think is related to your service.  If you have a specific medical diagnosis, please include it here, for example, head injury, fracture L5 vertebrae.</p>
+<div class="govuk-body">Please enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.</div>
 
-<div class="govuk-body">Tell us which side of the body is affected if needed, for example, broken left arm.</p>
+<div class="govuk-body">Tell us which side of the body is affected if needed, for example, broken left arm.</div>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -56,6 +56,7 @@ if (!empty($_POST)) {
     </div>
             </form>
             </div>
+        </div>
         </div>
     </main>
 </div>

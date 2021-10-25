@@ -33,7 +33,7 @@ Please tell us the email address you would prefer us to contact you at.  We will
         <span class="govuk-visually-hidden">What is your email address</span>
     </label>
     <div id="afcs/about-you/personal-details/email-address/email-address-hint" class="govuk-hint">We will send confirmation of your claim to this address</div>
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
+    <label class="govuk-label" for="afcs/about-you/personal-details/email-address/email-address">
         Email address
     </label>
         <input
@@ -46,13 +46,13 @@ Please tell us the email address you would prefer us to contact you at.  We will
 </div>
 
             <div class="govuk-form-group ">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
+    <label class="govuk-label" for="afcs/about-you/personal-details/email-address/email-address-confirm">
         Confirm email address
     </label>
 
         <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/personal-details/email-address/email-address" name="afcs/about-you/personal-details/email-address/email-address" type="email"
+        id="afcs/about-you/personal-details/email-address/email-address-confirm" name="afcs/about-you/personal-details/email-address/email-address-confirm" type="email"
          autocomplete="email"
                   value=""
                 aria-describedby="afcs/about-you/personal-details/email-address/email-address-hint"

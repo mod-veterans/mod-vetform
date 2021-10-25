@@ -35,12 +35,12 @@ if (!empty($_POST)) {
             class="govuk-radios"
             >
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-witness/sporting-witnesses-yes" name="/claim-details/claim-accident-witness/sporting-witnesses" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-witness/sporting-witnesses-yes-detail" name="/claim-details/claim-accident-witness/sporting-witnesses" type="radio"
            value="Yes detail"  checked            >
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-witness/sporting-witnesses-yes-detail">Yes - and I know the witness's contact details</label>
 </div>
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-witness/sporting-witnesses-yes" name="/claim-details/claim-accident-witness/sporting-witnesses" type="radio"
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-witness/sporting-witnesses-yes-nodetail" name="/claim-details/claim-accident-witness/sporting-witnesses" type="radio"
            value="Yes no det"  checked            >
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-witness/sporting-witnesses-yes-nodetail">Yes - but I don't know the witness's details</label>
 </div>
