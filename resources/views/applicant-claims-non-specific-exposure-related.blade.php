@@ -20,8 +20,6 @@ if (!empty($_POST)) {
 
             }
 
-die();
-
 }
 
 
