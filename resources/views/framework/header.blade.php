@@ -9,12 +9,10 @@ if (empty($url)) {
 } else {
 $url = str_replace('-',' ',$url);
 $page_title = ucwords(str_replace('/',' - ',$url));
-echo $page_title;
 }
 
 
 @endphp
-
 <!DOCTYPE html>
 <html lang="en" class="govuk-template">
 
