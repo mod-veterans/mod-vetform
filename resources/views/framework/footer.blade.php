@@ -5,22 +5,22 @@
                 <h2 class="govuk-visually-hidden">Support links</h2>
                 <ul class="govuk-footer__inline-list">
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="https://modvets.web.poweredbyreason.co.uk/cookie-policy">
+                        <a class="govuk-footer__link" href="/cookie-policy">
                             Cookies
                         </a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="https://modvets.web.poweredbyreason.co.uk/feedback">
+                        <a class="govuk-footer__link" href="/feedback">
                             Feedback
                         </a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="https://modvets.web.poweredbyreason.co.uk/privacy-policy">
+                        <a class="govuk-footer__link" href="/privacy-policy">
                             Privacy
                         </a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="https://modvets.web.poweredbyreason.co.uk/accessibility-statement">
+                        <a class="govuk-footer__link" href="/accessibility-statement">
                             Accessibility Statement
                         </a>
                     </li>
@@ -52,14 +52,5 @@
             url: '/assets/data/location-autocomplete-graph.json'
         })
     </script>
-<script async src="imageproxy?token=214e4cc2a2c4dfbc30b45fbad04f260cd18cd6b368bd9d50a63445436803121d&url=https://www.googletagmanager.com/gtag/js?id="></script>
-
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '');
-</script>
-
 </body>
 </html>

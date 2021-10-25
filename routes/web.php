@@ -526,4 +526,20 @@ Route::match(['get', 'post'],'/site-list', function () {
     return view('sitelist');
 });
 
+Route::match(['get', 'post'],'/cookie-policy', function () {
+    return view('/cookie-policy');
+});
+
+Route::match(['get', 'post'],'/accessibility-statement', function () {
+    return view('/accessibility-statement');
+});
+
+Route::match(['get', 'post'],'/feedback', function () {
+    return view('/feedback');
+});
+
+Route::match(['get', 'post'],'/privacy-policy', function () {
+    return view('/privacy-policy');
+});
+
 
