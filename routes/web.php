@@ -542,4 +542,7 @@ Route::match(['get', 'post'],'/privacy-policy', function () {
     return view('/privacy-policy');
 });
 
+Route::match(['get', 'post'],'/cancel', function () {
+    return view('/cancel');
+});
 
