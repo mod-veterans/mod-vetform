@@ -543,3 +543,9 @@ Route::match(['get', 'post'],'/privacy-policy', function () {
 });
 
 
+Route::match(['get', 'post'],'/applicant/supporting-documents-alt', function () {
+    return view('applicant-supporting-documents-alt');
+});
+
+
+

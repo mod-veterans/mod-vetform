@@ -8,9 +8,8 @@ if (empty($url)) {
     $page_title = 'Home';
 } else {
 $url = str_replace('-',' ',$url);
-$page_title = ucwords(str_replace('/',' - ',$url));
+$page_title = strtoupper(str_replace('/',' | ',$url));
 }
-
 
 @endphp
 <!DOCTYPE html>
@@ -18,7 +17,7 @@ $page_title = ucwords(str_replace('/',' - ',$url));
 
 <head>
     <meta charset="utf-8">
-    <title>{{$page_title}} - Apply for an Armed Forces Compensation or War Pension Payment - GOV.UK</title>
+    <title>{{$page_title}} | Apply for an Armed Forces Compensation or War Pension Payment - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

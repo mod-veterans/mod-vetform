@@ -1,33 +1,82 @@
+@include('framework.functions')
 @php
+session_start();
+
+$errorWhoLabel = '';
+$errorWhoMessage = '';
+$errorWhoShow = '';
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+$application_who = array();
+
+if (!empty($data['sections']['applicant-who']['who is making this application'])) {
+    $application_who[$data['sections']['applicant-who']['who is making this application']] = 'checked';
+}
+
 
 
 if (!empty($_POST)) {
 
 
-    switch ($_POST['/applicant/applicant-selection/nominated-applicant']) {
+    if (!empty($_POST['/applicant/applicant-selection/nominated-applicant'])) {
+        $data['sections']['applicant-who']['who is making this application'] = '';
 
-        case "The person named on this claim is making the application.":
+        switch ($_POST['/applicant/applicant-selection/nominated-applicant']) {
 
-            header("Location: /applicant/check-answers");
-            die();
-
-        break;
-
-
-        case "I am making an application for someone else and I have legal authority to act on their behalf.":
-
-            header("Location: /applicant/legal-authority");
-            die();
-
-        break;
+            case "The person named on this claim is making the application.":
+                $data['sections']['applicant-who']['who is making this application'] = 'The person named on this claim is making the application.';
+                $location = '/applicant/check-answers';
+            break;
 
 
-        case "I am helping someone else make this application.":
+            case "I am making an application for someone else and I have legal authority to act on their behalf.":
+                $data['sections']['applicant-who']['who is making this application'] = 'I am making an application for someone else and I have legal authority to act on their behalf.';
+                $location = '/applicant/legal-authority';
+            break;
 
-            header("Location: /applicant/helper/name");
-            die();
 
-        break;
+            case "I am helping someone else make this application.":
+                $data['sections']['applicant-who']['who is making this application'] = 'I am helping someone else make this application.';
+                $location = '/applicant/helper/name';
+            break;
+
+        }
+
+        //store our changes
+
+        storeData($userID,$data);
+        header("Location: ".$location);
+        die();
+
+
+    } else {
+
+        $errorWhoLabel  = '
+<span id="/applicant/applicant-selection/nominated-applicant-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span> Select who is making this application
+</span>';
+
+        $errorWhoMessage = '
+ <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+  <h2 class="govuk-error-summary__title" id="error-summary-title">
+    There is a problem
+  </h2>
+  <div class="govuk-error-summary__body">
+    <ul class="govuk-list govuk-error-summary__list">
+      <li>
+        <a href="/applicant/applicant-selection/nominated-applicant-error">Please choose who is making this application</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+        ';
+
+    $errorWhoShow = 'govuk-form-group--error';
 
     }
 
@@ -49,6 +98,10 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+@php
+echo $errorWhoMessage;
+@endphp
+
                                 <h1 class="govuk-heading-xl">Who is making this application?</h1>
                                 <p class="govuk-body">The person named in this application should be the person who completes the declaration and
                           final submission when all sections are completed.</p>
@@ -57,32 +110,33 @@ if (!empty($_POST)) {
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
-                                                    <div class="govuk-form-group ">
+
+    <div class="govuk-form-group {{$errorWhoShow}} ">
     <a id="/applicant/"></a>
     <fieldset class="govuk-fieldset">
-                                    <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
-                    <h1 class
-                    ="govuk-fieldset__heading">Who is making this application? (required)</h1>
-                </legend>
-                                            <div
+
+@php
+echo $errorWhoLabel;
+@endphp
+
+              <div
             class="govuk-radios govuk-radios--inline"
             >
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/applicant/applicant-selection/nominated-applicant-the-person-named-on-this-claim-is-making-the-application." name="/applicant/applicant-selection/nominated-applicant" type="radio"
-           value="The person named on this claim is making the application."            >
+           value="The person named on this claim is making the application."   @php echo @$application_who['The person named on this claim is making the application.']; @endphp        >
     <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-the-person-named-on-this-claim-is-making-the-application.">I am making this application for myself.</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/applicant/applicant-selection/nominated-applicant-i-am-making-an-application-on-behalf-of-the-person-named-claim-on-this-and-i-have-legal-authority-to-act-on-their-behalf." name="/applicant/applicant-selection/nominated-applicant" type="radio"
-           value="I am making an application for someone else and I have legal authority to act on their behalf."            >
+           value="I am making an application for someone else and I have legal authority to act on their behalf."     @php echo @$application_who['I am making an application for someone else and I have legal authority to act on their behalf.']; @endphp        >
     <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-i-am-making-an-application-on-behalf-of-the-person-named-claim-on-this-and-i-have-legal-authority-to-act-on-their-behalf.">I am making an application for someone else and I have legal authority to act on their behalf.</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/applicant/applicant-selection/nominated-applicant-i-am-helping-someone-else-make-this-application." name="/applicant/applicant-selection/nominated-applicant" type="radio"
-           value="I am helping someone else make this application."            >
+           value="I am helping someone else make this application."     @php echo @$application_who['I am helping someone else make this application.']; @endphp       >
     <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-i-am-helping-someone-else-make-this-application.">I am helping someone else make this application.</label>
 </div>
 
