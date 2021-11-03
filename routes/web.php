@@ -542,6 +542,9 @@ Route::match(['get', 'post'],'/privacy-policy', function () {
     return view('/privacy-policy');
 });
 
+Route::match(['get', 'post'],'/cancel', function () {
+    return view('/cancel');
+});
 
 Route::match(['get', 'post'],'/applicant/supporting-documents-alt', function () {
     return view('applicant-supporting-documents-alt');
