@@ -1,6 +1,5 @@
 @include('framework.functions')
 @php
-session_start();
 
 $errorWhoLabel = '';
 $errorWhoMessage = '';
