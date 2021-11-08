@@ -10,7 +10,7 @@ $userID = $_SESSION['vets-user'];
 
         foreach ($data['sections'] as $section) {
 
-            if ($section['completed'] == TRUE) {
+            if ( (!empty($section['completed'])) &&  ($section['completed'] == TRUE) ) {
                 $completed++;
             }
 
