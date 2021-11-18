@@ -1,11 +1,102 @@
+@include('framework.functions')
 @php
+
+
+//error handling setup
+$errorWhoLabel = '';
+$errorMessage = '';
+$errorWhoShow = '';
+$errors = 'N';
+$errorsList = array();
+$declarationchk = '';
+
+
+//set fields
+$declaration = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+if (empty($_POST)) {
+    //load the data if set
+    if (!empty($data['sections']['applicant-who']['declaration'])) {
+        $declaration['data'] = @$data['sections']['applicant-who']['helper']['declaration'];
+        $declarationchk = 'checked';
+    }
+} else {
+//var_dump($_POST);
+//die;
+}
 
 
 if (!empty($_POST)) {
 
+
+    //set the entered field names
+
+    if (!empty($_POST['/applicant/helper-declaration/helper-declaration-agreed'])) {
+
+        if ($_POST['/applicant/helper-declaration/helper-declaration-agreed'] == 'Yes') {
+
+            $declaration['data'] = cleanTextData($_POST['/applicant/helper-declaration/helper-declaration-agreed']);
+            $declarationchk = 'checked';
+            $data['sections']['applicant-who']['helper']['declaration'] = cleanTextData($_POST['/applicant/helper-declaration/helper-declaration-agreed']);
+
+
+        } else {
+
+            $errors = 'Y';
+            $errorsList[] = '<a href="#/applicant/helper-declaration/helper-declaration-agreed">Please confirm your acceptance</a>';
+            $declaration['error'] = 'govuk-form-group--error';
+            $declaration['errorLabel'] =
+            '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Please confirm your acceptance
+             </span>';
+         }
+
+    }
+
+
+
+    if ($errors == 'Y') {
+
+        $errorList = '';
+        foreach ($errorsList as $error) {
+            $errorList .=  '<li>'.$error.'</li>';
+        }
+
+
+        $errorMessage = '
+         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            '.$errorList.'
+            </ul>
+          </div>
+        </div>
+        ';
+
+
+
+
+
+
+
+    } else {
+
+        //store our changes
+
+        storeData($userID,$data);
 header("Location: /applicant/helper/check-answers");
 die();
 
+}
 }
 
 @endphp
@@ -21,6 +112,9 @@ die();
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+@php
+echo $errorMessage;
+@endphp
                                 <h1 class="govuk-heading-xl">Helping someone make a claim</h1>
                                 <p class="govuk-body">Thank you for telling us you are helping someone make a claim using this service.</p>
                               <p class="govuk-body">Please be aware that unless you have legal authority to do so, you cannot submit a claim on behalf of another person.</p>
@@ -38,11 +132,15 @@ die();
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf
-                                                    <div class="govuk-checkboxes__item">
-            <input id="6152bb567a80e--default" name="/applicant/helper-declaration/helper-declaration-agreed" type="hidden" value="No">
-        <input class="govuk-checkboxes__input" id="6152bb567a80e" name="/applicant/helper-declaration/helper-declaration-agreed" type="checkbox"
-           value="Yes"            >
-    <label class="govuk-label govuk-checkboxes__label" for="6152bb567a80e">I confirm I have read and understood the above requirements.</label>
+<div class="govuk-form-group {{$declaration['error']}}">
+    @php echo $declaration['errorLabel']; @endphp
+        <div class="govuk-checkboxes__item">
+
+
+        <input class="govuk-checkboxes__input" id="/applicant/helper-declaration/helper-declaration-agreed" name="/applicant/helper-declaration/helper-declaration-agreed" type="checkbox"
+           value="Yes"       {{$declarationchk}}    />
+    <label class="govuk-label govuk-checkboxes__label" for="/applicant/helper-declaration/helper-declaration-agreed">I confirm I have read and understood the above requirements.</label>
+</div>
 </div>
 
 

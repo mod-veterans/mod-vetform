@@ -1,9 +1,12 @@
 @include('framework.functions')
 @php
 
-if (!empty($_POST)) {
+
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
+
+
+if (!empty($_POST)) {
 
     $data['sections']['applicant-who']['completed'] = TRUE;
 
@@ -30,7 +33,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Who is making this application?</dt>
             <dd class="govuk-summary-list__value">
-                                    I am making an application on behalf of the person named on this application and I have legal authority to act on their behalf.
+                                    {{@$data['sections']['applicant-who']['who is making this application']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/?return=summarise&amp;stack=#/applicant/applicant-selection/nominated-applicant">Change<span
@@ -40,7 +43,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Your full name</dt>
             <dd class="govuk-summary-list__value">
-                                    oijoij
+                                    {{@$data['sections']['applicant-who']['legal authority']['fullname']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/nominee-name">Change<span
@@ -50,7 +53,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
-                                    oijoij
+                                    {{@$data['sections']['applicant-who']['legal authority']['address1']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/address-line-1">Change<span
@@ -60,7 +63,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
-                                    oijijoij
+                                    {{@$data['sections']['applicant-who']['legal authority']['address2']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/address-line-2">Change<span
@@ -70,7 +73,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
-                                    iojoijoi
+                                    {{@$data['sections']['applicant-who']['legal authority']['town']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/town">Change<span
@@ -80,7 +83,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
-                                    joijoijoi
+                                    {{@$data['sections']['applicant-who']['legal authority']['county']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/county">Change<span
@@ -90,7 +93,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
-                                    United Kingdom
+                                    {{@$data['sections']['applicant-who']['legal authority']['country']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/country">Change<span
@@ -100,7 +103,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
-                                    ijo
+                                    {{@$data['sections']['applicant-who']['legal authority']['postcode']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/postcode">Change<span
@@ -110,7 +113,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
-                                    oijoij
+                                    {{@$data['sections']['applicant-who']['legal authority']['telephonenumber']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/nominee-number">Change<span
@@ -120,10 +123,10 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What legal authority do you have to make a claim on behalf of the person named?</dt>
             <dd class="govuk-summary-list__value">
-                                    pkokkkk
+                                    {{@$data['sections']['applicant-who']['legal authority']['details']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/authority-detail/?return=summarise&amp;stack=#/applicant/nominee-details/nominee-details">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/authority-detail/">Change<span
                         class="govuk-visually-hidden"> What legal authority do you have to make a claim on behalf of the person named?</span></a>
             </dd>
         </div>

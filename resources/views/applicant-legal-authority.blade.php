@@ -1,13 +1,180 @@
+@include('framework.functions')
 @php
+
+//Add in the auto-complete for country
+$footerScripts = array();
+$footerScripts[] = '
+<script type="text/javascript" src="https://modvets-dev2.london.cloudapps.digital/js/location-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById("/applicant/nominee-address/country"),
+            url: "/assets/data/location-autocomplete-graph.json"
+
+        })
+</script>
+
+';
+
+
+//error handling setup
+$errorWhoLabel = '';
+$errorMessage = '';
+$errorWhoShow = '';
+$errors = 'N';
+$errorsList = array();
+
+
+//set fields
+$fullname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address1 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address2 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$postcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$telephonenumber = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+if (empty($_POST)) {
+    //load the data if set
+    if (!empty($data['sections']['applicant-who']['legal authority'])) {
+        $fullname['data']            = @$data['sections']['applicant-who']['legal authority']['fullname'];
+        $address1['data']            = @$data['sections']['applicant-who']['legal authority']['address1'];
+        $address2['data']            = @$data['sections']['applicant-who']['legal authority']['address2'];
+        $town['data']                = @$data['sections']['applicant-who']['legal authority']['town'];
+        $county['data']              = @$data['sections']['applicant-who']['legal authority']['county'];
+        $country['data']             = @$data['sections']['applicant-who']['legal authority']['country'];
+        $postcode['data']            = @$data['sections']['applicant-who']['legal authority']['postcode'];;
+        $telephonenumber['data']     = @$data['sections']['applicant-who']['legal authority']['telephonenumber'];
+    }
+} else {
+//var_dump($_POST);
+//die;
+}
 
 
 if (!empty($_POST)) {
 
 
+    //set the entered field names
 
-            header("Location: /applicant/legal-authority/authority-detail");
-            die();
+    $fullname['data'] = cleanTextData($_POST['/applicant/nominee-address/nominee-name']);
+    $address1['data'] = cleanTextData($_POST['/applicant/nominee-address/address-line-1']);
 
+
+
+
+    if (empty($_POST['/applicant/nominee-address/nominee-name'])) {
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/applicant/nominee-address/nominee-name">Please give us your full name</a>';
+        $fullname['error'] = 'govuk-form-group--error';
+        $fullname['errorLabel'] =
+        '<span id="/applicant/nominee-address/nominee-name-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your full name
+         </span>';
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['fullname'] = cleanTextData($_POST['/applicant/nominee-address/nominee-name']);
+    }
+
+
+    if (empty($_POST['/applicant/nominee-address/address-line-1'])) {
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/applicant/nominee-address/address-line-1">Please give us the first line of your address</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/applicant/nominee-address/nominee-address-1-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your address
+         </span>';
+
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['address1'] = cleanTextData($_POST['/applicant/nominee-address/address-line-1']);
+    }
+
+
+
+    if (empty($_POST['/applicant/nominee-address/address-line-2'])) {
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['address2'] = cleanTextData($_POST['/applicant/nominee-address/address-line-2']);
+    }
+
+
+
+    if (empty($_POST['/applicant/nominee-address/town'])) {
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['town'] = cleanTextData($_POST['/applicant/nominee-address/town']);
+    }
+
+
+
+    if (empty($_POST['/applicant/nominee-address/county'])) {
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['county'] = cleanTextData($_POST['/applicant/nominee-address/county']);
+    }
+
+
+
+    if (empty($_POST['/applicant/nominee-address/country'])) {
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/applicant/nominee-address/country">Please give us your country</a>';
+        $country['error'] = 'govuk-form-group--error';
+        $country['errorLabel'] =
+        '<span id="/applicant/nominee-address/nominee-country-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your country
+         </span>';
+
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['country'] = cleanTextData($_POST['/applicant/nominee-address/country']);
+    }
+
+
+    if ($errors == 'Y') {
+
+        $errorList = '';
+        foreach ($errorsList as $error) {
+            $errorList .=  '<li>'.$error.'</li>';
+        }
+
+
+        $errorMessage = '
+         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            '.$errorList.'
+            </ul>
+          </div>
+        </div>
+        ';
+
+
+
+
+
+
+
+    } else {
+
+        //store our changes
+
+        storeData($userID,$data);
+        header("Location: /applicant/legal-authority/authority-detail");
+        die();
+
+    }
 
 }
 
@@ -24,35 +191,33 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+@php
+echo $errorMessage;
+@endphp
                                 <h1 class="govuk-heading-xl">What are your own details?</h1>
                                 <p class="govuk-body">You have told us you are making this claim on behalf of someone else.
             Please tell us your own details.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
-                                                    <div class="govuk-form-group ">
+
+    <div class="govuk-form-group {{$fullname['error']}}">
     <label class="govuk-label" for="/applicant/nominee-address/nominee-name">
         Your full name
     </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/applicant/nominee-address/nominee-name" name="/applicant/nominee-address/nominee-name" type="text"
-         autocomplete="name"
-                  value=""
-            >
-</div>
-                                    <div class="govuk-form-group ">
+        @php echo $fullname['errorLabel'] @endphp
+    <input class="govuk-input govuk-!-width-two-thirds " id="/applicant/nominee-address/nominee-name" name="/applicant/nominee-address/nominee-name" type="text" autocomplete="name" value="{{$fullname['data']}}" />
+    </div>
+
+    <div class="govuk-form-group {{$address1['error']}} ">
     <label class="govuk-label" for="/applicant/nominee-address/address-line-1">
-        Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
+        Building and street <span class="govuk-visually-hidden">line 1 of 2</span>
     </label>
-            <input
-        class="govuk-input  "
-        id="/applicant/nominee-address/address-line-1" name="/applicant/nominee-address/address-line-1" type="text"
-         autocomplete="address-line1"
-                  value=""
-            >
-</div>
-                                    <div class="govuk-form-group ">
+        @php echo $address1['errorLabel'] @endphp
+    <input class="govuk-input  " id="/applicant/nominee-address/address-line-1" name="/applicant/nominee-address/address-line-1" type="text" autocomplete="address-line1" value="{{$address1['data']}}" />
+    </div>
+
+    <div class="govuk-form-group ">
     <label class="govuk-label" for="/applicant/nominee-address/address-line-2">
         <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
     </label>
@@ -60,8 +225,7 @@ if (!empty($_POST)) {
         class="govuk-input  "
         id="/applicant/nominee-address/address-line-2" name="/applicant/nominee-address/address-line-2" type="text"
          autocomplete="address-line2"
-                  value=""
-            >
+                  value="{{$address2['data']}}" />
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/applicant/nominee-address/town">
@@ -71,8 +235,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/applicant/nominee-address/town" name="/applicant/nominee-address/town" type="text"
          autocomplete="address-level2"
-                  value=""
-            >
+                  value="{{$town['data']}}" />
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/applicant/nominee-address/county">
@@ -81,18 +244,26 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/applicant/nominee-address/county" name="/applicant/nominee-address/county" type="text"
-                   value=""
-            >
+                   value="{{$county['data']}}" />
 </div>
-                                    <div class="govuk-form-group ">
+    <div class="govuk-form-group {{$country['error']}}">
     <label class="govuk-label" for="/applicant/nominee-address/country">
         Country
     </label>
+    @php echo $country['errorLabel']; @endphp
             <select class="govuk-select govuk-!-width-two-thirds " id="/applicant/nominee-address/country"
             name="/applicant/nominee-address/country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option>&nbsp;</option>
+
+@php if (!empty($country['data'])) {
+echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';
+} else {
+    echo '<option value="">&nbsp;</option>';
+}
+@endphp
+
+
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"
@@ -661,8 +832,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/applicant/nominee-address/postcode" name="/applicant/nominee-address/postcode" type="text"
          autocomplete="postal-code"
-                  value=""
-            >
+                  value="{{$postcode['data']}}" />
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/applicant/nominee-address/nominee-number">
@@ -673,8 +843,7 @@ if (!empty($_POST)) {
         id="/applicant/nominee-address/nominee-number" name="/applicant/nominee-address/nominee-number" type="tel"
          autocomplete="tel"
            inputmode="numeric" pattern="[0-9]*"
-                value=""
-            >
+                value="{{$telephonenumber['data']}}" />
 </div>
 
 

@@ -1,6 +1,11 @@
 @include('framework.functions')
 @php
 
+
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
+
 if (!empty($_POST)) {
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
@@ -32,7 +37,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Who is making this application?</dt>
             <dd class="govuk-summary-list__value">
-                                    I am helping someone else make this application.
+                                    {{@$data['sections']['applicant-who']['who is making this application']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/?return=summarise&amp;stack=#/applicant/applicant-selection/nominated-applicant">Change<span
@@ -42,7 +47,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Name of assistant making this claim</dt>
             <dd class="govuk-summary-list__value">
-                                    okok
+                                    {{@$data['sections']['applicant-who']['helper']['name']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/helper/name/?return=summarise&amp;stack=#/applicant/helper-details/helper-name">Change<span
@@ -52,7 +57,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Relationship to claimant</dt>
             <dd class="govuk-summary-list__value">
-                                    Friend
+                                    {{@$data['sections']['applicant-who']['helper']['relationship']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/helper/relationiship/?return=summarise&amp;stack=#/applicant/helper-relationship/helper-relationship">Change<span
@@ -62,7 +67,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Assisted claim declaration understood</dt>
             <dd class="govuk-summary-list__value">
-                                    Yes
+                                    {{@$data['sections']['applicant-who']['helper']['declaration']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/helper/declaration/?return=summarise&amp;stack=#/applicant/helper-declaration/helper-declaration-agreed">Change<span

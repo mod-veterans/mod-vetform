@@ -57,6 +57,18 @@ function getData($userID) {
 }
 
 
+function cleanTextData($data) {
+    return $data;
+}
+
+
+function cleanNumericData($data) {
+    return $data;
+}
+
+
+
+
 
 @endphp
 
