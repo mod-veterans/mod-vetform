@@ -57,6 +57,16 @@ if (!empty($_POST)) {
              </span>';
          }
 
+    } else {
+
+                $errors = 'Y';
+            $errorsList[] = '<a href="#/applicant/helper-declaration/helper-declaration-agreed">Please confirm your acceptance</a>';
+            $declaration['error'] = 'govuk-form-group--error';
+            $declaration['errorLabel'] =
+            '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Please confirm your acceptance
+             </span>';
+
     }
 
 
@@ -93,7 +103,15 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-header("Location: /applicant/helper/check-answers");
+
+        $theURL = '/applicant/helper/check-answers';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
 die();
 
 }

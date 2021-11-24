@@ -36,7 +36,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['who is making this application']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/?return=summarise&amp;stack=#/applicant/applicant-selection/nominated-applicant">Change<span
+                <a class="govuk-link" href="/applicant/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/applicant-selection/nominated-applicant">Change<span
                         class="govuk-visually-hidden"> Who is making this application?</span></a>
             </dd>
         </div>
@@ -46,7 +46,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['fullname']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/nominee-name">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/nominee-name">Change<span
                         class="govuk-visually-hidden"> Your full name</span></a>
             </dd>
         </div>
@@ -56,7 +56,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['address1']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/address-line-1">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/address-line-1">Change<span
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
@@ -66,7 +66,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['address2']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/address-line-2">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/address-line-2">Change<span
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
@@ -76,7 +76,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['town']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/town">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/town">Change<span
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
@@ -86,7 +86,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['county']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/county">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/county">Change<span
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
@@ -96,7 +96,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['country']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/country">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/country">Change<span
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
@@ -106,17 +106,17 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['postcode']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/postcode">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/postcode">Change<span
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
-                                    {{@$data['sections']['applicant-who']['legal authority']['telephonenumber']}}
+                                    {{@$data['sections']['applicant-who']['legal authority']['nominee-number']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/?return=summarise&amp;stack=#/applicant/nominee-address/nominee-number">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-address/nominee-number">Change<span
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
@@ -126,7 +126,7 @@ if (!empty($_POST)) {
                                     {{@$data['sections']['applicant-who']['legal authority']['details']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/legal-authority/authority-detail/">Change<span
+                <a class="govuk-link" href="/applicant/legal-authority/authority-detail/?return=/applicant/legal-authority/check-answers&amp;stack=#/applicant/nominee-details/nominee-details">Change<span
                         class="govuk-visually-hidden"> What legal authority do you have to make a claim on behalf of the person named?</span></a>
             </dd>
         </div>

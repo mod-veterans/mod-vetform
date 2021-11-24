@@ -50,7 +50,7 @@ if (empty($_POST)) {
         $county['data']              = @$data['sections']['applicant-who']['legal authority']['county'];
         $country['data']             = @$data['sections']['applicant-who']['legal authority']['country'];
         $postcode['data']            = @$data['sections']['applicant-who']['legal authority']['postcode'];;
-        $telephonenumber['data']     = @$data['sections']['applicant-who']['legal authority']['telephonenumber'];
+        $telephonenumber['data']     = @$data['sections']['applicant-who']['legal authority']['nominee-number'];
     }
 } else {
 //var_dump($_POST);
@@ -65,8 +65,12 @@ if (!empty($_POST)) {
 
     $fullname['data'] = cleanTextData($_POST['/applicant/nominee-address/nominee-name']);
     $address1['data'] = cleanTextData($_POST['/applicant/nominee-address/address-line-1']);
-
-
+    $address2['data'] = cleanTextData($_POST['/applicant/nominee-address/address-line-2']);
+    $town['data'] = cleanTextData($_POST['/applicant/nominee-address/town']);
+    $county['data'] = cleanTextData($_POST['/applicant/nominee-address/county']);
+    $country['data'] = cleanTextData($_POST['/applicant/nominee-address/country']);
+    $postcode['data'] = cleanTextData($_POST['/applicant/nominee-address/postcode']);
+    $telephonenumber['data'] = cleanTextData($_POST['/applicant/nominee-address/nominee-number']);
 
 
     if (empty($_POST['/applicant/nominee-address/nominee-name'])) {
@@ -139,6 +143,22 @@ if (!empty($_POST)) {
     }
 
 
+    if (empty($_POST['/applicant/nominee-address/postcode'])) {
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['postcode'] = cleanTextData($_POST['/applicant/nominee-address/postcode']);
+    }
+
+
+
+    if (empty($_POST['/applicant/nominee-address/nominee-number'])) {
+
+    } else {
+        $data['sections']['applicant-who']['legal authority']['nominee-number'] = cleanTextData($_POST['/applicant/nominee-address/nominee-number']);
+    }
+
+
+
     if ($errors == 'Y') {
 
         $errorList = '';
@@ -171,7 +191,15 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-        header("Location: /applicant/legal-authority/authority-detail");
+
+        $theURL = '/applicant/legal-authority/authority-detail';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
         die();
 
     }

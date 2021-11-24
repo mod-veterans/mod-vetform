@@ -88,8 +88,15 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-            header("Location: /applicant/legal-authority/information");
-            die();
+        $theURL = '/applicant/legal-authority/information';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
+        die();
 
     }
 }

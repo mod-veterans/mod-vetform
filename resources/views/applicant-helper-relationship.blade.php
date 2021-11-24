@@ -124,8 +124,16 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-header("Location: /applicant/helper/declaration");
-die();
+
+        $theURL = '/applicant/helper/declaration';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
+        die();
 
 }
 

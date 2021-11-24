@@ -88,7 +88,15 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-        header("Location: /applicant/helper/relationship");
+
+        $theURL = '/applicant/helper/relationship';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
         die();
 
         }

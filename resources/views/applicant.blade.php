@@ -13,6 +13,22 @@ $data = getData($userID);
 $application_who = array();
 
 if (!empty($data['sections']['applicant-who']['who is making this application'])) {
+
+
+    //as this is a journey-deciding page, we want to detect a change in choice (if returning from a CYA page) so we can
+    //kill off the return URL
+
+   if ( (!empty($_POST['/applicant/applicant-selection/nominated-applicant'])) &&
+    ($data['sections']['applicant-who']['who is making this application'] == $_POST['/applicant/applicant-selection/nominated-applicant']) ) {
+
+        //same choice, return applies
+
+    } else {
+
+       unset($_GET['return']);
+
+    }
+
     $application_who[$data['sections']['applicant-who']['who is making this application']] = 'checked';
 }
 
@@ -48,7 +64,15 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-        header("Location: ".$location);
+
+        $theURL = $location;
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
         die();
 
 
