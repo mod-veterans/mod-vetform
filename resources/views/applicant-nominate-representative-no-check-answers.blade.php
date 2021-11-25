@@ -1,11 +1,15 @@
 @include('framework.functions')
 @php
 
+
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
 if (!empty($_POST)) {
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
 
-    $data['sections']['nominate']['completed'] = TRUE;
+    $data['sections']['nominate-representative']['completed'] = TRUE;
 
     storeData($userID,$data);
 
@@ -33,10 +37,10 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Would you like to nominate a representative?</dt>
             <dd class="govuk-summary-list__value">
-                                    No
+                                    {{$data['sections']['nominate-representative']['nominate-representative']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/nominate-a-representative/?stack=#/representative/representative-selection/nominated-representative">Change<span
+                <a class="govuk-link" href="/applicant/nominate-a-representative/?return=/applicant/nominate-a-representative-no-check-answers&stack=#/representative/representative-selection/nominated-representative">Change<span
                         class="govuk-visually-hidden"> Would you like to nominate a representative?</span></a>
             </dd>
         </div>

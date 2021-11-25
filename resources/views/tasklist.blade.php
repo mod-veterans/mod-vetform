@@ -98,7 +98,7 @@ $userID = $_SESSION['vets-user'];
                                         Do you want to nominate a representative?
                                     </a></span>
    @php
-  if (!empty($data['sections']['nominate']['completed'])) {
+  if (!empty($data['sections']['nominate-representative']['completed'])) {
   @endphp
                                 <strong class="govuk-tag app-task-list__tag" id="representative-status">COMPLETED</strong>
    @php } else { @endphp

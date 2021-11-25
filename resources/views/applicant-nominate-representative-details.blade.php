@@ -1,12 +1,218 @@
+@include('framework.functions')
 @php
+
+//Add in the auto-complete for country
+$footerScripts = array();
+$footerScripts[] = '
+<script type="text/javascript" src="https://modvets-dev2.london.cloudapps.digital/js/location-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById("/representative/representative-address/country"),
+            url: "/assets/data/location-autocomplete-graph.json"
+
+        })
+</script>
+
+';
+
+
+//error handling setup
+$errorWhoLabel = '';
+$errorMessage = '';
+$errorWhoShow = '';
+$errors = 'N';
+$errorsList = array();
+
+
+//set fields
+$fullname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address1 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address2 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$postcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$telephonenumber = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$emailaddress = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+if (empty($_POST)) {
+    //load the data if set
+    if (!empty($data['sections']['applicant-who']['legal authority'])) {
+        $fullname['data']            = @$data['sections']['nominate-representative']['nominated representative']['fullname'];
+        $address1['data']            = @$data['sections']['nominate-representative']['nominated representative']['address1'];
+        $address2['data']            = @$data['sections']['nominate-representative']['nominated representative']['address2'];
+        $town['data']                = @$data['sections']['nominate-representative']['nominated representative']['town'];
+        $county['data']              = @$data['sections']['nominate-representative']['nominated representative']['county'];
+        $country['data']             = @$data['sections']['nominate-representative']['nominated representative']['country'];
+        $postcode['data']            = @$data['sections']['nominate-representative']['nominated representative']['postcode'];
+        $telephonenumber['data']     = @$data['sections']['nominate-representative']['nominated representative']['nominee-number'];
+        $emailaddress['data']        = @$data['sections']['nominate-representative']['nominated representative']['email-address'];
+    }
+} else {
+//var_dump($_POST);
+//die;
+}
 
 
 if (!empty($_POST)) {
 
 
-                header("Location: /applicant/nominate-a-representative-role");
-                die();
+    //set the entered field names
 
+    $fullname['data'] = cleanTextData($_POST['/representative/representative-address/representative-name']);
+    $address1['data'] = cleanTextData($_POST['/representative/representative-address/address-line-1']);
+    $address2['data'] = cleanTextData($_POST['/representative/representative-address/address-line-2']);
+    $town['data'] = cleanTextData($_POST['/representative/representative-address/town']);
+    $county['data'] = cleanTextData($_POST['/representative/representative-address/county']);
+    $country['data'] = cleanTextData($_POST['/representative/representative-address/country']);
+    $postcode['data'] = cleanTextData($_POST['/representative/representative-address/postcode']);
+    $telephonenumber['data'] = cleanTextData($_POST['/representative/representative-address/representative-number']);
+    $emailaddress['data'] = cleanTextData($_POST['/representative/representative-address/representative-email-address']);
+
+
+
+    if (empty($_POST['/representative/representative-address/representative-name'])) {
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/representative/representative-address/representative-name">Please give us your full name</a>';
+        $fullname['error'] = 'govuk-form-group--error';
+        $fullname['errorLabel'] =
+        '<span id="/representative/representative-address/representative-name-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your full name
+         </span>';
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['fullname'] = cleanTextData($_POST['/representative/representative-address/representative-name']);
+    }
+
+
+    if (empty($_POST['/representative/representative-address/address-line-1'])) {
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/representative/representative-address/address-line-1">Please give us the first line of your address</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/representative/representative-address/address-line-1-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your address
+         </span>';
+
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['address1'] = cleanTextData($_POST['/representative/representative-address/address-line-1']);
+    }
+
+
+
+    if (empty($_POST['/representative/representative-address/address-line-2'])) {
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['address2'] = cleanTextData($_POST['/representative/representative-address/address-line-2']);
+    }
+
+
+
+    if (empty($_POST['/representative/representative-address/town'])) {
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['town'] = cleanTextData($_POST['/representative/representative-address/town']);
+    }
+
+
+
+    if (empty($_POST['/representative/representative-address/county'])) {
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['county'] = cleanTextData($_POST['/representative/representative-address/county']);
+    }
+
+
+
+    if (empty($_POST['/representative/representative-address/country'])) {
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/representative/representative-address/country">Please give us your country</a>';
+        $country['error'] = 'govuk-form-group--error';
+        $country['errorLabel'] =
+        '<span id="/representative/representative-address/country-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your country
+         </span>';
+
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['country'] = cleanTextData($_POST['/representative/representative-address/country']);
+    }
+
+
+    if (empty($_POST['/representative/representative-address/postcode'])) {
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['postcode'] = cleanTextData($_POST['/representative/representative-address/postcode']);
+    }
+
+
+
+    if (empty($_POST['/representative/representative-address/representative-number'])) {
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['nominee-number'] = cleanTextData($_POST['/representative/representative-address/representative-number']);
+    }
+
+    if (empty($_POST['/representative/representative-address/representative-email-address'])) {
+
+    } else {
+        $data['sections']['nominate-representative']['nominated representative']['email-address'] = cleanTextData($_POST['/representative/representative-address/representative-email-address']);
+    }
+
+
+
+
+    if ($errors == 'Y') {
+
+        $errorList = '';
+        foreach ($errorsList as $error) {
+            $errorList .=  '<li>'.$error.'</li>';
+        }
+
+
+        $errorMessage = '
+         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            '.$errorList.'
+            </ul>
+          </div>
+        </div>
+        ';
+
+
+
+
+
+
+
+    } else {
+
+        //store our changes
+
+        storeData($userID,$data);
+
+        $theURL = '/applicant/nominate-a-representative-role';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
+        die();
+
+    }
 
 }
 
@@ -25,29 +231,35 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+
+@php
+echo $errorMessage;
+@endphp
                                 <h1 class="govuk-heading-xl">Please provide contact details for your nominated representative</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
-                                                    <div class="govuk-form-group ">
+                                                    <div class="govuk-form-group {{$fullname['error']}} ">
     <label class="govuk-label" for="/representative/representative-address/representative-name">
         Their full name
     </label>
+    @php echo $fullname['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/representative-name" name="/representative/representative-address/representative-name" type="text"
          autocomplete="name"
-                  value=""
+                  value="{{$fullname['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$address1['error']}}">
     <label class="govuk-label" for="/representative/representative-address/address-line-1">
         Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
     </label>
+    @php echo $address1['errorLabel']; @endphp
             <input
         class="govuk-input  "
         id="/representative/representative-address/address-line-1" name="/representative/representative-address/address-line-1" type="text"
          autocomplete="address-line1"
-                  value=""
+                  value="{{$address1['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -58,7 +270,7 @@ if (!empty($_POST)) {
         class="govuk-input  "
         id="/representative/representative-address/address-line-2" name="/representative/representative-address/address-line-2" type="text"
          autocomplete="address-line2"
-                  value=""
+                  value="{{$address2['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -69,7 +281,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/town" name="/representative/representative-address/town" type="text"
          autocomplete="address-level2"
-                  value=""
+                  value="{{$town['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -79,18 +291,25 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/county" name="/representative/representative-address/county" type="text"
-                   value=""
+                   value="{{$county['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$country['error']}} ">
     <label class="govuk-label" for="/representative/representative-address/country">
         Country
     </label>
+    @php echo $country['errorLabel']; @endphp
             <select class="govuk-select govuk-!-width-two-thirds " id="/representative/representative-address/country"
             name="/representative/representative-address/country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option>&nbsp;</option>
+@php if (!empty($country['data'])) {
+echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';
+} else {
+    echo '<option value="">&nbsp;</option>';
+}
+@endphp
+
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"
@@ -659,7 +878,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/postcode" name="/representative/representative-address/postcode" type="text"
          autocomplete="postal-code"
-                  value=""
+                  value="{{$postcode['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -671,7 +890,7 @@ if (!empty($_POST)) {
         id="/representative/representative-address/representative-number" name="/representative/representative-address/representative-number" type="tel"
          autocomplete="tel"
            inputmode="numeric" pattern="[0-9]*"
-                value=""
+                value="{{$telephonenumber['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -682,7 +901,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/representative-email-address" name="/representative/representative-address/representative-email-address" type="email"
          autocomplete="email"
-                  value=""
+                  value="{{$emailaddress['data']}}"
             >
 </div>
 
