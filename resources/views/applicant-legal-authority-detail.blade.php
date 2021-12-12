@@ -134,7 +134,7 @@ echo $errorMessage;
         <span class="govuk-visually-hidden">What legal authority do you have to make a claim on behalf of the person named?</span>
     </label>
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/applicant/nominee-details/nominee-details"
-                  name="/applicant/nominee-details/nominee-details" rows="5"
+                  name="/applicant/nominee-details/nominee-details" rows="5" maxlength="100"
                                     aria-describedby="/applicant/nominee-details/nominee-details-info ">{{$details['data']}}</textarea>
                     <div id="/applicant/nominee-details/nominee-details-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
                 You can enter up to 100 characters

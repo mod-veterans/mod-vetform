@@ -15,9 +15,8 @@ if (empty($_SESSION['vets-user'])) {
 
 
 function DOencrypt($data) {
-$passphrase = hex2bin('5ae1b8a17bad4da4fdac796f64c16ecd');
-$iv = hex2bin('34857d973953e44afb49ea9d61104d8c');
-
+$passphrase = hex2bin(getenv('DATA_PASS_PHRASE'));
+$iv = hex2bin(getenv('DATA_PASS_SEED'));
     $data = base64_encode($data);
     return openssl_encrypt($data, 'AES-256-CBC', $passphrase, OPENSSL_RAW_DATA, $iv);
 }
@@ -25,8 +24,8 @@ $iv = hex2bin('34857d973953e44afb49ea9d61104d8c');
 
 
 function DOdecrypt($data) {
-$passphrase = hex2bin('5ae1b8a17bad4da4fdac796f64c16ecd');
-$iv = hex2bin('34857d973953e44afb49ea9d61104d8c');
+$passphrase = hex2bin(getenv('DATA_PASS_PHRASE'));
+$iv = hex2bin(getenv('DATA_PASS_SEED'));
     $data = openssl_decrypt($data, 'AES-256-CBC', $passphrase, OPENSSL_RAW_DATA, $iv);
     $data = base64_decode($data);
     return $data;
@@ -71,6 +70,26 @@ function cleanURL($data) {
     return $data;
 }
 
+
+function validateEmail($data) {
+    return TRUE;
+}
+
+
+function validateNINUmber($data) {
+
+    if (strlen($data) < 9) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+
+}
+
+
+function cleanRecordID($data) {
+    return $data;
+}
 
 
 

@@ -1,9 +1,13 @@
 @include('framework.functions')
 @php
 
-if (!empty($_POST)) {
+
+
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
+
+if (!empty($_POST)) {
+
 
     $data['sections']['other-compensation']['completed'] = TRUE;
 
@@ -32,123 +36,192 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Are you claiming for or have you received compensation payments from other sources?</dt>
             <dd class="govuk-summary-list__value">
-                                    Yes
+                                    {{$data['sections']['other-compensation']['received-compensation'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/received-compensation/?return=summarise&amp;stack=#/other-compensation/received-compensation/received-compensation">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/received-compensation/received-compensation">Change<span
                         class="govuk-visually-hidden"> Are you claiming for or have you received compensation payments from other sources?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What medical condition(s) have you received (or are you claiming) other compensation for?</dt>
             <dd class="govuk-summary-list__value">
-                                    [pkp[kp[kpk
+                                    {{$data['sections']['other-compensation']['conditions'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/compensation-condition/?return=summarise&amp;stack=#/other-compensation/compensation-condition/medical-condition">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/conditions/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/compensation-condition/medical-condition">Change<span
                         class="govuk-visually-hidden"> What medical condition(s) have you received (or are you claiming) other compensation for?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Who did you claim from/amount?</dt>
             <dd class="govuk-summary-list__value">
-                                    kokkokok
+                                    {{$data['sections']['other-compensation']['outcome'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-outcome/?return=summarise&amp;stack=#/other-compensation/claim-outcome/claim-outcome-benefactor">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/outcome/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-outcome/claim-outcome-benefactor">Change<span
                         class="govuk-visually-hidden"> Who did you claim from/amount?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Did you receive a payment as a result of this claim?</dt>
             <dd class="govuk-summary-list__value">
-                                    Yes
+                                    {{$data['sections']['other-compensation']['payment'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-outcome/?return=summarise&amp;stack=#/other-compensation/claim-outcome/claim-outcome-payment-result">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/payment/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-outcome/claim-outcome-payment-result">Change<span
                         class="govuk-visually-hidden"> Did you receive a payment as a result of this claim?</span></a>
             </dd>
         </div>
+
+@php
+if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sections']['other-compensation']['payment'] == 'Yes') ) {
+@endphp
+
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Amount paid</dt>
             <dd class="govuk-summary-list__value">
-                                    200000
+                                   {{$data['sections']['other-compensation']['amount'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/other-payment-received/?return=summarise&amp;stack=#/other-compensation/other-payment-received/amount-paid">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/amount-received/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/other-payment-received/amount-paid">Change<span
                         class="govuk-visually-hidden"> Amount paid</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What type of payment was this?</dt>
             <dd class="govuk-summary-list__value">
-                                    Interim settlement
+                                    {{$data['sections']['other-compensation']['type'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-payment-type/?return=summarise&amp;stack=#/other-compensation/claim-payment-type/claim-outcome-payment-type">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/type/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-payment-type/claim-outcome-payment-type">Change<span
                         class="govuk-visually-hidden"> What type of payment was this?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">When did you receive this payment?</dt>
             <dd class="govuk-summary-list__value">
-                                    12 December 1212
+                                    {{$data['sections']['other-compensation']['payment-date']['day'] ?? '' }} {{$data['sections']['other-compensation']['payment-date']['month'] ?? '' }} {{$data['sections']['other-compensation']['payment-date']['year'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-payment-date/?return=summarise&amp;stack=#/other-compensation/claim-payment-date/claim-payment-date">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/when/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-payment-date/claim-payment-date">Change<span
                         class="govuk-visually-hidden"> When did you receive this payment?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Did a solicitor help you with your claim for other compensation?</dt>
+            <dt class="govuk-summary-list__key">This date is appoximate?</dt>
             <dd class="govuk-summary-list__value">
-                                    Yes
+                                    {{$data['sections']['other-compensation']['payment-date']['approximate'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-solicitor-help/?return=summarise&amp;stack=#/other-compensation/claim-solicitor-help/claim-solicitor-help">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/when/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-payment-date/claim-payment-approximate">Change<span
+                        class="govuk-visually-hidden"> This date is approximate?</span></a>
+            </dd>
+        </div>
+
+
+
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Did a solicitor help you with your claim for other compensation?</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['other-compensation']['solicitorhelp'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-help/claim-solicitor-help">Change<span
                         class="govuk-visually-hidden"> Did a solicitor help you with your claim for other compensation?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Solicitors&#039; full name</dt>
             <dd class="govuk-summary-list__value">
-                                    [l[
+                                    {{$data['sections']['other-compensation']['solicitor-address']['fullname'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-solicitor-details/?return=summarise&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor-contact-name">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor-contact-name">Change<span
                         class="govuk-visually-hidden"> Solicitors&#039; full name</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
-                                    l[l[l[
+                                    {{$data['sections']['other-compensation']['solicitor-address']['address1'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-solicitor-details/?return=summarise&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1">Change<span
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
-                                    l[l[l
+                                    {{$data['sections']['other-compensation']['solicitor-address']['address2'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-solicitor-details/?return=summarise&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2">Change<span
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Town</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['other-compensation']['solicitor-address']['town'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__town">Change<span
+                        class="govuk-visually-hidden"> Town</span></a>
+            </dd>
+        </div>
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">County</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['other-compensation']['solicitor-address']['county'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__county">Change<span
+                        class="govuk-visually-hidden"> County</span></a>
+            </dd>
+        </div>
+
+             <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Postcode</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['other-compensation']['solicitor-address']['postcode'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__postcode">Change<span
+                        class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
-                                    United Kingdom
+                                    {{$data['sections']['other-compensation']['solicitor-address']['country'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/claim-solicitor-details/?return=summarise&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__country">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__country">Change<span
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Contact number</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['other-compensation']['solicitor-address']['telephone'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/other-details/other-compensation/solicitor/details/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/claim-solicitor-details/claim-solicitor__contact-number">Change<span
+                        class="govuk-visually-hidden"> Contact number</span></a>
+            </dd>
+        </div>
+
+
+
+
+@php } @endphp
+
     </dl>
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf

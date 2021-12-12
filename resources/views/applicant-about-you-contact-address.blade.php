@@ -1,15 +1,193 @@
+@include('framework.functions')
 @php
+
+//Add in the auto-complete for country
+$footerScripts = array();
+$footerScripts[] = '
+<script type="text/javascript" src="https://modvets-dev2.london.cloudapps.digital/js/location-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById("afcs/about-you/personal-details/contact-address/country"),
+            url: "/assets/data/location-autocomplete-graph.json"
+
+        })
+</script>
+
+';
+
+
+//error handling setup
+$errorWhoLabel = '';
+$errorMessage = '';
+$errorWhoShow = '';
+$errors = 'N';
+$errorsList = array();
+
+
+//set fields
+
+$address1 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address2 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$postcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+if (empty($_POST)) {
+    //load the data if set
+    if (!empty($data['sections']['about-you']['contact-address'])) {
+
+        $fullname['data']            = @$data['sections']['about-you']['contact-address']['fullname'];
+        $address1['data']            = @$data['sections']['about-you']['contact-address']['address1'];
+        $address2['data']            = @$data['sections']['about-you']['contact-address']['address2'];
+        $town['data']                = @$data['sections']['about-you']['contact-address']['town'];
+        $county['data']              = @$data['sections']['about-you']['contact-address']['county'];
+        $country['data']             = @$data['sections']['about-you']['contact-address']['country'];
+        $postcode['data']            = @$data['sections']['about-you']['contact-address']['postcode'];
+
+    }
+} else {
+//var_dump($_POST);
+//die;
+}
 
 
 if (!empty($_POST)) {
 
-header("Location: /applicant/about-you/dob");
-die();
+
+    //set the entered field names
+
+    $address1['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-1']);
+    $address2['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-2']);
+    $town['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/town']);
+    $county['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/county']);
+    $country['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/country']);
+    $postcode['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/postcode']);
+
+
+
+
+
+    if (empty($_POST['afcs/about-you/personal-details/contact-address/address-line-1'])) {
+        $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/address-line-1">Please give us the first line of your address</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your address
+         </span>';
+
+
+    } else {
+        $data['sections']['about-you']['contact-address']['address1'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-1']);
+    }
+
+
+
+    if (empty($_POST['afcs/about-you/personal-details/contact-address/address-line-2'])) {
+
+    } else {
+        $data['sections']['about-you']['contact-address']['address2'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-2']);
+    }
+
+
+
+    if (empty($_POST['afcs/about-you/personal-details/contact-address/town'])) {
+
+    } else {
+        $data['sections']['about-you']['contact-address']['town'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/town']);
+    }
+
+
+
+    if (empty($_POST['afcs/about-you/personal-details/contact-address/county'])) {
+
+    } else {
+        $data['sections']['about-you']['contact-address']['county'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/county']);
+    }
+
+
+
+    if (empty($_POST['afcs/about-you/personal-details/contact-address/country'])) {
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/country">Please give us your country</a>';
+        $country['error'] = 'govuk-form-group--error';
+        $country['errorLabel'] =
+        '<span id="afcs/about-you/personal-details/contact-address/country-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your country
+         </span>';
+
+
+    } else {
+        $data['sections']['about-you']['contact-address']['country'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/country']);
+    }
+
+
+    if (empty($_POST['afcs/about-you/personal-details/contact-address/postcode'])) {
+
+    } else {
+        $data['sections']['about-you']['contact-address']['postcode'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/postcode']);
+    }
+
+
+
+
+
+    if ($errors == 'Y') {
+
+        $errorList = '';
+        foreach ($errorsList as $error) {
+            $errorList .=  '<li>'.$error.'</li>';
+        }
+
+
+        $errorMessage = '
+         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            '.$errorList.'
+            </ul>
+          </div>
+        </div>
+        ';
+
+
+
+
+
+
+
+    } else {
+
+        //store our changes
+
+        storeData($userID,$data);
+
+        $theURL = '/applicant/about-you/dob';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
+        die();
+
+    }
 
 }
 
 @endphp
-
 
 
 
@@ -21,79 +199,96 @@ die();
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+
+@php
+echo $errorMessage;
+@endphp
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What is your contact address?</h1>
+</legend>
                                 <p class="govuk-body">We will send any postal correspondence to this address.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
-                                                    <div class="govuk-form-group ">
+                                                    <div class="govuk-form-group {{$address1['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/address-line-1">
         Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
     </label>
+    @php echo $address1['errorLabel']; @endphp
     <div id="afcs/about-you/personal-details/contact-address/address-line-1-hint" class="govuk-hint">Base name for military establishments</div>
         <input
         class="govuk-input  "
         id="afcs/about-you/personal-details/contact-address/address-line-1" name="afcs/about-you/personal-details/contact-address/address-line-1" type="text"
          autocomplete="address-line1"
-                  value=""
+                  value="{{$address1['data']}}"
                 aria-describedby="afcs/about-you/personal-details/contact-address/address-line-1-hint"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$address2['error']}}">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/address-line-2">
         <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
     </label>
+        @php echo $address2['errorLabel']; @endphp
             <input
         class="govuk-input  "
         id="afcs/about-you/personal-details/contact-address/address-line-2" name="afcs/about-you/personal-details/contact-address/address-line-2" type="text"
          autocomplete="address-line2"
-                  value=""
+                  value="{{$address2['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$town['error']}}">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/town">
         Town or city
     </label>
+     @php echo $town['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-address/town" name="afcs/about-you/personal-details/contact-address/town" type="text"
          autocomplete="address-level2"
-                  value=""
+                  value="{{$town['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$county['error']}}">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/county">
         County
     </label>
+    @php echo $county['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-address/county" name="afcs/about-you/personal-details/contact-address/county" type="text"
-                   value=""
+                   value="{{$county['data']}}"
             >
 </div>
 
 
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$postcode['error']}}">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
         Postcode
     </label>
+    @php echo $postcode['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-address/postcode" name="afcs/about-you/personal-details/contact-address/postcode" type="text"
          autocomplete="postal-code"
-                  value=""
+                  value="{{$postcode['data']}}"
             >
 </div>
 
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$country['error']}}">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/country">
         Country (if overseas)
     </label>
+     @php echo $country['errorLabel']; @endphp
             <select class="govuk-select govuk-!-width-two-thirds " id="afcs/about-you/personal-details/contact-address/country"
             name="afcs/about-you/personal-details/contact-address/country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option>&nbsp;</option>
+@php if (!empty($country['data'])) {
+echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';
+} else {
+    echo '<option value="">&nbsp;</option>';
+}
+@endphp
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"

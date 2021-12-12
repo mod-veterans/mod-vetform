@@ -6,7 +6,11 @@ $userID = $_SESSION['vets-user'];
 
     $completed = 0;
 
-    if ($data = getData($userID)) {
+
+
+if ($data = getData($userID)) {
+
+    if (!empty($data['sections'])) {
 
         foreach ($data['sections'] as $section) {
 
@@ -17,10 +21,7 @@ $userID = $_SESSION['vets-user'];
         }
     }
 
-
-
-
-
+}
 
 
 @endphp
@@ -122,7 +123,7 @@ $userID = $_SESSION['vets-user'];
                                     </a>
                                                                     </span>
    @php
-  if (!empty($data['sections']['personal-details']['completed'])) {
+  if (!empty($data['sections']['about-you']['completed'])) {
   @endphp
                                 <strong class="govuk-tag app-task-list__tag" id="personal-details-status">Completed</strong>
    @php } else { @endphp
@@ -136,7 +137,7 @@ $userID = $_SESSION['vets-user'];
                                         Medical Officer </a> </span>
 
    @php
-  if (!empty($data['sections']['medical-officer']['completed'])) {
+  if (!empty($data['sections']['about-you']['medical-officer']['completed'])) {
   @endphp
                                 <strong class="govuk-tag app-task-list__tag" id="medical-officer-status">COMPLETED</strong>
    @php } else { @endphp

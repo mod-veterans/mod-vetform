@@ -32,7 +32,7 @@ if (!empty($_POST)) {
                                     No
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/other-details/other-medical-treatment/?return=summarise&amp;stack=#/treatment-status/treatment-status">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-medical-treatment/?return=/applicant/other-details/other-medical-treatment/no-check-answers&amp;stack=#/treatment-status/treatment-status">Change<span
                         class="govuk-visually-hidden"> Have you had any further hospital or medical treatment?</span></a>
             </dd>
         </div>

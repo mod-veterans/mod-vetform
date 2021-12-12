@@ -1,18 +1,214 @@
+@include('framework.functions')
 @php
+
+//Add in the auto-complete for country
+$footerScripts = array();
+$footerScripts[] = '
+<script type="text/javascript" src="https://modvets-dev2.london.cloudapps.digital/js/location-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById("/other-compensation/claim-solicitor-details/claim-solicitor__country"),
+            url: "/assets/data/location-autocomplete-graph.json"
+
+        })
+</script>
+
+';
+
+
+//error handling setup
+$errorWhoLabel = '';
+$errorMessage = '';
+$errorWhoShow = '';
+$errors = 'N';
+$errorsList = array();
+
+
+//set fields
+$fullname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address1 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address2 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$postcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$telephone = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+if (empty($_POST)) {
+    //load the data if set
+    if (!empty($data['sections']['other-compensation']['solicitor-address'])) {
+
+        $fullname['data']            = @$data['sections']['other-compensation']['solicitor-address']['fullname'];
+        $address1['data']            = @$data['sections']['other-compensation']['solicitor-address']['address1'];
+        $address2['data']            = @$data['sections']['other-compensation']['solicitor-address']['address2'];
+        $town['data']                = @$data['sections']['other-compensation']['solicitor-address']['town'];
+        $county['data']              = @$data['sections']['other-compensation']['solicitor-address']['county'];
+        $country['data']             = @$data['sections']['other-compensation']['solicitor-address']['country'];
+        $postcode['data']            = @$data['sections']['other-compensation']['solicitor-address']['postcode'];
+        $telephone['data']            = @$data['sections']['other-compensation']['solicitor-address']['telephone'];
+
+
+    }
+} else {
+//var_dump($_POST);
+//die;
+}
+
 
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/other-details/other-compensation/check-answers");
+    //set the entered field names
+
+    $fullname['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1']);
+    $address1['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1']);
+    $address2['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2']);
+    $town['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__town']);
+    $county['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__county']);
+    $country['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__country']);
+    $postcode['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__postcode']);
+    $telephone['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor-contact-number']);
+
+
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor-contact-name'])) {
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['fullname'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor-contact-name']);
+    }
+
+
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1'])) {
+        /*
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1">Please give us the first line of your address</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/other-compensation/claim-solicitor-details/claim-solicitor__-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your address
+         </span>';
+        */
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['address1'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2'])) {
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['address2'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__town'])) {
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['town'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__town']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__county'])) {
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['county'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__county']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__country'])) {
+        /*
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/other-compensation/claim-solicitor-details/claim-solicitor__country">Please give us your country</a>';
+        $country['error'] = 'govuk-form-group--error';
+        $country['errorLabel'] =
+        '<span id="/other-compensation/claim-solicitor-details/claim-solicitor__country-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your country
+         </span>';
+        */
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['country'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__country']);
+    }
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__postcode'])) {
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['postcode'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__postcode']);
+    }
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor-contact-number'])) {
+
+    } else {
+        $data['sections']['other-compensation']['solicitor-address']['telephone'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor-contact-number']);
+    }
+
+
+
+
+    if ($errors == 'Y') {
+
+        $errorList = '';
+        foreach ($errorsList as $error) {
+            $errorList .=  '<li>'.$error.'</li>';
+        }
+
+
+        $errorMessage = '
+         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            '.$errorList.'
+            </ul>
+          </div>
+        </div>
+        ';
+
+
+
+
+
+
+
+    } else {
+
+        //store our changes
+
+        storeData($userID,$data);
+
+        $theURL = '/applicant/other-details/other-compensation/check-answers';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
         die();
+
+    }
 
 }
 
-
-
 @endphp
-
-
 
 
 @include('framework.header')
@@ -35,7 +231,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-compensation/claim-solicitor-details/claim-solicitor-contact-name" name="/other-compensation/claim-solicitor-details/claim-solicitor-contact-name" type="text"
          autocomplete="name"
-                  value=""
+                  value="{{$fullname['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -46,7 +242,7 @@ if (!empty($_POST)) {
         class="govuk-input  "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1" name="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1" type="text"
          autocomplete="address-line1"
-                  value=""
+                  value="{{$address1['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -57,7 +253,7 @@ if (!empty($_POST)) {
         class="govuk-input  "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2" name="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2" type="text"
          autocomplete="address-line2"
-                  value=""
+                  value="{{$address2['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -68,7 +264,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__town" name="/other-compensation/claim-solicitor-details/claim-solicitor__town" type="text"
          autocomplete="address-level2"
-                  value=""
+                  value="{{$town['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -78,7 +274,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__county" name="/other-compensation/claim-solicitor-details/claim-solicitor__county" type="text"
-                   value=""
+                   value="{{$county['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -89,7 +285,12 @@ if (!empty($_POST)) {
             name="/other-compensation/claim-solicitor-details/claim-solicitor__country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option>&nbsp;</option>
+@php if (!empty($country['data'])) {
+echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';
+} else {
+    echo '<option value="">&nbsp;</option>';
+}
+@endphp
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"
@@ -658,7 +859,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__postcode" name="/other-compensation/claim-solicitor-details/claim-solicitor__postcode" type="text"
          autocomplete="postal-code"
-                  value=""
+                  value="{{$postcode['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -670,7 +871,7 @@ if (!empty($_POST)) {
         id="/other-compensation/claim-solicitor-details/claim-solicitor-contact-number" name="/other-compensation/claim-solicitor-details/claim-solicitor-contact-number" type="tel"
          autocomplete="tel"
            inputmode="numeric" pattern="[0-9]*"
-                value=""
+                value="{{$telephone['data']}}"
             >
 </div>
 

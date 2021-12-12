@@ -1,9 +1,31 @@
 @include('framework.functions')
 @php
 
+
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+//this gets teh current record ID to edit and sets it for reference
+if (empty($_GET['servicerecord'])) {
+
+    if (empty($data['settings']['service-details-record-num'])) {
+        header("Location: /applicant/about-you/service-details");
+        die();
+    } else {
+        $thisRecord = $data['settings']['service-details-record-num'];
+    }
+
+} else {
+    $thisRecord = cleanRecordID($_GET['servicerecord']);
+    $data['settings']['service-details-record-num'] = $thisRecord;
+}
+
+
+
+
+
 if (!empty($_POST)) {
-    $userID = $_SESSION['vets-user'];
-    $data = getData($userID);
 
     $data['sections']['service-details']['completed'] = TRUE;
 
@@ -14,7 +36,6 @@ if (!empty($_POST)) {
 }
 
 @endphp
-
 
 
 
@@ -32,140 +53,140 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Enter the full name in service</dt>
             <dd class="govuk-summary-list__value">
-                                    jpojoj
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['nameinservice'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/name/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-name/name-in-service">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/name/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-name/name-in-service">Change<span
                         class="govuk-visually-hidden"> Enter the full name in service</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Enter the service number</dt>
             <dd class="govuk-summary-list__value">
-                                    plplplplpl
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['servicenumber'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/service-number/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-number/service-number">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/service-number/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-number/service-number">Change<span
                         class="govuk-visually-hidden"> Enter the service number</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Select your service branch</dt>
             <dd class="govuk-summary-list__value">
-                                    Royal Air Force
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['servicebranch'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/branch-service/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-branch/service-branch">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/branch-service/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-branch/service-branch">Change<span
                         class="govuk-visually-hidden"> Select your service branch</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What was/is your service type?</dt>
             <dd class="govuk-summary-list__value">
-                                    Reserve (includes Full Time Reserve Service)
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['servicetype'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/service-type/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-type/service-type">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/service-type/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-type/service-type">Change<span
                         class="govuk-visually-hidden"> What was/is your service type?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Service rank</dt>
             <dd class="govuk-summary-list__value">
-                                    lkppll
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-rank'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/rank/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-rank/service-rank">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/rank/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-rank/service-rank">Change<span
                         class="govuk-visually-hidden"> Service rank</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Service trade</dt>
             <dd class="govuk-summary-list__value">
-                                    kpkpk
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
                         class="govuk-visually-hidden"> Service trade</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Date of enlistment</dt>
             <dd class="govuk-summary-list__value">
-                                    12 December 1212
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['day'] ?? '' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['month'] ?? '' }} //{{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/enlistment-date/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-enlistment-date/enlistment-date">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/enlistment-date/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-enlistment-date/enlistment-date">Change<span
                         class="govuk-visually-hidden"> Date of enlistment</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">I am still serving</dt>
             <dd class="govuk-summary-list__value">
-                                    Yes
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/discharge-reason/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-discharge/service-is-serving">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/discharge-reason/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-discharge/service-is-serving">Change<span
                         class="govuk-visually-hidden"> I am still serving</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Base, Building and Street</dt>
             <dd class="govuk-summary-list__value">
-                                    jiojoij
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['address1'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/address-line-1">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/address-line-1">Change<span
                         class="govuk-visually-hidden"> Base, Building and Street</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
-                                    ijo
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['address2'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/address-line-2">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/address-line-2">Change<span
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
-                                    oijoij
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['town'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/town">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/town">Change<span
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
-                                    oijoij
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['county'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/county">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/county">Change<span
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
-                                    United Kingdom
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['country'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/country">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/country">Change<span
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
-                                    okok
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['postcode'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address?return=summarise&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/postcode">Change<span
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/postcode">Change<span
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
@@ -178,7 +199,7 @@ if (!empty($_POST)) {
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf
         <div class="govuk-form-group">
-            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button" name="save and continue" value="save and continue">Save and continue</button>
         </div>
     </form>
             </div>

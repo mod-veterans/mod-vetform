@@ -550,5 +550,8 @@ Route::match(['get', 'post'],'/applicant/supporting-documents-alt', function () 
     return view('applicant-supporting-documents-alt');
 });
 
+Route::match(['get', 'post'],'/flush', function () {
+    return view('flush');
+});
 
 

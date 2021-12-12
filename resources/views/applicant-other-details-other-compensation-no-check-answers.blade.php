@@ -1,9 +1,13 @@
 @include('framework.functions')
 @php
 
-if (!empty($_POST)) {
+
+
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
+
+if (!empty($_POST)) {
+
 
     $data['sections']['other-compensation']['completed'] = TRUE;
 
@@ -31,10 +35,10 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Are you claiming for or have you received compensation payments from other sources?</dt>
             <dd class="govuk-summary-list__value">
-                                    No
+                                    {{$data['sections']['other-compensation']['received-compensation'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-compensation/received-compensation/?return=summarise&amp;stack=#/other-compensation/received-compensation/received-compensation">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-compensation?return=/applicant/other-details/other-compensation/no/check-answers&amp;stack=#/other-compensation/received-compensation/received-compensation">Change<span
                         class="govuk-visually-hidden"> Are you claiming for or have you received compensation payments from other sources?</span></a>
             </dd>
         </div>

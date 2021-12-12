@@ -1,11 +1,16 @@
 @include('framework.functions')
 @php
 
+
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
+
 if (!empty($_POST)) {
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
 
-    $data['sections']['medical-officer']['completed'] = TRUE;
+    $data['sections']['about-you']['medical-officer']['completed'] = TRUE;
 
     storeData($userID,$data);
 
@@ -34,80 +39,80 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Medical Officer or GP&#039;s full name (if known)</dt>
             <dd class="govuk-summary-list__value">
-                                    kopkpk
+                                    {{$data['sections']['about-you']['medical-officer']['contactname'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/contact-name">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/contact-name">Change<span
                         class="govuk-visually-hidden"> Medical Officer or GP&#039;s full name (if known)</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
-                                    okp
+                                    {{$data['sections']['about-you']['medical-officer']['address1'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/address-line-1">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/address-line-1">Change<span
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
-                                    kpokpo
+                                    {{$data['sections']['about-you']['medical-officer']['address2'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/address-line-2">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/address-line-2">Change<span
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
-                                    pokop
+                                    {{$data['sections']['about-you']['medical-officer']['town'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/town">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/town">Change<span
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
-                                    pokpok
+                                    {{$data['sections']['about-you']['medical-officer']['county'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/county">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/county">Change<span
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
-                                    United Kingdom
+                                    {{$data['sections']['about-you']['medical-officer']['country'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/country">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/country">Change<span
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
-                                    okokok
+                                    {{$data['sections']['about-you']['medical-officer']['postcode'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/postcode">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/postcode">Change<span
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
-                                    okokok
+                                    {{$data['sections']['about-you']['medical-officer']['telephonenumber'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=summarise&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/contact-number">Change<span
+                <a class="govuk-link" href="/applicant/about-you/medical-officer/?return=/applicant/about-you/medical-officer/check-answers&amp;stack=#afcs/about-you/medical-officer/medical-officer-contact/contact-number">Change<span
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>

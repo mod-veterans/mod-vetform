@@ -35,7 +35,7 @@ if (empty($_POST)) {
 //as this is a journey-deciding page, we want to detect a change in choice (if returning from a CYA page) so we can
 //kill off the return URL
 
-if ( (!empty($_POST['/representative/representative-selection/nominate-representative'])) &&
+if ( (!empty($_POST['/representative/representative-selection/nominate-representative'])) && (!empty($data['sections']['nominate-representative']['nominate-representative'])) &&
 ($data['sections']['nominate-representative']['nominate-representative'] == $_POST['/representative/representative-selection/nominated-representative']) ) {
 
     //same choice, return applies
@@ -68,7 +68,7 @@ if (!empty($_POST)) {
 
             case "No":
                 $data['sections']['nominate-representative']['nominate-representative'] = 'No';
-                $nominatechk['NO'] = ' checked';
+                $nominatechk['No'] = ' checked';
                 $theURL = '/applicant/nominate-a-representative-no-check-answers';
             break;
 

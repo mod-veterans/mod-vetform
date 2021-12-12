@@ -42,7 +42,7 @@ $data = getData($userID);
 
 if (empty($_POST)) {
     //load the data if set
-    if (!empty($data['sections']['applicant-who']['legal authority'])) {
+    if (!empty($data['sections']['nominate-representative']['nominated representative'])) {
         $fullname['data']            = @$data['sections']['nominate-representative']['nominated representative']['fullname'];
         $address1['data']            = @$data['sections']['nominate-representative']['nominated representative']['address1'];
         $address2['data']            = @$data['sections']['nominate-representative']['nominated representative']['address2'];
@@ -116,6 +116,14 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/representative/representative-address/town'])) {
 
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/representative/representative-address/town">Please give us your representative town</a>';
+        $town['error'] = 'govuk-form-group--error';
+        $town['errorLabel'] =
+        '<span id="/representative/representative-address/town-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your representative town
+         </span>';
+
     } else {
         $data['sections']['nominate-representative']['nominated representative']['town'] = cleanTextData($_POST['/representative/representative-address/town']);
     }
@@ -123,6 +131,15 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['/representative/representative-address/county'])) {
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/representative/representative-address/county">Please give us your representative county</a>';
+        $county['error'] = 'govuk-form-group--error';
+        $county['errorLabel'] =
+        '<span id="/representative/representative-address/county-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your representative county
+         </span>';
+
 
     } else {
         $data['sections']['nominate-representative']['nominated representative']['county'] = cleanTextData($_POST['/representative/representative-address/county']);
@@ -147,6 +164,14 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['/representative/representative-address/postcode'])) {
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/representative/representative-address/postcode">Please give us your representative postcode</a>';
+        $postcode['error'] = 'govuk-form-group--error';
+        $postcode['errorLabel'] =
+        '<span id="/representative/representative-address/postcode-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your representative postcode
+         </span>';
 
     } else {
         $data['sections']['nominate-representative']['nominated representative']['postcode'] = cleanTextData($_POST['/representative/representative-address/postcode']);
@@ -235,7 +260,9 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Please provide contact details for your nominated representative</h1>
+ </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$fullname['error']}} ">
@@ -273,10 +300,11 @@ echo $errorMessage;
                   value="{{$address2['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$town['error']}} ">
     <label class="govuk-label" for="/representative/representative-address/town">
         Town or city
     </label>
+@php echo $town['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/town" name="/representative/representative-address/town" type="text"
@@ -284,10 +312,11 @@ echo $errorMessage;
                   value="{{$town['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$county['error']}}">
     <label class="govuk-label" for="/representative/representative-address/county">
         County
     </label>
+@php echo $county['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/county" name="/representative/representative-address/county" type="text"
@@ -870,10 +899,11 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
 </div>
 
 
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$postcode['error']}} ">
     <label class="govuk-label" for="/representative/representative-address/postcode">
         Postcode
     </label>
+@php echo $postcode['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/representative/representative-address/postcode" name="/representative/representative-address/postcode" type="text"

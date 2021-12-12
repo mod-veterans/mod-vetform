@@ -1,6 +1,12 @@
 @include('framework.functions')
 @php
 
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
+
+
+
 if (!empty($_POST)) {
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
@@ -30,53 +36,63 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Are you receiving any of the following?</dt>
             <dd class="govuk-summary-list__value">
-                                                            Tax credits paid to you or your family<br>
+                                                            {{$data['sections']['other-benefits']['benefits'] ?? ''}}<br>
                                                 </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-benefits/receiving-other-benefits/?return=summarise&amp;stack=#/other-benefits/receiving-other-benefits/receiving-benefits">Change<span
+                <a class="govuk-link" href="/applicant/other-details/benefits/?return=/applicant/other-details/benefits/check-answers/&amp;stack=#/other-benefits/receiving-other-benefits/receiving-benefits">Change<span
                         class="govuk-visually-hidden"> Are you receiving any of the following?</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Have you ever been paid any of the following?</dt>
             <dd class="govuk-summary-list__value">
-                                    Yes
+                                    {{$data['sections']['other-benefits']['other-paid'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-benefits/receiving-payments/?return=summarise&amp;stack=#/other-benefits/receiving-payments/payments">Change<span
+                <a class="govuk-link" href="/applicant/other-details/benefits/other-payments/?return=/applicant/other-details/benefits/check-answers/&amp;stack=#/other-benefits/receiving-payments/payments">Change<span
                         class="govuk-visually-hidden"> Have you ever been paid any of the following?</span></a>
             </dd>
         </div>
+
+@php
+if ( (!empty($data['sections']['other-benefits']['other-paid'])) && ($data['sections']['other-benefits']['other-paid'] == 'Yes') ) {
+@endphp
+
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Diffuse Mesothelioma 2014 Scheme</dt>
             <dd class="govuk-summary-list__value">
-                                    ijoij
+                                    {{$data['sections']['other-benefits']['details']['diffuse2014'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-benefits/other-payment-dates/?return=summarise&amp;stack=#/other-benefits/other-payment-dates/diffuse-mesothelioma-2014-scheme">Change<span
+                <a class="govuk-link" href="/applicant/other-details/benefits/other-payments/details/?return=/applicant/other-details/benefits/check-answers/&amp;stack=#/other-benefits/other-payment-dates/diffuse-mesothelioma-2014-scheme">Change<span
                         class="govuk-visually-hidden"> Diffuse Mesothelioma 2014 Scheme</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Diffuse Mesothelioma 2008 Scheme</dt>
             <dd class="govuk-summary-list__value">
-                                    ijoj
+                                    {{$data['sections']['other-benefits']['details']['diffuse2008'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-benefits/other-payment-dates/?return=summarise&amp;stack=#/other-benefits/other-payment-dates/diffuse-mesothelioma-2008-scheme">Change<span
+                <a class="govuk-link" href="/applicant/other-details/benefits/other-payments/details/?return=/applicant/other-details/benefits/check-answers/&amp;stack=#/other-benefits/other-payment-dates/diffuse-mesothelioma-2008-scheme">Change<span
                         class="govuk-visually-hidden"> Diffuse Mesothelioma 2008 Scheme</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">The Workers Compensation 1979 Pneumoconiosis Act</dt>
             <dd class="govuk-summary-list__value">
-                                    oijoij
+                                    {{$data['sections']['other-benefits']['details']['worker1979'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/other-details/other-benefits/other-payment-dates/?return=summarise&amp;stack=#/other-benefits/other-payment-dates/the-workers-compensation-1979-pneumoconiosis-act">Change<span
+                <a class="govuk-link" href="/applicant/other-details/benefits/other-payments/details/?return=/applicant/other-details/benefits/check-answers/&amp;stack=#/other-benefits/other-payment-dates/the-workers-compensation-1979-pneumoconiosis-act">Change<span
                         class="govuk-visually-hidden"> The Workers Compensation 1979 Pneumoconiosis Act</span></a>
             </dd>
         </div>
+@php
+}
+@endphp
+
     </dl>
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf

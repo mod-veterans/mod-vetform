@@ -29,3 +29,4 @@ applications:
       QUEUE_CONNECTION: sync
       FILESYSTEM_DRIVER: s3
       PATH: /home/vcap/app/php/bin:/bin:/usr/bin
+      SYSTEM_EMAIL_ADDRESS: garry@poweredbyreason.co.uk|Joanne.McGee103@mod.gov.uk|Yoann.Muya100@mod.gov.uk|David.Johnson833@mod.gov.uk
