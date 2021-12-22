@@ -146,7 +146,7 @@ if (!empty($_POST)) {
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="/other-benefits/other-payment-dates/diffuse-mesothelioma-2014-scheme" name="/other-benefits/other-payment-dates/diffuse-mesothelioma-2014-scheme" type="text"
+        id="/other-benefits/other-payment-dates/diffuse-mesothelioma-2014-scheme" name="/other-benefits/other-payment-dates/diffuse-mesothelioma-2014-scheme" type="text" maxlength="100"
                    value="{{$diffuse2014['data']}}"
             >
 </div>
@@ -156,7 +156,7 @@ if (!empty($_POST)) {
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="/other-benefits/other-payment-dates/diffuse-mesothelioma-2008-scheme" name="/other-benefits/other-payment-dates/diffuse-mesothelioma-2008-scheme" type="text"
+        id="/other-benefits/other-payment-dates/diffuse-mesothelioma-2008-scheme" name="/other-benefits/other-payment-dates/diffuse-mesothelioma-2008-scheme" type="text" maxlength="100"
                    value="{{$diffuse2008['data']}}"
             >
 </div>
@@ -167,7 +167,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-benefits/other-payment-dates/the-workers-compensation-1979-pneumoconiosis-act" name="/other-benefits/other-payment-dates/the-workers-compensation-1979-pneumoconiosis-act" type="text"
-                   value="{{$worker1979['data']}}"
+                   value="{{$worker1979['data']}}" maxlength="100"
             >
 </div>
 

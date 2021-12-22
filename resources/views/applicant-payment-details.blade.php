@@ -21,7 +21,7 @@ $data = getData($userID);
 
 if (empty($_POST)) {
     //load the data if set
-    if (!empty($data['sections']['other-benefits']['other-paid'])) {
+    if (!empty($data['sections']['bank-account']['providebank'])) {
         $providebank['data']            = @$data['sections']['bank-account']['providebank'];
         $providebankchk[$providebank['data']] = ' checked';
     }

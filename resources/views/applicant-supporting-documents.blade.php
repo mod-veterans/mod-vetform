@@ -1,6 +1,26 @@
 @include('framework.functions')
 @php
 
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
+if
+(
+(!empty($data['sections']['supporting-documents']['files'])) &&
+(count($data['sections']['supporting-documents']['files']) >= 1)
+)
+ {
+
+    header("Location: /applicant/supporting-documents/manage");
+    die();
+}
+
+
+
+
+
+
+
 if (!empty($_POST)) {
 
 

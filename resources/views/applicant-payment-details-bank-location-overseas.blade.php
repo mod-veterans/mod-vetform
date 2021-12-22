@@ -1,20 +1,271 @@
+@include('framework.functions')
 @php
+
+//Add in the auto-complete for country
+$footerScripts = array();
+$footerScripts[] = '
+<script type="text/javascript" src="https://modvets-dev2.london.cloudapps.digital/js/location-autocomplete.min.js"></script>
+    <script type="text/javascript">
+        openregisterLocationPicker({
+            selectElement: document.getElementById("/other-compensation/claim-solicitor-details/claim-solicitor__country"),
+            url: "/assets/data/location-autocomplete-graph.json"
+
+        })
+</script>
+
+';
+
+
+//error handling setup
+$errorWhoLabel = '';
+$errorMessage = '';
+$errorWhoShow = '';
+$errors = 'N';
+$errorsList = array();
+
+
+//set fields
+
+
+$bankname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$accountname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$nameonaccount = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$iban = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$bsbcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$swiftcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$transitroute = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$typeofaccount = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$accountreason = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address1 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$address2 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+
+if (empty($_POST)) {
+    //load the data if set
+    if (!empty($data['sections']['bank-account']['overseas-bank-address'])) {
+
+
+        $bankname['data']                   = @$data['sections']['bank-account']['overseas-bank-address']['bankname'];
+        $accountname['data']               = @$data['sections']['bank-account']['overseas-bank-address']['accountname'];
+        $nameonaccount['data']              = @$data['sections']['bank-account']['overseas-bank-address']['nameonaccount'];
+        $iban['data']                       = @$data['sections']['bank-account']['overseas-bank-address']['iban'];
+        $bsbcode['data']                    = @$data['sections']['bank-account']['overseas-bank-address']['bsbcode'];
+        $swiftcode['data']                  = @$data['sections']['bank-account']['overseas-bank-address']['swiftcode'];
+        $transitroute['data']               = @$data['sections']['bank-account']['overseas-bank-address']['transitroute'];
+        $typeofaccount['data']              = @$data['sections']['bank-account']['overseas-bank-address']['typeofaccount'];
+        $accountreason['data']               = @$data['sections']['bank-account']['overseas-bank-address']['accountreason'];
+        $address1['data']            = @$data['sections']['bank-account']['overseas-bank-address']['address1'];
+        $address2['data']            = @$data['sections']['bank-account']['overseas-bank-address']['address2'];
+        $town['data']                = @$data['sections']['bank-account']['overseas-bank-address']['town'];
+        $county['data']              = @$data['sections']['bank-account']['overseas-bank-address']['county'];
+        $country['data']             = @$data['sections']['bank-account']['overseas-bank-address']['country'];
+
+
+
+    }
+} else {
+//var_dump($_POST);
+//die;
+}
 
 
 if (!empty($_POST)) {
 
 
-        header("Location: /applicant/payment-details/check-answers");
+    //set the entered field names
+
+    $bankname['data'] = cleanTextData($_POST['/payment-details/bank-united-kingdom/bank-name']);
+    $accountname['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-name']);
+    $nameonaccount['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-holder']);
+    $iban['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-iban']);
+    $bsbcode['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-bsb']);
+    $swiftcode['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-bic']);
+    $transitroute['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-transit']);
+    $typeofaccount['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-type']);
+    $accountreason['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-confirmation']);
+    $address1['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1']);
+    $address2['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2']);
+    $town['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__town']);
+    $county['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__county']);
+    $country['data'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__country']);
+
+
+
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1'])) {
+       /*
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1">Please give us the first line of your overseas bank address</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your overseas bank address
+         </span>';
+         */
+
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['address1'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['address2'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__town'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['town'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__town']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__county'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['county'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__county']);
+    }
+
+
+
+    if (empty($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__country'])) {
+        /*
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/other-compensation/claim-solicitor-details/claim-solicitor__country">Please give us your overseas bank country</a>';
+        $country['error'] = 'govuk-form-group--error';
+        $country['errorLabel'] =
+        '<span id="/other-compensation/claim-solicitor-details/claim-solicitor__country-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your overseas bank country
+         </span>';
+         */
+
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['country'] = cleanTextData($_POST['/other-compensation/claim-solicitor-details/claim-solicitor__country']);
+    }
+
+
+    if (empty($_POST['/payment-details/bank-united-kingdom/bank-name'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['bankname'] = cleanTextData($_POST['/payment-details/bank-united-kingdom/bank-name']);
+    }
+
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-name'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['accountname'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-name']);
+    }
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-holder'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['nameonaccount'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-holder']);
+    }
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-iban'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['iban'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-iban']);
+    }
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-bsb'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['bsbcode'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-bsb']);
+    }
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-bic'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['swiftcode'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-bic']);
+    }
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-transit'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['transitroute'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-transit']);
+    }
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-type'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['typeofaccount'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-type']);
+    }
+
+    if (empty($_POST['/payment-details/bank-overseas/bank-account-confirmation'])) {
+
+    } else {
+        $data['sections']['bank-account']['overseas-bank-address']['accountreason'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-confirmation']);
+    }
+
+
+    if ($errors == 'Y') {
+
+        $errorList = '';
+        foreach ($errorsList as $error) {
+            $errorList .=  '<li>'.$error.'</li>';
+        }
+
+
+        $errorMessage = '
+         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            '.$errorList.'
+            </ul>
+          </div>
+        </div>
+        ';
+
+
+
+
+
+
+
+    } else {
+
+        //store our changes
+
+        storeData($userID,$data);
+
+        $theURL = '/applicant/payment-details/check-answers';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
         die();
 
+    }
 
 }
 
-
-
 @endphp
-
-
 
 
 @include('framework.header')
@@ -25,6 +276,9 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+@php
+echo $errorMessage;
+@endphp
                                 <h1 class="govuk-heading-xl">Overseas bank account details</h1>
                                 <p class="govuk-body">You can ask your bank or check your bank statement for these details.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
@@ -37,7 +291,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-united-kingdom/bank-name" name="/payment-details/bank-united-kingdom/bank-name" type="text"
-                   value=""
+                   value="{{$bankname['data']}}"
             >
 </div>
 
@@ -50,7 +304,7 @@ if (!empty($_POST)) {
         class="govuk-input  "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1" name="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-1" type="text"
          autocomplete="address-line1"
-                  value=""
+                  value="{{$address1['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -61,7 +315,7 @@ if (!empty($_POST)) {
         class="govuk-input  "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2" name="/other-compensation/claim-solicitor-details/claim-solicitor__address-line-2" type="text"
          autocomplete="address-line2"
-                  value=""
+                  value="{{$address2['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -72,7 +326,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__town" name="/other-compensation/claim-solicitor-details/claim-solicitor__town" type="text"
          autocomplete="address-level2"
-                  value=""
+                  value="{{$town['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -82,7 +336,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-compensation/claim-solicitor-details/claim-solicitor__county" name="/other-compensation/claim-solicitor-details/claim-solicitor__county" type="text"
-                   value=""
+                   value="{{$county['data']}}"
             >
 </div>
                                     <div class="govuk-form-group ">
@@ -93,7 +347,12 @@ if (!empty($_POST)) {
             name="/other-compensation/claim-solicitor-details/claim-solicitor__country"
             aria-describedby=" "
             autocomplete="new-password">
-        <option>&nbsp;</option>
+@php if (!empty($country['data'])) {
+echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';
+} else {
+    echo '<option value="">&nbsp;</option>';
+}
+@endphp
                     <option value="Abu Dhabi"
                      >Abu Dhabi</option>
                     <option value="Afghanistan"
@@ -661,7 +920,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-holder" name="/payment-details/bank-overseas/bank-account-holder" type="text"
          autocomplete="name"
-                  value=""
+                  value="{{$nameonaccount['data']}}"
             >
 </div>
 
@@ -674,7 +933,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-name" name="/payment-details/bank-overseas/bank-account-name" type="text"
          autocomplete="name"
-                  value=""
+                  value="{{$accountname['data']}}"
             >
 </div>
 
@@ -685,7 +944,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-iban" name="/payment-details/bank-overseas/bank-account-iban" type="numeric"
-                   value=""
+                   value="{{$iban['data']}}"
             >
 </div>
 
@@ -697,7 +956,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-iban" name="/payment-details/bank-overseas/bank-account-bsb" type="numeric"
-                   value=""
+                   value="{{$bsbcode['data']}}"
             >
 </div>
 
@@ -710,7 +969,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-bic" name="/payment-details/bank-overseas/bank-account-bic" type="numeric"
-                   value=""
+                   value="{{$swiftcode['data']}}"
             >
 </div>
 
@@ -722,7 +981,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-transit" name="/payment-details/bank-overseas/bank-account-transit" type="numeric"
-                   value=""
+                   value="{{$transitroute['data']}}"
             >
 </div>
 
@@ -735,7 +994,7 @@ if (!empty($_POST)) {
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-overseas/bank-account-type" name="/payment-details/bank-overseas/bank-account-type" type="numeric"
-                   value=""
+                   value="{{$typeofaccount['data']}}"
             >
 </div>
 
@@ -747,8 +1006,8 @@ if (!empty($_POST)) {
         If this is not your bank account, please tell us whose account it is and why you have chosen to have payments made into it.
     </label>
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/payment-details/bank-overseas/bank-account-confirmation"
-                  name="/payment-details/bank-overseas/bank-account-confirmation" rows="5"
-                                    aria-describedby="/payment-details/bank-overseas/bank-account-confirmation-info "></textarea>
+                  name="/payment-details/bank-overseas/bank-account-confirmation" rows="5" maxlength="100"
+                                    aria-describedby="/payment-details/bank-overseas/bank-account-confirmation-info ">{{$accountreason['data']}}</textarea>
                     <div id="/payment-details/bank-overseas/bank-account-confirmation-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
                 You can enter up to 100 characters
             </div>

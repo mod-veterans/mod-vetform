@@ -91,6 +91,12 @@ function cleanRecordID($data) {
     return $data;
 }
 
+function genHash($len=32) {
+    $hash = md5(rand(0,65535).microtime().rand(0,65535));
+    $hash = substr($hash, 0, $len);
+    return $hash;
+}
+
 
 
 

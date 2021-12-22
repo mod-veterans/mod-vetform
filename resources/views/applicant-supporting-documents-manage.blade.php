@@ -1,8 +1,57 @@
+@include('framework.functions')
 @php
 
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
+    $fileList = '';
+
+
+if (!empty($_GET['deleteFile'])) {
+
+    unset ($data['sections']['supporting-documents']['files'][$_GET['deleteFile']]);
+    storeData($userID,$data);
+}
+
+
+if (count($data['sections']['supporting-documents']['files']) < 1) {
+    header("Location: /applicant/supporting-documents/upload");
+    die();
+}
+
+
+
+
+
+
+
+    if (!empty($data['sections']['supporting-documents']['files'])) {
+
+
+
+        foreach ($data['sections']['supporting-documents']['files'] as $k => $file) {
+
+
+            $fileList .='
+
+            <div class="govuk-summary-list__row">
+                        <dt class="govuk-summary-list__value">
+                                                                                                '.$file['name'].'
+                                                                                    </dt>
+                        <dd class="govuk-summary-list__actions">
+                            <a class="govuk-link govuk-warning govuk-!-margin-right-5"
+                               href="/applicant/supporting-documents/manage?deleteFile='.$k.'">Delete</a>
+                        </dd>
+                    </div>
+
+            ';
+
+
+        }
+
+}
 
 @endphp
-
 
 
 
@@ -16,21 +65,7 @@
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Uploading supporting documents</h1>
                                 <dl class="govuk-summary-list">
-                                    <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__value">
-                                                                                                JPG_1415116658.JPG
-                                                                                    </dt>
-                        <dd class="govuk-summary-list__actions">
-                            <a class="govuk-link govuk-warning govuk-!-margin-right-5"
-                               href="https://modvets-dev2.london.cloudapps.digital/stack/drop?stack=%2Fdocuments&amp;id=1ec2c087-e7a2-69ac-b355-eeee0aff6684">Delete<span
-                                    class="govuk-visually-hidden"> name</span>
-                            </a>
-                            <a class="govuk-link"
-                               href="https://modvets-dev2.london.cloudapps.digital/supporting-documents/documents?stack=1ec2c087-e7a2-69ac-b355-eeee0aff6684">
-                                Change<span class="govuk-visually-hidden"> name</span>
-                            </a>
-                        </dd>
-                    </div>
+                                    @php echo $fileList; @endphp
                             </dl>
 
                 <div class="govuk-form-group govuk-!-margin-top-4">

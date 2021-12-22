@@ -1,22 +1,60 @@
 @include('framework.functions')
 @php
 
+
+//error handling setup
+
+//set fields
+$fileinfo = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+
 if (!empty($_POST)) {
-    $userID = $_SESSION['vets-user'];
-    $data = getData($userID);
 
-    $data['sections']['supporting-documents']['completed'] = TRUE;
 
-    storeData($userID,$data);
+    //set the entered field names
 
-    header("Location: /tasklist");
+
+    if (!empty($_POST['/applicant/nominee-details/nominee-details'])) {
+        $fileinfo['data'] = $_POST['/applicant/nominee-details/nominee-details'];
+    } else {
+        $fileinfo['data'] = '';
+    }
+    $data['sections']['supporting-documents']['file-information'] = $fileinfo['data'];
+
+        //store our changes
+
+        $data['sections']['supporting-documents']['completed'] = TRUE;
+
+        storeData($userID,$data);
+
+        $theURL = '/tasklist';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+    }
+
+    header("Location: ".$theURL);
     die();
+
+
+
+} else {
+$fileinfo['data'] = @$data['sections']['supporting-documents']['file-information'];
+
 }
 
+
+
+
+
 @endphp
-
-
-
 @include('framework.header')
 @include('framework.backbutton')
 
@@ -37,7 +75,7 @@ if (!empty($_POST)) {
     </label>
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/applicant/nominee-details/nominee-details"
                   name="/applicant/nominee-details/nominee-details" rows="5"
-                                    aria-describedby="/applicant/nominee-details/nominee-details-info "></textarea>
+                                    aria-describedby="/applicant/nominee-details/nominee-details-info" maxlength="250">{{$fileinfo['data'] ?? ''}}</textarea>
                     <div id="/applicant/nominee-details/nominee-details-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
                 You can enter up to 250 characters
             </div>
