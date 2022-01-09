@@ -1,33 +1,93 @@
+@include('framework.functions')
 @php
 
-if (!empty($_POST)) {
+//error handling setup
+$errorMessage = '';
+$errors = 'N';
+$errorsList = array();
+$count = '';
+//set fields
+$claim = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$claimList = '';
 
 
-    if ($_POST['/treatment-status/treatment-status'] == 'Yes') {
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
 
-        header("Location: /applicant/other-details/other-medical-treatment/hospital-address");
-        die();
+
+/////////////////////////
+//STACK / RECORD HANDLING
+/////////////////////////
+
+
+    if ( (!empty($_GET['delRecord'])) && (is_numeric($_GET['delRecord'])) ) {
+        //lets delete the record
+        unset($data['sections']['claims']['records'][$_GET['delRecord']]);
+        storeData($userID,$data);
+    }
+
+    //are there already claim records?
+
+    if (!empty($data['sections']['claims']['records'])) {
+
+        $nother = 'nother';
+
+        $count = 0;
+        $claimList = '';
+        foreach ($data['sections']['claims']['records'] as $k=>$curClaim) {
+        $count++;
+
+            $claimList .='
+            <div>
+             <dt class="govuk-summary-list__value">
+                            Claim '.$count.'
+            </dt>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link govuk-warning govuk-!-margin-right-5" href="/applicant/claims?delRecord='.$k.'">Delete<span class="govuk-visually-hidden"> name</span>
+                </a>
+                <a class="govuk-link" href="/applicant/claims/type?claimrecord='.$k.'">
+                    Change<span class="govuk-visually-hidden"> name</span>
+                </a>
+            </dd>
+            </div>
+
+
+
+            ';
+
+
+
+        }
+
+        $lastRecID = ($k + 1);
+
 
     } else {
 
-        header("Location: /applicant/other-details/other-medical-treatment/no-check-answers");
-        die();
+        //no claim records yet, lets set the first one up
+
+        $data['settings']['claim-record-num'] = 1;
+        $lastRecID = 1;
+        //store our changes
+
+        storeData($userID,$data);
+
     }
 
-}
 
+/////////////////////////////
+//END STACK / RECORD HANDLING
+/////////////////////////////
 
 
 @endphp
 
 
 
-
 @include('framework.header')
 
+@include('framework.backbutton')
 
-
-    @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
@@ -40,10 +100,17 @@ if (!empty($_POST)) {
                                                                         For a specific accident or incident you can add all of the injuries and conditions sustained in a single claim.
                                                                 </p>
 
+                         <dl class="govuk-summary-list">
+@php
+echo $claimList;
+@endphp
+
+                            </dl>
+
 
                 <div class="govuk-form-group govuk-!-margin-top-4">
-            <a class="govuk-button" href="/applicant/claims/type">
-                Add a claim
+            <a class="govuk-button" href="/applicant/claims/type?claimrecord={{$lastRecID}}">
+                Add a{{$nother ?? ''}} claim
             </a>
             <br>
             <a class="govuk-link" href="/tasklist">Return to Task List</a>
@@ -52,6 +119,11 @@ if (!empty($_POST)) {
         </div>
     </main>
 </div>
+
+
+
+
+
 
 
 

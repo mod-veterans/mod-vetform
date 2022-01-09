@@ -306,9 +306,25 @@ Route::match(['get', 'post'],'/applicant/claims/specific/witnesses', function ()
     return view('applicant-claims-specific-witnesses');
 });
 
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/witnesses', function () {
+    return view('applicant-claims-specific-pt-witnesses');
+});
+
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/first-aid', function () {
+    return view('applicant-claims-specific-pt-first-aid');
+});
+
+
 Route::match(['get', 'post'],'/applicant/claims/specific/first-aid', function () {
     return view('applicant-claims-specific-first-aid');
 });
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/hospital', function () {
+    return view('applicant-claims-specific-pt-hospital');
+});
+
 
 Route::match(['get', 'post'],'/applicant/claims/specific/hospital', function () {
     return view('applicant-claims-specific-hospital');
@@ -318,21 +334,74 @@ Route::match(['get', 'post'],'/applicant/claims/specific/hospital/address', func
     return view('applicant-claims-specific-hospital-address');
 });
 
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/hospital/address', function () {
+    return view('applicant-claims-specific-pt-hospital-address');
+});
+
 Route::match(['get', 'post'],'/applicant/claims/specific/downgraded', function () {
     return view('applicant-claims-specific-downgraded');
 });
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/downgraded', function () {
+    return view('applicant-claims-specific-pt-downgraded');
+});
+
+
+Route::match(['get', 'post'],'/applicant/claims/non-specific/downgraded', function () {
+    return view('applicant-claims-non-specific-downgraded');
+});
+
+
+
+
+
 
 Route::match(['get', 'post'],'/applicant/claims/specific/downgraded/detail', function () {
     return view('applicant-claims-specific-downgraded-detail');
 });
 
+
+Route::match(['get', 'post'],'/applicant/claims/non-specific/downgraded/detail', function () {
+    return view('applicant-claims-non-specific-downgraded-detail');
+});
+
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/downgraded/detail', function () {
+    return view('applicant-claims-specific-pt-downgraded-detail');
+});
+
+
+
 Route::match(['get', 'post'],'/applicant/claims/specific/downgraded/when', function () {
     return view('applicant-claims-specific-downgraded-when');
 });
 
+Route::match(['get', 'post'],'/applicant/claims/non-specific/downgraded/when', function () {
+    return view('applicant-claims-non-specific-downgraded-when');
+});
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/downgraded/when', function () {
+    return view('applicant-claims-specific-pt-downgraded-when');
+});
+
+
+
+
+
 Route::match(['get', 'post'],'/applicant/claims/specific/why-related', function () {
     return view('applicant-claims-specific-condition-related');
 });
+
+
+Route::match(['get', 'post'],'/applicant/claims/non-specific/why-related', function () {
+    return view('applicant-claims-non-specific-condition-related');
+});
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/why-related', function () {
+    return view('applicant-claims-specific-pt-condition-related');
+});
+
+
 
 Route::match(['get', 'post'],'/applicant/claims/specific/non-pt/on-duty', function () {
     return view('applicant-claims-specific-non-pt-on-duty');
@@ -421,6 +490,18 @@ Route::match(['get', 'post'],'/applicant/claims/non-specific/medical-attention-d
 Route::match(['get', 'post'],'/applicant/claims/check-answers', function () {
     return view('applicant-claims-check-answers');
 });
+
+Route::match(['get', 'post'],'/applicant/claims/non-specific/check-answers', function () {
+    return view('applicant-claims-non-specific-check-answers');
+});
+
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/check-answers', function () {
+    return view('applicant-claims-specific-pt-check-answers');
+});
+
+
+
 
 Route::match(['get', 'post'],'/applicant/other-details/other-compensation/conditions', function () {
     return view('applicant-other-details-other-compensation-conditions');

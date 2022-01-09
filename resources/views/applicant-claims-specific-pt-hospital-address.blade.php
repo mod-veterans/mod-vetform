@@ -7,7 +7,7 @@ $footerScripts[] = '
 <script type="text/javascript" src="https://modvets-dev2.london.cloudapps.digital/js/location-autocomplete.min.js"></script>
     <script type="text/javascript">
         openregisterLocationPicker({
-            selectElement: document.getElementById("afcs/about-you/personal-details/contact-address/country"),
+            selectElement: document.getElementById("/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country"),
             url: "/assets/data/location-autocomplete-graph.json"
 
         })
@@ -26,12 +26,16 @@ $errorsList = array();
 
 //set fields
 
+$name = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $address1 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $address2 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $postcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$telephone = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$email = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
 
 
 //load in our content
@@ -39,17 +43,38 @@ $userID = $_SESSION['vets-user'];
 $data = getData($userID);
 
 
+//this gets teh current record ID to edit and sets it for reference
+if (empty($_GET['claimrecord'])) {
+
+    if (empty($data['settings']['claim-record-num'])) {
+        header("Location: /applicant/claims");
+        die();
+    } else {
+        $thisRecord = $data['settings']['claim-record-num'];
+    }
+
+} else {
+    $thisRecord = cleanRecordID($_GET['claimrecord']);
+    $data['settings']['claim-record-num'] = $thisRecord;
+}
+
+
+
+
 if (empty($_POST)) {
     //load the data if set
-    if (!empty($data['sections']['about-you']['contact-address'])) {
+    if (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address'])) {
 
-        $fullname['data']            = @$data['sections']['about-you']['contact-address']['fullname'];
-        $address1['data']            = @$data['sections']['about-you']['contact-address']['address1'];
-        $address2['data']            = @$data['sections']['about-you']['contact-address']['address2'];
-        $town['data']                = @$data['sections']['about-you']['contact-address']['town'];
-        $county['data']              = @$data['sections']['about-you']['contact-address']['county'];
-        $country['data']             = @$data['sections']['about-you']['contact-address']['country'];
-        $postcode['data']            = @$data['sections']['about-you']['contact-address']['postcode'];
+        $name['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['name'];
+        $address1['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['address1'];
+        $address2['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['address2'];
+        $town['data']                = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['town'];
+        $county['data']              = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['county'];
+        $country['data']             = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['country'];
+        $postcode['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['postcode'];
+        $telephone['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['telephone'];
+        $email['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['email'];
+
 
     }
 } else {
@@ -63,77 +88,84 @@ if (!empty($_POST)) {
 
     //set the entered field names
 
-    $address1['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-1']);
-    $address2['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-2']);
-    $town['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/town']);
-    $county['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/county']);
-    $country['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/country']);
-    $postcode['data'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/postcode']);
+    $name['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-name']);
+    $address1['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-1']);
+    $address2['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-2']);
+    $town['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__town']);
+    $county['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__county']);
+    $country['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country']);
+    $postcode['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__postcode']);
+    $address1['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-number']);
+    $address1['data'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-email']);
 
 
 
 
-
-    if (empty($_POST['afcs/about-you/personal-details/contact-address/address-line-1'])) {
-        $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/address-line-1">Please give us the first line of your address</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
-        '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your address
-         </span>';
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-name'])) {
 
 
     } else {
-        $data['sections']['about-you']['contact-address']['address1'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-1']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['name'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-name']);
+    }
+
+
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-1'])) {
+
+    } else {
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['address1'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-1']);
     }
 
 
 
-    if (empty($_POST['afcs/about-you/personal-details/contact-address/address-line-2'])) {
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-2'])) {
 
     } else {
-        $data['sections']['about-you']['contact-address']['address2'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/address-line-2']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['address2'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-2']);
     }
 
 
 
-    if (empty($_POST['afcs/about-you/personal-details/contact-address/town'])) {
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__town'])) {
 
     } else {
-        $data['sections']['about-you']['contact-address']['town'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/town']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['town'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__town']);
     }
 
 
 
-    if (empty($_POST['afcs/about-you/personal-details/contact-address/county'])) {
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__county'])) {
 
     } else {
-        $data['sections']['about-you']['contact-address']['county'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/county']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['county'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__county']);
     }
 
 
 
-    if (empty($_POST['afcs/about-you/personal-details/contact-address/country'])) {
-
-        $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/country">Please give us your country</a>';
-        $country['error'] = 'govuk-form-group--error';
-        $country['errorLabel'] =
-        '<span id="afcs/about-you/personal-details/contact-address/country-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your country
-         </span>';
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country'])) {
 
 
     } else {
-        $data['sections']['about-you']['contact-address']['country'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/country']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['country'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country']);
     }
 
 
-    if (empty($_POST['afcs/about-you/personal-details/contact-address/postcode'])) {
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__postcode'])) {
 
     } else {
-        $data['sections']['about-you']['contact-address']['postcode'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/postcode']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['postcode'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__postcode']);
+    }
+
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-number'])) {
+
+    } else {
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['telephone'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-number']);
+    }
+
+
+    if (empty($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-email'])) {
+
+    } else {
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['first-aid-hospital-address']['email'] = cleanTextData($_POST['/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-email']);
     }
 
 
@@ -173,7 +205,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/about-you/dob';
+        $theURL = '/applicant/claims/specific/pt/downgraded';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -193,94 +225,75 @@ if (!empty($_POST)) {
 
 @include('framework.header')
 
-
     @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                                <h1 class="govuk-heading-xl">Which hospital or medical facility were you taken to?</h1>
+                                <p class="govuk-body">Please tell us the details to the best of your knowledge.  If you can't remember, you can leave this page or any sections blank.</p>
 
-@php
-echo $errorMessage;
-@endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is your contact address?</h1>
-</legend>
-                                <p class="govuk-body">We will send any postal correspondence to this address.</p>
-
-            <form method="post" enctype="multipart/form-data" novalidate>
-            @csrf
-                                                    <div class="govuk-form-group {{$address1['error']}} ">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/address-line-1">
-        Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
+                                <form method="post" enctype="multipart/form-data" novalidate>
+                                @csrf
+                                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-name">
+        Name of the Medical Practitioner (if known)
     </label>
-    @php echo $address1['errorLabel']; @endphp
-    <div id="afcs/about-you/personal-details/contact-address/address-line-1-hint" class="govuk-hint">Base name for military establishments</div>
-        <input
-        class="govuk-input  "
-        id="afcs/about-you/personal-details/contact-address/address-line-1" name="afcs/about-you/personal-details/contact-address/address-line-1" type="text"
-         autocomplete="address-line1"
-                  value="{{$address1['data']}}"
-                aria-describedby="afcs/about-you/personal-details/contact-address/address-line-1-hint"
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-name" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-name" type="text"
+                   value="{{$name['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group {{$address2['error']}}">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/address-line-2">
-        <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-1">
+        Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
     </label>
-        @php echo $address2['errorLabel']; @endphp
             <input
         class="govuk-input  "
-        id="afcs/about-you/personal-details/contact-address/address-line-2" name="afcs/about-you/personal-details/contact-address/address-line-2" type="text"
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-1" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-1" type="text"
+         autocomplete="address-line1"
+                  value="{{$address1['data']}}"
+            >
+</div>
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-2">
+        <span class="govuk-visually-hidden">Building and street line 2 of 2</span>
+    </label>
+            <input
+        class="govuk-input  "
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-2" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__address-line-2" type="text"
          autocomplete="address-line2"
                   value="{{$address2['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group {{$town['error']}}">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/town">
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__town">
         Town or city
     </label>
-     @php echo $town['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/personal-details/contact-address/town" name="afcs/about-you/personal-details/contact-address/town" type="text"
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__town" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__town" type="text"
          autocomplete="address-level2"
                   value="{{$town['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group {{$county['error']}}">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/county">
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__county">
         County
     </label>
-    @php echo $county['errorLabel']; @endphp
             <input
         class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/personal-details/contact-address/county" name="afcs/about-you/personal-details/contact-address/county" type="text"
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__county" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__county" type="text"
                    value="{{$county['data']}}"
             >
 </div>
-
-
-                                    <div class="govuk-form-group {{$postcode['error']}}">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
-        Postcode
-    </label>
-    @php echo $postcode['errorLabel']; @endphp
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/personal-details/contact-address/postcode" name="afcs/about-you/personal-details/contact-address/postcode" type="text"
-         autocomplete="postal-code"
-                  value="{{$postcode['data']}}"
-            >
-</div>
-
-                                    <div class="govuk-form-group {{$country['error']}}">
-    <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/country">
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country">
         Country
     </label>
-     @php echo $country['errorLabel']; @endphp
-            <select class="govuk-select govuk-!-width-two-thirds " id="afcs/about-you/personal-details/contact-address/country"
-            name="afcs/about-you/personal-details/contact-address/country"
+            <select class="govuk-select govuk-!-width-two-thirds " id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country"
+            name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country"
             aria-describedby=" "
             autocomplete="new-password">
 @php if (!empty($country['data'])) {
@@ -811,8 +824,7 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
                      >Umm al-Quwain</option>
                     <option value="United Arab Emirates"
                      >United Arab Emirates</option>
-                    <option value="United Kingdom"
-                     >United Kingdom</option>
+                    <option value="United Kingdom">United Kingdom</option>
                     <option value="United States"
                      >United States</option>
                     <option value="United States Virgin Islands"
@@ -849,10 +861,45 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
 </div>
 
 
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__postcode">
+        Postcode
+    </label>
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__postcode" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__postcode" type="text"
+         autocomplete="postal-code"
+                  value="{{$postcode['data']}}"
+            >
+</div>
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-number">
+        Telephone number
+    </label>
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-number" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-number" type="tel"
+         autocomplete="tel"
+           inputmode="numeric" pattern="[0-9]*"
+                value="{{$telephone['data']}}"
+            >
+</div>
+                                    <div class="govuk-form-group ">
+    <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-email">
+        Email address
+    </label>
+            <input
+        class="govuk-input govuk-!-width-two-thirds "
+        id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-email" name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-email" type="email"
+         autocomplete="email"
+                  value="{{$email['data']}}"
+            >
+</div>
+
 
 
                 <div class="govuk-form-group">
-       <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
             <br><a href="/cancel" class="govuk-link"
            data-module="govuk-button">
             Cancel application
@@ -864,8 +911,6 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
         </div>
     </main>
 </div>
-
-
 
 
 

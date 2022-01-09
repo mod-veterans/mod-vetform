@@ -7,7 +7,7 @@ $errors = 'N';
 $errorsList = array();
 $count = '';
 //set fields
-$organised = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$firstaid = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 
     $userID = $_SESSION['vets-user'];
@@ -35,9 +35,9 @@ if (empty($_GET['claimrecord'])) {
 
 if (empty($_POST)) {
     //load the data if set
-    if (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['authorised'])) {
-        $organised['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['authorised'];
-        $organisedchk[$organised['data']] = ' checked';
+    if (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['firstaid'])) {
+        $firstaid['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['firstaid'];
+        $firstaidchk[$firstaid['data']] = ' checked';
     }
 } else {
 
@@ -52,20 +52,21 @@ if (!empty($_POST)) {
     //set the entered field names
 
 
-    if (!empty($_POST['/claim-details/claim-accident-sporting-authorise/sporting-authorise'])) {
+    if (!empty($_POST['/claim-details/claim-accident-first-aid/sporting-first-aid'])) {
 
 
-        switch ($_POST['/claim-details/claim-accident-sporting-authorise/sporting-authorise']) {
+        switch ($_POST['/claim-details/claim-accident-first-aid/sporting-first-aid']) {
 
             case "Yes":
-               $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['authorised'] = 'Yes';
-               $organisedchk['Yes'] = ' checked';
+               $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['firstaid'] = 'Yes';
+               $firstaidchk['Yes'] = ' checked';
 
             break;
 
             case "No":
-                $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['authorised'] = 'No';
-                 $organisedchk['No'] = ' checked';
+                $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['firstaid'] = 'No';
+                 $firstaidchk['No'] = ' checked';
+
             break;
 
 
@@ -81,11 +82,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Please tell us if the activity was authorised or organised by the Armed Forces</a>';
-        $organised['error'] = 'govuk-form-group--error';
-        $organised['errorLabel'] =
-        '<span id="/claim-details/claim-accident-condition/claim-accident-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if the activity was authorised or organised by the Armed Forces
+        $errorsList[] = '<a href="#/claim-details/claim-accident-first-aid/sporting-first-aid">Please tell us if you recieved first aid treatment</a>';
+        $firstaid['error'] = 'govuk-form-group--error';
+        $firstaid['errorLabel'] =
+        '<span id="/claim-details/claim-accident-first-aid/sporting-first-aid-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please tell us if you recieved first aid treatment
          </span>';
 
     }
@@ -124,7 +125,7 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-        $theURL = '/applicant/claims/specific/pt/unit-representation';
+        $theURL = '/applicant/claims/specific/pt/hospital';
 
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
@@ -156,27 +157,31 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-<h1 class="govuk-heading-xl">Was the activity authorised or organised by the Armed Forces?</h1>
+                                <h1 class="govuk-heading-xl">Did you receive first aid treatment at the time?</h1>
     </legend>
-                                <form method="post" enctype="multipart/form-data" novalidate>
-                                @csrf
-                                                    <div class="govuk-form-group {{$organised['error']}} ">
-    <a id="/claim-details/claim-accident-sporting-authorise/sporting-authorise"></a>
+                                <p class="govuk-body">Please only tell us about treatment you received for the
+                              injury/condition that you are claiming for.</p>
+
+            <form method="post" enctype="multipart/form-data" novalidate>
+            @csrf
+                                                    <div class="govuk-form-group {{$firstaid['error']}} ">
+    <a id="/claim-details/claim-accident-first-aid/sporting-first-aid"></a>
     <fieldset class="govuk-fieldset">
-@php echo $organised['errorLabel']; @endphp
+@php echo $firstaid['errorLabel']; @endphp
+
                                             <div
             class="govuk-radios govuk-radios--inline"
             >
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio"
-           value="Yes"     {{$organisedchk['Yes'] ?? ''}}       >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes">Yes</label>
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-first-aid/sporting-first-aid-yes" name="/claim-details/claim-accident-first-aid/sporting-first-aid" type="radio"
+           value="Yes"     {{$firstaidchk['Yes'] ?? ''}}      >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-first-aid/sporting-first-aid-yes">Yes</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio"
-           value="No"    {{$organisedchk['No'] ?? ''}}        >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no">No</label>
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-first-aid/sporting-first-aid-no" name="/claim-details/claim-accident-first-aid/sporting-first-aid" type="radio"
+           value="No"     {{$firstaidchk['No'] ?? ''}}        >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-first-aid/sporting-first-aid-no">No</label>
 </div>
 
                     </div>
@@ -186,7 +191,7 @@ echo $errorMessage;
 
 
                 <div class="govuk-form-group">
-   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
             <br><a href="/cancel" class="govuk-link"
            data-module="govuk-button">
             Cancel application
