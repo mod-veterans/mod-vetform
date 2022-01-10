@@ -1,7 +1,27 @@
+<?php
+namespace App\Http\Controllers;
+use App\Services\Notify;
+?>
+
 @include('framework.functions')
 @php
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+$content = '';
+$reference_number = 'AFCS/MOD/'.$data['settings']['customer_ref'];
 
-$_SESSION['vets-user'] = '';
+
+
+
+
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail($data['sections']['about-you']['email'], env('NOTIFY_USER_CONFIRMATION'));
+
+
+//$_SESSION['vets-user'] = '';
 
 
 @endphp
@@ -19,7 +39,7 @@ $_SESSION['vets-user'] = '';
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Your application has been submitted</h1>
     <p class="govuk-body">Thank you for completing an application for an Armed forces compensation or war pension payment.</p>
-    <p class="govuk-body">Your online claim reference number is <strong>WPS/AFCS/1633095191</strong>.</p>
+    <p class="govuk-body">Your online claim reference number is <strong>{{$reference_number}}</strong>.</p>
     <p class="govuk-body">Please note that as your claim has now been fully submitted, you can no longer access your application online. If you need to make any changes to your application, or would like a copy of it, please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">contact us</a>, quoting your national insurance number.</p>
 
 

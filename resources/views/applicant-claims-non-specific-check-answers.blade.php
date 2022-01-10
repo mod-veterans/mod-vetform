@@ -73,16 +73,7 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> What medical condition(s) are you claiming for?</span></a>
             </dd>
         </div>
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">What medical condition(s) are you claiming for?</dt>
-            <dd class="govuk-summary-list__value">
-                                    plpplpl
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/your-claim/claim-details/claim-accident-sporting-medical-condition/?return=/applicant/claims/non-specific/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition">Change<span
-                        class="govuk-visually-hidden"> What medical condition(s) are you claiming for?</span></a>
-            </dd>
-        </div>
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Name of the Medical Practitioner (if known)</dt>
             <dd class="govuk-summary-list__value">

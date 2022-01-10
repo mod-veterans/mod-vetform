@@ -10,6 +10,16 @@ if (empty($_SESSION['vets-user'])) {
 }
 
 
+if (empty($data['settings']['customer_ref'])) {
+    $data = getData($userID);
+    $data['settings']['customer_ref'] = substr($userID,0,10);
+    storeData($userID,$data);
+}
+
+
+
+
+
 //temp passphrase - to be moved to env
 
 

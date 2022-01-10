@@ -500,6 +500,10 @@ Route::match(['get', 'post'],'/applicant/claims/specific/pt/check-answers', func
     return view('applicant-claims-specific-pt-check-answers');
 });
 
+Route::match(['get', 'post'],'/applicant/claims/specific/non-pt/check-answers', function () {
+    return view('applicant-claims-specific-non-pt-check-answers');
+});
+
 
 
 
@@ -633,6 +637,14 @@ Route::match(['get', 'post'],'/applicant/supporting-documents-alt', function () 
 
 Route::match(['get', 'post'],'/flush', function () {
     return view('flush');
+});
+
+Route::match(['get', 'post'],'/notify', function () {
+    return view('notify');
+});
+
+Route::match(['get', 'post'],'/show-all', function () {
+    return view('showall');
 });
 
 

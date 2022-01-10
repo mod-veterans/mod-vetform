@@ -1,15 +1,151 @@
+@include('framework.functions')
 @php
 
 
-if (!empty($_POST)) {
-    header("Location: /application-complete");
-    die();
+//error handling setup
+$errorWhoLabel = '';
+$errorMessage = '';
+$errorWhoShow = '';
+$errors = 'N';
+$errorsList = array();
+$declarationchk = '';
+$enquirychk = '';
+
+
+//set fields
+$declaration = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$enquiry = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+
+if (empty($_POST)) {
+    //load the data if set
+    if (!empty($data['submission'])) {
+        $declaration['data'] = @$data['submission']['declaration'];
+        if ($declaration['data'] == 'Yes') {
+            $declarationchk = 'checked';
+        }
+        $enquiry['data'] = @$data['submission']['enquiry'];
+        if ($enquiry['data'] == 'Yes') {
+            $enquirychk = 'checked';
+        }
+
+    }
+} else {
+//var_dump($_POST);
+//die;
 }
 
 
+if (!empty($_POST)) {
+
+
+    //set the entered field names
+
+    if (!empty($_POST['afcs/application-submission/declaration/submission/declaration-agreed'])) {
+
+        if ($_POST['afcs/application-submission/declaration/submission/declaration-agreed'] == 'Yes') {
+
+            $declaration['data'] = cleanTextData($_POST['afcs/application-submission/declaration/submission/declaration-agreed']);
+            $declarationchk = 'checked';
+            $data['submission']['declaration'] = cleanTextData($_POST['afcs/application-submission/declaration/submission/declaration-agreed']);
+
+
+        } else {
+            $data['submission']['declaration'] = 'No';
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/application-submission/declaration/submission/declaration-agreed">Please confirm you have read and understood the declaration</a>';
+            $declaration['error'] = 'govuk-form-group--error';
+            $declaration['errorLabel'] =
+            '<span id="afcs/application-submission/declaration/submission/declaration-agreed-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Please confirm you have read and understood the declaration
+             </span>';
+         }
+
+    } else {
+
+                $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/application-submission/declaration/submission/declaration-agreed">Please confirm you have read and understood the declaration</a>';
+            $declaration['error'] = 'govuk-form-group--error';
+            $declaration['errorLabel'] =
+            '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Please confirm you have read and understood the declaration
+             </span>';
+
+    }
+
+
+
+
+
+    if ( (!empty($_POST['afcs/application-submission/declaration/submission/enquiries-by-email'])) && ($_POST['afcs/application-submission/declaration/submission/enquiries-by-email']) == 'Yes' ) {
+
+            $declaration['data'] = cleanTextData($_POST['afcs/application-submission/declaration/submission/enquiries-by-email']);
+            $enquirychk = 'checked';
+            $data['submission']['enquiry'] = 'Yes';
+
+
+    } else {
+    $data['submission']['enquiry'] = 'No';
+    }
+
+
+
+
+
+
+    if ($errors == 'Y') {
+
+        $errorList = '';
+        foreach ($errorsList as $error) {
+            $errorList .=  '<li>'.$error.'</li>';
+        }
+
+
+        $errorMessage = '
+         <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            '.$errorList.'
+            </ul>
+          </div>
+        </div>
+        ';
+
+
+
+
+
+
+
+    } else {
+
+        //store our changes
+
+        storeData($userID,$data);
+
+        $theURL = '/application-complete';
+        if (!empty($_GET['return'])) {
+            if ($rURL = cleanURL($_GET['return'])) {
+                $theURL = $rURL;
+            }
+        }
+
+        header("Location: ".$theURL);
+die();
+
+}
+}
 
 @endphp
-
 
 
 
@@ -21,6 +157,10 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+@php
+echo $errorMessage;
+@endphp
+
                                 <h1 class="govuk-heading-xl">Declaration and Submission</h1>
                                 <h2 class="govuk-heading-m">Use of email</h2>
     <p class="govuk-body">Veterans UK is happy to conduct correspondence with customers using a nominated email address if that is their preference. There are some types of personal information we would not be able to include in email correspondence. Please read the information below.</p>
@@ -61,7 +201,7 @@ if (!empty($_POST)) {
     </ul>
 
     <h2 class="govuk-heading-m">And that the MOD may</h2>
-    <ul class="govuk-list govuk-list--bullet">
+    <ul class="govuk-list govuk-list--bullet ">
         <li>Disclose medical records, and any information about my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK, to any organisation contracted to provide medical services to the MOD and any qualified medical practitioner or consultant asked by the MOD to provide specialist advice. I also agree that the MOD may send copies of medical information obtained for the purposes of my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK to my General Practitioner. I understand that the information will be retained by the MOD, either as a written record, or on a secure database, and may be used in future if it is necessary to reconsider or review my claim and any award made.
     </ul>
 
@@ -69,19 +209,20 @@ if (!empty($_POST)) {
     <ul class="govuk-list">
         <li>To repay any sum paid as a result of this claim in the event that an overpayment is made for any reason.</li>
     </ul>
+    @php echo $declaration['errorLabel']; @endphp
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
                                                     <div class="govuk-checkboxes__item">
             <input id="6166a97ee7868--default" name="afcs/application-submission/declaration/submission/enquiries-by-email" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="6166a97ee7868" name="afcs/application-submission/declaration/submission/enquiries-by-email" type="checkbox"
-           value="Yes"            >
+           value="Yes"    {{$enquirychk ?? ''}}        >
     <label class="govuk-label govuk-checkboxes__label" for="6166a97ee7868">I would like Veterans UK to send claim enquiries to me via email</label>
 </div>
                                     <div class="govuk-checkboxes__item">
             <input id="6166a97ee7ad1--default" name="afcs/application-submission/declaration/submission/declaration-agreed" type="hidden" value="No">
-        <input class="govuk-checkboxes__input" id="6166a97ee7ad1" name="afcs/application-submission/declaration/submission/declaration-agreed" type="checkbox"
-           value="Yes"            >
+        <input class="govuk-checkboxes__input" id="afcs/application-submission/declaration/submission/declaration-agreed" name="afcs/application-submission/declaration/submission/declaration-agreed" type="checkbox"
+           value="Yes"      {{$declarationchk ?? ''}}      >
     <label class="govuk-label govuk-checkboxes__label" for="6166a97ee7ad1">I have read and understood the above declaration</label>
 </div>
 

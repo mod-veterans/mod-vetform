@@ -306,7 +306,7 @@ if ($data = getData($userID)) {
 
 @php
 
-if ($completed < 12) {
+if ($completed < 1) {
 
 
 @endphp
