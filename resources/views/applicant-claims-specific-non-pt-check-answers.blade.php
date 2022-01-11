@@ -7,6 +7,12 @@
     $data = getData($userID);
 
 
+if (empty($data['sections'])) {
+header("Location: /tasklist");
+die;
+}
+
+
 //this gets teh current record ID to edit and sets it for reference
 if (empty($_GET['claimrecord'])) {
 
@@ -32,7 +38,7 @@ if (!empty($_POST)) {
 
     storeData($userID,$data);
 
-    header("Location: /tasklist");
+    header("Location: /applicant/claims");
     die();
 }
 
@@ -210,7 +216,7 @@ if (!empty($_POST)) {
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['on-duty'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/on-duty/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/on-duty/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Were you on duty at the time of incident?</span></a>
             </dd>
         </div>
@@ -222,7 +228,7 @@ if (!empty($_POST)) {
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['report-incident'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/report/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/report/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Did you report the incident?</span></a>
             </dd>
         </div>
@@ -239,7 +245,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['who-reported'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/incident-report/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/incident-report/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Who did you report the incident to?</span></a>
             </dd>
         </div>
@@ -255,7 +261,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['accident-form'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/accident-form/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/accident-form/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Was an accident form completed?</span></a>
             </dd>
         </div>
@@ -266,7 +272,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['where-were-you'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/where-were-you/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/where-were-you/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Where were you when the incident happened?</span></a>
             </dd>
         </div>
@@ -277,7 +283,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['rta'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Was the incident a road traffic accident?</span></a>
             </dd>
         </div>
@@ -293,7 +299,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['journey-reason'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/journey-reason/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/journey-reason/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> What was the reason for your journey?</span></a>
             </dd>
         </div>
@@ -305,7 +311,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['journey-start'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/journey-start/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/journey-start/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Where did your journey start?</span></a>
             </dd>
         </div>
@@ -316,7 +322,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['journey-end'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/journey-start/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/rta/journey-end/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Where did your journey end?</span></a>
             </dd>
         </div>
@@ -331,33 +337,40 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
 }
 @endphp
 
-
-
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Was the incident reported to the civilian or military police?</dt>
-            <dd class="govuk-summary-list__value">
-                        Civilian Case Ref: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['police-report']['civilian-ref'] ?? 'N/A'}}<br />
-                        Military Case Ref: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['police-report']['military-ref'] ?? 'N/A'}}<br />
-                        I don't know: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['police-report']['dontknow'] ?? 'N/A'}}<br />
-
-
-                               </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/police-report/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
-                        class="govuk-visually-hidden"> Was the incident reported to the civilian or military police?</span></a>
-            </dd>
-        </div>
-
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Was the incident reported to the civilian or military police?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-reported'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/police-report/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/police-report/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Was the incident reported to the civilian or military police?</span></a>
             </dd>
         </div>
+
+
+@php
+if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-reported'] == 'Yes') {
+@endphp
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Was the incident reported to the civilian or military police?</dt>
+            <dd class="govuk-summary-list__value">
+                        Civilian Case Ref: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['civilian-ref'] ?? 'N/A'}}<br />
+                        Military Case Ref: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['military-ref'] ?? 'N/A'}}<br />
+                        I don't know: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['dontknow'] ?? 'N/A'}}<br />
+
+
+                               </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/police-report/reference-number/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                        class="govuk-visually-hidden"> Was the incident reported to the civilian or military police?</span></a>
+            </dd>
+        </div>
+
+@php
+}
+@endphp
 
 
 
@@ -368,7 +381,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['authorised-leave'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/authorised-leave/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-related/sporting-related">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/non-pt/authorised-leave/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Were you on authorised leave at the time of the accident?</span></a>
             </dd>
         </div>
@@ -380,7 +393,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['witnesses'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/witnesses/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/witnesses/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden">Were there any witnesses?</span></a>
             </dd>
         </div>
@@ -391,7 +404,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['firstaid'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/first-aid/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/first-aid/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden">Did you receive first aid treatment at the time?</span></a>
             </dd>
         </div>
@@ -404,7 +417,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/hospital/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden">Did you go to, or were you taken to, a hospital or medical facility?</span></a>
             </dd>
         </div>
@@ -421,7 +434,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['name'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-practitioner">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Name of the Medical Practitioner (if known)</span></a>
             </dd>
         </div>
@@ -431,7 +444,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['address1'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-1">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
@@ -441,7 +454,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['address2'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
@@ -451,7 +464,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['town'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__town">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
@@ -461,7 +474,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['county'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__county">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
@@ -471,7 +484,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['country'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__country">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
@@ -481,7 +494,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['postcode'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__postcode">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
@@ -491,7 +504,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                 {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['telephone'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
@@ -502,7 +515,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                 {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['email'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/hospital/address/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Email</span></a>
             </dd>
         </div>
@@ -525,7 +538,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Were you downgraded for any of the conditions on this claim?</span></a>
             </dd>
         </div>
@@ -541,7 +554,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['fromday'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['frommonth'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['fromyear'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Date downgraded from</span></a>
             </dd>
         </div>
@@ -552,7 +565,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['today'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['tomonth'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['toyear'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Date downgraded to</span></a>
             </dd>
         </div>
@@ -563,7 +576,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['datesapproximate'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Downgrade dates approximate? </span></a>
             </dd>
         </div>
@@ -574,7 +587,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-when']['stilldowngraded'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/when/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> are you still downgraded? </span></a>
             </dd>
         </div>
@@ -585,7 +598,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['medical-categories']['frommedical'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/detail/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/detail/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> What medical category were you downgraded from?</span></a>
             </dd>
         </div>
@@ -596,7 +609,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['medical-categories']['tomedical'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/detail/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/detail/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> What medical category were you downgraded to?</span></a>
             </dd>
         </div>
@@ -607,7 +620,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['medical-categories']['multiple'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/downgraded/detail/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/downgraded/detail/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden">Were you downgraded and upgraded more than once within different categories?</span></a>
             </dd>
         </div>
@@ -634,7 +647,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['why'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/non-pt/why-related/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/why-related/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Why is your condition related to your armed forces service?</span></a>
             </dd>
         </div>
@@ -649,13 +662,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
 
 
     </dl>
-                    <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
-               href="/applicant/claims">
-                Add another claim
-            </a>
-            <br />
-            Or
-            <br><br />
+
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf
         <div class="govuk-form-group">

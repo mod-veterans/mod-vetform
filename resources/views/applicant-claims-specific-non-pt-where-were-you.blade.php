@@ -172,22 +172,22 @@ echo $errorMessage;
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4ce7" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
-           value="Duties - Operations overseas"    {{$wherewerechk['Duties - Operations overseas'] ?? ''}}        >
+           value="An operations location overseas"    {{$wherewerechk['An operations location overseas'] ?? ''}}        >
     <label class="govuk-label govuk-checkboxes__label" for="616680a3c4ce7">An operations location overseas</label>
 </div>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4e3d" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
-           value="Duties - Operations UK"       {{$wherewerechk['Duties - Operations UK'] ?? ''}}     >
+           value="An operations location UK"       {{$wherewerechk['An operations location UK'] ?? ''}}     >
     <label class="govuk-label govuk-checkboxes__label" for="616680a3c4e3d">An operations location UK</label>
 </div>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c4f40" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
-           value="duties uk - not on operations"    {{$wherewerechk['duties uk - not on operations'] ?? ''}}        >
+           value="My home base"    {{$wherewerechk['My home base'] ?? ''}}        >
     <label class="govuk-label govuk-checkboxes__label" for="616680a3c4f40">My home base</label>
 </div>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="616680a3c5031" name="/claim-details/claim-illness-related/claim-illness-related[]" type="checkbox"
-           value="Training"       {{$wherewerechk['Training'] ?? ''}}     >
+           value="A training location"       {{$wherewerechk['A training location'] ?? ''}}     >
     <label class="govuk-label govuk-checkboxes__label" for="616680a3c5031">A training location</label>
 </div>
                             <div class="govuk-checkboxes__item">

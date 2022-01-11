@@ -607,10 +607,6 @@ Route::match(['get', 'post'],'/application-complete', function () {
     return view('application-complete');
 });
 
-Route::match(['get', 'post'],'/site-list', function () {
-    return view('sitelist');
-});
-
 Route::match(['get', 'post'],'/cookie-policy', function () {
     return view('/cookie-policy');
 });
@@ -647,4 +643,9 @@ Route::match(['get', 'post'],'/show-all', function () {
     return view('showall');
 });
 
+/*
+Route::match(['get', 'post'],'/site-list', function () {
+    return view('sitelist');
+});
+*/
 

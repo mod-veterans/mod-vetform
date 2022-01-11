@@ -57,9 +57,9 @@ if (empty($_POST)) {
         $datefromday['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromday'];
         $datefrommonth['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['frommonth'];
         $datefromyear['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromyear'];
-        $datetoday['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromday'];
-        $datetomonth['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['frommonth'];
-        $datetoyear['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromyear'];
+        $datetoday['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['today'];
+        $datetomonth['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['tomonth'];
+        $datetoyear['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['toyear'];
         $stilldowngraded['data']   = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['stilldowngraded'];
         $datesapproximate['data']   = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['datesapproximate'];
 

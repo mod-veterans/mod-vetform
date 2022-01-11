@@ -113,7 +113,9 @@ echo $claimList;
                 Add a{{$nother ?? ''}} claim
             </a>
             <br>
-            <a class="govuk-link" href="/tasklist">Return to Task List</a>
+             or
+             <br /><br />
+            <a class="govuk-button" href="/tasklist">Save and Continue</a>
         </div>
             </div>
         </div>

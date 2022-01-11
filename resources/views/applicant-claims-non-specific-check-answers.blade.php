@@ -32,7 +32,7 @@ if (!empty($_POST)) {
 
     storeData($userID,$data);
 
-    header("Location: /tasklist");
+    header("Location: /applicant/claims");
     die();
 }
 
@@ -417,13 +417,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['downgraded'] == 'Yes') 
 
 
     </dl>
-                    <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
-               href="/applicant/claims">
-                Add another claim
-            </a>
-            <br />
-            Or
-            <br><br />
+
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf
         <div class="govuk-form-group">
