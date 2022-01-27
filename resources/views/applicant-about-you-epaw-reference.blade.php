@@ -158,16 +158,16 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
                                 <h1 class="govuk-heading-xl">Express Prior Authority in Writing (EPAW)</h1>
-</legend>
-                                <p class="govuk-body">You need permission to claim if the person applying served in or supported the Special Forces.</p>
+
+
 
 
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
-     You must read this text information if the person you are applying for served in or supported the Special Forces
+     You must read this text information if the person applying has ever served in or supported the Special Forces
     </span>
   </summary>
   <div class="govuk-details__text">
@@ -182,6 +182,9 @@ If the person named in this application is serving or has served in with United 
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
           @php echo $served['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+Has the person applying ever served in or supported the Special Forces?
+</legend>
 
        <div class="govuk-radios__item">
         <input class="govuk-radios__input" id="contact-2" name="afcs/about-you/personal-details/served-special-forces" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$servedchk['No'] ?? ''}}>
@@ -203,7 +206,7 @@ If the person named in this application is serving or has served in with United 
             EPAW reference
           </label>
           @php echo $epawref['errorLabel']; @endphp
-    <div id="afcs/about-you/personal-details/contact-number/mobile-number-hint" class="govuk-hint">For overseas numbers include the country code, for example +44</div>
+
                  <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/epaw-reference" name="afcs/about-you/personal-details/epaw-reference" type="text"

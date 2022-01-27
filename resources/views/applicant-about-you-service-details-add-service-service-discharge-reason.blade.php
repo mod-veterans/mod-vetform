@@ -41,7 +41,6 @@ if (empty($_GET['servicerecord'])) {
 }
 
 
-
 if (empty($_POST)) {
     //load the data if set
     if (!empty($data['sections']['service-details']['records'][$thisRecord]['service-dischargedate'])) {
@@ -161,7 +160,7 @@ echo $errorMessage;
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/service-details/service-discharge/service-discharge-reason" name="afcs/about-you/service-details/service-discharge/service-discharge-reason" type="text"
-                   value=""
+                   value="{{$dischargereason['data'] ?? ''}}"
             >
 </div>
 

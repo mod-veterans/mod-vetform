@@ -50,16 +50,45 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Service details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+@php
+if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameinservice'])) {
+    $nameshow = $data['sections']['service-details']['records'][$thisRecord]['nameinservice'];
+    if ($data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] == 'Yes') {
+        $nameshow = 'Would rather not disclose';
+    }
+} else {
+    $nameshow = 'no different name';
+}
+
+@endphp
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Enter the full name in service</dt>
+            <dt class="govuk-summary-list__key">Did you have a different name during this period of service?</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['service-details']['records'][$thisRecord]['nameinservice'] ?? '' }}
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['differentname'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/name/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-name/name-in-service">Change<span
                         class="govuk-visually-hidden"> Enter the full name in service</span></a>
             </dd>
         </div>
+
+
+
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Enter the full name in service</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$nameshow ?? 'Would rather not disclose' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/name/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-name/name-in-service">Change<span
+                        class="govuk-visually-hidden"> Enter the full name in service</span></a>
+            </dd>
+        </div>
+
+
+
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Enter the service number</dt>
             <dd class="govuk-summary-list__value">
@@ -114,22 +143,61 @@ if (!empty($_POST)) {
             <dt class="govuk-summary-list__key">Date of enlistment</dt>
             <dd class="govuk-summary-list__value">
                                     {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['day'] ?? '' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['month'] ?? '' }} //{{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year'] ?? '' }}
+
+  @php
+ if ($data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['approximate'] == 'Yes') {
+ echo '(This date is approximate)';
+ }
+ @endphp
+
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/enlistment-date/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-enlistment-date/enlistment-date">Change<span
                         class="govuk-visually-hidden"> Date of enlistment</span></a>
             </dd>
         </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Discharge date</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['day'] ?? '' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['month'] ?? '' }} //{{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] ?? '' }}
+
+ @php
+ if ($data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['approximate'] == 'Yes') {
+ echo '(This date is approximate)';
+ }
+ @endphp
+
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/discharge-date/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-enlistment-date/enlistment-date">Change<span
+                        class="govuk-visually-hidden"> Discharge date</span></a>
+            </dd>
+        </div>
+
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">I am still serving</dt>
             <dd class="govuk-summary-list__value">
                                     {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] ?? '' }}
+
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/discharge-date/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-discharge/service-is-serving">Change<span
+                        class="govuk-visually-hidden"> I am still serving</span></a>
+            </dd>
+        </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Discharge reason</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['dischargereason'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/discharge-reason/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-discharge/service-is-serving">Change<span
                         class="govuk-visually-hidden"> I am still serving</span></a>
             </dd>
         </div>
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Base, Building and Street</dt>
             <dd class="govuk-summary-list__value">
