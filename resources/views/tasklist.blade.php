@@ -38,7 +38,13 @@ if ($data = getData($userID)) {
                                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{$completed}} of 13 sections.</p>
 
-        <p class="govuk-body govuk-!-margin-bottom-7" id="eligibility-status">Click on the links below to start a section.  You will return to this page after each one is complete. We recommend working through each section in the order below. You can re-enter a completed section and make changes, providing you have not submitted your application. </p>
+        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+
+            <li>Select the links below to start a section.</li>
+            <li>You’ll return to this page after each one is complete.</li>
+            <li>You can go back and make changes to sections marked ‘complete’ if you’ve not submitted your application.</li>
+        </ul>
+
         <ol class="app-task-list">
                             <li>
                     <h2 class="app-task-list__section">
@@ -134,7 +140,7 @@ if ($data = getData($userID)) {
                                 <span class="app-task-list__task-name">
                                                                             <a href="/applicant/about-you/medical-officer" class="govuk-link"
                                            aria-describedby="eligibility-status">
-                                        Medical Officer </a> </span>
+                                        Doctor's details </a> </span>
 
    @php
   if (!empty($data['sections']['about-you']['medical-officer']['completed'])) {

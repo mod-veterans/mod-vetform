@@ -146,8 +146,9 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
+ <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What is your date of birth?</h1>
-
+</legend>
                                                         <p class="govuk-body">The date of birth of the person with the injury, illness or disability.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
@@ -156,11 +157,7 @@ echo $errorMessage;
     aria-describedby="afcs/about-you/personal-details/date-of-birth/date-of-birth-hint  ">
 
     <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date of birth
-            </h2>
-        </legend>
+
 
     @php echo $dob['errorLabel']; @endphp
 

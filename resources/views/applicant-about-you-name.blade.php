@@ -145,7 +145,7 @@ echo $errorMessage;
                                 @csrf
                                                     <div class="govuk-form-group {{$lastname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/last-name">
-        Last name/family name (required)
+        Last name or family name (required)
     </label>
 @php echo $lastname['errorLabel']; @endphp
             <input
@@ -157,7 +157,7 @@ echo $errorMessage;
 </div>
                                     <div class="govuk-form-group {{$firstname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/other-names">
-        First name(s)/given name(s) (required)
+        First names or given names (required)
     </label>
 @php echo $firstname['errorLabel']; @endphp
             <input

@@ -159,8 +159,11 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Have you made a war pension or armed forces compensation scheme claim before?</h1>
+                                <h1 class="govuk-heading-xl">Have you made a claim before?</h1>
 </legend>
+
+ <p class="govuk-body">We only need to know about war pension or armed forces compensation scheme claims.</p>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$previous['error']}} ">

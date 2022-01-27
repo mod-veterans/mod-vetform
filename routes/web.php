@@ -124,6 +124,10 @@ Route::match(['get', 'post'],'/applicant/about-you/telephone-number', function (
     return view('applicant-about-you-telephone-number');
 });
 
+Route::match(['get', 'post'],'/applicant/about-you/alternative-number', function () {
+    return view('applicant-about-you-alternative-number');
+});
+
 Route::match(['get', 'post'],'/applicant/about-you/email-address', function () {
     return view('applicant-about-you-email');
 });
@@ -199,6 +203,11 @@ Route::match(['get', 'post'],'/applicant/about-you/service-details/add-service/e
 Route::match(['get', 'post'],'/applicant/about-you/service-details/add-service/discharge-reason', function () {
     return view('applicant-about-you-service-details-add-service-service-discharge-reason');
 });
+
+Route::match(['get', 'post'],'/applicant/about-you/service-details/add-service/discharge-date', function () {
+    return view('applicant-about-you-service-details-add-service-service-discharge-date');
+});
+
 
 Route::match(['get', 'post'],'/applicant/about-you/service-details/add-service/last-unit-address', function () {
     return view('applicant-about-you-service-details-add-service-service-last-unit-address');

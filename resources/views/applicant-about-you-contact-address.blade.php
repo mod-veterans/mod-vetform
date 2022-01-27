@@ -206,7 +206,7 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What is your contact address?</h1>
 </legend>
-                                <p class="govuk-body">We will send any postal correspondence to this address.</p>
+                                <p class="govuk-body">We will send any letters to this address.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

@@ -227,9 +227,18 @@ if (!empty($_POST)) {
 
 
    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is the name and address of your current GP, or Medical Officer if serving?</h1>
+                                <h1 class="govuk-heading-xl">Details of your current Doctor</h1>
 </legend>
-                                <p class="govuk-body">If you do not have a named doctor, just provide the surgery or practice details. If you are not registered with a surgery or practice, please write "Not Registered" in "Building and Street" below.  If you live overseas, tell us the details of your local doctor.</p><p class="govuk-body">Enter details to your best knowledge. If you can't remember, you can leave blank any sections not marked "required".</p>
+                                <p class="govuk-body">You can tell us about other consultants or specialists later in the claim.</p>
+ <p class="govuk-body">Tell us about your current GP, usual doctor or Medical Officer if still serving.</p>
+ <p class="govuk-body">If you do not have a named doctor, tell us the surgery or practice details. </p>
+</p>
+
+<div class="govuk-inset-text">
+If you’re not registered with a surgery or practice, please write "Not Registered" in "Doctor’s full name" below.
+</div>
+
+
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf
@@ -238,7 +247,7 @@ if (!empty($_POST)) {
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/contact-name">
-        Medical Officer or GP&#039;s full name (if known)
+        Doctor's full name
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

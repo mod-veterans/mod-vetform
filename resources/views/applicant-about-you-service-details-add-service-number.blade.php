@@ -145,7 +145,7 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What is your service number?</h1>
   </legend>
-                                <p class="govuk-body">Please tell us the service number you had for this period of service.</p>
+                                <p class="govuk-body">The service number of the person applying during this period of service.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf

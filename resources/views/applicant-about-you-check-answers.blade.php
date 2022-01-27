@@ -142,18 +142,28 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
-        @if(!empty($data['sections']['about-you']['telephonenumber']['mobile']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Mobile telephone number</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['telephonenumber']['mobile']}}
+                                    {{$data['sections']['about-you']['telephonenumber']['mobile'] ?? 'No'}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/telephone-number/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/contact-number/mobile-number">Change<span
                         class="govuk-visually-hidden"> Mobile telephone number</span></a>
             </dd>
         </div>
-        @endif
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Alternative telephone number</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['about-you']['telephonenumber']['telephone'] ?? 'No'}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/telephone-number/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/contact-number/mobile-number">Change<span
+                        class="govuk-visually-hidden"> Mobile telephone number</span></a>
+            </dd>
+        </div>
         @if(!empty($data['sections']['about-you']['telephonenumber']['email']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What is your email address</dt>
@@ -226,11 +236,11 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
-         @if(!empty($data['sections']['about-you']['epaw']['ref']))
+         @if(!empty($data['sections']['about-you']['epaw']['epaw-reference']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">EPAW reference number</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['epaw']['ref']}}
+                                    {{$data['sections']['about-you']['epaw']['epaw-reference'] ?? 'not served with Special Forces'}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/epaw-reference/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/epaw-reference">Change<span

@@ -226,11 +226,23 @@ echo $errorMessage;
 @endphp
 
 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What was/is the address of your current/last service unit?</h1>
+                                <h1 class="govuk-heading-xl">What was your last Unit address?</h1>
 </legend>
-                                <p class="govuk-body">Please include details for this period of
-                              service, even if the location has since closed down.</p><p class="govuk-body">Enter details to your best knowledge. If you can't remember, you can leave blank any sections not marked "required".</p>
-                              <p class="govuk-body"><strong>Special Forces: Note EPAW applies.</strong></p>
+                                <p class="govuk-body">For this period of service, even if it has since closed. Enter your current Unit address if still serving.</p>
+<p class="govuk-body">Enter details to your best knowledge. If you cannot remember, leave that section blank.</p>
+
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+     You must read this text information if the person applying served in or supported the Special Forces
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing  <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
+  </div>
+</details>
+
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

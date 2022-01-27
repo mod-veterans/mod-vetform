@@ -12,8 +12,8 @@ $numHidden = 'govuk-radios__conditional--hidden';
 
 
 //set fields
-$mobile = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$doyouhavemobile = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$telephone = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$doyouhavealternative = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 
 //load in our content
@@ -23,15 +23,15 @@ $data = getData($userID);
 
 if (empty($_POST)) {
     //load the data if set
-    if (!empty($data['sections']['about-you']['telephonenumber']['doyouhavemobile'])) {
-        $mobile['data']            = @$data['sections']['about-you']['telephonenumber']['mobile'];
-        $doyouhavemobile['data']          = @$data['sections']['about-you']['telephonenumber']['doyouhavemobile'];
+    if (!empty($data['sections']['about-you']['telephonenumber']['doyouhavealternative'])) {
+        $telephone['data']            = @$data['sections']['about-you']['telephonenumber']['telephone'];
+        $doyouhavealternative['data']          = @$data['sections']['about-you']['telephonenumber']['doyouhavealternative'];
 
-        if ($doyouhavemobile['data'] == 'Yes') {
+        if ($doyouhavealternative['data'] == 'Yes') {
 
-         $doyouhavemobilechk['Yes'] = 'checked';
+         $doyouhavealternativechk['Yes'] = 'checked';
         } else {
-         $doyouhavemobilechk['No'] = 'checked';
+                 $doyouhavealternativechk['No'] = 'checked';
         }
 
     }
@@ -45,42 +45,43 @@ if (!empty($_POST)) {
 
 
     //set the entered field names
-        $mobile['data']            = $_POST['afcs/about-you/personal-details/contact-number/mobile-number'];
+        $telephone['data']            = $_POST['afcs/about-you/personal-details/contact-number/mobile-number'];
 if (!empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])) {
-        $doyouhavemobile['data']            = $_POST['afcs/about-you/personal-details/contact-number/do-you-have'];
+        $doyouhavealternative['data']            = $_POST['afcs/about-you/personal-details/contact-number/do-you-have'];
 }
 
 if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Please tell us if you have a mobile number</a>';
-                $doyouhavemobile['error'] = 'govuk-form-group--error';
-                $doyouhavemobile['errorLabel'] =
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Please tell us if you have an alternative number</a>';
+                $doyouhavealternative['error'] = 'govuk-form-group--error';
+                $doyouhavealternative['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/do-you-have-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have a mobile number
+                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have an alternative number
                  </span>';
 
 
        } elseif ($_POST['afcs/about-you/personal-details/contact-number/do-you-have'] == 'Yes') {
 
-            $doyouhavemobilechk['Yes'] = 'checked';
+            $doyouhavealternativechk['Yes'] = 'checked';
 
 
             if (!empty($_POST['afcs/about-you/personal-details/contact-number/mobile-number'])) {
 
-                $data['sections']['about-you']['telephonenumber']['mobile'] = $_POST['afcs/about-you/personal-details/contact-number/mobile-number'];
-                $data['sections']['about-you']['telephonenumber']['doyouhavemobile'] = 'Yes';
+                $data['sections']['about-you']['telephonenumber']['telephone'] = $_POST['afcs/about-you/personal-details/contact-number/mobile-number'];
+                $data['sections']['about-you']['telephonenumber']['doyouhavealternative'] = 'Yes';
 
-                $theURL = '/applicant/about-you/email-address';
+
 
             } else {
 
+
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Please give us your mobile number</a>';
-                $mobile['error'] = 'govuk-form-group--error';
-                $mobile['errorLabel'] =
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Please give us your alternative number</a>';
+                $telephone['error'] = 'govuk-form-group--error';
+                $telephone['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please give us your mobile number
+                    <span class="govuk-visually-hidden">Error:</span> Please give us your alternative number
                  </span>';
                  $numHidden = '';
 
@@ -90,10 +91,9 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
 
         } elseif ($_POST['afcs/about-you/personal-details/contact-number/do-you-have'] == 'No') {
 
-            $data['sections']['about-you']['telephonenumber']['mobile'] = '';
-            $data['sections']['about-you']['telephonenumber']['doyouhavemobile'] = 'No';
-
-            $theURL = '/applicant/about-you/alternative-number';
+            $data['sections']['about-you']['telephonenumber']['telephone'] = '';
+            $data['sections']['about-you']['telephonenumber']['doyouhavealternative'] = 'No';
+            $doyouhavealternativechk['No'] = 'checked';
 
         }
 
@@ -130,7 +130,7 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
         //store our changes
 
         storeData($userID,$data);
-
+        $theURL = '/applicant/about-you/email-address';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -162,7 +162,7 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
 echo $errorMessage;
 @endphp
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Do you have a mobile telephone number?</h1>
+                                <h1 class="govuk-heading-xl">Is there another number you can be contacted on?</h1>
     </legend>
                                 <p class="govuk-body">We'll use this to contact you if we have any questions about this claim.</p>
 
@@ -172,10 +172,10 @@ echo $errorMessage;
 
 <div class="govuk-form-group {{$doyouhavemobile['error'] ?? ''}}">
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-          @php echo $doyouhavemobile['errorLabel']; @endphp
+          @php echo $doyouhavealternative['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$doyouhavemobilechk['Yes'] ?? ''}}>
+        <input class="govuk-radios__input" id="contact" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$doyouhavealternativechk['Yes'] ?? ''}}>
         <label class="govuk-label govuk-radios__label" for="contact">
           Yes
         </label>
@@ -183,23 +183,23 @@ echo $errorMessage;
       <div class="govuk-radios__conditional {{$numHidden ?? ''}}" id="conditional-contact">
         <div class="govuk-form-group">
           <label class="govuk-label" for="contact-by-email">
-            Mobile telephone number
+            Telephone number
           </label>
-          @php echo $mobile['errorLabel']; @endphp
+          @php echo $telephone['errorLabel']; @endphp
     <div id="afcs/about-you/personal-details/contact-number/mobile-number-hint" class="govuk-hint">For overseas numbers include the country code, for example +44</div>
                  <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-number/mobile-number" name="afcs/about-you/personal-details/contact-number/mobile-number" type="tel"
          autocomplete="tel"
            inputmode="numeric" pattern="[0-9]*"
-                value="{{$mobile['data']}}"
+                value="{{$telephone['data']}}"
                 aria-describedby="afcs/about-you/personal-details/contact-number/mobile-number-hint"
             >
 
       </div>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$doyouhavemobilechk['No'] ?? ''}}>
+        <input class="govuk-radios__input" id="contact-2" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$doyouhavealternativechk['No'] ?? ''}}>
         <label class="govuk-label govuk-radios__label" for="contact-2">
           No
         </label>

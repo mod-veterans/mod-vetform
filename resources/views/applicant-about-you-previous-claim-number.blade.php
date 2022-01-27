@@ -114,8 +114,9 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What was the claim reference number (if known)?</h1>
+                                <h1 class="govuk-heading-xl">What was the claim reference number?</h1>
 </legend>
+<p class="govuk-body">If you can’t remember, leave this blank.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

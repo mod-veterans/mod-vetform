@@ -175,11 +175,22 @@ echo $errorMessage;
     <p class="govuk-body">I confirm the information I have given is accurate and complete to the best of my knowledge and belief.</p>
     <p class="govuk-body">I understand that the information and personal data I have provided on this form, and any information and personal data I provide subsequently may be:</p>
     <ul class="govuk-list govuk-list--bullet">
-        <li>Used by the MOD in connection with my claim, or any subsequent reconsideration, review or appeal, under the Armed Forces Compensation Scheme (AFCS) or the Service Pensions Order (SPO) or any other schemes administered by Veterans UK.</li>
+        <li >Used by the MOD in connection with my claim, or any subsequent reconsideration, review or appeal, under the Armed Forces Compensation Scheme (AFCS) or the Service Pensions Order (SPO) or any other schemes administered by Veterans UK.</li>
         <li>Passed to any organisation contracted to provide medical services to the MOD and any qualified medical practitioner asked by the MOD to provide specialist advice</li>
         <li>Passed to the DWP.</li>
         <li>Used by the MOD and its agents in connection with all matters relating to this or future claims, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or other schemes administered by Veterans UK, and other claims against the MOD, and by other Government Departments, which have a legitimate interest in this information, for example, for the prevention and detection of crime.</li>
     </ul>
+
+
+<h2>After you apply</h2>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+<li>Your claim will automatically be sent to Veterans UK securely and your details will be deleted from this claim service. You will not be able to access your completed application again after it is submitted.</li>
+
+<li>You will receive an acknowledgement to the email address you have entered in ‘personal details’ with information about how your claim will be assessed. </li>
+
+<li>We are sorry but we cannot send a copy of your application to you by email.  This is because we have to protect your personal data and personal email addresses are often insecure. Please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">contact Veterans UK</a> if you would like a copy of your application to be sent via the post, quoting your national insurance number.</li>
+</ul>
+
 
     <h2 class="govuk-heading-m">I understand that:</h2>
     <ul class="govuk-list govuk-list--bullet">

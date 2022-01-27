@@ -158,10 +158,10 @@ if (!empty($_POST)) {
  @php
  echo $errorMessage;
  @endphp
-                                <h1 class="govuk-heading-xl">What is your contact email address?</h1>
-                                <p class="govuk-body">
-Please tell us the email address you would prefer us to contact you at.  We will only use this to get in touch about your claim. Please use a MOD email address if you have access to one.
-    </p>
+                                <h1 class="govuk-heading-xl">What is your email address?</h1>
+                                <p class="govuk-body">We’ll only use this to get in touch about your claim.</p>
+
+<p class="govuk-body">Use an MOD email address if you have access to one.</p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate>
@@ -170,7 +170,6 @@ Please tell us the email address you would prefer us to contact you at.  We will
     <label class="govuk-label" for="afcs/about-you/personal-details/email-address/email-address">
         <span class="govuk-visually-hidden">What is your email address</span>
     </label>
-    <div id="afcs/about-you/personal-details/email-address/email-address-hint" class="govuk-hint">We will send confirmation of your claim to this address</div>
     <label class="govuk-label" for="afcs/about-you/personal-details/email-address/email-address">
         Email address
     </label>

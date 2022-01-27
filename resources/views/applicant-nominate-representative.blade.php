@@ -160,25 +160,28 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Do you want to nominate a representative?</h1>
- </legend>
-                                <p class="govuk-body">If someone is helping you make your claim, for example a charity welfare officer
- or a solicitor, you can nominate them as a representative. They can then ask us how your claim is progressing. They will also receive copies of
- our enquiries and decision letters.</p>
-                       <p class="govuk-body">We can only give them this information if we have your written agreement.</p>
+                                <h1 class="govuk-heading-xl">Nominate a representative</h1>
 
-                       <p class="govuk-body"><strong>Please note</strong> the decision notification contains
-                       personal information. This may include details of your bank or building society account and any
-                       medical conditions that we have considered as part of your claim. It may also show how we have
-                       calculated your award.</p>
-                       <p class="govuk-body">You can nominate one representative here. You can add further
-                       representatives or change their details by writing to us at any time.</p>
+                                <p class="govuk-body">If someone is helping you make a claim, for example a charity welfare officer or a solicitor, you can make them your representative. This means they can ask us how your claim is progressing. They will also receive copies of all letters we send you. </p>
+
+<p class="govuk-body">We can only give them this information if you agree to this.</p>
+
+<div class="govuk-inset-text">
+Letters sent to you can contain personal information. This could be your banking details, medical conditions and the amount of money you will receive if your claim is successful.
+</div>
+
+<p class="govuk-body">You can add more representatives or change their details by writing to us at any time. </p>
+
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
                                                     <div class="govuk-form-group  {{$errorWhoShow}} ">
     <a id="/representative/representative-selection/nominated-representative"></a>
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                Do you want to nominate a representative?
+ </legend>
+
     <fieldset class="govuk-fieldset">
     @php echo $nominate['errorLabel']; @endphp
         <div class="govuk-radios govuk-radios--inline" >

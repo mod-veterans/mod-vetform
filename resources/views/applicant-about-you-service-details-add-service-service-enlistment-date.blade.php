@@ -136,7 +136,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/about-you/service-details/add-service/discharge-reason';
+        $theURL = '/applicant/about-you/service-details/add-service/discharge-date';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -167,9 +167,8 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">What was the date of your enlistment?</h1>
-                                <p class="govuk-body">Please tell us the date this period of service started.
-                       If you can't remember exactly, include an estimated date even if this is only the year.</p>
+                                <h1 class="govuk-heading-xl">What was your enlistment date?</h1>
+                                <p class="govuk-body">Tell us the date this period of service started.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -181,11 +180,7 @@ echo $errorMessage;
     aria-describedby="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint  ">
 
     <fieldset class="govuk-fieldset">
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date of enlistment
-            </h2>
-        </legend>
+
 
 
         <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>

@@ -30,6 +30,8 @@ $page_title = strtoupper(str_replace('/',' | ',$url));
     <!--[if !IE 8]><!-->
     <link href="/css/all.css" rel="stylesheet">
 <link href="/css/location-autocomplete.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/govuk.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
     <!--<![endif]-->
 
     <!--[if IE 8]>

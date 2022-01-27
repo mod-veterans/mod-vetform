@@ -261,7 +261,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Please provide contact details for your nominated representative</h1>
+                                <h1 class="govuk-heading-xl">Tell us about your representative </h1>
  </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

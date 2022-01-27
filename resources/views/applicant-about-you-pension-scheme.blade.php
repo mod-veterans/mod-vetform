@@ -145,7 +145,7 @@ echo $errorMessage;
                                                     <div class="govuk-form-group {{$pensionscheme['error']}}">
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 @php echo $pensionscheme['errorLabel']; @endphp
-                <div id="contact-hint" class="govuk-hint">Select all that apply.</div>
+                <div id="contact-hint" class="govuk-hint">Tick all that apply.</div>
 
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">

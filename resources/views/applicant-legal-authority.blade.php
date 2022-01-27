@@ -32,7 +32,6 @@ $town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $postcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$telephonenumber = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 
 //load in our content
@@ -50,7 +49,6 @@ if (empty($_POST)) {
         $county['data']              = @$data['sections']['applicant-who']['legal authority']['county'];
         $country['data']             = @$data['sections']['applicant-who']['legal authority']['country'];
         $postcode['data']            = @$data['sections']['applicant-who']['legal authority']['postcode'];;
-        $telephonenumber['data']     = @$data['sections']['applicant-who']['legal authority']['nominee-number'];
     }
 } else {
 //var_dump($_POST);
@@ -70,7 +68,6 @@ if (!empty($_POST)) {
     $county['data'] = cleanTextData($_POST['/applicant/nominee-address/county']);
     $country['data'] = cleanTextData($_POST['/applicant/nominee-address/country']);
     $postcode['data'] = cleanTextData($_POST['/applicant/nominee-address/postcode']);
-    $telephonenumber['data'] = cleanTextData($_POST['/applicant/nominee-address/nominee-number']);
 
 
     if (empty($_POST['/applicant/nominee-address/nominee-name'])) {
@@ -148,15 +145,6 @@ if (!empty($_POST)) {
     } else {
         $data['sections']['applicant-who']['legal authority']['postcode'] = cleanTextData($_POST['/applicant/nominee-address/postcode']);
     }
-
-
-
-    if (empty($_POST['/applicant/nominee-address/nominee-number'])) {
-
-    } else {
-        $data['sections']['applicant-who']['legal authority']['nominee-number'] = cleanTextData($_POST['/applicant/nominee-address/nominee-number']);
-    }
-
 
 
     if ($errors == 'Y') {
@@ -861,17 +849,6 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
         id="/applicant/nominee-address/postcode" name="/applicant/nominee-address/postcode" type="text"
          autocomplete="postal-code"
                   value="{{$postcode['data']}}" />
-</div>
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="/applicant/nominee-address/nominee-number">
-        Telephone number
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/applicant/nominee-address/nominee-number" name="/applicant/nominee-address/nominee-number" type="tel"
-         autocomplete="tel"
-           inputmode="numeric" pattern="[0-9]*"
-                value="{{$telephonenumber['data']}}" />
 </div>
 
 

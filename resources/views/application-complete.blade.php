@@ -14,14 +14,50 @@ $reference_number = 'AFCS/MOD/'.$data['settings']['customer_ref'];
 
 
 
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
+//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail($data['sections']['about-you']['email'], env('NOTIFY_USER_CONFIRMATION'));
 
 
-//$_SESSION['vets-user'] = '';
+
+//send office email
+
+$string = '';
+
+function returnData($arr) {
+   GLOBAL $string;
+
+    foreach($arr as $k=>$v) {
+        if (is_array($v)) {
+           returnData($v);
+        } else {
+            $string .= '
+
+# '.$k.'
+
+'.$v.'
+
+
+---
+
+';
+        }
+    }
+    return $string;
+}
+
+
+$fullContent = returnData($data);
+
+
+
+
+
+//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 
 
 @endphp
