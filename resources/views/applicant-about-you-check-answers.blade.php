@@ -144,9 +144,9 @@ if (!empty($_POST)) {
         @endif
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Mobile telephone number</dt>
+            <dt class="govuk-summary-list__key">Do you have a mobile telephone number?</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['telephonenumber']['mobile'] ?? 'No'}}
+                                    {{$data['sections']['about-you']['telephonenumber']['doyouhavemobile'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/telephone-number/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/contact-number/mobile-number">Change<span
@@ -155,13 +155,32 @@ if (!empty($_POST)) {
         </div>
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Alternative telephone number</dt>
+            <dt class="govuk-summary-list__key">Do you have a mobile telephone number?</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['telephonenumber']['telephone'] ?? 'No'}}
+            @php
+            if ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'No') { echo 'No';}
+            elseif ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'Yes') { echo $data['sections']['about-you']['telephonenumber']['mobile']; }
+            @endphp
+
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/telephone-number/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/contact-number/mobile-number">Change<span
                         class="govuk-visually-hidden"> Mobile telephone number</span></a>
+            </dd>
+        </div>
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Is there another number you can be contacted on?</dt>
+            <dd class="govuk-summary-list__value">
+            @php
+            if (empty($data['sections']['about-you']['telephonenumber']['doyouhavealternative'])) { echo 'not asked'; }
+            elseif ($data['sections']['about-you']['telephonenumber']['doyouhavealternative'] == 'No') { echo 'No';}
+            elseif ($data['sections']['about-you']['telephonenumber']['doyouhavealternative'] == 'Yes') { echo $data['sections']['about-you']['telephonenumber']['telephone']; }
+            @endphp
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/alternative-number/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/contact-number/mobile-number">Change<span
+                        class="govuk-visually-hidden"> alternative number</span></a>
             </dd>
         </div>
         @if(!empty($data['sections']['about-you']['telephonenumber']['email']))
@@ -224,11 +243,11 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
-        @if(!empty($data['sections']['about-you']['epaw']['got']))
+        @if(!empty($data['sections']['about-you']['epaw']['served']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Express Prior Authority in Writing (EPAW) reference</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['epaw']['got']}}
+                                    {{$data['sections']['about-you']['epaw']['served']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/epaw-reference/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/epaw-number">Change<span

@@ -83,6 +83,7 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/service-details/service-discharge/service-is-serving'])) {
 
         $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] = '';
+        $theURL = '/applicant/about-you/service-details/add-service/discharge-reason';
 
     } else {
 
@@ -90,6 +91,7 @@ if (!empty($_POST)) {
         $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/service-is-serving']);
         $stillservingchk = ' checked';
         $servingValidation = 'N';
+        $theURL = '/applicant/about-you/service-details/add-service/last-unit-address';
 
     }
 
@@ -99,6 +101,7 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year'])) {
+        $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] = '';
         $errors = 'Y';
         $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Please give us at least an approximate year</a>';
         $dischargeyear['error'] = 'govuk-form-group--error';
@@ -175,7 +178,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/about-you/service-details/add-service/discharge-reason';
+
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -269,7 +272,7 @@ echo $errorMessage;
                                     </div>
 <br />
         <div class="govuk-checkboxes__item">
-            <input id="afcs/about-you/service-details/service-discharge/service-is-serving" name="afcs/about-you/service-details/service-discharge/date-is-approximate" type="hidden" value="No">
+
         <input class="govuk-checkboxes__input" id="afcs/about-you/service-details/service-discharge/date-is-approximate" name="afcs/about-you/service-details/service-discharge/date-is-approximate" type="checkbox"
            value="Yes"      @php echo $approximatechk ?? ''; @endphp    >
     <label class="govuk-label govuk-checkboxes__label" for="afcs/about-you/service-details/service-discharge/date-is-approximate">This date is approximate</label>

@@ -190,7 +190,7 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Discharge reason</dt>
             <dd class="govuk-summary-list__value">
-                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['dischargereason'] ?? '' }}
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['dischargereason'] ?? 'Not asked' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/discharge-reason/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-discharge/service-is-serving">Change<span
@@ -199,13 +199,13 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
         </div>
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Base, Building and Street</dt>
+            <dt class="govuk-summary-list__key">last unit address - Base, Building and Street</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['address1'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/last-unit-address/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/unit-address/address-line-1">Change<span
-                        class="govuk-visually-hidden"> Base, Building and Street</span></a>
+                        class="govuk-visually-hidden">Last unit address - Base, Building and Street</span></a>
             </dd>
         </div>
             <div class="govuk-summary-list__row">
