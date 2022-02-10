@@ -56,15 +56,15 @@ if (!empty($_POST)) {
 
     } else {
     $data['sections']['claims']['records'][$thisRecord]['non-specific']['why'] = '';
-        /*
+
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness-note/claim-illness-note">Please tell us what type of medical condition you are claiming for</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness-note/claim-illness-note">Please tell us why your condition related to your armed forces service</a>';
         $condition['error'] = 'govuk-form-group--error';
         $condition['errorLabel'] =
         '<span id="/claim-details/claim-illness-note/claim-illness-noter-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what type of medical condition you are claiming for
+            <span class="govuk-visually-hidden">Error:</span>Please tell us why your condition related to your armed forces service
          </span>';
-         */
+
 
     }
 
@@ -128,20 +128,47 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+@php echo $errorMessage; @endphp
                                 <h1 class="govuk-heading-xl">Why is your condition related to your armed forces service?</h1>
-                                <p class="govuk-body"> In your own words, tell us why you feel your claimed medical condition or injury is caused or made worse by your service in the armed forces. If your condition developed over time, tell us what activities you think were the cause.  Avoid including specific operational details.  You can also use this section to explain the impact the conditions have on you. If you want to think about your answer, you can use the ‘save and return later’ function.</p>
-                                <p class="govuk-body">If you are claiming for a road traffic accident and you were not on a direct route between your starting point and destination, please tell us why here.</p>
+                                <p class="govuk-body">In your own words, tell us why you feel your claimed medical condition or injury is caused or made worse by your service in the armed forces.</p>
+                                <div class="govuk-warning-text">
+                                  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                                  <strong class="govuk-warning-text__text">
+                                    <span class="govuk-warning-text__assistive">Warning</span>
+                                    Do not include specific operational details.
+                                  </strong>
+                                </div>
+                                <p class="govuk-body">You can use this section to explain the impact the conditions have on you.</p>
+                                <p class="govuk-body">If you want to think about your answer, you can use the ‘save and return later’ function.</p>
+                                 <div class="govuk-warning-text">
+                                  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+                                  <strong class="govuk-warning-text__text">
+                                    <span class="govuk-warning-text__assistive">Warning</span>
+                                    You need permission to claim if you served in or supported the Special Forces.
+                                  </strong>
+                                </div>
 
-    <p class="govuk-body"><strong>Reminder:</strong> If you have served or are serving (whether directly or in a support role) with the United
-    Kingdom Special Forces (UKSF), you must seek advice from the MOD A Block Disclosure Cell BEFORE completing this
-    section. The Disclosure Cell can be contacted by emailing <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.</p>
+ <details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+     You must read this text information if the person applying has ever served in or supported the Special Forces
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
+  </div>
+</details>
+
+
+
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf
-                                                    <div class="govuk-form-group">
+                                                    <div class="govuk-form-group {{$condition['error'] ?? ''}}">
         <label class="govuk-label" for="/claim-details/claim-illness-note/claim-illness-note">
         <span class="govuk-visually-hidden">Why is your condition related to your armed forces service?</span>
     </label>
+    @php echo $condition['errorLabel']; @endphp
                 <textarea class="govuk-textarea " id="/claim-details/claim-illness-note/claim-illness-note"
                   name="/claim-details/claim-illness-note/claim-illness-note" rows="5" maxlength="2500"
                                     aria-describedby="">{{$condition['data'] ?? ''}}</textarea>

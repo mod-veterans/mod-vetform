@@ -170,8 +170,9 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">When did you first seek medical attention for the condition(s)?</h1>
+                                <h1 class="govuk-heading-xl">When did you first seek medical attention?</h1>
   </legend>
+  <p class="govuk-body">Only tell us about the conditions you are claiming for.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$conditionyear['error'] ?? ''}}">

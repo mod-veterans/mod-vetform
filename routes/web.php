@@ -355,13 +355,15 @@ Route::match(['get', 'post'],'/applicant/claims/specific/pt/downgraded', functio
     return view('applicant-claims-specific-pt-downgraded');
 });
 
-
-Route::match(['get', 'post'],'/applicant/claims/non-specific/downgraded', function () {
-    return view('applicant-claims-non-specific-downgraded');
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/downgraded/end', function () {
+    return view('applicant-claims-specific-pt-downgraded-end');
 });
 
 
 
+Route::match(['get', 'post'],'/applicant/claims/non-specific/downgraded', function () {
+    return view('applicant-claims-non-specific-downgraded');
+});
 
 
 
@@ -385,9 +387,19 @@ Route::match(['get', 'post'],'/applicant/claims/specific/downgraded/when', funct
     return view('applicant-claims-specific-downgraded-when');
 });
 
+Route::match(['get', 'post'],'/applicant/claims/specific/downgraded/end', function () {
+    return view('applicant-claims-specific-downgraded-end');
+});
+
 Route::match(['get', 'post'],'/applicant/claims/non-specific/downgraded/when', function () {
     return view('applicant-claims-non-specific-downgraded-when');
 });
+
+
+Route::match(['get', 'post'],'/applicant/claims/non-specific/downgraded/end', function () {
+    return view('applicant-claims-non-specific-downgraded-end');
+});
+
 
 Route::match(['get', 'post'],'/applicant/claims/specific/pt/downgraded/when', function () {
     return view('applicant-claims-specific-pt-downgraded-when');

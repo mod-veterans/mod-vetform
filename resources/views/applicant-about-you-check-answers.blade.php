@@ -173,7 +173,7 @@ if (!empty($_POST)) {
             <dt class="govuk-summary-list__key">Is there another number you can be contacted on?</dt>
             <dd class="govuk-summary-list__value">
             @php
-            if (empty($data['sections']['about-you']['telephonenumber']['doyouhavealternative'])) { echo 'not asked'; }
+            if (empty($data['sections']['about-you']['telephonenumber']['doyouhavealternative'])) { echo ''; }
             elseif ($data['sections']['about-you']['telephonenumber']['doyouhavealternative'] == 'No') { echo 'No';}
             elseif ($data['sections']['about-you']['telephonenumber']['doyouhavealternative'] == 'Yes') { echo $data['sections']['about-you']['telephonenumber']['telephone']; }
             @endphp

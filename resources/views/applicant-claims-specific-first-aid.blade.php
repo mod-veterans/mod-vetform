@@ -157,10 +157,9 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Did you receive first aid treatment at the time?</h1>
+                                <h1 class="govuk-heading-xl">Did you receive first aid treatment?</h1>
     </legend>
-                                <p class="govuk-body">Please only tell us about treatment you received for the
-                              injury/condition that you are claiming for.</p>
+                                <p class="govuk-body">Only tell us about treatment you received for the injury/conditions you are claiming for.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

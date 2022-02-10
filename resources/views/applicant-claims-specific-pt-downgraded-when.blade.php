@@ -15,10 +15,6 @@ $errorsList = array();
 $datefromday = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $datefrommonth = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $datefromyear = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$datetoday = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$datetomonth = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$datetoyear = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$stilldowngraded = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $datesapproximate = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 
@@ -53,22 +49,16 @@ if (empty($_GET['claimrecord'])) {
 
 if (empty($_POST)) {
     //load the data if set
-    if (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when'])) {
-        $datefromday['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromday'];
-        $datefrommonth['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['frommonth'];
-        $datefromyear['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromyear'];
-        $datetoday['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['today'];
-        $datetomonth['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['tomonth'];
-        $datetoyear['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['toyear'];
-        $stilldowngraded['data']   = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['stilldowngraded'];
-        $datesapproximate['data']   = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['datesapproximate'];
+    if (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start'])) {
+        $datefromday['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['fromday'];
+        $datefrommonth['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['frommonth'];
+        $datefromyear['data']           = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['fromyear'];
+        $datesapproximate['data']   = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['datesapproximate'];
 
         if ($datesapproximate['data'] == 'Yes') {
         $datesapproximatechk = ' checked';
         }
-        if ($stilldowngraded['data'] == 'Yes') {
-        $stilldowngradedchk = ' checked';
-        }
+
 
 
 
@@ -87,10 +77,6 @@ if (!empty($_POST)) {
     $datefrommonth['data'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-month']);
     $datefromyear['data'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-year']);
 
-    $datetoday['data'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-to-day']);
-    $datetomonth['data'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-to-month']);
-    $datetoyear['data'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-to-year']);
-
 
     if (empty($_POST['/claim-details/claim-downgraded-dates/date-from-year'])) {
         $errors = 'Y';
@@ -103,52 +89,22 @@ if (!empty($_POST)) {
 
     } else {
 
-        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromyear'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-year']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['fromyear'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-year']);
 
     }
 
-    $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['frommonth'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-month']);
-    $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromday'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-day']);
+    $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['frommonth'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-month']);
+    $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['fromday'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-day']);
 
 
     if ( (!empty($_POST['/claim-details/claim-illness-date/date-of-datefrom-estimated'])) && ($_POST['/claim-details/claim-illness-date/date-of-datefrom-estimated'] == 'Yes')) {
-        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['datesapproximate'] = cleanTextData($_POST['/claim-details/claim-illness-date/date-of-datefrom-estimated']);
+        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['datesapproximate'] = cleanTextData($_POST['/claim-details/claim-illness-date/date-of-datefrom-estimated']);
         $datesapproximatechk = ' checked';
      } else {
 
-         $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['datesapproximate'] = '';
+         $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['datesapproximate'] = '';
 
     }
-
-    if (empty($_POST['/claim-details/claim-downgraded-dates/date-to-year'])) {
-        $errors = 'Y';
-        $errorsList[] = '<a href="/claim-details/claim-downgraded-dates/date-from-year">Please give us at least an approximate year to</a>';
-        $datetoyear['error'] = 'govuk-form-group--error';
-        $datetoyear['errorLabel'] =
-        '<span id="/claim-details/claim-downgraded-dates/date-from-year-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us at least an approximate year to
-         </span>';
-
-    } else {
-
-        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['toyear'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-to-year']);
-
-    }
-
-    $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['tomonth'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-to-month']);
-    $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['today'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-to-day']);
-
-
-    if ( (!empty($_POST['/claim-details/claim-illness-date/still-downgraded'])) && ($_POST['/claim-details/claim-illness-date/still-downgraded'] == 'Yes')) {
-        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['stilldowngraded'] = cleanTextData($_POST['/claim-details/claim-illness-date/still-downgraded']);
-        $stilldowngradedchk = ' checked';
-     } else {
-
-         $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['stilldowngraded'] = '';
-
-    }
-
-
 
 
 
@@ -185,7 +141,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/claims/specific/pt/downgraded/detail';
+        $theURL = '/applicant/claims/specific/pt/downgraded/end';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -216,8 +172,9 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">When were you downgraded?</h1>
+                                <h1 class="govuk-heading-xl">When did your downgrading start?</h1>
     </legend>
+    <p class="govuk-body">If you were downgraded and upgraded more than once, enter the date you were first downgraded.<br /><br />For example 27 3 2007. If you can’t remember, enter an approximate year.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$datetoday['error'] ?? ''}} {{$datetoyear['error'] ?? ''}} ">
@@ -229,14 +186,8 @@ echo $errorMessage;
 
     <fieldset class="govuk-fieldset">
 @php echo $datefromyear['errorLabel']; @endphp
-        <div class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date from
-            </h2>
-        </div>
 
-
-        <div id="/claim-details/claim-downgraded-dates/date-from-hint" class="govuk-hint">If you were downgraded and upgraded more than once, enter the date you were first downgraded. For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
+        <div id="/claim-details/claim-downgraded-dates/date-from-hint" class="govuk-hint"></div>
 
         <div class="govuk-date-input" id="/claim-details/claim-downgraded-dates/date-from">
                                                 <div class="govuk-date-input__item">
@@ -282,86 +233,15 @@ echo $errorMessage;
     </fieldset>
 
 </div>
-                                    <div class="govuk-form-group ">
-    <input name="/claim-details/claim-downgraded-dates/date-to-year" type="hidden" value="">
-</div>
-                                    <div
-    class="govuk-form-group "
-    aria-describedby="/claim-details/claim-downgraded-dates/date-to-hint  ">
 
-    <fieldset class="govuk-fieldset">
-@php echo $datetoyear['errorLabel']; @endphp
-        <div class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date to
-            </h2>
-        </div>
-
-
-        <div id="/claim-details/claim-downgraded-dates/date-to-hint" class="govuk-hint">If you were downgraded and upgraded more than once, enter the date your last downgrading ended. For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
-
-        <div class="govuk-date-input" id="/claim-details/claim-downgraded-dates/date-to">
-                                                <div class="govuk-date-input__item">
-    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="/claim-details/claim-downgraded-dates/date-to-day">
-                                Day
-            </label>
-                <input
-            class="govuk-input govuk-date-input__input govuk-input--width-2 "
-            id="/claim-details/claim-downgraded-dates/date-to-day"
-            name="/claim-details/claim-downgraded-dates/date-to-day" type="text" pattern="[0-9]*" inputmode="numeric"
-            maxlength="2"
-            value="{{$datetoday['data']}}">
-    </div>
-</div>
-                                                    <div class="govuk-date-input__item">
-    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="/claim-details/claim-downgraded-dates/date-to-month">
-                                Month
-            </label>
-                <input
-            class="govuk-input govuk-date-input__input govuk-input--width-2 "
-            id="/claim-details/claim-downgraded-dates/date-to-month"
-            name="/claim-details/claim-downgraded-dates/date-to-month" type="text" pattern="[0-9]*" inputmode="numeric"
-            maxlength="2"
-            value="{{$datetomonth['data']}}">
-    </div>
-</div>
-                                                    <div class="govuk-date-input__item">
-    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="/claim-details/claim-downgraded-dates/date-to-year">
-                                Year
-            </label>
-                <input
-            class="govuk-input govuk-date-input__input govuk-input--width-4 "
-            id="/claim-details/claim-downgraded-dates/date-to-year"
-            name="/claim-details/claim-downgraded-dates/date-to-year" type="text" pattern="[0-9]*" inputmode="numeric"
-            maxlength="4"
-            value="{{$datetoyear['data']}}">
-    </div>
-</div>
-                                    </div>
-    </fieldset>
         <br />
                                         <div class="govuk-checkboxes__item">
             <input id="/claim-details/claim-illness-date/date-of-datefrom-estimated" name="/claim-details/claim-illness-date/date-of-datefrom-estimated" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/date-of-datefrom-estimated" type="checkbox"
            value="Yes"     {{$datesapproximatechk ?? ''}}        >
-    <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">Tick if these dates are approximate</label>
+    <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">Tick if this date is approximate</label>
 </div>
 
-
-    <br />
-                                        <div class="govuk-checkboxes__item">
-            <input id="/claim-details/claim-illness-date/still-downgraded" name="/claim-details/claim-illness-date/still-downgraded" type="hidden" value="No">
-        <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/still-downgraded" type="checkbox"
-           value="Yes"    {{$stilldowngradedchk ?? ''}}        >
-    <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">I am still downgraded / was downgraded at discharge</label>
-</div>
-
-
-
-</div>
 
 
                 <div class="govuk-form-group">

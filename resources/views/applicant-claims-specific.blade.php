@@ -181,7 +181,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Was the incident or accident related to sport, adventure training or physical training?</h1>
+                                <h1 class="govuk-heading-xl">Was the incident or accident due to sporting, adventure or physical training?</h1>
     </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

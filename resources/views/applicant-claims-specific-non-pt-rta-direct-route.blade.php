@@ -141,7 +141,9 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Were you on a direct route?</h1>
 </legend>
-                                <p class="govuk-body">A direct route means you took a reasonable route from start to end considering traffic conditions. You did not divert for other reasons, for example, visiting a friend.   </p>
+                                <p class="govuk-body">A direct route means you took a reasonable route from start to end, taking account of traffic conditions. </p>
+<p class="govuk-body">You did not divert for other reasons, for example visiting a friend.
+</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

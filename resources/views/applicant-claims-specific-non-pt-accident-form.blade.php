@@ -161,27 +161,50 @@ echo $errorMessage;
                                 @csrf
                                                     <div class="govuk-form-group {{$accident['error']}} ">
     <a id="/claim-details/claim-accident-non-sporting-form/non-sporting-form"></a>
-    <fieldset class="govuk-fieldset">
+
+
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 @php echo $accident['errorLabel']; @endphp
+    <div id="contact-hint" class="govuk-hint">
+      Select one option.
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes" name="/claim-details/claim-accident-non-sporting-form/non-sporting-form" type="radio" value="Yes" data-aria-controls="conditional-contact" {{$accidentchk['Yes'] ?? ''}} >
+        <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
 
-                                            <div
-            class="govuk-radios govuk-radios--inline"
-            >
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes" name="/claim-details/claim-accident-non-sporting-form/non-sporting-form" type="radio"
-           value="Yes"   {{$accidentchk['Yes'] ?? ''}}         >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes">Yes (Please send us a copy if you have one or you can upload a copy later in this application)</label>
+
+Please send us a copy if you have one.  You can upload a copy in ’Supporting Documents’ later.
+
+
+
+
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-no" name="/claim-details/claim-accident-non-sporting-form/non-sporting-form" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$accidentchk['No'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-form/non-sporting-form-no">
+          No
+        </label>
+      </div>
+
+
+    </div>
+
+  </fieldset>
 </div>
 
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-no" name="/claim-details/claim-accident-non-sporting-form/non-sporting-form" type="radio"
-           value="No"    {{$accidentchk['No'] ?? ''}}         >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-form/non-sporting-form-no">No</label>
-</div>
 
-                    </div>
-    </fieldset>
-</div>
+
+
 
 
 
@@ -201,5 +224,5 @@ echo $errorMessage;
 
 
 
-
+  <script src="/js/app2.js"></script>
 @include('framework.footer')

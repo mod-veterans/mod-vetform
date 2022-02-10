@@ -167,7 +167,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What was the date of injury/incident or date the condition started?</h1>
+                                <h1 class="govuk-heading-xl">What was the date of the incident or accident?</h1>
     </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf

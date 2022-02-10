@@ -12,10 +12,7 @@ $errorsList = array();
 
 
 //set fields
-$exposureday = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$exposuremonth = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$exposureyear = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$exposurelength = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
 $exposuresubstances = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 
@@ -51,10 +48,7 @@ if (empty($_GET['claimrecord'])) {
 if (empty($_POST)) {
     //load the data if set
     if (!empty($data['sections']['claims']['records'][$thisRecord]['exposure-date'])) {
-        $exposureday['data']           = @$data['sections']['claims']['records'][$thisRecord]['exposure-date']['day'];
-        $exposuremonth['data']           = @$data['sections']['claims']['records'][$thisRecord]['exposure-date']['month'];
-        $exposureyear['data']           = @$data['sections']['claims']['records'][$thisRecord]['exposure-date']['year'];
-        $exposurelength['data']   = @$data['sections']['claims']['records'][$thisRecord]['exposure-date']['length'];
+
         $exposuresubstances['data']   = @$data['sections']['claims']['records'][$thisRecord]['exposure-date']['substances'];
 
     }
@@ -68,9 +62,7 @@ if (!empty($_POST)) {
 
 
     //set the entered field names
-    $exposureday['data'] = cleanTextData($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day']);
-    $exposuremonth['data'] = cleanTextData($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-month']);
-    $exposureyear['data'] = cleanTextData($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year']);
+
 
 
 
@@ -84,40 +76,11 @@ if (!empty($_POST)) {
     }
 
 
-    if (empty($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2'])) {
-
-
-    } else {
-
-        $data['sections']['claims']['records'][$thisRecord]['exposure-date']['length'] =  $_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2'];
-
-    }
 
 
 
 
-
-    if (empty($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year'])) {
-        $errors = 'Y';
-        $errorsList[] = '<a href="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year">Please give us at least an approximate year</a>';
-        $exposureyear['error'] = 'govuk-form-group--error';
-        $exposureyear['errorLabel'] =
-        '<span id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us at least an approximate year
-         </span>';
-
-    } else {
-
-        $data['sections']['claims']['records'][$thisRecord]['exposure-date']['year'] = cleanTextData($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year']);
-
-    }
-
-    $data['sections']['claims']['records'][$thisRecord]['exposure-date']['month'] = cleanTextData($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-month']);
-    $data['sections']['claims']['records'][$thisRecord]['exposure-date']['day'] = cleanTextData($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day']);
-
-
-
-    if ($errors == 'Y') {
+     if ($errors == 'Y') {
 
         $errorList = '';
         foreach ($errorsList as $error) {
@@ -181,15 +144,27 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Please tell us about your chemical exposure?</h1>
+                                <h1 class="govuk-heading-xl">Chemical exposure</h1>
     </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                     <div class="govuk-form-group {{$exposureyear['error'] ?? ''}} ">
  <div class="govuk-form-group">
         <label class="govuk-label" for="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition">
-        What substances?
+       Tell us what substances you’ve been exposed to, when this happened and how long for.
     </label>
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+     You must read this text information if the person applying has ever served in or supported the Special Forces
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
+  </div>
+</details>
+
                 <textarea class="govuk-textarea " id="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition"
                   name="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition" rows="5"
                                     aria-describedby="">{{$exposuresubstances['data'] ?? ''}}</textarea>
@@ -198,70 +173,7 @@ echo $errorMessage;
   </div>
         </div>
 
-    <fieldset class="govuk-fieldset">
-@php echo $exposureyear['errorLabel']; @endphp
 
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date you were first exposed to these?
-            </h2>
-
-
-        <div id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
-
-        <div class="govuk-date-input" id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date">
-                                                <div class="govuk-date-input__item">
-    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day">
-                                Day
-            </label>
-                <input
-            class="govuk-input govuk-date-input__input govuk-input--width-2 "
-            id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day"
-            name="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day" type="text" pattern="[0-9]*" inputmode="numeric"
-            maxlength="2"
-            value="{{$exposureday['data'] ?? ''}}">
-    </div>
-</div>
-                                                    <div class="govuk-date-input__item">
-    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-month">
-                                Month
-            </label>
-                <input
-            class="govuk-input govuk-date-input__input govuk-input--width-2 "
-            id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-month"
-            name="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-month" type="text" pattern="[0-9]*" inputmode="numeric"
-            maxlength="2"
-            value="{{$exposuremonth['data'] ?? ''}}">
-    </div>
-</div>
-                                                    <div class="govuk-date-input__item">
-    <div class="govuk-form-group">
-                    <label class="govuk-label govuk-date-input__label" for="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year">
-                                Year
-            </label>
-                <input
-            class="govuk-input govuk-date-input__input govuk-input--width-4 "
-            id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year"
-            name="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year" type="text" pattern="[0-9]*" inputmode="numeric"
-            maxlength="4"
-            value="{{$exposureyear['data'] ?? ''}}">
-    </div>
-</div>
-                                    </div>
-    </fieldset>
-
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2">
-        <span>Length of exposure?</span>
-    </label>
-            <input
-        class="govuk-input  "
-        id="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2" name="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-2" type="text"
-         autocomplete="address-line2"
-                  value="{{$exposurelength['data'] ?? ''}}"
-            >
-</div>
 
 
 

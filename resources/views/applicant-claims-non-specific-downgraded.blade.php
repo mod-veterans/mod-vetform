@@ -174,9 +174,9 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Were you downgraded for any of the conditions on this claim?</h1>
+                                <h1 class="govuk-heading-xl">Were you downgraded?</h1>
   </legend>
-                                <p class="govuk-body">Tell us only about the conditions you are claiming for.</p>
+                                <p class="govuk-body">Tell us only about the conditions you’re claiming for.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$downgraded['error'] ?? ''}} ">

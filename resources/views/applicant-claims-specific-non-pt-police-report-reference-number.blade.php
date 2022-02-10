@@ -156,7 +156,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">Please tell us the Police reference number (if known)</h1>
+                                <h1 class="govuk-heading-xl">Please tell us the police reference number (if known)</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

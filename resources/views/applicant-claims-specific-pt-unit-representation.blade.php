@@ -162,25 +162,48 @@ echo $errorMessage;
                                 @csrf
                                                     <div class="govuk-form-group {{$representing['error']}} ">
     <a id="/claim-details/claim-accident-sporting-authorise/sporting-authorise"></a>
-    <fieldset class="govuk-fieldset">
-@php echo $representing['errorLabel']; @endphp                                            <div
-            class="govuk-radios govuk-radios--inline"
-            >
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio"
-           value="Yes"    {{$representingchk['Yes'] ?? ''}}        >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes">Yes (Please send us copies of part 1 orders/admin instructions/authorisation. You can upload a copy later in the application)</label>
+
+
+
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+@php echo $representing['errorLabel']; @endphp
+    <div id="contact-hint" class="govuk-hint">
+      Select one option.
+    </div>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio" value="Yes" data-aria-controls="conditional-contact" {{$representingchk['Yes'] ?? ''}} >
+        <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes">
+          Yes
+        </label>
+      </div>
+      <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
+
+
+Please send us copies of part 1 orders/admin instructions/authorisation if you have them. You can upload a copy in ’Supporting Documents’ later.
+
+
+
+
+
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$representingchk['No'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no">
+          No
+        </label>
+      </div>
+
+
+    </div>
+
+  </fieldset>
 </div>
 
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no" name="/claim-details/claim-accident-sporting-authorise/sporting-authorise" type="radio"
-           value="No"     {{$representingchk['No'] ?? ''}}       >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-sporting-authorise/sporting-authorise-no">No</label>
-</div>
 
-                    </div>
-    </fieldset>
-</div>
+
 
 
 
@@ -197,6 +220,6 @@ echo $errorMessage;
         </div>
     </main>
 </div>
-
+  <script src="/js/app2.js"></script>
 
 @include('framework.footer')

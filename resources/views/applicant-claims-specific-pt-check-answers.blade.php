@@ -427,43 +427,55 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downg
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Date downgraded from</dt>
             <dd class="govuk-summary-list__value">
-                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromday'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['frommonth'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['fromyear'] ?? ''}}
+                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['fromday'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['frommonth'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['fromyear'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/when/?return=/applicant/claims/specific/pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Date downgraded from</span></a>
             </dd>
         </div>
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Downgrade start date approximate?</dt>
+            <dd class="govuk-summary-list__value">
+                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-start']['datesapproximate'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/when/?return=/applicant/claims/specific/pt/check-answers">Change<span
+                        class="govuk-visually-hidden"> Downgrade start date approximate? </span></a>
+            </dd>
+        </div>
+
+
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Date downgraded to</dt>
             <dd class="govuk-summary-list__value">
-                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['today'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['tomonth'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['toyear'] ?? ''}}
+                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-end']['today'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-end']['tomonth'] ?? ''}} / {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-end']['toyear'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/when/?return=/applicant/claims/specific/pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/end/?return=/applicant/claims/specific/pt/check-answers">Change<span
                         class="govuk-visually-hidden"> Date downgraded to</span></a>
             </dd>
         </div>
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Downgrade dates approximate?</dt>
+            <dt class="govuk-summary-list__key">Downgrade end date approximate?</dt>
             <dd class="govuk-summary-list__value">
-                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['datesapproximate'] ?? ''}}
+                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-end']['datesapproximate'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/when/?return=/applicant/claims/specific/pt/check-answers">Change<span
-                        class="govuk-visually-hidden"> Downgrade dates approximate? </span></a>
+                <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/end/?return=/applicant/claims/specific/pt/check-answers">Change<span
+                        class="govuk-visually-hidden"> Downgrade end date approximate? </span></a>
             </dd>
         </div>
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Are you still downgraded?</dt>
             <dd class="govuk-summary-list__value">
-                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-when']['stilldowngraded'] ?? ''}}
+                                   {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downgraded-end']['stilldowngraded'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/when/?return=/applicant/claims/specific/pt/check-answers">Change<span
+                <a class="govuk-link" href="/applicant/claims/specific/pt/downgraded/end/?return=/applicant/claims/specific/pt/check-answers">Change<span
                         class="govuk-visually-hidden"> are you still downgraded? </span></a>
             </dd>
         </div>

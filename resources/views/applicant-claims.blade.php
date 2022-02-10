@@ -94,10 +94,10 @@ $claimList = '';
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Claim details</h1>
                                 <p class="govuk-body">
-                                                                        This form allows you to make multiple claims based on individual injuries, illnesses or conditions that have occured at different points in time as a result of your service.
-                                                                </p>
-                                                                                                                                    <p class="govuk-body">
-                                                                        For a specific accident or incident you can add all of the injuries and conditions sustained in a single claim.
+                                                                       You can use this section to make one or more claims for different injuries, illnesses or conditions caused by your service.</p>
+                                                                       <p class="govuk-body">
+If you have multiple injuries caused by one accident or incident, include these in a single claim.
+
                                                                 </p>
 
                          <dl class="govuk-summary-list">

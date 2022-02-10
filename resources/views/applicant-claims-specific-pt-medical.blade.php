@@ -135,10 +135,14 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What medical condition(s) are you claiming for?</h1>
     </legend>
-                                <p class="govuk-body">You can claim for any medical condition you think is related to your service.  If you have a specific medical diagnosis, please include it here, for example, head injury, fracture L5 vertebrae.</p>
-<div class="govuk-body">Please enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.</div>
+                                <p class="govuk-body">You can claim for any medical condition you think is related to your service.</p>
+<p class="govuk-body">If you have a specific medical diagnosis, include it here, for example, head injury, fracture L5 vertebrae.</p>
 
-<div class="govuk-body">Tell us which side of the body is affected if needed, for example, broken left arm.</div>
+<div class="govuk-inset-text">
+Please enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.
+</div>
+
+<p class="govuk-body">Tell us which side of the body is affected for example, broken left arm.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

@@ -148,7 +148,7 @@ foreach ($showArr as $cur) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is your Illness/Condition related to?</h1>
+                                <h1 class="govuk-heading-xl">What is your Illness/condition related to?</h1>
     </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
