@@ -193,8 +193,7 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">When did this treatment end?</h1>
 </legend>
-                                <p class="govuk-body">Please tell us the end date for this period of treatment.
-                              If it hasn't yet ended, tick "This treatment has not yet ended"</p>
+                                <p class="govuk-body">If you’re still receiving treatment, tick "This treatment has not yet ended"</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -208,9 +207,7 @@ echo $errorMessage;
 
 @php echo $treatmentyear['errorLabel']; @endphp
     <fieldset class="govuk-fieldset">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date your treatment ended
-            </h2>
+
 
 
         <div id="/other-medical-treatment-end-date/medical-treatment-end-date-hint" class="govuk-hint">For example 27 3 2007. If you are not sure, just enter a year.</div>

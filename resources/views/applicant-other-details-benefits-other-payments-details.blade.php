@@ -137,7 +137,7 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Please tell us the date you received the payment(s) and the amount you received.</h1>
+                                <h1 class="govuk-heading-xl">What was the date you received payment and the amount?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

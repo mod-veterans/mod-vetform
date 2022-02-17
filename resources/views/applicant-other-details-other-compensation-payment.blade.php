@@ -157,7 +157,7 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-                                <h1 class="govuk-heading-xl">Did you receive a payment as a result of this claim? </h1>
+                                <h1 class="govuk-heading-xl">Did you receive a payment? </h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">

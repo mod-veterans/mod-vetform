@@ -242,7 +242,15 @@ echo $errorMessage;
 if ($lastRecID < 2) {
 @endphp
 
-                                <p class="govuk-body">Thinking of the conditions you have claimed for, we need to know about any other hospital or specialist treatment you have had that you have not told us about already.  This includes where you are on a waiting list. If you have visited the same hospital or facility several times, you only need to provide the details once.  </p>
+                                <p class="govuk-body">Tell us if you’ve had any further hospital or specialist treatment you’ve not already told us about. This includes if you’re on a waiting list. </p>
+                                <div class="govuk-inset-text">
+                                    Only tell us about treatment for the conditions on this application.
+                                </div>
+
+
+                                <p class="govuk-body">If you’ve visited the same hospital or facility several times, you only need to tell us the details once. </p>
+
+
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group {{$treatment['error']}} ">
@@ -259,7 +267,7 @@ if ($lastRecID < 2) {
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/treatment-status/treatment-status-no" name="/treatment-status/treatment-status" type="radio"
            value="No"      {{$treatmentchk['No'] ?? ''}}      >
-    <label class="govuk-label govuk-radios__label" for="/treatment-status/treatment-status-no">No - I have not received any further medical treatment.</label>
+    <label class="govuk-label govuk-radios__label" for="/treatment-status/treatment-status-no">No - I’ve not had further treatment for the conditions on this application.</label>
 </div>
 
                     </div>

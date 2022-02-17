@@ -155,7 +155,7 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-                                <h1 class="govuk-heading-xl">Where is your bank account located?</h1>
+                                <h1 class="govuk-heading-xl">Where is your bank account?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group {{$banklocation['error']}} ">

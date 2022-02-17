@@ -118,7 +118,7 @@ if (!empty($_POST)) {
  echo $errorMessage;
  @endphp
 
-                                <h1 class="govuk-heading-xl">What medical condition(s) have you received (or are you claiming) other compensation for?</h1>
+                                <h1 class="govuk-heading-xl">What medical conditions have you claimed or received compensation for?</h1>
                                 <p class="govuk-body">For example, deafness.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

@@ -219,13 +219,13 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What was the name and address of the solicitor who helped you?</h1>
+                                <h1 class="govuk-heading-xl">Which solicitor helped you?</h1>
                                 <p class="govuk-body">You can leave blank any sections you can’t remember.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/other-compensation/claim-solicitor-details/claim-solicitor-contact-name">
-        Solicitors&#039; full name
+        Solicitor's full name
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

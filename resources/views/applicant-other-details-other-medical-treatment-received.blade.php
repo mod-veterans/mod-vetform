@@ -142,7 +142,7 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What type of treatment did you receive?</h1>
+                                <h1 class="govuk-heading-xl">What treatment did you receive?</h1>
 </legend>
                                 <p class="govuk-body">For example surgery, specialist consultation, tests, physiotherapy</p>
 

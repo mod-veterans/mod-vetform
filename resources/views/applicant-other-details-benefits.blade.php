@@ -138,12 +138,11 @@ foreach ($showArr as $cur) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Other benefits, allowances or entitlements you receive</h1>
-    </legend>
+
+                                <p class="govuk-heading-xl">Other benefits, allowances or entitlements </p>
+
                                 <p class="govuk-body">
-    Payments from the Armed Forces Compensation Scheme and War Pension Scheme MAY affect related benefits from the Department for Work and Pensions or other authorities.
-    It is your responsibility to inform the relevant Benefit Office, local authority or Tax Credit Office if you receive payments under one of their schemes.</p>
+    Payments from the Armed Forces Compensation Scheme and War Pension Scheme may affect benefits from the Department for Work and Pensions (DWP) or other authorities. You must tell them if you later get a payment from us.</p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate >
@@ -151,6 +150,10 @@ echo $errorMessage;
                                                     <div class="govuk-form-group" {{$benefits['error']}};>
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 @php echo $benefits['errorLabel']; @endphp
+
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                                <h1 class="govuk-heading-l">Do you get or have you applied for any of the following? </h1>
+    </legend>
         <div id="contact-hint" class="govuk-hint">Please tick all that apply.</div>
                                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">

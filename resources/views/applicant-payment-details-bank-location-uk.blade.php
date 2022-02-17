@@ -231,7 +231,7 @@ if (!empty($_POST)) {
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-roll-number">
-        Building society roll number
+        Building society roll number (if you have one)
     </label>
     <div id="/payment-details/bank-united-kingdom/bank-account-roll-number-hint" class="govuk-hint">You can find it on your card, statement or passbook.</div>
         <input
@@ -244,7 +244,7 @@ if (!empty($_POST)) {
                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
     <div class="govuk-form-group">
         <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-confirmation">
-        If this is not your bank account, please tell us whose account it is and why you have chosen to have payments made into it
+        If this is not your account, tell us whose account it is and why you want to use it.
     </label>
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/payment-details/bank-united-kingdom/bank-account-confirmation"
                   name="/payment-details/bank-united-kingdom/bank-account-confirmation" rows="5" maxlength="100"

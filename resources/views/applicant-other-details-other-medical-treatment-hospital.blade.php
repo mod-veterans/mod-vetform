@@ -252,7 +252,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Please tell us the name and address of the hospital or facility providing the treatment?</h1>
+                                <h1 class="govuk-heading-xl">Details of the hospital or facility that treated you</h1>
  </legend>
                                 <p class="govuk-body">You can leave blank any sections you can’t remember.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>

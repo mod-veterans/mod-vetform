@@ -149,7 +149,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">When did you receive this payment?</h1>
+                                <h1 class="govuk-heading-xl">When did you get this payment?</h1>
 </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

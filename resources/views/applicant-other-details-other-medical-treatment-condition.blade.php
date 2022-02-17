@@ -141,13 +141,13 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What condition(s) did you receive treatment for?</h1>
+                                <h1 class="govuk-heading-xl">What conditions did you receive treatment for?</h1>
 </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$conditions['error']}}">
     <label class="govuk-label" for="/other-medical-treatment-condition/other-medical-treatment-condition">
-        Condition treated
+        Conditions treated
     </label>
 @php echo $conditions['errorLabel']; @endphp
             <input

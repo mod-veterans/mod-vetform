@@ -196,8 +196,7 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">When did this treatment start?</h1>
 </legend>
-                                <p class="govuk-body">If you have received treatment at this hospital medical facility on
-                              more than one occasion, please tell us the first time you visited. If you are on a waiting list, tick "I am on a waiting list to attend.”</p>
+                                <p class="govuk-body">If you’ve had treatment at this place more than once, tell us the first time you visited. </p>
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf
@@ -213,9 +212,7 @@ echo $errorMessage;
 
     <fieldset class="govuk-fieldset">
 @php echo $treatmentyear['errorLabel']; @endphp
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date your treatment started. If you are not sure, just enter a year.
-            </h2>
+
 
 
 

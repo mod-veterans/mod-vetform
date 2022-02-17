@@ -664,6 +664,11 @@ Route::match(['get', 'post'],'/show-all', function () {
     return view('showall');
 });
 
+Route::match(['get', 'post'],'/s3', function () {
+    return view('s3');
+});
+
+
 /*
 Route::match(['get', 'post'],'/site-list', function () {
     return view('sitelist');

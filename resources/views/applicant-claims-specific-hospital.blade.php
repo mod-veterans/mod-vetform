@@ -181,11 +181,10 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Did you go to, or were you taken to, a hospital or medical facility?</h1>
+                                <h1 class="govuk-heading-xl">Did you go to a hospital or medical facility?</h1>
 </legend>
                                 <p class="govuk-body">For example, for treatment or assessment soon after the incident.  We will ask about further hospital treatment later.</p>
-                                <p class="govuk-body">Please only tell us about treatment you received for the
-                              injury/condition that you are claiming for</p>
+                                <p class="govuk-body">Only tell us about treatment received for the injury/conditions you are claiming for.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

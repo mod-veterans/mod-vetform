@@ -14,7 +14,7 @@ $reference_number = 'AFCS/MOD/'.$data['settings']['customer_ref'];
 
 
 
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
+//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
 //Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
@@ -359,10 +359,10 @@ $emailContent .= '
 ';
 
 
-if (!empty($data['sections']['claim']['records'])) {
-foreach ($data['sections']['claim']['records'] as $claimRecord) {
+if (!empty($data['sections']['claims']['records'])) {
+foreach ($data['sections']['claims']['records'] as $claimRecord) {
 
-if ($data['sections']['claims']['records'][$thisRecord]['type'] == 'A condition, injury or illness that started over a period of time and is not related to a specific incident or accident') {
+if ($claimRecord['type'] == 'A condition, injury or illness that started over a period of time and is not related to a specific incident or accident') {
 
 
 $emailContent .= '
@@ -415,7 +415,7 @@ $emailContent .= '
 '.@$claimRecord['exposure-date']['substances'].'
 
 #Chemical Exposure - date of first exposure?
-'.@$claimRecord['exposure-date']['day'].' / '.$claimRecord['exposure-date']['month'].' / '.$claimRecord['exposure-date']['year'].'
+'.@$claimRecord['exposure-date']['day'].' / '.@$claimRecord['exposure-date']['month'].' / '.@$claimRecord['exposure-date']['year'].'
 
 #Chemical Exposure - length of exposure?
 '.@$claimRecord['exposure-date']['length'].'
@@ -766,7 +766,7 @@ $emailContent .= '
 
 ';
 
-if (!empty($data['sections']['claim']['records'])) {
+if (!empty($data['sections']['medical-treatment']['records'])) {
 foreach ($data['sections']['medical-treatment']['records'] as $medicalRecord) {
 
 $emailContent .= '
@@ -992,7 +992,7 @@ $emailContent .= '
 
 
 
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 
@@ -1032,9 +1032,9 @@ $fullContent = returnData($data);
 
 
 
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 
 
 

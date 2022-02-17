@@ -162,16 +162,22 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
+
+                                <p class="govuk-heading-xl">Your bank details</p>
+
+                                <p class="govuk-body">Telling us your bank details now means we can make a payment faster if your claim is successful.</p>
+
+<p class="govuk-body">If you do not want to give details now, we’ll get in touch with you after your claim is assessed.</p>
+
+<div class="govuk-inset-text">
+ <strong>Serving Personnel:</strong> We’ll pay any money you are due into the account your salary is paid into.
+
+</div>
+
+
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Providing your bank account details</h1>
+                                <h1 class="govuk-heading-l">Do you want to tell us your bank details now?</h1>
     </legend>
-                                <p class="govuk-body">Providing your bank account details now will speed up the payment process if your claim is successful.
-                       If you would prefer not to provide your account details now, we will contact you again if any money
-                       is due to you after your claim is assessed.  This may mean any payment due could take longer to be received.</p>
-                       <p class="govuk-body">
-                           <strong>Note for Serving Personnel only:</strong>
-                           If you are currently serving and receive your pay via the JPA system, we will pay any money due into the account your salary is paid into.
-                       </p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -192,7 +198,7 @@ echo $errorMessage;
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/payment-details/bank-details/bank-details-no-i-am-still-serving-so-any-payments-will-be-made-into-my-j-p-a-salary-account" name="/payment-details/bank-details/bank-details" type="radio"
            value="No I am still serving so any payments will be made into my JPA salary account"    {{$providebankchk['No I am still serving so any payments will be made into my JPA salary account'] ?? ''}}         >
-    <label class="govuk-label govuk-radios__label" for="/payment-details/bank-details/bank-details-no-i-am-still-serving-so-any-payments-will-be-made-into-my-j-p-a-salary-account">No I am still serving so any payments will be made into my JPA salary account</label>
+    <label class="govuk-label govuk-radios__label" for="/payment-details/bank-details/bank-details-no-i-am-still-serving-so-any-payments-will-be-made-into-my-j-p-a-salary-account">No - I am still serving so any payments will be made into my JPA salary account</label>
 </div>
 
                             <div class="govuk-radios__item">

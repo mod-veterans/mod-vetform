@@ -116,7 +116,7 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-                                <h1 class="govuk-heading-xl">Please tell us the amount of any payment you received</h1>
+                                <h1 class="govuk-heading-xl">How much did you get?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$amount['error']}}">

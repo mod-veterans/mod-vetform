@@ -162,6 +162,7 @@ echo $errorMessage;
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Have you ever been paid any of the following?</h1>
+                                <p class="govuk-body">These schemes make payments for certain illnesses caused by exposure to asbestos and dust.</p>
   </legend>
                        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                          <li>Diffuse Mesothelioma 2014 Scheme</li>

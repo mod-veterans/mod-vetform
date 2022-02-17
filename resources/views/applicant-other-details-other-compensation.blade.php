@@ -158,8 +158,30 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">Are you claiming for or have you received compensation payments from other sources?</h1>
-                                <p class="govuk-body">You only need to tell us about compensation for the medical conditions you are claiming for on this application.</p>
+                                <h1 class="govuk-heading-xl">Other compensation payments</h1>
+                                <p class="govuk-body">We need to know about other compensation payments you’ve claimed or received for the conditions on this application.</p>
+                                <div class="govuk-inset-text">
+                                  You do not need to tell us about previous Armed Forces Compensation Scheme or War Pension payments.
+                                </div>
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      Compensation types we need to know about
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+<ul>
+    <li>Any payments from MOD for criminal injuries.</li>
+<li>Civil negligence payments received from the courts.</li>
+<li>Compensation from civil authorities in Great Britain and Northern Ireland for criminal injuries.</li>
+<li>Any other compensation payments received for the medical conditions you are claiming for. </li>
+</ul>
+  </div>
+</details>
+
+
+
          <p class="govuk-body">Compensation includes any payments from MOD for criminal injuries or civil negligence payments received via the courts.  It includes compensation from civil authorities in Great Britain and Northern Ireland for criminal injuries or any other compensation payments received for the medical conditions you are claiming for.  You do not need to tell us about previous Armed Forces Compensation Scheme or War Pension payments.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
@@ -168,9 +190,8 @@ echo $errorMessage;
     <a id="/other-compensation/received-compensation/received-compensation"></a>
     <fieldset class="govuk-fieldset">
                                     <legend
-                    class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
-                    <h1 class
-                    ="govuk-fieldset__heading">Are you claiming for or have you received compensation payments from other sources? (required)</h1>
+                    class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h1 class="govuk-fieldset__heading">Have you claimed or received other compensation payments?</h1>
                 </legend>
 @php echo $compensation['errorLabel']; @endphp
                                             <div
