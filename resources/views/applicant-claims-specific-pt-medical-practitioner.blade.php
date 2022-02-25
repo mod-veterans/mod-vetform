@@ -33,7 +33,6 @@ $town = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $county = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $country = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $postcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$telephone = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $email = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 
@@ -72,7 +71,6 @@ if (empty($_POST)) {
         $county['data']              = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital-address']['county'];
         $country['data']             = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital-address']['country'];
         $postcode['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital-address']['postcode'];
-        $telephone['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital-address']['telephone'];
         $email['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital-address']['email'];
 
 
@@ -95,8 +93,7 @@ if (!empty($_POST)) {
     $county['data'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__county']);
     $country['data'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__country']);
     $postcode['data'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__postcode']);
-    $address1['data'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-number']);
-    $address1['data'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-email']);
+    $email['data'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-email']);
 
 
 
@@ -153,12 +150,6 @@ if (!empty($_POST)) {
 
     } else {
         $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital-address']['postcode'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__postcode']);
-    }
-
-    if (empty($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-number'])) {
-
-    } else {
-        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital-address']['telephone'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-number']);
     }
 
 
@@ -881,18 +872,7 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
                   value="{{$postcode['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-number">
-        Telephone number
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-number" name="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-number" type="tel"
-         autocomplete="tel"
-           inputmode="numeric" pattern="[0-9]*"
-                value="{{$telephone['data']}}"
-            >
-</div>
+
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-email">
         Email address

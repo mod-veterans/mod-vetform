@@ -167,6 +167,12 @@ echo $errorMessage;
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
+           value="Travelling to/from home and duty"     {{$journeyreasonchk['Travelling to/from home and duty'] ?? ''}}        >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)">Travelling to/from home and duty</label>
+</div>
+
+                            <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)" name="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason" type="radio"
            value="Personal (non-duty/off-duty)"     {{$journeyreasonchk['Personal (non-duty/off-duty)'] ?? ''}}        >
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-personal(non-duty/off-duty)">Personal (non-duty/off-duty)</label>
 </div>

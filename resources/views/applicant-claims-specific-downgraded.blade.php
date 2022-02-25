@@ -89,6 +89,12 @@ if (!empty($_POST)) {
                 $theURL = '/applicant/claims/specific/why-related';
             break;
 
+            case "Dont Know":
+                $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded'] = 'Dont Know';
+                $downgradedchk['Dont Know'] = ' checked';
+                $theURL = '/applicant/claims/specific/why-related';
+            break;
+
 
             default:
                 die('unexpected input');
@@ -174,9 +180,9 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Were you downgraded? </h1>
+                                <h1 class="govuk-heading-xl">Were you medically downgraded? </h1>
   </legend>
-                                <p class="govuk-body">Tell us only about the conditions you are claiming for.</p>
+                                <p class="govuk-body">Tell us only about downgrading for the medical conditions you are claiming for.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$downgraded['error'] ?? ''}} ">
@@ -199,10 +205,16 @@ echo $errorMessage;
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-downgraded/claim-illness-downgraded-no">No</label>
 </div>
 
+
+                            <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/claim-details/claim-downgraded/claim-illness-downgraded-dontknow" name="/claim-details/claim-downgraded/claim-illness-downgraded" type="radio"
+           value="Dont Know"    {{$downgradedchk['Dont Know'] ?? ''}}        >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-downgraded/claim-illness-downgraded-dontknow">Don't Know</label>
+</div>
+
                     </div>
     </fieldset>
 </div>
-
 
 
                 <div class="govuk-form-group">

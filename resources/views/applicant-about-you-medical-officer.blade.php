@@ -247,7 +247,7 @@ If you’re not registered with a surgery or practice, please write "Not Registe
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/contact-name">
-        Doctor's full name
+        Doctor's full name (if known)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
@@ -889,7 +889,7 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
 
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/contact-number">
-        Telephone number
+        Telephone number (include country code if overseas)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

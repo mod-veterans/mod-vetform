@@ -190,7 +190,7 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">When did your downgrading end?</h1>
     </legend>
-    <p class="govuk-body">If you were downgraded and upgraded more than once, enter the date you were first downgraded.<br /><br />For example 27 3 2007. If you can’t remember, enter an approximate year.</p>
+    <p class="govuk-body">If you were downgraded and upgraded more than once, enter the date your last downgrading ended.<br /><br />For example 27 3 2007. If you can’t remember, enter an approximate year.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$datetoday['error'] ?? ''}} {{$datetoyear['error'] ?? ''}} ">
@@ -208,11 +208,6 @@ echo $errorMessage;
 
     <fieldset class="govuk-fieldset">
 @php echo $datetoyear['errorLabel']; @endphp
-        <div class="govuk-fieldset__legend govuk-fieldset__legend--s">
-            <h2 class="govuk-fieldset__heading govuk-!-font-weight-regular">
-                Date to
-            </h2>
-        </div>
 
         <div class="govuk-date-input" id="/claim-details/claim-downgraded-dates/date-to">
                                                 <div class="govuk-date-input__item">

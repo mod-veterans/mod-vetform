@@ -90,6 +90,14 @@ if (!empty($_POST)) {
             break;
 
 
+            case "Dont Know":
+                $data['sections']['claims']['records'][$thisRecord]['downgraded'] = 'Dont Know';
+                $downgradedchk['Dont Know'] = ' checked';
+                $theURL = '/applicant/claims/non-specific/why-related';
+            break;
+
+
+
             default:
                 die('unexpected input');
             break;
@@ -174,9 +182,9 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Were you downgraded?</h1>
+                                <h1 class="govuk-heading-xl">Were you medically downgraded?</h1>
   </legend>
-                                <p class="govuk-body">Tell us only about the conditions you’re claiming for.</p>
+                                <p class="govuk-body">Tell us only about downgrading for the medical conditions you’re claiming for.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$downgraded['error'] ?? ''}} ">
@@ -193,11 +201,18 @@ echo $errorMessage;
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-downgraded/claim-illness-downgraded-yes">Yes</label>
 </div>
 
-                            <div class="govuk-radios__item">
+<div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-downgraded/claim-illness-downgraded-no" name="/claim-details/claim-downgraded/claim-illness-downgraded" type="radio"
            value="No"    {{$downgradedchk['No'] ?? ''}}        >
     <label class="govuk-label govuk-radios__label" for="/claim-details/claim-downgraded/claim-illness-downgraded-no">No</label>
 </div>
+
+<div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/claim-details/claim-downgraded/claim-illness-downgraded-dontknow" name="/claim-details/claim-downgraded/claim-illness-downgraded" type="radio"
+           value="Dont Know"    {{$downgradedchk['Dont Know'] ?? ''}}        >
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-downgraded/claim-illness-downgraded-dontknow">Don't Know</label>
+</div>
+
 
                     </div>
     </fieldset>

@@ -140,6 +140,13 @@ echo $errorMessage;
     </label>
 @php echo $condition['errorLabel']; @endphp
     <div id="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint" class="govuk-hint">You can claim for any medical condition you think is related to your service.  If you have a specific diagnosis, please include it here, for example, deafness, osteoarthritis.<br /><br />Tell us which side of the body is affected if needed, for example, deafness left ear.</div>
+
+
+<div class="govuk-inset-text">
+We will ask you why your conditions are caused by your service later.
+</div>
+
+
 <textarea class="govuk-textarea govuk-js-character-count" id="/claim-details/claim-illness-condition/claim-illness-claiming-for"
                   name="/claim-details/claim-illness-condition/claim-illness-claiming-for" rows="5" maxlength="500"
                                     aria-describedby="with-hint-info /claim-details/claim-illness-condition/claim-illness-claiming-for-hint">{{$condition['data'] ?? ''}}</textarea>

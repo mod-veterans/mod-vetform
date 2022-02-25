@@ -108,7 +108,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness">Please tell us what type of medical condition, injury or illness you are claiming for</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness">Please tell us what type of medical condition, injury or illness are you claiming for</a>';
         $claim['error'] = 'govuk-form-group--error';
         $claim['errorLabel'] =
         '<span id="/claim-details/claim-illness/claim-illness-error" class="govuk-error-message">

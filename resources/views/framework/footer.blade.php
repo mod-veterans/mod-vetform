@@ -15,7 +15,7 @@
                         </a>
                     </li>
                     <li class="govuk-footer__inline-list-item">
-                        <a class="govuk-footer__link" href="/privacy-policy">
+                        <a class="govuk-footer__link" href="https://www.gov.uk/government/publications/ministry-of-defence-privacy-notice/mod-privacy-notice" target="_New">
                             Privacy
                         </a>
                     </li>

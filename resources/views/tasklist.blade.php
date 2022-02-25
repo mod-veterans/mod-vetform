@@ -102,7 +102,7 @@ if ($data = getData($userID)) {
                                 <span class="app-task-list__task-name">
                                                                             <a href="/applicant/nominate-a-representative" class="govuk-link"
                                            aria-describedby="eligibility-status">
-                                        Do you want to nominate a representative?
+                                        Nominating a representative
                                     </a></span>
    @php
   if (!empty($data['sections']['nominate-representative']['completed'])) {

@@ -254,7 +254,12 @@ if (!empty($_POST)) {
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Details of the hospital or facility that treated you</h1>
  </legend>
-                                <p class="govuk-body">You can leave blank any sections you can’t remember.</p>
+ <p class="govuk-body">Tell us about the hospital that treated you, even if it has since closed down.</p>
+
+<div class="govuk-inset-text">
+You can leave blank any sections you can’t remember.
+</div>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

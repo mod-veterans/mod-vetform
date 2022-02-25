@@ -95,10 +95,13 @@ $claimList = '';
                                 <h1 class="govuk-heading-xl">Claim details</h1>
                                 <p class="govuk-body">
                                                                        You can use this section to make one or more claims for different injuries, illnesses or conditions caused by your service.</p>
-                                                                       <p class="govuk-body">
-If you have multiple injuries caused by one accident or incident, include these in a single claim.
+<p class="govuk-body">Make a separate claim for each injury, illness or condition with a different cause.</p>
 
-                                                                </p>
+<div class="govuk-inset-text">
+You’ll be asked if you want to ‘add another claim’ at the end of this section.
+</div>
+
+
 
                          <dl class="govuk-summary-list">
 @php

@@ -145,7 +145,7 @@ echo $errorMessage;
 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What is your rank?</h1>
 </legend>
-                                <p class="govuk-body">Rank on discharge or current rank if still serving.</p>
+                                <p class="govuk-body">Rank on discharge from this period of service or current rank if still serving.</p>
 <p class="govuk-body">For example, Private, SSgt.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

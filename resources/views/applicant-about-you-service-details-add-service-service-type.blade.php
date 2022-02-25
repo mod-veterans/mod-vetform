@@ -162,6 +162,7 @@ echo $errorMessage;
 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What was/is your service type?</h1>
 </legend>
+<p class="govuk-body">For this period of service</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$servicetype['error']}}">

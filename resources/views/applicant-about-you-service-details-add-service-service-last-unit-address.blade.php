@@ -235,7 +235,7 @@ echo $errorMessage;
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
-     You must read this text information if the person applying served in or supported the Special Forces
+     You must read this text information if the person applying has ever served in or supported the Special Forces
     </span>
   </summary>
   <div class="govuk-details__text">

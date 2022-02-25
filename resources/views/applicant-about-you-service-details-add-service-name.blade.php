@@ -246,7 +246,7 @@ echo $errorMessage;
       <div class="govuk-radios__conditional {{$numHidden ?? ''}}" id="conditional-contact">
         <div class="govuk-form-group">
           <label class="govuk-label" for="contact-by-email">
-            Tell us the names you used during this period of service.
+            Tell us the names on your service records for this period of service.  We do not need to know about nicknames.
           </label>
           @php echo $nameinservice['errorLabel']; @endphp
                  <input

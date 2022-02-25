@@ -47,6 +47,20 @@ Route::match(['get', 'post'],'/applicant', function () {
     return view('applicant');
 });
 
+Route::match(['get', 'post'],'/applicant/epaw', function () {
+    return view('applicant-about-you-apply-yourself-epaw-reference');
+});
+
+Route::match(['get', 'post'],'/applicant/legal-authority/epaw', function () {
+    return view('applicant-legal-authority-epaw-reference');
+});
+
+Route::match(['get', 'post'],'/applicant/helper/epaw', function () {
+    return view('applicant-helper-epaw-reference');
+});
+
+
+
 Route::match(['get', 'post'],'/applicant/check-answers', function () {
     return view('applicant-check-answers');
 });

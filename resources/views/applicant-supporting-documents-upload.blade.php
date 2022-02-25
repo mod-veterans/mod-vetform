@@ -1,3 +1,10 @@
+<?php
+namespace App\Http\Controllers;
+use App\Services\Application;
+use App\Services\Forms\BaseForm;
+use Illuminate\Support\Facades\Storage;
+?>
+
 @include('framework.functions')
 @php
 
@@ -97,7 +104,13 @@ if (!empty($_FILES)) {
 
 
 
-        //THIS IS WHERE AWS HOOK WILL GO
+        //AWS HOOK
+
+        $rand = genHash();
+
+        Storage::disk('s3')->put($rand.$filename, file_get_contents($filepath));
+
+        $fileURL = Storage::disk('s3')->url($rand.$filename);
 
 
         //END AWS
@@ -111,10 +124,7 @@ if (!empty($_FILES)) {
         $data['sections']['supporting-documents']['files'][$hash]['type'] = $filetype;
         $data['sections']['supporting-documents']['files'][$hash]['path'] = $filepath;
         $data['sections']['supporting-documents']['files'][$hash]['size'] = $filesize;
-
-
-
-
+        $data['sections']['supporting-documents']['files'][$hash]['downloadURL'] = $fileURL;
 
 
         //store our changes
@@ -157,26 +167,44 @@ if (!empty($_FILES)) {
  @php echo $errorMessage; @endphp
 
                                  <h1 class="govuk-heading-xl">Upload a document</h1>
-                                <p class="govuk-body" id="/documents/document/file-hint">You can upload PDF, PNG, JPG or DOCX files.  Apple users - please do not upload .heic image files.</p>
-    <p class="govuk-body">Your file must be no larger than 5Mb</p>
+                                <p class="govuk-body" id="/documents/document/file-hint">You can upload an existing file or image from your device.</p>
 
-    <p class="govuk-body">Please upload one file or document at a time.</p>
+<p class="govuk-body">You can only upload PDF, PNG, JPG or DOCX files.</p>
 
-<p class="govuk-body"><strong>Note for those serving or having served in Special Forces:</strong>  You must seek EPAW approvals before uploading any documents.</p>
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+
+
+<ul class="govuk-list govuk-list--bullet">
+<li>Your file must be no larger than 5Mb.</li>
+<li>Apple users -do not upload .heic image   files.</li>
+<li>Only upload one file or document at a time.</li>
+</ul>
+
+
+  </strong>
+</div>
+
+
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+     You must read this text information if the person applying has ever served in or supported the Special Forces
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing  <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
+  </div>
+</details>
+
 
             <form method="post" enctype="multipart/form-data">
             @csrf
-<div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="61668e5b351ab" name="/applicant/supporting-documents-upload/confirm-check" type="checkbox"
-           value="None of the above"  required>
-    <label class="govuk-label govuk-checkboxes__label" for="61668e5b351ab">I have checked the documents/file are the ones I intend to upload.  The documents/files I am uploading are intended solely to support my application and are in accordance with this service’s <a href="#">terms and conditions of use</a>.</label>
-</div>
-                    </div>
-    </fieldset>
-</div>
 
 
-                                                    <div class="govuk-form-group {{$fileupload['error']}} ">
+    <div class="govuk-form-group {{$fileupload['error']}} ">
     <label class="govuk-label" for="/documents/document/file">
         <span class="govuk-visually-hidden">Upload file</span>
     </label>

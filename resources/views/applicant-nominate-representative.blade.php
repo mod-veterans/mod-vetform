@@ -160,7 +160,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">Nominate a representative</h1>
+                                <h1 class="govuk-heading-xl">Nominating a representative</h1>
 
                                 <p class="govuk-body">If someone is helping you make a claim, for example a charity welfare officer or a solicitor, you can make them your representative. This means they can ask us how your claim is progressing. They will also receive copies of all letters we send you. </p>
 

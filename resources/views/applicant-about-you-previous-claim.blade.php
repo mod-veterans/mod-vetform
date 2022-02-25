@@ -69,7 +69,7 @@ if (!empty($_POST)) {
             case "No":
                 $data['sections']['about-you']['previous-claim'] = 'No';
                 $nominatechk['No'] = ' checked';
-                $theURL = '/applicant/about-you/epaw-reference';
+                $theURL = '/applicant/about-you/save-return';
             break;
 
 

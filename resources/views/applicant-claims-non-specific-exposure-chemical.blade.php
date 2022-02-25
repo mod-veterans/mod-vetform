@@ -151,7 +151,7 @@ echo $errorMessage;
                                     <div class="govuk-form-group {{$exposureyear['error'] ?? ''}} ">
  <div class="govuk-form-group">
         <label class="govuk-label" for="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition">
-       Tell us what substances you’ve been exposed to, when this happened and how long for.
+       Tell us what substances you’ve been exposed to, the dates this happened and how long for.
     </label>
 
 <details class="govuk-details" data-module="govuk-details">
@@ -166,7 +166,7 @@ If the person named in this application is serving or has served in with United 
 </details>
 
                 <textarea class="govuk-textarea " id="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition"
-                  name="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition" rows="5"
+                  name="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition" rows="3"
                                     aria-describedby="">{{$exposuresubstances['data'] ?? ''}}</textarea>
   <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
     You can enter up to 200 characters

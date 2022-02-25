@@ -186,7 +186,7 @@ echo $errorMessage;
             Telephone number
           </label>
           @php echo $telephone['errorLabel']; @endphp
-    <div id="afcs/about-you/personal-details/contact-number/mobile-number-hint" class="govuk-hint">For overseas numbers include the country code, for example +44</div>
+    <div id="afcs/about-you/personal-details/contact-number/mobile-number-hint" class="govuk-hint">For overseas numbers include the country code, for example +49</div>
                  <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-number/mobile-number" name="afcs/about-you/personal-details/contact-number/mobile-number" type="tel"

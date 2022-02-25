@@ -36,8 +36,8 @@ if (count($data['sections']['supporting-documents']['files']) < 1) {
 
             <div class="govuk-summary-list__row">
                         <dt class="govuk-summary-list__value">
-                                                                                                '.$file['name'].'
-                                                                                    </dt>
+                        '.$file['name'].'
+                        </dt>
                         <dd class="govuk-summary-list__actions">
                             <a class="govuk-link govuk-warning govuk-!-margin-right-5"
                                href="/applicant/supporting-documents/manage?deleteFile='.$k.'">Delete</a>
@@ -76,8 +76,20 @@ if (count($data['sections']['supporting-documents']['files']) < 1) {
             Or
             <br />
             <br />
-            <a class="govuk-button" href="/applicant/supporting-documents/comments">Save and continue</a>
+<form action="/applicant/supporting-documents/comments">
+<div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="61668e5b351ab" name="/applicant/supporting-documents-upload/confirm-check" type="checkbox"
+           value="None of the above"  required>
+    <label class="govuk-label govuk-checkboxes__label" for="61668e5b351ab">I have checked the documents/file are the ones I intend to upload.  The documents/files I am uploading are intended solely to support my application and are in accordance with this service’s <a href="#">terms and conditions of use</a>.</label>
+</div>
+                    </div>
+    </fieldset>
+</div>
+
+
+            <button class="govuk-button" href="">Save and continue</button>
         </div>
+</form>
             </div>
         </div>
     </main>

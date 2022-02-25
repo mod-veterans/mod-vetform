@@ -128,7 +128,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
                                 <h1 class="govuk-heading-xl">What is your National Insurance number?</h1>
-                                <p class="govuk-body">The national insurance number of the person with the injury, illness or disability.</p>
+                                <p class="govuk-body">The UK national insurance number of the person with the injury, illness or disability.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$ninumber['error']}} ">

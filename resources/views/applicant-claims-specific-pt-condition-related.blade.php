@@ -135,7 +135,7 @@ if (!empty($_POST)) {
                                   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                                   <strong class="govuk-warning-text__text">
                                     <span class="govuk-warning-text__assistive">Warning</span>
-                                    Do not include specific operational details.
+                                    Do not include specific operational details (OPSEC).
                                   </strong>
                                 </div>
                                 <p class="govuk-body">You can use this section to explain the impact the conditions have on you.</p>
@@ -174,6 +174,9 @@ If the person named in this application is serving or has served in with United 
   </div>
         </div>
 
+<div class="govuk-inset-text">
+If you’ve been affected by recalling your experiences, information on support available is on our <a href="https://www.gov.uk/guidance/urgent-help-for-veterans">website</a>.
+</div>
 
 
                 <div class="govuk-form-group">

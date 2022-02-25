@@ -874,7 +874,7 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-number">
-        Telephone number
+        Telephone number (if known)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
@@ -886,7 +886,7 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-email">
-        Email address
+        Email address (if known)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

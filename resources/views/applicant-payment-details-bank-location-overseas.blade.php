@@ -912,17 +912,6 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
             </select>
 </div>
 
-                                                    <div class="govuk-form-group ">
-    <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-name">
-        Name of account holder
-    </label>
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="/payment-details/bank-overseas/bank-account-holder" name="/payment-details/bank-overseas/bank-account-holder" type="text"
-         autocomplete="name"
-                  value="{{$nameonaccount['data']}}"
-            >
-</div>
 
 
                                                     <div class="govuk-form-group ">
@@ -1003,7 +992,7 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="100">
     <div class="govuk-form-group">
         <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-confirmation">
-        If this is not your bank account, please tell us whose account it is and why you have chosen to have payments made into it.
+        If this is not your account, tell us whose account it is and why you want to use it.
     </label>
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/payment-details/bank-overseas/bank-account-confirmation"
                   name="/payment-details/bank-overseas/bank-account-confirmation" rows="5" maxlength="100"

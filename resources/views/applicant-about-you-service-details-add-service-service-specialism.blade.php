@@ -146,6 +146,11 @@ echo $errorMessage;
                                 <h1 class="govuk-heading-xl">What was/is your trade or specialism?</h1>
  </legend>
                                 <p class="govuk-body">For example, infantry soldier, electrician, pilot.</p>
+
+<div class="govuk-inset-text">
+If you had more than one trade or specialism, list them here.
+</div>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$specialism['error']}} ">

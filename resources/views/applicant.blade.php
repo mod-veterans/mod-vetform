@@ -44,19 +44,19 @@ if (!empty($_POST)) {
 
             case "The person named on this claim is making the application.":
                 $data['sections']['applicant-who']['who is making this application'] = 'The person named on this claim is making the application.';
-                $location = '/applicant/check-answers';
+                $location = '/applicant/epaw';
             break;
 
 
             case "I am making an application for someone else and I have legal authority to act on their behalf.":
                 $data['sections']['applicant-who']['who is making this application'] = 'I am making an application for someone else and I have legal authority to act on their behalf.';
-                $location = '/applicant/legal-authority';
+                $location = '/applicant/legal-authority/epaw';
             break;
 
 
             case "I am helping someone else make this application.":
                 $data['sections']['applicant-who']['who is making this application'] = 'I am helping someone else make this application.';
-                $location = '/applicant/helper/name';
+                $location = '/applicant/helper/epaw';
             break;
 
         }
@@ -153,7 +153,7 @@ echo $errorWhoLabel;
            value="I am making an application for someone else and I have legal authority to act on their behalf."     @php echo @$application_who['I am making an application for someone else and I have legal authority to act on their behalf.']; @endphp        >
     <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-i-am-making-an-application-on-behalf-of-the-person-named-claim-on-this-and-i-have-legal-authority-to-act-on-their-behalf.">I'm applying for someone else.</label>
 <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-        I’m a registered appointee or power of attorney.
+        I have power of attorney or other legal authority.
       </div>
 </div>
 
@@ -162,7 +162,7 @@ echo $errorWhoLabel;
            value="I am helping someone else make this application."     @php echo @$application_who['I am helping someone else make this application.']; @endphp       >
     <label class="govuk-label govuk-radios__label" for="/applicant/applicant-selection/nominated-applicant-i-am-helping-someone-else-make-this-application.">I'm helping someone apply</label>
 <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
-        The applicant is giving me the answers and I'm helping them with their application.
+        The applicant is giving me their answers and I'm helping them apply.
       </div>
 </div>
 

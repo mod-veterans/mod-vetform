@@ -136,7 +136,8 @@ echo $errorMessage;
                                 <h1 class="govuk-heading-xl">What medical condition(s) are you claiming for?</h1>
     </legend>
                                 <p class="govuk-body">You can claim for any medical condition you think is related to your service.</p>
-<p class="govuk-body">If you have a specific medical diagnosis, include it here, for example, head injury, fracture L5 vertebrae.</p>
+<p class="govuk-body">If you have a specific medical diagnosis, include it here, for example, head injury, fracture L5 vertebrae. We will ask you why your conditions are caused by your service later.
+
 
 <div class="govuk-inset-text">
 Please enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.
