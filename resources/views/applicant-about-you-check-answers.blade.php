@@ -146,17 +146,6 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Do you have a mobile telephone number?</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['telephonenumber']['doyouhavemobile'] ?? ''}}
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/about-you/telephone-number/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/contact-number/mobile-number">Change<span
-                        class="govuk-visually-hidden"> Mobile telephone number</span></a>
-            </dd>
-        </div>
-
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Do you have a mobile telephone number?</dt>
-            <dd class="govuk-summary-list__value">
             @php
             if ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'No') { echo 'No';}
             elseif ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'Yes') { echo $data['sections']['about-you']['telephonenumber']['mobile']; }
@@ -183,11 +172,11 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> alternative number</span></a>
             </dd>
         </div>
-        @if(!empty($data['sections']['about-you']['telephonenumber']['email']))
+        @if(!empty($data['sections']['about-you']['email']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What is your email address</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['telephonenumber']['email']}}
+                                    {{$data['sections']['about-you']['email']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/email-address/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/email-address/email-address">Change<span

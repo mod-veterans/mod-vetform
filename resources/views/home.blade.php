@@ -5,35 +5,49 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Apply for an Armed Forces Compensation or War Pension Payment</h1>
-                                <p class="govuk-body">Apply for an <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">Armed Forces Compensation Scheme</a> or <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">War Pension Scheme</a> payment for injury, illness or disablement related to service in the UK armed forces.</p>
-<p class="govuk-body">There is one claim process for both schemes. </p>
-<p class="govuk-body">You can make more than one claim for different injuries or illnesses in a single application.</p>
-<p class="govuk-body">Use this service for new claims.  If you have already received a payment or want to appeal a previous decision, please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact Veterans UK</a>.</p>
+                                <p class="govuk-body">Make a claim under the <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">Armed Forces Compensation Scheme</a> or <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">War Pension Scheme</a>.</p>
+<p class="govuk-body">You can get a payment for injury or illness related to UK Armed Forces service.</p>
+<p class="govuk-body">
+<strong>You can:</strong><br />
+</p>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>Make a claim for any physical or mental health condition related to service. You do not need to know which scheme applies</li>
+        <li>Make one or more claims for injuries or illnesses with different causes in one easy application</li>
+    </ul>
 
 <p class="govuk-body">
-<strong>Apply online</strong><br />
-You’ll be asked about:</p>
+<strong>You'll be asked about:</strong><br />
+</p>
     <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-        <li>Your own details, including your national insurance number.</li>
-        <li>Anyone helping you make a claim, for example a charity or welfare adviser.</li>
-        <li>Your armed forces service, including dates you served, if you know them.</li>
-        <li>The illness, injury or disablements you are claiming for and why you think they are related to your armed forces service.</li>
-        <li>Your doctor’s details and, if you have them, details of any hospitals that have treated you for the medical conditions you are claiming for.</li>
-        <li>Any other compensation or benefits you receive or have received for the medical conditions you are claiming for.</li>
-        <li>Your bank account details.</li>
+        <li>Anyone helping you make a claim, for example a charity or welfare adviser</li>
+        <li>Your own details, including your national insurance number</li>
+        <li>Your armed forces service, including dates you served, if you know them</li>
+        <li>The illness or injury you’re claiming for and why you think they are related to your armed forces service</li>
+        <li>Your doctor’s details and, if you have them, details of any hospitals that have treated you for the medical conditions you’re claiming for</li>
+        <li>Any other compensation or benefits you receive or have received for the conditions you’re claiming for</li>
+        <li>Your bank account details</li>
     </ul>
-<p class="govuk-body">You don't need to get any new information you do not already have. Veterans UK can't refund any costs involved if you do this.</p>
 
 
+<p class="govuk-body">Gather any details or documents you need in advance - this will make it faster to answer the questions.</p>
 
-        <p class="govuk-body"><strong>Note for those serving or having served in Special Forces:</strong> If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
-        </p>
+<div class="govuk-inset-text">
+You do not need to get any new information you do not already have. Veterans UK cannot refund any costs involved if you do this.
+</div>
 
+<p class="govuk-body"><strong>What you'll need to apply:</strong></p>
+<p class="govuk-body">An email address. If you don’t have one, you can make a claim by post.</p>
 
-
-
-
-
+<details class="govuk-details" data-module="govuk-details">
+  <summary class="govuk-details__summary">
+    <span class="govuk-details__summary-text">
+      You must read this text information if the person applying has ever served in or supported the Special Forces
+    </span>
+  </summary>
+  <div class="govuk-details__text">
+If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
+  </div>
+</details>
 
 
 
@@ -46,23 +60,26 @@ You’ll be asked about:</p>
             </svg>
         </a>
 
-        <p class="govuk-body">
-        <a href="/restore-application" class="govuk-link">Return to an application already started</a>
-        </p>
-
         <h2>Help with making a claim</h2>
         <p class="govuk-body">
 You can get help with making a claim by contacting the <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">Veterans UK helpline</a> or <a href="https://www.gov.uk/guidance/veterans-welfare-service" target="_New">Veterans Welfare Service</a>.  The welfare service can arrange an appointment to provide one to one help if needed.</p>
 
-<p class="govuk-body">You don’t need a paid representative such as a solicitor or claims management company to apply for compensation. Free independent advice is available from the <a href="https://www.gov.uk/guidance/veterans-welfare-service" target="_New">Veterans Welfare Service</a> or charitable organisations.</p>
+<div class="govuk-inset-text">
+You do not need a paid representative such as a solicitor or claims management company to apply. Free independent advice is available from the <a href="https://www.gov.uk/guidance/veterans-welfare-service" target="_New">Veterans Welfare Service</a> or charitable organisations.
+</div>
 
-<h2>Other ways to claim</h2>
-<p class="govuk-body">You can claim by filling in a paper claim form and sending it to <a href="https://www.gov.uk/government/organisations/veterans-uk" target="_New">Veterans UK</a>.  You can either:</p>
-<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-    <li>Download a claim form from the <a href="https://www.gov.uk/guidance/war-pension-scheme-wps" target="_New">War Pension Scheme</a> or <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs" target="_New">Armed Forces Compensation Scheme</a> pages on GOV.UK; or</li>
-<li>Request a paper claim form and reply-paid envelope from the <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">Veterans UK helpline</a></li>
 
-        </ul>
+
+<h2>Making a claim by post</h2>
+<p class="govuk-body">You can claim by filling in a paper claim form and sending it to <a href="https://www.gov.uk/government/organisations/veterans-uk" target="_New">Veterans UK</a>.</p>
+
+<p class="govuk-body">You can download a claim form to print out from the <a href="https://www.gov.uk/guidance/war-pension-scheme-wps" target="_New">War Pension Scheme</a> or <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs" target="_New">Armed Forces Compensation Scheme</a> GOV.UK pages.</p>
+
+
+<div class="govuk-inset-text">
+If you cannot download or print the form, the <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">Veterans UK helpline</a> can send you a form with a pre-paid envelope to return it.
+</div>
+
             </div>
         </div>
     </main>

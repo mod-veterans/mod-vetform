@@ -8,7 +8,7 @@ use App\Services\Notify;
 $userID = $_SESSION['vets-user'];
 $data = getData($userID);
 $content = '';
-$reference_number = 'AFCS/MOD/'.$data['settings']['customer_ref'];
+$reference_number = 'WPS/AFCS/MOD/'.$data['settings']['customer_ref'];
 
 
 
@@ -208,7 +208,7 @@ $emailContent .= '
 '.@$data['sections']['about-you']['telephonenumber']['doyouhavealternative'].' '.@$data['sections']['about-you']['telephonenumber']['telephone'].'
 
 #What is your email address
-'.@$data['sections']['about-you']['telephonenumber']['email'].'
+'.@$data['sections']['about-you']['email'].'
 
 #NI Number
 '.@$data['sections']['about-you']['ninumber'].'

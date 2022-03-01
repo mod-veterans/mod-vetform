@@ -34,7 +34,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
-                                <h2 class="govuk-heading-m">Medical Officer</h2>
+                                <h2 class="govuk-heading-m">Doctor's details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Medical Officer or GP&#039;s full name (if known)</dt>

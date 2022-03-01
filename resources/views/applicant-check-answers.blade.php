@@ -1,9 +1,13 @@
 @include('framework.functions')
 @php
 
-if (!empty($_POST)) {
+
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
+
+
+if (!empty($_POST)) {
+
 
     $data['sections']['applicant-who']['completed'] = TRUE;
 
@@ -36,6 +40,37 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Who is making this application?</span></a>
             </dd>
         </div>
+
+
+        @if(!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['served']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Express Prior Authority in Writing (EPAW) reference</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['applicant-who']['apply-yourself']['epaw']['served']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/epaw/?return=/applicant/check-answers">Change<span
+                        class="govuk-visually-hidden"> PExpress Prior Authority in Writing (EPAW) reference</span></a>
+            </dd>
+        </div>
+        @endif
+         @if(!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">EPAW reference number</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'] ?? 'not served with Special Forces'}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/epaw?return=/applicant/check-answers">Change<span
+                        class="govuk-visually-hidden">EPAW reference number</span></a>
+            </dd>
+        </div>
+        @endif
+
+
+
+
+
     </dl>
 
 

@@ -26,6 +26,8 @@
 
     if (!empty($data['sections']['service-details']['records'])) {
 
+        $nother = 'nother';
+
 
         $serviceList = '';
         foreach ($data['sections']['service-details']['records'] as $k=>$curService) {
@@ -97,7 +99,7 @@
 
                 <div class="govuk-form-group govuk-!-margin-top-4">
             <a class="govuk-button" href="/applicant/about-you/service-details/add-service/name?servicerecord={{$lastRecID}}">
-                Add a period of service
+                Add a{{$nother ?? ''}} period of service
             </a>
             <br>
             <a class="govuk-link" href="/tasklist">Return to Task List</a>
@@ -130,7 +132,7 @@ You can add as many periods of service in this section as needed. You’ll be as
 
                 <div class="govuk-form-group govuk-!-margin-top-4">
             <a class="govuk-button" href="/applicant/about-you/service-details/add-service/name">
-                Add a period of service
+                Add a{{$nother ?? ''}} period of service
             </a>
             <br>
             <a class="govuk-link" href="/tasklist">Return to Task List</a>

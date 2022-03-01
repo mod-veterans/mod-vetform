@@ -10,6 +10,12 @@ $userID = $_SESSION['vets-user'];
 
 if ($data = getData($userID)) {
 
+
+    //what time did we start this application?
+    if (empty($data['settings']['time_started'])) {
+        $data['settings']['time_started'] = date('Y-m-d H:i:s');
+    }
+
     if (!empty($data['sections'])) {
 
         foreach ($data['sections'] as $section) {
@@ -312,7 +318,7 @@ if ($data = getData($userID)) {
 
 @php
 
-if ($completed < 1) {
+if ($completed < 11) {
 
 
 @endphp

@@ -118,7 +118,7 @@ echo $claimList;
             <br>
              or
              <br /><br />
-            <a class="govuk-button" href="/tasklist">Save and Continue</a>
+            <a class="" href="/tasklist">Return to tasklist</a>
         </div>
             </div>
         </div>

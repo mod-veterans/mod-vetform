@@ -44,6 +44,38 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Who is making this application?</span></a>
             </dd>
         </div>
+
+
+        @if(!empty($data['sections']['applicant-who']['helper']['epaw']['served']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Express Prior Authority in Writing (EPAW) reference</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['applicant-who']['helper']['epaw']['served']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/helper/epaw/?return=/applicant/helper/check-answers">Change<span
+                        class="govuk-visually-hidden"> PExpress Prior Authority in Writing (EPAW) reference</span></a>
+            </dd>
+        </div>
+        @endif
+         @if(!empty($data['sections']['applicant-who']['helper']['epaw']['epaw-reference']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">EPAW reference number</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['applicant-who']['helper']['epaw']['epaw-reference'] ?? 'not served with Special Forces'}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/helper/epaw/?return=/applicant/helper/check-answers">Change<span
+                        class="govuk-visually-hidden">EPAW reference number</span></a>
+            </dd>
+        </div>
+        @endif
+
+
+
+
+
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Name of assistant making this claim</dt>
             <dd class="govuk-summary-list__value">
@@ -73,6 +105,7 @@ if (!empty($_POST)) {
                 <a class="govuk-link" href="/applicant/helper/declaration/?return=/applicant/helper/check-answers&amp;stack=#/applicant/helper-declaration/helper-declaration-agreed">Change<span
                         class="govuk-visually-hidden"> I confirm I have read and understood the above requirements.</span></a>
             </dd>
+
         </div>
     </dl>
 <br />
