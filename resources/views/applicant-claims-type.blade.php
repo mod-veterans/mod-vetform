@@ -108,7 +108,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness">Please tell us what type of medical condition, injury or illness are you claiming for</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness">Please tell us what type of medical condition, injury or illness you are claiming for</a>';
         $claim['error'] = 'govuk-form-group--error';
         $claim['errorLabel'] =
         '<span id="/claim-details/claim-illness/claim-illness-error" class="govuk-error-message">
@@ -181,7 +181,7 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What type of medical condition, injury or illness you are claiming for?</h1>
+                                <h1 class="govuk-heading-xl">What type of medical condition, injury or illness are you claiming for?</h1>
     </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

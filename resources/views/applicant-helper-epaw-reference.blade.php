@@ -167,7 +167,7 @@ echo $errorMessage;
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
-     You must read this text information if the person you are applying for has ever served in or supported the Special Forces
+     You must read this text information if the person you are helping has ever served in or supported the Special Forces
     </span>
   </summary>
   <div class="govuk-details__text">
@@ -183,7 +183,7 @@ If the person named in this application is serving or has served in with United 
           @php echo $served['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-Has the person you are applying for ever served in or supported the Special Forces?
+Has the person you are helping ever served in or supported the Special Forces?
 </legend>
 
        <div class="govuk-radios__item">

@@ -7,6 +7,15 @@ $userID = $_SESSION['vets-user'];
     $completed = 0;
 
 
+if ($_SERVER['SERVER_NAME'] == 'modvets-uat.london.cloudapps.digital') {
+
+$needComplete = 11;
+
+} else {
+$needComplete = '0';
+}
+
+
 
 if ($data = getData($userID)) {
 
@@ -14,6 +23,7 @@ if ($data = getData($userID)) {
     //what time did we start this application?
     if (empty($data['settings']['time_started'])) {
         $data['settings']['time_started'] = date('Y-m-d H:i:s');
+        storeData($userID,$data);
     }
 
     if (!empty($data['sections'])) {
@@ -318,7 +328,7 @@ if ($data = getData($userID)) {
 
 @php
 
-if ($completed < 11) {
+if ($completed < $needComplete) {
 
 
 @endphp

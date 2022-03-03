@@ -44,8 +44,6 @@ $page_title = strtoupper(str_replace('/',' | ',$url));
 
 
     <meta property="og:image" content="/images/govuk-opengraph-image.png">
-
-    <title>Apply for an Armed Forces Compensation or War Pension Payment</title>
 </head>
 <body class="govuk-template__body">
 <script>

@@ -25,7 +25,7 @@ if (count($data['sections']['supporting-documents']['files']) < 1) {
 
 
 
-    if (!empty($data['sections']['supporting-documents']['files'])) {
+    if (empty($data['sections']['supporting-documents']['files'])) {
 
 
 
@@ -80,14 +80,15 @@ if (count($data['sections']['supporting-documents']['files']) < 1) {
 <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="61668e5b351ab" name="/applicant/supporting-documents-upload/confirm-check" type="checkbox"
            value="None of the above"  required>
-    <label class="govuk-label govuk-checkboxes__label" for="61668e5b351ab">I have checked the documents/file are the ones I intend to upload.  The documents/files I am uploading are intended solely to support my application and are in accordance with this service’s <a href="#">terms and conditions of use</a>.</label>
+    <label class="govuk-label govuk-checkboxes__label" for="61668e5b351ab">I have checked the documents/file are the ones I intend to upload.  The documents/files I am uploading are intended solely to support my application and are in accordance with this service’s <a href="/upload-terms-and-conditions" target="_New">terms and conditions of use</a>.</label>
 </div>
                     </div>
     </fieldset>
+            <button class="govuk-button" href="">Save and continue</button>
 </div>
 
 
-            <button class="govuk-button" href="">Save and continue</button>
+
         </div>
 </form>
             </div>

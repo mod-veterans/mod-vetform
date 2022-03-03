@@ -66,6 +66,9 @@ if (!empty($_POST)) {
 
     } else {
 
+         $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['medical-categories']['frommedical'] = '';
+        if   (empty($_POST['/claim-details/claim-illness-date/date-of-condition-estimated'])) {
+
         $errors = 'Y';
         $errorsList[] = '<a href="#/claim-details/specific/downgraded/from-medical">Please tell us what medical category you were downgraded from</a>';
         $frommedical['error'] = 'govuk-form-group--error';
@@ -73,7 +76,7 @@ if (!empty($_POST)) {
         '<span id="/claim-details/specific/downgraded/from-medical-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Please tell us what medical category you were downgraded from
          </span>';
-
+        }
 
     }
 
@@ -86,6 +89,10 @@ if (!empty($_POST)) {
 
     } else {
 
+ $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['medical-categories']['tomedical'] = '';
+        if   (empty($_POST['/claim-details/claim-illness-date/date-of-condition-estimated'])) {
+
+
         $errors = 'Y';
         $errorsList[] = '<a href="#/claim-details/specific/downgraded/to-medical">Please tell us what medical category you were downgraded to</a>';
         $tomedical['error'] = 'govuk-form-group--error';
@@ -94,6 +101,7 @@ if (!empty($_POST)) {
             <span class="govuk-visually-hidden">Error:</span> Please tell us what medical category you were downgraded to
          </span>';
 
+        }
 
     }
 
@@ -206,7 +214,6 @@ echo $errorMessage;
 
         <br />
 <div class="govuk-checkboxes__item">
-            <input id="6166806a32c4a--default" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="6166806a32c4a" name="/claim-details/claim-illness-date/date-of-condition-estimated" type="checkbox"
            value="Yes"   {{$multiplechk ?? ''}}         >
     <label class="govuk-label govuk-checkboxes__label" for="6166806a32c4a">I was downgraded and upgraded more than once within different categories.</label>

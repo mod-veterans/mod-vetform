@@ -9,11 +9,13 @@ if (empty($_SESSION['vets-user'])) {
     $userID = $_SESSION['vets-user'];
 }
 
-
+$data = getData($userID);
 if (empty($data['settings']['customer_ref'])) {
-    $data = getData($userID);
     $data['settings']['customer_ref'] = substr($userID,0,10);
     storeData($userID,$data);
+    header('Location: /');
+    die();
+
 }
 
 

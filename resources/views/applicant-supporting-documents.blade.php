@@ -53,7 +53,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Uploading supporting documents</h1>
-                                <p class="govuk-body">If you have documents or evidence <strong>already in your possession</strong> you would like us to see, you can upload copies here.</p>
+                                <p class="govuk-body">If you have documents or evidence <strong>already in your possession</strong> that you would like us to see, you can upload copies here.</p>
                                 <div class="govuk-inset-text">
   Do not delay your claim by getting evidence you do not already have. We will make our own enquiries to get the information we need.
 </div>
@@ -137,10 +137,6 @@ We do not need images of your condition/illness.
                                             Upload a document
                                         </a>
 <br /><br />
-                        <h2>I do not have any documents to upload.</h2>
-                        <p class="govuk-body">If you do not want to upload any documents, click ‘Continue without uploading a document’ below.</p>
-
-                                                                <p class="govuk-body">&nbsp;</p>
 
                                                                             <form method="post" enctype="multipart/form-data" novalidate>
     @csrf

@@ -682,6 +682,11 @@ Route::match(['get', 'post'],'/s3', function () {
     return view('s3');
 });
 
+Route::match(['get', 'post'],'/upload-terms-and-conditions', function () {
+    return view('upload-terms');
+});
+
+
 
 /*
 Route::match(['get', 'post'],'/site-list', function () {

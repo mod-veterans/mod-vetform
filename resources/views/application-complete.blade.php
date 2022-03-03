@@ -14,20 +14,15 @@ $reference_number = 'WPS/AFCS/MOD/'.$data['settings']['customer_ref'];
 
 
 
-//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
-//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Yoann.Muya100@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
-
-if (!empty($data['sections']['about-you']['email'])) {
-    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail($data['sections']['about-you']['email'], env('NOTIFY_USER_CONFIRMATION'));
-}
-
-
 //send office email
 
 $emailContent = '
 
+
+---
+#Time Started
+---
+'.@$data['settings']['time_started'].'
 
 ---
 #Who is making this application
@@ -39,12 +34,20 @@ switch ($data['sections']['applicant-who']['who is making this application']) {
 
 	case "The person named on this claim is making the application.":
 
-$emailContent = '
+$emailContent .= '
 #Who is making this application
 The person named on this claim is making the application.
+
+#Previously served with or supported the special forces
+'.@$data['sections']['applicant-who']['apply-yourself']['epaw']['served'].'
+
+#Express Prior Authority in Writing (EPAW) reference
+'.@$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'].'
 ';
 
+
 break;
+
 case "I am making an application for someone else and I have legal authority to act on their behalf.":
 
 $emailContent .= '
@@ -73,12 +76,18 @@ I am making an application for someone else and I have legal authority to act on
 '.@$data['sections']['applicant-who']['legal authority']['postcode'].'
 
 #Telephone number
-'.$data['sections']['applicant-who']['legal authority']['nominee-number'].'
+'.@$data['sections']['applicant-who']['legal authority']['nominee-number'].'
 
 #What legal authority do you have to make a claim on behalf of the person named?
 '.@$data['sections']['applicant-who']['legal authority']['details'].'
 
+#Previously served with or supported the special forces
+'.@$data['sections']['applicant-who']['legal-authority']['epaw']['served'].'
+
+#Express Prior Authority in Writing (EPAW) reference
+'.@$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference'].'
 ';
+
 break;
 
 
@@ -96,7 +105,15 @@ I am helping someone else make this application.
 #Assisted claim declaration understood
 '.@$data['sections']['applicant-who']['helper']['declaration'].'
 
+#Previously served with or supported the special forces
+'.@$data['sections']['applicant-who']['helper']['epaw']['served'].'
+
+#Express Prior Authority in Writing (EPAW) reference
+'.@$data['sections']['applicant-who']['helper']['epaw']['epaw-reference'].'
 ';
+
+
+
 break;
 
 }
@@ -222,11 +239,6 @@ $emailContent .= '
 #Previous claim reference number
 '.@$data['sections']['about-you']['refnum'].'
 
-#Have you served with or supported the Special Forces?
-'.@$data['sections']['about-you']['epaw']['served'].'
-
-#Express Prior Authority in Writing (EPAW) reference
-'.@$data['sections']['about-you']['epaw']['epaw-reference'].'
 
 ---
 #Medical Officer
@@ -266,7 +278,7 @@ foreach ($data['sections']['service-details']['records'] as $serviceRecord) {
 
 if (!empty($serviceRecord['nameinservice'])) {
     $nameshow = $serviceRecord['nameinservice'];
-    if ($serviceRecord['donotwanttodisclose'] == 'Yes') {
+    if ( (!empty($serviceRecord['donotwanttodisclose'])) && ($serviceRecord['donotwanttodisclose'] == 'Yes') ) {
         $nameshow = 'Would rather not disclose';
     }
 } else {
@@ -301,20 +313,22 @@ $emailContent .= '
 #Date of enlistment
 '.@$serviceRecord['service-enlistmentdate']['day'].' / '.@$serviceRecord['service-enlistmentdate']['month'].' // '.@$serviceRecord['service-enlistmentdate']['year'];
 
+if (!empty($serviceRecord['service-enlistmentdate']['approximate'])) {
 if ($serviceRecord['service-enlistmentdate']['approximate'] == 'Yes') {
 $emailContent .= '(This date is approximate)';
 }
-
+}
 $emailContent .= '
 
 
 #Discharge date
 '.@$serviceRecord['service-dischargedate']['day'].' / '.@$serviceRecord['service-dischargedate']['month'].' / '.@$serviceRecord['service-dischargedate']['year'];
 
+if (!empty($serviceRecord['service-dischargedate']['approximate'])) {
 if ($serviceRecord['service-dischargedate']['approximate'] == 'Yes') {
 $emailContent .= '(This date is approximate)';
 }
-
+}
 $emailContent .= '
 
 #I am still serving
@@ -580,7 +594,7 @@ Did you go to, or were you taken to, a hospital or medical facility?
 '.@$claimRecord['specific']['pt']['downgraded-end']['stilldowngraded'].'
 
 #What medical category were you downgraded from?
-'.$claimRecord['specific']['pt']['medical-categories']['frommedical'].'
+'.@$claimRecord['specific']['pt']['medical-categories']['frommedical'].'
 
 #What medical category were you downgraded to?
 '.@$claimRecord['specific']['pt']['medical-categories']['tomedical'].'
@@ -764,6 +778,11 @@ $emailContent .= '
 #Other Medical Treatment
 ---
 
+
+#Have you received further hospital or medical treatment?
+'.@$data['sections']['medical-treatment']['received'].'
+
+
 ';
 
 if (!empty($data['sections']['medical-treatment']['records'])) {
@@ -900,7 +919,7 @@ $emailContent .= '
 ---
 #Other Benefits
 ---
-Are you receiving any of the following?
+#Are you receiving any of the following?
 '.@$data['sections']['other-benefits']['benefits'].'
 
 #Have you ever been paid any of the following?
@@ -1019,14 +1038,19 @@ No files added
 
 }
 
+$emailContent .= '
 
+---
+#Declaration
+---
 
-//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+#Read and agreed to the declaration
+'.@$data['submission']['declaration'].'
 
+#Agree to email contact
+'.@$data['submission']['enquiry'].'
 
-
+';
 
 
 //Safety dump
@@ -1060,11 +1084,51 @@ $fullContent = returnData($data);
 
 
 
+if ($_SERVER['SERVER_NAME'] != 'modvets.local') {
 
-//Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 
+//send to user regardless
+
+if (!empty($data['sections']['about-you']['email'])) {
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail($data['sections']['about-you']['email'], env('NOTIFY_USER_CONFIRMATION'));
+}
+
+
+
+if ($_SERVER['SERVER_NAME'] == 'modvets-uat.london.cloudapps.digital') {
+
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+
+
+    unset($data);
+    $data = array();
+    storeData($userID,$data);
+    $_SESSION['vets-user'] = '';
+
+} else {
+
+    //back office emails
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+
+
+    //safety dump
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+
+
+
+    //customer emails
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+
+}
+
+}
 
 
 @endphp
@@ -1072,10 +1136,10 @@ Notify::getInstance()->setData(['reference_number' => $reference_number,'content
 
 
 
+
+
 @include('framework.header')
 
-
-    @include('framework.backbutton')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
