@@ -1,3 +1,4 @@
+@include('framework.functions')
 @include('framework.header')
 
 <form name="{Route::currentRouteName()}" action="POST">
@@ -14,6 +15,12 @@
         <li>Make a claim for any physical or mental health condition related to service. You do not need to know which scheme applies</li>
         <li>Make one or more claims for injuries or illnesses with different causes in one easy application</li>
     </ul>
+
+<p class="govuk-body"><strong>Use this service for new claims only.</strong> If you have already received a payment or want to appeal a previous decision, please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact Veterans UK.</a></p>
+
+<p class="govuk-body"><strong>If you want to claim for a condition related to exposure to asbestos</strong>, please read the <a href="https://www.gov.uk/guidance/help-for-veterans-diagnosed-with-diffuse-mesothelioma#how-to-claim">guidance on GOV.UK</a> first.</p>
+
+
 
 <p class="govuk-body">
 <strong>You'll be asked about:</strong><br />
@@ -36,7 +43,7 @@ You do not need to get any new information you do not already have. Veterans UK 
 </div>
 
 <p class="govuk-body"><strong>What you'll need to apply:</strong></p>
-<p class="govuk-body">An email address. If you don’t have one, you can make a claim by post.</p>
+<p class="govuk-body">An email address. If you don’t have one, you should make a claim by post.</p>
 
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">
