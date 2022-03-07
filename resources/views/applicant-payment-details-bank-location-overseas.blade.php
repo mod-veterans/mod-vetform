@@ -29,7 +29,6 @@ $errorsList = array();
 
 $bankname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $accountname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$nameonaccount = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $iban = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $bsbcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $swiftcode = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
@@ -56,7 +55,6 @@ if (empty($_POST)) {
 
         $bankname['data']                   = @$data['sections']['bank-account']['overseas-bank-address']['bankname'];
         $accountname['data']               = @$data['sections']['bank-account']['overseas-bank-address']['accountname'];
-        $nameonaccount['data']              = @$data['sections']['bank-account']['overseas-bank-address']['nameonaccount'];
         $iban['data']                       = @$data['sections']['bank-account']['overseas-bank-address']['iban'];
         $bsbcode['data']                    = @$data['sections']['bank-account']['overseas-bank-address']['bsbcode'];
         $swiftcode['data']                  = @$data['sections']['bank-account']['overseas-bank-address']['swiftcode'];
@@ -85,7 +83,6 @@ if (!empty($_POST)) {
 
     $bankname['data'] = cleanTextData($_POST['/payment-details/bank-united-kingdom/bank-name']);
     $accountname['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-name']);
-    $nameonaccount['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-holder']);
     $iban['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-iban']);
     $bsbcode['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-bsb']);
     $swiftcode['data'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-bic']);
@@ -173,12 +170,6 @@ if (!empty($_POST)) {
 
     } else {
         $data['sections']['bank-account']['overseas-bank-address']['accountname'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-name']);
-    }
-
-    if (empty($_POST['/payment-details/bank-overseas/bank-account-holder'])) {
-
-    } else {
-        $data['sections']['bank-account']['overseas-bank-address']['nameonaccount'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-holder']);
     }
 
     if (empty($_POST['/payment-details/bank-overseas/bank-account-iban'])) {
