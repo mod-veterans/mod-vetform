@@ -273,10 +273,7 @@ I confirm that if I have signed a UKSF Confidentiality Contract, I have been car
 
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">SUBMIT YOUR CLAIM</button>
-            <br><a href="/cancel" class="govuk-link"
-           data-module="govuk-button">
-            Cancel application
-        </a>
+@include('framework.bottombuttons')
 
     </div>
             </form>

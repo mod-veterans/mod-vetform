@@ -686,6 +686,17 @@ Route::match(['get', 'post'],'/upload-terms-and-conditions', function () {
     return view('upload-terms');
 });
 
+Route::match(['get', 'post'],'/retrieve-application', function () {
+    return view('retrieve-application');
+});
+
+Route::match(['get', 'post'],'/retrieve-application-confirm', function () {
+    return view('retrieve-application-confirm');
+});
+
+Route::match(['get', 'post'],'/save-and-come-back-later', function () {
+    return view('save-and-come-back-later');
+});
 
 
 /*
@@ -693,4 +704,5 @@ Route::match(['get', 'post'],'/site-list', function () {
     return view('sitelist');
 });
 */
+
 

@@ -59,6 +59,17 @@ if ($data = getData($userID)) {
             <li>Select the links below to start a section.</li>
             <li>You’ll return to this page after each one is complete.</li>
             <li>You can go back and make changes to sections marked ‘complete’ if you’ve not submitted your application.</li>
+@php
+if (!empty($data['settings']['sacbl'])) {
+
+@endphp
+
+<li>If you need a break, you can <a href="/save-and-come-back-later">save and come back later</a>.</li>
+@php
+}
+@endphp
+
+
         </ul>
 
         <ol class="app-task-list">

@@ -261,10 +261,7 @@ if (
 
                                         <br />
 
-            <br><a href="/cancel" class="govuk-link"
-           data-module="govuk-button">
-            Cancel application
-        </a>
+@include('framework.bottombuttons')
 
     </div>
     </div>

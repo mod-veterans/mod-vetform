@@ -141,7 +141,7 @@ echo $errorMessage;
                                 <h1 class="govuk-heading-xl">What is your name?</h1>
   </legend>
                                 <p class="govuk-body">The name of the person with the injury, illness or disability</p>
-                                <form method="post" enctype="multipart/form-data" novalidate>
+                                <form method="post" enctype="multipart/form-data">
                                 @csrf
                                                     <div class="govuk-form-group {{$lastname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/last-name">
@@ -153,7 +153,7 @@ echo $errorMessage;
         id="afcs/about-you/personal-details/your-name/last-name" name="/afcs/about-you/personal-details/your-name/last-name" type="text"
          autocomplete="family_name"
                   value="{{$lastname['data']}}"
-            >
+            required>
 </div>
                                     <div class="govuk-form-group {{$firstname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/other-names">
@@ -164,17 +164,14 @@ echo $errorMessage;
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/your-name/other-names" name="/afcs/about-you/personal-details/your-name/other-names" type="text"
                    value="{{$firstname['data']}}"
-            >
+            required>
 </div>
 
 
 
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
-            <br><a href="/cancel" class="govuk-link"
-           data-module="govuk-button">
-            Cancel application
-        </a>
+@include('framework.bottombuttons')
 
     </div>
             </form>

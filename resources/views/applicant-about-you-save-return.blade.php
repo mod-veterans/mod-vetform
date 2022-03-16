@@ -1,4 +1,36 @@
+@include('framework.functions')
 @php
+
+
+//load in our content
+$userID = $_SESSION['vets-user'];
+$data = getData($userID);
+
+$ninumber = md5(simplify($data['sections']['about-you']['ninumber']));
+$surname = md5(simplify($data['sections']['about-you']['name']['lastname']));
+
+
+$dobData = mktime(0,0,0, $data['sections']['about-you']['dob']['month'],$data['sections']['about-you']['dob']['day'],$data['sections']['about-you']['dob']['year']);
+
+
+$email = md5(simplify($dobData));
+
+
+
+
+
+
+
+$db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
+pg_query($db, "UPDATE modvetdevusertable SET emailhash = '$email', surnamehash = '$surname', nihash = '$ninumber' WHERE userid = '$userID'");
+
+
+
+//save that they have hit this page
+$data['settings']['sacbl'] = 'Y';
+storeData($userID,$data);
+
+
 
 
 if (!empty($_POST)) {
@@ -21,28 +53,40 @@ die();
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Save and Return Later</h1>
-                                <p class="govuk-body">As you have now completed the Personal Details section, you can now save
-                        your progress and return to a part-completed application within 3 months.</p>
-                        <p class="govuk-body">Your progress will be saved at the end of each page when you click on
-                        "Save and continue". To exit, simply navigate away from your claim or close your browser.</p>
+                                <h1 class="govuk-heading-xl">'Save and come back later' is now available to you</h1>
+                                <p class="govuk-body">You can now save your answers and come back later to a part-completed application if you want to.</p>
+                        <p class="govuk-body">Click the ‘Save and come back later’ button now available at the bottom of each page to do this.</p>
 
-                        <h1 class="govuk-heading-m">To return to an application already started</h1>
-                        <p class="govuk-body">To access your part-completed application after exiting, simply click on
-                        "Return to an application already started" on the Start Page (under "Start Now").
-                        Please note you will need to enter your:</p>
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    Your part completed application will only be available for three months. After then, you’ll have to start again.
+  </strong>
+</div>
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    There’s a <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs#who-is-eligible" target="_New">7 year time limit</a> (from date of injury/illness) for making some claims.  Complete your application as soon as you can.
+  </strong>
+</div>
+
+
+
+
+
+
+
+                        <h2 class="govuk-heading-m">Coming back to a saved application</h2>
+                        <p class="govuk-body">To come back to a saved application, you’ll need your:</p>
                         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
                             <li>Surname</li>
-                            <li>Email address</li>
+                            <li>Date of birth</li>
                             <li>National Insurance Number</li>
                         </ul>
-                        <p class="govuk-body">You will also need to have your mobile phone or access to the email
-                        address you have entered as we will send an access code to you and ask you to enter that on screen.</p>
-
-                        <h1 class="govuk-heading-m">Fully completed applications</h1>
-                        <p class="govuk-body">If you fully complete your application and press "submit", your claim will
-                        be sent to Veterans UK and you will no longer have access to it. You will need to contact us if
-                        you wish to make any changes</p>
+                        <p class="govuk-body">You’ll also need access to either the mobile phone or email account matching the details you have just entered. This is so we can send you a text message and email with a code to enter on screen.</p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate >
@@ -55,10 +99,7 @@ die();
 
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
-            <br><a href="/cancel" class="govuk-link"
-           data-module="govuk-button">
-            Cancel application
-        </a>
+@include('framework.bottombuttons')
 
     </div>
             </form>
