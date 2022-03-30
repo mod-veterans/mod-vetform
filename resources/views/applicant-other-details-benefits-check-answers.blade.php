@@ -33,8 +33,10 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Other benefits, allowances or entitlement</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+ @if(!empty($data['sections']['other-benefits']['benefits']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Are you receiving any of the following?</dt>
+            <dt class="govuk-summary-list__key">Are you receiving Tax Credits, Housing Benefit, Council Tax Benefit or Industrial Injuries Disablement Benefit?</dt>
             <dd class="govuk-summary-list__value">
                                                             {{$data['sections']['other-benefits']['benefits'] ?? ''}}<br>
                                                 </dd>
@@ -43,8 +45,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Are you receiving any of the following?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-benefits']['other-paid']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Have you ever been paid any of the following?</dt>
+            <dt class="govuk-summary-list__key">Have you ever received a payment for Mesothelioma or Pneumoconiosis?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['other-benefits']['other-paid'] ?? ''}}
                             </dd>
@@ -53,12 +57,14 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Have you ever been paid any of the following?</span></a>
             </dd>
         </div>
+ @endif
 
 @php
 if ( (!empty($data['sections']['other-benefits']['other-paid'])) && ($data['sections']['other-benefits']['other-paid'] == 'Yes') ) {
 @endphp
 
 
+ @if(!empty($data['sections']['other-benefits']['details']['diffuse2014']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Diffuse Mesothelioma 2014 Scheme</dt>
             <dd class="govuk-summary-list__value">
@@ -69,6 +75,8 @@ if ( (!empty($data['sections']['other-benefits']['other-paid'])) && ($data['sect
                         class="govuk-visually-hidden"> Diffuse Mesothelioma 2014 Scheme</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-benefits']['details']['diffuse2008']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Diffuse Mesothelioma 2008 Scheme</dt>
             <dd class="govuk-summary-list__value">
@@ -79,6 +87,8 @@ if ( (!empty($data['sections']['other-benefits']['other-paid'])) && ($data['sect
                         class="govuk-visually-hidden"> Diffuse Mesothelioma 2008 Scheme</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-benefits']['details']['worker1979']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">The Workers Compensation 1979 Pneumoconiosis Act</dt>
             <dd class="govuk-summary-list__value">
@@ -89,6 +99,8 @@ if ( (!empty($data['sections']['other-benefits']['other-paid'])) && ($data['sect
                         class="govuk-visually-hidden"> The Workers Compensation 1979 Pneumoconiosis Act</span></a>
             </dd>
         </div>
+ @endif
+
 @php
 }
 @endphp

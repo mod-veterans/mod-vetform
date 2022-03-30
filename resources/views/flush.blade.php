@@ -3,9 +3,7 @@
 
 $userID = $_SESSION['vets-user'];
 
-
-unset ($_SESSION[$userID]);
-unset ($_SESSION['vets-user']);
+deleteData($userID);
 
 
 header("Location: /");

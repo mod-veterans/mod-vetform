@@ -61,6 +61,8 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
 }
 
 @endphp
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['nameinservice']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Did you have a different name during this period of service?</dt>
             <dd class="govuk-summary-list__value">
@@ -72,9 +74,6 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
             </dd>
         </div>
 
-
-
-
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Enter the full name in service</dt>
             <dd class="govuk-summary-list__value">
@@ -85,12 +84,13 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Enter the full name in service</span></a>
             </dd>
         </div>
-
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['servicenumber']))
 
 
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Enter the service number</dt>
+            <dt class="govuk-summary-list__key"`>Service number</dt>
             <dd class="govuk-summary-list__value">
                                     {{ $data['sections']['service-details']['records'][$thisRecord]['servicenumber'] ?? '' }}
                             </dd>
@@ -99,8 +99,10 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Enter the service number</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['servicebranch']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Select your service branch</dt>
+            <dt class="govuk-summary-list__key">Service branch</dt>
             <dd class="govuk-summary-list__value">
                                     {{ $data['sections']['service-details']['records'][$thisRecord]['servicebranch'] ?? '' }}
                             </dd>
@@ -109,8 +111,10 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Select your service branch</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['servicetype']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">What was/is your service type?</dt>
+            <dt class="govuk-summary-list__key">Service type?</dt>
             <dd class="govuk-summary-list__value">
                                     {{ $data['sections']['service-details']['records'][$thisRecord]['servicetype'] ?? '' }}
                             </dd>
@@ -119,6 +123,9 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> What was/is your service type?</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['service-rank']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Service rank</dt>
             <dd class="govuk-summary-list__value">
@@ -129,6 +136,9 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Service rank</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Service trade</dt>
             <dd class="govuk-summary-list__value">
@@ -139,10 +149,12 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Service trade</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Date of enlistment</dt>
+            <dt class="govuk-summary-list__key">Enlistment Date</dt>
             <dd class="govuk-summary-list__value">
-                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['day'] ?? '' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['month'] ?? '' }} //{{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year'] ?? '' }}
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['day'] ?? '--' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['month'] ?? '--' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year'] ?? '--' }}
 
   @php
  if ($data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['approximate'] == 'Yes') {
@@ -156,11 +168,13 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Date of enlistment</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Discharge date</dt>
             <dd class="govuk-summary-list__value">
-                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['day'] ?? '' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['month'] ?? '' }} //{{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] ?? '' }}
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['day'] ?? '' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['month'] ?? '' }} / {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] ?? '' }}
 
  @php
  if ($data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['approximate'] == 'Yes') {
@@ -174,10 +188,11 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Discharge date</span></a>
             </dd>
         </div>
-
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving']))
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">I am still serving</dt>
+            <dt class="govuk-summary-list__key">Still serving</dt>
             <dd class="govuk-summary-list__value">
                                     {{ $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] ?? '' }}
 
@@ -187,6 +202,9 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> I am still serving</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['dischargereason']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Discharge reason</dt>
             <dd class="govuk-summary-list__value">
@@ -197,9 +215,10 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> I am still serving</span></a>
             </dd>
         </div>
-
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['unit-address']['address1']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">last unit address - Base, Building and Street</dt>
+            <dt class="govuk-summary-list__key">Last Unit - Base, Building and Street</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['service-details']['records'][$thisRecord]['unit-address']['address1'] ?? '' }}
                             </dd>
@@ -208,6 +227,8 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden">Last unit address - Base, Building and Street</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['unit-address']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -218,6 +239,8 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['unit-address']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
@@ -228,6 +251,8 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['unit-address']['county']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -238,6 +263,8 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['unit-address']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -248,6 +275,8 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['unit-address']['postcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -258,6 +287,7 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+@endif
     </dl>
                     <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
                href="/applicant/about-you/service-details">

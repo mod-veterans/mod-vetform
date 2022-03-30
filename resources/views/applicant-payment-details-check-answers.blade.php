@@ -29,6 +29,8 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Payment details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+ @if(!empty($data['sections']['bank-account']['providebank']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Do you wish to provide your bank account details?</dt>
             <dd class="govuk-summary-list__value">
@@ -39,10 +41,14 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Do you wish to provide your bank account details?</span></a>
             </dd>
         </div>
+@endif
 
 @php
 if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sections']['bank-account']['providebank'] == 'Yes') ) {
 @endphp
+
+
+ @if(!empty($data['sections']['bank-account']['banklocation']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Where is your bank account?</dt>
@@ -54,6 +60,8 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
                         class="govuk-visually-hidden"> Do you wish to provide your bank account details?</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['bank-account']['bank-address']['bankname']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Name of bank, building society or other account provider</dt>
             <dd class="govuk-summary-list__value">
@@ -64,6 +72,8 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
                         class="govuk-visually-hidden"> Name of bank, building society or other account provider</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['bank-account']['bank-address']['accountname']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Name on the account</dt>
             <dd class="govuk-summary-list__value">
@@ -74,6 +84,8 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
                         class="govuk-visually-hidden"> Name on the account</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['bank-account']['bank-address']['sortcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Sort code</dt>
             <dd class="govuk-summary-list__value">
@@ -84,6 +96,8 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
                         class="govuk-visually-hidden"> Sort code</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['bank-account']['bank-address']['accountnumber']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Account number</dt>
             <dd class="govuk-summary-list__value">
@@ -94,6 +108,8 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
                         class="govuk-visually-hidden"> Account number</span></a>
             </dd>
         </div>
+@endif
+ @if(!empty($data['sections']['bank-account']['bank-address']['rollnumber']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building society roll number</dt>
             <dd class="govuk-summary-list__value">
@@ -104,61 +120,8 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
                         class="govuk-visually-hidden"> Building society roll number</span></a>
             </dd>
         </div>
-
-@php /* @endphp
-
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Name on the account</dt>
-            <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['bank-account']['bank-address']['accountreason'] ?? ''}}
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/payment-details/payment-details/bank-overseas/?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-name">Change<span
-                        class="govuk-visually-hidden"> Name on the account</span></a>
-            </dd>
-        </div>
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Sort code</dt>
-            <dd class="govuk-summary-list__value">
-                                    989898
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/payment-details/payment-details/bank-overseas/?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-sort-code">Change<span
-                        class="govuk-visually-hidden"> Sort code</span></a>
-            </dd>
-        </div>
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Account number</dt>
-            <dd class="govuk-summary-list__value">
-                                    980080808
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/payment-details/payment-details/bank-overseas/?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-number">Change<span
-                        class="govuk-visually-hidden"> Account number</span></a>
-            </dd>
-        </div>
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">International Bank Account Number (IBAN)</dt>
-            <dd class="govuk-summary-list__value">
-                                    pk
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/payment-details/payment-details/bank-overseas/?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-iban">Change<span
-                        class="govuk-visually-hidden"> International Bank Account Number (IBAN)</span></a>
-            </dd>
-        </div>
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Bank Identifier Code (BIC)</dt>
-            <dd class="govuk-summary-list__value">
-                                    pk
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="https://modvets-dev2.london.cloudapps.digital/payment-details/payment-details/bank-overseas/?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-bic">Change<span
-                        class="govuk-visually-hidden"> Bank Identifier Code (BIC)</span></a>
-            </dd>
-        </div>
-
-@php */ @endphp
+@endif
+ @if(!empty($data['sections']['bank-account']['bank-address']['accountreason']))
 
 
             <div class="govuk-summary-list__row">
@@ -171,6 +134,7 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
                         class="govuk-visually-hidden"> If this is not your bank account, please tell us whose account it is and why you have chosen this account</span></a>
             </dd>
         </div>
+@endif
 
 @php } @endphp
 
@@ -179,6 +143,9 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
 @php
 if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($data['sections']['bank-account']['providebank'] == 'Yes') ) {
 @endphp
+
+
+ @if(!empty($data['sections']['bank-account']['banklocation']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Where is your bank account?</dt>
@@ -190,16 +157,20 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
                         class="govuk-visually-hidden"> Do you wish to provide your bank account details?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['bankname']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Name of bank, building society or other account provider</dt>
+            <dt class="govuk-summary-list__key">Name of bank or other account provider</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['bank-account']['overseas-bank-address']['bankname'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/payment-details/bank-location/overseas/?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-united-kingdom/bank-name">Change<span
-                        class="govuk-visually-hidden"> Name of bank, building society or other account provider</span></a>
+                        class="govuk-visually-hidden"> Name of bank or other account provider</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['accountname']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Name on the account</dt>
             <dd class="govuk-summary-list__value">
@@ -210,18 +181,9 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
                         class="govuk-visually-hidden"> Name on the account</span></a>
             </dd>
         </div>
+ @endif
 
-            <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Name on the account</dt>
-            <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['bank-account']['overseas-bank-address']['nameonaccount'] ?? ''}}
-                            </dd>
-            <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/payment-details/bank-location/overseas/?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-name">Change<span
-                        class="govuk-visually-hidden"> Name on the account</span></a>
-            </dd>
-        </div>
-
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['iban']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">International Bank Account Number (IBAN)</dt>
             <dd class="govuk-summary-list__value">
@@ -232,7 +194,8 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
                         class="govuk-visually-hidden"> International Bank Account Number (IBAN)</span></a>
             </dd>
         </div>
-
+ @endif
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['bsbcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">BSB Code</dt>
             <dd class="govuk-summary-list__value">
@@ -245,7 +208,8 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
         </div>
 
 
-
+ @endif
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['swiftcode']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Bank Identifier Code (BIC)</dt>
@@ -257,7 +221,8 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
                         class="govuk-visually-hidden"> Bank Identifier Code (BIC)</span></a>
             </dd>
         </div>
-
+ @endif
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['transitroute']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Transit Routing Number</dt>
             <dd class="govuk-summary-list__value">
@@ -268,7 +233,8 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
                         class="govuk-visually-hidden">Transit Routing Number</span></a>
             </dd>
         </div>
-
+ @endif
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['typeofaccount']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Type of account</dt>
@@ -281,7 +247,8 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
             </dd>
         </div>
 
-
+ @endif
+ @if(!empty($data['sections']['bank-account']['overseas-bank-address']['accountreason']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">If this is not your bank account, please tell us whose account it is and why you have chosen this account</dt>
@@ -293,6 +260,8 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($
                         class="govuk-visually-hidden"> If this is not your bank account, please tell us whose account it is and why you have chosen this account</span></a>
             </dd>
         </div>
+ @endif
+
 
 @php } @endphp
 

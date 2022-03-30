@@ -33,13 +33,13 @@ if (!empty($_POST)) {
                                 <h2 class="govuk-heading-m">Other compensation</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Are you claiming for or have you received compensation payments from other sources?</dt>
+            <dt class="govuk-summary-list__key">Claiming or have you received compensation payments from other sources?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['other-compensation']['received-compensation'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/other-details/other-compensation?return=/applicant/other-details/other-compensation/no/check-answers&amp;stack=#/other-compensation/received-compensation/received-compensation">Change<span
-                        class="govuk-visually-hidden"> Are you claiming for or have you received compensation payments from other sources?</span></a>
+                        class="govuk-visually-hidden"> Claiming or have you received compensation payments from other sources?</span></a>
             </dd>
         </div>
 

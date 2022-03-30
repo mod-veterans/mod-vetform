@@ -48,13 +48,13 @@ if (!empty($_POST)) {
 
         @if(!empty($data['sections']['applicant-who']['helper']['epaw']['served']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Express Prior Authority in Writing (EPAW) reference</dt>
+            <dt class="govuk-summary-list__key">Have you ever served in or supported the Special Forces?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['applicant-who']['helper']['epaw']['served']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/helper/epaw/?return=/applicant/helper/check-answers">Change<span
-                        class="govuk-visually-hidden"> PExpress Prior Authority in Writing (EPAW) reference</span></a>
+                        class="govuk-visually-hidden">Have you ever served in or supported the Special Forces?</span></a>
             </dd>
         </div>
         @endif
@@ -71,11 +71,7 @@ if (!empty($_POST)) {
         </div>
         @endif
 
-
-
-
-
-
+    @if(!empty($data['sections']['applicant-who']['helper']['name']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Name of assistant making this claim</dt>
             <dd class="govuk-summary-list__value">
@@ -86,6 +82,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Name of assistant making this claim</span></a>
             </dd>
         </div>
+        @endif
+
+    @if(!empty($data['sections']['applicant-who']['helper']['relationship']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Relationship to claimant</dt>
             <dd class="govuk-summary-list__value">
@@ -96,6 +96,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Relationship to claimant</span></a>
             </dd>
         </div>
+        @endif
+
+    @if(!empty($data['sections']['applicant-who']['helper']['declaration']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Assisted claim declaration understood</dt>
             <dd class="govuk-summary-list__value">
@@ -107,6 +111,8 @@ if (!empty($_POST)) {
             </dd>
 
         </div>
+    @endif
+
     </dl>
 <br />
 

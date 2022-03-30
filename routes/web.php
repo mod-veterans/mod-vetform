@@ -23,20 +23,14 @@ Note: All blades currently accept POST and GET. This should be reviewed as each 
 
 
 
-Route::get('/', function () {
+Route::match(['get', 'post'],'/', function () {
     return view('home');
 });
 
 
-Route::match(['get', 'post'],'/restore-application', function () {
-    return view('restore');
-});
-
 Route::match(['get', 'post'],'/things-to-know', function () {
     return view('things-to-know');
 });
-
-
 
 
 Route::get('/tasklist', function () {
@@ -58,7 +52,6 @@ Route::match(['get', 'post'],'/applicant/legal-authority/epaw', function () {
 Route::match(['get', 'post'],'/applicant/helper/epaw', function () {
     return view('applicant-helper-epaw-reference');
 });
-
 
 
 Route::match(['get', 'post'],'/applicant/check-answers', function () {
@@ -540,8 +533,6 @@ Route::match(['get', 'post'],'/applicant/claims/specific/non-pt/check-answers', 
 });
 
 
-
-
 Route::match(['get', 'post'],'/applicant/other-details/other-compensation/conditions', function () {
     return view('applicant-other-details-other-compensation-conditions');
 });
@@ -670,18 +661,6 @@ Route::match(['get', 'post'],'/flush', function () {
     return view('flush');
 });
 
-Route::match(['get', 'post'],'/notify', function () {
-    return view('notify');
-});
-
-Route::match(['get', 'post'],'/show-all', function () {
-    return view('showall');
-});
-
-Route::match(['get', 'post'],'/s3', function () {
-    return view('s3');
-});
-
 Route::match(['get', 'post'],'/upload-terms-and-conditions', function () {
     return view('upload-terms');
 });
@@ -698,11 +677,13 @@ Route::match(['get', 'post'],'/save-and-come-back-later', function () {
     return view('save-and-come-back-later');
 });
 
-
-/*
-Route::match(['get', 'post'],'/site-list', function () {
-    return view('sitelist');
+Route::match(['get', 'post'],'/code-broken', function () {
+    return view('code-broken');
 });
-*/
+
+Route::match(['get', 'post'],'/dump-blob', function () {
+    return view('dump-blob');
+});
+
 
 

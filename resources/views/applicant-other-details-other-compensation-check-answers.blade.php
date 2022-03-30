@@ -33,26 +33,32 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Other compensation</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+ @if(!empty($data['sections']['other-compensation']['received-compensation']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Are you claiming for or have you received compensation payments from other sources?</dt>
+            <dt class="govuk-summary-list__key">Claiming or have you received compensation payments from other sources?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['other-compensation']['received-compensation'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/other-details/other-compensation?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/received-compensation/received-compensation">Change<span
-                        class="govuk-visually-hidden"> Are you claiming for or have you received compensation payments from other sources?</span></a>
+                        class="govuk-visually-hidden"> Claiming or have you received compensation payments from other sources?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['conditions']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">What medical condition(s) have you received (or are you claiming) other compensation for?</dt>
+            <dt class="govuk-summary-list__key">What medical condition(s)?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['other-compensation']['conditions'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/other-details/other-compensation/conditions/?return=/applicant/other-details/other-compensation/check-answers&amp;stack=#/other-compensation/compensation-condition/medical-condition">Change<span
-                        class="govuk-visually-hidden"> What medical condition(s) have you received (or are you claiming) other compensation for?</span></a>
+                        class="govuk-visually-hidden"> What medical condition(s)?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['outcome']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Who did you claim from/amount?</dt>
             <dd class="govuk-summary-list__value">
@@ -63,8 +69,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Who did you claim from/amount?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['payment']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Did you receive a payment as a result of this claim?</dt>
+            <dt class="govuk-summary-list__key">Did you receive a payment?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['other-compensation']['payment'] ?? ''}}
                             </dd>
@@ -73,12 +81,14 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Did you receive a payment as a result of this claim?</span></a>
             </dd>
         </div>
+ @endif
 
 @php
 if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sections']['other-compensation']['payment'] == 'Yes') ) {
 @endphp
 
 
+ @if(!empty($data['sections']['other-compensation']['amount']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Amount paid</dt>
             <dd class="govuk-summary-list__value">
@@ -89,6 +99,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Amount paid</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['type']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What type of payment was this?</dt>
             <dd class="govuk-summary-list__value">
@@ -99,6 +111,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> What type of payment was this?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['payment-date']['year']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">When did you receive this payment?</dt>
             <dd class="govuk-summary-list__value">
@@ -109,8 +123,10 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> When did you receive this payment?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['payment-date']['approximate']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">This date is appoximate?</dt>
+            <dt class="govuk-summary-list__key">Appoximate date?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['other-compensation']['payment-date']['approximate'] ?? '' }}
                             </dd>
@@ -120,7 +136,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
             </dd>
         </div>
 
-
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitorhelp']))
 
 
             <div class="govuk-summary-list__row">
@@ -133,6 +150,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Did a solicitor help you with your claim for other compensation?</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['fullname']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Solicitors&#039; full name</dt>
             <dd class="govuk-summary-list__value">
@@ -143,6 +162,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Solicitors&#039; full name</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['address1']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
@@ -153,6 +174,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -163,6 +186,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town</dt>
             <dd class="govuk-summary-list__value">
@@ -173,7 +198,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Town</span></a>
             </dd>
         </div>
-
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['county']))
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -184,7 +210,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
-
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['postcode']))
              <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -195,6 +222,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -205,7 +234,8 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
-
+ @endif
+ @if(!empty($data['sections']['other-compensation']['solicitor-address']['telephone']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Contact number</dt>
             <dd class="govuk-summary-list__value">
@@ -216,6 +246,7 @@ if ( (!empty($data['sections']['other-compensation']['payment'])) && ($data['sec
                         class="govuk-visually-hidden"> Contact number</span></a>
             </dd>
         </div>
+ @endif
 
 
 

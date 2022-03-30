@@ -43,7 +43,8 @@ if (!empty($_POST)) {
 
         @if(!empty($data['sections']['applicant-who']['legal-authority']['epaw']['served']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Express Prior Authority in Writing (EPAW) reference</dt>
+            <dt class="govuk-summary-list__key">Have you ever served in or supported the Special Forces?
+</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['applicant-who']['legal-authority']['epaw']['served']}}
                             </dd>
@@ -66,7 +67,7 @@ if (!empty($_POST)) {
         </div>
         @endif
 
-
+    @if(!empty($data['sections']['applicant-who']['legal authority']['fullname']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Your full name</dt>
             <dd class="govuk-summary-list__value">
@@ -77,6 +78,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Your full name</span></a>
             </dd>
         </div>
+
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['address1']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
@@ -87,6 +92,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -97,6 +104,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
@@ -107,6 +116,9 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
+
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['county']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -117,6 +129,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -127,6 +141,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['postcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -137,6 +153,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['nominee-number']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
@@ -147,6 +165,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['applicant-who']['legal authority']['details']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What legal authority do you have to make a claim on behalf of the person named?</dt>
             <dd class="govuk-summary-list__value">
@@ -157,6 +177,7 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> What legal authority do you have to make a claim on behalf of the person named?</span></a>
             </dd>
         </div>
+    @endif
     </dl>
 
     <form method="post" enctype="multipart/form-data" novalidate>

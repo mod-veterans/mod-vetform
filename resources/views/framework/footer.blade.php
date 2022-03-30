@@ -1,3 +1,4 @@
+
 <footer class="govuk-footer " role="contentinfo">
     <div class="govuk-width-container ">
         <div class="govuk-footer__meta">
@@ -55,18 +56,25 @@ if (!empty($footerScripts)) {
 }
 @endphp
 
-@php
-if ($_SERVER['SERVER_NAME'] == 'modvets-uat.london.cloudapps.digital') { @endphp
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JKZ35PF27Q"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-JKZ35PF27Q');
-    gtag('config', 'UA-189988947-3');
-</script>
 
 @php
+
+if (!empty($_COOKIE['vet-GA'])) {
+
+
+    if ($_SERVER['SERVER_NAME'] == 'modvets-uat.london.cloudapps.digital') { @endphp
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKZ35PF27Q"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JKZ35PF27Q');
+        gtag('config', 'UA-189988947-3');
+    </script>
+
+@php
+    }
+echo '<!--GA cookies allowed subject to URL-->';
 }
 @endphp
 

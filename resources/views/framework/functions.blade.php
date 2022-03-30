@@ -64,6 +64,10 @@ if ($data == 'NOPE') {
 
 function storeData($userID, $data, $type='UPDATE') {
 
+   //we should only ever get a alphanumeric hash
+    if (!ctype_alnum($userID)) {
+        die();
+    }
 
     $data = json_encode($data);
     $data = DOencrypt($data);
@@ -88,6 +92,11 @@ function storeData($userID, $data, $type='UPDATE') {
 
 
 function getData($userID) {
+
+   //we should only ever get a alphanumeric hash
+    if (!ctype_alnum($userID)) {
+        die();
+    }
 
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
     $result = pg_query($db, "SELECT * FROM modvetdevusertable WHERE userid = '$userID'");
@@ -168,6 +177,42 @@ function simplify($content) {
     $content = strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $content));
     return $content;
 }
+
+
+function deleteData($userid) {
+    unset ($_SESSION[$userID]);
+    unset ($_SESSION['vets-user']);
+    return TRUE;
+
+    //TODO DELETE DATA FROM DB
+}
+
+
+function cookiesOK($type='GA') {
+    switch ($type) {
+        case 'GA':
+        default:
+            if (!empty($_COOKIE['vet-GA'])) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        break;
+        case 'general':
+            if (!empty($_COOKIE['vet-COOKIE'])) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        break;
+
+
+
+
+    }
+return FALSE; //default to false
+}
+
 
 
 

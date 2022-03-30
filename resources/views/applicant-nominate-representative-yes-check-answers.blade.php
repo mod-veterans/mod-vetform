@@ -44,8 +44,11 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Would you like to nominate a representative?</span></a>
             </dd>
         </div>
+
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['fullname']))
+
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Their full name</dt>
+            <dt class="govuk-summary-list__key">Representative's full name</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['nominate-representative']['nominated representative']['fullname']}}
                             </dd>
@@ -54,6 +57,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Their full name</span></a>
             </dd>
         </div>
+
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['address1']))
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
@@ -64,6 +71,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -74,6 +83,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
@@ -84,6 +95,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['county']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -94,6 +107,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -104,6 +119,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['postcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -114,6 +131,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['nominee-number']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
@@ -124,6 +143,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['email-address']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Email address</dt>
             <dd class="govuk-summary-list__value">
@@ -134,6 +155,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Email address</span></a>
             </dd>
         </div>
+    @endif
+    @if(!empty($data['sections']['nominate-representative']['nominated representative']['role']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What is your representative&#039;s role?</dt>
             <dd class="govuk-summary-list__value">
@@ -144,6 +167,7 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> What is your representative&#039;s role?</span></a>
             </dd>
         </div>
+    @endif
     </dl>
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf

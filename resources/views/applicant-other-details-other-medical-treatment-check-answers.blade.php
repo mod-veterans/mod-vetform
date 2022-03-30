@@ -48,6 +48,7 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Other medical treatment</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['name']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Hospital/Medical facility</dt>
             <dd class="govuk-summary-list__value">
@@ -58,6 +59,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Hospital name if known</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['address1']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
@@ -68,6 +71,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -78,6 +83,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
@@ -88,6 +95,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['county']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -98,6 +107,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -108,6 +119,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['postcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -118,6 +131,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['telephone']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
@@ -128,6 +143,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['email']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Email</dt>
             <dd class="govuk-summary-list__value">
@@ -138,7 +155,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Email</span></a>
             </dd>
         </div>
-
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['conditions']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Condition treated</dt>
             <dd class="govuk-summary-list__value">
@@ -149,8 +167,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Condition treated</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['treatment-start']['year']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Date your treatment started. If you are not sure, just enter a year.</dt>
+            <dt class="govuk-summary-list__key">Date your treatment started</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['medical-treatment']['records'][$thisRecord]['treatment-start']['day'] ?? ''}}
                                      {{$data['sections']['medical-treatment']['records'][$thisRecord]['treatment-start']['month'] ?? ''}}
@@ -161,8 +181,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Date your treatment started. If you are not sure, just enter a year.</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['treatment-start']['approximate']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">This date is approximate</dt>
+            <dt class="govuk-summary-list__key">Approximate date?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['medical-treatment']['records'][$thisRecord]['treatment-start']['approximate'] ?? ''}}
                             </dd>
@@ -171,8 +193,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> This date is approximate</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['treatment-start']['waiting-list']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">I am still on a waiting list to attend</dt>
+            <dt class="govuk-summary-list__key">I am still on a waiting list</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['medical-treatment']['records'][$thisRecord]['treatment-start']['waiting-list'] ?? ''}}
                             </dd>
@@ -181,8 +205,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> I am still on a waiting list to attend</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['year']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Date your treatment ended. If you are not sure, just enter a year.</dt>
+            <dt class="govuk-summary-list__key">Date your treatment ended.</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['day'] ?? ''}}
                                      {{$data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['month'] ?? ''}}
@@ -193,8 +219,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Date your treatment ended. If you are not sure, just enter a year.</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['approximate']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">This date is approximate</dt>
+            <dt class="govuk-summary-list__key">Approximate date?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['approximate'] ?? ''}}
                             </dd>
@@ -203,6 +231,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> This date is approximate</span></a>
             </dd>
         </div>
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['waiting-list']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">This treatment has not yet ended</dt>
             <dd class="govuk-summary-list__value">
@@ -214,7 +244,8 @@ if (!empty($_POST)) {
             </dd>
         </div>
 
-
+@endif
+@if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['type']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What type of medical treatment did you receive?</dt>
@@ -226,6 +257,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> What type of medical treatment did you receive?</span></a>
             </dd>
         </div>
+@endif
+
     </dl>
                     <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
                href="/applicant/other-details/other-medical-treatment">

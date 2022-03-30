@@ -58,6 +58,8 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Claim details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['type']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Type of medical condition</dt>
             <dd class="govuk-summary-list__value">
@@ -68,6 +70,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Type of medical condition</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt-related']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Was the incident or accident related to sport, adventure training or physical training?</dt>
@@ -79,7 +83,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Was the incident or accident related to sport, adventure training or physical training?</span></a>
             </dd>
         </div>
-
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['conditions']))
 
 
             <div class="govuk-summary-list__row">
@@ -92,9 +97,11 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> What medical condition(s) are you claiming for?</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['name']))
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Name of the Medical Practitioner (if known)</dt>
+            <dt class="govuk-summary-list__key">Diagnosing Medical Practitioner (if known)</dt>
             <dd class="govuk-summary-list__value">
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['name'] ?? ''}}
                             </dd>
@@ -103,16 +110,20 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Name of the Medical Practitioner (if known)</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['address1']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Building and street</dt>
+            <dt class="govuk-summary-list__key">Practice, Building and street</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['address1'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/claims/specific/non-pt/medical/practitioner?return=/applicant/claims/specific/non-pt/check-answers&amp;stack=1ec2bd9d-a819-66d8-92dd-eeee0aff6684#/claim-details/claim-accident-sporting-surgery-address/claim-accident-sporting-surgery-address__address-line-1">Change<span
-                        class="govuk-visually-hidden"> Building and street</span></a>
+                        class="govuk-visually-hidden">Practice, Building and street</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -123,6 +134,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
@@ -133,6 +146,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['county']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -143,6 +158,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -153,6 +170,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['postcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -163,6 +182,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['telephone']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
@@ -173,7 +194,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
-
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital-address']['email']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Email</dt>
             <dd class="govuk-summary-list__value">
@@ -185,7 +207,8 @@ if (!empty($_POST)) {
             </dd>
         </div>
 
-
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['condition-start-date']['year']))
 
 
             <div class="govuk-summary-list__row">
@@ -198,8 +221,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> What was the date your condition started?</span></a>
             </dd>
         </div>
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['condition-start-date']['approximate']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Is this date approximate?</dt>
+            <dt class="govuk-summary-list__key">Approximate date</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['condition-start-date']['approximate'] ?? ''}}
                             </dd>
@@ -208,10 +233,11 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Is this date approximate?</span></a>
             </dd>
         </div>
-
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['on-duty']))
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Were you on duty at the time of incident?</dt>
+            <dt class="govuk-summary-list__key">Were you on duty at the time of the incident?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['on-duty'] ?? ''}}
                             </dd>
@@ -221,6 +247,8 @@ if (!empty($_POST)) {
             </dd>
         </div>
 
+         @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['report-incident']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Did you report the incident?</dt>
@@ -233,7 +261,7 @@ if (!empty($_POST)) {
             </dd>
         </div>
 
-
+@endif
 
 @php
 if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['report-incident'] == 'Yes') {
@@ -254,7 +282,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
 }
 @endphp
 
-
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['accident-form']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Was an accident form completed?</dt>
             <dd class="govuk-summary-list__value">
@@ -266,6 +294,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
             </dd>
         </div>
 
+          @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['where-were-you']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Where were you when the incident happened?</dt>
             <dd class="govuk-summary-list__value">
@@ -277,6 +307,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
             </dd>
         </div>
 
+          @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['rta']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Was the incident a road traffic accident?</dt>
             <dd class="govuk-summary-list__value">
@@ -288,11 +320,14 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
             </dd>
         </div>
 
+@endif
 
 @php
 if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['rta'] == 'Yes') {
 @endphp
 
+
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['journey-reason']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What was the reason for your journey?</dt>
             <dd class="govuk-summary-list__value">
@@ -304,7 +339,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
             </dd>
         </div>
 
-
+          @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['journey-start']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Where did your journey start?</dt>
             <dd class="govuk-summary-list__value">
@@ -316,6 +352,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
             </dd>
         </div>
 
+          @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['journey-end']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Where did your journey end?</dt>
             <dd class="govuk-summary-list__value">
@@ -327,18 +365,16 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
             </dd>
         </div>
 
-
-
-
+          @endif
 
 
 
 @php
 }
 @endphp
-
+@if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-reported']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Was the incident reported to the civilian or military police?</dt>
+            <dt class="govuk-summary-list__key">Police reference</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-reported'] ?? ''}}
                             </dd>
@@ -347,14 +383,14 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
                         class="govuk-visually-hidden"> Was the incident reported to the civilian or military police?</span></a>
             </dd>
         </div>
-
+@endif
 
 @php
 if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-reported'] == 'Yes') {
 @endphp
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Was the incident reported to the civilian or military police?</dt>
+            <dt class="govuk-summary-list__key">Police reference?</dt>
             <dd class="govuk-summary-list__value">
                         Civilian Case Ref: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['civilian-ref'] ?? 'N/A'}}<br />
                         Military Case Ref: {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-report']['military-ref'] ?? 'N/A'}}<br />
@@ -373,10 +409,10 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['p
 @endphp
 
 
-
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['authorised-leave']))
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Were you on authorised leave at the time of the accident?</dt>
+            <dt class="govuk-summary-list__key">Were you on authorised leave?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['authorised-leave'] ?? ''}}
                             </dd>
@@ -386,6 +422,9 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['p
             </dd>
         </div>
 
+
+          @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['witnesses']))
 
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Were there any witnesses?</dt>
@@ -398,8 +437,11 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['p
             </dd>
         </div>
 
+          @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['firstaid']))
+
         <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Did you receive first aid treatment at the time?</dt>
+            <dt class="govuk-summary-list__key">Did you receive first aid treatment?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['firstaid'] ?? ''}}
                             </dd>
@@ -410,7 +452,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['p
         </div>
 
 
-
+          @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital']))
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Did you go to, or were you taken to, a hospital or medical facility?</dt>
             <dd class="govuk-summary-list__value">
@@ -422,14 +465,15 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['p
             </dd>
         </div>
 
+@endif
 @php
 if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['hospital'] == 'Yes') {
 @endphp
 
 
-
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['name']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Name of the Medical Practitioner (if known)</dt>
+            <dt class="govuk-summary-list__key">Name of hospital/Medical Practitioner (if known)</dt>
             <dd class="govuk-summary-list__value">
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['name'] ?? ''}}
                             </dd>
@@ -438,6 +482,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Name of the Medical Practitioner (if known)</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['address1']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street</dt>
             <dd class="govuk-summary-list__value">
@@ -448,6 +494,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -458,6 +506,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
@@ -468,6 +518,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['county']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -478,6 +530,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -488,6 +542,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['postcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -498,6 +554,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['telephone']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
@@ -508,7 +566,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
-
+        @endif
+         @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['first-aid-hospital-address']['email']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Email</dt>
             <dd class="govuk-summary-list__value">
@@ -520,9 +579,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
             </dd>
         </div>
 
-
-
-
+        @endif
 
 
 
@@ -531,7 +588,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
 }
 @endphp
 
-
+@if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Were you downgraded for any of the conditions on this claim?</dt>
             <dd class="govuk-summary-list__value">
@@ -542,6 +599,8 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['h
                         class="govuk-visually-hidden"> Were you downgraded for any of the conditions on this claim?</span></a>
             </dd>
         </div>
+
+@endif
 
 @php
 if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded'] == 'Yes') {
@@ -560,7 +619,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
         </div>
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Downgrade from date approximate?</dt>
+            <dt class="govuk-summary-list__key">Approximate date</dt>
             <dd class="govuk-summary-list__value">
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-start']['datesapproximate'] ?? ''}}
                             </dd>
@@ -583,7 +642,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
         </div>
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Downgrade end date approximate?</dt>
+            <dt class="govuk-summary-list__key">Approximate date</dt>
             <dd class="govuk-summary-list__value">
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-end']['datesapproximate'] ?? ''}}
                             </dd>
@@ -594,7 +653,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
         </div>
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Are you still downgraded?</dt>
+            <dt class="govuk-summary-list__key">Still downgraded?</dt>
             <dd class="govuk-summary-list__value">
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-end']['stilldowngraded'] ?? ''}}
                             </dd>
@@ -627,7 +686,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
         </div>
 
         <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Were you downgraded and upgraded more than once within different categories?</dt>
+            <dt class="govuk-summary-list__key">I was downgraded and upgraded more than once within different categories?</dt>
             <dd class="govuk-summary-list__value">
                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['medical-categories']['multiple'] ?? ''}}
                             </dd>

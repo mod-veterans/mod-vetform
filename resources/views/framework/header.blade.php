@@ -11,6 +11,21 @@ $url = str_replace('-',' ',$url);
 $page_title = strtoupper(str_replace('/',' | ',$url));
 }
 
+
+if (!empty($_POST['cookies'])) {
+
+    if ($_POST['cookies'] == 'accept') {
+       setcookie('vet-COOKIE', 'Y', time() + (86400 * 30 * 365), '/');
+       setcookie('vet-GA', 'Y', time() + (86400 * 30 * 365), '/');
+
+    }
+
+    if ($_POST['cookies'] == 'reject') {
+       setcookie('vet-COOKIE', 'Y', time() + (86400 * 30 * 365), '/');
+    }
+}
+
+
 @endphp
 <!DOCTYPE html>
 <html lang="en" class="govuk-template">
@@ -35,7 +50,7 @@ $page_title = strtoupper(str_replace('/',' | ',$url));
     <!--<![endif]-->
 
     <!--[if IE 8]>
-    <link href="https://modvets.web.poweredbyreason.co.uk/css/all-ie8.css" rel="stylesheet">
+    <link href="/css/all-ie8.css" rel="stylesheet">
     <![endif]-->
 
     <!--[if lt IE 9]>
@@ -45,10 +60,47 @@ $page_title = strtoupper(str_replace('/',' | ',$url));
 
     <meta property="og:image" content="/images/govuk-opengraph-image.png">
 </head>
+
 <body class="govuk-template__body">
 <script>
     document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
 </script>
+
+@php
+if (empty($_COOKIE['vet-COOKIE'])) {
+@endphp
+<div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on [name of service]">
+  <div class="govuk-cookie-banner__message govuk-width-container">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on Armed Forces Compensation or War Pension Payment Application</h2>
+
+        <div class="govuk-cookie-banner__content">
+          <p class="govuk-body">We use some essential cookies to make this service work.</p>
+          <p class="govuk-body">We’d also like to use analytics cookies so we can understand how you use the service and make improvements.</p>
+        </div>
+      </div>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" novalidate>
+    @csrf
+    <div class="govuk-button-group">
+      <button value="accept" type="submit" name="cookies" class="govuk-button" data-module="govuk-button">
+        Accept analytics cookies
+      </button>
+      <button value="reject" type="submit" name="cookies" class="govuk-button" data-module="govuk-button">
+        Reject analytics cookies
+      </button>
+      <a class="govuk-link" href="/cookie-policy">View cookies</a>
+    </div>
+    </form>
+  </div>
+</div>
+@php
+}
+@endphp
+
 <a href="#main-content" class="govuk-skip-link">Skip to main content</a>
 
 <header class="govuk-header " role="banner" data-module="govuk-header">

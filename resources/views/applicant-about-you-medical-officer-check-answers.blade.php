@@ -36,6 +36,7 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Doctor's details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+         @if(!empty($data['sections']['about-you']['medical-officer']['contactname']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Medical Officer or GP&#039;s full name (if known)</dt>
             <dd class="govuk-summary-list__value">
@@ -46,8 +47,10 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Medical Officer or GP&#039;s full name (if known)</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['about-you']['medical-officer']['address1']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Building and street</dt>
+            <dt class="govuk-summary-list__key">Practice, Building and street</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['about-you']['medical-officer']['address1'] ?? ''}}
                             </dd>
@@ -56,6 +59,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['about-you']['medical-officer']['address2']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Building and street line 2 of 2</dt>
             <dd class="govuk-summary-list__value">
@@ -66,6 +71,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Building and street line 2 of 2</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['about-you']['medical-officer']['town']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Town or city</dt>
             <dd class="govuk-summary-list__value">
@@ -76,6 +83,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Town or city</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['about-you']['medical-officer']['county']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">County</dt>
             <dd class="govuk-summary-list__value">
@@ -86,6 +95,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> County</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['about-you']['medical-officer']['country']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Country</dt>
             <dd class="govuk-summary-list__value">
@@ -96,6 +107,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Country</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['about-you']['medical-officer']['postcode']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Postcode</dt>
             <dd class="govuk-summary-list__value">
@@ -106,6 +119,8 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Postcode</span></a>
             </dd>
         </div>
+        @endif
+         @if(!empty($data['sections']['about-you']['medical-officer']['telephonenumber']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Telephone number</dt>
             <dd class="govuk-summary-list__value">
@@ -116,6 +131,7 @@ if (!empty($_POST)) {
                         class="govuk-visually-hidden"> Telephone number</span></a>
             </dd>
         </div>
+        @endif
     </dl>
     <form method="post" enctype="multipart/form-data" novalidate>
     @csrf

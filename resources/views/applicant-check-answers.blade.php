@@ -44,7 +44,7 @@ if (!empty($_POST)) {
 
         @if(!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['served']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Express Prior Authority in Writing (EPAW) reference</dt>
+            <dt class="govuk-summary-list__key">Have you ever served in or supported the Special Forces?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['applicant-who']['apply-yourself']['epaw']['served']}}
                             </dd>
@@ -58,7 +58,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">EPAW reference number</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'] ?? 'not served with Special Forces'}}
+                                    {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/epaw?return=/applicant/check-answers">Change<span

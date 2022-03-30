@@ -60,7 +60,7 @@ if (!empty($_POST)) {
         @endif
         @if(!empty($data['sections']['about-you']['contact-address']['address1']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Building and street</dt>
+            <dt class="govuk-summary-list__key">Address Building and street</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['about-you']['contact-address']['address1']}}
                             </dd>
@@ -144,7 +144,7 @@ if (!empty($_POST)) {
         @endif
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Do you have a mobile telephone number?</dt>
+            <dt class="govuk-summary-list__key">Mobile telephone number?</dt>
             <dd class="govuk-summary-list__value">
             @php
             if ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'No') { echo 'No';}
@@ -159,7 +159,7 @@ if (!empty($_POST)) {
         </div>
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Is there another number you can be contacted on?</dt>
+            <dt class="govuk-summary-list__key">Alternative telephone number:</dt>
             <dd class="govuk-summary-list__value">
             @php
             if (empty($data['sections']['about-you']['telephonenumber']['doyouhavealternative'])) { echo ''; }
@@ -210,7 +210,7 @@ if (!empty($_POST)) {
         @endif
         @if(!empty($data['sections']['about-you']['previous-claim']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Previously made a claim</dt>
+            <dt class="govuk-summary-list__key">Previous claim made</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['about-you']['previous-claim']}}
                             </dd>
