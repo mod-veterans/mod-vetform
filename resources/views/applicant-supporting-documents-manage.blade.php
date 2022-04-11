@@ -14,7 +14,7 @@ if (!empty($_GET['deleteFile'])) {
 }
 
 
-if (count($data['sections']['supporting-documents']['files']) < 1) {
+if    ( (empty(count($data['sections']['supporting-documents']['files']))) || (count($data['sections']['supporting-documents']['files']) < 1) ){
     header("Location: /applicant/supporting-documents/upload");
     die();
 }
@@ -25,7 +25,7 @@ if (count($data['sections']['supporting-documents']['files']) < 1) {
 
 
 
-    if (empty($data['sections']['supporting-documents']['files'])) {
+    if (!empty($data['sections']['supporting-documents']['files'])) {
 
 
 
@@ -95,8 +95,6 @@ if (count($data['sections']['supporting-documents']['files']) < 1) {
         </div>
     </main>
 </div>
-
-
 
 
 @include('framework.footer')

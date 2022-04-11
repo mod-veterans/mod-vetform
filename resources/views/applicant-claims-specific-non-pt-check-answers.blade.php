@@ -374,7 +374,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
 @endphp
 @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-reported']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Police reference</dt>
+            <dt class="govuk-summary-list__key">Was the incident reported to the civilian or military police?</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['police-reported'] ?? ''}}
                             </dd>
@@ -400,7 +400,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['p
                                </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/claims/specific/non-pt/police-report/reference-number/?return=/applicant/claims/specific/non-pt/check-answers">Change<span
-                        class="govuk-visually-hidden"> Was the incident reported to the civilian or military police?</span></a>
+                        class="govuk-visually-hidden">Police reference?</span></a>
             </dd>
         </div>
 

@@ -180,7 +180,7 @@ function simplify($content) {
 
 
 function deleteData($userid) {
-    unset ($_SESSION[$userID]);
+    unset ($_SESSION[$userid]);
     unset ($_SESSION['vets-user']);
     return TRUE;
 

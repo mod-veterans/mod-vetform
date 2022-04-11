@@ -8,12 +8,21 @@ $errorMessage = '';
 $errorWhoShow = '';
 $errors = 'N';
 $errorsList = array();
+$theCode = '';
 
 
 //set fields
 //$email = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 //$lastname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 //$ninumber = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+
+
+
+//we should only hit this page if we have a code on the URL
+if (empty($_GET['code'])) {
+header('Location: /retrieve-application');
+die();
+}
 
 
 if (!empty($_POST)) {

@@ -421,13 +421,13 @@ if ($data['sections']['claims']['records'][$thisRecord]['downgraded'] == 'Yes') 
 @endif
 @if(!empty($data['sections']['claims']['records'][$thisRecord]['non-specific']['medical-categories']['multiple']))
         <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Were you downgraded and upgraded more than once within different categories?</dt>
+            <dt class="govuk-summary-list__key">I was downgraded and upgraded more than once within different categories?</dt>
             <dd class="govuk-summary-list__value">
                                    {{$data['sections']['claims']['records'][$thisRecord]['non-specific']['medical-categories']['multiple'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/claims/non-specific/downgraded/detail/?return=/applicant/claims/non-specific/check-answers">Change<span
-                        class="govuk-visually-hidden">Were you downgraded and upgraded more than once within different categories?</span></a>
+                        class="govuk-visually-hidden">I was downgraded and upgraded more than once within different categories?</span></a>
             </dd>
         </div>
 

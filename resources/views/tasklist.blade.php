@@ -5,14 +5,15 @@ $userID = $_SESSION['vets-user'];
 
 
     $completed = 0;
-
+    $canSkip = 'N';
 
 if ($_SERVER['SERVER_NAME'] == 'modvets-uat.london.cloudapps.digital') {
 
 $needComplete = 11;
 
 } else {
-$needComplete = '11';
+$needComplete = '1';
+$canSkip = 'Y';
 }
 
 
@@ -125,7 +126,7 @@ if (!empty($data['settings']['sacbl'])) {
 
   @php
 
-  if (empty($data['sections']['things-to-know']['completed'])) {
+  if (($canSkip != 'Y')&&(empty($data['sections']['things-to-know']['completed']))) {
   @endphp
                                 <span class="app-task-list__task-name">
                                     Who is making this application?
@@ -159,7 +160,7 @@ if (!empty($data['settings']['sacbl'])) {
                              <li class="app-task-list__item">
 
 @php
-  if (empty($data['sections']['applicant-who']['completed'])) {
+  if (($canSkip != 'Y')&&(empty($data['sections']['applicant-who']['completed']))) {
   @endphp
                                  <span class="app-task-list__task-name">
                                      Nominating a representative
@@ -207,7 +208,7 @@ if (!empty($data['settings']['sacbl'])) {
 
 
 @php
-if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
+if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['completed']))) { @endphp
                                 <span class="app-task-list__task-name">
 
                                     Personal details
@@ -252,7 +253,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
                                                     <li class="app-task-list__item">
 
    @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
   @endphp
 
                                 <span class="app-task-list__task-name">
@@ -301,7 +302,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
                                                     <li class="app-task-list__item">
 
     @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
   @endphp
 
                                 <span class="app-task-list__task-name">
@@ -354,7 +355,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
 
 
 @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
 @endphp
 
 
@@ -404,7 +405,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
                                                     <li class="app-task-list__item">
 
    @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
   @endphp
 
 
@@ -448,7 +449,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
 
 
    @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
   @endphp
 
 
@@ -491,7 +492,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
                                                     <li class="app-task-list__item">
 
    @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
   @endphp
 
                                 <span class="app-task-list__task-name">
@@ -540,7 +541,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
                                                     <li class="app-task-list__item">
 
    @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
   @endphp
 
                                 <span class="app-task-list__task-name">
@@ -591,7 +592,7 @@ if (empty($data['sections']['nominate-representative']['completed'])) { @endphp
                                                     <li class="app-task-list__item">
 
    @php
-   if (empty($data['sections']['about-you']['completed'])) {
+   if (($canSkip != 'Y')&&(empty($data['sections']['about-you']['completed']))) {
   @endphp
                                 <span class="app-task-list__task-name">
 
