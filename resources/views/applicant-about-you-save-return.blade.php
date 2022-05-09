@@ -6,6 +6,15 @@
 $userID = $_SESSION['vets-user'];
 $data = getData($userID);
 
+
+if ( (empty($data['sections']['about-you']['ninumber'])) || (empty($data['sections']['about-you']['name']['lastname'])) ) {
+    //we don't have what we need. but they are required. so we shuldn't be here.
+    header("Location: /");
+    die();
+}
+
+
+
 $ninumber = md5(simplify($data['sections']['about-you']['ninumber']));
 $surname = md5(simplify($data['sections']['about-you']['name']['lastname']));
 

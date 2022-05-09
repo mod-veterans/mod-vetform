@@ -59,6 +59,20 @@ if (!empty($_FILES)) {
         }
 
 
+        if (empty($filepath)) {
+
+            $errors = 'Y';
+            $errorsList[] = '<a href="#/documents/document/file">There was an issue uploading your file, please try again</a>';
+            $fileupload['error'] = 'govuk-form-group--error';
+            $fileupload['errorLabel'] =
+            '<span id="/documents/document/file-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> There was an issue uploading your file, please try again
+             </span>';
+
+        }
+
+
+        /*
         if (empty($filename)) {
 
             $errors = 'Y';
@@ -70,6 +84,7 @@ if (!empty($_FILES)) {
              </span>';
 
         }
+        */
 
 
         $allowed = array('gif', 'png', 'jpg','doc','docx','pdf','xls','xlsx','bmp','jpeg');

@@ -11,6 +11,7 @@ applications:
       - mod-veterans-db
       - mod-veterans-s3
     env:
+      TZ: Etc/Greenwich
       CF_STAGING_TIMEOUT: 15
       CF_STARTUP_TIMEOUT: 15
       APP_NAME: "MoD Veterans"
@@ -18,6 +19,7 @@ applications:
       APP_KEY: base64:DykIILG50laGHJBYv78MSCx+LEahCgMxYsSPpqPSgOM=
       APP_DEBUG: false
       APP_URL: https://modvets-uat.london.cloudapps.digital
+      APP_STAGE: UAT
       LOG_CHANNEL: stack
       LOG_LEVEL: debug
       SESSION_DRIVER: database

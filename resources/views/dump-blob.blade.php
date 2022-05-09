@@ -1,8 +1,13 @@
 <?php
 
+\Sentry\captureMessage('test message');
+
 if ($_SERVER['SERVER_NAME'] != 'modvets.local') {
     die();
 }
+
+
+
 
 ?>
 

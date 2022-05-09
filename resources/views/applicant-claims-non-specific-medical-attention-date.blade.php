@@ -78,7 +78,7 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year">Please give us at least an approximate year</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year">Please give us at least an approximate year</a>';
         $conditionyear['error'] = 'govuk-form-group--error';
         $conditionyear['errorLabel'] =
         '<span id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year-error" class="govuk-error-message">

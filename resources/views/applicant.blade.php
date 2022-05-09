@@ -91,7 +91,7 @@ if (!empty($_POST)) {
   <div class="govuk-error-summary__body">
     <ul class="govuk-list govuk-error-summary__list">
       <li>
-        <a href="/applicant/applicant-selection/nominated-applicant-error">Please choose who is making this application</a>
+        <a href="#/applicant/applicant-selection/nominated-applicant-error">Please choose who is making this application</a>
       </li>
     </ul>
   </div>
@@ -176,7 +176,7 @@ echo $errorWhoLabel;
 
                 <div class="govuk-form-group">
     <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
-            <br><a href="https://modvets.web.poweredbyreason.co.uk/cancel" class="govuk-link"
+            <br><a href="/cancel" class="govuk-link"
            data-module="govuk-button">
             Cancel application
         </a>

@@ -577,7 +577,7 @@ Medical Officer or GP&#039;s full name (if known)
 if(!empty($data['sections']['about-you']['medical-officer']['address1'])) {
 $emailContent .='
 
-Practice, Building and street
+Practice, Building and street (Medical officer or GP)
 
 
 ^ '.$data['sections']['about-you']['medical-officer']['address1'].'
@@ -897,15 +897,14 @@ if (!empty($data['sections']['claims']['records'])) {
 
 $claimCount = 1;
 
+
+foreach ($data['sections']['claims']['records'] as $claimRecord) {
+
+
 $emailContent .='
-
-
-
 #Claim Record '.$claimCount.'
 ---
 ';
-
-foreach ($data['sections']['claims']['records'] as $claimRecord) {
 
 
 if(!empty($claimRecord['type'])) {
@@ -944,7 +943,7 @@ Diagnosing Medical Practitioner (if known)
 if(!empty($claimRecord['non-specific']['hospital-address']['address1'])) {
 $emailContent .='
 
-Practice, Building and street
+Practice, Building and street (who diagnosed)
 
 
 ^ '.$claimRecord['non-specific']['hospital-address']['address1'].'
@@ -1065,7 +1064,7 @@ What is your illness/condition related to
 if(!empty($claimRecord['related-exposure'])) {
 $emailContent .='
 
-Illness/condition due to exposure to?
+Illness/condition due to exposure to? (Cold / Heat / Noise, for example gunfire / Vibration, for example from using tools /Chemical exposure)
 
 
 ^ '.$claimRecord['related-exposure'].'
@@ -1112,9 +1111,7 @@ $emailContent .='
 When did you first seek medical attention?
 
 
-^ '.@$claimRecord['medical-attention']['day'].' / '.@$claimRecord['medical-attention']['month'].' /
-
-^ '.$claimRecord['medical-attention']['year'].'
+^ '.@$claimRecord['medical-attention']['day'].' / '.@$claimRecord['medical-attention']['month'].' /  '.$claimRecord['medical-attention']['year'].'
 
 ';
 }
@@ -1241,16 +1238,18 @@ Why is your condition related to your armed forces service?
 }
 
 
+
 if(!empty($claimRecord['specific']['pt-related'])) {
 $emailContent .='
 
-
+Was the incident or accident related to sport, adventure training or physical training?
 
 
 ^ '.$claimRecord['specific']['pt-related'].'
 
 ';
 }
+
 
 if(!empty($claimRecord['specific']['non-pt']['conditions'])) {
 $emailContent .='
@@ -1277,7 +1276,7 @@ Diagnosing Medical Practitioner (if known)
 if(!empty($claimRecord['specific']['non-pt']['hospital-address']['address1'])) {
 $emailContent .='
 
-Practice, Building and street
+Practice, Building and street (who diagnosed)
 
 
 ^ '.$claimRecord['specific']['non-pt']['hospital-address']['address1'].'
@@ -1779,17 +1778,6 @@ Why is your condition related to your armed forces service?
 }
 
 
-if(!empty($claimRecord['specific']['pt-related'])) {
-$emailContent .='
-
-Was the incident or accident related to sport, adventure training or physical training?
-
-
-^ '.$claimRecord['specific']['pt-related'].'
-
-';
-}
-
 if(!empty($claimRecord['specific']['pt']['conditions'])) {
 $emailContent .='
 
@@ -1815,7 +1803,7 @@ Diagnosing Medical Practitioner (if known)
 if(!empty($claimRecord['specific']['pt']['hospital-address']['address1'])) {
 $emailContent .='
 
-Practice, Building and street
+Practice, Building and street (who diagnosed)
 
 
 ^ '.$claimRecord['specific']['pt']['hospital-address']['address1'].'
@@ -1922,7 +1910,7 @@ Approximate date
 ';
 }
 
-if(!empty($claimRecord['related-conditions'])) {
+if( (!empty($claimRecord['specific']['pt'])) && (!empty($claimRecord['related-conditions'])) ) {
 $emailContent .='
 
 What is your illness/condition related to
@@ -1970,7 +1958,9 @@ if(!empty($claimRecord['specific']['pt']['where'])) {
 $emailContent .='
 
 Where were you when the incident happened?
-'.$claimRecord['specific']['pt']['where'].'
+
+
+^ '.$claimRecord['specific']['pt']['where'].'
 
 ';
 }
@@ -2249,8 +2239,12 @@ $emailContent .= '
 ';
 
 if (!empty($data['sections']['medical-treatment']['received'])) {
-$emailContent .= 'Have you received further hospital or medical treatment?
-'.$data['sections']['medical-treatment']['received'].'
+$emailContent .= '
+
+Have you received further hospital or medical treatment?
+
+
+^ '.$data['sections']['medical-treatment']['received'].'
 
 ';
 }
@@ -2259,6 +2253,11 @@ $emailContent .= 'Have you received further hospital or medical treatment?
 if (!empty($data['sections']['medical-treatment']['records'])) {
 $medicalCount = 1;
 foreach ($data['sections']['medical-treatment']['records'] as $medicalRecord) {
+
+$emailContent .='
+#Medical Record '.$medicalCount.'
+---
+';
 
 
 if (!empty($medicalRecord['hospital-address']['name'])) {
@@ -2902,8 +2901,33 @@ function returnData($arr) {
 $fullContent = returnData($data);
 
 
+$appstage = getenv('APP_STAGE');
+if (empty($appstage)) {
+    $appstage = 'UAT';
+}
 
-if ($_SERVER['SERVER_NAME'] != 'modvets.local') {
+
+/* Commented out until ready to use
+
+//send a confirmation SMS if we want to
+
+    if ($appstage == 'LOCAL') {
+
+     //do nothing
+
+    } else {
+        //send notify code out
+        $mobile = @$data['sections']['about-you']['telephonenumber']['mobile'];
+        if (!empty($mobile)) {
+        Notify::getInstance()->setData(['reference' => $reference_number])->sendSms($mobile, 'd02d27ce-d01d-46b8-8e26-149894239666');
+        }
+
+    }
+
+*/
+
+
+if ($appstage != 'LOCAL') {
 
 
 
@@ -2915,7 +2939,7 @@ if (!empty($data['sections']['about-you']['email'])) {
 
 
 
-if ($_SERVER['SERVER_NAME'] == 'modvets-uat.london.cloudapps.digital') {
+if ($appstage == 'UAT') {
 
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
@@ -2998,7 +3022,7 @@ The assessment process can be complex and involves gathering information from ma
 
 
     <h2 class="govuk-heading-m">Do you need further help or support?</h2>
-    <p class="govuk-body">All veterans and their families are entitled to free help and support from Veterans UK at any time. This includes a free helpline and Veterans Welfare Service that can assist with welfare information including benefits, help in the home, employment and financial support. More information and contact details can be found on our website<a href="https://www.gov.uk/guidance/urgent-help-for-veterans" target="_New">https://www.gov.uk/guidance/urgent-help-for-veterans</a> </p>
+    <p class="govuk-body">All veterans and their families are entitled to free help and support from Veterans UK at any time. This includes a free helpline and Veterans Welfare Service that can assist with welfare information including benefits, help in the home, employment and financial support. More information and contact details can be found on our website <a href="https://www.gov.uk/guidance/urgent-help-for-veterans" target="_New">https://www.gov.uk/guidance/urgent-help-for-veterans</a> </p>
 
  <p class="govuk-body">Thank you<br />MOD Veterans UK</p>
 

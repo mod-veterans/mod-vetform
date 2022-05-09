@@ -12,7 +12,7 @@ $errorMessage = '';
 $errorWhoShow = '';
 $errors = 'N';
 $errorsList = array();
-
+$dob = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 //set fields
 //$email = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
@@ -33,17 +33,26 @@ $lastname = md5(simplify($_POST['lastname']));
         $dobyear['data']            = @$_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-year'];
 
 
-$dobData = mktime(0,0,0, $dobmonth['data'],$dobday['data'],$dobyear['data']);
+        if ( (!is_numeric($dobday['data'])) || (!is_numeric($dobmonth['data'])) || (!is_numeric($dobyear['data'])) ) {
+            $errors = 'Y';
+            $errorsList[] = '<a href="#/applicant/nominee-details/nominee-details">Please enter your date of birth in numeric format</a>';
+            $dob['error'] = 'govuk-form-group--error';
+            $dob['errorLabel'] =
+            '<span id="/applicant/nominee-details/nominee-details" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Please enter your date of birth in numeric format
+             </span>';
 
 
-$email = md5(simplify($dobData));
+        }
 
 
 
 
+        if ($errors != 'Y') {
 
 
-
+        $dobData = mktime(0,0,0, $dobmonth['data'],$dobday['data'],$dobyear['data']);
+        $email = md5(simplify($dobData));
 
 
 
@@ -123,10 +132,13 @@ $email = md5(simplify($dobData));
 
 
     } else {
-
         $errors = 'Y';
+            $errorsList[] = '<a href="#">We could not find a record matching the details you entered</a>';
+
     }
 
+
+}
 
 
     if ($errors == 'Y') {
@@ -141,7 +153,7 @@ $email = md5(simplify($dobData));
           </h2>
           <div class="govuk-error-summary__body">
             <ul class="govuk-list govuk-error-summary__list">
-            We cannot find an existing record matching those details.
+            '.$errorList.'
             </ul>
           </div>
         </div>
@@ -179,9 +191,22 @@ echo $errorMessage;
     <input  class="govuk-input govuk-!-width-two-thirds " id="last-name" name="lastname" type="text" value="" required>
 </div>
 
+
+    <fieldset class="govuk-fieldset">
+
+
+    @php echo $dob['errorLabel']; @endphp
+
+
     <label class="govuk-label" for="">
         Date of birth (required)
     </label>
+        <div id="afcs/about-you/personal-details/date-of-birth/date-of-birth-hint" class="govuk-hint">For example 27 3 2007</div>
+
+        <div class="govuk-date-input" id="afcs/about-you/personal-details/date-of-birth/date-of-birth">
+                                                <div class="govuk-date-input__item">
+
+
 <div class="govuk-date-input__item">
 
     <div class="govuk-form-group">
@@ -204,9 +229,7 @@ echo $errorMessage;
                 <input
             class="govuk-input govuk-date-input__input govuk-input--width-2 "
             id="afcs/about-you/personal-details/date-of-birth/date-of-birth-month"
-            name="afcs/about-you/personal-details/date-of-birth/date-of-birth-month" type="text" pattern="[0-9]*" inputmode="numeric"
-            maxlength="2"
-            value="">
+            name="afcs/about-you/personal-details/date-of-birth/date-of-birth-month" type="text" value="">
     </div>
 </div>
                                                     <div class="govuk-date-input__item">
@@ -222,6 +245,13 @@ echo $errorMessage;
             value="">
     </div>
 </div>
+
+
+</div>
+</div>
+</fieldset>
+
+
 
 <div class="govuk-form-group">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/lastname">

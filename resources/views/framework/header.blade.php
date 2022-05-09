@@ -62,6 +62,30 @@ if (!empty($_POST['cookies'])) {
 </head>
 
 <body class="govuk-template__body">
+
+
+@php
+
+
+$appstage = getenv('APP_STAGE');
+if (empty($appstage)) {
+    $appstage = 'UAT';
+}
+
+
+if ($appstage == 'UAT') {
+@endphp
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-K4C9DZ7
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+@php
+}
+@endphp
+
+
+
 <script>
     document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
 </script>

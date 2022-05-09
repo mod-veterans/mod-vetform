@@ -94,7 +94,7 @@ if (!empty($_POST)) {
 
     if ((empty($_POST['/claim-details/claim-downgraded-dates/date-to-year']) ) && ($_POST['/claim-details/claim-illness-date/still-downgraded'] != 'Yes')) {
         $errors = 'Y';
-        $errorsList[] = '<a href="/claim-details/claim-downgraded-dates/date-from-year">Please give us at least an approximate year to</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-year">Please give us at least an approximate year to</a>';
         $datetoyear['error'] = 'govuk-form-group--error';
         $datetoyear['errorLabel'] =
         '<span id="/claim-details/claim-downgraded-dates/date-from-year-error" class="govuk-error-message">
