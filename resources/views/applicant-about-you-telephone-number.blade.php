@@ -53,11 +53,11 @@ if (!empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])
 if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Please tell us if you have a mobile number</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Please tell us if you have a UK mobile number</a>';
                 $doyouhavemobile['error'] = 'govuk-form-group--error';
                 $doyouhavemobile['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/do-you-have-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have a mobile number
+                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have a UK mobile number
                  </span>';
 
 
@@ -71,7 +71,7 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
                 $data['sections']['about-you']['telephonenumber']['mobile'] = $_POST['afcs/about-you/personal-details/contact-number/mobile-number'];
                 $data['sections']['about-you']['telephonenumber']['doyouhavemobile'] = 'Yes';
 
-                $theURL = '/applicant/about-you/email-address';
+                $theURL = '/applicant/about-you/mobile-permission';
 
             } else {
 
@@ -162,7 +162,7 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
 echo $errorMessage;
 @endphp
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Do you have a mobile telephone number?</h1>
+                                <h1 class="govuk-heading-xl">Do you have a UK mobile telephone number?</h1>
     </legend>
                                 <p class="govuk-body">We'll use this to contact you if we have any questions about this claim.</p>
 
@@ -186,7 +186,6 @@ echo $errorMessage;
             Mobile telephone number
           </label>
           @php echo $mobile['errorLabel']; @endphp
-    <div id="afcs/about-you/personal-details/contact-number/mobile-number-hint" class="govuk-hint">For overseas numbers include the country code, for example +49</div>
                  <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-number/mobile-number" name="afcs/about-you/personal-details/contact-number/mobile-number" type="tel"

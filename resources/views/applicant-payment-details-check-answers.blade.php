@@ -44,7 +44,7 @@ if (!empty($_POST)) {
 @endif
 
 @php
-if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sections']['bank-account']['providebank'] == 'Yes') ) {
+if ( (!empty($data['sections']['bank-account']['bank-address'])) && (!empty($data['sections']['bank-account']['providebank'])) && ($data['sections']['bank-account']['providebank'] == 'Yes') ) {
 @endphp
 
 
@@ -141,7 +141,7 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) &&  ($data['sec
 
 
 @php
-if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  ($data['sections']['bank-account']['providebank'] == 'Yes') ) {
+if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  (!empty($data['sections']['bank-account']['providebank'])) && ($data['sections']['bank-account']['providebank'] == 'Yes') ) {
 @endphp
 
 

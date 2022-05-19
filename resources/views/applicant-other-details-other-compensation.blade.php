@@ -175,7 +175,7 @@ echo $errorMessage;
     <li>Any payments from MOD for criminal injuries.</li>
 <li>Civil negligence payments received from the courts.</li>
 <li>Compensation from civil authorities in Great Britain and Northern Ireland for criminal injuries.</li>
-<li>Any other compensation payments received for the medical conditions you are claiming for. </li>
+<li>Any other compensation or pension payments received for the medical conditions you are claiming for. </li>
 </ul>
   </div>
 </details>

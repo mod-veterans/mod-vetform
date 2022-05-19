@@ -57,7 +57,7 @@ if (!empty($_POST)) {
 
 
                 <div class="govuk-form-group">
-   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
+   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Continue</button>
 @include('framework.bottombuttons')
 
     </div>

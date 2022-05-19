@@ -158,6 +158,21 @@ if (!empty($_POST)) {
             </dd>
         </div>
 
+
+         @if(!empty($data['sections']['about-you']['telephonenumber']['mobilepermission']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Can we contact you via text message about your claim?</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['about-you']['telephonenumber']['mobilepermission']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/mobile-permission/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/email-address/email-address">Change<span
+                        class="govuk-visually-hidden"> Can we contact you via text message about your claim</span></a>
+            </dd>
+        </div>
+        @endif
+
+
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Alternative telephone number:</dt>
             <dd class="govuk-summary-list__value">
@@ -184,6 +199,22 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
+
+
+        @if(!empty($data['sections']['about-you']['email-address']['emailpermission']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Can we contact you via email about your claim?</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['about-you']['email-address']['emailpermission']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/email-permission/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/email-address/email-address">Change<span
+                        class="govuk-visually-hidden"> Can we contact you via email about your claim</span></a>
+            </dd>
+        </div>
+        @endif
+
+
         @if(!empty($data['sections']['about-you']['ninumber']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">NI Number</dt>

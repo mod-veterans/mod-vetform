@@ -171,40 +171,7 @@ You will not be able to access your completed application again after it is subm
 
 <p class="govuk-body">You will get an email acknowledgement to the email address you gave us in ‘personal details’ with information about how your claim will be assessed.</p>
 
-<h2>Use of email</h2>
 
-
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
- You must read this text information and tick the box below if you want us contact you by email
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-<p class="govuk-body">Veterans UK is happy to conduct correspondence with customers using a nominated email address if that is their preference. There are some types of personal information we would not be able to include in email correspondence.</p>
-<p class="govuk-body">Please read the information below.</p>
-
-<ul class="govuk-list govuk-list--bullet">
-    <li>I authorise Veterans UK to use email whenever possible in its correspondence with me using my nominated email address entered. I accept that information including bank account details, National Insurance Numbers, medical details and any other information that could compromise my identity will not be included in emails.</li>
-
-<li>I understand that correspondence transmitted by email may be open to abuse because it is transmitted over an unsecured network. I accept that the MOD will not be liable for any loss, interception or unauthorised use of information transmitted this way.</li>
-<li>If you would also like us to send enquiries we have during your claim via email, please tick the box below. If you do not tick this box, we will contact you via post.</li>
-<li>If at any time in the future your email address should change then please tell us as soon as possible. Failure to tell us will result in Veterans UK being unable to release documents to you through the internet.</li>
-</li>
-</ul>
-
-
-  </div>
-</details>
-
-
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-You must read this declaration and tick the box below before you submit your application
-    </span>
-  </summary>
-  <div class="govuk-details__text">
 <p class="govuk-body">
 
 I confirm that if I have signed a UKSF Confidentiality Contract, I have been careful not to make unauthorised disclosures. I have sought advice from the Disclosure Cell and have Express Prior Authority in Writing (EPAW) to make such statements.</p>
@@ -249,20 +216,12 @@ I confirm that if I have signed a UKSF Confidentiality Contract, I have been car
 <li>To repay any sum paid as a result of this claim in the event that an overpayment is made for any reason.</li>
 </ul>
   </div>
-</details>
-
 
 
     @php echo $declaration['errorLabel']; @endphp
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
-                                                    <div class="govuk-checkboxes__item">
-            <input id="6166a97ee7868--default" name="afcs/application-submission/declaration/submission/enquiries-by-email" type="hidden" value="No">
-        <input class="govuk-checkboxes__input" id="6166a97ee7868" name="afcs/application-submission/declaration/submission/enquiries-by-email" type="checkbox"
-           value="Yes"    {{$enquirychk ?? ''}}        >
-    <label class="govuk-label govuk-checkboxes__label" for="6166a97ee7868">I would like Veterans UK to send claim enquiries to me via email (optional)</label>
-</div>
                                     <div class="govuk-checkboxes__item">
             <input id="6166a97ee7ad1--default" name="afcs/application-submission/declaration/submission/declaration-agreed" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="afcs/application-submission/declaration/submission/declaration-agreed" name="afcs/application-submission/declaration/submission/declaration-agreed" type="checkbox"

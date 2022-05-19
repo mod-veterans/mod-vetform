@@ -139,12 +139,12 @@ if (!empty($_POST)) {
                                   </strong>
                                 </div>
                                 <p class="govuk-body">You can use this section to explain the impact the conditions have on you.</p>
-                                <p class="govuk-body">If you want to think about your answer, you can use the ‘save and return later’ function.</p>
+                                <p class="govuk-body">If you want to think about your answer, you can use the ‘save and come back later’ function.</p>
                                  <div class="govuk-warning-text">
                                   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
                                   <strong class="govuk-warning-text__text">
                                     <span class="govuk-warning-text__assistive">Warning</span>
-                                    You need permission to claim if you served in or supported the Special Forces.
+                                    You need permission to complete this section if you served in or supported the Special Forces.
                                   </strong>
                                 </div>
 
@@ -179,7 +179,7 @@ If the person named in this application is serving or has served in with United 
 
 
 <div class="govuk-inset-text">
-If you’ve been affected by recalling your experiences, information on support available is on our <a href="https://www.gov.uk/guidance/urgent-help-for-veterans">website</a>.
+If you’ve been affected by recalling your experiences, information on support available is on our <a href="https://www.gov.uk/guidance/urgent-help-for-veterans" target="_New">website</a>.
 </div>
 
 

@@ -33,7 +33,7 @@ if (!empty($_POST)) {
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Who is making this application?</dt>
             <dd class="govuk-summary-list__value">
-                                    The person named on this claim is making the application.
+                                    I am applying for myself
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant">Change<span

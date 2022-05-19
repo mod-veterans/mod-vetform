@@ -8,19 +8,19 @@
                 <h2 class="govuk-heading-m">Terms and conditions of use </h2>
                 <p class="govuk-body">
 
-This page and any pages it links to explains the terms and conditions of use for the Apply for an armed forces compensation or war pension payment claim service. You agree to these if you use the service.</p>
+This page and any pages it links to explains the terms and conditions of use for the Apply for an Armed Forces Compensation or War Pension Payment claim service. You agree to these if you use the service.</p>
 
 <h2>Who we are</h2>
-<p class="govuk-body">The Apply for an armed forces compensation or war pension payment service sits on GOV.UK and is managed by Veterans UK, part of Defence Business Services within the Ministry of Defence.</p>
+<p class="govuk-body">The Apply for an Armed Forces Compensation or War Pension Payment service sits on GOV.UK and is managed by Veterans UK, part of Defence Business Services within the Ministry of Defence.</p>
 <p class="govuk-body">GOV.UK is managed by Government Digital Service (GDS) on behalf of the Crown. GDS is part of the Cabinet Office.</p>
 
-<h2>Using Apply for an armed forces compensation or war pension payment</h2>
+<h2>Using Apply for an Armed Forces Compensation or War Pension Payment</h2>
 <p class="govuk-body">If you use the Apply for an armed forces compensation or war pension payment service, you agree to the GOV.UK terms and conditions of use.
 You also agree to the following additional terms:</p>
 
 <h2>Prohibited uses</h2>
-<p class="govuk-body">You may not use the Apply for an armed forces compensation or war pension payment service:</p>
-<ul>
+<p class="govuk-body">You may not use the Apply for an Armed Forces Compensation or War Pension Payment  service:</p>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 <li>to collect any data or attempt to decipher any transmissions to or from our servers</li>
 <li>in a way that could damage, disable, overburden, impair or compromise our systems or security</li>
 <li>to transmit any material that is insulting or offensive</li>

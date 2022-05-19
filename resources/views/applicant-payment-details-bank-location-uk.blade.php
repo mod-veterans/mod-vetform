@@ -62,15 +62,15 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-name'])) {
-       /*
+
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-name">Please give us the first line of your service unit address</a>';
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-name">Please give us the name of your bank</a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
         '<span id="/payment-details/bank-united-kingdom/bank-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the first line your service unit address
+            <span class="govuk-visually-hidden">Error:</span> Please give us the name of your bank
          </span>';
-         */
+
 
 
     } else {
@@ -81,6 +81,16 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-account-name'])) {
 
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-name">Please give us the name on this account</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/payment-details/bank-united-kingdom/bank-account-name-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the name on this account
+         </span>';
+
+
+
     } else {
         $data['sections']['bank-account']['bank-address']['accountname'] = cleanTextData($_POST['/payment-details/bank-united-kingdom/bank-account-name']);
     }
@@ -89,6 +99,15 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-account-sort-code'])) {
 
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-sort-code">Please give us your sort code</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/payment-details/bank-united-kingdom/bank-account-sort-code-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your sort code
+         </span>';
+
+
     } else {
         $data['sections']['bank-account']['bank-address']['sortcode'] = cleanTextData($_POST['/payment-details/bank-united-kingdom/bank-account-sort-code']);
     }
@@ -96,6 +115,18 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-account-number'])) {
+
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-number">Please give us your account number</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/payment-details/bank-united-kingdom/bank-account-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us your account number
+         </span>';
+
+
+
 
     } else {
         $data['sections']['bank-account']['bank-address']['accountnumber'] = cleanTextData($_POST['/payment-details/bank-united-kingdom/bank-account-number']);
@@ -180,6 +211,9 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+@php
+echo @errorMessage;
+@endphp
 
                                 <h1 class="govuk-heading-xl">UK bank or building society account details</h1>
                                 <div class="govuk-body">You can ask your bank or check your bank statement for these details.</div>

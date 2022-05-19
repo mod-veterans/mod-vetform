@@ -131,8 +131,16 @@ Route::match(['get', 'post'],'/applicant/about-you/telephone-number', function (
     return view('applicant-about-you-telephone-number');
 });
 
+Route::match(['get', 'post'],'/applicant/about-you/mobile-permission', function () {
+    return view('applicant-about-you-mobile-permission');
+});
+
 Route::match(['get', 'post'],'/applicant/about-you/alternative-number', function () {
     return view('applicant-about-you-alternative-number');
+});
+
+Route::match(['get', 'post'],'/applicant/about-you/email-permission', function () {
+    return view('applicant-about-you-email-permission');
 });
 
 Route::match(['get', 'post'],'/applicant/about-you/email-address', function () {

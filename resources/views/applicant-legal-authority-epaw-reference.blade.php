@@ -159,7 +159,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">Express Prior Authority in Writing (EPAW)</h1>
+                                <h1 class="govuk-heading-xl">Rules for Special Forces</h1>
 
 
 

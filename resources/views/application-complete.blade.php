@@ -36,6 +36,7 @@ Who is making this application
 
 
 ^ The person named on this claim is making the application.
+
 ';
 
 
@@ -74,7 +75,7 @@ Who is making this application
 
 if(!empty($data['sections']['applicant-who']['legal-authority']['epaw']['served'])) {
 $emailContent .= '
-Have you ever served in or supported the Special Forces?
+Has the person you are applying for ever served in or supported the special forces?
 
 
 ^ '.$data['sections']['applicant-who']['legal-authority']['epaw']['served'].'
@@ -179,24 +180,40 @@ break;
 
 
 case "I am helping someone else make this application.":
-$emailContent .= '
-#Who is making this application
-I am helping someone else make this application.
+$emailContent .= 'Who is making this application
 
-#Name of assistant making this claim
-'.@$data['sections']['applicant-who']['helper']['name'].'
 
-#Relationship to claimant
-'.@$data['sections']['applicant-who']['helper']['relationship'].'
+^ I am helping someone else make this application.
 
-#Assisted claim declaration understood
-'.@$data['sections']['applicant-who']['helper']['declaration'].'
 
-#Previously served with or supported the special forces
-'.@$data['sections']['applicant-who']['helper']['epaw']['served'].'
+Name of assistant making this claim
 
-#Express Prior Authority in Writing (EPAW) reference
-'.@$data['sections']['applicant-who']['helper']['epaw']['epaw-reference'].'
+
+^'.@$data['sections']['applicant-who']['helper']['name'].'
+
+
+Relationship to claimant
+
+
+^ '.@$data['sections']['applicant-who']['helper']['relationship'].'
+
+
+Assisted claim declaration understood
+
+
+^ '.@$data['sections']['applicant-who']['helper']['declaration'].'
+
+
+Has the person you are helping ever served in or supported the special forces?
+
+
+^ '.@$data['sections']['applicant-who']['helper']['epaw']['served'].'
+
+
+Express Prior Authority in Writing (EPAW) reference
+
+
+^ '.@$data['sections']['applicant-who']['helper']['epaw']['epaw-reference'].'
 
 ';
 
@@ -459,7 +476,23 @@ Mobile telephone number?';
 
 ';
     }
+
+
+if (!empty($data['sections']['about-you']['telephonenumber']['mobilepermission'])) {
+
+$emailContent .='
+
+Mobile contact permission:
+
+^ '.$data['sections']['about-you']['telephonenumber']['mobilepermission'].'
+
+';
 }
+
+
+}
+
+
 
 if (!empty($data['sections']['about-you']['telephonenumber']['doyouhavealternative'])) {
     $emailContent .='
@@ -490,6 +523,22 @@ What is your email address
 
 ';
 }
+
+
+if (!empty($data['sections']['about-you']['email-address']['emailpermission'])) {
+
+$emailContent .='
+
+Email contact permission:
+
+^ '.$data['sections']['about-you']['email-address']['emailpermission'].'
+
+';
+}
+
+
+
+
 
 if(!empty($data['sections']['about-you']['ninumber'])) {
 $emailContent .='
@@ -559,7 +608,7 @@ $emailContent .='
 
 
 ---
-#Medical Officer
+#Doctor or medical officer (if serving)
 ---
 ';
 
@@ -1507,13 +1556,15 @@ $emailContent .='
 Police reference?
 
 
-^ Civilian Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['civilian-ref'].'<br />
+^ Civilian Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['civilian-ref'].'
 
 
-^ Military Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['military-ref'].'<br />
+^ Military Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['military-ref'].'
 
 
-^ I don\'t know: '.$claimRecord['specific']['non-pt']['police-report']['dontknow'].'<br />';
+^ I don\'t know: '.$claimRecord['specific']['non-pt']['police-report']['dontknow'].'
+
+';
 }
 
 if(!empty($claimRecord['specific']['non-pt']['authorised-leave'])) {
@@ -2856,17 +2907,31 @@ No files added
 
 }
 
+if (!empty($data['sections']['supporting-documents']['file-information'])) {
+$emailContent .= '
+File comments
+
+^ '.$data['sections']['supporting-documents']['file-information'].'
+
+';
+}
+
 $emailContent .= '
 
 ---
 #Declaration
 ---
 
-#Read and agreed to the declaration
-'.@$data['submission']['declaration'].'
+Read and agreed to the declaration
 
-#Agree to email contact
-'.@$data['submission']['enquiry'].'
+
+^ '.@$data['submission']['declaration'].'
+
+
+Agree to email contact
+
+
+^ '.@$data['submission']['enquiry'].'
 
 ';
 

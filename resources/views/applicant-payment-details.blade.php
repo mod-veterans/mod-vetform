@@ -167,7 +167,7 @@ echo $errorMessage;
 
                                 <p class="govuk-body">Telling us your bank details now means we can make a payment faster if your claim is successful.</p>
 
-<p class="govuk-body">If you do not want to give details now, we’ll get in touch with you after your claim is assessed.</p>
+<p class="govuk-body">If you do not want to give details now, we’ll get in touch with you later if we need to.</p>
 
 <div class="govuk-inset-text">
  <strong>Serving Personnel:</strong> We’ll pay any money you are due into the account your salary is paid into.

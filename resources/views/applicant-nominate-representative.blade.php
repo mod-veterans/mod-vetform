@@ -162,15 +162,26 @@ echo $errorMessage;
 
                                 <h1 class="govuk-heading-xl">Nominating a representative</h1>
 
-                                <p class="govuk-body">If someone is helping you make a claim, for example a charity welfare officer or a solicitor, you can make them your representative. This means they can ask us how your claim is progressing. They will also receive copies of all letters we send you. </p>
+                                    <p  class="govuk-body">If you want to, you can nominate someone as your representative.</br>
+<p  class="govuk-body">
+A representative;
+</p>
 
-<p class="govuk-body">We can only give them this information if you agree to this.</p>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+<li>will get future copies of all letters we send to you.</li>
+<li>will get a copy of our final decision.</li>
+<li>can be the same person helping you make this online claim or;</li>
+<li>can be another person.</li>
+</ul>
+
+
+<p class="govuk-body">We will not send copies of letters to someone helping you make this claim unless you also make them your representative</p>
 
 <div class="govuk-inset-text">
 Letters sent to you can contain personal information. This could be your banking details, medical conditions and the amount of money you will receive if your claim is successful.
 </div>
 
-<p class="govuk-body">You can add more representatives or change their details by writing to us at any time. </p>
+<p class="govuk-body">You can add more representatives, change their details or remove them by writing to us at any time. </p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate>

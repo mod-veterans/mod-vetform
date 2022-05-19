@@ -258,7 +258,7 @@ If you’re not registered with a surgery or practice, please write "Not Registe
 </div>
                                     <div class="govuk-form-group {{$address1['error']}} ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/address-line-1">
-        Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
+       Practice name, Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
     </label>
 @php echo $address1['errorLabel']; @endphp
            <input

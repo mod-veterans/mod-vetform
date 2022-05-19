@@ -83,6 +83,16 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-name'])) {
 
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-name">Please give us the name of your bank</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/payment-details/bank-united-kingdom/bank-name-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the name of your bank
+         </span>';
+
+
+
     } else {
         $data['sections']['bank-account']['overseas-bank-address']['bankname'] = cleanTextData($_POST['/payment-details/bank-united-kingdom/bank-name']);
     }
@@ -90,11 +100,28 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/payment-details/bank-overseas/bank-account-name'])) {
 
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/payment-details/bank-overseas/bank-account-name">Please give us the name on this account</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/payment-details/bank-overseas/bank-account-name-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the name on this account
+         </span>';
+
+
     } else {
         $data['sections']['bank-account']['overseas-bank-address']['accountname'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-name']);
     }
 
     if (empty($_POST['/payment-details/bank-overseas/bank-account-iban'])) {
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#/payment-details/bank-overseas/bank-account-iban">Please give us the account IBAN</a>';
+        $address1['error'] = 'govuk-form-group--error';
+        $address1['errorLabel'] =
+        '<span id="/payment-details/bank-overseas/bank-account-iban-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Please give us the account IBAN
+         </span>';
 
     } else {
         $data['sections']['bank-account']['overseas-bank-address']['iban'] = cleanTextData($_POST['/payment-details/bank-overseas/bank-account-iban']);
