@@ -6,7 +6,7 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Save and come back later</h1>
-                                <p class="govuk-body">You’re about to use our ‘save and come back later’ facility.</p>
+                                <p class="govuk-body">Your application has been successfully saved and you're about to use our ‘save and come back later’ facility.</p>
 <p class="govuk-body">You must return within 3 months of when you first started.</p>
 <p class="govuk-body">Your application will be saved securely until you return.</p>
 

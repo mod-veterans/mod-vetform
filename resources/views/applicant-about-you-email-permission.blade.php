@@ -136,14 +136,14 @@ echo $errorMessage;
     </legend>
                                 <p class="govuk-body">Veterans UK will conduct correspondence with customers about their claim using a nominated email address if that is their preference. There are some types of personal information we would not be able to include in email correspondence.</p>
 
-<p class="govuk-body">Please read the information below if you would like us to use email to contact you:
+<p class="govuk-body">Read the information below if you would like us to use email to contact you:
 </p>
 <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 <li>I authorise Veterans UK to use email whenever possible in its correspondence with me using my nominated email address entered. I accept that information including bank account details, National Insurance Numbers, medical details and any other information that could compromise my identity will not be included in emails.</li>
 
 <li>I understand that correspondence transmitted by email may be open to abuse because it is transmitted over an unsecured network. I accept that the MOD will not be liable for any loss, interception or unauthorised use of information transmitted this way. </li>
 
-<li>If your email address changes, please tell us as soon as possible.</li>
+<li>If your email address changes, tell us as soon as possible.</li>
 </ul>
 
 

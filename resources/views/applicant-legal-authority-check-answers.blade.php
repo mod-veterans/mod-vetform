@@ -54,11 +54,11 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
-         @if(!empty($data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference']))
+         @if(!empty($data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-1']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">EPAW reference number</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference'] ?? 'not served with Special Forces'}}
+                                    {{$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-1']}} - {{$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-2']}} / {{$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-3']}} / {{$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-4']}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/legal-authority/epaw?return=/applicant/legal-authority/check-answers">Change<span
@@ -166,6 +166,40 @@ if (!empty($_POST)) {
             </dd>
         </div>
     @endif
+
+    @if(!empty($data['sections']['applicant-who']['legal-authority']['havelpa']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Do you have an LPA Access Code?</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{@$data['sections']['applicant-who']['legal-authority']['havelpa']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/legal-authority/have-lpa?return=/applicant/legal-authority/check-answers&amp;stack=#afcs/about-you/personal-details/have-lpa-code">Change<span
+                        class="govuk-visually-hidden"> Do you have an LPA Access Code?</span></a>
+            </dd>
+        </div>
+    @endif
+
+    @if(!empty($data['sections']['applicant-who']['legal-authority']['lpacode']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">LPA Access Code</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{@$data['sections']['applicant-who']['legal-authority']['lpacode']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/legal-authority/lpa?return=/applicant/legal-authority/check-answers&amp;stack=#afcs/about-you/personal-details/hlpacode">Change<span
+                        class="govuk-visually-hidden">LPA Access Code</span></a>
+            </dd>
+        </div>
+    @endif
+
+
+
+
+
+
+
+
     @if(!empty($data['sections']['applicant-who']['legal authority']['details']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What legal authority do you have to make a claim on behalf of the person named?</dt>

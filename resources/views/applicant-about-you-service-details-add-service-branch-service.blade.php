@@ -189,6 +189,13 @@ echo $errorMessage;
 </div>
 
                             <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="afcs/about-you/service-details/service-branch/service-branch-royal-marines" name="afcs/about-you/service-details/service-branch/service-branch" type="radio"
+           value="Royal Marines"      @php echo @$rolechk['Royal Marines']; @endphp       >
+    <label class="govuk-label govuk-radios__label" for="afcs/about-you/service-details/service-branch/service-branch-royal-marines">Royal Marines</label>
+</div>
+
+
+                            <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="afcs/about-you/service-details/service-branch/service-branch-army" name="afcs/about-you/service-details/service-branch/service-branch" type="radio"
            value="Army"      @php echo @$rolechk['Army']; @endphp       >
     <label class="govuk-label govuk-radios__label" for="afcs/about-you/service-details/service-branch/service-branch-army">Army</label>
@@ -200,11 +207,6 @@ echo $errorMessage;
     <label class="govuk-label govuk-radios__label" for="afcs/about-you/service-details/service-branch/service-branch-royal-air-force">Royal Air Force</label>
 </div>
 
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="afcs/about-you/service-details/service-branch/service-branch-royal-marines" name="afcs/about-you/service-details/service-branch/service-branch" type="radio"
-           value="Royal Marines"      @php echo @$rolechk['Royal Marines']; @endphp       >
-    <label class="govuk-label govuk-radios__label" for="afcs/about-you/service-details/service-branch/service-branch-royal-marines">Royal Marines</label>
-</div>
 
                     </div>
     </fieldset>

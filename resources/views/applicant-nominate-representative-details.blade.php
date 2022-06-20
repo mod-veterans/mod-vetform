@@ -314,7 +314,7 @@ echo $errorMessage;
 </div>
                                     <div class="govuk-form-group {{$county['error']}}">
     <label class="govuk-label" for="/representative/representative-address/county">
-        County
+        County (State or Province if overseas)
     </label>
 @php echo $county['errorLabel']; @endphp
             <input

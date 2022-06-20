@@ -58,8 +58,7 @@ if ($data = getData($userID)) {
         <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 
             <li>Select the links below to start a section.</li>
-            <li>You’ll return to this page after each one is complete.</li>
-            <li>You can go back and make changes to sections marked ‘complete’ if you’ve not submitted your application.</li>
+            <li>You can go back and make changes to sections marked ‘complete’.</li>
 @php
 if (!empty($data['settings']['sacbl'])) {
 
@@ -678,6 +677,15 @@ if ($completed < $needComplete) {
                     </ol>
             </div>
         </div>
+@php
+if (!empty($data['settings']['sacbl'])) {
+
+@endphp
+
+<a href="/save-and-come-back-later" class="govuk-link" data-module="govuk-button">Save and come back later</a>
+@php
+}
+@endphp
     </main>
 </div>
 @include('framework.footer')

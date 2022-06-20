@@ -212,7 +212,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 @php
-echo @errorMessage;
+echo $errorMessage;
 @endphp
 
                                 <h1 class="govuk-heading-xl">UK bank or building society account details</h1>

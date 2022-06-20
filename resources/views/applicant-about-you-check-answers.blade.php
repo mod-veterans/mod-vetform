@@ -275,11 +275,11 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
-         @if(!empty($data['sections']['about-you']['epaw']['epaw-reference']))
+         @if(!empty($data['sections']['about-you']['epaw']['epaw-reference-1']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">EPAW reference number</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['about-you']['epaw']['epaw-reference'] ?? 'not served with Special Forces'}}
+                                    {{$data['sections']['about-you']['epaw']['epaw-reference-1'] ?? ''}} - {{$data['sections']['about-you']['epaw']['epaw-reference-2'] ?? ''}} / {{$data['sections']['about-you']['epaw']['epaw-reference-3'] ?? ''}} / {{$data['sections']['about-you']['epaw']['epaw-reference-4'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/epaw-reference/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/epaw-reference">Change<span

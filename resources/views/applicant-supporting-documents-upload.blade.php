@@ -135,9 +135,11 @@ if (!empty($_FILES)) {
 
         $rand = genHash();
 
-        Storage::disk('s3')->put($rand.$filename, file_get_contents($filepath));
+        $finalFilename = wordwrap($rand.$filename, 10, '-', true);
 
-        $fileURL = Storage::disk('s3')->url($rand.$filename);
+        Storage::disk('s3')->put($finalFilename, file_get_contents($filepath));
+
+        $fileURL = Storage::disk('s3')->url($finalFilename);
 
 
         //END AWS

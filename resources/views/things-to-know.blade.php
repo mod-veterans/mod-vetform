@@ -24,7 +24,7 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">Things you need to know before you start</h1>
                                <h2>About this online claim service</h2>
                                <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-    <li>The application should take around 45 minutes to complete. </li>
+    <li>A single claim should take around 45 minutes to complete but others may take longer.</li>
     <li>When you’ve fully completed the “Personal Details” section, you can exit and then return to a part completed application within 3 months.</li>
     <li>After you’ve submitted your application, you will not be able to access your claim again or make any changes.  You can contact us later with new information if you need to.</li>
     <li>You can use the ‘supporting documents’ section to upload any documents you want to send with your application. </li>

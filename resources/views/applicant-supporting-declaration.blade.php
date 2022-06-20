@@ -171,7 +171,7 @@ You will not be able to access your completed application again after it is subm
 
 <p class="govuk-body">You will get an email acknowledgement to the email address you gave us in ‘personal details’ with information about how your claim will be assessed.</p>
 
-
+<p class="govuk-body"><strong>Declaration</strong></p>
 <p class="govuk-body">
 
 I confirm that if I have signed a UKSF Confidentiality Contract, I have been careful not to make unauthorised disclosures. I have sought advice from the Disclosure Cell and have Express Prior Authority in Writing (EPAW) to make such statements.</p>

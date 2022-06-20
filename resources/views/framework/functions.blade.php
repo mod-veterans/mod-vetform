@@ -34,7 +34,7 @@ if (empty($_SESSION['vets-user'])) {
     $data = array();
     $data['bigBang'] = date('Y-m-d H:i:s');
     storeData($userID,$data,'INSERT');
-    \Sentry\captureMessage('User session was started');
+    // \Sentry\captureMessage('User session was started');
     header('Location: /');
     die();
 } else {
@@ -48,7 +48,7 @@ if ($data == 'NOPE') {
 
         //we have no matching user ID, reset
         unset($_SESSION['vets-user']);
-        \Sentry\captureMessage('User was booted back to start because of no data match assigned to this ID');
+       // \Sentry\captureMessage('User was booted back to start because of no data match assigned to this ID');
         header("Location: /");
         die();
 
@@ -56,7 +56,7 @@ if ($data == 'NOPE') {
     if (empty($data['settings']['customer_ref'])) {
         $data['settings']['customer_ref'] = substr($userID,0,10);
         storeData($userID,$data,'UPDATE');
-        \Sentry\captureMessage('User has been given a customer ref');
+        // \Sentry\captureMessage('User has been given a customer ref');
         header('Location: /');
         die();
     }
@@ -149,7 +149,11 @@ function cleanURL($data) {
 
 
 function validateEmail($data) {
-    return TRUE;
+    if (!filter_var($data, FILTER_VALIDATE_EMAIL)) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
 }
 
 

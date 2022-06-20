@@ -180,7 +180,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/legal-authority/authority-detail';
+        $theURL = '/applicant/legal-authority/have-lpa';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -255,7 +255,7 @@ echo $errorMessage;
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/applicant/nominee-address/county">
-        County
+        County (State or Province if overseas)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

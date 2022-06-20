@@ -35,7 +35,7 @@ $emailContent .= '
 Who is making this application
 
 
-^ The person named on this claim is making the application.
+▐ The person named on this claim is making the application.
 
 ';
 
@@ -45,16 +45,16 @@ $emailContent .= '
 Have you ever served in or supported the Special Forces?
 
 
-^ '.$data['sections']['applicant-who']['apply-yourself']['epaw']['served'].'
+▐ '.$data['sections']['applicant-who']['apply-yourself']['epaw']['served'].'
 
 ';
 }
 
-if(!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'])) {
+if(!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-1'])) {
 $emailContent .= 'EPAW reference number
 
 
-^ '.$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'].'
+▐ '.$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-1'].' - '.$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-2'].' / '.$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-3'].' / '.$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-4'].'
 
 ';
 }
@@ -69,7 +69,7 @@ $emailContent .= '
 Who is making this application
 
 
-^ '.@$data['sections']['applicant-who']['who is making this application'].'
+▐ '.@$data['sections']['applicant-who']['who is making this application'].'
 
 ';
 
@@ -78,17 +78,17 @@ $emailContent .= '
 Has the person you are applying for ever served in or supported the special forces?
 
 
-^ '.$data['sections']['applicant-who']['legal-authority']['epaw']['served'].'
+▐ '.$data['sections']['applicant-who']['legal-authority']['epaw']['served'].'
 
 ';
 }
 
-if(!empty($data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference'])) {
+if(!empty($data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-1'])) {
 $emailContent .= '
 EPAW reference number
 
 
-^ '.$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference'].'
+▐ '.$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-1'].' - '.$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-2'].' / '.$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-3'].' / '.$data['sections']['applicant-who']['legal-authority']['epaw']['epaw-reference-4'].'
 
 ';
 }
@@ -97,7 +97,7 @@ if(!empty($data['sections']['applicant-who']['legal authority']['fullname'])) {
 $emailContent .= 'Your full name
 
 
-^ '.@$data['sections']['applicant-who']['legal authority']['fullname'].'
+▐ '.@$data['sections']['applicant-who']['legal authority']['fullname'].'
 
 ';
 }
@@ -106,52 +106,42 @@ if(!empty($data['sections']['applicant-who']['legal authority']['address1'])) {
 $emailContent .= 'Building and street
 
 
-^ '.@$data['sections']['applicant-who']['legal authority']['address1'].'
+▐ '.@$data['sections']['applicant-who']['legal authority']['address1'].'
 
 ';
 }
 
 if(!empty($data['sections']['applicant-who']['legal authority']['address2'])) {
-$emailContent .= 'Building and street line 2 of 2
-
-
-^ '.@$data['sections']['applicant-who']['legal authority']['address2'].'
+$emailContent .= '
+▐ '.@$data['sections']['applicant-who']['legal authority']['address2'].'
 
 ';
 }
 
 if(!empty($data['sections']['applicant-who']['legal authority']['town'])) {
-$emailContent .= 'Town or city
-
-
-^ '.@$data['sections']['applicant-who']['legal authority']['town'].'
+$emailContent .= '
+▐ '.@$data['sections']['applicant-who']['legal authority']['town'].'
 
 ';
 }
 
 if(!empty($data['sections']['applicant-who']['legal authority']['county'])) {
-$emailContent .= 'County
-
-
-^ '.@$data['sections']['applicant-who']['legal authority']['county'].'
+$emailContent .= '
+▐ '.@$data['sections']['applicant-who']['legal authority']['county'].'
 
 ';
 }
 
 if(!empty($data['sections']['applicant-who']['legal authority']['country'])) {
-$emailContent .= 'Country
-
-
-^ '.@$data['sections']['applicant-who']['legal authority']['country'].'
+$emailContent .= '
+▐ '.@$data['sections']['applicant-who']['legal authority']['country'].'
 
 ';
 }
 
 if(!empty($data['sections']['applicant-who']['legal authority']['postcode'])) {
-$emailContent .= 'Postcode
-
-
-^ '.@$data['sections']['applicant-who']['legal authority']['postcode'].'
+$emailContent .= '
+▐ '.@$data['sections']['applicant-who']['legal authority']['postcode'].'
 
 ';
 }
@@ -160,7 +150,7 @@ if(!empty($data['sections']['applicant-who']['legal authority']['nominee-number'
 $emailContent .= 'Telephone number
 
 
-^ '.@$data['sections']['applicant-who']['legal authority']['nominee-number'].'
+▐ '.@$data['sections']['applicant-who']['legal authority']['nominee-number'].'
 
 ';
 }
@@ -169,7 +159,7 @@ if(!empty($data['sections']['applicant-who']['legal authority']['details'])) {
 $emailContent .= 'What legal authority do you have to make a claim on behalf of the person named?
 
 
-^ '.@$data['sections']['applicant-who']['legal authority']['details'].'
+▐ '.@$data['sections']['applicant-who']['legal authority']['details'].'
 
 ';
 }
@@ -183,40 +173,44 @@ case "I am helping someone else make this application.":
 $emailContent .= 'Who is making this application
 
 
-^ I am helping someone else make this application.
+▐ I am helping someone else make this application.
 
 
 Name of assistant making this claim
 
 
-^'.@$data['sections']['applicant-who']['helper']['name'].'
+▐'.@$data['sections']['applicant-who']['helper']['name'].'
 
 
 Relationship to claimant
 
 
-^ '.@$data['sections']['applicant-who']['helper']['relationship'].'
+▐ '.@$data['sections']['applicant-who']['helper']['relationship'].'
 
 
 Assisted claim declaration understood
 
 
-^ '.@$data['sections']['applicant-who']['helper']['declaration'].'
+▐ '.@$data['sections']['applicant-who']['helper']['declaration'].'
 
 
 Has the person you are helping ever served in or supported the special forces?
 
 
-^ '.@$data['sections']['applicant-who']['helper']['epaw']['served'].'
-
-
-Express Prior Authority in Writing (EPAW) reference
-
-
-^ '.@$data['sections']['applicant-who']['helper']['epaw']['epaw-reference'].'
+▐ '.@$data['sections']['applicant-who']['helper']['epaw']['served'].'
 
 ';
 
+if(!empty($data['sections']['applicant-who']['helper']['epaw']['epaw-reference-1'])) {
+
+$emailContent .= '
+EPAW Reference Number
+
+'.$data['sections']['applicant-who']['helper']['epaw']['epaw-reference-1'].' - '.$data['sections']['applicant-who']['helper']['epaw']['epaw-reference-2'].' / '.$data['sections']['applicant-who']['helper']['epaw']['epaw-reference-3'].' / '.$data['sections']['applicant-who']['helper']['epaw']['epaw-reference-4'].'
+
+';
+
+}
 
 
 break;
@@ -242,14 +236,14 @@ case "Yes":
 $emailContent .= 'Would you like to nominate a representative?
 
 
-^ Yes';
+▐ Yes';
 
 
 if(!empty($data['sections']['nominate-representative']['nominated representative']['fullname'])) {
 $emailContent .= 'Representative\'s full name
 
 
-^ '.$data['sections']['nominate-representative']['nominated representative']['fullname'].'
+▐ '.$data['sections']['nominate-representative']['nominated representative']['fullname'].'
 
 ';
 }
@@ -258,52 +252,42 @@ if(!empty($data['sections']['nominate-representative']['nominated representative
 $emailContent .= 'Building and street
 
 
-^ '.$data['sections']['nominate-representative']['nominated representative']['address1'].'
+▐ '.$data['sections']['nominate-representative']['nominated representative']['address1'].'
 
 ';
 }
 
 if(!empty($data['sections']['nominate-representative']['nominated representative']['address2'])) {
-$emailContent .= 'Building and street line 2 of 2
-
-
-^ '.$data['sections']['nominate-representative']['nominated representative']['address2'].'
+$emailContent .= '
+▐ '.$data['sections']['nominate-representative']['nominated representative']['address2'].'
 
 ';
 }
 
 if(!empty($data['sections']['nominate-representative']['nominated representative']['town'])) {
-$emailContent .= 'Town or city
-
-
-^ '.$data['sections']['nominate-representative']['nominated representative']['town'].'
+$emailContent .= '
+▐ '.$data['sections']['nominate-representative']['nominated representative']['town'].'
 
 ';
 }
 
 if(!empty($data['sections']['nominate-representative']['nominated representative']['county'])) {
-$emailContent .= 'County
-
-
-^ '.$data['sections']['nominate-representative']['nominated representative']['county'].'
+$emailContent .= '
+▐ '.$data['sections']['nominate-representative']['nominated representative']['county'].'
 
 ';
 }
 
 if(!empty($data['sections']['nominate-representative']['nominated representative']['country'])) {
-$emailContent .= 'Country
-
-
-^ '.$data['sections']['nominate-representative']['nominated representative']['country'].'
+$emailContent .= '
+▐ '.$data['sections']['nominate-representative']['nominated representative']['country'].'
 
 ';
 }
 
 if(!empty($data['sections']['nominate-representative']['nominated representative']['postcode'])) {
-$emailContent .= 'Postcode
-
-
-^ '.$data['sections']['nominate-representative']['nominated representative']['postcode'].'
+$emailContent .= '
+▐ '.$data['sections']['nominate-representative']['nominated representative']['postcode'].'
 
 ';
 }
@@ -312,7 +296,7 @@ if(!empty($data['sections']['nominate-representative']['nominated representative
 $emailContent .= 'Telephone number
 
 
-^ '.$data['sections']['nominate-representative']['nominated representative']['nominee-number'].'
+▐ '.$data['sections']['nominate-representative']['nominated representative']['nominee-number'].'
 
 ';
 }
@@ -321,7 +305,7 @@ if(!empty($data['sections']['nominate-representative']['nominated representative
 $emailContent .= 'Email address
 
 
-^ '.$data['sections']['nominate-representative']['nominated representative']['email-address'].'
+▐ '.$data['sections']['nominate-representative']['nominated representative']['email-address'].'
 
 ';
 }
@@ -330,7 +314,7 @@ if(!empty($data['sections']['nominate-representative']['nominated representative
 $emailContent .= 'What is your representative&#039;s role?
 
 
-^ '.$data['sections']['nominate-representative']['nominated representative']['role'].'
+▐ '.$data['sections']['nominate-representative']['nominated representative']['role'].'
 
 ';
 }
@@ -345,7 +329,7 @@ $emailContent .='
 Would you like to nominate a representative?
 
 
-^ '.@$data['sections']['nominate-representative']['nominate-representative'].'
+▐ '.@$data['sections']['nominate-representative']['nominate-representative'].'
 
 ';
 
@@ -367,7 +351,7 @@ $emailContent .='
 Surname or family name
 
 
-^ '.$data['sections']['about-you']['name']['lastname'].'
+▐ '.$data['sections']['about-you']['name']['lastname'].'
 
 ';
 }
@@ -378,7 +362,7 @@ $emailContent .='
 All other names in full
 
 
-^ '.$data['sections']['about-you']['name']['firstname'].'
+▐ '.$data['sections']['about-you']['name']['firstname'].'
 
 ';
 }
@@ -389,62 +373,42 @@ $emailContent .='
 Address Building and street
 
 
-^ '.$data['sections']['about-you']['contact-address']['address1'].'
+▐ '.$data['sections']['about-you']['contact-address']['address1'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['contact-address']['address2'])) {
 $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$data['sections']['about-you']['contact-address']['address2'].'
+▐ '.$data['sections']['about-you']['contact-address']['address2'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['contact-address']['town'])) {
 $emailContent .='
-
-Town or city
-
-
-^ '.$data['sections']['about-you']['contact-address']['town'].'
+▐ '.$data['sections']['about-you']['contact-address']['town'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['contact-address']['county'])) {
 $emailContent .='
-
-County
-
-
-^ '.$data['sections']['about-you']['contact-address']['county'].'
+▐ '.$data['sections']['about-you']['contact-address']['county'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['contact-address']['country'])) {
 $emailContent .='
-
-Country
-
-
-^ '.$data['sections']['about-you']['contact-address']['country'].'
+▐ '.$data['sections']['about-you']['contact-address']['country'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['contact-address']['postcode'])) {
 $emailContent .='
-
-Postcode
-
-
-^ '.$data['sections']['about-you']['contact-address']['postcode'].'
+▐ '.$data['sections']['about-you']['contact-address']['postcode'].'
 
 ';
 }
@@ -455,7 +419,7 @@ $emailContent .='
 Date of birth
 
 
-^ '.$data['sections']['about-you']['dob']['day'].' / '.$data['sections']['about-you']['dob']['month'].' / '.$data['sections']['about-you']['dob']['year'].'
+▐ '.$data['sections']['about-you']['dob']['day'].' / '.$data['sections']['about-you']['dob']['month'].' / '.$data['sections']['about-you']['dob']['year'].'
 
 ';
 }
@@ -467,12 +431,12 @@ Mobile telephone number?';
     if ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'No') {
         $emailContent .= '
 
-^ No';
+▐ No';
     }elseif ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'Yes') { $emailContent .='
 
 
 
-^ '.$data['sections']['about-you']['telephonenumber']['mobile'].'
+▐ '.$data['sections']['about-you']['telephonenumber']['mobile'].'
 
 ';
     }
@@ -484,7 +448,7 @@ $emailContent .='
 
 Mobile contact permission:
 
-^ '.$data['sections']['about-you']['telephonenumber']['mobilepermission'].'
+▐ '.$data['sections']['about-you']['telephonenumber']['mobilepermission'].'
 
 ';
 }
@@ -507,7 +471,7 @@ No';
 
 
 
-^ '.$data['sections']['about-you']['telephonenumber']['telephone'].'
+▐ '.$data['sections']['about-you']['telephonenumber']['telephone'].'
 
 ';
     }
@@ -519,7 +483,7 @@ $emailContent .='
 What is your email address
 
 
-^ '.$data['sections']['about-you']['email'].'
+▐ '.$data['sections']['about-you']['email'].'
 
 ';
 }
@@ -531,7 +495,7 @@ $emailContent .='
 
 Email contact permission:
 
-^ '.$data['sections']['about-you']['email-address']['emailpermission'].'
+▐ '.$data['sections']['about-you']['email-address']['emailpermission'].'
 
 ';
 }
@@ -545,7 +509,7 @@ $emailContent .='
 
 NI Number
 
-^ '.$data['sections']['about-you']['ninumber'].'
+▐ '.$data['sections']['about-you']['ninumber'].'
 
 ';
 }
@@ -556,7 +520,7 @@ $emailContent .='
 Pension scheme
 
 
-^ '.$data['sections']['about-you']['pensionscheme'].'
+▐ '.$data['sections']['about-you']['pensionscheme'].'
 
 ';
 }
@@ -567,7 +531,7 @@ $emailContent .='
 Previous claim made
 
 
-^ '.$data['sections']['about-you']['previous-claim'].'
+▐ '.$data['sections']['about-you']['previous-claim'].'
 
 ';
 }
@@ -578,7 +542,7 @@ $emailContent .='
 Previous claim reference number
 
 
-^ '.$data['sections']['about-you']['refnum'].'
+▐ '.$data['sections']['about-you']['refnum'].'
 
 ';
 }
@@ -589,7 +553,7 @@ $emailContent .='
 Express Prior Authority in Writing (EPAW) reference
 
 
-^ '.$data['sections']['about-you']['epaw']['served'].'
+▐ '.$data['sections']['about-you']['epaw']['served'].'
 
 ';
 }
@@ -600,7 +564,7 @@ $emailContent .='
 EPAW reference number
 
 
-^ '.$data['sections']['about-you']['epaw']['epaw-reference'] ?? 'not served with Special Forces';
+▐ '.$data['sections']['about-you']['epaw']['epaw-reference'] ?? 'not served with Special Forces';
 }
 
 
@@ -618,7 +582,7 @@ $emailContent .='
 Medical Officer or GP&#039;s full name (if known)
 
 
-^ '.$data['sections']['about-you']['medical-officer']['contactname'].'
+▐ '.$data['sections']['about-you']['medical-officer']['contactname'].'
 
 ';
 }
@@ -629,73 +593,49 @@ $emailContent .='
 Practice, Building and street (Medical officer or GP)
 
 
-^ '.$data['sections']['about-you']['medical-officer']['address1'].'
+▐ '.$data['sections']['about-you']['medical-officer']['address1'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['medical-officer']['address2'])) {
 $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$data['sections']['about-you']['medical-officer']['address2'].'
+▐ '.$data['sections']['about-you']['medical-officer']['address2'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['medical-officer']['town'])) {
 $emailContent .='
-
-Town or city
-
-
-^ '.$data['sections']['about-you']['medical-officer']['town'].'
+▐ '.$data['sections']['about-you']['medical-officer']['town'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['medical-officer']['county'])) {
 $emailContent .='
-
-County
-
-
-^ '.$data['sections']['about-you']['medical-officer']['county'].'
+▐ '.$data['sections']['about-you']['medical-officer']['county'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['medical-officer']['country'])) {
 $emailContent .='
-
-Country
-
-
-^ '.$data['sections']['about-you']['medical-officer']['country'].'
+▐ '.$data['sections']['about-you']['medical-officer']['country'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['medical-officer']['postcode'])) {
 $emailContent .='
-
-Postcode
-
-
-^ '.$data['sections']['about-you']['medical-officer']['postcode'].'
+▐ '.$data['sections']['about-you']['medical-officer']['postcode'].'
 
 ';
 }
 
 if(!empty($data['sections']['about-you']['medical-officer']['telephonenumber'])) {
 $emailContent .='
-
-Telephone number
-
-
-^ '.$data['sections']['about-you']['medical-officer']['telephonenumber'].'
+▐ '.$data['sections']['about-you']['medical-officer']['telephonenumber'].'
 
 ';
 }
@@ -738,7 +678,7 @@ $emailContent .='
 Did you have a different name during this period of service?
 
 
-^ '.$nameshow ?? 'Would rather not disclose';
+▐ '.$nameshow ?? 'Would rather not disclose';
 }
 
 if(!empty($serviceRecord['servicenumber'])) {
@@ -747,7 +687,7 @@ $emailContent .='
 Service number
 
 
-^ '.$serviceRecord['servicenumber'].'
+▐ '.$serviceRecord['servicenumber'].'
 
 ';
 }
@@ -758,7 +698,7 @@ $emailContent .='
 Service branch
 
 
-^ '.$serviceRecord['servicebranch'].'
+▐ '.$serviceRecord['servicebranch'].'
 
 ';
 }
@@ -769,7 +709,7 @@ $emailContent .='
 Service type?
 
 
-^ '.$serviceRecord['servicetype'].'
+▐ '.$serviceRecord['servicetype'].'
 
 ';
 }
@@ -780,7 +720,7 @@ $emailContent .='
 Service rank
 
 
-^ '.$serviceRecord['service-rank'].'
+▐ '.$serviceRecord['service-rank'].'
 
 ';
 }
@@ -791,7 +731,7 @@ $emailContent .='
 Service trade
 
 
-^ '.$serviceRecord['specialism'].'
+▐ '.$serviceRecord['specialism'].'
 
 ';
 }
@@ -802,7 +742,7 @@ $emailContent .='
 Enlistment Date
 
 
-^ '.@$serviceRecord['service-enlistmentdate']['day'].' / '.@$serviceRecord['service-enlistmentdate']['month'].' / '.$serviceRecord['service-enlistmentdate']['year'].'
+▐ '.@$serviceRecord['service-enlistmentdate']['day'].' / '.@$serviceRecord['service-enlistmentdate']['month'].' / '.$serviceRecord['service-enlistmentdate']['year'].'
 
 ';
 }
@@ -812,7 +752,7 @@ $emailContent .='
 
 
 
-^ (This date is approximate)';
+▐ (This date is approximate)';
 
 }
 
@@ -822,7 +762,7 @@ $emailContent .='
 Discharge date
 
 
-^ '.@$serviceRecord['service-dischargedate']['day'].' /  '.@$serviceRecord['service-dischargedate']['month'].' /  '.$serviceRecord['service-dischargedate']['year'].'
+▐ '.@$serviceRecord['service-dischargedate']['day'].' /  '.@$serviceRecord['service-dischargedate']['month'].' /  '.$serviceRecord['service-dischargedate']['year'].'
 
 ';
 
@@ -832,7 +772,7 @@ Discharge date
 
 
 
-^ (This date is approximate)';
+▐ (This date is approximate)';
  }
 
 
@@ -844,7 +784,7 @@ $emailContent .='
 Still serving
 
 
-^ '.$serviceRecord['service-dischargedate']['stillserving'].'
+▐ '.$serviceRecord['service-dischargedate']['stillserving'].'
 
 ';
 }
@@ -855,7 +795,7 @@ $emailContent .='
 Discharge reason
 
 
-^ '.$serviceRecord['service-dischargedate']['dischargereason'].'
+▐ '.$serviceRecord['service-dischargedate']['dischargereason'].'
 
 ';
 }
@@ -866,62 +806,42 @@ $emailContent .='
 Last Unit - Base, Building and Street
 
 
-^ '.$serviceRecord['unit-address']['address1'].'
+▐ '.$serviceRecord['unit-address']['address1'].'
 
 ';
 }
 
 if(!empty($serviceRecord['unit-address']['address2'])) {
 $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$serviceRecord['unit-address']['address2'].'
+▐ '.$serviceRecord['unit-address']['address2'].'
 
 ';
 }
 
 if(!empty($serviceRecord['unit-address']['town'])) {
 $emailContent .='
-
-Town or city
-
-
-^ '.$serviceRecord['unit-address']['town'].'
+▐ '.$serviceRecord['unit-address']['town'].'
 
 ';
 }
 
 if(!empty($serviceRecord['unit-address']['county'])) {
 $emailContent .='
-
-County
-
-
-^ '.$serviceRecord['unit-address']['county'].'
+▐ '.$serviceRecord['unit-address']['county'].'
 
 ';
 }
 
 if(!empty($serviceRecord['unit-address']['country'])) {
 $emailContent .='
-
-Country
-
-
-^ '.$serviceRecord['unit-address']['country'].'
+▐ '.$serviceRecord['unit-address']['country'].'
 
 ';
 }
 
 if(!empty($serviceRecord['unit-address']['postcode'])) {
 $emailContent .='
-
-Postcode
-
-
-^ '.$serviceRecord['unit-address']['postcode'].'
+▐ '.$serviceRecord['unit-address']['postcode'].'
 
 ';
 }
@@ -962,7 +882,7 @@ $emailContent .='
 Type of medical condition
 
 
-^ '.$claimRecord['type'].'
+▐ '.$claimRecord['type'].'
 
 ';
 }
@@ -973,7 +893,7 @@ $emailContent .='
 What medical condition(s) are you claiming for?
 
 
-^ '.$claimRecord['non-specific']['condition'].'
+▐ '.$claimRecord['non-specific']['condition'].'
 
 ';
 }
@@ -984,73 +904,49 @@ $emailContent .='
 Diagnosing Medical Practitioner (if known)
 
 
-^ '.$claimRecord['non-specific']['hospital-address']['name'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['name'].'
 
 ';
 }
 
 if(!empty($claimRecord['non-specific']['hospital-address']['address1'])) {
 $emailContent .='
-
-Practice, Building and street (who diagnosed)
-
-
-^ '.$claimRecord['non-specific']['hospital-address']['address1'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['address1'].'
 
 ';
 }
 
 if(!empty($claimRecord['non-specific']['hospital-address']['address2'])) {
 $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$claimRecord['non-specific']['hospital-address']['address2'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['address2'].'
 
 ';
 }
 
 if(!empty($claimRecord['non-specific']['hospital-address']['town'])) {
 $emailContent .='
-
-own or city
-
-
-^ '.$claimRecord['non-specific']['hospital-address']['town'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['town'].'
 
 ';
 }
 
 if(!empty($claimRecord['non-specific']['hospital-address']['county'])) {
 $emailContent .='
-
-County
-
-
-^ '.$claimRecord['non-specific']['hospital-address']['county'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['county'].'
 
 ';
 }
 
 if(!empty($claimRecord['non-specific']['hospital-address']['country'])) {
 $emailContent .='
-
-Country
-
-
-^ '.$claimRecord['non-specific']['hospital-address']['country'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['country'].'
 
 ';
 }
 
 if(!empty($claimRecord['non-specific']['hospital-address']['postcode'])) {
 $emailContent .='
-
-Postcode
-
-
-^ '.$claimRecord['non-specific']['hospital-address']['postcode'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['postcode'].'
 
 ';
 }
@@ -1061,7 +957,7 @@ $emailContent .='
 Telephone number
 
 
-^ '.$claimRecord['non-specific']['hospital-address']['telephone'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['telephone'].'
 
 ';
 }
@@ -1072,7 +968,7 @@ $emailContent .='
 Email
 
 
-^ '.$claimRecord['non-specific']['hospital-address']['email'].'
+▐ '.$claimRecord['non-specific']['hospital-address']['email'].'
 
 ';
 }
@@ -1083,7 +979,7 @@ $emailContent .='
 What was the date your condition started?
 
 
-^ '.@$claimRecord['condition-start-date']['day'].' / '.@$claimRecord['condition-start-date']['month'].' /  '.$claimRecord['condition-start-date']['year'].'
+▐ '.@$claimRecord['condition-start-date']['day'].' / '.@$claimRecord['condition-start-date']['month'].' /  '.$claimRecord['condition-start-date']['year'].'
 
 ';
 }
@@ -1094,7 +990,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['condition-start-date']['approximate'].'
+▐ '.$claimRecord['condition-start-date']['approximate'].'
 
 ';
 }
@@ -1105,7 +1001,7 @@ $emailContent .='
 What is your illness/condition related to
 
 
-^ '.$claimRecord['related-conditions'].'
+▐ '.$claimRecord['related-conditions'].'
 
 ';
 }
@@ -1116,7 +1012,7 @@ $emailContent .='
 Illness/condition due to exposure to? (Cold / Heat / Noise, for example gunfire / Vibration, for example from using tools /Chemical exposure)
 
 
-^ '.$claimRecord['related-exposure'].'
+▐ '.$claimRecord['related-exposure'].'
 
 ';
 }
@@ -1127,7 +1023,7 @@ $emailContent .='
 Chemical Exposure - what substances were you exposed to?
 
 
-^ '.$claimRecord['exposure-date']['substances'].'
+▐ '.$claimRecord['exposure-date']['substances'].'
 
 ';
 }
@@ -1138,7 +1034,7 @@ $emailContent .='
 Chemical Exposure - date of first exposure?
 
 
-^ '.@$claimRecord['exposure-date']['day'].' / '.@$claimRecord['exposure-date']['month'].' / '.$claimRecord['exposure-date']['year'].'
+▐ '.@$claimRecord['exposure-date']['day'].' / '.@$claimRecord['exposure-date']['month'].' / '.$claimRecord['exposure-date']['year'].'
 
 ';
 }
@@ -1149,7 +1045,7 @@ $emailContent .='
 Chemical Exposure - length of exposure?
 
 
-^ '.$claimRecord['exposure-date']['length'].'
+▐ '.$claimRecord['exposure-date']['length'].'
 
 ';
 }
@@ -1160,7 +1056,7 @@ $emailContent .='
 When did you first seek medical attention?
 
 
-^ '.@$claimRecord['medical-attention']['day'].' / '.@$claimRecord['medical-attention']['month'].' /  '.$claimRecord['medical-attention']['year'].'
+▐ '.@$claimRecord['medical-attention']['day'].' / '.@$claimRecord['medical-attention']['month'].' /  '.$claimRecord['medical-attention']['year'].'
 
 ';
 }
@@ -1171,7 +1067,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['medical-attention']['approximate'].'
+▐ '.$claimRecord['medical-attention']['approximate'].'
 
 ';
 }
@@ -1182,7 +1078,7 @@ $emailContent .='
 Were you downgraded for any of the conditions on this claim?
 
 
-^ '.$claimRecord['downgraded'].'
+▐ '.$claimRecord['downgraded'].'
 
 ';
 }
@@ -1193,7 +1089,7 @@ $emailContent .='
 Date downgraded start
 
 
-^ '.@$claimRecord['non-specific']['downgraded-start']['fromday'].' / '.@$claimRecord['non-specific']['downgraded-start']['frommonth'].' / '.$claimRecord['non-specific']['downgraded-start']['fromyear'].'
+▐ '.@$claimRecord['non-specific']['downgraded-start']['fromday'].' / '.@$claimRecord['non-specific']['downgraded-start']['frommonth'].' / '.$claimRecord['non-specific']['downgraded-start']['fromyear'].'
 
 ';
 }
@@ -1204,7 +1100,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['non-specific']['downgraded-start']['datesapproximate'].'
+▐ '.$claimRecord['non-specific']['downgraded-start']['datesapproximate'].'
 
 ';
 }
@@ -1215,7 +1111,7 @@ $emailContent .='
 Date downgraded end
 
 
-^ '.@$claimRecord['non-specific']['downgraded-end']['today'].' / '.@$claimRecord['non-specific']['downgraded-end']['tomonth'].' / '.$claimRecord['non-specific']['downgraded-end']['toyear'].'
+▐ '.@$claimRecord['non-specific']['downgraded-end']['today'].' / '.@$claimRecord['non-specific']['downgraded-end']['tomonth'].' / '.$claimRecord['non-specific']['downgraded-end']['toyear'].'
 
 ';
 }
@@ -1226,7 +1122,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['non-specific']['downgraded-end']['datesapproximate'].'
+▐ '.$claimRecord['non-specific']['downgraded-end']['datesapproximate'].'
 
 ';
 }
@@ -1237,7 +1133,7 @@ $emailContent .='
 Still downgraded?
 
 
-^ '.$claimRecord['non-specific']['downgraded-end']['stilldowngraded'].'
+▐ '.$claimRecord['non-specific']['downgraded-end']['stilldowngraded'].'
 
 ';
 }
@@ -1248,7 +1144,7 @@ $emailContent .='
 What medical category were you downgraded from?
 
 
-^ '.$claimRecord['non-specific']['medical-categories']['frommedical'].'
+▐ '.$claimRecord['non-specific']['medical-categories']['frommedical'].'
 
 ';
 }
@@ -1259,7 +1155,7 @@ $emailContent .='
 What medical category were you downgraded to?
 
 
-^ '.$claimRecord['non-specific']['medical-categories']['tomedical'].'
+▐ '.$claimRecord['non-specific']['medical-categories']['tomedical'].'
 
 ';
 }
@@ -1270,7 +1166,7 @@ $emailContent .='
 I was downgraded and upgraded more than once within different categories?
 
 
-^ '.$claimRecord['non-specific']['medical-categories']['multiple'].'
+▐ '.$claimRecord['non-specific']['medical-categories']['multiple'].'
 
 ';
 }
@@ -1281,7 +1177,7 @@ $emailContent .='
 Why is your condition related to your armed forces service?
 
 
-^ '.$claimRecord['non-specific']['why'].'
+▐ '.$claimRecord['non-specific']['why'].'
 
 ';
 }
@@ -1294,7 +1190,7 @@ $emailContent .='
 Was the incident or accident related to sport, adventure training or physical training?
 
 
-^ '.$claimRecord['specific']['pt-related'].'
+▐ '.$claimRecord['specific']['pt-related'].'
 
 ';
 }
@@ -1306,7 +1202,7 @@ $emailContent .='
 What medical condition(s) are you claiming for?
 
 
-^ '.$claimRecord['specific']['non-pt']['conditions'].'
+▐ '.$claimRecord['specific']['non-pt']['conditions'].'
 
 ';
 }
@@ -1317,73 +1213,49 @@ $emailContent .='
 Diagnosing Medical Practitioner (if known)
 
 
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['name'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['name'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['non-pt']['hospital-address']['address1'])) {
 $emailContent .='
-
-Practice, Building and street (who diagnosed)
-
-
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['address1'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['address1'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['non-pt']['hospital-address']['address2'])) {
 $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['address2'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['address2'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['non-pt']['hospital-address']['town'])) {
 $emailContent .='
-
-Town or city
-
-
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['town'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['town'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['non-pt']['hospital-address']['county'])) {
 $emailContent .='
-
-County
-
-
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['county'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['county'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['non-pt']['hospital-address']['country'])) {
 $emailContent .='
-
-Country
-
-
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['country'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['country'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['non-pt']['hospital-address']['postcode'])) {
 $emailContent .='
-
-Postcode
-
-
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['postcode'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['postcode'].'
 
 ';
 }
@@ -1394,7 +1266,7 @@ $emailContent .='
 Telephone number
 
 
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['telephone'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['telephone'].'
 
 ';
 }
@@ -1405,7 +1277,7 @@ $emailContent .='
 Email
 
 
-^ '.$claimRecord['specific']['non-pt']['hospital-address']['email'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital-address']['email'].'
 
 ';
 }
@@ -1416,7 +1288,7 @@ $emailContent .='
 What was the date your condition started?
 
 
-^ '.@$claimRecord['specific']['non-pt']['condition-start-date']['day'].' / '.@$claimRecord['specific']['non-pt']['condition-start-date']['month'].' / '.$claimRecord['specific']['non-pt']['condition-start-date']['year'].'
+▐ '.@$claimRecord['specific']['non-pt']['condition-start-date']['day'].' / '.@$claimRecord['specific']['non-pt']['condition-start-date']['month'].' / '.$claimRecord['specific']['non-pt']['condition-start-date']['year'].'
 
 ';
 }
@@ -1427,7 +1299,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['specific']['non-pt']['condition-start-date']['approximate'].'
+▐ '.$claimRecord['specific']['non-pt']['condition-start-date']['approximate'].'
 
 ';
 }
@@ -1438,7 +1310,7 @@ $emailContent .='
 Were you on duty at the time of the incident?
 
 
-^ '.$claimRecord['specific']['non-pt']['on-duty'].'
+▐ '.$claimRecord['specific']['non-pt']['on-duty'].'
 
 ';
 }
@@ -1449,7 +1321,7 @@ $emailContent .='
 Did you report the incident?
 
 
-^ '.$claimRecord['specific']['non-pt']['report-incident'].'
+▐ '.$claimRecord['specific']['non-pt']['report-incident'].'
 
 ';
 }
@@ -1462,7 +1334,7 @@ $emailContent .='
 Who did you report the incident to?
 
 
-^ '.$claimRecord['specific']['non-pt']['who-reported'].'
+▐ '.$claimRecord['specific']['non-pt']['who-reported'].'
 
 ';
 }
@@ -1473,7 +1345,7 @@ $emailContent .='
 Was an accident form completed?
 
 
-^ '.$claimRecord['specific']['non-pt']['accident-form'].'
+▐ '.$claimRecord['specific']['non-pt']['accident-form'].'
 
 ';
 }
@@ -1484,7 +1356,7 @@ $emailContent .='
 Where were you when the incident happened?
 
 
-^ '.$claimRecord['specific']['non-pt']['where-were-you'].'
+▐ '.$claimRecord['specific']['non-pt']['where-were-you'].'
 
 ';
 }
@@ -1495,7 +1367,7 @@ $emailContent .='
 Was the incident a road traffic accident?
 
 
-^ '.$claimRecord['specific']['non-pt']['rta'].'
+▐ '.$claimRecord['specific']['non-pt']['rta'].'
 
 ';
 }
@@ -1509,7 +1381,7 @@ if ( (!empty($claimRecord['specific']['non-pt']['rta'])) && ($claimRecord['speci
 What was the reason for your journey?
 
 
-^ '.$claimRecord['specific']['non-pt']['journey-reason'].'
+▐ '.$claimRecord['specific']['non-pt']['journey-reason'].'
 
 ';
     }
@@ -1520,7 +1392,7 @@ What was the reason for your journey?
 Where did your journey start?
 
 
-^ '.$claimRecord['specific']['non-pt']['journey-start'].'
+▐ '.$claimRecord['specific']['non-pt']['journey-start'].'
 
 ';
     }
@@ -1531,7 +1403,7 @@ Where did your journey start?
 Where did your journey end?
 
 
-^ '.$claimRecord['specific']['non-pt']['journey-end'].'
+▐ '.$claimRecord['specific']['non-pt']['journey-end'].'
 
 ';
     }
@@ -1544,7 +1416,7 @@ $emailContent .='
 Was the incident reported to the civilian or military police?
 
 
-^ '.$claimRecord['specific']['non-pt']['police-reported'].'
+▐ '.$claimRecord['specific']['non-pt']['police-reported'].'
 
 ';
 }
@@ -1556,13 +1428,13 @@ $emailContent .='
 Police reference?
 
 
-^ Civilian Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['civilian-ref'].'
+▐ Civilian Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['civilian-ref'].'
 
 
-^ Military Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['military-ref'].'
+▐ Military Case Ref: '.$claimRecord['specific']['non-pt']['police-report']['military-ref'].'
 
 
-^ I don\'t know: '.$claimRecord['specific']['non-pt']['police-report']['dontknow'].'
+▐ I don\'t know: '.$claimRecord['specific']['non-pt']['police-report']['dontknow'].'
 
 ';
 }
@@ -1573,7 +1445,7 @@ $emailContent .='
 Were you on authorised leave?
 
 
-^ '.$claimRecord['specific']['non-pt']['authorised-leave'].'
+▐ '.$claimRecord['specific']['non-pt']['authorised-leave'].'
 
 ';
 }
@@ -1584,7 +1456,7 @@ $emailContent .='
 Were there any witnesses?
 
 
-^ '.$claimRecord['specific']['non-pt']['witnesses'].'
+▐ '.$claimRecord['specific']['non-pt']['witnesses'].'
 
 ';
 }
@@ -1595,7 +1467,7 @@ $emailContent .='
 Did you receive first aid treatment?
 
 
-^ '.$claimRecord['specific']['non-pt']['firstaid'].'
+▐ '.$claimRecord['specific']['non-pt']['firstaid'].'
 
 ';
 }
@@ -1606,7 +1478,7 @@ $emailContent .='
 Did you go to, or were you taken to, a hospital or medical facility?
 
 
-^ '.$claimRecord['specific']['non-pt']['hospital'].'
+▐ '.$claimRecord['specific']['non-pt']['hospital'].'
 
 ';
 }
@@ -1619,73 +1491,49 @@ if ( (!empty($claimRecord['specific']['non-pt']['hospital'])) && ($claimRecord['
 Name of hospital/Medical Practitioner (if known)
 
 
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['name'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['name'].'
 
 ';
     }
 
     if(!empty($claimRecord['specific']['non-pt']['first-aid-hospital-address']['address1'])) {
     $emailContent .='
-
-Building and street
-
-
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['address1'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['address1'].'
 
 ';
     }
 
     if(!empty($claimRecord['specific']['non-pt']['first-aid-hospital-address']['address2'])) {
     $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['address2'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['address2'].'
 
 ';
     }
 
     if(!empty($claimRecord['specific']['non-pt']['first-aid-hospital-address']['town'])) {
     $emailContent .='
-
-Town or city
-
-
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['town'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['town'].'
 
 ';
     }
 
     if(!empty($claimRecord['specific']['non-pt']['first-aid-hospital-address']['county'])) {
     $emailContent .='
-
-County
-
-
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['county'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['county'].'
 
 ';
     }
 
     if(!empty($claimRecord['specific']['non-pt']['first-aid-hospital-address']['country'])) {
     $emailContent .='
-
-Country
-
-
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['country'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['country'].'
 
 ';
     }
 
     if(!empty($claimRecord['specific']['non-pt']['first-aid-hospital-address']['postcode'])) {
     $emailContent .='
-
-Postcode
-
-
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['postcode'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['postcode'].'
 
 ';
     }
@@ -1696,7 +1544,7 @@ Postcode
 Telephone number
 
 
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['telephone'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['telephone'].'
 
 ';
     }
@@ -1707,7 +1555,7 @@ Telephone number
 Email
 
 
-^ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['email'].'
+▐ '.$claimRecord['specific']['non-pt']['first-aid-hospital-address']['email'].'
 
 ';
     }
@@ -1721,7 +1569,7 @@ $emailContent .='
 Were you downgraded for any of the conditions on this claim?
 
 
-^ '.$claimRecord['specific']['non-pt']['downgraded'].'
+▐ '.$claimRecord['specific']['non-pt']['downgraded'].'
 
 ';
 }
@@ -1733,7 +1581,7 @@ $emailContent .='
 Date downgraded from
 
 
-^ '.@$claimRecord['specific']['non-pt']['downgraded-start']['fromday'].' / '.@$claimRecord['specific']['non-pt']['downgraded-start']['frommonth'].' / '.$claimRecord['specific']['non-pt']['downgraded-start']['fromyear'].'
+▐ '.@$claimRecord['specific']['non-pt']['downgraded-start']['fromday'].' / '.@$claimRecord['specific']['non-pt']['downgraded-start']['frommonth'].' / '.$claimRecord['specific']['non-pt']['downgraded-start']['fromyear'].'
 
 ';
 }
@@ -1744,7 +1592,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['specific']['non-pt']['downgraded-start']['datesapproximate'].'
+▐ '.$claimRecord['specific']['non-pt']['downgraded-start']['datesapproximate'].'
 
 ';
 }
@@ -1755,9 +1603,9 @@ $emailContent .='
 Date downgraded to
 
 
-^ '.@$claimRecord['specific']['non-pt']['downgraded-end']['today'].' / '.@$claimRecord['specific']['non-pt']['downgraded-end']['tomonth'].' /
+▐ '.@$claimRecord['specific']['non-pt']['downgraded-end']['today'].' / '.@$claimRecord['specific']['non-pt']['downgraded-end']['tomonth'].' /
 
-^ '.$claimRecord['specific']['non-pt']['downgraded-end']['toyear'].'
+▐ '.$claimRecord['specific']['non-pt']['downgraded-end']['toyear'].'
 
 ';
 }
@@ -1768,7 +1616,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['specific']['non-pt']['downgraded-end']['datesapproximate'].'
+▐ '.$claimRecord['specific']['non-pt']['downgraded-end']['datesapproximate'].'
 
 ';
 }
@@ -1779,7 +1627,7 @@ $emailContent .='
 Still downgraded?
 
 
-^ '.$claimRecord['specific']['non-pt']['downgraded-end']['stilldowngraded'].'
+▐ '.$claimRecord['specific']['non-pt']['downgraded-end']['stilldowngraded'].'
 
 ';
 }
@@ -1790,7 +1638,7 @@ $emailContent .='
 What medical category were you downgraded from?
 
 
-^ '.$claimRecord['specific']['non-pt']['medical-categories']['frommedical'].'
+▐ '.$claimRecord['specific']['non-pt']['medical-categories']['frommedical'].'
 
 ';
 }
@@ -1801,7 +1649,7 @@ $emailContent .='
 What medical category were you downgraded from?
 
 
-^ '.$claimRecord['specific']['non-pt']['medical-categories']['tomedical'].'
+▐ '.$claimRecord['specific']['non-pt']['medical-categories']['tomedical'].'
 
 ';
 }
@@ -1812,7 +1660,7 @@ $emailContent .='
 I was downgraded and upgraded more than once within different categories?
 
 
-^ '.$claimRecord['specific']['non-pt']['medical-categories']['multiple'].'
+▐ '.$claimRecord['specific']['non-pt']['medical-categories']['multiple'].'
 
 ';
 }
@@ -1823,7 +1671,7 @@ $emailContent .='
 Why is your condition related to your armed forces service?
 
 
-^ '.$claimRecord['specific']['non-pt']['why'].'
+▐ '.$claimRecord['specific']['non-pt']['why'].'
 
 ';
 }
@@ -1835,7 +1683,7 @@ $emailContent .='
 What medical condition(s) are you claiming for?
 
 
-^ '.$claimRecord['specific']['pt']['conditions'].'
+▐ '.$claimRecord['specific']['pt']['conditions'].'
 
 ';
 }
@@ -1846,73 +1694,49 @@ $emailContent .='
 Diagnosing Medical Practitioner (if known)
 
 
-^ '.$claimRecord['specific']['pt']['hospital-address']['name'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['name'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['hospital-address']['address1'])) {
 $emailContent .='
-
-Practice, Building and street (who diagnosed)
-
-
-^ '.$claimRecord['specific']['pt']['hospital-address']['address1'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['address1'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['hospital-address']['address2'])) {
 $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$claimRecord['specific']['pt']['hospital-address']['address2'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['address2'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['hospital-address']['town'])) {
 $emailContent .='
-
-Town or city
-
-
-^ '.$claimRecord['specific']['pt']['hospital-address']['town'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['town'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['hospital-address']['county'])) {
 $emailContent .='
-
-County
-
-
-^ '.$claimRecord['specific']['pt']['hospital-address']['county'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['county'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['hospital-address']['country'])) {
 $emailContent .='
-
-Country
-
-
-^ '.$claimRecord['specific']['pt']['hospital-address']['country'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['country'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['hospital-address']['postcode'])) {
 $emailContent .='
-
-Postcode
-
-
-^ '.$claimRecord['specific']['pt']['hospital-address']['postcode'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['postcode'].'
 
 ';
 }
@@ -1923,7 +1747,7 @@ $emailContent .='
 Telephone number
 
 
-^ '.$claimRecord['specific']['pt']['hospital-address']['telephone'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['telephone'].'
 
 ';
 }
@@ -1934,7 +1758,7 @@ $emailContent .='
 Email
 
 
-^ '.$claimRecord['specific']['pt']['hospital-address']['email'].'
+▐ '.$claimRecord['specific']['pt']['hospital-address']['email'].'
 
 ';
 }
@@ -1945,7 +1769,7 @@ $emailContent .='
 What was the date your condition started?
 
 
-^ '.@$claimRecord['specific']['pt']['condition-start-date']['day'].' / '.@$claimRecord['specific']['pt']['condition-start-date']['month'].' / '.$claimRecord['specific']['pt']['condition-start-date']['year'].'
+▐ '.@$claimRecord['specific']['pt']['condition-start-date']['day'].' / '.@$claimRecord['specific']['pt']['condition-start-date']['month'].' / '.$claimRecord['specific']['pt']['condition-start-date']['year'].'
 
 ';
 }
@@ -1956,7 +1780,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['specific']['pt']['condition-start-date']['approximate'].'
+▐ '.$claimRecord['specific']['pt']['condition-start-date']['approximate'].'
 
 ';
 }
@@ -1967,7 +1791,7 @@ $emailContent .='
 What is your illness/condition related to
 
 
-^ '.$claimRecord['related-conditions'].'
+▐ '.$claimRecord['related-conditions'].'
 
 ';
 }
@@ -1978,7 +1802,7 @@ $emailContent .='
 What was the activity?
 
 
-^ '.$claimRecord['specific']['pt']['activity'].'
+▐ '.$claimRecord['specific']['pt']['activity'].'
 
 ';
 }
@@ -1989,7 +1813,7 @@ $emailContent .='
 Was the activity authorised or organised by the Armed Forces?
 
 
-^ '.$claimRecord['specific']['pt']['authorised'].'
+▐ '.$claimRecord['specific']['pt']['authorised'].'
 
 ';
 }
@@ -2000,7 +1824,7 @@ $emailContent .='
 Were you representing your Unit?
 
 
-^ '.$claimRecord['specific']['pt']['representing'].'
+▐ '.$claimRecord['specific']['pt']['representing'].'
 
 ';
 }
@@ -2011,7 +1835,7 @@ $emailContent .='
 Where were you when the incident happened?
 
 
-^ '.$claimRecord['specific']['pt']['where'].'
+▐ '.$claimRecord['specific']['pt']['where'].'
 
 ';
 }
@@ -2022,7 +1846,7 @@ $emailContent .='
 Were there any witnesses?
 
 
-^ '.$claimRecord['specific']['pt']['witnesses'].'
+▐ '.$claimRecord['specific']['pt']['witnesses'].'
 
 ';
 }
@@ -2033,7 +1857,7 @@ $emailContent .='
 Did you receive first aid treatment?
 
 
-^ '.$claimRecord['specific']['pt']['firstaid'].'
+▐ '.$claimRecord['specific']['pt']['firstaid'].'
 
 ';
 }
@@ -2044,7 +1868,7 @@ $emailContent .='
 Did you go to, or were you taken to, a hospital or medical facility?
 
 
-^ '.$claimRecord['specific']['pt']['hospital'].'
+▐ '.$claimRecord['specific']['pt']['hospital'].'
 
 ';
 }
@@ -2059,62 +1883,42 @@ $emailContent .='
 Name of the hospital / Medical Practitioner (if known)
 
 
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['name'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['name'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['first-aid-hospital-address']['address1'])) {
 $emailContent .='
-
-Building and street
-
-
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['address1'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['address1'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['first-aid-hospital-address']['address2'])) {
 $emailContent .='
-
-Building and street line 2 of 2
-
-
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['address2'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['address2'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['first-aid-hospital-address']['town'])) {
 $emailContent .='
-
-Town or city
-
-
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['town'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['town'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['first-aid-hospital-address']['county'])) {
 $emailContent .='
-
-County
-
-
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['county'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['county'].'
 
 ';
 }
 
 if(!empty($claimRecord['specific']['pt']['first-aid-hospital-address']['country'])) {
 $emailContent .='
-
-Country
-
-
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['country'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['country'].'
 
 ';
 }
@@ -2122,11 +1926,7 @@ Country
 
 if(!empty($claimRecord['specific']['pt']['first-aid-hospital-address']['postcode'])) {
 $emailContent .='
-
-Postcode
-
-
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['postcode'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['postcode'].'
 
 ';
 }
@@ -2137,7 +1937,7 @@ $emailContent .='
 Telephone number
 
 
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['telephone'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['telephone'].'
 
 ';
 }
@@ -2148,7 +1948,7 @@ $emailContent .='
 Email
 
 
-^ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['email'].'
+▐ '.$claimRecord['specific']['pt']['first-aid-hospital-address']['email'].'
 
 ';
 }
@@ -2163,7 +1963,7 @@ $emailContent .='
 Were you downgraded for any of the conditions on this claim?
 
 
-^ '.$claimRecord['specific']['pt']['downgraded'].'
+▐ '.$claimRecord['specific']['pt']['downgraded'].'
 
 ';
 }
@@ -2178,7 +1978,7 @@ $emailContent .='
 Date downgraded from
 
 
-^ '.@$claimRecord['specific']['pt']['downgraded-start']['fromday'].' / '.@$claimRecord['specific']['pt']['downgraded-start']['frommonth'].' / '.$claimRecord['specific']['pt']['downgraded-start']['fromyear'].'
+▐ '.@$claimRecord['specific']['pt']['downgraded-start']['fromday'].' / '.@$claimRecord['specific']['pt']['downgraded-start']['frommonth'].' / '.$claimRecord['specific']['pt']['downgraded-start']['fromyear'].'
 
 ';
 }
@@ -2189,7 +1989,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['specific']['pt']['downgraded-start']['datesapproximate'].'
+▐ '.$claimRecord['specific']['pt']['downgraded-start']['datesapproximate'].'
 
 ';
 }
@@ -2200,7 +2000,7 @@ $emailContent .='
 Date downgraded to
 
 
-^ '.@$claimRecord['specific']['pt']['downgraded-end']['today'].' / '.@$claimRecord['specific']['pt']['downgraded-end']['tomonth'].' / '.$claimRecord['specific']['pt']['downgraded-end']['toyear'].'
+▐ '.@$claimRecord['specific']['pt']['downgraded-end']['today'].' / '.@$claimRecord['specific']['pt']['downgraded-end']['tomonth'].' / '.$claimRecord['specific']['pt']['downgraded-end']['toyear'].'
 
 ';
 }
@@ -2211,7 +2011,7 @@ $emailContent .='
 Approximate date
 
 
-^ '.$claimRecord['specific']['pt']['downgraded-end']['datesapproximate'].'
+▐ '.$claimRecord['specific']['pt']['downgraded-end']['datesapproximate'].'
 
 ';
 }
@@ -2222,7 +2022,7 @@ $emailContent .='
 Still downgraded?
 
 
-^ '.$claimRecord['specific']['pt']['downgraded-end']['stilldowngraded'].'
+▐ '.$claimRecord['specific']['pt']['downgraded-end']['stilldowngraded'].'
 
 ';
 }
@@ -2233,7 +2033,7 @@ $emailContent .='
 What medical category were you downgraded from?
 
 
-^ '.$claimRecord['specific']['pt']['medical-categories']['frommedical'].'
+▐ '.$claimRecord['specific']['pt']['medical-categories']['frommedical'].'
 
 ';
 }
@@ -2244,7 +2044,7 @@ $emailContent .='
 What medical category were you downgraded to?
 
 
-^ '.$claimRecord['specific']['pt']['medical-categories']['tomedical'].'
+▐ '.$claimRecord['specific']['pt']['medical-categories']['tomedical'].'
 
 ';
 }
@@ -2255,7 +2055,7 @@ $emailContent .='
 I was downgraded and upgraded more than once within different categories
 
 
-^ '.$claimRecord['specific']['pt']['medical-categories']['multiple'].'
+▐ '.$claimRecord['specific']['pt']['medical-categories']['multiple'].'
 
 ';
 }
@@ -2269,7 +2069,7 @@ $emailContent .='
 Why is your condition related to your armed forces service?
 
 
-^ '.$claimRecord['specific']['pt']['why'].'
+▐ '.$claimRecord['specific']['pt']['why'].'
 
 ';
 }
@@ -2295,7 +2095,7 @@ $emailContent .= '
 Have you received further hospital or medical treatment?
 
 
-^ '.$data['sections']['medical-treatment']['received'].'
+▐ '.$data['sections']['medical-treatment']['received'].'
 
 ';
 }
@@ -2315,62 +2115,50 @@ if (!empty($medicalRecord['hospital-address']['name'])) {
 $emailContent .= 'Hospital/Medical facility
 
 
-^ '.$medicalRecord['hospital-address']['name'].'
+▐ '.$medicalRecord['hospital-address']['name'].'
 
 ';
 }
 
 if (!empty($medicalRecord['hospital-address']['address1'])) {
-$emailContent .= 'Building and street
-
-
-^ '.$medicalRecord['hospital-address']['address1'].'
+$emailContent .= '
+▐ '.$medicalRecord['hospital-address']['address1'].'
 
 ';
 }
 
 
 if (!empty($medicalRecord['hospital-address']['address2'])) {
-$emailContent .= 'Building and street line 2 of 2
-
-
-^ '.$medicalRecord['hospital-address']['address2'].'
+$emailContent .= '
+▐ '.$medicalRecord['hospital-address']['address2'].'
 
 ';
 }
 
 if (!empty($medicalRecord['hospital-address']['town'])) {
-$emailContent .= 'Town or city
-
-
-^ '.$medicalRecord['hospital-address']['town'].'
+$emailContent .= '
+▐ '.$medicalRecord['hospital-address']['town'].'
 
 ';
 }
 
 if (!empty($medicalRecord['hospital-address']['county'])) {
-$emailContent .= 'County
-
-
-^ '.$medicalRecord['hospital-address']['county'].'
+$emailContent .= '
+▐ '.$medicalRecord['hospital-address']['county'].'
 
 ';
 }
 
 if (!empty($medicalRecord['hospital-address']['country'])) {
-$emailContent .= 'Country
-
-
-^ '.$medicalRecord['hospital-address']['country'].'
+$emailContent .= '
+▐ '.$medicalRecord['hospital-address']['country'].'
 
 ';
 }
 
 if (!empty($medicalRecord['hospital-address']['postcode'])) {
-$emailContent .= 'Postcode
-
-
-^ '.$medicalRecord['hospital-address']['postcode'].'
+$emailContent .= '
+▐ '.$medicalRecord['hospital-address']['postcode'].'
 
 ';
 }
@@ -2379,7 +2167,7 @@ if (!empty($medicalRecord['hospital-address']['telephone'])) {
 $emailContent .= 'Telephone number
 
 
-^ '.$medicalRecord['hospital-address']['telephone'].'
+▐ '.$medicalRecord['hospital-address']['telephone'].'
 
 ';
 }
@@ -2388,7 +2176,7 @@ if (!empty($medicalRecord['hospital-address']['email'])) {
 $emailContent .= 'Email
 
 
-^ '.$medicalRecord['hospital-address']['email'].'
+▐ '.$medicalRecord['hospital-address']['email'].'
 
 ';
 }
@@ -2397,7 +2185,7 @@ if (!empty($medicalRecord['conditions'])) {
 $emailContent .= 'Condition treated
 
 
-^ '.$medicalRecord['conditions'].'
+▐ '.$medicalRecord['conditions'].'
 
 ';
 }
@@ -2406,7 +2194,7 @@ if (!empty($medicalRecord['treatment-start']['year'])) {
 $emailContent .= 'Date your treatment started
 
 
-^ '.@$medicalRecord['treatment-start']['day'].' / '.@$medicalRecord['treatment-start']['month'].' / '.$medicalRecord['treatment-start']['year'].'
+▐ '.@$medicalRecord['treatment-start']['day'].' / '.@$medicalRecord['treatment-start']['month'].' / '.$medicalRecord['treatment-start']['year'].'
 
 ';
 }
@@ -2417,7 +2205,7 @@ if (!empty($medicalRecord['treatment-start']['approximate'])) {
 $emailContent .= 'Approximate date?
 
 
-^ '.$medicalRecord['treatment-start']['approximate'].'
+▐ '.$medicalRecord['treatment-start']['approximate'].'
 
 ';
 }
@@ -2426,7 +2214,7 @@ if (!empty($medicalRecord['treatment-start']['waiting-list'])) {
 $emailContent .= 'I am still on a waiting list
 
 
-^ '.$medicalRecord['treatment-start']['waiting-list'].'
+▐ '.$medicalRecord['treatment-start']['waiting-list'].'
 
 ';
 }
@@ -2435,7 +2223,7 @@ if (!empty($medicalRecord['treatment-end']['year'])) {
 $emailContent .= 'Date your treatment ended.
 
 
-^ '.@$medicalRecord['treatment-end']['day'].' / '.@$medicalRecord['treatment-end']['month'].' / '.$medicalRecord['treatment-end']['year'].'
+▐ '.@$medicalRecord['treatment-end']['day'].' / '.@$medicalRecord['treatment-end']['month'].' / '.$medicalRecord['treatment-end']['year'].'
 
 ';
 }
@@ -2444,7 +2232,7 @@ if (!empty($medicalRecord['treatment-end']['approximate'])) {
 $emailContent .= 'Approximate date?
 
 
-^ '.$medicalRecord['treatment-end']['approximate'].'
+▐ '.$medicalRecord['treatment-end']['approximate'].'
 
 ';
 }
@@ -2453,7 +2241,7 @@ if (!empty($medicalRecord['treatment-end']['waiting-list'])) {
 $emailContent .= 'This treatment has not yet ended
 
 
-^ '.$medicalRecord['treatment-end']['waiting-list'].'
+▐ '.$medicalRecord['treatment-end']['waiting-list'].'
 
 ';
 }
@@ -2462,7 +2250,7 @@ if (!empty($medicalRecord['type'])) {
 $emailContent .= 'What type of medical treatment did you receive?
 
 
-^ '.$medicalRecord['type'].'
+▐ '.$medicalRecord['type'].'
 
 ';
 }
@@ -2485,7 +2273,7 @@ if(!empty($data['sections']['other-compensation']['received-compensation'])) {
 $emailContent .= 'Claiming or have you received compensation payments from other sources?
 
 
-^ '.$data['sections']['other-compensation']['received-compensation'].'
+▐ '.$data['sections']['other-compensation']['received-compensation'].'
 
 ';
 }
@@ -2494,7 +2282,7 @@ if(!empty($data['sections']['other-compensation']['conditions'])) {
 $emailContent .= 'What medical condition(s)?
 
 
-^ '.$data['sections']['other-compensation']['conditions'].'
+▐ '.$data['sections']['other-compensation']['conditions'].'
 
 ';
 }
@@ -2503,7 +2291,7 @@ if(!empty($data['sections']['other-compensation']['outcome'])) {
 $emailContent .= 'Who did you claim from/amount?
 
 
-^ '.$data['sections']['other-compensation']['outcome'].'
+▐ '.$data['sections']['other-compensation']['outcome'].'
 
 ';
 }
@@ -2512,7 +2300,7 @@ if(!empty($data['sections']['other-compensation']['payment'])) {
 $emailContent .= 'Did you receive a payment?
 
 
-^ '.$data['sections']['other-compensation']['payment'].'
+▐ '.$data['sections']['other-compensation']['payment'].'
 
 ';
 }
@@ -2524,7 +2312,7 @@ if(!empty($data['sections']['other-compensation']['amount'])) {
 $emailContent .= 'Amount paid
 
 
-^ '.$data['sections']['other-compensation']['amount'].'
+▐ '.$data['sections']['other-compensation']['amount'].'
 
 ';
 }
@@ -2533,7 +2321,7 @@ if(!empty($data['sections']['other-compensation']['type'])) {
 $emailContent .= 'What type of payment was this?
 
 
-^ '.$data['sections']['other-compensation']['type'].'
+▐ '.$data['sections']['other-compensation']['type'].'
 
 ';
 }
@@ -2542,7 +2330,7 @@ if(!empty($data['sections']['other-compensation']['payment-date']['year'])) {
 $emailContent .= 'When did you receive this payment?
 
 
-^ '.@$data['sections']['other-compensation']['payment-date']['day'].' / '.@$data['sections']['other-compensation']['payment-date']['month'].' /  '.$data['sections']['other-compensation']['payment-date']['year'].'
+▐ '.@$data['sections']['other-compensation']['payment-date']['day'].' / '.@$data['sections']['other-compensation']['payment-date']['month'].' /  '.$data['sections']['other-compensation']['payment-date']['year'].'
 
 ';
 }
@@ -2551,7 +2339,7 @@ if(!empty($data['sections']['other-compensation']['payment-date']['approximate']
 $emailContent .= 'Appoximate date?
 
 
-^ '.$data['sections']['other-compensation']['payment-date']['approximate'].'
+▐ '.$data['sections']['other-compensation']['payment-date']['approximate'].'
 
 ';
 }
@@ -2560,7 +2348,7 @@ if(!empty($data['sections']['other-compensation']['solicitorhelp'])) {
 $emailContent .= 'Did a solicitor help you with your claim for other compensation?
 
 
-^ '.$data['sections']['other-compensation']['solicitorhelp'].'
+▐ '.$data['sections']['other-compensation']['solicitorhelp'].'
 
 ';
 }
@@ -2569,61 +2357,49 @@ if(!empty($data['sections']['other-compensation']['solicitor-address']['fullname
 $emailContent .= 'Solicitors&#039; full name
 
 
-^ '.$data['sections']['other-compensation']['solicitor-address']['fullname'].'
+▐ '.$data['sections']['other-compensation']['solicitor-address']['fullname'].'
 
 ';
 }
 
 if(!empty($data['sections']['other-compensation']['solicitor-address']['address1'])) {
-$emailContent .= 'Building and street
-
-
-^ '.$data['sections']['other-compensation']['solicitor-address']['address1'].'
+$emailContent .= '
+▐ '.$data['sections']['other-compensation']['solicitor-address']['address1'].'
 
 ';
 }
 
 if(!empty($data['sections']['other-compensation']['solicitor-address']['address2'])) {
-$emailContent .= 'Building and street line 2 of 2
-
-
-^ '.$data['sections']['other-compensation']['solicitor-address']['address2'].'
+$emailContent .= '
+▐ '.$data['sections']['other-compensation']['solicitor-address']['address2'].'
 
 ';
 }
 
 if(!empty($data['sections']['other-compensation']['solicitor-address']['town'])) {
-$emailContent .= 'Town
-
-
-^ '.$data['sections']['other-compensation']['solicitor-address']['town'].'
+$emailContent .= '
+▐ '.$data['sections']['other-compensation']['solicitor-address']['town'].'
 
 ';
 }
 
 if(!empty($data['sections']['other-compensation']['solicitor-address']['county'])) {
-$emailContent .= 'County
-
-
-^ '.$data['sections']['other-compensation']['solicitor-address']['county'].'
+$emailContent .= '
+▐ '.$data['sections']['other-compensation']['solicitor-address']['county'].'
 
 ';
 }
 
 if(!empty($data['sections']['other-compensation']['solicitor-address']['postcode'])) {
-$emailContent .= 'Postcode
-
-
-^ '.$data['sections']['other-compensation']['solicitor-address']['postcode'].'
+$emailContent .= '
+▐ '.$data['sections']['other-compensation']['solicitor-address']['postcode'].'
 
 ';
 }
 
 if(!empty($data['sections']['other-compensation']['solicitor-address']['country'])) {
-$emailContent .= 'Countr
-
-
-^ '.$data['sections']['other-compensation']['solicitor-address']['country'].'
+$emailContent .= '
+▐ '.$data['sections']['other-compensation']['solicitor-address']['country'].'
 
 ';
 }
@@ -2632,7 +2408,7 @@ if(!empty($data['sections']['other-compensation']['solicitor-address']['telephon
 $emailContent .= 'Contact number
 
 
-^ '.$data['sections']['other-compensation']['solicitor-address']['telephone'].'
+▐ '.$data['sections']['other-compensation']['solicitor-address']['telephone'].'
 
 ';
 }
@@ -2652,7 +2428,7 @@ if(!empty($data['sections']['other-benefits']['benefits'])) {
 $emailContent .= 'Are you receiving Tax Credits, Housing Benefit, Council Tax Benefit or Industrial Injuries Disablement Benefit?
 
 
-^ '.$data['sections']['other-benefits']['benefits'].'
+▐ '.$data['sections']['other-benefits']['benefits'].'
 
 ';
 }
@@ -2661,7 +2437,7 @@ if(!empty($data['sections']['other-benefits']['other-paid'])) {
 $emailContent .= 'Have you ever received a payment for Mesothelioma or Pneumoconiosis?
 
 
-^ '.$data['sections']['other-benefits']['other-paid'].'
+▐ '.$data['sections']['other-benefits']['other-paid'].'
 
 ';
 }
@@ -2673,7 +2449,7 @@ if(!empty($data['sections']['other-benefits']['details']['diffuse2014'])) {
 $emailContent .= 'Diffuse Mesothelioma 2014 Scheme
 
 
-^ '.$data['sections']['other-benefits']['details']['diffuse2014'].'
+▐ '.$data['sections']['other-benefits']['details']['diffuse2014'].'
 
 ';
 }
@@ -2682,7 +2458,7 @@ if(!empty($data['sections']['other-benefits']['details']['diffuse2008'])) {
 $emailContent .= 'Diffuse Mesothelioma 2008 Scheme
 
 
-^ '.$data['sections']['other-benefits']['details']['diffuse2008'].'
+▐ '.$data['sections']['other-benefits']['details']['diffuse2008'].'
 
 ';
 }
@@ -2691,7 +2467,7 @@ if(!empty($data['sections']['other-benefits']['details']['worker1979'])) {
 $emailContent .= 'The Workers Compensation 1979 Pneumoconiosis Act
 
 
-^ '.$data['sections']['other-benefits']['details']['worker1979'].'
+▐ '.$data['sections']['other-benefits']['details']['worker1979'].'
 
 ';
 }
@@ -2710,7 +2486,7 @@ if(!empty($data['sections']['bank-account']['providebank'])) {
 $emailContent .= 'Do you wish to provide your bank account details?
 
 
-^ '.$data['sections']['bank-account']['providebank'].'
+▐ '.$data['sections']['bank-account']['providebank'].'
 
 ';
 }
@@ -2721,7 +2497,7 @@ if ( (!empty($data['sections']['bank-account']['bank-address']))  &&  ($data['se
 $emailContent .= 'Where is your bank account?
 
 
-^ '.$data['sections']['bank-account']['banklocation'].'
+▐ '.$data['sections']['bank-account']['banklocation'].'
 
 ';
 }
@@ -2730,7 +2506,7 @@ if(!empty($data['sections']['bank-account']['bank-address']['bankname'])) {
 $emailContent .= 'Name of bank, building society or other account provider
 
 
-^ '.$data['sections']['bank-account']['bank-address']['bankname'].'
+▐ '.$data['sections']['bank-account']['bank-address']['bankname'].'
 
 ';
 }
@@ -2739,7 +2515,7 @@ if(!empty($data['sections']['bank-account']['bank-address']['accountname'])) {
 $emailContent .= 'Name on the account
 
 
-^ '.$data['sections']['bank-account']['bank-address']['accountname'].'
+▐ '.$data['sections']['bank-account']['bank-address']['accountname'].'
 
 ';
 }
@@ -2748,7 +2524,7 @@ if(!empty($data['sections']['bank-account']['bank-address']['sortcode'])) {
 $emailContent .= 'Sort code
 
 
-^ '.$data['sections']['bank-account']['bank-address']['sortcode'].'
+▐ '.$data['sections']['bank-account']['bank-address']['sortcode'].'
 
 ';
 }
@@ -2757,7 +2533,7 @@ if(!empty($data['sections']['bank-account']['bank-address']['accountnumber'])) {
 $emailContent .= 'Account number
 
 
-^ '.$data['sections']['bank-account']['bank-address']['accountnumber'].'
+▐ '.$data['sections']['bank-account']['bank-address']['accountnumber'].'
 
 ';
 }
@@ -2766,7 +2542,7 @@ if(!empty($data['sections']['bank-account']['bank-address']['rollnumber'])) {
 $emailContent .= 'Building society roll number
 
 
-^ '.$data['sections']['bank-account']['bank-address']['rollnumber'].'
+▐ '.$data['sections']['bank-account']['bank-address']['rollnumber'].'
 
 ';
 }
@@ -2775,7 +2551,7 @@ if(!empty($data['sections']['bank-account']['bank-address']['accountreason'])) {
 $emailContent .= 'If this is not your bank account, please tell us whose account it is and why you have chosen this account
 
 
-^ '.$data['sections']['bank-account']['bank-address']['accountreason'].'
+▐ '.$data['sections']['bank-account']['bank-address']['accountreason'].'
 
 ';
 }
@@ -2790,7 +2566,7 @@ if(!empty($data['sections']['bank-account']['banklocation'])) {
 $emailContent .= 'Where is your bank account?
 
 
-^ '.$data['sections']['bank-account']['banklocation'].'
+▐ '.$data['sections']['bank-account']['banklocation'].'
 
 ';
 }
@@ -2799,7 +2575,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['bankname']
 $emailContent .= 'Name of bank or other account provider
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['bankname'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['bankname'].'
 
 ';
 }
@@ -2808,7 +2584,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['accountnam
 $emailContent .= 'Name on the account
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['accountname'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['accountname'].'
 
 ';
 }
@@ -2817,7 +2593,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['iban'])) {
 $emailContent .= 'International Bank Account Number (IBAN)
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['iban'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['iban'].'
 
 ';
 }
@@ -2826,7 +2602,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['bsbcode'])
 $emailContent .= 'BSB Code
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['bsbcode'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['bsbcode'].'
 
 ';
 }
@@ -2835,7 +2611,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['swiftcode'
 $emailContent .= 'Bank Identifier Code (BIC)
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['swiftcode'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['swiftcode'].'
 
 ';
 }
@@ -2844,7 +2620,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['transitrou
 $emailContent .= 'Transit Routing Number
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['transitroute'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['transitroute'].'
 
 ';
 }
@@ -2853,7 +2629,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['typeofacco
 $emailContent .= 'Type of account
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['typeofaccount'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['typeofaccount'].'
 
 ';
 }
@@ -2862,7 +2638,7 @@ if(!empty($data['sections']['bank-account']['overseas-bank-address']['accountrea
 $emailContent .= 'If this is not your bank account, please tell us whose account it is and why you have chosen this account
 
 
-^ '.$data['sections']['bank-account']['overseas-bank-address']['accountreason'].'
+▐ '.$data['sections']['bank-account']['overseas-bank-address']['accountreason'].'
 
 ';
 }
@@ -2911,7 +2687,7 @@ if (!empty($data['sections']['supporting-documents']['file-information'])) {
 $emailContent .= '
 File comments
 
-^ '.$data['sections']['supporting-documents']['file-information'].'
+▐ '.$data['sections']['supporting-documents']['file-information'].'
 
 ';
 }
@@ -2925,13 +2701,13 @@ $emailContent .= '
 Read and agreed to the declaration
 
 
-^ '.@$data['submission']['declaration'].'
+▐ '.@$data['submission']['declaration'].'
 
 
 Agree to email contact
 
 
-^ '.@$data['submission']['enquiry'].'
+▐ '.@$data['submission']['enquiry'].'
 
 ';
 
@@ -2972,7 +2748,9 @@ if (empty($appstage)) {
 }
 
 
-/* Commented out until ready to use
+
+if ( (!empty($data['sections']['about-you']['telephonenumber']['mobilepermission'])) && ($data['sections']['about-you']['telephonenumber']['mobilepermission'] == 'Yes') ) {
+
 
 //send a confirmation SMS if we want to
 
@@ -2981,15 +2759,18 @@ if (empty($appstage)) {
      //do nothing
 
     } else {
-        //send notify code out
-        $mobile = @$data['sections']['about-you']['telephonenumber']['mobile'];
-        if (!empty($mobile)) {
-        Notify::getInstance()->setData(['reference' => $reference_number])->sendSms($mobile, 'd02d27ce-d01d-46b8-8e26-149894239666');
-        }
 
+        if (!empty($data['sections']['about-you']['telephonenumber']['mobile'])) {
+
+            //send notify code out
+            $mobile = @$data['sections']['about-you']['telephonenumber']['mobile'];
+            if (!empty($mobile)) {
+            Notify::getInstance()->setData(['reference' => $reference_number])->sendSms($mobile, 'd02d27ce-d01d-46b8-8e26-149894239666');
+            }
+        }
     }
 
-*/
+}
 
 
 if ($appstage != 'LOCAL') {

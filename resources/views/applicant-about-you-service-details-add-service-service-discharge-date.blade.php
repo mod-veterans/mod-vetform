@@ -91,7 +91,7 @@ if (!empty($_POST)) {
         $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/service-is-serving']);
         $stillservingchk = ' checked';
         $servingValidation = 'N';
-        $theURL = '/applicant/about-you/service-details/add-service/last-unit-address';
+        $theURL = '/applicant/about-you/service-details/add-service/check-answers';
 
     }
 

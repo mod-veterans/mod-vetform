@@ -70,6 +70,14 @@ Route::match(['get', 'post'],'/applicant/legal-authority/authority-detail', func
     return view('applicant-legal-authority-detail');
 });
 
+Route::match(['get', 'post'],'/applicant/legal-authority/have-lpa', function () {
+    return view('applicant-legal-authority-have-lpa');
+});
+
+Route::match(['get', 'post'],'/applicant/legal-authority/lpa', function () {
+    return view('applicant-legal-authority-lpa');
+});
+
 Route::match(['get', 'post'],'/applicant/legal-authority/information', function () {
     return view('applicant-legal-authority-detail-information');
 });

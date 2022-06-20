@@ -13,8 +13,10 @@ $errorsList = array();
 
 //set fields
 $served = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-$epawref = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
-
+$epawref1 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$epawref2 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$epawref3 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$epawref4 = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 //load in our content
 $userID = $_SESSION['vets-user'];
@@ -25,7 +27,11 @@ if (empty($_POST)) {
     //load the data if set
     if (!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['served'])) {
         $served['data']           = @$data['sections']['applicant-who']['apply-yourself']['epaw']['served'];
-        $epawref['data']        = @$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'];
+        $epawref1['data']        = @$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-1'];
+        $epawref2['data']        = @$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-2'];
+        $epawref3['data']        = @$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-3'];
+        $epawref4['data']        = @$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-4'];
+
         $servedchk[$served['data']] = ' checked';
 
     }
@@ -61,9 +67,12 @@ if (!empty($_POST)) {
             $servedchk['Yes'] = 'checked';
 
 
-            if (!empty($_POST['afcs/about-you/personal-details/epaw-reference'])) {
+            if (!empty($_POST['afcs/about-you/personal-details/epaw-reference-1'])) {
 
-                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'] = $_POST['afcs/about-you/personal-details/epaw-reference'];
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-1'] = $_POST['afcs/about-you/personal-details/epaw-reference-1'];
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-2'] = $_POST['afcs/about-you/personal-details/epaw-reference-2'];
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-3'] = $_POST['afcs/about-you/personal-details/epaw-reference-3'];
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-4'] = $_POST['afcs/about-you/personal-details/epaw-reference-4'];
                 $data['sections']['applicant-who']['apply-yourself']['epaw']['served'] = 'Yes';
 
 
@@ -72,11 +81,11 @@ if (!empty($_POST)) {
 
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Please give us your EPAW number</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Tell us your EPAW reference in number/date format</a>';
                 $epawref['error'] = 'govuk-form-group--error';
                 $epawref['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please give us your EPAW number
+                    <span class="govuk-visually-hidden">Error:</span> Tell us your EPAW reference in number/date format
                  </span>';
                  $numHidden = '';
 
@@ -86,7 +95,10 @@ if (!empty($_POST)) {
 
         } elseif ($_POST['afcs/about-you/personal-details/served-special-forces'] == 'No') {
 
-                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference'] = '';
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-1'] = '';
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-2'] = '';
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-3'] = '';
+                $data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-4'] = '';
                 $data['sections']['applicant-who']['apply-yourself']['epaw']['served'] = 'No';
             $servedchk['No'] = 'checked';
 
@@ -205,15 +217,15 @@ Have you ever served in or supported the Special Forces?
           <label class="govuk-label" for="contact-by-email">
             EPAW reference
           </label>
-          @php echo $epawref['errorLabel']; @endphp
+          @php echo $epawref1['errorLabel']; @endphp
 
-                 <input
-        class="govuk-input govuk-!-width-two-thirds "
-        id="afcs/about-you/personal-details/epaw-reference" name="afcs/about-you/personal-details/epaw-reference" type="text"
-                      value="{{$epawref['data']}}"
-                aria-describedby="afcs/about-you/personal-details/epaw-reference" maxlength="15"
-            >
+                 <input class="govuk-input govuk-date-input__input govuk-input--width-4 " id="afcs/about-you/personal-details/epaw-reference-1" name="afcs/about-you/personal-details/epaw-reference-1"  type="text" value="{{$epawref1['data']}}" aria-describedby="afcs/about-you/personal-details/epaw-reference" maxlength="4" > -
 
+ <input class="govuk-input govuk-date-input__input govuk-input--width-2 " id="afcs/about-you/personal-details/epaw-reference-2" name="afcs/about-you/personal-details/epaw-reference-2"  type="text" value="{{$epawref2['data']}}" aria-describedby="afcs/about-you/personal-details/epaw-reference" maxlength="2" > /
+
+ <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="afcs/about-you/personal-details/epaw-reference-3" name="afcs/about-you/personal-details/epaw-reference-3"  type="text" value="{{$epawref3['data']}}" aria-describedby="afcs/about-you/personal-details/epaw-reference" maxlength="2" > /
+
+ <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="afcs/about-you/personal-details/epaw-reference-4" name="afcs/about-you/personal-details/epaw-reference-4"  type="text" value="{{$epawref4['data']}}" aria-describedby="afcs/about-you/personal-details/epaw-reference" maxlength="4" >
       </div>
 
 <div class="govuk-warning-text">

@@ -54,11 +54,11 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
-         @if(!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference']))
+         @if(!empty($data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-1']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">EPAW reference number</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference']}}
+                                    {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-1'] ?? ''}} - {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-2'] ?? ''}} / {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-3'] ?? ''}} / {{$data['sections']['applicant-who']['apply-yourself']['epaw']['epaw-reference-4'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/epaw?return=/applicant/check-answers">Change<span

@@ -50,7 +50,7 @@ You should enter the email and telephone number that you want Veterans UK to use
 
 
 <h2>Confirming your authority to claim</h2>
-<p class="govuk-body">Upload confirmation of the authority you have, for example the letter giving you Power of Attorney, within the ‘Supporting Documents’ section later. You can send us a copy in the post if you prefer.</p>
+<p class="govuk-body">If you have not told us about an LPA Access Code, upload confirmation of the authority you have, for example the letter giving you Power of Attorney, within the ‘Supporting Documents’ section later. You can send us a copy in the post if you prefer.</p>
 
 
 

@@ -143,13 +143,19 @@ echo $errorMessage;
 @endphp
 
 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What was/is your trade or specialism?</h1>
+                                <h1 class="govuk-heading-xl">What service trades or professions have you had?</h1>
  </legend>
-                                <p class="govuk-body">For example, infantry soldier, electrician, pilot.</p>
+                                <p class="govuk-body">For example, navigator, infantry soldier, electrician, pilot.</p>
 
-<div class="govuk-inset-text">
-If you had more than one trade or specialism, list them here.
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+  <strong class="govuk-warning-text__text">
+    <span class="govuk-warning-text__assistive">Warning</span>
+    Do not refer to Special Forces trades or professions.
+  </strong>
 </div>
+
+<p class="govuk-body">List all the trades or professions you have had (except Special Forces).</p>
 
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
@@ -158,12 +164,12 @@ If you had more than one trade or specialism, list them here.
         <span class="govuk-visually-hidden">Service trade</span>
     </label>
 @php echo $specialism['errorLabel']; @endphp
-            <input
-        class="govuk-input govuk-!-width-two-thirds "
+            <textarea
+        class="govuk-textarea govuk-!-width-two-thirds " rows="5"
         id="afcs/about-you/service-details/service-trade/service-trade" name="afcs/about-you/service-details/service-trade/service-trade" type="text"
          autocomplete="name"
-                  value="{{$specialism['data']}}"
-            >
+                  >{{$specialism['data']}}</textarea>
+
 </div>
 
 

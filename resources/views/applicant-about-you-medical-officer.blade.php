@@ -229,14 +229,16 @@ if (!empty($_POST)) {
    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Details of your current Doctor</h1>
 </legend>
-                                <p class="govuk-body">You can tell us about other consultants or specialists later in the claim.</p>
+
  <p class="govuk-body">Tell us about your current GP, usual doctor or Medical Officer if still serving.</p>
  <p class="govuk-body">If you do not have a named doctor, tell us the surgery or practice details. </p>
 </p>
 
 <div class="govuk-inset-text">
-If you’re not registered with a surgery or practice, please write "Not Registered" in "Doctor’s full name" below.
+If you’re not registered with a surgery or practice, write "Not Registered" in "Doctor’s full name" below.
 </div>
+
+<p class="govuk-body">You can tell us about other consultants or specialists later in the claim.</p>
 
 
 
@@ -292,7 +294,7 @@ If you’re not registered with a surgery or practice, please write "Not Registe
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/county">
-        County
+        County (State or Province if overseas)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "

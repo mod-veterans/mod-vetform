@@ -63,8 +63,12 @@ die();
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">'Save and come back later' is now available to you</h1>
-                                <p class="govuk-body">You can now save your answers and come back later to a part-completed application if you want to.</p>
-                        <p class="govuk-body">Click the ‘Save and come back later’ button now available at the bottom of each page to do this.</p>
+                                <p class="govuk-body">Your answers are now being saved as you answer each question</p>
+                                <p class="govuk-body">You can now come back later to a part-completed application if you want to.</p>
+                        <p class="govuk-body">To take a break, use the ‘Save and come back later’ button now available at the bottom of each page.</p>
+
+<p class="govuk-body">You can also return to your saved application should your computer or device close unexpectedly.
+</p>
 
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>

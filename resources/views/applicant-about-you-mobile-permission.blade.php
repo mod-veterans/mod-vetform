@@ -135,7 +135,7 @@ echo $errorMessage;
                                 <h1 class="govuk-heading-xl">Using text messages to contact you</h1>
                                <p class="govuk-body">Veterans UK is planning to introduce text messaging to update customers as their claim progresses.</p>
 
-<p class="govuk-body">If you want us to use the number you have just provided to send you text message updates about your claim, please read the information below:
+<p class="govuk-body">If you want us to use the number you have just provided to send you text message updates about your claim, read the information below:
 </p>
 
 <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
@@ -143,10 +143,14 @@ echo $errorMessage;
 
 <li>I understand that messages sent by text may be open to abuse because they are sent over an unsecured network. I accept that the MOD will not be liable for any loss, interception or unauthorised use of information transmitted this way.</li>
 
-<li>If your mobile number changes, please tell us as soon as possible.</li>
+<li>If your mobile number changes, tell us as soon as possible.</li>
 
 
 </ul>
+
+
+<div class="govuk-inset-text">We will never ask you for personal details or include website links in text messages we send to you.</div>
+
 
 
             <form method="post" enctype="multipart/form-data" novalidate>

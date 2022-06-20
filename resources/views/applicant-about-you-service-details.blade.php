@@ -123,7 +123,7 @@
 </ul>
 
 <div class="govuk-inset-text">
-You can add as many periods of service in this section as needed. You’ll be asked if you want to ’add another period of service’ at the end.
+You can add as many periods of service in this section as needed. You’ll be asked if you want to ’add another period of service’ at the end of this section.
 </div>
 
 

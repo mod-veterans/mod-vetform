@@ -114,7 +114,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/about-you/service-details/add-service/last-unit-address';
+        $theURL = '/applicant/about-you/service-details/add-service/check-answers';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
