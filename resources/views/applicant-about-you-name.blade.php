@@ -13,6 +13,7 @@ $errorsList = array();
 //set fields
 $firstname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 $lastname = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
+$title = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 
 
 //load in our content
@@ -25,6 +26,8 @@ if (empty($_POST)) {
     if (!empty($data['sections']['about-you']['name'])) {
         $firstname['data']           = @$data['sections']['about-you']['name']['firstname'];
         $lastname['data']            = @$data['sections']['about-you']['name']['lastname'];
+        $title['data']            = @$data['sections']['about-you']['name']['title'];
+
 
     }
 } else {
@@ -40,17 +43,17 @@ if (!empty($_POST)) {
 
     $lastname['data'] = cleanTextData($_POST['/afcs/about-you/personal-details/your-name/last-name']);
     $firstname['data'] = cleanTextData($_POST['/afcs/about-you/personal-details/your-name/other-names']);
-
+    $title['data'] = cleanTextData($_POST['/afcs/about-you/personal-details/your-name/title']);
 
 
 
     if (empty($_POST['/afcs/about-you/personal-details/your-name/last-name'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/afcs/about-you/personal-details/your-name/last-name">Please give us your last name</a>';
+        $errorsList[] = '<a href="#/afcs/about-you/personal-details/your-name/last-name">Enter your last name</a>';
         $lastname['error'] = 'govuk-form-group--error';
         $lastname['errorLabel'] =
         '<span id="/afcs/about-you/personal-details/your-name/last-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your last name
+            <span class="govuk-visually-hidden">Error:</span> Enter your last name
          </span>';
 
     } else {
@@ -60,17 +63,26 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/afcs/about-you/personal-details/your-name/other-names'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/address-line-1">Please give us your first name</a>';
+        $errorsList[] = '<a href="#/representative/representative-address/address-line-1">Enter your first name</a>';
         $firstname['error'] = 'govuk-form-group--error';
         $firstname['errorLabel'] =
         '<span id="/afcs/about-you/personal-details/your-name/other-names-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your first name
+            <span class="govuk-visually-hidden">Error:</span> Enter your first name
          </span>';
 
 
     } else {
         $data['sections']['about-you']['name']['firstname'] = cleanTextData($_POST['/afcs/about-you/personal-details/your-name/other-names']);
     }
+
+
+    if (empty($_POST['/afcs/about-you/personal-details/your-name/title'])) {
+
+    } else {
+        $data['sections']['about-you']['name']['title'] = cleanTextData($_POST['/afcs/about-you/personal-details/your-name/title']);
+    }
+
+
 
 
 
@@ -141,6 +153,7 @@ echo $errorMessage;
                                 <h1 class="govuk-heading-xl">What is your name?</h1>
   </legend>
                                 <p class="govuk-body">The name of the person with the injury, illness or disability</p>
+                                <p class="govuk-body">Include your title, for example Mr, Mrs, Dr, if you want us to use this when we write to you</p>
                                 <form method="post" enctype="multipart/form-data">
                                 @csrf
                                                     <div class="govuk-form-group {{$lastname['error']}} ">
@@ -153,9 +166,9 @@ echo $errorMessage;
         id="afcs/about-you/personal-details/your-name/last-name" name="/afcs/about-you/personal-details/your-name/last-name" type="text"
          autocomplete="family_name"
                   value="{{$lastname['data']}}"
-            required>
+            >
 </div>
-                                    <div class="govuk-form-group {{$firstname['error']}} ">
+<div class="govuk-form-group {{$firstname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/other-names">
         First names or given names (required)
     </label>
@@ -164,8 +177,17 @@ echo $errorMessage;
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/your-name/other-names" name="/afcs/about-you/personal-details/your-name/other-names" type="text"
                    value="{{$firstname['data']}}"
-            required>
+            >
 </div>
+
+<div class="govuk-form-group {{$title['error']}} ">
+    <label class="govuk-label" for="afcs/about-you/personal-details/your-name/title">
+        Title (optional)
+    </label>
+    @php echo $title['errorLabel']; @endphp
+    <input class="govuk-input govuk-!-width-two-thirds" id="afcs/about-you/personal-details/your-name/title" name="/afcs/about-you/personal-details/your-name/title" type="text" value="{{$title['data']}}" maxlength="20" >
+</div>
+
 
 
 

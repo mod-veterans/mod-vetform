@@ -25,7 +25,7 @@
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
-    You must also have access to either the mobile phone or email account matching the details you’ve entered. This is so we can send you a text message and email with a code to enter on screen.
+    You must also have access to either the mobile phone or email account matching the details you’ve entered. This is so we can send you a text message (UK only) and email with a code to enter on screen.
   </strong>
 </div>
 

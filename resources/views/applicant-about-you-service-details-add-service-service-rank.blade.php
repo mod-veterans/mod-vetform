@@ -62,11 +62,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['afcs/about-you/service-details/service-rank/service-rank'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Please give us your service rank</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Tell us your service rank</a>';
         $servicerank['error'] = 'govuk-form-group--error';
         $servicerank['errorLabel'] =
         '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your service rank
+            <span class="govuk-visually-hidden">Error:</span> Tell us your service rank
          </span>';
 
     } else {

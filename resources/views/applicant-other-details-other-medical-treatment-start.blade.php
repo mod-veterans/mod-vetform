@@ -97,11 +97,11 @@ if (!empty($_POST)) {
 
         if (empty($waitingchk)) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#/other-medical-treatment-start-date/medical-treatment-start-date">Please give us at least an approximate year</a>';
+            $errorsList[] = '<a href="#/other-medical-treatment-start-date/medical-treatment-start-date">Enter an approximate year</a>';
             $treatmentyear['error'] = 'govuk-form-group--error';
             $treatmentyear['errorLabel'] =
             '<span id="/other-medical-treatment-start-date/medical-treatment-start-date-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please give us at least an approximate year
+                <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
              </span>';
         }
     } else {
@@ -216,7 +216,7 @@ echo $errorMessage;
 
 
 
-        <div id="/other-medical-treatment-start-date/medical-treatment-start-date-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
+        <div id="/other-medical-treatment-start-date/medical-treatment-start-date-hint" class="govuk-hint">For example 27 3 2007. If you cannot remember, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="/other-medical-treatment-start-date/medical-treatment-start-date">
                                                 <div class="govuk-date-input__item">

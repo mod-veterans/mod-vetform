@@ -156,7 +156,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">Please tell us the police reference number (if known)</h1>
+                                <h1 class="govuk-heading-xl">Tell us the police reference number (if known)</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
@@ -183,7 +183,7 @@ echo $errorMessage;
             <input id="61667bb647352--default" name="/claim-details/claim-accident-police-ref/claim-accident-non-sporting-ref-unknown" type="hidden" value="No">
         <input class="govuk-checkboxes__input" id="61667bb647352" name="/claim-details/claim-accident-police-ref/claim-accident-non-sporting-ref-unknown" type="checkbox"
            value="Yes"    {{$dontknowchk ?? ''}}        >
-    <label class="govuk-label govuk-checkboxes__label" for="61667bb647352">I don&#039;t know</label>
+    <label class="govuk-label govuk-checkboxes__label" for="61667bb647352">I do not know</label>
 </div>
 
 

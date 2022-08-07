@@ -58,7 +58,7 @@ $lastname = md5(simplify($_POST['lastname']));
 
 
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
-    $result = pg_query($db, "SELECT * FROM modvetdevusertable WHERE emailhash = '$email' AND surnamehash = '$lastname' AND nihash = '$ninumber'");
+    $result = pg_query($db, "SELECT * FROM modvetdevusertable WHERE emailhash = '$email' AND surnamehash = '$lastname' AND nihash = '$ninumber' order by datetimeadded DESC LIMIT 1");
     if ($row = pg_fetch_assoc($result)) {
 
 
@@ -133,7 +133,11 @@ $lastname = md5(simplify($_POST['lastname']));
 
     } else {
         $errors = 'Y';
-            $errorsList[] = '<a href="#">We could not find a record matching the details you entered</a>';
+            $errorsList[] = '<a href="#">We cannot find an existing record matching those details.<br /><br />
+Check you have entered your details correctly and try again.<br /><br />
+You can only return to an application within three months of the date you started it.  <br /><br />
+For help call 0808 1914 218 (Mon-Fri)
+</a>';
 
     }
 

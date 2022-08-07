@@ -43,11 +43,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/applicant/nominee-details/nominee-details'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/applicant/nominee-details/nominee-details">Please tell us what legal authority you have</a>';
+        $errorsList[] = '<a href="#/applicant/nominee-details/nominee-details">Tell us what legal authority you have</a>';
         $details['error'] = 'govuk-form-group--error';
         $details['errorLabel'] =
         '<span id="/applicant/nominee-details/nominee-details" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what legal authority you have
+            <span class="govuk-visually-hidden">Error:</span> Tell us what legal authority you have
          </span>';
 
     } else {

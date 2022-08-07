@@ -57,11 +57,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness-condition/claim-illness-claiming-for">Please tell us what type of medical condition you are claiming for</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness-condition/claim-illness-claiming-for">Tell us what medical condition(s) you are claiming for</a>';
         $condition['error'] = 'govuk-form-group--error';
         $condition['errorLabel'] =
         '<span id="/claim-details/claim-illness-condition/claim-illness-claiming-for-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what type of medical condition you are claiming for
+            <span class="govuk-visually-hidden">Error:</span> Tell us what medical condition(s) you are claiming for
          </span>';
 
     }
@@ -139,7 +139,7 @@ echo $errorMessage;
         <span class="govuk-visually-hidden">Medical condition claiming</span>
     </label>
 @php echo $condition['errorLabel']; @endphp
-    <div id="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint" class="govuk-hint">You can claim for any medical condition you think is related to your service.  If you have a specific diagnosis, please include it here, for example, deafness, osteoarthritis.<br /><br />Tell us which side of the body is affected if needed, for example, deafness left ear.</div>
+    <div id="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint" class="govuk-hint">You can claim for any medical condition or symptoms you think are related to your service.  If you have a specific diagnosis, include it here, for example, deafness, osteoarthritis.<br /><br />Tell us which side of the body is affected if needed, for example, deafness left ear.</div>
 
 
 <div class="govuk-inset-text">

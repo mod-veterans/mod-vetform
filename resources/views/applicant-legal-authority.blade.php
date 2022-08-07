@@ -72,11 +72,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/applicant/nominee-address/nominee-name'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/applicant/nominee-address/nominee-name">Please give us your full name</a>';
+        $errorsList[] = '<a href="#/applicant/nominee-address/nominee-name">Enter your name</a>';
         $fullname['error'] = 'govuk-form-group--error';
         $fullname['errorLabel'] =
         '<span id="/applicant/nominee-address/nominee-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your full name
+            <span class="govuk-visually-hidden">Error:</span> Enter your name
          </span>';
 
     } else {
@@ -86,11 +86,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/applicant/nominee-address/address-line-1'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/applicant/nominee-address/address-line-1">Please give us the first line of your address</a>';
+        $errorsList[] = '<a href="#/applicant/nominee-address/address-line-1">Tell us the first line of your address</a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
         '<span id="/applicant/nominee-address/nominee-address-1-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your address
+            <span class="govuk-visually-hidden">Error:</span> Tell us the first line of your address
          </span>';
 
 
@@ -127,11 +127,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/applicant/nominee-address/country'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/applicant/nominee-address/country">Please give us your country</a>';
+        $errorsList[] = '<a href="#/applicant/nominee-address/country">Tell us your country</a>';
         $country['error'] = 'govuk-form-group--error';
         $country['errorLabel'] =
         '<span id="/applicant/nominee-address/nominee-country-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your country
+            <span class="govuk-visually-hidden">Error:</span> Tell us your country
          </span>';
 
 
@@ -212,14 +212,14 @@ echo $errorMessage;
 @endphp
                                 <h1 class="govuk-heading-xl">What are your own details?</h1>
                                 <p class="govuk-body">You have told us you are making this claim on behalf of someone else.
-            Please tell us your own details.</p>
+           Tell us your own details.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
 
     <div class="govuk-form-group {{$fullname['error']}}">
     <label class="govuk-label" for="/applicant/nominee-address/nominee-name">
-        Your full name
+        Your full name (tell us your title, for example Mr, Mrs, Dr, if you want us to use it)
     </label>
         @php echo $fullname['errorLabel'] @endphp
     <input class="govuk-input govuk-!-width-two-thirds " id="/applicant/nominee-address/nominee-name" name="/applicant/nominee-address/nominee-name" type="text" autocomplete="name" value="{{$fullname['data']}}" />

@@ -62,7 +62,9 @@ $fileinfo['data'] = @$data['sections']['supporting-documents']['file-information
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Do you want to tell us anything about your documents?</h1>
-                                <p class="govuk-body">If you wish to tell us anything about the files or documents you have uploaded, please use the space below.  If you have chosen to send us any images of your condition/illness for any reason, please tell us here.  </p>
+                                <p class="govuk-body">If you wish to tell us anything about the files or documents you have uploaded, use the space below.</p>
+                                <div class="govuk-inset-text">
+ If you have chosen to send us any images of your condition/illness for any reason, tell us here.  </div>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -75,9 +77,9 @@ $fileinfo['data'] = @$data['sections']['supporting-documents']['file-information
     </label>
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/applicant/nominee-details/nominee-details"
                   name="/applicant/nominee-details/nominee-details" rows="5"
-                                    aria-describedby="/applicant/nominee-details/nominee-details-info" maxlength="250">{{$fileinfo['data'] ?? ''}}</textarea>
+                                    aria-describedby="/applicant/nominee-details/nominee-details-info" maxlength="750">{{$fileinfo['data'] ?? ''}}</textarea>
                     <div id="/applicant/nominee-details/nominee-details-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-                You can enter up to 250 characters
+                You can enter up to 750 characters
             </div>
     </div>
     </div>

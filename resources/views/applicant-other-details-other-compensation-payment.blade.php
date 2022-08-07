@@ -72,6 +72,17 @@ if (!empty($_POST)) {
                 $theURL = '/applicant/other-details/other-compensation/check-answers';
             break;
 
+            case "Not settled":
+                $data['sections']['other-compensation']['payment'] = 'Not settled';
+                 $paymentchk['Not settled'] = ' checked';
+                $theURL = '/applicant/other-details/other-compensation/solicitor';
+            break;
+
+
+
+
+
+
 
             default:
                 die('unexpected input');
@@ -85,11 +96,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/claim-outcome/claim-outcome-payment-result">Please tell us if you have received a payment</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-outcome/claim-outcome-payment-result">Tell us if you have received a payment</a>';
         $payment['error'] = 'govuk-form-group--error';
         $payment['errorLabel'] =
         '<span id="/other-compensation/claim-outcome/claim-outcome-payment-result-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you have received a payment
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you have received a payment
          </span>';
 
     }
@@ -181,6 +192,14 @@ echo $errorMessage;
            value="No"     {{$paymentchk['No'] ?? ''}}         >
     <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-outcome/claim-outcome-payment-result-no">No</label>
 </div>
+
+                            <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/other-compensation/claim-outcome/claim-outcome-payment-result-not-settled" name="/other-compensation/claim-outcome/claim-outcome-payment-result" type="radio"
+           value="Not settled"     {{$paymentchk['Not settled'] ?? ''}}         >
+    <label class="govuk-label govuk-radios__label" for="/other-compensation/claim-outcome/claim-outcome-payment-result-no">My claim has not been settled yet</label>
+</div>
+
+
 
                     </div>
     </fieldset>

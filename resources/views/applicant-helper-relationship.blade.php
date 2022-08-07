@@ -45,32 +45,45 @@ if (!empty($_POST)) {
             case "Friend":
                 $data['sections']['applicant-who']['helper']['relationship'] = 'Friend';
                 $relationshipchk['Friend'] = ' checked';
+                 $theURL = '/applicant/helper/declaration';
 
             break;
 
             case "Relative":
                 $data['sections']['applicant-who']['helper']['relationship'] = 'Relative';
                 $relationshipchk['Relative'] = ' checked';
+                 $theURL = '/applicant/helper/declaration';
             break;
 
             case "Veterans Welfare Service Manager":
                 $data['sections']['applicant-who']['helper']['relationship'] = 'Veterans Welfare Service Manager';
                 $relationshipchk['Veterans Welfare Service Manager'] = ' checked';
+                 $theURL = '/applicant/helper/relationship/when';
             break;
 
             case "Charity employee":
                 $data['sections']['applicant-who']['helper']['relationship'] = 'Charity employee';
                 $relationshipchk['Charity employee'] = ' checked';
+                $theURL = '/applicant/helper/relationship/when';
             break;
 
             case "Local Authority employee":
                 $data['sections']['applicant-who']['helper']['relationship'] = 'Local Authority employee';
                 $relationshipchk['Local Authority employee'] = ' checked';
+                $theURL = '/applicant/helper/relationship/when';
             break;
+
+            case "Solicitor":
+                $data['sections']['applicant-who']['helper']['relationship'] = 'Solicitor';
+                $relationshipchk['Solicitor'] = ' checked';
+                $theURL = '/applicant/helper/relationship/when';
+            break;
+
 
             case "Other":
                 $data['sections']['applicant-who']['helper']['relationship'] = 'Other';
                 $relationshipchk['Other'] = ' checked';
+                $theURL = '/applicant/helper/relationship/when';
             break;
 
 
@@ -81,11 +94,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/applicant/helper-details/helper-name">Please tell us your relationship to the person making the claim</a>';
+        $errorsList[] = '<a href="#/applicant/helper-details/helper-name">Tell us your relationship to the person making the claim</a>';
         $relationship['error'] = 'govuk-form-group--error';
         $relationship['errorLabel'] =
         '<span id="/applicant/helper-relationship/helper-relationship-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us your relationship to the person making the claim
+            <span class="govuk-visually-hidden">Error:</span> Tell us your relationship to the person making the claim
          </span>';
 
     }
@@ -125,7 +138,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/helper/declaration';
+
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -194,6 +207,13 @@ echo $errorMessage;
            value="Local Authority employee"    @php echo @$relationshipchk['Local Authority employee']; @endphp         >
     <label class="govuk-label govuk-radios__label" for="/applicant/helper-relationship/helper-relationship-local-authority-employee">Local Authority employee</label>
 </div>
+
+   <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/applicant/helper-relationship/helper-relationship-local-authority-employee" name="/applicant/helper-relationship/helper-relationship" type="radio"
+           value="Solicitor"    @php echo @$relationshipchk['Solicitor']; @endphp         >
+    <label class="govuk-label govuk-radios__label" for="/applicant/helper-relationship/helper-relationship-local-authority-employee">Solicitor</label>
+</div>
+
 
     <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/applicant/helper-relationship/helper-relationship-other" name="/applicant/helper-relationship/helper-relationship" type="radio"

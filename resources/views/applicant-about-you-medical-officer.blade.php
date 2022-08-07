@@ -89,11 +89,11 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/medical-officer/medical-officer-contact/address-line-1'])) {
         /*
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/medical-officer/medical-officer-contact/address-line-1">Please give us the first line of your medical officer\'s address</a>';
+        $errorsList[] = '<a href="#afcs/about-you/medical-officer/medical-officer-contact/address-line-1">Tell us the first line of your medical officer\'s address</a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
         '<span id="afcs/about-you/personal-details/contact-address/address-line-1-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your medical officer\'s address
+            <span class="govuk-visually-hidden">Error:</span> Tell us the first line of your medical officer\'s address
          </span>';
          */
 
@@ -131,11 +131,11 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/medical-officer/medical-officer-contact/country'])) {
         /*
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/country">Please give us your country</a>';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/country">Tell us your country</a>';
         $country['error'] = 'govuk-form-group--error';
         $country['errorLabel'] =
         '<span id="afcs/about-you/medical-officer/medical-officer-contact/country-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your country
+            <span class="govuk-visually-hidden">Error:</span> Tell us your country
          </span>';
          */
 

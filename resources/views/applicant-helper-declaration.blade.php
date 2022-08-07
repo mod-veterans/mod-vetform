@@ -49,22 +49,22 @@ if (!empty($_POST)) {
         } else {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#/applicant/helper-declaration/helper-declaration-agreed">Please confirm your acceptance</a>';
+            $errorsList[] = '<a href="#/applicant/helper-declaration/helper-declaration-agreed">Confirm your acceptance</a>';
             $declaration['error'] = 'govuk-form-group--error';
             $declaration['errorLabel'] =
             '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please confirm your acceptance
+                <span class="govuk-visually-hidden">Error:</span> Confirm your acceptance
              </span>';
          }
 
     } else {
 
                 $errors = 'Y';
-            $errorsList[] = '<a href="#/applicant/helper-declaration/helper-declaration-agreed">Please confirm your acceptance</a>';
+            $errorsList[] = '<a href="#/applicant/helper-declaration/helper-declaration-agreed">Confirm your acceptance</a>';
             $declaration['error'] = 'govuk-form-group--error';
             $declaration['errorLabel'] =
             '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please confirm your acceptance
+                <span class="govuk-visually-hidden">Error:</span> Confirm your acceptance
              </span>';
 
     }

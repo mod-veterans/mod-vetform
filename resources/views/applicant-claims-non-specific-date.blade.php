@@ -78,11 +78,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/claim-details/claim-illness-date/date-of-condition-year'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness-date/date-of-condition-year">Please give us at least an approximate year</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness-date/date-of-condition-year">Enter an approximate year</a>';
         $conditionyear['error'] = 'govuk-form-group--error';
         $conditionyear['errorLabel'] =
         '<span id="/claim-details/claim-illness-date/date-of-condition-year-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us at least an approximate year
+            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
          </span>';
 
     } else {
@@ -184,7 +184,7 @@ echo $errorMessage;
     <fieldset class="govuk-fieldset">
 @php echo $conditionyear['errorLabel']; @endphp
 
-        <div id="/claim-details/claim-illness-date/date-of-condition-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
+        <div id="/claim-details/claim-illness-date/date-of-condition-hint" class="govuk-hint">The date your symptoms first started. For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="/claim-details/claim-illness-date/date-of-condition">
                                                 <div class="govuk-date-input__item">

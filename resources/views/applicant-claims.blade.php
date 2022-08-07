@@ -92,15 +92,17 @@ $claimList = '';
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Claim details</h1>
-                                <p class="govuk-body">
-                                                                       You can use this section to make one or more claims for different injuries, illnesses or conditions caused by your service.</p>
-<p class="govuk-body">Make a separate claim for each injury, illness or condition with a different cause.</p>
+                <h1 class="govuk-heading-xl">Claim details</h1>
+                <p class="govuk-body">You can use this section to make one or more claims for different injuries, illnesses, disorders or conditions caused by your service.</p>
 
-<div class="govuk-inset-text">
-You’ll be asked if you want to ‘add another claim’ at the end of this section.
-</div>
 
+                <div class="govuk-inset-text">
+                    If multiple injuries or conditions had the same cause, for example a road traffic accident or an explosion, put them in one claim.
+               <br /><br />If the injuries, illnesses or conditions had different causes, make a separate claim for each one.
+                </div>
+
+
+                <p class="govuk-body">You’ll be asked if you want to ‘add another claim’ at the end of this section.</p>
 
 
                          <dl class="govuk-summary-list">
@@ -116,9 +118,9 @@ echo $claimList;
                 Add a{{$nother ?? ''}} claim
             </a>
             <br>
-             or
+             <p class="govuk-body">or
              <br /><br />
-            <a class="" href="/tasklist">Return to tasklist</a>
+            <a class="" href="/tasklist">Return to tasklist</a></p>
         </div>
             </div>
         </div>

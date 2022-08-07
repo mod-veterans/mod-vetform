@@ -98,11 +98,11 @@ if (!empty($_POST)) {
 
         if (empty($waitingchk)) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#/other-medical-treatment-end-date/medical-treatment-end-date">Please give us at least an approximate year</a>';
+            $errorsList[] = '<a href="#/other-medical-treatment-end-date/medical-treatment-end-date">Enter an approximate year</a>';
             $treatmentyear['error'] = 'govuk-form-group--error';
             $treatmentyear['errorLabel'] =
             '<span id="/other-medical-treatment-end-date/medical-treatment-end-date-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please give us at least an approximate year
+                <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
              </span>';
         }
     } else {

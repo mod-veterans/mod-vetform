@@ -1,18 +1,99 @@
 
+
+@php
+$cookiechoice = '';
+$message = '';
+$fromPage = '';
+
+session_start();
+
+if  (!empty($_SERVER['HTTP_REFERER']) ) {
+    //don't set yourself
+    if (strpos($_SERVER['HTTP_REFERER'], $_SERVER['REQUEST_URI'], 0) == TRUE) {
+        //do nothing
+    } else {
+        $_SESSION['fromPage'] = $_SERVER['HTTP_REFERER'];
+    }
+
+
+
+}
+
+
+if (!empty($_SESSION['fromPage'])) {
+    $fromPage = $_SESSION['fromPage'];
+}
+
+
+
+if (!empty($_COOKIE['vet-COOKIE'])) {
+    if ($_COOKIE['vet-COOKIE'] == 'Y') {
+        $cookiechoice = 'Y';
+    }
+}
+
+
+if (!empty($_POST['cookies-analytics'])) {
+
+
+    if ($_POST['cookies-analytics'] == 'Y') {
+       setcookie('vet-COOKIE', 'Y', time() + (86400 * 30 * 365), '/');
+       setcookie('vet-GA', 'Y', time() + (86400 * 30 * 365), '/');
+       $cookiechoice = 'Y';
+       $showcookie = 'N';
+
+    }
+
+    if ($_POST['cookies-analytics'] == 'N') {
+       setcookie('vet-COOKIE', 'N', time() + (86400 * 30 * 365), '/');
+       $cookiechoice = 'N';
+       $showcookie = 'N';
+    }
+
+
+
+
+    $message = '
+
+    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      Success
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <p class="govuk-notification-banner__heading">
+      You’ve set your cookie preferences. <a class="govuk-notification-banner__link" href="'.$fromPage.'">Go back to the page you were looking at</a>.
+    </p>
+  </div>
+</div>
+
+    ';
+
+
+}
+
+
+$cookiechk['N'] = 'checked';
+$cookiechk['Y'] = '';
+if ($cookiechoice == 'Y') {
+    $cookiechk['N'] = '';
+    $cookiechk['Y'] = 'checked';
+}
+@endphp
+
+
+
 @include('framework.header')
 @include('framework.backbutton')
+
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-<!--
-    <div class="cookie-settings__confirmation banner banner-with-tick" data-cookie-confirmation="true" role="group" tabindex="-1">
-      <h2 class="banner-title">Your cookie settings were saved</h2>
-      <a class="govuk_link cookie-settings__prev-page govuk-!-margin-top-1" href="#" data-module="track-click" data-track-category="cookieSettings" data-track-action="Back to previous page">
-        Go back to the page you were looking at
-      </a>
-    </div>
--->
+
+@php echo $message; @endphp
+
 
     <h1 class="heading-large">Cookies</h1>
     <p class="govuk-body">
@@ -168,7 +249,8 @@
     </table>
 
     <div class="cookie-settings__form-wrapper">
-      <form data-module="cookie-settings">
+      <form data-module="cookie-settings" method="POST">
+      @csrf
         <div class="govuk-form-group govuk-!-margin-top-6">
           <fieldset class="govuk-fieldset" aria-describedby="changed-name-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">
@@ -176,13 +258,13 @@
             </legend>
             <div class="govuk-radios govuk-radios--inline">
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="cookies-analytics-yes" name="cookies-analytics" type="radio" value="on">
+                <input class="govuk-radios__input" id="cookies-analytics-yes" name="cookies-analytics" type="radio" value="Y" {{$cookiechk['Y'] ?? ''}}>
                 <label class="govuk-label govuk-radios__label" for="cookies-analytics-yes">
                   Yes
                 </label>
               </div>
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="cookies-analytics-no" name="cookies-analytics" type="radio" value="off">
+                <input class="govuk-radios__input" id="cookies-analytics-no" name="cookies-analytics" type="radio" value="N" {{$cookiechk['N'] ?? ''}}>
                 <label class="govuk-label govuk-radios__label" for="cookies-analytics-no">
                   No
                 </label>

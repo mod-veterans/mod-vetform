@@ -81,11 +81,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Please tell us if you were representing your unit</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Tell us if you were representing your unit</a>';
         $representing['error'] = 'govuk-form-group--error';
         $representing['errorLabel'] =
         '<span id="/claim-details/claim-accident-condition/claim-accident-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you were representing your unit
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you were representing your unit
          </span>';
 
     }
@@ -156,7 +156,7 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Were you representing your Unit?</h1>
+                                <h1 class="govuk-heading-xl">Were you representing your Unit in a sporting competition?</h1>
     </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
@@ -182,7 +182,7 @@ echo $errorMessage;
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
 
 
-Please send us copies of part 1 orders/admin instructions/authorisation if you have them. You can upload a copy in ’Supporting Documents’ later.
+Send us copies of part 1 orders/admin instructions/authorisation if you have them. You can upload a copy in ’Supporting Documents’ later.
 
 
 

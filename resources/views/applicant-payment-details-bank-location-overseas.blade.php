@@ -84,11 +84,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-name'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-name">Please give us the name of your bank</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-name">Tell us the name of your bank</a>';
+        $bankname['error'] = 'govuk-form-group--error';
+        $bankname['errorLabel'] =
         '<span id="/payment-details/bank-united-kingdom/bank-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the name of your bank
+            <span class="govuk-visually-hidden">Error:</span> Tell us the name of your bank
          </span>';
 
 
@@ -101,11 +101,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/payment-details/bank-overseas/bank-account-name'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-overseas/bank-account-name">Please give us the name on this account</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
+        $errorsList[] = '<a href="#/payment-details/bank-overseas/bank-account-name">Tell us the name on this account</a>';
+        $accountname['error'] = 'govuk-form-group--error';
+        $accountname['errorLabel'] =
         '<span id="/payment-details/bank-overseas/bank-account-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the name on this account
+            <span class="govuk-visually-hidden">Error:</span> Tell us the name on this account
          </span>';
 
 
@@ -116,11 +116,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/payment-details/bank-overseas/bank-account-iban'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-overseas/bank-account-iban">Please give us the account IBAN</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
+        $errorsList[] = '<a href="#/payment-details/bank-overseas/bank-account-iban">Tell us the account IBAN</a>';
+        $iban['error'] = 'govuk-form-group--error';
+        $iban['errorLabel'] =
         '<span id="/payment-details/bank-overseas/bank-account-iban-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the account IBAN
+            <span class="govuk-visually-hidden">Error:</span> Tell us the account IBAN
          </span>';
 
     } else {
@@ -218,7 +218,8 @@ echo $errorMessage;
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
 
-  <div class="govuk-form-group ">
+  <div class="govuk-form-group {{$bankname['error']}}">
+    @php echo $bankname['errorLabel']; @endphp
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-name">
         Name of bank or account provider
     </label>
@@ -233,7 +234,8 @@ echo $errorMessage;
 
 
 
-                                                    <div class="govuk-form-group ">
+                                                    <div class="govuk-form-group {{$accountname['error']}} ">
+@php echo $accountname['errorLabel']; @endphp
     <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-name">
         Name on the account
     </label>
@@ -245,7 +247,8 @@ echo $errorMessage;
             >
 </div>
 
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$iban['error']}}">
+ @php echo $iban['errorLabel']; @endphp
     <label class="govuk-label" for="/payment-details/bank-overseas/bank-account-iban">
         International Bank Account Number (IBAN)
     </label>

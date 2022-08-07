@@ -78,11 +78,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/representative/representative-address/representative-name'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/representative-name">Please give us your full name</a>';
+        $errorsList[] = '<a href="#/representative/representative-address/representative-name">Tell us your full name</a>';
         $fullname['error'] = 'govuk-form-group--error';
         $fullname['errorLabel'] =
         '<span id="/representative/representative-address/representative-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your full name
+            <span class="govuk-visually-hidden">Error:</span> Tell us your full name
          </span>';
 
     } else {
@@ -92,11 +92,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/representative/representative-address/address-line-1'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/address-line-1">Please give us the first line of your address</a>';
+        $errorsList[] = '<a href="#/representative/representative-address/address-line-1">Tell us the first line of your address</a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
         '<span id="/representative/representative-address/address-line-1-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the first line of your address
+            <span class="govuk-visually-hidden">Error:</span> Tell us the first line of your address
          </span>';
 
 
@@ -117,11 +117,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/representative/representative-address/town'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/town">Please give us your representative town</a>';
+        $errorsList[] = '<a href="#/representative/representative-address/town">Tell us your representative town</a>';
         $town['error'] = 'govuk-form-group--error';
         $town['errorLabel'] =
         '<span id="/representative/representative-address/town-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your representative town
+            <span class="govuk-visually-hidden">Error:</span> Tell us your representative town
          </span>';
 
     } else {
@@ -133,11 +133,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/representative/representative-address/county'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/county">Please give us your representative county</a>';
+        $errorsList[] = '<a href="#/representative/representative-address/county">Tell us your representative county</a>';
         $county['error'] = 'govuk-form-group--error';
         $county['errorLabel'] =
         '<span id="/representative/representative-address/county-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your representative county
+            <span class="govuk-visually-hidden">Error:</span> Tell us your representative county
          </span>';
 
 
@@ -150,11 +150,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/representative/representative-address/country'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/country">Please give us your country</a>';
+        $errorsList[] = '<a href="#/representative/representative-address/country">Tell us your country</a>';
         $country['error'] = 'govuk-form-group--error';
         $country['errorLabel'] =
         '<span id="/representative/representative-address/country-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your country
+            <span class="govuk-visually-hidden">Error:</span> Tell us your country
          </span>';
 
 
@@ -166,11 +166,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/representative/representative-address/postcode'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/postcode">Please give us your representative postcode</a>';
+        $errorsList[] = '<a href="#/representative/representative-address/postcode">Tell us your representative postcode</a>';
         $postcode['error'] = 'govuk-form-group--error';
         $postcode['errorLabel'] =
         '<span id="/representative/representative-address/postcode-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your representative postcode
+            <span class="govuk-visually-hidden">Error:</span> Tell us your representative postcode
          </span>';
 
     } else {
@@ -267,7 +267,7 @@ echo $errorMessage;
                                 @csrf
                                                     <div class="govuk-form-group {{$fullname['error']}} ">
     <label class="govuk-label" for="/representative/representative-address/representative-name">
-        Their full name
+        Their full name (tell us their title, for example Mr, Mrs, Dr, if you want us to use it)
     </label>
     @php echo $fullname['errorLabel']; @endphp
             <input

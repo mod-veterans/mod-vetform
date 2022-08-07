@@ -231,7 +231,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Which hospital or medical facility were you taken to?</h1>
-                                <p class="govuk-body">Please tell us the details to the best of your knowledge.  If you can't remember, you can leave this page or any sections blank.</p>
+                                <p class="govuk-body">Tell us the details to the best of your knowledge.  If you cannot remember, you can leave this page or any sections blank.</p>
 
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

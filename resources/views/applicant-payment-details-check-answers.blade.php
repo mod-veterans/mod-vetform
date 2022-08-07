@@ -125,13 +125,13 @@ if ( (!empty($data['sections']['bank-account']['bank-address'])) && (!empty($dat
 
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">If this is not your bank account, please tell us whose account it is and why you have chosen this account</dt>
+            <dt class="govuk-summary-list__key">If this is not your bank account, tell us whose account it is and why you have chosen this account</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['bank-account']['bank-address']['accountreason'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/payment-details/bank-location/uk?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-confirmation">Change<span
-                        class="govuk-visually-hidden"> If this is not your bank account, please tell us whose account it is and why you have chosen this account</span></a>
+                        class="govuk-visually-hidden"> If this is not your bank account, tell us whose account it is and why you have chosen this account</span></a>
             </dd>
         </div>
 @endif
@@ -251,13 +251,13 @@ if ( (!empty($data['sections']['bank-account']['overseas-bank-address'])) &&  (!
  @if(!empty($data['sections']['bank-account']['overseas-bank-address']['accountreason']))
 
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">If this is not your bank account, please tell us whose account it is and why you have chosen this account</dt>
+            <dt class="govuk-summary-list__key">If this is not your bank account, tell us whose account it is and why you have chosen this account</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['bank-account']['overseas-bank-address']['accountreason'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/payment-details/bank-location/overseas?return=/applicant/payment-details/check-answers&amp;stack=#/payment-details/bank-overseas/bank-account-confirmation">Change<span
-                        class="govuk-visually-hidden"> If this is not your bank account, please tell us whose account it is and why you have chosen this account</span></a>
+                        class="govuk-visually-hidden"> If this is not your bank account, tell us whose account it is and why you have chosen this account</span></a>
             </dd>
         </div>
  @endif

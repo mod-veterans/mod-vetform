@@ -66,11 +66,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type">Please tell us what type of payment this was</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type">Tell us what type of payment</a>';
         $type['error'] = 'govuk-form-group--error';
         $type['errorLabel'] =
         '<span id="/other-compensation/claim-payment-type/claim-outcome-payment-type-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what type of payment this was
+            <span class="govuk-visually-hidden">Error:</span> Tell us what type of payment
          </span>';
 
     }

@@ -53,9 +53,9 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Uploading supporting documents</h1>
-                                <p class="govuk-body">If you have documents or evidence <strong>already in your possession</strong> that you would like us to see, you can upload copies here.</p>
+                                <p class="govuk-body">If you have documents or evidence already in your possession you would like us to see, you can upload images of them here.</p>
                                 <div class="govuk-inset-text">
-  Do not delay your claim by getting evidence you do not already have. We will make our own enquiries to get the information we need.
+  Do not delay your claim by getting evidence you do not already have.
 </div>
 
 <h2 class="govuk-heading-l">What documents can be useful</h2>
@@ -128,6 +128,7 @@ We do not need images of your condition/illness.
 <ul class="govuk-list govuk-list--bullet">
     <li>Appointment letters.</li>
     <li>Copies of in-service medical records.</li>
+    <li>Do not upload images of other people’s personal data – contact us after you make your claim if you think we need to see this.</li>
 </ul>
 <br /><br />
 
@@ -146,8 +147,8 @@ We do not need images of your condition/illness.
     </form>
 
 
-<h2>I prefer to send copies in the post</h2>
-<p class="govuk-body"> If you have lots of documents or would prefer to send document by post, please send copies (not originals) to:</p>
+<h2>Sending copies in the post</h2>
+<p class="govuk-body"> If you have lots of documents or would prefer to send documents by post, send copies (not originals) to:</p>
                                                                                                         <p class="govuk-address govuk-!-font-size-19 govuk-!-margin-bottom-4">
                                                             Veterans UK<br>
                                                             FREEPOST NAT18006<br />

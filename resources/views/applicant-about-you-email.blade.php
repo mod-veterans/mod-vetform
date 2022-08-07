@@ -56,11 +56,11 @@ if (!empty($_POST)) {
 
 
              $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">That email address does not appear to be valid</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Enter an email address in the correct format, like name@example.com</a>';
             $email['error'] = 'govuk-form-group--error';
             $email['errorLabel'] =
             '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> That email address does not appear to be valid
+                <span class="govuk-visually-hidden">Error:</span> Enter an email address in the correct format, like name@example.com
              </span>';
 
 
@@ -82,11 +82,11 @@ if (!empty($_POST)) {
         } else {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/email-address/email-address">Please give us your email address</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/email-address/email-address">Enter an email address in the correct format, like name@example.com</a>';
             $email['error'] = 'govuk-form-group--error';
             $email['errorLabel'] =
             '<span id="afcs/about-you/personal-details/email-address/email-address-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please give us your email address
+                <span class="govuk-visually-hidden">Error:</span> Enter an email address in the correct format, like name@example.com
              </span>';
         }
 

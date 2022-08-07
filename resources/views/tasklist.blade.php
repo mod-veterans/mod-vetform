@@ -24,6 +24,7 @@ if ($data = getData($userID)) {
     //what time did we start this application?
     if (empty($data['settings']['time_started'])) {
         $data['settings']['time_started'] = date('Y-m-d H:i:s');
+        $data['settings']['url-used'] = $_SERVER['SERVER_NAME'];
         storeData($userID,$data);
     }
 

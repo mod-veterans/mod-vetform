@@ -69,6 +69,13 @@ if (!empty($_POST)) {
             break;
 
 
+            case "dont-know":
+                $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['accident-form'] = 'Dont Know';
+                 $accidentchk['dont-know'] = ' checked';
+
+            break;
+
+
             default:
                 die('unexpected input');
             break;
@@ -81,11 +88,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-form/non-sporting-form">Please tell us if an accident form was completed</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-form/non-sporting-form">Tell us if an accident form was completed</a>';
         $accident['error'] = 'govuk-form-group--error';
         $accident['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if an accident form was completed
+            <span class="govuk-visually-hidden">Error:</span> Tell us if an accident form was completed
          </span>';
 
     }
@@ -182,7 +189,7 @@ echo $errorMessage;
       <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
 
 
-Please send us a copy if you have one.  You can upload a copy in ’Supporting Documents’ later.
+Send us a copy if you have one.  You can upload a copy in ’Supporting Documents’ later.
 
 
 
@@ -195,6 +202,15 @@ Please send us a copy if you have one.  You can upload a copy in ’Supporting D
           No
         </label>
       </div>
+
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-dont-know" name="/claim-details/claim-accident-non-sporting-form/non-sporting-form" type="radio" value="dont-know" data-aria-controls="conditional-contact-2" {{$accidentchk['dont-know'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-non-sporting-form/non-sporting-form-dont-know">
+          I do not know
+        </label>
+      </div>
+
+
 
 
     </div>

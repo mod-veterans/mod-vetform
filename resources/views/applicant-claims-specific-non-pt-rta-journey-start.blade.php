@@ -64,11 +64,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from">Please tell us where your journey started</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from">Tell us where your journey started</a>';
         $journeystart['error'] = 'govuk-form-group--error';
         $journeystart['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us where your journey started
+            <span class="govuk-visually-hidden">Error:</span> Tell us where your journey started
          </span>';
 
     }

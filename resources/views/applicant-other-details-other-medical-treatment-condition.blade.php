@@ -53,20 +53,20 @@ if (!empty($_POST)) {
 
 
     //set the entered field names
-
-    $conditions['data'] = cleanTextData($_POST['/other-medical-treatment-condition/other-medical-treatment-condition']);
-
+    if (!empty($_POST['/other-medical-treatment-condition/other-medical-treatment-condition'])) {
+    $conditions['data'] = cleanTextData(@$_POST['/other-medical-treatment-condition/other-medical-treatment-condition']);
+    }
 
 
 
 
     if (empty($_POST['/other-medical-treatment-condition/other-medical-treatment-condition'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-medical-treatment-condition/other-medical-treatment-condition">Please tell us what conditions you received treatment for</a>';
+        $errorsList[] = '<a href="#/other-medical-treatment-condition/other-medical-treatment-condition">Tell us what conditions you received treatment for</a>';
         $conditions['error'] = 'govuk-form-group--error';
         $conditions['errorLabel'] =
         '<span id="/other-medical-treatment-condition/other-medical-treatment-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what conditions you received treatment for
+            <span class="govuk-visually-hidden">Error:</span> Tell us what conditions you received treatment for
          </span>';
 
     } else {
@@ -142,6 +142,8 @@ echo $errorMessage;
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What conditions did you receive treatment for?</h1>
+                                <p class="govuk-body">Tell us about the conditions treated at this hospital or facility. Remember you only need to tell us about treatment for conditions you are claiming for.</p>
+                                <p class="govuk-body">You can add further hospitals or facilities at the end of this section.</p>
 </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

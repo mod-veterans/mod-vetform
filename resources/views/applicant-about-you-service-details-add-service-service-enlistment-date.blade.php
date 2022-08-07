@@ -73,11 +73,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Please give us at least an approximate year</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
         $enlistmentyear['error'] = 'govuk-form-group--error';
         $enlistmentyear['errorLabel'] =
         '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us at least an approximate year
+            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
          </span>';
 
     } else {
@@ -183,7 +183,7 @@ echo $errorMessage;
 
 
 
-        <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
+        <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example 27 3 2007. If you can not remember, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="afcs/about-you/service-details/service-enlistment-date/enlistment-date">
                                                 <div class="govuk-date-input__item">

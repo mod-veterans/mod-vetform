@@ -37,11 +37,11 @@ if (!empty($_POST)) {
     if (empty( $_POST['afcs/about-you/personal-details/pension-scheme/pension-scheme'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/pension-scheme/pension-scheme">Please tell us which armed forces pension scheme(s) you are a member of.</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/pension-scheme/pension-scheme">Tell us which armed forces pension scheme(s) you are a member of.</a>';
             $pensionscheme['error'] = 'govuk-form-group--error';
             $pensionscheme['errorLabel'] =
             '<span id="afcs/about-you/personal-details/national-insurance/ni-number" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span>Please tell us which armed forces pension scheme(s) you are a member of.
+                <span class="govuk-visually-hidden">Error:</span>Tell us which armed forces pension scheme(s) you are a member of.
              </span>';
 
 
@@ -173,6 +173,7 @@ echo $errorMessage;
            value="Other"       @php echo @$pensionschemechk['Other']; @endphp      >
     <label class="govuk-label govuk-checkboxes__label" for="615fda227931d">Other</label>
 </div>
+<p class="govuk-body">Or</p>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="615fda2279456" name="afcs/about-you/personal-details/pension-scheme/pension-scheme[]" type="checkbox"
            value="Dont Know"      @php echo @$pensionschemechk['Dont Know']; @endphp       >

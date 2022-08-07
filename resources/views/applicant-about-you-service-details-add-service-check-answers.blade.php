@@ -137,12 +137,12 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
             </dd>
         </div>
 @endif
- @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism']))
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism1']))
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Service trade</dt>
             <dd class="govuk-summary-list__value">
-                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism'] ?? '' }}
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism1'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism1Duration'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
@@ -150,6 +150,140 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
             </dd>
         </div>
 @endif
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism2']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">2.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism2'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism2Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism3']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">3.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism3'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism3Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism4']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">4.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism4'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism4Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism5']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">5.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism5'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism5Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism6']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">6.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism6'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism6Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism7']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">7.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism7'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism7Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism8']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">8.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism8'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism8Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism9']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">9.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism9'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism9Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+ @if(!empty($data['sections']['service-details']['records'][$thisRecord]['specialism10']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">10.</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{ $data['sections']['service-details']['records'][$thisRecord]['specialism10'] ?? '' }} - {{ $data['sections']['service-details']['records'][$thisRecord]['specialism10Duration'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/specialism/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-trade/service-trade">Change<span
+                        class="govuk-visually-hidden"> Service trade</span></a>
+            </dd>
+        </div>
+@endif
+
+
+
+
+
+
  @if(!empty($data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Enlistment Date</dt>

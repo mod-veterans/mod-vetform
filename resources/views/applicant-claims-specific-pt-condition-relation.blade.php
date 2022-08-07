@@ -60,11 +60,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-related/sporting-related">Please tell us where you were when the incident happened</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-related/sporting-related">Where were you were when the incident happened</a>';
         $where['error'] = 'govuk-form-group--error';
         $where['errorLabel'] =
         '<span id="/claim-details/claim-accident-sporting-related/sporting-related-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us where you were when the incident happened
+            <span class="govuk-visually-hidden">Error:</span> Where where you were when the incident happened
          </span>';
 
     }
@@ -103,7 +103,7 @@ if (!empty($_POST)) {
         //store our changes
 
         storeData($userID,$data);
-        $theURL = '/applicant/claims/specific/pt/witnesses';
+        $theURL = '/applicant/claims/specific/pt/incident-reported';
 
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {

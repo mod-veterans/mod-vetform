@@ -85,11 +85,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/personal-details/previous-claim/previous-claim">Please tell us if you have made a previous claim</a>';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/previous-claim/previous-claim">Tell us if you have made a previous claim</a>';
         $previous['error'] = 'govuk-form-group--error';
         $previous['errorLabel'] =
         '<span id="/representative/representative-selection/nominated-representative-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you have made a previous claim
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you have made a previous claim
          </span>';
 
     }
@@ -162,7 +162,7 @@ echo $errorMessage;
                                 <h1 class="govuk-heading-xl">Have you made a claim before?</h1>
 </legend>
 
- <p class="govuk-body">We only need to know about war pension or armed forces compensation scheme claims.</p>
+ <p class="govuk-body">We only need to know about previous war pension or armed forces compensation scheme claims.</p>
 
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

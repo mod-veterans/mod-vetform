@@ -53,11 +53,11 @@ if (!empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])
 if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Please tell us if you have an alternative number</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Tell us if you have an alternative number</a>';
                 $doyouhavealternative['error'] = 'govuk-form-group--error';
                 $doyouhavealternative['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/do-you-have-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have an alternative number
+                    <span class="govuk-visually-hidden">Error:</span> Tell us if you have an alternative number
                  </span>';
 
 
@@ -77,11 +77,11 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
 
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Please give us your alternative number</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Tell us your alternative number</a>';
                 $telephone['error'] = 'govuk-form-group--error';
                 $telephone['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please give us your alternative number
+                    <span class="govuk-visually-hidden">Error:</span> Tell us your alternative number
                  </span>';
                  $numHidden = '';
 

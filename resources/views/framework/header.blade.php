@@ -1,5 +1,10 @@
 @php
 
+if (empty($showcookie)) {
+$showcookie = 'Y';
+}
+
+
 $url = $_SERVER['REQUEST_URI'];
 
 $url = substr($url, 1);
@@ -14,16 +19,24 @@ $page_title = strtoupper(str_replace('/',' | ',$url));
 
 if (!empty($_POST['cookies'])) {
 
-    if ($_POST['cookies'] == 'accept') {
+    if ($_POST['cookies'] == 'Y') {
        setcookie('vet-COOKIE', 'Y', time() + (86400 * 30 * 365), '/');
        setcookie('vet-GA', 'Y', time() + (86400 * 30 * 365), '/');
+       $showcookie = 'N';
 
     }
 
-    if ($_POST['cookies'] == 'reject') {
-       setcookie('vet-COOKIE', 'Y', time() + (86400 * 30 * 365), '/');
+    if ($_POST['cookies'] == 'N') {
+       setcookie('vet-COOKIE', 'N', time() + (86400 * 30 * 365), '/');
+       $showcookie = 'N';
     }
 }
+
+if (!empty($_COOKIE['vet-COOKIE'])) {
+    $showcookie = 'N';
+}
+
+
 
 
 @endphp
@@ -91,7 +104,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </script>
 
 @php
-if (empty($_COOKIE['vet-COOKIE'])) {
+if ($showcookie == 'Y') {
 @endphp
 <div class="govuk-cookie-banner " data-nosnippet role="region" aria-label="Cookies on [name of service]">
   <div class="govuk-cookie-banner__message govuk-width-container">
@@ -107,13 +120,13 @@ if (empty($_COOKIE['vet-COOKIE'])) {
       </div>
     </div>
 
-    <form method="post" enctype="multipart/form-data" novalidate>
+    <form method="POST" enctype="multipart/form-data" novalidate>
     @csrf
     <div class="govuk-button-group">
-      <button value="accept" type="submit" name="cookies" class="govuk-button" data-module="govuk-button">
+      <button value="Y" type="submit" name="cookies" class="govuk-button" data-module="govuk-button">
         Accept analytics cookies
       </button>
-      <button value="reject" type="submit" name="cookies" class="govuk-button" data-module="govuk-button">
+      <button value="N" type="submit" name="cookies" class="govuk-button" data-module="govuk-button">
         Reject analytics cookies
       </button>
       <a class="govuk-link" href="/cookie-policy">View cookies</a>

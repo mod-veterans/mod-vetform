@@ -108,11 +108,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-downgraded/claim-illness-downgraded">Please tell us if you were downgraded</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-downgraded/claim-illness-downgraded">Tell us if you were downgraded</a>';
         $downgraded['error'] = 'govuk-form-group--error';
         $downgraded['errorLabel'] =
         '<span id="/claim-details/claim-downgraded/claim-illness-downgraded-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you were downgraded
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you were downgraded
          </span>';
 
     }
@@ -182,7 +182,7 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Were you medically downgraded? </h1>
   </legend>
-                                <p class="govuk-body">Tell us only about downgrading for the medical conditions you are claiming for.</p>
+                                <p class="govuk-body">Tell us only about downgrading for the medical conditions on this claim.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$downgraded['error'] ?? ''}} ">
@@ -209,7 +209,7 @@ echo $errorMessage;
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-downgraded/claim-illness-downgraded-dontknow" name="/claim-details/claim-downgraded/claim-illness-downgraded" type="radio"
            value="Dont Know"    {{$downgradedchk['Dont Know'] ?? ''}}        >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-downgraded/claim-illness-downgraded-dontknow">Don't Know</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-downgraded/claim-illness-downgraded-dontknow">I do not know</label>
 </div>
 
                     </div>

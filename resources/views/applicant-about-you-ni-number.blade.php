@@ -43,11 +43,11 @@ if (!empty($_POST)) {
         if (!validateNINUmber($_POST['afcs/about-you/personal-details/national-insurance/ni-number'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/national-insurance/ni-number">Your National Insurance number does not appear to be valid</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/national-insurance/ni-number">Enter a National Insurance number in the correct format</a>';
             $ninumber['error'] = 'govuk-form-group--error';
             $ninumber['errorLabel'] =
             '<span id="afcs/about-you/personal-details/national-insurance/ni-number" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span>Your National Insurance number does not appear to be valid
+                <span class="govuk-visually-hidden">Error:</span>Enter a National Insurance number in the correct format
              </span>';
 
 

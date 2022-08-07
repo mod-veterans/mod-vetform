@@ -94,11 +94,11 @@ if (!empty($_POST)) {
 
     if ((empty($_POST['/claim-details/claim-downgraded-dates/date-to-year']) ) && ($_POST['/claim-details/claim-illness-date/still-downgraded'] != 'Yes')) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-year">Please give us at least an approximate year to</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-year">Enter an approximate year</a>';
         $datetoyear['error'] = 'govuk-form-group--error';
         $datetoyear['errorLabel'] =
         '<span id="/claim-details/claim-downgraded-dates/date-from-year-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us at least an approximate year to
+            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
          </span>';
 
     } else {
@@ -190,7 +190,7 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">When did your downgrading end?</h1>
     </legend>
-    <p class="govuk-body">If you were downgraded and upgraded more than once, enter the date you were first downgraded.<br /><br />For example 27 3 2007. If you can’t remember, enter an approximate year.</p>
+    <p class="govuk-body">If you were downgraded and upgraded more than once, enter the date you were first downgraded.<br /><br />For example 27 3 2007. If you cannot remember, enter an approximate year.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$datetoday['error'] ?? ''}} {{$datetoyear['error'] ?? ''}} ">

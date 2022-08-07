@@ -43,11 +43,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/other-compensation/compensation-condition/medical-condition'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/compensation-condition/medical-condition">Please tell us what conditions you are claiming for</a>';
+        $errorsList[] = '<a href="#/other-compensation/compensation-condition/medical-condition">Tell us what conditions you are claiming for</a>';
         $details['error'] = 'govuk-form-group--error';
         $details['errorLabel'] =
         '<span id="/other-compensation/compensation-condition/medical-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what conditions you are claiming for
+            <span class="govuk-visually-hidden">Error:</span> Tell us what conditions you are claiming for
          </span>';
 
     } else {

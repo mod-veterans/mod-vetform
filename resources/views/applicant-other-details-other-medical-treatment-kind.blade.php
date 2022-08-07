@@ -24,7 +24,7 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What treatment did you receive?</h1>
+                                <h1 class="govuk-heading-xl">What type of treatment did you receive?</h1>
                                 <p class="govuk-body">e.g. Surgery, specialist consultation,tests, physiotherapy</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
@@ -37,7 +37,7 @@ if (!empty($_POST)) {
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-medical-treatment-type/other-medical-treatment-type" name="/other-medical-treatment-type/other-medical-treatment-type" type="text"
                    value=""
-            >
+           MAXLENGTH='250' >
 </div>
 
 

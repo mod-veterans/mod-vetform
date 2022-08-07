@@ -226,7 +226,7 @@ if (!empty($_POST)) {
                                 <p class="govuk-body">The doctor or medical officer who first told you the name of your condition(s).</p>
 
                                 <div class="govuk-inset-text">
-Enter details to your best knowledge, even if this is just a hospital or practice name. If you can't remember, you can leave this page or any section blank.</div>
+Enter details to your best knowledge, even if this is just a hospital or practice name. If you do not have a diagnosis or can't remember, you can leave this page or any section blank.</div>
 
 <p class="govuk-body">If you need to add more than one medical practitioner or hospital, you can do this within the ‘Other Medical Treatment’ section later</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>

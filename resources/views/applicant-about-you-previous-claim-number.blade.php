@@ -116,7 +116,10 @@ if (!empty($_POST)) {
    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What was the claim reference number?</h1>
 </legend>
-<p class="govuk-body">If you can’t remember, leave this blank.</p>
+<div class="govuk-inset-text">
+  You do not need to tell us your national insurance number again if this was the reference used.
+</div>
+<p class="govuk-body">If you cannot remember, or your national insurance number was the reference, leave this question blank.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

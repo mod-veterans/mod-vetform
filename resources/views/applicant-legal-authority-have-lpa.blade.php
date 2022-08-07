@@ -48,11 +48,11 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/personal-details/have-lpa-code'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/have-lpa-code">Please tell us if you have an LPA access code</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/have-lpa-code">Tell us if you have an LPA access code</a>';
                 $served['error'] = 'govuk-form-group--error';
                 $served['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/have-lpa-code-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have an LPA access code
+                    <span class="govuk-visually-hidden">Error:</span> Tell us if you have an LPA access code
                  </span>';
 
 

@@ -93,13 +93,36 @@ die();
 
 
                         <h2 class="govuk-heading-m">Coming back to a saved application</h2>
-                        <p class="govuk-body">To come back to a saved application, you’ll need your:</p>
-                        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-                            <li>Surname</li>
-                            <li>Date of birth</li>
-                            <li>National Insurance Number</li>
-                        </ul>
+                        <p class="govuk-body">To come back to a saved application, you’ll need these details from the information you’ve just entered:</p>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Surname</dt>
+                <dd class="govuk-summary-list__value">
+                    {{$data['sections']['about-you']['name']['lastname'] ?? '' }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Date of birth</dt>
+                <dd class="govuk-summary-list__value">
+                    {{$data['sections']['about-you']['dob']['day']}} / {{$data['sections']['about-you']['dob']['month']}} / {{$data['sections']['about-you']['dob']['year']}}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">National Insurance Number</dt>
+                <dd class="govuk-summary-list__value">
+                    {{$data['sections']['about-you']['ninumber'] ?? '' }}
+                </dd>
+            </div>
+
+    </dl>
+    <p class="govuk-body">If you need to make any changes to these details, you can do that on the next page.</p>
                         <p class="govuk-body">You’ll also need access to either the mobile phone or email account matching the details you have just entered. This is so we can send you a text message and email with a code to enter on screen.</p>
+
+
+
+
+
+
 
 
             <form method="post" enctype="multipart/form-data" novalidate >

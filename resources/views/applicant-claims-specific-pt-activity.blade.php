@@ -58,11 +58,11 @@ if (!empty($_POST)) {
 
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-activity/activityn">What was the activity?</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-activity/activityn">Tell us what was the activity?</a>';
         $activity['error'] = 'govuk-form-group--error';
         $activity['errorLabel'] =
         '<span id="/claim-details/claim-accident-sporting-activity/activity-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> What was the activity?
+            <span class="govuk-visually-hidden">Error:</span> Tell us what was the activity?
          </span>';
 
 

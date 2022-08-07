@@ -70,11 +70,11 @@ if (!empty($_POST)) {
         if   (empty($_POST['/claim-details/claim-illness-date/date-of-condition-estimated'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/specific/downgraded/from-medical">Please tell us what medical category you were downgraded from</a>';
+        $errorsList[] = '<a href="#/claim-details/specific/downgraded/from-medical">Tell us what medical category you were downgraded from</a>';
         $frommedical['error'] = 'govuk-form-group--error';
         $frommedical['errorLabel'] =
         '<span id="/claim-details/specific/downgraded/from-medical-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what medical category you were downgraded from
+            <span class="govuk-visually-hidden">Error:</span> Tell us what medical category you were downgraded from
          </span>';
         }
 
@@ -95,11 +95,11 @@ if (!empty($_POST)) {
 
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/specific/downgraded/to-medical">Please tell us what medical category you were downgraded to</a>';
+        $errorsList[] = '<a href="#/claim-details/specific/downgraded/to-medical">Tell us what medical category you were downgraded to</a>';
         $tomedical['error'] = 'govuk-form-group--error';
         $tomedical['errorLabel'] =
         '<span id="/claim-details/specific/downgraded/to-medical-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what medical category you were downgraded to
+            <span class="govuk-visually-hidden">Error:</span> Tell us what medical category you were downgraded to
          </span>';
 
         }
@@ -184,7 +184,7 @@ echo $errorMessage;
    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What medical categories were you downgraded from/to?</h1>
     </legend>
-                                <p class="govuk-body">For example P1, light duties.  If you can’t remember, enter ‘don’t know’.</p>
+                                <p class="govuk-body">For example P1, light duties.  If you cannot remember, enter ‘I do not know’.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                       <div class="govuk-form-group ">

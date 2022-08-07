@@ -73,11 +73,11 @@ if (!empty($_POST)) {
     } else {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Please tell us your date of birth</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Tell us your date of birth</a>';
             $dob['error'] = 'govuk-form-group--error';
             $dob['errorLabel'] =
             '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please tell us your date of birth
+                <span class="govuk-visually-hidden">Error:</span> Tell us your date of birth
              </span>';
 
 

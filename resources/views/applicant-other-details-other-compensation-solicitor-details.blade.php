@@ -220,7 +220,7 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Which solicitor helped you?</h1>
-                                <p class="govuk-body">You can leave blank any sections you can’t remember.</p>
+                                <p class="govuk-body">You can leave blank any sections you cannot remember.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

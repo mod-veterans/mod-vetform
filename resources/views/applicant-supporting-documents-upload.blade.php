@@ -87,16 +87,16 @@ if (!empty($_FILES)) {
         */
 
 
-        $allowed = array('gif', 'png', 'jpg','doc','docx','pdf','xls','xlsx','bmp','jpeg');
+        $allowed = array('gif', 'png','jpg','jpeg','pdf');
         $filename = strtolower($filename);
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
         if (!in_array($ext, $allowed)) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#/documents/document/file">You can only upload the following file types: gif, png, jpg, doc, docx, pdf, xls, xlsx, bmp, jpeg</a>';
+            $errorsList[] = '<a href="#/documents/document/file">You can only upload the following file types: gif, png, jpg, jpeg, pdf</a>';
             $fileupload['error'] = 'govuk-form-group--error';
             $fileupload['errorLabel'] =
             '<span id="/documents/document/file-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> You can only upload the following file types: gif, png, jpg, doc, docx, pdf, xls, xlsx, bmp, jpeg
+                <span class="govuk-visually-hidden">Error:</span> You can only upload the following file types: gif, png, jpg, jpeg, pdf
              </span>';
         }
 
@@ -135,7 +135,10 @@ if (!empty($_FILES)) {
 
         $rand = genHash();
 
-        $finalFilename = wordwrap($rand.$filename, 10, '-', true);
+        $revFilename = strrev($rand.$filename);
+
+        $finalFilename = strrev(wordwrap($revFilename, 10, '-', true));
+        //die($finalFilename);
 
         Storage::disk('s3')->put($finalFilename, file_get_contents($filepath));
 
@@ -196,9 +199,11 @@ if (!empty($_FILES)) {
  @php echo $errorMessage; @endphp
 
                                  <h1 class="govuk-heading-xl">Upload a document</h1>
-                                <p class="govuk-body" id="/documents/document/file-hint">You can upload an existing file or image from your device.</p>
 
-<p class="govuk-body">You can only upload PDF, PNG, JPG or DOCX files.</p>
+
+<p class="govuk-body">You can only upload GIF, PNG, JPG and PDF files directly from your device.</p>
+
+<p class="govuk-body">Send a print of other file types to us in the post. A freepost address is on the email you’ll receive when you submit your claim.</p>
 
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -208,8 +213,8 @@ if (!empty($_FILES)) {
 
 <ul class="govuk-list govuk-list--bullet">
 <li>Your file must be no larger than 5Mb.</li>
-<li>Apple users -do not upload .heic image   files.</li>
-<li>Only upload one file or document at a time.</li>
+<li>Apple users do not upload .heic image files.</li>
+<li>Only upload one file at a time.</li>
 </ul>
 
 

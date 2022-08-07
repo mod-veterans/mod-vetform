@@ -19,18 +19,19 @@ This page and any pages it links to explains the terms and conditions of use for
 You also agree to the following additional terms:</p>
 
 <h2>Prohibited uses</h2>
-<p class="govuk-body">You may not use the Apply for an Armed Forces Compensation or War Pension Payment  service:</p>
-<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-<li>to collect any data or attempt to decipher any transmissions to or from our servers</li>
-<li>in a way that could damage, disable, overburden, impair or compromise our systems or security</li>
-<li>to transmit any material that is insulting or offensive</li>
-<li>in a way that interferes with other users</li>
-<li>in any unlawful manner or for any unlawful purpose</li>
-<li>in a manner that is improper use or inconsistent with these terms</li>
-<li>to act fraudulently or maliciously by hacking into the service</li>
-<li>to transmit, send or upload any data that contains viruses, Trojan horses, worms, spyware or any other harmful programs designed to adversely affect the operation of computer software or hardware</li>
-<li>in connection with any kind of denial of service attack</li>
-</ul>
+<p class="govuk-body">You must not use this service:</p>
+
+<p class="govuk-body">to collect any data or attempt to decipher any transmissions to or from our servers</p>
+<p class="govuk-body">to transmit, send, or upload any material not relevant to your claim that may cause offence or distress</p>
+<p class="govuk-body">to transmit, send, or upload any material relevant to your claim that may cause offence or distress without declaring it.</p>
+<p class="govuk-body">to transmit, send, or upload any files containing harmful or malicious software</p>
+<p class="govuk-body">in a way that could damage, disable, overburden, impair or compromise our systems or security</p>
+<p class="govuk-body">in any unlawful manner or for any unlawful purpose</p>
+<p class="govuk-body">in a way that interferes with other users</p>
+<p class="govuk-body">in a manner that is improper use or inconsistent with these terms</p>
+<p class="govuk-body">to act fraudulently or maliciously by hacking into the service</p>
+<p class="govuk-body">in connection with any kind of denial of service attack</p>
+
 
 <p class="govuk-body">If you do any of the above acts you may also be committing a criminal offence, and we will report any such activity to the relevant law enforcement authorities. We will co-operate with those authorities by disclosing your identity to them.</p>
 

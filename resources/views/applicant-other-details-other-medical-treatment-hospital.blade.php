@@ -112,11 +112,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/other-medical-treatment-address/address-line-1'])) {
        /*
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-medical-treatment-address//address-line-1">Please give us the first line of your hospital address</a>';
+        $errorsList[] = '<a href="#/other-medical-treatment-address//address-line-1">Tell us the first line of your hospital address</a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
         '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the first line your hospital address
+            <span class="govuk-visually-hidden">Error:</span> Tell us the first line your hospital address
          </span>';
          */
 
@@ -154,11 +154,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/other-medical-treatment-address/country'])) {
         /*
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-medical-treatment-address/country">Please give us your hospital address country</a>';
+        $errorsList[] = '<a href="#/other-medical-treatment-address/country">Tell us your hospital address country</a>';
         $country['error'] = 'govuk-form-group--error';
         $country['errorLabel'] =
         '<span id="/other-medical-treatment-address/country-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your hospital address country
+            <span class="govuk-visually-hidden">Error:</span> Tell us your hospital address country
          </span>';
          */
 
@@ -252,12 +252,12 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Details of the hospital or facility that treated you</h1>
+                                <h1 class="govuk-heading-xl">Details of the hospital or medical facility that treated you</h1>
  </legend>
- <p class="govuk-body">Tell us about the hospital that treated you, even if it has since closed down.</p>
+ <p class="govuk-body">Tell us about the hospital or medical facility that treated you, even if it has since closed down.</p>
 
 <div class="govuk-inset-text">
-You can leave blank any sections you can’t remember.
+You can leave blank any sections you cannot remember.
 </div>
 
                                 <form method="post" enctype="multipart/form-data" novalidate>
@@ -267,7 +267,7 @@ You can leave blank any sections you can’t remember.
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/other-medical-treatment-address/hospital-name">
-        Hospital name
+        Hospital or facility name
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
@@ -310,8 +310,7 @@ You can leave blank any sections you can’t remember.
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="/other-medical-treatment-address/county">
-        County
-    </label>
+        County (State or Province if overseas)</label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/other-medical-treatment-address/county" name="/other-medical-treatment-address/county" type="text"

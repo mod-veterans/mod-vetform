@@ -7,29 +7,9 @@ use App\Services\Notify;
 @php
 
 $reference_number = 'REFNUM1242424';
+
+
 $emailContent = '
-
-
-Hi David / Jo - Can you let me know appears to work for printing on the below?
-
-
----
-# Current Format
----
-
-';
-
-$emailContent .= 'Where is your bank account?
-
-
-^ this is my content
-
-
-';
-
-
-
-$emailContent .= '
 
 ---
 # HTML Character Format
@@ -40,43 +20,23 @@ $emailContent .= '
 $emailContent .= 'Where is your bank account?
 
 
-&#9621; this is my content
-
-
-▕ this is my content
-
-&#9616; this is my content
-
 ▐ this is my content
 
 
-&#9475; this is my content
-
-┃ this is my content
+Another question
 
 
-';
+▐ this is my content 2
 
 
 
-$emailContent .= '
+Filename.mp4 ( '.wordwrap('https://www.powered-byreason.co.uk/thisisaverylong-URLthatca-annotbenatu-rallybrokend-uetoithavingnonatural-breakingpointss-uchasspacesandtheo-bjectiveistotr-yandwrapitwhi-lstretainingi-tbeingcopiableasaurl',60,'
+',FALSE).')
 
----
-# Bullet Points
----
+
 
 ';
 
-$emailContent .= 'Where is your bank account?
-
-
-* this is my content
-
-
-* this is an answer with lots of characters I dont know what or how notify will handle it Ive never typed exactly this sentence before and  certainly not in a Notify email, but I have done similar things to measure the length of things I suppose. No, not THAT. Text-based things. In HTML and other such outputs.
-
-
-';
 
 
 

@@ -291,6 +291,35 @@ if (!empty($_POST)) {
             </dd>
         </div>
 @endif
+
+
+@if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['incident-reported']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Did you report the incident?</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['incident-reported'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/claims/specific/pt/incident-reported/?return=/applicant/claims/specific/pt/check-answers">Change<span
+                        class="govuk-visually-hidden"> Did you report the incident?</span></a>
+            </dd>
+        </div>
+@endif
+
+@if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['who-reported']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Who did you report this incident to?</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['who-reported'] ?? ''}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/claims/specific/pt/incident-reported-to/?return=/applicant/claims/specific/pt/check-answers">Change<span
+                        class="govuk-visually-hidden"> Who did you report this incident to?</span></a>
+            </dd>
+        </div>
+@endif
+
+
 @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['witnesses']))
         <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Were there any witnesses?</dt>
@@ -330,7 +359,7 @@ if (!empty($_POST)) {
         </div>
 @endif
 @php
-if ($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital'] == 'Yes') {
+if ( (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital'])) && ($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['hospital'] == 'Yes') ) {
 @endphp
 
 
@@ -576,7 +605,6 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['downg
 @php
 }
 @endphp
-
 
 
  @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['why']))

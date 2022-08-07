@@ -45,11 +45,11 @@ if (!empty($_POST)) {
 if (empty($_POST['afcs/about-you/personal-details/email-address/emailpermission'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/email-address/email-permission">Please tell us if you want us to contact you about your claim by email</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/email-address/email-permission">Tell us if you want us to contact you about your claim by email</a>';
                 $emailpermission['error'] = 'govuk-form-group--error';
                 $emailpermission['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/email-address/email-permission-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you want us to contact you about your claim by email
+                    <span class="govuk-visually-hidden">Error:</span> Tell us if you want us to contact you about your claim by email
                  </span>';
 
 

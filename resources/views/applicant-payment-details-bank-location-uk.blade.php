@@ -64,11 +64,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-name'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-name">Please give us the name of your bank</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-name">Tell us the name of your bank</a>';
+        $bankname['error'] = 'govuk-form-group--error';
+        $bankname['errorLabel'] =
         '<span id="/payment-details/bank-united-kingdom/bank-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the name of your bank
+            <span class="govuk-visually-hidden">Error:</span> Tell us the name of your bank
          </span>';
 
 
@@ -82,11 +82,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-account-name'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-name">Please give us the name on this account</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-name">Tell us the name on this account</a>';
+        $accountname['error'] = 'govuk-form-group--error';
+        $accountname['errorLabel'] =
         '<span id="/payment-details/bank-united-kingdom/bank-account-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us the name on this account
+            <span class="govuk-visually-hidden">Error:</span> Tell us the name on this account
          </span>';
 
 
@@ -100,11 +100,11 @@ if (!empty($_POST)) {
     if (empty($_POST['/payment-details/bank-united-kingdom/bank-account-sort-code'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-sort-code">Please give us your sort code</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-sort-code">Tell us your sort code</a>';
+        $sortcode['error'] = 'govuk-form-group--error';
+        $sortcode['errorLabel'] =
         '<span id="/payment-details/bank-united-kingdom/bank-account-sort-code-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your sort code
+            <span class="govuk-visually-hidden">Error:</span> Tell us your sort code
          </span>';
 
 
@@ -118,11 +118,11 @@ if (!empty($_POST)) {
 
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-number">Please give us your account number</a>';
-        $address1['error'] = 'govuk-form-group--error';
-        $address1['errorLabel'] =
+        $errorsList[] = '<a href="#/payment-details/bank-united-kingdom/bank-account-number">Tell us your account number</a>';
+        $accountnumber['error'] = 'govuk-form-group--error';
+        $accountnumber['errorLabel'] =
         '<span id="/payment-details/bank-united-kingdom/bank-account-number-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your account number
+            <span class="govuk-visually-hidden">Error:</span> Tell us your account number
          </span>';
 
 
@@ -219,17 +219,20 @@ echo $errorMessage;
                                 <div class="govuk-body">You can ask your bank or check your bank statement for these details.</div>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
-                                                    <div class="govuk-form-group ">
+                                                    <div class="govuk-form-group {{$bankname['error']}} ">
+    @php echo $bankname['errorLabel']; @endphp
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-name">
         Name of bank, building society or other account provider
     </label>
+
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="/payment-details/bank-united-kingdom/bank-name" name="/payment-details/bank-united-kingdom/bank-name" type="text"
                    value="{{$bankname['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$accountname['error']}}">
+@php echo $accountname['errorLabel']; @endphp
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-name">
         Name on the account
     </label>
@@ -240,7 +243,8 @@ echo $errorMessage;
                   value="{{$accountname['data']}}"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$sortcode['error']}}">
+@php echo $sortcode['errorLabel']; @endphp
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-sort-code">
         Sort code
     </label>
@@ -252,7 +256,8 @@ echo $errorMessage;
                 aria-describedby="/payment-details/bank-united-kingdom/bank-account-sort-code-hint"
             >
 </div>
-                                    <div class="govuk-form-group ">
+                                    <div class="govuk-form-group {{$accountnumber['error']}}">
+ @php echo $accountnumber['errorLabel']; @endphp
     <label class="govuk-label" for="/payment-details/bank-united-kingdom/bank-account-number">
         Account number
     </label>

@@ -85,11 +85,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-selection/nominated-representative">Please tell us if you want to nominate a representative</a>';
+        $errorsList[] = '<a href="#/representative/representative-selection/nominated-representative">Tell us if you want to nominate a representative</a>';
         $nominate['error'] = 'govuk-form-group--error';
         $nominate['errorLabel'] =
         '<span id="/representative/representative-selection/nominated-representative-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you want to nominate a representative
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you want to nominate a representative
          </span>';
 
     }
@@ -197,14 +197,12 @@ Letters sent to you can contain personal information. This could be your banking
     @php echo $nominate['errorLabel']; @endphp
         <div class="govuk-radios govuk-radios--inline" >
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/representative/representative-selection/nominated-representative-yes" name="/representative/representative-selection/nominated-representative" type="radio"
-           value="Yes"    @php echo @$nominatechk['Yes']; @endphp         >
+    <input class="govuk-radios__input" id="/representative/representative-selection/nominated-representative-yes" name="/representative/representative-selection/nominated-representative" type="radio" value="Yes" @php echo @$nominatechk['Yes']; @endphp data-ga-question="Do you want to nominate a representative TEST?" data-ga-answer="Yes" >
     <label class="govuk-label govuk-radios__label" for="/representative/representative-selection/nominated-representative-yes">Yes</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/representative/representative-selection/nominated-representative-no" name="/representative/representative-selection/nominated-representative" type="radio"
-           value="No"    @php echo @$nominatechk['No']; @endphp         >
+    <input class="govuk-radios__input" id="/representative/representative-selection/nominated-representative-no" name="/representative/representative-selection/nominated-representative" type="radio" value="No"  @php echo @$nominatechk['No']; @endphp data-ga-question="Do you want to nominate a representative TEST?" data-ga-answer="No" >
     <label class="govuk-label govuk-radios__label" for="/representative/representative-selection/nominated-representative-no">No</label>
 </div>
 

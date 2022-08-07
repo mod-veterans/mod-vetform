@@ -96,11 +96,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-branch/service-branch">Please tell us your service branch</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-branch/service-branch">Tell us your service branch</a>';
         $servicebranch['error'] = 'govuk-form-group--error';
         $servicebranch['errorLabel'] =
         '<span id="afcs/about-you/service-details/service-branch/service-branch-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us your service branch
+            <span class="govuk-visually-hidden">Error:</span> Tell us your service branch
          </span>';
 
     }

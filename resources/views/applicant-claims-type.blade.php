@@ -108,11 +108,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness">Please tell us what type of medical condition, injury or illness you are claiming for</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness">Tell us what type of medical condition, injury or illness you are claiming for</a>';
         $claim['error'] = 'govuk-form-group--error';
         $claim['errorLabel'] =
         '<span id="/claim-details/claim-illness/claim-illness-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what type of medical condition, injury or illness you are claiming for
+            <span class="govuk-visually-hidden">Error:</span> Tell us what type of medical condition, injury or illness you are claiming for
          </span>';
 
     }
@@ -181,7 +181,7 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What type of medical condition, injury or illness are you claiming for?</h1>
+                                <h1 class="govuk-heading-xl">What was the cause of the medical condition, injury or illness you are claiming for?</h1>
     </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
@@ -195,13 +195,17 @@ echo $errorMessage;
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-is-the-result-of-a-specific-accident-or-incident" name="/claim-details/claim-illness/claim-illness" type="radio"
            value="A condition, injury or illness that is the result of a specific accident or incident"    {{$claimchk['A condition, injury or illness that is the result of a specific accident or incident'] ?? '' }}       >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-is-the-result-of-a-specific-accident-or-incident">A condition, injury or illness that is the result of a specific accident or incident.  Includes mental health conditions related to a specific incident and conditions that developed later, for example arthritis.</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-is-the-result-of-a-specific-accident-or-incident">A specific incident or accident<br /><br />
+For example a road traffic accident, explosion, sporting incident, assault.  Includes mental health or long-term conditions caused or made worse by a specific incident.
+</label>
 </div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-started-over-a-period-of-time-and-is-not-related-to-a-specific-incident-or-accident" name="/claim-details/claim-illness/claim-illness" type="radio"
            value="A condition, injury or illness that started over a period of time and is not related to a specific incident or accident"    {{$claimchk['A condition, injury or illness that started over a period of time and is not related to a specific incident or accident'] ?? '' }}        >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-started-over-a-period-of-time-and-is-not-related-to-a-specific-incident-or-accident">A condition, injury or illness that started over a period of time and is not related to a specific incident or accident.  Includes mental health and other conditions that developed over time.</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-started-over-a-period-of-time-and-is-not-related-to-a-specific-incident-or-accident">An illness, condition or injury due to armed forces service over time.<br /><br />
+For example illnesses, chronic conditions.  Includes mental health and other conditions caused or made worse by service over a longer period.
+</label>
 </div>
 
                     </div>

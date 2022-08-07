@@ -43,11 +43,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/other-compensation/other-payment-received/amount-paid'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/other-payment-received/amount-paid">Please tell us the amount of payment you received</a>';
+        $errorsList[] = '<a href="#/other-compensation/other-payment-received/amount-paid">Tell us the amount of payment you received</a>';
         $amount['error'] = 'govuk-form-group--error';
         $amount['errorLabel'] =
         '<span id="/other-compensation/other-payment-received/amount-paid-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us the amount of payment you received
+            <span class="govuk-visually-hidden">Error:</span> Tell us the amount of payment you received
          </span>';
 
     } else {

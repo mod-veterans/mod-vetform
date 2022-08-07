@@ -59,22 +59,22 @@ if (!empty($_POST)) {
         } else {
             $data['submission']['declaration'] = 'No';
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/application-submission/declaration/submission/declaration-agreed">Please confirm you have read and understood the declaration</a>';
+            $errorsList[] = '<a href="#afcs/application-submission/declaration/submission/declaration-agreed">Confirm you have read and understood the declaration</a>';
             $declaration['error'] = 'govuk-form-group--error';
             $declaration['errorLabel'] =
             '<span id="afcs/application-submission/declaration/submission/declaration-agreed-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please confirm you have read and understood the declaration
+                <span class="govuk-visually-hidden">Error:</span> Confirm you have read and understood the declaration
              </span>';
          }
 
     } else {
 
                 $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/application-submission/declaration/submission/declaration-agreed">Please confirm you have read and understood the declaration</a>';
+            $errorsList[] = '<a href="#afcs/application-submission/declaration/submission/declaration-agreed">Confirm you have read and understood the declaration</a>';
             $declaration['error'] = 'govuk-form-group--error';
             $declaration['errorLabel'] =
             '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please confirm you have read and understood the declaration
+                <span class="govuk-visually-hidden">Error:</span> Confirm you have read and understood the declaration
              </span>';
 
     }

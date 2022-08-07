@@ -241,7 +241,7 @@ if (!empty($_POST)) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Who gave you this diagnosis?</h1>
                                 <p class="govuk-body">The doctor or medical officer who first told you the name of your condition(s).</p>
-                                <div class="govuk-inset-text">Enter details to your best knowledge, even if it’s just a hospital or practice name. If you cannot remember, leave this page or any section blank.
+                                <div class="govuk-inset-text">Enter details to your best knowledge, even if it’s just a hospital or practice name. If you do not have a diagnosis or cannot remember, leave this page or any section blank.
 </div>
 
 

@@ -188,6 +188,22 @@ Relationship to claimant
 ▐ '.@$data['sections']['applicant-who']['helper']['relationship'].'
 
 
+';
+
+if(!empty($data['sections']['applicant-who']['helper']['relationship-when'])) {
+
+$emailContent .='
+
+When did the person you are helping first contact you?
+
+
+▐ '.@$data['sections']['applicant-who']['helper']['relationship-when']['whendate'].' '.@$data['sections']['applicant-who']['helper']['relationship-when']['dontknow'];
+
+}
+
+
+$emailContent .='
+
 Assisted claim declaration understood
 
 
@@ -366,6 +382,18 @@ All other names in full
 
 ';
 }
+
+if(!empty($data['sections']['about-you']['name']['title'])) {
+$emailContent .='
+
+Title
+
+
+▐ '.$data['sections']['about-you']['name']['title'].'
+
+';
+}
+
 
 if(!empty($data['sections']['about-you']['contact-address']['address1'])) {
 $emailContent .='
@@ -725,16 +753,75 @@ Service rank
 ';
 }
 
-if(!empty($serviceRecord['specialism'])) {
+if(!empty($serviceRecord['specialism1'])) {
 $emailContent .='
 
-Service trade
+Service trades and durations
 
-
-▐ '.$serviceRecord['specialism'].'
-
+▐  1. '.@$serviceRecord['specialism1'].' - '.@$serviceRecord['specialism1Duration'].'
 ';
 }
+
+if(!empty($serviceRecord['specialism2'])) {
+$emailContent .='
+▐  2. '.@$serviceRecord['specialism2'].' - '.@$serviceRecord['specialism2Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism3'])) {
+$emailContent .='
+▐  3. '.@$serviceRecord['specialism3'].' - '.@$serviceRecord['specialism3Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism4'])) {
+$emailContent .='
+▐  4. '.@$serviceRecord['specialism4'].' - '.@$serviceRecord['specialism4Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism5'])) {
+$emailContent .='
+▐  5. '.@$serviceRecord['specialism5'].' - '.@$serviceRecord['specialism5Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism6'])) {
+$emailContent .='
+▐  6. '.@$serviceRecord['specialism6'].' - '.@$serviceRecord['specialism6Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism7'])) {
+$emailContent .='
+▐  7. '.@$serviceRecord['specialism7'].' - '.@$serviceRecord['specialism7Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism8'])) {
+$emailContent .='
+▐  8. '.@$serviceRecord['specialism8'].' - '.@$serviceRecord['specialism8Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism9'])) {
+$emailContent .='
+▐  9. '.@$serviceRecord['specialism9'].' - '.@$serviceRecord['specialism9Duration'].'
+';
+}
+
+if(!empty($serviceRecord['specialism10'])) {
+$emailContent .='
+▐  10. '.@$serviceRecord['specialism10'].' - '.@$serviceRecord['specialism10Duration'].'
+';
+}
+
+
+
+
+
+
+
 
 if(!empty($serviceRecord['service-enlistmentdate']['year'])) {
 $emailContent .='
@@ -747,7 +834,7 @@ Enlistment Date
 ';
 }
 
-if ($serviceRecord['service-enlistmentdate']['approximate'] == 'Yes') {
+if ( (!empty($serviceRecord['service-enlistmentdate']['approximate'])) && ($serviceRecord['service-enlistmentdate']['approximate'] == 'Yes') ) {
 $emailContent .='
 
 
@@ -767,7 +854,7 @@ Discharge date
 ';
 
 
- if ($serviceRecord['service-dischargedate']['approximate'] == 'Yes') {
+ if ( (!empty($serviceRecord['service-dischargedate']['approximate'])) && ($serviceRecord['service-dischargedate']['approximate'] == 'Yes') ) {
  $emailContent .='
 
 
@@ -1840,6 +1927,34 @@ Where were you when the incident happened?
 ';
 }
 
+
+
+
+if(!empty($claimRecord['specific']['pt']['incident-reported'])) {
+$emailContent .='
+
+Did you report the incident?
+
+
+▐ '.$claimRecord['specific']['pt']['incident-reported'].'
+
+';
+}
+
+
+if(!empty($claimRecord['specific']['pt']['who-reported'])) {
+$emailContent .='
+
+Who did you report this incident to?
+
+
+▐ '.$claimRecord['specific']['pt']['who-reported'].'
+
+';
+}
+
+
+
 if(!empty($claimRecord['specific']['pt']['witnesses'])) {
 $emailContent .='
 
@@ -2704,11 +2819,6 @@ Read and agreed to the declaration
 ▐ '.@$data['submission']['declaration'].'
 
 
-Agree to email contact
-
-
-▐ '.@$data['submission']['enquiry'].'
-
 ';
 
 
@@ -2787,9 +2897,13 @@ if (!empty($data['sections']['about-you']['email'])) {
 
 if ($appstage == 'UAT') {
 
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
-Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 
+if (!empty($data['settings']['time_started'])) {
+
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+    Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
+
+}
 
     unset($data);
     $data = array();
@@ -2797,6 +2911,9 @@ Notify::getInstance()->setData(['reference_number' => $reference_number,'content
     $_SESSION['vets-user'] = '';
 
 } else {
+
+
+if (!empty($data['settings']['time_started'])) {
 
     //back office emails
     Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_CLAIM_SUBMITTED'));
@@ -2815,6 +2932,8 @@ Notify::getInstance()->setData(['reference_number' => $reference_number,'content
     Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('garry@poweredbyreason.co.uk', env('NOTIFY_USER_CONFIRMATION'));
     Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('Joanne.McGee103@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
     Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $content])->sendEmail('David.Johnson833@mod.gov.uk', env('NOTIFY_USER_CONFIRMATION'));
+
+}
 
 }
 
@@ -2870,7 +2989,7 @@ The assessment process can be complex and involves gathering information from ma
     <h2 class="govuk-heading-m">Do you need further help or support?</h2>
     <p class="govuk-body">All veterans and their families are entitled to free help and support from Veterans UK at any time. This includes a free helpline and Veterans Welfare Service that can assist with welfare information including benefits, help in the home, employment and financial support. More information and contact details can be found on our website <a href="https://www.gov.uk/guidance/urgent-help-for-veterans" target="_New">https://www.gov.uk/guidance/urgent-help-for-veterans</a> </p>
 
- <p class="govuk-body">Thank you<br />MOD Veterans UK</p>
+ <a href="/" class="govuk-button govuk-button--start govuk-!-margin-top-4">Finish</a>
 
 
             </div>

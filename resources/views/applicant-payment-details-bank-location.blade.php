@@ -85,11 +85,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-location/bank-location">Please tell us where your bank is located</a>';
+        $errorsList[] = '<a href="#/payment-details/bank-location/bank-location">Select where your bank is located</a>';
         $banklocation['error'] = 'govuk-form-group--error';
         $banklocation['errorLabel'] =
         '<span id="/payment-details/bank-location/bank-location-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us where your bank is located
+            <span class="govuk-visually-hidden">Error:</span> Select where your bank is located
          </span>';
 
     }

@@ -225,6 +225,23 @@ function logSM($message) {
 }
 
 
+function validateMobile11($data) {
+    if (strlen(simplify($data)) != 11) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+
+function validateMobile07($data) {
+    if (substr($data, 0, 2) == '07') {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
+
 
 
 

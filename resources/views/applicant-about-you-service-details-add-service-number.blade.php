@@ -56,19 +56,20 @@ if (!empty($_POST)) {
 
     //set the entered field names
 
-    $servicenumber['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-number/service-number']);
-
+    if (!empty($_POST['afcs/about-you/service-details/service-number/service-number'])) {
+        $servicenumber['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-number/service-number']);
+    }
 
 
 
 
     if (empty($_POST['afcs/about-you/service-details/service-number/service-number'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-number/service-number">Please give us your service number</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-number/service-number">Enter your service number</a>';
         $servicenumber['error'] = 'govuk-form-group--error';
         $servicenumber['errorLabel'] =
         '<span id="afcs/about-you/service-details/service-number/service-number-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please give us your service number
+            <span class="govuk-visually-hidden">Error:</span> Enter your service number
          </span>';
 
     } else {

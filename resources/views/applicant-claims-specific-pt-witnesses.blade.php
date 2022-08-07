@@ -60,11 +60,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-witness/sporting-witnesses">Please tell if there were any witnesses</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-witness/sporting-witnesses">Tell if there were any witnesses</a>';
         $witnesses['error'] = 'govuk-form-group--error';
         $witnesses['errorLabel'] =
         '<span id="/claim-details/claim-accident-witness/sporting-witnesses-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell if there were any witnesses
+            <span class="govuk-visually-hidden">Error:</span> Tell if there were any witnesses
          </span>';
 
     }
@@ -153,7 +153,7 @@ echo $errorMessage;
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/claim-details/claim-accident-witness/sporting-witnesses-yes-nodetail" name="/claim-details/claim-accident-witness/sporting-witnesses" type="radio"
            value="Yes - but I don't know the witness\'s details"  {{$witnesseschk['Yes - but I don\'t know the witness\'s details'] ?? ''}}          >
-    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-witness/sporting-witnesses-yes-nodetail">Yes - but I don't know the witness's details</label>
+    <label class="govuk-label govuk-radios__label" for="/claim-details/claim-accident-witness/sporting-witnesses-yes-nodetail">Yes - but I do not know the witness's details</label>
 </div>
 
                             <div class="govuk-radios__item">

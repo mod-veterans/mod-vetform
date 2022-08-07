@@ -81,11 +81,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-role/representative-role">Please tell us your representative\'s role</a>';
+        $errorsList[] = '<a href="#/representative/representative-role/representative-role">Tell us your representative\'s role</a>';
         $role['error'] = 'govuk-form-group--error';
         $role['errorLabel'] =
         '<span id="/representative/representative-role/representative-role-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us your representative\'s role
+            <span class="govuk-visually-hidden">Error:</span> Tell us your representative\'s role
          </span>';
 
     }

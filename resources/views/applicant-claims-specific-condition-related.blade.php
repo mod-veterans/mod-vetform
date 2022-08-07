@@ -58,11 +58,11 @@ if (!empty($_POST)) {
     $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['why'] = '';
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness-note/claim-illness-note">Please tell us why your condition is related to your armed forces service</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness-note/claim-illness-note">Tell us why your condition is related to your armed forces service</a>';
         $condition['error'] = 'govuk-form-group--error';
         $condition['errorLabel'] =
         '<span id="/claim-details/claim-illness-note/claim-illness-noter-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span>Please tell us why your condition is related to your armed forces service
+            <span class="govuk-visually-hidden">Error:</span>Tell us why your condition is related to your armed forces service
          </span>';
 
 
@@ -171,10 +171,10 @@ If the person named in this application is serving or has served in with United 
         <span class="govuk-visually-hidden">Why is your condition related to your armed forces service?</span>
     </label>
                 <textarea class="govuk-textarea " id="/claim-details/claim-illness-note/claim-illness-note"
-                  name="/claim-details/claim-illness-note/claim-illness-note" rows="5" maxlength="2500"
+                  name="/claim-details/claim-illness-note/claim-illness-note" rows="5" maxlength="3500"
                                     aria-describedby="">{{$condition['data'] ?? ''}}</textarea>
   <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-    You can enter up to 2,500 characters
+    You can enter up to 3,500 characters
   </div>
         </div>
 

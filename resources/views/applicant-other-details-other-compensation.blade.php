@@ -85,11 +85,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/received-compensation/received-compensation">Please tell us if you have received other compensation</a>';
+        $errorsList[] = '<a href="#/other-compensation/received-compensation/received-compensation">Tell us if you have received other compensation</a>';
         $compensation['error'] = 'govuk-form-group--error';
         $compensation['errorLabel'] =
         '<span id="/other-compensation/received-compensation/received-compensation-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you have received other compensation
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you have received other compensation
          </span>';
 
     }

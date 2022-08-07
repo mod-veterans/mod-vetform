@@ -82,11 +82,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-leave/sporting-leave">Please tell us if you were on authorised leave</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-leave/sporting-leave">Tell us if you were on authorised leave</a>';
         $authorised['error'] = 'govuk-form-group--error';
         $authorised['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-leave/sporting-leave-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you were on authorised leave
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you were on authorised leave
          </span>';
 
     }

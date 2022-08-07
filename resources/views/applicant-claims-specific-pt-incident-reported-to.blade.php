@@ -37,8 +37,8 @@ if (empty($_GET['claimrecord'])) {
 
 if (empty($_POST)) {
     //load the data if set
-    if (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['who-reported'])) {
-        $whoreported['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['who-reported'];
+    if (!empty($data['sections']['claims']['records'][$thisRecord]['specific']['pt']['who-reported'])) {
+        $whoreported['data']            = @$data['sections']['claims']['records'][$thisRecord]['specific']['pt']['who-reported'];
 
     }
 
@@ -70,7 +70,7 @@ if (!empty($_POST)) {
 
         $whoreported['data']  = implode(', ',$whoreportedarray);
 
-               $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['who-reported'] = $whoreported['data'];
+               $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['who-reported'] = $whoreported['data'];
 
         }
 
@@ -114,7 +114,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/applicant/claims/specific/non-pt/accident-form';
+        $theURL = '/applicant/claims/specific/pt/witnesses';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -193,12 +193,18 @@ echo $errorMessage;
            value="Other person"     {{$whoreportedchk['Other person'] ?? ''}}        >
     <label class="govuk-label govuk-checkboxes__label" for="61666fc5b9ddf">Other person</label>
 </div>
+
                             <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="61666fc5b9edb" name="/claim-details/claim-accident-non-sporting-report-to/claim-accident-non-sporting-report-to[]" type="checkbox"
-           value="I didn't report the incident"    {{$whoreportedchk['I didn\'t report the incident'] ?? ''}}         >
-    <label class="govuk-label govuk-checkboxes__label" for="61666fc5b9edb">I didn&#039;t report the incident</label>
+        <input class="govuk-checkboxes__input" id="61666fc5b9ddf" name="/claim-details/claim-accident-non-sporting-report-to/claim-accident-non-sporting-report-to[]" type="checkbox"
+           value="I did not report the incident"     {{$whoreportedchk['I did not report the incident'] ?? ''}}        >
+    <label class="govuk-label govuk-checkboxes__label" for="61666fc5b9ddf">I did not report the incident</label>
 </div>
+
                     </div>
+
+
+
+
     </fieldset>
 </div>
 

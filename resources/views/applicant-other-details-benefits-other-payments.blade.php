@@ -85,11 +85,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-benefits/receiving-payments/payments">Please tell us if you have ever been paid any of the following</a>';
+        $errorsList[] = '<a href="#/other-benefits/receiving-payments/payments">Select if you have been paid under these schemes</a>';
         $otherpaid['error'] = 'govuk-form-group--error';
         $otherpaid['errorLabel'] =
         '<span id="/other-benefits/receiving-payments/payments-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you have ever been paid any of the following
+            <span class="govuk-visually-hidden">Error:</span> Select if you have been paid under these schemes
          </span>';
 
     }

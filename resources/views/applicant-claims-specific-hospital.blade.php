@@ -108,11 +108,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-hospital-facility/sporting-hospital-facility">Please tell us if you were taken to a hospital or medical facility</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-hospital-facility/sporting-hospital-facility">Tell us if you were taken to a hospital or medical facility</a>';
         $hospital['error'] = 'govuk-form-group--error';
         $hospital['errorLabel'] =
         '<span id="/claim-details/claim-accident-hospital-facility/sporting-hospital-facility-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you were taken to a hospital or medical facility
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you were taken to a hospital or medical facility
          </span>';
 
     }

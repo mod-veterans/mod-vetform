@@ -104,11 +104,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic">Please tell us if the incident was a road traffic accident</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic">Tell us if the incident was a road traffic accident</a>';
         $rta['error'] = 'govuk-form-group--error';
         $rta['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if the incident was a road traffic accident
+            <span class="govuk-visually-hidden">Error:</span> Tell us if the incident was a road traffic accident
          </span>';
 
     }

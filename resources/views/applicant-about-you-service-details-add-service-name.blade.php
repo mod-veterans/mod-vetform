@@ -86,11 +86,11 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/service-details/service-name/differentname'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-name/differentname">Please tell us if you had a different name</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-name/differentname">Tell us if you had a different name</a>';
         $differentname['error'] = 'govuk-form-group--error';
         $differentname['errorLabel'] =
         '<span id="afcs/about-you/service-details/service-name/differentname-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you had a different name
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you had a different name
          </span>';
 
 
@@ -135,11 +135,11 @@ if (!empty($_POST)) {
 
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/service-details/service-name/name-in-service">Please give us your service name for this period of service</a>';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-name/name-in-service">Tell us your service name for this period of service</a>';
                 $nameinservice['error'] = 'govuk-form-group--error';
                 $nameinservice['errorLabel'] =
                 '<span id="afcs/about-you/service-details/service-name/name-in-service-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please give us your service name for this period of service
+                    <span class="govuk-visually-hidden">Error:</span> Tell us your service name for this period of service
                  </span>';
 
             }

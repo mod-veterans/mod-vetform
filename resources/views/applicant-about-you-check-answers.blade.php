@@ -58,6 +58,20 @@ if (!empty($_POST)) {
             </dd>
         </div>
         @endif
+
+              @if(!empty($data['sections']['about-you']['name']['title']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">Title</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['about-you']['name']['title']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/name/?return=/applicant/about-you/check-answers&amp;stack=#afcs/about-you/personal-details/your-name/title">Change<span
+                        class="govuk-visually-hidden">Title</span></a>
+            </dd>
+        </div>
+        @endif
+
         @if(!empty($data['sections']['about-you']['contact-address']['address1']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Address Building and street</dt>

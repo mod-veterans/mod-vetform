@@ -98,6 +98,27 @@ if (!empty($_POST)) {
         </div>
         @endif
 
+
+    @if(!empty($data['sections']['applicant-who']['helper']['relationship-when']))
+
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">When did the person you are helping first contact you?</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{@$data['sections']['applicant-who']['helper']['relationship-when']['whendate'] }}
+                                    {{@$data['sections']['applicant-who']['helper']['relationship-when']['dontknow']}}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/helper/relationship/when/?return=/applicant/helper/check-answers&amp;stack=#/date-contacted-day">Change<span
+                        class="govuk-visually-hidden"> Relationship to claimant</span></a>
+            </dd>
+        </div>
+        @endif
+
+
+
+
+
+
     @if(!empty($data['sections']['applicant-who']['helper']['declaration']))
 
             <div class="govuk-summary-list__row">

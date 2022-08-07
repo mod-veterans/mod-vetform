@@ -81,11 +81,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Please tell us if the activity was authorised or organised by the Armed Forces</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Tell us if the activity was authorised or organised by the Armed Forces</a>';
         $organised['error'] = 'govuk-form-group--error';
         $organised['errorLabel'] =
         '<span id="/claim-details/claim-accident-condition/claim-accident-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if the activity was authorised or organised by the Armed Forces
+            <span class="govuk-visually-hidden">Error:</span> Tell us if the activity was authorised or organised by the Armed Forces
          </span>';
 
     }

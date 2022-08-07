@@ -58,11 +58,11 @@ if (!empty($_POST)) {
 
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition">Please tell us what medical condition you are claiming for</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition">Tell us what medical condition(s) you are claiming for</a>';
         $condition['error'] = 'govuk-form-group--error';
         $condition['errorLabel'] =
         '<span id="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what medical condition you are claiming for
+            <span class="govuk-visually-hidden">Error:</span> Tell us what medical condition(s) you are claiming for
          </span>';
 
 
@@ -135,12 +135,12 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What medical condition(s) are you claiming for?</h1>
     </legend>
-                                <p class="govuk-body">You can claim for any medical condition you think is related to your service.</p>
+                                <p class="govuk-body">You can claim for any medical condition or symptoms you think are related to your service.</p>
 <p class="govuk-body">If you have a specific medical diagnosis, include it here, for example, head injury, fracture L5 vertebrae. We will ask you why your conditions are caused by your service later.
 
 
 <div class="govuk-inset-text">
-Please enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.
+Enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.
 </div>
 
 <p class="govuk-body">Tell us which side of the body is affected for example, broken left arm.</p>

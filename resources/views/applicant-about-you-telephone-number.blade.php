@@ -45,7 +45,7 @@ if (!empty($_POST)) {
 
 
     //set the entered field names
-        $mobile['data']            = $_POST['afcs/about-you/personal-details/contact-number/mobile-number'];
+        $mobile['data']            = @$_POST['afcs/about-you/personal-details/contact-number/mobile-number'];
 if (!empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])) {
         $doyouhavemobile['data']            = $_POST['afcs/about-you/personal-details/contact-number/do-you-have'];
 }
@@ -53,11 +53,11 @@ if (!empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])
 if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Please tell us if you have a UK mobile number</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/do-you-have">Tell us if you have a UK mobile number</a>';
                 $doyouhavemobile['error'] = 'govuk-form-group--error';
                 $doyouhavemobile['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/do-you-have-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have a UK mobile number
+                    <span class="govuk-visually-hidden">Error:</span> Tell us if you have a UK mobile number
                  </span>';
 
 
@@ -76,15 +76,44 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
             } else {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Please give us your mobile number</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Tell us your mobile number</a>';
                 $mobile['error'] = 'govuk-form-group--error';
                 $mobile['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please give us your mobile number
+                    <span class="govuk-visually-hidden">Error:</span> Tell us your mobile number
                  </span>';
                  $numHidden = '';
 
             }
+
+            if (!validateMobile11($_POST['afcs/about-you/personal-details/contact-number/mobile-number'])) {
+
+                $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Enter a number number with the correct number of digits (11)</a>';
+                $mobile['error'] = 'govuk-form-group--error';
+                $mobile['errorLabel'] =
+                '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Enter a number number with the correct number of digits (11)
+                 </span>';
+                 $numHidden = '';
+
+            }
+
+            if (!validateMobile07($_POST['afcs/about-you/personal-details/contact-number/mobile-number'])) {
+
+                $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Enter a number starting with 07</a>';
+                $mobile['error'] = 'govuk-form-group--error';
+                $mobile['errorLabel'] =
+                '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Enter a number starting with 07
+                 </span>';
+                 $numHidden = '';
+
+            }
+
+
+
 
 
 

@@ -82,11 +82,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-first-aid/sporting-first-aid">Please tell us if you recieved first aid treatment</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-first-aid/sporting-first-aid">Tell us if you recieved first aid treatment</a>';
         $firstaid['error'] = 'govuk-form-group--error';
         $firstaid['errorLabel'] =
         '<span id="/claim-details/claim-accident-first-aid/sporting-first-aid-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you recieved first aid treatment
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you recieved first aid treatment
          </span>';
 
     }

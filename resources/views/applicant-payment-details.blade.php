@@ -90,11 +90,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-details/bank-details">Please tell us if you would like to provide your bank account details</a>';
+        $errorsList[] = '<a href="#/payment-details/bank-details/bank-details">Tell us if you would like to provide your bank account details</a>';
         $providebank['error'] = 'govuk-form-group--error';
         $providebank['errorLabel'] =
         '<span id="/payment-details/bank-details/bank-details-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you would like to provide your bank account details
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you would like to provide your bank account details
          </span>';
 
     }
@@ -170,7 +170,7 @@ echo $errorMessage;
 <p class="govuk-body">If you do not want to give details now, we’ll get in touch with you later if we need to.</p>
 
 <div class="govuk-inset-text">
- <strong>Serving Personnel:</strong> We’ll pay any money you are due into the account your salary is paid into.
+ Serving Personnel: We’ll pay any money you are due into the account your salary is paid into.
 
 </div>
 
@@ -198,7 +198,7 @@ echo $errorMessage;
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/payment-details/bank-details/bank-details-no-i-am-still-serving-so-any-payments-will-be-made-into-my-j-p-a-salary-account" name="/payment-details/bank-details/bank-details" type="radio"
            value="No I am still serving so any payments will be made into my JPA salary account"    {{$providebankchk['No I am still serving so any payments will be made into my JPA salary account'] ?? ''}}         >
-    <label class="govuk-label govuk-radios__label" for="/payment-details/bank-details/bank-details-no-i-am-still-serving-so-any-payments-will-be-made-into-my-j-p-a-salary-account">No - I am still serving so any payments will be made into my JPA salary account</label>
+    <label class="govuk-label govuk-radios__label" for="/payment-details/bank-details/bank-details-no-i-am-still-serving-so-any-payments-will-be-made-into-my-j-p-a-salary-account">No - I am still serving so any payments will be made into my Joint Personnel Administration (JPA) salary account</label>
 </div>
 
                             <div class="govuk-radios__item">

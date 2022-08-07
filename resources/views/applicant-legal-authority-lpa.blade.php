@@ -44,11 +44,11 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/personal-details/lpacode'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/lpacode">Please tell us your LPA Access Code</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/lpacode">Tell us your LPA Access Code</a>';
                 $lpacode['error'] = 'govuk-form-group--error';
                 $lpacode['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/lpacode-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us your LPA Access Code
+                    <span class="govuk-visually-hidden">Error:</span> Tell us your LPA Access Code
                  </span>';
 
 

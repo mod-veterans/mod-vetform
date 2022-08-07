@@ -55,7 +55,7 @@ if (empty($appstage)) {
 }
 
 
-if ($appstage == 'UAT') {
+//if ($appstage == 'UAT') {
 @endphp
 
 <!-- Google Tag Manager -->
@@ -67,7 +67,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 @php
-}
+//}
 @endphp
 
 @php
@@ -85,7 +85,7 @@ if (!empty($_COOKIE['vet-GA'])) {
 
 
 
-if ($appstage == 'UAT') {
+//if ($appstage == 'UAT') {
 @endphp
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKZ35PF27Q"></script>
@@ -100,7 +100,7 @@ if ($appstage == 'UAT') {
 
 
 @php
-    }
+    //}
 echo '<!--GA cookies allowed subject to URL-->';
 }
 @endphp

@@ -54,11 +54,11 @@ if (!empty($_POST)) {
     if (empty( $_POST['/claim-details/claim-illness-related/claim-illness-related'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#/claim-details/claim-illness-related/claim-illness-related">Please tell where were you when the incident happened.</a>';
+            $errorsList[] = '<a href="#/claim-details/claim-illness-related/claim-illness-related">Where were you when the incident happened.</a>';
             $wherewere['error'] = 'govuk-form-group--error';
             $wherewere['errorLabel'] =
             '<span id="/claim-details/claim-illness-related/claim-illness-related-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span>Please tell where were you when the incident happened.
+                <span class="govuk-visually-hidden">Error:</span>Where were you when the incident happened.
              </span>';
 
 

@@ -33,7 +33,7 @@ Route::match(['get', 'post'],'/things-to-know', function () {
 });
 
 
-Route::get('/tasklist', function () {
+Route::match(['get', 'post'],'/tasklist', function () {
     return view('tasklist');
 });
 
@@ -93,6 +93,10 @@ Route::match(['get', 'post'],'/applicant/helper/name', function () {
 
 Route::match(['get', 'post'],'/applicant/helper/relationship', function () {
     return view('applicant-helper-relationship');
+});
+
+Route::match(['get', 'post'],'/applicant/helper/relationship/when', function () {
+    return view('applicant-helper-relationship-when');
 });
 
 Route::match(['get', 'post'],'/applicant/helper/declaration', function () {
@@ -333,6 +337,16 @@ Route::match(['get', 'post'],'/applicant/claims/specific/pt/unit-representation'
 Route::match(['get', 'post'],'/applicant/claims/specific/pt/condition-relation', function () {
     return view('applicant-claims-specific-pt-condition-relation');
 });
+
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/incident-reported', function () {
+    return view('applicant-claims-specific-pt-incident-reported');
+});
+
+Route::match(['get', 'post'],'/applicant/claims/specific/pt/incident-reported-to', function () {
+    return view('applicant-claims-specific-pt-incident-reported-to');
+});
+
 
 Route::match(['get', 'post'],'/applicant/claims/specific/witnesses', function () {
     return view('applicant-claims-specific-witnesses');

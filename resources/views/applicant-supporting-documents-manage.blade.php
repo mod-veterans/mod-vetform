@@ -56,11 +56,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/applicant/supporting-documents-upload/confirm-check'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#61668e5b351ab">Please confirm that you have checked the files are intended solely to support your claim.</a>';
+        $errorsList[] = '<a href="#61668e5b351ab">Confirm that you have checked the files are intended solely to support your claim.</a>';
         $confirm['error'] = 'govuk-form-group--error';
         $confirm['errorLabel'] =
         '<span id="61668e5b351ab-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please confirm that you have checked the files are intended solely to support your claim.
+            <span class="govuk-visually-hidden">Error:</span> Confirm that you have checked the files are intended solely to support your claim.
          </span>';
 
     } else {

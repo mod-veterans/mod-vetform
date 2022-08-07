@@ -6,19 +6,18 @@
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Apply for an Armed Forces Compensation or War Pension Payment</h1>
-                                <p class="govuk-body">Make a claim under the <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">Armed Forces Compensation Scheme</a> or <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">War Pension Scheme</a>.</p>
-<p class="govuk-body">You can get a payment for injury or illness related to UK Armed Forces service.</p>
+                                <p class="govuk-body">Make a claim under the Armed Forces Compensation Scheme or War Pension Scheme. For more about these schemes see our <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">guidance</a>.</p>
+<p class="govuk-body">You do not need to know which compensation scheme applies to you before making a claim.</p>
 <p class="govuk-body">
-<strong>You can:</strong><br />
+<strong>Eligibility:</strong><br />
 </p>
     <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-        <li>Make a claim for any physical or mental health condition related to service. You do not need to know which scheme applies</li>
-        <li>Make one or more claims for injuries or illnesses with different causes in one easy application</li>
+        <li>You may be able to get a payment if you have an injury, illness or medical disorder caused or made worse by UK armed forces service.</li>
+        <li>Claims can be made for both physical and mental health conditions.</li>
+        <li>If you want to claim for a condition related to exposure to asbestos, read the <a href="https://www.gov.uk/guidance/help-for-veterans-diagnosed-with-diffuse-mesothelioma#how-to-claim">guidance on GOV.UK</a> first.</li>
+        <li>Only use this service to make a claim.  If you want to ask for a review or appeal a previous decision, <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact Veterans UK.</a>.</li>
+        <li>If you want to claim for bereavement or dependant’s benefits, do not use this service. See our <a href="https://www.gov.uk/government/collections/help-and-support-when-a-veteran-or-service-person-dies" target="_NEW">guidance on GOV.UK</a>.
     </ul>
-
-<p class="govuk-body"><strong>Use this service for new claims only.</strong> If you have already received a payment or want to appeal a previous decision, please <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact Veterans UK.</a></p>
-
-<p class="govuk-body"><strong>If you want to claim for a condition related to exposure to asbestos</strong>, please read the <a href="https://www.gov.uk/guidance/help-for-veterans-diagnosed-with-diffuse-mesothelioma#how-to-claim">guidance on GOV.UK</a> first.</p>
 
 
 
@@ -43,7 +42,7 @@ You do not need to get any new information you do not already have. Veterans UK 
 </div>
 
 <p class="govuk-body"><strong>What you'll need to apply:</strong></p>
-<p class="govuk-body">An email address. If you don’t have one, you should make a claim by post.</p>
+<p class="govuk-body">An email address. If you do not have one, you should make a claim by post.</p>
 
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">

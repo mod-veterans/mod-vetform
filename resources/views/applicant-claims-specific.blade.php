@@ -108,11 +108,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Please tell us if the incident or accident was related to sport, adventure training or physical training</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Tell us if the incident or accident was related to sport, adventure training or physical training</a>';
         $claim['error'] = 'govuk-form-group--error';
         $claim['errorLabel'] =
         '<span id="/claim-details/claim-accident-condition/claim-accident-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if the incident or accident was related to sport, adventure training or physical training
+            <span class="govuk-visually-hidden">Error:</span> Tell us if the incident or accident was related to sport, adventure training or physical training
          </span>';
 
     }

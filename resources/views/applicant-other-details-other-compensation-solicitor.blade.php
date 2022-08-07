@@ -85,11 +85,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/received-compensation/received-compensation">Please tell us if a solicitor helped you</a>';
+        $errorsList[] = '<a href="#/other-compensation/received-compensation/received-compensation">Did a solicitor help you?</a>';
         $solicitorhelp['error'] = 'govuk-form-group--error';
         $solicitorhelp['errorLabel'] =
         '<span id="/other-compensation/received-compensation/received-compensation-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if a solicitor helped you
+            <span class="govuk-visually-hidden">Error:</span> Did solicitor help you?
          </span>';
 
     }

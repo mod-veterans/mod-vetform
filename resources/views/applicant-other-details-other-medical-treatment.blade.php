@@ -14,6 +14,20 @@ $treatment = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
     $data = getData($userID);
 
 
+
+
+if ( (!empty($_GET['action'])) && ($_GET['action'] == 'complete') ) {
+
+    $data['sections']['other-medical']['completed'] = TRUE;
+
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
+    die();
+}
+
+
+
 /////////////////////////
 //STACK / RECORD HANDLING
 /////////////////////////
@@ -37,7 +51,7 @@ $treatment = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
             $treatmentList .='
             <div>
              <dt class="govuk-summary-list__value">
-                            Treatment '.$count.'
+                            Hospital / Facility '.$count.'
             </dt>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link govuk-warning govuk-!-margin-right-5" href="/applicant/other-details/other-medical-treatment?delRecord='.$k.'">Delete<span class="govuk-visually-hidden"> name</span>
@@ -162,11 +176,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type">Please tell us if you received medical treatment</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type">Tell us if you received medical treatment</a>';
         $treatment['error'] = 'govuk-form-group--error';
         $treatment['errorLabel'] =
         '<span id="/other-compensation/claim-payment-type/claim-outcome-payment-type-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us if you received medical treatment
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you received medical treatment
          </span>';
 
     }
@@ -242,13 +256,19 @@ echo $errorMessage;
 if ($lastRecID < 2) {
 @endphp
 
-                                <p class="govuk-body">Tell us if you’ve had any further hospital or specialist treatment you’ve not already told us about. This includes if you’re on a waiting list. </p>
+                                <p class="govuk-body">Tell us if you have been treated at any other hospitals or medical facilities for the conditions on this application. This includes if you’re on a waiting list for treatment to start.</p>
                                 <div class="govuk-inset-text">
-                                    Only tell us about treatment for the conditions on this application.
+                                    You do not need to tell us again about hospitals or facilities you entered in the claim section.
                                 </div>
 
 
                                 <p class="govuk-body">If you’ve visited the same hospital or facility several times, you only need to tell us the details once. </p>
+
+                                <p class="govuk-body">
+You can add as many hospitals or facilities as needed.  You’ll be asked if you want to ‘add another hospital/facility’ at the end of this section.
+</p>
+
+<p class="govuk-body"><strong>Have you received, or are waiting for, treatment at any other hospitals or medical facilities?</strong></p>
 
 
                                 <form method="post" enctype="multipart/form-data" novalidate >
@@ -295,10 +315,9 @@ echo $treatmentList;
 
                 <div class="govuk-form-group govuk-!-margin-top-4">
             <a class="govuk-button" href="/applicant/other-details/other-medical-treatment/hospital-address?medicalrecord={{$lastRecID}}">
-                Add a Medical Treatment
-            </a>
+                Add another Hospital / Medical Facility            </a>
             <br>
-            <a class="govuk-link" href="/tasklist">Return to Task List</a>
+            <a class="govuk-link" href="/applicant/other-details/other-medical-treatment?action=complete">Return to Task List</a>
         </div>
 
 

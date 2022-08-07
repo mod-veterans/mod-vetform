@@ -8,6 +8,17 @@
 
 
 
+if ( (!empty($_GET['action'])) && ($_GET['action'] == 'complete') ) {
+
+    $data['sections']['service-details']['completed'] = TRUE;
+
+    storeData($userID,$data);
+
+    header("Location: /tasklist");
+    die();
+}
+
+
 
     if ( (!empty($_GET['delRecord'])) && (is_numeric($_GET['delRecord'])) ) {
 
@@ -102,7 +113,7 @@
                 Add a{{$nother ?? ''}} period of service
             </a>
             <br>
-            <a class="govuk-link" href="/tasklist">Return to Task List</a>
+            <a class="govuk-link" href="/applicant/about-you/service-details?action=complete">Return to Task List</a>
         </div>
             </div>
         </div>
@@ -133,7 +144,7 @@ You can add as many periods of service in this section as needed. You’ll be as
                 Add a{{$nother ?? ''}} period of service
             </a>
             <br>
-            <a class="govuk-link" href="/tasklist">Return to Task List</a>
+           <a class="govuk-link" href="/applicant/about-you/service-details?action=complete">Return to Task List</a>
         </div>
             </div>
         </div>

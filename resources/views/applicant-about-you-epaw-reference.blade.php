@@ -48,11 +48,11 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/personal-details/served-special-forces'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/served-special-forces">Please tell us if you have served in or supported the Special Forces</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/served-special-forces">Tell us if you have served in or supported the Special Forces</a>';
                 $served['error'] = 'govuk-form-group--error';
                 $served['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/served-special-forces-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please tell us if you have served in or supported the Special Forces
+                    <span class="govuk-visually-hidden">Error:</span> Tell us if you have served in or supported the Special Forces
                  </span>';
 
 
@@ -72,11 +72,11 @@ if (!empty($_POST)) {
 
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Please give us your EPAW number</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Give us your EPAW number</a>';
                 $epawref['error'] = 'govuk-form-group--error';
                 $epawref['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Please give us your EPAW number
+                    <span class="govuk-visually-hidden">Error:</span> Give us your EPAW number
                  </span>';
                  $numHidden = '';
 

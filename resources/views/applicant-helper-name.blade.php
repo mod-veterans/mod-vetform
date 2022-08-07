@@ -43,11 +43,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/applicant/helper-details/helper-name'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/applicant/helper-details/helper-name">Please tell us your name</a>';
+        $errorsList[] = '<a href="#/applicant/helper-details/helper-name">Enter your name</a>';
         $helper_name['error'] = 'govuk-form-group--error';
         $helper_name['errorLabel'] =
         '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us your name
+            <span class="govuk-visually-hidden">Error:</span> Enter your name
          </span>';
 
     } else {

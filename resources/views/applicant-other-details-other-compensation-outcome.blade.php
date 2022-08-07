@@ -43,11 +43,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/other-compensation/claim-outcome/claim-outcome-benefactor'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/claim-outcome/claim-outcome-benefactor">Please tell us who you claimed from</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-outcome/claim-outcome-benefactor">Tell us who you claimed from</a>';
         $details['error'] = 'govuk-form-group--error';
         $details['errorLabel'] =
         '<span id="/other-compensation/claim-outcome/claim-outcome-benefactor-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us who you claimed from
+            <span class="govuk-visually-hidden">Error:</span> Tell us who you claimed from
          </span>';
 
     } else {
@@ -118,7 +118,7 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
                                 <h1 class="govuk-heading-xl">Who did you claim from?</h1>
-                                <p class="govuk-body">Please include any reference numbers you have.</p>
+                                <p class="govuk-body">Include any reference numbers you have.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">

@@ -62,11 +62,11 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/other-medical-treatment-condition/other-medical-treatment-condition'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-medical-treatment-condition/other-medical-treatment-condition">Please tell us what type you received treatment for</a>';
+        $errorsList[] = '<a href="#/other-medical-treatment-condition/other-medical-treatment-condition">Tell us what type you received treatment for</a>';
         $type['error'] = 'govuk-form-group--error';
         $type['errorLabel'] =
         '<span id="/other-medical-treatment-condition/other-medical-treatment-condition-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Please tell us what type you received treatment for
+            <span class="govuk-visually-hidden">Error:</span> Tell us what type you received treatment for
          </span>';
 
     } else {
@@ -142,7 +142,7 @@ echo $errorMessage;
 @endphp
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What treatment did you receive?</h1>
+                                <h1 class="govuk-heading-xl">What type of treatment did you receive?</h1>
 </legend>
                                 <p class="govuk-body">For example surgery, specialist consultation, tests, physiotherapy</p>
 
