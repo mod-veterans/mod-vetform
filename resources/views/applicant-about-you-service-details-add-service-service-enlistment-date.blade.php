@@ -71,7 +71,29 @@ if (!empty($_POST)) {
     $enlistmentyear['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year']);
 
 
-    if (empty($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year'])) {
+
+    if ($enlistmentyear['data'] > date('Y')) {
+
+     $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+        $enlistmentyear['error'] = 'govuk-form-group--error';
+        $enlistmentyear['errorLabel'] =
+        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+         </span>';
+
+
+    } elseif ( (!is_numeric($enlistmentyear['data'])) || (strlen($enlistmentyear['data']) != 4) ) {
+
+      $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered must be a real date</a>';
+        $enlistmentyear['error'] = 'govuk-form-group--error';
+        $enlistmentyear['errorLabel'] =
+        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The year entered must be a real date
+         </span>';
+
+    } else if (empty($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year'])) {
         $errors = 'Y';
         $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
         $enlistmentyear['error'] = 'govuk-form-group--error';
@@ -150,6 +172,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What was your enlistment date?';
+
 @endphp
 
 
@@ -183,7 +207,7 @@ echo $errorMessage;
 
 
 
-        <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example 27 3 2007. If you can not remember, enter an approximate year.</div>
+        <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example 27 3 2007. If you're not sure, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="afcs/about-you/service-details/service-enlistment-date/enlistment-date">
                                                 <div class="govuk-date-input__item">
@@ -234,7 +258,7 @@ echo $errorMessage;
 
         <input class="govuk-checkboxes__input" id="615ff47dd0131" name="afcs/about-you/service-details/service-enlistment-date/approximate-date" type="checkbox"
            value="Yes"     @php echo @$approximatechk; @endphp       >
-    <label class="govuk-label govuk-checkboxes__label" for="afcs/about-you/service-details/service-enlistment-date/approximate-date">This date is approximate</label>
+    <label class="govuk-label govuk-checkboxes__label" for="afcs/about-you/service-details/service-enlistment-date/approximate-date">Tick if this date is approximate</label>
 </div>
 
     </fieldset>

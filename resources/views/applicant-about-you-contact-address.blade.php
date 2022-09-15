@@ -100,6 +100,15 @@ if (!empty($_POST)) {
 
     if (empty($_POST['afcs/about-you/personal-details/contact-address/town'])) {
 
+        $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/town">Tell us your Town</a>';
+        $town['error'] = 'govuk-form-group--error';
+        $town['errorLabel'] =
+        '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Tell us your Town
+         </span>';
+
+
     } else {
         $data['sections']['about-you']['contact-address']['town'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/town']);
     }
@@ -131,6 +140,14 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['afcs/about-you/personal-details/contact-address/postcode'])) {
+
+        $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/postcode">Tell us your postcode</a>';
+        $posstcode['error'] = 'govuk-form-group--error';
+        $postcode['errorLabel'] =
+        '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> Tell us your postcode
+         </span>';
 
     } else {
         $data['sections']['about-you']['contact-address']['postcode'] = cleanTextData($_POST['afcs/about-you/personal-details/contact-address/postcode']);
@@ -187,6 +204,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What is your contact address?';
+
 @endphp
 
 
@@ -215,7 +234,7 @@ echo $errorMessage;
         Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
     </label>
     @php echo $address1['errorLabel']; @endphp
-    <div id="afcs/about-you/personal-details/contact-address/address-line-1-hint" class="govuk-hint">Base name for military establishments</div>
+    <div id="afcs/about-you/personal-details/contact-address/address-line-1-hint" class="govuk-hint">Include base name for military establishments</div>
         <input
         class="govuk-input  "
         id="afcs/about-you/personal-details/contact-address/address-line-1" name="afcs/about-you/personal-details/contact-address/address-line-1" type="text"

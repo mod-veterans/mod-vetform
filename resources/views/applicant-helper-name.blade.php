@@ -102,6 +102,8 @@ if (!empty($_POST)) {
         }
 }
 
+$page_title = 'What is your name?';
+
 @endphp
 
 

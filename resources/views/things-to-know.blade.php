@@ -13,6 +13,8 @@ if (!empty($_POST)) {
     die();
 }
 
+$page_title = 'Things you need to know before you start';
+
 @endphp
 
 @include('framework.header')
@@ -22,21 +24,15 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Things you need to know before you start</h1>
-                               <h2>About this online claim service</h2>
+                               <h2>About this online claim service:</h2>
                                <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-    <li>You can make one or more claims for injuries or illnesses with different causes in one application.</li>
-    <li>A single claim should take around 45 minutes to complete but others may take longer.</li>
-    <li>When you’ve fully completed the “Personal Details” section, you can exit and then return to a part completed application within 3 months.</li>
-    <li>After you’ve submitted your application, you will not be able to access your claim again or make any changes.  You can contact us later with new information if you need to.</li>
-    <li>You can use the ‘supporting documents’ section to upload any documents you want to send with your application. </li>
-    <li>We do not need you to get any new information you do not already have. We cannot refund any costs involved if you do this.</li>
-</ul>
-<h2>Answering the questions</h2>
-<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-<li>You’ll be asked questions about yourself, your service, and the medical conditions you’re claiming for.</li>
-    <li>Answer all the questions to the best of your knowledge but if you cannot remember, you can leave blank any sections not marked ‘required’.</li>
+    <li>you can make one or more claims for injuries or illnesses with different causes in one application</li>
+    <li>a single claim should take around 45 minutes to complete but some may take longer</li>
+    <li>once you’ve fully completed the 'Personal Details' section, you can take a break an return to an application later</li>
 
-
+    <li>you can use the ‘supporting documents’ section to upload image of any documents you want to send us</li>
+    <li>answer all the questions to the best of your knowledge but if you cannot remember, you can leave blank any sections not marked 'required';</li>
+    <li>after you’ve submitted your application, you cannot access your claim again online. You can contact us later with changes or new information if you need to</li>
 </ul>
 
 

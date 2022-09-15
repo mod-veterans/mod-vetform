@@ -48,19 +48,35 @@ if (!empty($_POST)) {
 
             break;
 
-            case "Charity welfare manager":
-                $data['sections']['nominate-representative']['nominated representative']['role'] = 'Charity welfare manager';
-                $rolechk['Charity welfare manager'] = ' checked';
+            case "Charity employee":
+                $data['sections']['nominate-representative']['nominated representative']['role'] = 'Charity employee';
+                $rolechk['Charity employee'] = ' checked';
             break;
+
+            case "Spouse, civil partner, partner":
+                $data['sections']['nominate-representative']['nominated representative']['role'] = 'Spouse, civil partner, partner';
+                $rolechk['Spouse, civil partner, partner'] = ' checked';
+            break;
+
+            case "Other relative":
+                $data['sections']['nominate-representative']['nominated representative']['role'] = 'Other relative';
+                $rolechk['Other relative'] = ' checked';
+            break;
+
+            case "Other relative":
+                $data['sections']['nominate-representative']['nominated representative']['role'] = 'Other relative';
+                $rolechk['Other relative'] = ' checked';
+            break;
+
 
             case "Solicitor":
                 $data['sections']['nominate-representative']['nominated representative']['role'] = 'Solicitor';
                 $rolechk['Solicitor'] = ' checked';
             break;
 
-            case "Friend or relative":
-                $data['sections']['nominate-representative']['nominated representative']['role'] = 'Friend or relative';
-                $rolechk['Friend or relative'] = ' checked';
+            case "Friend":
+                $data['sections']['nominate-representative']['nominated representative']['role'] = 'Friend';
+                $rolechk['Friend'] = ' checked';
             break;
 
             case "Local Authority employee":
@@ -165,17 +181,47 @@ echo $errorMessage;
 @php echo $role['errorLabel']; @endphp
                                             <div
             class="govuk-radios"  >
-                            <div class="govuk-radios__item">
+
+ <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/representative/representative-role/representative-role-Spouse-civil-partner-partner" name="/representative/representative-role/representative-role" type="radio"
+           value="Spouse, civil partner, partner"  @php echo @$rolechk['Spouse, civil partner, partner']; @endphp           >
+    <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-Spouse-civil-partner-partner">Spouse, civil partner, partner</label>
+</div>
+
+ <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/representative/representative-role/representative-role-other-relative" name="/representative/representative-role/representative-role" type="radio"
+           value="Other relative"  @php echo @$rolechk['Other relative']; @endphp           >
+    <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-other-relative">Other relative</label>
+</div>
+
+ <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/representative/representative-role/representative-role-friend" name="/representative/representative-role/representative-role" type="radio"
+           value="Friend"  @php echo @$rolechk['Friend']; @endphp           >
+    <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-friend">Friend</label>
+</div>
+
+
+
+
+ <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/representative/representative-role/representative-role-veterans-u-k-welfare-manager" name="/representative/representative-role/representative-role" type="radio"
            value="Veterans UK welfare manager"  @php echo @$rolechk['Veterans UK welfare manager']; @endphp           >
     <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-role-veterans-u-k-welfare-manager">Veterans UK welfare manager</label>
 </div>
 
                             <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/representative/representative-role/representative-role-charity-welfare-manager" name="/representative/representative-role/representative-role" type="radio"
-           value="Charity welfare manager"      @php echo @$rolechk['Charity welfare manager']; @endphp       >
-    <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-role-charity-welfare-manager">Charity welfare manager</label>
+    <input class="govuk-radios__input" id="/representative/representative-role/representative-role-charity-employee" name="/representative/representative-role/representative-role" type="radio"
+           value="Charity employee"      @php echo @$rolechk['Charity employee']; @endphp       >
+    <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-role-charity-employee">Charity employee</label>
 </div>
+
+ <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/representative/representative-role/representative-local-authority-employee" name="/representative/representative-role/representative-role" type="radio"
+           value="Local Authority employee"  @php echo @$rolechk['Local Authority employee']; @endphp           >
+    <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-local-authority-employee">Local Authority employee</label>
+</div>
+
+
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/representative/representative-role/representative-role-solicitor" name="/representative/representative-role/representative-role" type="radio"
@@ -183,11 +229,6 @@ echo $errorMessage;
     <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-role-solicitor">Solicitor</label>
 </div>
 
-                            <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/representative/representative-role/representative-role-friend-or-relative" name="/representative/representative-role/representative-role" type="radio"
-           value="Friend or relative"     @php echo @$rolechk['Friend or relative']; @endphp        >
-    <label class="govuk-label govuk-radios__label" for="/representative/representative-role/representative-role-friend-or-relative">Friend or relative</label>
-</div>
 
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/representative/representative-role/representative-role-other" name="/representative/representative-role/representative-role" type="radio"

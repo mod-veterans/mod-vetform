@@ -114,6 +114,8 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/mobilepermissio
 
 }
 
+$page_title = 'Using text messages to contact you';
+
 @endphp
 
 
@@ -141,7 +143,7 @@ echo $errorMessage;
 <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 <li>I authorise Veterans UK to use text messaging to update me about progress made on my claim.</li>
 
-<li>I understand that messages sent by text may be open to abuse because they are sent over an unsecured network. I accept that the MOD will not be liable for any loss, interception or unauthorised use of information transmitted this way.</li>
+<li>I understand that messages sent by text may be open to abuse because they are sent over an unsecured network. I accept that the Ministry of Defence (MOD) will not be liable for any loss, interception or unauthorised use of information transmitted this way.</li>
 
 <li>If your mobile number changes, tell us as soon as possible.</li>
 

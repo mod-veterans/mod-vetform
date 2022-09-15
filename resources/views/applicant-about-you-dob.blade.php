@@ -48,24 +48,38 @@ if (!empty($_POST)) {
         $dobyear['data']            = $_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-year'];
 
 
-        if (checkdate($dobmonth['data'],$dobday['data'],$dobyear['data'])) {
+        if (!checkdate($dobmonth['data'],$dobday['data'],$dobyear['data'])) {
+
+
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Your date of birth does not appear to be a valid date</a>';
+            $dob['error'] = 'govuk-form-group--error';
+            $dob['errorLabel'] =
+            '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Your date of birth does not appear to be a valid date
+             </span>';
+
+
+
+        } elseif (checkDOB($dobmonth['data'],$dobday['data'],$dobyear['data']) == FALSE) {
+
+
+              $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">You cannot be aged younger than 14 years</a>';
+            $dob['error'] = 'govuk-form-group--error';
+            $dob['errorLabel'] =
+            '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> You cannot be aged younger than 14 years
+             </span>';
+
+
+
+        } else {
 
             $data['sections']['about-you']['dob']['day'] = $_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-day'];
             $data['sections']['about-you']['dob']['month'] = $_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-month'];
             $data['sections']['about-you']['dob']['year'] = $_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-year'];
-
-        } else {
-
-
-            $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Your date of birth does not appear to be valid</a>';
-            $dob['error'] = 'govuk-form-group--error';
-            $dob['errorLabel'] =
-            '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Your date of birth does not appear to be valid
-             </span>';
-
-
+            $data['sections']['about-you']['dob']['formatted'] = $_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-year'].'-'.$_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-month'].'-'.$_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-day'];
 
         }
 
@@ -132,6 +146,8 @@ if (!empty($_POST)) {
 }
 
 }
+$page_title = 'What is your date of birth?';
+
 @endphp
 
 

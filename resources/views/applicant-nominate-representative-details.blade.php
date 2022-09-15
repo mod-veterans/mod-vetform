@@ -241,6 +241,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Tell us about your representative';
+
 @endphp
 
 

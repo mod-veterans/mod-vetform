@@ -83,7 +83,7 @@ if ( (!empty($_GET['action'])) && ($_GET['action'] == 'complete') ) {
 
 
 
-
+$page_title = 'Service details';
 
 @endphp
 
@@ -126,15 +126,15 @@ if ( (!empty($_GET['action'])) && ($_GET['action'] == 'complete') ) {
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Service details</h1>
                                 <p class="govuk-body">We need to know about each period of service you have had in HM Armed Forces.</p>
-<p class="govuk-body">Tell us about each period separately if you have had:</p>
+<p class="govuk-body">Tell us about each period separately if you’ve:</p>
 <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-    <li>more than one period of service.</li>
-    <li>changed service branch for example from Royal Navy to Army.</li>
-    <li>Service in the reserves where you attended training/were called to duty (you do not need to tell us about reserve liability if not recalled).</li>
+    <li>had more than one period of service</li>
+    <li>changed service branch, for example from Royal Navy to Army</li>
+    <li>had service in the reserves</li>
 </ul>
 
 <div class="govuk-inset-text">
-You can add as many periods of service in this section as needed. You’ll be asked if you want to ’add another period of service’ at the end of this section.
+You can add as many periods of service in this section as needed. You’ll be asked if you want to `add another period of service’ at the end of this section.
 </div>
 
 

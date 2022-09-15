@@ -243,6 +243,20 @@ function validateMobile07($data) {
 
 
 
+function checkDOB($month, $day, $year) {
+
+    $theirdate = strtotime($year.'-'.$month.'-'.$day);
+    $date14yrsago = strtotime(date('Y-m-d')." -14 years");
+    if ($date14yrsago < $theirdate) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+
+}
+
+
+
 
 
 

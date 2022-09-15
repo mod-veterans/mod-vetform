@@ -5,16 +5,10 @@ $showcookie = 'Y';
 }
 
 
-$url = $_SERVER['REQUEST_URI'];
-
-$url = substr($url, 1);
-
-if (empty($url)) {
-    $page_title = 'Home';
-} else {
-$url = str_replace('-',' ',$url);
-$page_title = strtoupper(str_replace('/',' | ',$url));
+if (empty($page_title)) {
+    $page_title = 'Apply for Armed Forces Compensation or a War Pension';
 }
+
 
 
 if (!empty($_POST['cookies'])) {
@@ -45,7 +39,7 @@ if (!empty($_COOKIE['vet-COOKIE'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>{{$page_title}} | Apply for an Armed Forces Compensation or War Pension Payment - GOV.UK</title>
+    <title>{{$page_title}} - Apply for Armed Forces Compensation or a War Pension - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -111,7 +105,7 @@ if ($showcookie == 'Y') {
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on Armed Forces Compensation or War Pension Payment Application</h2>
+        <h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on Armed Forces Compensation or a War Pension Application</h2>
 
         <div class="govuk-cookie-banner__content">
           <p class="govuk-body">We use some essential cookies to make this service work.</p>
@@ -157,7 +151,7 @@ if ($showcookie == 'Y') {
             </a>
         </div>
         <div class="govuk-header__content">
-            <a href="/" class="govuk-header__link govuk-header__link--service-name">Apply for an Armed Forces Compensation or War Pension Payment</a>
+            <a href="/" class="govuk-header__link govuk-header__link--service-name">Apply for Armed Forces Compensation or a War Pension</a>
         </div>
     </div>
 </header>

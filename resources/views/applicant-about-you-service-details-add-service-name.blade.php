@@ -107,7 +107,7 @@ if (!empty($_POST)) {
         $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = 'No';
     } else {
         $data['sections']['service-details']['records'][$thisRecord]['nameinservice'] = 'No';
-        $_POST['afcs/about-you/service-details/service-name/name-in-service'] = '';
+        $_POST['afcs/about-you/service-details/service-name/name-in-service'] = 'No';
 
 
 
@@ -199,6 +199,8 @@ if (!empty($_POST)) {
     }
 
 }
+
+$page_title = 'Did you have a different name during this period of service?';
 
 @endphp
 

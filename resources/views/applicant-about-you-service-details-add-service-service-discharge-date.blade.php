@@ -79,8 +79,7 @@ if (!empty($_POST)) {
     $enlistmentyear['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year']);
 
 
-
-    if (empty($_POST['afcs/about-you/service-details/service-discharge/service-is-serving'])) {
+if (empty($_POST['afcs/about-you/service-details/service-discharge/service-is-serving'])) {
 
         $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] = '';
         $theURL = '/applicant/about-you/service-details/add-service/discharge-reason';
@@ -96,11 +95,28 @@ if (!empty($_POST)) {
     }
 
 
+    if ($enlistmentyear['data'] > date('Y')) {
+
+     $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+        $enlistmentyear['error'] = 'govuk-form-group--error';
+        $enlistmentyear['errorLabel'] =
+        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+         </span>';
 
 
+    } elseif ( (!is_numeric($enlistmentyear['data'])) || (strlen($enlistmentyear['data']) != 4) ) {
 
+      $errors = 'Y';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered must be a real date</a>';
+        $enlistmentyear['error'] = 'govuk-form-group--error';
+        $enlistmentyear['errorLabel'] =
+        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span> The year entered must be a real date
+         </span>';
 
-    if (empty($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year'])) {
+    } elseif (empty($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year'])) {
         $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] = '';
         $errors = 'Y';
         $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
@@ -192,6 +208,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What was your discharge date?';
+
 @endphp
 
 @include('framework.header')
@@ -225,7 +243,7 @@ echo $errorMessage;
             </h2>
         </legend>
 @php echo $dischargeyear['errorLabel']; @endphp
-        <div id="afcs/about-you/service-details/service-discharge/date-of-discharge-hint" class="govuk-hint">For example 27 3 2007. If you can not remember, enter an approximate year.</div>
+        <div id="afcs/about-you/service-details/service-discharge/date-of-discharge-hint" class="govuk-hint">For example 27 3 2007. If you're not sure, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="afcs/about-you/service-details/service-discharge/date-of-discharge">
                                                 <div class="govuk-date-input__item">
@@ -275,7 +293,7 @@ echo $errorMessage;
 
         <input class="govuk-checkboxes__input" id="afcs/about-you/service-details/service-discharge/date-is-approximate" name="afcs/about-you/service-details/service-discharge/date-is-approximate" type="checkbox"
            value="Yes"      @php echo $approximatechk ?? ''; @endphp    >
-    <label class="govuk-label govuk-checkboxes__label" for="afcs/about-you/service-details/service-discharge/date-is-approximate">This date is approximate</label>
+    <label class="govuk-label govuk-checkboxes__label" for="afcs/about-you/service-details/service-discharge/date-is-approximate">Tick if this date is approximate</label>
 </div>
 
 

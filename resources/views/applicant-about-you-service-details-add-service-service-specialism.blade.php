@@ -44,6 +44,22 @@ $data = getData($userID);
 
 
 
+//if served with special forces, do not show this question
+if (
+(@$data['sections']['applicant-who']['legal-authority']['epaw']['served'] == 'Yes')
+||
+(@$data['sections']['applicant-who']['helper']['epaw']['served'] == 'Yes')
+||
+(@$data['sections']['applicant-who']['apply-yourself']['epaw']['served'] == 'Yes')
+) {
+    header("Location: /applicant/about-you/service-details/add-service/enlistment-date");
+    die();
+}
+
+
+
+
+
 //this gets teh current record ID to edit and sets it for reference
 if (empty($_GET['servicerecord'])) {
 
@@ -353,6 +369,8 @@ if (!empty($_POST)) {
     }
 
 }
+
+$page_title = 'What trades or professions have you had in service?';
 
 @endphp
 

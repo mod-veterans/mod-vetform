@@ -141,6 +141,8 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'Nominating a representative';
 @endphp
 
 
@@ -162,26 +164,21 @@ echo $errorMessage;
 
                                 <h1 class="govuk-heading-xl">Nominating a representative</h1>
 
-                                    <p  class="govuk-body">If you want to, you can nominate someone as your representative.</br>
+                                    <p  class="govuk-body">If you want us to send copies of future letters and enquiries to someone else, they must be made a representative.  We will not send copies of letters to anyone helping with making this claim unless you do this.</br>
 <p  class="govuk-body">
-A representative;
+IF you make someone a representative, they:
 </p>
 
 <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-<li>will get future copies of all letters we send to you.</li>
+<li>will get future copies of all letters we send</li>
 <li>will get a copy of our final decision.</li>
-<li>can be the same person helping you make this online claim or;</li>
-<li>can be another person.</li>
+<li>can be the same person helping you make this online claim or can be another person.</li>
 </ul>
 
 
-<p class="govuk-body">We will not send copies of letters to someone helping you make this claim unless you also make them your representative</p>
+<p class="govuk-body">Letters we send can contain personal information. This can include banking details, medical information and the amount of money we may pay if a claim is successful.</p>
 
-<div class="govuk-inset-text">
-Letters sent to you can contain personal information. This could be your banking details, medical conditions and the amount of money you will receive if your claim is successful.
-</div>
-
-<p class="govuk-body">You can add more representatives, change their details or remove them by writing to us at any time. </p>
+<p class="govuk-body">You can remove someone from being a representative or make changes by writing to us.  Our address is on the email we’ll send to you after you submit this application.</p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate>

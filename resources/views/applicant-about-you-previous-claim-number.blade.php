@@ -98,6 +98,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What was the claim reference number?';
+
 @endphp
 
 

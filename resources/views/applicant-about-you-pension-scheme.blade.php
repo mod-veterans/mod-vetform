@@ -122,7 +122,7 @@ foreach ($showArr as $cur) {
 
 
 
-
+$page_title = 'Which armed forces pension scheme(s) are you a member of?';
 
 @endphp
 
@@ -173,11 +173,11 @@ echo $errorMessage;
            value="Other"       @php echo @$pensionschemechk['Other']; @endphp      >
     <label class="govuk-label govuk-checkboxes__label" for="615fda227931d">Other</label>
 </div>
-<p class="govuk-body">Or</p>
+<p class="govuk-body">or</p>
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="615fda2279456" name="afcs/about-you/personal-details/pension-scheme/pension-scheme[]" type="checkbox"
            value="Dont Know"      @php echo @$pensionschemechk['Dont Know']; @endphp       >
-    <label class="govuk-label govuk-checkboxes__label" for="615fda2279456">Don&#039;t Know</label>
+    <label class="govuk-label govuk-checkboxes__label" for="615fda2279456">I don&#039;t Know</label>
 </div>
                     </div>
     </fieldset>

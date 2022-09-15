@@ -211,7 +211,8 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
                                 <h1 class="govuk-heading-xl">What are your own details?</h1>
-                                <p class="govuk-body">You have told us you are making this claim on behalf of someone else.
+                                <p class="govuk-body">You have told us you are making this claim on behalf of someone else because you have legal authority to act for them. If you do not have legal authority, go back and select ‘I’m helping someone apply’.</p>
+           <p class="govuk-body">
            Tell us your own details.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>

@@ -141,6 +141,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'Have you made a claim before?';
+
 @endphp
 
 

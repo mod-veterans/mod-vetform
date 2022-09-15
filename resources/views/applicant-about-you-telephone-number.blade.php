@@ -89,7 +89,7 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
             if (!validateMobile11($_POST['afcs/about-you/personal-details/contact-number/mobile-number'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Enter a number number with the correct number of digits (11)</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Enter a number with the correct number of digits (11)</a>';
                 $mobile['error'] = 'govuk-form-group--error';
                 $mobile['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
@@ -172,6 +172,8 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
     }
 
 }
+
+$page_title ='Do you have a UK mobile telephone number?';
 
 @endphp
 

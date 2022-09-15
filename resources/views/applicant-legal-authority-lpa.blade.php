@@ -158,7 +158,7 @@ echo $errorMessage;
   </summary>
   <div class="govuk-details__text">
 
-The donor may have given you the wrong code. Ask them to go to www.gov.uk/use-lpa to create an LPA access code.
+The donor may have given you the wrong code. Ask them to go to <a href="www.gov.uk/use-lpa">www.gov.uk/use-lpa</a> to create an LPA access code.
   </div>
 </details>
 

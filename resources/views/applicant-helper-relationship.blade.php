@@ -49,9 +49,18 @@ if (!empty($_POST)) {
 
             break;
 
-            case "Relative":
-                $data['sections']['applicant-who']['helper']['relationship'] = 'Relative';
+            case "Spouse, civil partner, partner":
+                $data['sections']['applicant-who']['helper']['relationship'] = 'Spouse, civil partner, partner';
                 $relationshipchk['Relative'] = ' checked';
+                 $theURL = '/applicant/helper/declaration';
+            break;
+
+
+
+
+            case "Other relative":
+                $data['sections']['applicant-who']['helper']['relationship'] = 'Other relative';
+                $relationshipchk['Other relative'] = ' checked';
                  $theURL = '/applicant/helper/declaration';
             break;
 
@@ -151,6 +160,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'What is your relationship to the person making the claim?';
+
 @endphp
 
 
@@ -178,16 +190,23 @@ echo $errorMessage;
     <fieldset class="govuk-fieldset">
 @php echo $relationship['errorLabel']; @endphp
    <div class="govuk-radios" >
+
+   <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/applicant/helper-relationship/helper-relationship-Spouse-civil-partner-partner" name="/applicant/helper-relationship/helper-relationship" type="radio"
+           value="Spouse, civil partner, partner" @php echo @$relationshipchk['Spouse, civil partner, partner']; @endphp  >
+    <label class="govuk-label govuk-radios__label" for="/applicant/helper-relationship/helper-relationship-Spouse-civil-partner-partner">Spouse, civil partner, partner</label>
+</div>
+
+   <div class="govuk-radios__item">
+    <input class="govuk-radios__input" id="/applicant/helper-relationship/helper-relationship-other-relative" name="/applicant/helper-relationship/helper-relationship" type="radio"
+           value="Other relative"          @php echo @$relationshipchk['Other relative']; @endphp  >
+    <label class="govuk-label govuk-radios__label" for="/applicant/helper-relationship/helper-relationship-other-relative">Other relative</label>
+</div>
+
    <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/applicant/helper-relationship/helper-relationship-friend" name="/applicant/helper-relationship/helper-relationship" type="radio"
            value="Friend"          @php echo @$relationshipchk['Friend']; @endphp  >
     <label class="govuk-label govuk-radios__label" for="/applicant/helper-relationship/helper-relationship-friend">Friend</label>
-</div>
-
-    <div class="govuk-radios__item">
-    <input class="govuk-radios__input" id="/applicant/helper-relationship/helper-relationship-relative" name="/applicant/helper-relationship/helper-relationship" type="radio"
-           value="Relative"       @php echo @$relationshipchk['Relative']; @endphp    >
-    <label class="govuk-label govuk-radios__label" for="/applicant/helper-relationship/helper-relationship-relative">Relative</label>
 </div>
 
 <div class="govuk-radios__item">

@@ -111,6 +111,8 @@ if (!empty($_POST)) {
 }
 
 
+$page_title = 'What is your National Insurance number?';
+
 @endphp
 
 

@@ -87,15 +87,15 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['afcs/about-you/medical-officer/medical-officer-contact/address-line-1'])) {
-        /*
+
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/medical-officer/medical-officer-contact/address-line-1">Tell us the first line of your medical officer\'s address</a>';
+        $errorsList[] = '<a href="#afcs/about-you/medical-officer/medical-officer-contact/address-line-1">Tell us the Practice name or write ‘not registered’ </a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
         '<span id="afcs/about-you/personal-details/contact-address/address-line-1-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Tell us the first line of your medical officer\'s address
+            <span class="govuk-visually-hidden">Error:</span> Tell us the Practice name or write ‘not registered’
          </span>';
-         */
+
 
 
     } else {
@@ -208,6 +208,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Details of your current Doctor';
+
 @endphp
 
 
@@ -235,7 +237,7 @@ if (!empty($_POST)) {
 </p>
 
 <div class="govuk-inset-text">
-If you’re not registered with a surgery or practice, write "Not Registered" in "Doctor’s full name" below.
+If you’re not registered with a surgery or practice, "not registered" in "Practice name" below.
 </div>
 
 <p class="govuk-body">You can tell us about other consultants or specialists later in the claim.</p>
@@ -260,7 +262,7 @@ If you’re not registered with a surgery or practice, write "Not Registered" in
 </div>
                                     <div class="govuk-form-group {{$address1['error']}} ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/address-line-1">
-       Practice name, Building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
+       Practice name, building and street         <span class="govuk-visually-hidden">line 1 of 2</span>
     </label>
 @php echo $address1['errorLabel']; @endphp
            <input
@@ -294,7 +296,7 @@ If you’re not registered with a surgery or practice, write "Not Registered" in
 </div>
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/county">
-        County (State or Province if overseas)
+        County (State/Province if overseas)
     </label>
             <input
         class="govuk-input govuk-!-width-two-thirds "
@@ -318,7 +320,7 @@ If you’re not registered with a surgery or practice, write "Not Registered" in
 
                                     <div class="govuk-form-group ">
     <label class="govuk-label" for="afcs/about-you/medical-officer/medical-officer-contact/country">
-        Country (if overseas)
+        Country
     </label>
             <select class="govuk-select govuk-!-width-two-thirds " id="afcs/about-you/medical-officer/medical-officer-contact/country"
             name="afcs/about-you/medical-officer/medical-officer-contact/country"

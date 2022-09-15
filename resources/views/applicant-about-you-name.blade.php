@@ -133,6 +133,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What is your name?';
+
 @endphp
 
 
@@ -158,7 +160,7 @@ echo $errorMessage;
                                 @csrf
                                                     <div class="govuk-form-group {{$lastname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/last-name">
-        Last name or family name (required)
+        Last name or family name
     </label>
 @php echo $lastname['errorLabel']; @endphp
             <input
@@ -170,7 +172,7 @@ echo $errorMessage;
 </div>
 <div class="govuk-form-group {{$firstname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/other-names">
-        First names or given names (required)
+        First names or given names
     </label>
 @php echo $firstname['errorLabel']; @endphp
             <input

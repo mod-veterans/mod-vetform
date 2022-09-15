@@ -143,6 +143,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What is your email address?';
+
 @endphp
 
 
@@ -161,7 +163,7 @@ if (!empty($_POST)) {
                                 <h1 class="govuk-heading-xl">What is your email address?</h1>
                                 <p class="govuk-body">We’ll only use this to get in touch about your claim.</p>
 
-<p class="govuk-body">Use an MOD email address if you have access to one.</p>
+<p class="govuk-body">Using an MOD email address, if you have one, means messages are more secure.</p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate>

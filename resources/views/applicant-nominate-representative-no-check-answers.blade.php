@@ -17,6 +17,8 @@ if (!empty($_POST)) {
     die();
 }
 
+$page_title = 'Check your answers';
+
 @endphp
 
 

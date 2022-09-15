@@ -41,7 +41,7 @@ if ($data = getData($userID)) {
 
 }
 
-
+$page_title = 'Tasklist';
 @endphp
 
 
@@ -52,14 +52,16 @@ if ($data = getData($userID)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Apply for an armed forces compensation or war pension payment</h1>
+                                <h1 class="govuk-heading-xl">Apply for Armed Forces Compensation or a War Pension </h1>
                                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{$completed}} of 13 sections.</p>
 
-        <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-
-            <li>Select the links below to start a section.</li>
-            <li>You can go back and make changes to sections marked ‘complete’.</li>
+        <p class="govuk-body">
+            Select the links below to start a section.
+        </p>
+        <p class="govuk-body">
+            You can go back and make changes to any sections marked ‘completed’.
+        </p>
 @php
 if (!empty($data['settings']['sacbl'])) {
 
