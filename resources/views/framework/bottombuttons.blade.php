@@ -13,5 +13,4 @@ if (!empty($data['settings']['sacbl'])) {
 }
 @endphp
 
-
-<a href="/cancel" class="govuk-link" data-module="govuk-button">Cancel application</a>
+<a href="/tasklist" class="govuk-link" data-module="govuk-button">Return to task list</a>

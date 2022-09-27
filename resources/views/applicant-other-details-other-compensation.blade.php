@@ -141,6 +141,8 @@ if (!empty($_POST)) {
 }
 
 }
+$page_title = 'Other compensation payments';
+
 @endphp
 
 
@@ -159,26 +161,19 @@ echo $errorMessage;
 @endphp
 
                                 <h1 class="govuk-heading-xl">Other compensation payments</h1>
-                                <p class="govuk-body">We need to know about other compensation payments you’ve claimed or received for the conditions on this application.</p>
+                                <p class="govuk-body">Tell us if you have claimed or received other compensation payments for any of the conditions you are claiming for.</p>
                                 <div class="govuk-inset-text">
                                   You do not need to tell us about previous Armed Forces Compensation Scheme or War Pension payments.
                                 </div>
+<h2>You must tell us about:</h2>
 
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      Compensation types we need to know about
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-<ul>
-    <li>Any payments from MOD for criminal injuries.</li>
-<li>Civil negligence payments received from the courts.</li>
-<li>Compensation from civil authorities in Great Britain and Northern Ireland for criminal injuries.</li>
-<li>Any other compensation or pension payments received for the medical conditions you are claiming for. </li>
+<ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>any payments from MOD for criminal injuries</li>
+    <li>civil negligence payments received from the courts</li>
+    <li>compensation from civil authorities in Great Britain and Northern Ireland for criminal injuries</li>
+    <li>any other compensation payments received for the medical conditions you are claiming for</li>
 </ul>
-  </div>
-</details>
+
 
 
             <form method="post" enctype="multipart/form-data" novalidate>

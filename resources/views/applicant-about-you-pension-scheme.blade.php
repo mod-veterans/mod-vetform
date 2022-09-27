@@ -177,7 +177,7 @@ echo $errorMessage;
                             <div class="govuk-checkboxes__item">
         <input class="govuk-checkboxes__input" id="615fda2279456" name="afcs/about-you/personal-details/pension-scheme/pension-scheme[]" type="checkbox"
            value="Dont Know"      @php echo @$pensionschemechk['Dont Know']; @endphp       >
-    <label class="govuk-label govuk-checkboxes__label" for="615fda2279456">I don&#039;t Know</label>
+    <label class="govuk-label govuk-checkboxes__label" for="615fda2279456">I do not know</label>
 </div>
                     </div>
     </fieldset>

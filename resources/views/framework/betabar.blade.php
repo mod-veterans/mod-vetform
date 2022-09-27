@@ -5,7 +5,7 @@
             beta
         </strong>
         <span class="govuk-phase-banner__text">
-      This is a new service – your <a class="govuk-link" href="https://surveys.mod.uk/index.php/892274?lang=en">feedback</a> will help us to improve it.
+      This is a new service – your <a class="govuk-link" href="/feedback">feedback</a> will help us to improve it.
     </span>
     </p>
 </div>

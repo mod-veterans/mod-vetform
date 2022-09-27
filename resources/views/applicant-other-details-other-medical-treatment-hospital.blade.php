@@ -238,6 +238,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Details of the treatment centre';
+
 @endphp
 
 
@@ -252,9 +254,9 @@ if (!empty($_POST)) {
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Details of the hospital or medical facility that treated you</h1>
+                                <h1 class="govuk-heading-xl">Details of the treatment centre</h1>
  </legend>
- <p class="govuk-body">Tell us about the hospital or medical facility that treated you, even if it has since closed down.</p>
+ <p class="govuk-body">Tell us about the treatment centre, even if it has since closed down.</p>
 
 <div class="govuk-inset-text">
 You can leave blank any sections you cannot remember.
@@ -930,10 +932,7 @@ echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option
 
                 <div class="govuk-form-group">
     <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
-            <br><a href="https://modvets-dev2.london.cloudapps.digital/cancel" class="govuk-link"
-           data-module="govuk-button">
-            Cancel application
-        </a>
+@include('framework.bottombuttons')
 
     </div>
             </form>

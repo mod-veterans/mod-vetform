@@ -1,10 +1,14 @@
+@php
+$page_title = 'Apply for Armed Forces Compensation or a War Pension Terms and Conditions';
+@endphp
+
 
 @include('framework.header')
 
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                <h1 class="govuk-heading-xl">Apply for an Armed Forces Compensation or War Pension payment </h1>
+                <h1 class="govuk-heading-xl">Apply for Armed Forces Compensation or a War Pension</h1>
                 <h2 class="govuk-heading-m">Terms and conditions of use </h2>
                 <p class="govuk-body">
 

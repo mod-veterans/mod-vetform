@@ -80,6 +80,8 @@ $claimList = '';
 /////////////////////////////
 
 
+$page_title = 'Claim details';
+
 @endphp
 
 
@@ -118,9 +120,10 @@ echo $claimList;
                 Add a{{$nother ?? ''}} claim
             </a>
             <br>
-             <p class="govuk-body">or
-             <br /><br />
-            <a class="" href="/tasklist">Return to tasklist</a></p>
+             or
+             <br />
+             @include('framework.bottombuttons')
+
         </div>
             </div>
         </div>

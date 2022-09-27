@@ -145,7 +145,13 @@ You cannot apply for someone without their knowledge unless you have legal autho
   </strong>
 </div>
 
-                              <p class="govuk-body">You must make sure that before the claim is submitted, the person named on this application: is satisfied all questions have been answered correctly, to the best of their knowledge and understanding; is clear that they are the named person making the application; is clear they are agreeing to the legal declaration in the last section. You may need to read this out to them.</p>
+                              <p class="govuk-body">You must make sure that before the claim is submitted, the person named on this application:</p>
+
+                              <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+    <li>is satisfied all questions have been answered correctly, to the best of their knowledge and understanding</li>
+    <li>is clear that they are the named person making the application</li>
+    <li>is clear they are agreeing to the legal declaration in the last section. You may need to read this out to them</li>
+</ul>
                               <p class="govuk-body">If the person named on this application also wants you to receive copies of letters sent to them, they can make you a nominated representative in the next section.</p>
 
 

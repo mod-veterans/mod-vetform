@@ -117,6 +117,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What medical condition(s) are you claiming for?';
+
 @endphp
 
 
@@ -136,13 +138,16 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What medical condition(s) are you claiming for?</h1>
   </legend>
-                                <p class="govuk-body">You can claim for any medical condition or symptoms you think are related to your service.</p>
-                                <p class="govuk-body">If you have a specific medical diagnosis, include it here, for example, head injury, fracture L5 vertebrae. We will ask you why your conditions are caused by your service later.</p>
-                                <div class="govuk-inset-text">
-Enter all claimed medical conditions you think are linked to the incident, even if they developed afterwards.
-</div>
+                                <h2>You should include:</h2>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>the medical conditions or symptoms you think are related to the incident, even if they developed afterwards</li>
+        <li>any specific medical diagnosis, for example fracture L5 vertebrae</li>
+        <li>which part of the body was/is affected, for example broken left arm, right eye injury</li>
+    </ul>
 
-<p class="govuk-body">Tell us which side of the body is affected for example, broken left arm.</p>
+<div class="govuk-inset-text">
+You’ll be asked why your conditions were/are caused by your service later. You do not need to include this here.
+</div>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

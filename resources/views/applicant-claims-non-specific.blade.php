@@ -115,6 +115,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What medical condition(s) are you claiming for?';
+
 @endphp
 
 
@@ -138,15 +140,19 @@ echo $errorMessage;
     <label class="govuk-label" for="/claim-details/claim-illness-condition/claim-illness-claiming-for">
         <span class="govuk-visually-hidden">Medical condition claiming</span>
     </label>
-@php echo $condition['errorLabel']; @endphp
-    <div id="/claim-details/claim-illness-condition/claim-illness-claiming-for-hint" class="govuk-hint">You can claim for any medical condition or symptoms you think are related to your service.  If you have a specific diagnosis, include it here, for example, deafness, osteoarthritis.<br /><br />Tell us which side of the body is affected if needed, for example, deafness left ear.</div>
-
+    <h2>You should include:</h2>
+    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+        <li>the medical conditions or symptoms you think are related to your service, even if they developed afterwards, for example deafness</li>
+        <li>any specific medical diagnosis, for example  osteoarthritis, Post Traumatic Stress Disorder</li>
+        <li>which part of the body was/is affected, for example osteoarthritis right knee</li>
+    </ul>
 
 <div class="govuk-inset-text">
-We will ask you why your conditions are caused by your service later.
+You’ll be asked why your conditions were/are caused by your service later. You do not need to include this here.
 </div>
 
 
+@php echo $condition['errorLabel']; @endphp
 <textarea class="govuk-textarea govuk-js-character-count" id="/claim-details/claim-illness-condition/claim-illness-claiming-for"
                   name="/claim-details/claim-illness-condition/claim-illness-claiming-for" rows="5" maxlength="500"
                                     aria-describedby="with-hint-info /claim-details/claim-illness-condition/claim-illness-claiming-for-hint">{{$condition['data'] ?? ''}}</textarea>

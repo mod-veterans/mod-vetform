@@ -65,11 +65,11 @@ $page_title = 'You can now save your application and come back later';
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">You can now save your application and come back later</h1>
-                                <p class="govuk-body">Your answers are now being saved as you answer each question</p>
+                                <p class="govuk-body">Your answers are now being saved as you answer each question.</p>
                                 <p class="govuk-body">You can now come back later to a part-completed application if you want to.</p>
-                        <p class="govuk-body">To take a break, use the ‘Save and come back later’ button now available at the bottom of the page.</p>
+                        <p class="govuk-body">To take a break, use the ‘save and come back later’ button now available at the bottom of the page.</p>
 
-<p class="govuk-body">You can also return to your application should your computer or device close unexpectedly.
+<p class="govuk-body">You can also return to your application if your computer or device closes unexpectedly.
 </p>
 
 <div class="govuk-warning-text">
@@ -84,7 +84,7 @@ $page_title = 'You can now save your application and come back later';
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
   <strong class="govuk-warning-text__text">
     <span class="govuk-warning-text__assistive">Warning</span>
-    There’s a <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs#who-is-eligible" target="_New">7 year time limit</a> from date of injury/illness for making some claims. Complete your application as soon as you can.
+    There’s a <a href="https://www.gov.uk/guidance/armed-forces-compensation-scheme-afcs#who-is-eligible" target="_New">7 year time limit</a> (opens in new tab) from date of injury or illness for making some claims. Complete your application as soon as you can.
   </strong>
 </div>
 

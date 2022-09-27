@@ -166,13 +166,13 @@ echo $errorMessage;
 
                                     <p  class="govuk-body">If you want us to send copies of future letters and enquiries to someone else, they must be made a representative.  We will not send copies of letters to anyone helping with making this claim unless you do this.</br>
 <p  class="govuk-body">
-IF you make someone a representative, they:
+If you make someone a representative, they:
 </p>
 
 <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
 <li>will get future copies of all letters we send</li>
-<li>will get a copy of our final decision.</li>
-<li>can be the same person helping you make this online claim or can be another person.</li>
+<li>will get a copy of our final decision</li>
+<li>can be the same person helping you make this online claim or can be another person</li>
 </ul>
 
 
@@ -211,10 +211,7 @@ IF you make someone a representative, they:
 
                 <div class="govuk-form-group">
    <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
-            <br><a href="https://modvets-dev2.london.cloudapps.digital/cancel" class="govuk-link"
-           data-module="govuk-button">
-            Cancel application
-        </a>
+@include('framework.bottombuttons')
 
     </div>
             </form>

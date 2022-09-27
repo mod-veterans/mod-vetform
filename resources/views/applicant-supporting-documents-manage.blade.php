@@ -148,6 +148,8 @@ if (!empty($data['sections']['supporting-documents']['files'])) {
 
 }
 
+$page_title = 'Uploading supporting documents';
+
 @endphp
 
 
@@ -182,13 +184,13 @@ echo $errorMessage;
 @php echo $confirm['errorLabel']; @endphp
         <input class="govuk-checkboxes__input" id="61668e5b351ab" name="/applicant/supporting-documents-upload/confirm-check" type="checkbox"
            value="yes"  >
-    <label class="govuk-label govuk-checkboxes__label" for="61668e5b351ab">I have checked the documents/file are the ones I intend to upload.  The documents/files I am uploading are intended solely to support my application and are in accordance with this service’s <a href="/upload-terms-and-conditions" target="_New">terms and conditions of use</a>.</label>
+    <label class="govuk-label govuk-checkboxes__label" for="61668e5b351ab">I have checked the documents/file are the ones I intend to upload.  The documents/files I am uploading are intended solely to support my application and are in accordance with this service’s <a href="/upload-terms-and-conditions" target="_New">terms and conditions of use</a> (opens in a new tab).</label>
 </div>
                     </div>
     </fieldset>
             <button class="govuk-button" href="">Save and continue</button>
 </div>
-
+@include('framework.bottombuttons')
 
 
         </div>

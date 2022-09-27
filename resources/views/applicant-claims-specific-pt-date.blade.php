@@ -76,21 +76,80 @@ if (!empty($_POST)) {
     $conditionyear['data'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-date/date-of-injury-incident-year']);
 
 
-    if (empty($_POST['/claim-details/claim-accident-sporting-date/date-of-injury-incident-year'])) {
-        $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-date/date-of-injury-incident-year">Enter an approximate year</a>';
-        $conditionyear['error'] = 'govuk-form-group--error';
-        $conditionyear['errorLabel'] =
-        '<span id="/claim-details/claim-accident-sporting-date/date-of-injury-incident-year-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
-         </span>';
+    if ( (!empty($_POST['/claim-details/claim-illness-date/date-of-condition-estimated'])) && ($_POST['/claim-details/claim-illness-date/date-of-condition-estimated'] == 'Yes') ) {
+
+
+
+
+        if (empty($conditionyear['data'])) {
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+            $conditionyear['error'] = 'govuk-form-group--error';
+            $conditionyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
+             </span>';
+
+        } elseif (!yearInFuture($conditionyear['data'])) {
+
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+            $conditionyear['error'] = 'govuk-form-group--error';
+            $conditionyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+             </span>';
+        }
+
+
+
 
     } else {
 
-        $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['condition-start-date']['year'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-date/date-of-injury-incident-year']);
+
+            if ( (empty($conditionday['data'])) || (empty($conditionmonth['data'])) || (empty($conditionyear['data'])) ) {
+
+               $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date</a>';
+                $conditionyear['error'] = 'govuk-form-group--error';
+                $conditionyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Enter a valid date
+                 </span>';
+
+
+            } elseif ( (!checkDate($conditionmonth['data'], $conditionday['data'], $conditionyear['data']) )  ) {
+
+              $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                $conditionyear['error'] = 'govuk-form-group--error';
+                $conditionyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span>The date entered must be a real date
+                 </span>';
+
+            }
+
+            if (!dateInFuture($conditionmonth['data'],$conditionday['data'],$conditionyear['data'])) {
+
+             $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered cannot be in the future</a>';
+                $conditionyear['error'] = 'govuk-form-group--error';
+                $conditionyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> The date entered cannot be in the future
+                 </span>';
+
+
+            }
+
+
 
     }
 
+
+
+    $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['condition-start-date']['year'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-date/date-of-injury-incident-year']);
     $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['condition-start-date']['month'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-date/date-of-injury-incident-month']);
     $data['sections']['claims']['records'][$thisRecord]['specific']['pt']['condition-start-date']['day'] = cleanTextData($_POST['/claim-details/claim-accident-sporting-date/date-of-injury-incident-day']);
 
@@ -182,7 +241,7 @@ echo $errorMessage;
 @php echo $conditionyear['errorLabel']; @endphp
 
 
-        <div id="/claim-details/claim-accident-sporting-date/date-of-injury-incident-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>
+        <div id="/claim-details/claim-accident-sporting-date/date-of-injury-incident-hint" class="govuk-hint">For example 27 3 2007. If you cannot remember, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="/claim-details/claim-accident-sporting-date/date-of-injury-incident">
                                                 <div class="govuk-date-input__item">

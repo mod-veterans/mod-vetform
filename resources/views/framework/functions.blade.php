@@ -1,4 +1,4 @@
-@php
+<?php
 session_start();
 
 //DB Connection Details
@@ -212,9 +212,6 @@ function cookiesOK($type='GA') {
             }
         break;
 
-
-
-
     }
 return FALSE; //default to false
 }
@@ -244,7 +241,6 @@ function validateMobile07($data) {
 
 
 function checkDOB($month, $day, $year) {
-
     $theirdate = strtotime($year.'-'.$month.'-'.$day);
     $date14yrsago = strtotime(date('Y-m-d')." -14 years");
     if ($date14yrsago < $theirdate) {
@@ -252,7 +248,45 @@ function checkDOB($month, $day, $year) {
     } else {
         return TRUE;
     }
+}
 
+
+function year2YearsFuture($year) {
+    if (!is_numeric($year)) {
+        return FALSE;
+    }
+    $thisYear = date('Y');
+    if (($year - $thisYear) > 2) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+
+
+function yearInFuture($year) {
+    if (!is_numeric($year)) {
+        return FALSE;
+    }
+    $thisYear = date('Y');
+    if ($year > $thisYear) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
+
+
+function dateInFuture($month,$day,$year) {
+
+
+    $theirDate = strtotime($year.'-'.$month.'-'.$day);
+    $now = strtotime(date('Y-m-d'));
+    if ($theirDate > $now) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
 }
 
 
@@ -260,4 +294,4 @@ function checkDOB($month, $day, $year) {
 
 
 
-@endphp
+?>

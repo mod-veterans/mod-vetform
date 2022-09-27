@@ -125,6 +125,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What conditions did you receive treatment for?';
+
 @endphp
 
 
@@ -142,9 +144,10 @@ echo $errorMessage;
 
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What conditions did you receive treatment for?</h1>
-                                <p class="govuk-body">Tell us about the conditions treated at this hospital or facility. Remember you only need to tell us about treatment for conditions you are claiming for.</p>
-                                <p class="govuk-body">You can add further hospitals or facilities at the end of this section.</p>
 </legend>
+                                <p class="govuk-body">Tell us about the conditions treated. Remember you only need to tell us about treatment for conditions you are claiming for.</p>
+
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$conditions['error']}}">

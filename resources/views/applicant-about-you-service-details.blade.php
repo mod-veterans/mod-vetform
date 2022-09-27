@@ -134,7 +134,7 @@ $page_title = 'Service details';
 </ul>
 
 <div class="govuk-inset-text">
-You can add as many periods of service in this section as needed. You’ll be asked if you want to `add another period of service’ at the end of this section.
+You can add as many periods of service in this section as needed. You’ll be asked if you want to 'add another period of service' at the end of this section.
 </div>
 
 
@@ -143,8 +143,7 @@ You can add as many periods of service in this section as needed. You’ll be as
             <a class="govuk-button" href="/applicant/about-you/service-details/add-service/name">
                 Add a{{$nother ?? ''}} period of service
             </a>
-            <br>
-           <a class="govuk-link" href="/applicant/about-you/service-details?action=complete">Return to Task List</a>
+@include('framework.bottombuttons')
         </div>
             </div>
         </div>

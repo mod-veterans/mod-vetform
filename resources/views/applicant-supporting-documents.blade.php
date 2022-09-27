@@ -38,7 +38,7 @@ if (!empty($_POST)) {
 
 
 
-
+$page_title = 'Uploading supporting documents';
 
 @endphp
 
@@ -58,83 +58,35 @@ if (!empty($_POST)) {
   Do not delay your claim by getting evidence you do not already have.
 </div>
 
-<h2 class="govuk-heading-l">What documents can be useful</h2>
+<h2 class="govuk-heading-l">What documents can be useful:</h2>
 
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      Letters and reports from people who have treated you
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-   For example GPs, hospital consultants or other health professionals.<br /><br />
-We only need documents that describe treatment or diagnosis
-
-  </div>
-</details>
-
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      Service documents
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-Only if they directly support your claim, for example accident report forms, hurt certificates, incident reports.
-
-  </div>
-</details>
-
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      Letters about other compensation received
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-including criminal injuries compensation and civil negligence compensation.
-  </div>
-</details>
-
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      Documents showing legal authority to act on behalf of others
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-Court of protection, Power of attorney, appointeeship
-
-  </div>
-</details>
-
-<details class="govuk-details" data-module="govuk-details">
-  <summary class="govuk-details__summary">
-    <span class="govuk-details__summary-text">
-      Medical test results
-    </span>
-  </summary>
-  <div class="govuk-details__text">
-including reports from scans, audiology and x-rays (but not the x-rays themselves).
-<br /><br />
-We do not need images of your condition/illness.
-
-  </div>
-</details>
-
-
-<h2 class="govuk-heading-l">We do not need to see</h2>
 
 <ul class="govuk-list govuk-list--bullet">
-    <li>Appointment letters.</li>
-    <li>Copies of in-service medical records.</li>
-    <li>Do not upload images of other people’s personal data – contact us after you make your claim if you think we need to see this.</li>
+    <li>letters and reports from people who have treated you, but only if they describe treatment or diagnosis</li>
+    <li>service documents, but only if they directly support your claim, for example accident report forms, hurt certificates, incident reports</li>
+    <li>letters about other compensation received, including criminal injuries compensation and civil negligence compensation</li>
+    <li>documents showing legal authority to act on behalf of others</li>
+    <li>medical test results, including reports from scans, audiology and x-rays, but not the x-rays themselves</li>
 </ul>
+
+
+
+
+<h2 class="govuk-heading-l">We do not need to see:</h2>
+
+<ul class="govuk-list govuk-list--bullet">
+    <li>appointment letters</li>
+    <li>copies of in-service medical records</li>
+    <li>images of your condition/illness</li>
+    <li>other people’s personal data.  Contact us after you make your claim if you think we need to see information belonging to other people</li>
+</ul>
+
+
 <br /><br />
 
 
 
-                        <a class="govuk-button govuk-!-margin-bottom-2" href="/applicant/supporting-documents/upload">
+                        <a class="govuk-button govuk-button--secondary govuk-!-margin-bottom-2" href="/applicant/supporting-documents/upload">
                                             Upload a document
                                         </a>
 <br /><br />
@@ -143,6 +95,7 @@ We do not need images of your condition/illness.
     @csrf
         <div class="govuk-form-group">
             <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button" name="no-upload" value="no-upload">Continue without uploading a document</button>
+@include('framework.bottombuttons')
         </div>
     </form>
 

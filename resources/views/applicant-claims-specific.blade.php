@@ -165,6 +165,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Was the incident or accident due to sporting, adventure or physical training?';
+
 @endphp
 
 

@@ -52,7 +52,7 @@ $fileinfo['data'] = @$data['sections']['supporting-documents']['file-information
 
 
 
-
+$page_title = 'Do you want to tell us anything about your documents?';
 
 @endphp
 @include('framework.header')
@@ -62,9 +62,9 @@ $fileinfo['data'] = @$data['sections']['supporting-documents']['file-information
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Do you want to tell us anything about your documents?</h1>
-                                <p class="govuk-body">If you wish to tell us anything about the files or documents you have uploaded, use the space below.</p>
+                                <p class="govuk-body">If you want to tell us anything about the images you have uploaded, use the space below.</p>
                                 <div class="govuk-inset-text">
- If you have chosen to send us any images of your condition/illness for any reason, tell us here.  </div>
+ If for any reason you have chosen to send us any images of your condition/illness, you should tell us here.  </div>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf

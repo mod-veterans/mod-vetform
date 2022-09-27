@@ -11,6 +11,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Applying for someone else';
+
 @endphp
 
 

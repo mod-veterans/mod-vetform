@@ -117,6 +117,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Why is your condition related to your armed forces service?';
+
 @endphp
 
 
@@ -155,7 +157,7 @@ if (!empty($_POST)) {
     </span>
   </summary>
   <div class="govuk-details__text">
-If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
+Reminder: If the person named in this application has ever served with the United Kingdom Special Forces (UKSF), either directly or in a support role, you must contact the MOD A Block Disclosure Cell for advice before using this service.  You may be asked to apply for Express Prior Authority in Writing (EPAW) and will be given a reference number to quote when you make your claim. Email <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a> explaining you want to make an armed forces compensation claim.
   </div>
 </details>
 
@@ -175,7 +177,7 @@ If the person named in this application is serving or has served in with United 
         </div>
 
 <div class="govuk-inset-text">
-If you’ve been affected by recalling your experiences, information on support available is on our <a href="https://www.gov.uk/guidance/urgent-help-for-veterans" target="_New">website</a>.
+If you’ve been affected by recalling your experiences, see our information on support available on  <a href="https://www.gov.uk/guidance/urgent-help-for-veterans" target="_New">GOV.UK</a> (opens in a new tab).
 </div>
 
 

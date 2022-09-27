@@ -10,7 +10,7 @@ $page_title = 'Home';
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
                                 <h1 class="govuk-heading-xl">Apply for Armed Forces Compensation or a War Pension</h1>
-                                <p class="govuk-body">Make a claim under the Armed Forces Compensation Scheme or War Pension Scheme. For more about these schemes see our <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces" target="_New">guidance</a>.</p>
+                                <p class="govuk-body">Make a claim under the Armed Forces Compensation Scheme or War Pension Scheme. For more about these schemes see our <a href="https://www.gov.uk/government/collections/free-help-with-compensation-claims-for-injury-in-the-armed-forces">guidance</a>.</p>
 <p class="govuk-body">You do not need to know which compensation scheme applies to you before making a claim.</p>
 <p class="govuk-body">
 <h2>Eligibility:</h2>
@@ -19,15 +19,15 @@ $page_title = 'Home';
         <li>you may be able to get a payment if you have an injury, illness or medical disorder caused or made worse by UK armed forces service</li>
         <li>claims can be made for both physical and mental health conditions</li>
         <li>if you want to claim for a condition related to exposure to asbestos, read the <a href="https://www.gov.uk/guidance/help-for-veterans-diagnosed-with-diffuse-mesothelioma#how-to-claim">guidance on GOV.UK</a> first</li>
-        <li>only use this service to make a claim.  If you want to ask for a review or appeal a previous decision, <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact Veterans UK.</a></li>
+        <li>only use this service to make a claim.  If you want to ask for a review or appeal a previous decision, <a href="https://www.gov.uk/guidance/veterans-uk-contact-us">contact Veterans UK</a></li>
         <li>if you want to claim for bereavement or dependant’s benefits, do not use this service. See our <a href="https://www.gov.uk/government/collections/help-and-support-when-a-veteran-or-service-person-dies" target="_NEW">guidance on GOV.UK</a>
     </ul>
 
 
 
-<p class="govuk-body">
+
 <h2>Before you start</h2>
-<strong>You'll be asked for:</strong><br />
+<p class="govuk-body"><strong>You'll be asked for:</strong><br />
 </p>
     <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
         <li>an email address. If you do not have one, you should make a claim by post. Details of how to do this can be found further down this page</li>

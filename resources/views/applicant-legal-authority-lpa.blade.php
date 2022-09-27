@@ -126,6 +126,8 @@ if (!empty($_POST)) {
 }
 
 
+$page_title = 'Enter your LPA Access Code';
+
 @endphp
 
 
@@ -158,7 +160,7 @@ echo $errorMessage;
   </summary>
   <div class="govuk-details__text">
 
-The donor may have given you the wrong code. Ask them to go to <a href="www.gov.uk/use-lpa">www.gov.uk/use-lpa</a> to create an LPA access code.
+The donor may have given you the wrong code. Ask them to go to <a href="https://gov.uk/use-lpa">www.gov.uk/use-lpa</a> to create an LPA access code.
   </div>
 </details>
 

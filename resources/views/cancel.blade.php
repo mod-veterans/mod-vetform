@@ -104,6 +104,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Confirm you want to cancel your application';
+
 @endphp
 
 
@@ -136,7 +138,7 @@ echo $errorMessage;
                           <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="cancel-yes" name="cancel-application" type="radio" value="yes">
                             <label class="govuk-label govuk-radios__label" for="cancel-yes">
-                              Yes - I want to cancel my application
+                              Yes - cancel my application and delete my information
                             </label>
                           </div>
                           <div class="govuk-radios__item">

@@ -78,21 +78,82 @@ if (!empty($_POST)) {
     $datefromyear['data'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-year']);
 
 
-    if (empty($_POST['/claim-details/claim-downgraded-dates/date-from-year'])) {
-        $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-year">Enter an approximate year</a>';
-        $datefromyear['error'] = 'govuk-form-group--error';
-        $datefromyear['errorLabel'] =
-        '<span id="/claim-details/claim-downgraded-dates/date-from-year-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
-         </span>';
+ if ( (!empty($_POST['/claim-details/claim-illness-date/date-of-datefrom-estimated'])) && ($_POST['/claim-details/claim-illness-date/date-of-datefrom-estimated'] == 'Yes') ) {
+
+
+
+
+        if (empty($datefromyear['data'])) {
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+            $datefromyear['error'] = 'govuk-form-group--error';
+            $datefromyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
+             </span>';
+
+        } elseif (!yearInFuture($datefromyear['data'])) {
+
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+            $datefromyear['error'] = 'govuk-form-group--error';
+            $datefromyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+             </span>';
+        }
+
+
+
 
     } else {
 
-        $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-start']['fromyear'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-year']);
+
+            if ( (empty($datefromday['data'])) || (empty($datefrommonth['data'])) || (empty($datefromyear['data'])) ) {
+
+               $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
+                $datefromyear['error'] = 'govuk-form-group--error';
+                $datefromyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year
+                 </span>';
+
+
+            } elseif ( (!checkDate($datefrommonth['data'], $datefromday['data'], $datefromyear['data']) )  ) {
+
+              $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                $datefromyear['error'] = 'govuk-form-group--error';
+                $datefromyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span>The date entered must be a real date
+                 </span>';
+
+            }
+
+            if (!dateInFuture($datefrommonth['data'],$datefromday['data'],$datefromyear['data'])) {
+
+             $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered cannot be in the future</a>';
+                $datefromyear['error'] = 'govuk-form-group--error';
+                $datefromyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> The date entered cannot be in the future
+                 </span>';
+
+
+            }
+
+
 
     }
 
+
+
+
+
+    $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-start']['fromyear'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-year']);
     $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-start']['frommonth'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-month']);
     $data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['downgraded-start']['fromday'] = cleanTextData($_POST['/claim-details/claim-downgraded-dates/date-from-day']);
 
@@ -181,7 +242,7 @@ echo $errorMessage;
     <input name="/claim-details/claim-downgraded-dates/date-from-year" type="hidden" value="">
 </div>
                                     <div
-    class="govuk-form-group "
+    class="govuk-form-group {{$datefromyear['error'] ?? ''}}"
     aria-describedby="/claim-details/claim-downgraded-dates/date-from-hint  ">
 
     <fieldset class="govuk-fieldset">

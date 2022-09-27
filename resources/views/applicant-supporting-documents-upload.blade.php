@@ -62,11 +62,11 @@ if (!empty($_FILES)) {
         if (empty($filepath)) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#/documents/document/file">There was an issue uploading your file, please try again</a>';
+            $errorsList[] = '<a href="#/documents/document/file">There was an issue uploading your file, try again</a>';
             $fileupload['error'] = 'govuk-form-group--error';
             $fileupload['errorLabel'] =
             '<span id="/documents/document/file-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> There was an issue uploading your file, please try again
+                <span class="govuk-visually-hidden">Error:</span> There was an issue uploading your file, try again
              </span>';
 
         }
@@ -183,6 +183,8 @@ if (!empty($_FILES)) {
 
 }
 
+$page_title = 'Upload a document';
+
 @endphp
 
 
@@ -205,21 +207,15 @@ if (!empty($_FILES)) {
 
 <p class="govuk-body">Send a print of other file types to us in the post. A freepost address is on the email you’ll receive when you submit your claim.</p>
 
-<div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
 
 
-<ul class="govuk-list govuk-list--bullet">
-<li>Your file must be no larger than 5Mb.</li>
-<li>Apple users do not upload .heic image files.</li>
-<li>Only upload one file at a time.</li>
-</ul>
 
+                <div class="govuk-inset-text">
+Only upload one file at a time<br /><br />
+Your file must be no larger than 5Mb<br /><br />
+Apple users must not upload .heic image files
 
-  </strong>
-</div>
+                </div>
 
 
 <details class="govuk-details" data-module="govuk-details">
@@ -229,7 +225,7 @@ if (!empty($_FILES)) {
     </span>
   </summary>
   <div class="govuk-details__text">
-If the person named in this application is serving or has served in with United Kingdom Special Forces (UKSF), directly or in a support role, advice must be obtained from the MOD A Block Disclosure Cell before using this service. If the person named in this application has served at any time from 1996, they will be subject to the UKSF Confidentiality Contract and must apply for Express Prior Authority in Writing (EPAW) through the Disclosure Cell before submitting a claim where they may be asked to disclose details of their service with UKSF or any units directly supporting them. The Disclosure Cell can be contacted by emailing  <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a>.
+Reminder: If the person named in this application has ever served with the United Kingdom Special Forces (UKSF), either directly or in a support role, you must contact the MOD A Block Disclosure Cell for advice before using this service.  You may be asked to apply for Express Prior Authority in Writing (EPAW) and will be given a reference number to quote when you make your claim. Email <a href="mailto:MAB-Disclosures@mod.gov.uk">MAB-Disclosures@mod.gov.uk</a> explaining you want to make an armed forces compensation claim.
   </div>
 </details>
 
@@ -245,7 +241,7 @@ If the person named in this application is serving or has served in with United 
     @php echo $fileupload['errorLabel']; @endphp
             <input class="govuk-file-upload" id="/documents/document/file"
            name="/documents/document/file" type="file"
-           aria-describedby="/documents/document/file-hint" required>
+           aria-describedby="/documents/document/file-hint">
 </div>
 
 

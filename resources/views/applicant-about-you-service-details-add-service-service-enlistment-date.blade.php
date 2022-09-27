@@ -72,42 +72,80 @@ if (!empty($_POST)) {
 
 
 
-    if ($enlistmentyear['data'] > date('Y')) {
 
-     $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
-        $enlistmentyear['error'] = 'govuk-form-group--error';
-        $enlistmentyear['errorLabel'] =
-        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
-         </span>';
+    if ( (!empty($_POST['afcs/about-you/service-details/service-enlistment-date/approximate-date'])) && ($_POST['afcs/about-you/service-details/service-enlistment-date/approximate-date'] == 'Yes') ) {
 
 
-    } elseif ( (!is_numeric($enlistmentyear['data'])) || (strlen($enlistmentyear['data']) != 4) ) {
+        if (!yearInFuture($enlistmentyear['data'])) {
 
-      $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered must be a real date</a>';
-        $enlistmentyear['error'] = 'govuk-form-group--error';
-        $enlistmentyear['errorLabel'] =
-        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> The year entered must be a real date
-         </span>';
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+            $enlistmentyear['error'] = 'govuk-form-group--error';
+            $enlistmentyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+             </span>';
 
-    } else if (empty($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year'])) {
-        $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
-        $enlistmentyear['error'] = 'govuk-form-group--error';
-        $enlistmentyear['errorLabel'] =
-        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
-         </span>';
+
+        } elseif (empty($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year'])) {
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+            $enlistmentyear['error'] = 'govuk-form-group--error';
+            $enlistmentyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
+             </span>';
+
+        }
+
+
 
     } else {
 
-        $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year'] = cleanTextData($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year']);
+
+        if ( (empty($enlistmentday['data'])) || (empty($enlistmentmonth['data'])) || (empty($enlistmentyear['data'])) ) {
+
+           $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
+            $enlistmentyear['error'] = 'govuk-form-group--error';
+            $enlistmentyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year
+             </span>';
+
+
+        }  elseif (!yearInFuture($enlistmentyear['data'])) {
+
+         $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+            $enlistmentyear['error'] = 'govuk-form-group--error';
+            $enlistmentyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+             </span>';
+
+
+        } elseif ( (!checkDate($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-month'], $_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-day'], $_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year']) )  ) {
+
+          $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+            $enlistmentyear['error'] = 'govuk-form-group--error';
+            $enlistmentyear['errorLabel'] =
+            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span>The date entered must be a real date
+             </span>';
+
+        }
+
+
+
 
     }
 
+
+
+
+    $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['year'] = cleanTextData($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year']);
     $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['month'] = cleanTextData($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-month']);
     $data['sections']['service-details']['records'][$thisRecord]['service-enlistmentdate']['day'] = cleanTextData($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-day']);
 
@@ -200,12 +238,13 @@ echo $errorMessage;
     <input name="afcs/about-you/service-details/service-enlistment-date/enlistment-date-year" type="hidden" value="">
 </div>
                                     <div
-    class="govuk-form-group "
+    class="govuk-form-group {{$enlistmentyear['error'] ?? '' }} {{$enlistmentday['error'] ?? '' }} {{$enlistmentmonth['error'] ?? '' }}"
     aria-describedby="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint  ">
 
     <fieldset class="govuk-fieldset">
-
-
+    @php echo $enlistmentyear['errorLabel']; @endphp
+        @php echo $enlistmentmonth['errorLabel']; @endphp
+    @php echo $enlistmentday['errorLabel']; @endphp
 
         <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example 27 3 2007. If you're not sure, enter an approximate year.</div>
 
@@ -241,8 +280,6 @@ echo $errorMessage;
                     <label class="govuk-label govuk-date-input__label" for="afcs/about-you/service-details/service-enlistment-date/enlistment-date-year">
                                 Year
             </label>
-@php echo $enlistmentyear['errorLabel']; @endphp
-
                 <input
             class="govuk-input govuk-date-input__input govuk-input--width-4 "
             id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-year"

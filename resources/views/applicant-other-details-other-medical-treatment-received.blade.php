@@ -125,6 +125,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What type of treatment did you receive?';
+
 @endphp
 
 

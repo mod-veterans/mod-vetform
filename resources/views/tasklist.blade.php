@@ -56,24 +56,29 @@ $page_title = 'Tasklist';
                                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{$completed}} of 13 sections.</p>
 
+
+
         <p class="govuk-body">
             Select the links below to start a section.
         </p>
         <p class="govuk-body">
-            You can go back and make changes to any sections marked ‘completed’.
+            You can go back and make changes to sections marked ‘completed’.
         </p>
+
+        <p class="govuk-body">If you decide not to continue, you can <a href="/cancel">cancel your application</a>.  This will delete all data entered.</p>
+
 @php
 if (!empty($data['settings']['sacbl'])) {
 
 @endphp
-
-<li>If you need a break, you can <a href="/save-and-come-back-later">save and come back later</a>.</li>
+<p class="govuk-body">
+If you need a break, you can <a href="/save-and-come-back-later">save and come back later</a>.
+</p>
 @php
 }
 @endphp
 
 
-        </ul>
 
         <ol class="app-task-list">
                             <li>

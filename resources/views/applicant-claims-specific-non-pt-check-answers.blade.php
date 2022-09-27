@@ -734,7 +734,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
 
     </dl>
 
-<a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
+<a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button govuk-button--secondary"
                href="/applicant/claims">
                 Add another claim
             </a>
@@ -747,6 +747,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['d
             <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and Continue</button>
         </div>
     </form>
+    @include('framework.bottombuttons')
             </div>
         </div>
     </main>

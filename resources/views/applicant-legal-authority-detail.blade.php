@@ -101,6 +101,8 @@ if (!empty($_POST)) {
     }
 }
 
+$page_title = 'What legal authority do you have to make a claim for someone else?';
+
 @endphp
 
 

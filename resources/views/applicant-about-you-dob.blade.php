@@ -52,11 +52,11 @@ if (!empty($_POST)) {
 
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Your date of birth does not appear to be a valid date</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Date of birth must be a real date</a>';
             $dob['error'] = 'govuk-form-group--error';
             $dob['errorLabel'] =
             '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Your date of birth does not appear to be a valid date
+                <span class="govuk-visually-hidden">Error:</span> Date of birth must be a real date
              </span>';
 
 
@@ -65,11 +65,11 @@ if (!empty($_POST)) {
 
 
               $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">You cannot be aged younger than 14 years</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">You cannot be aged younger than 14 years and the date cannot be in the future</a>';
             $dob['error'] = 'govuk-form-group--error';
             $dob['errorLabel'] =
             '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> You cannot be aged younger than 14 years
+                <span class="govuk-visually-hidden">Error:</span> You cannot be aged younger than 14 years and the date cannot be in the future
              </span>';
 
 

@@ -79,6 +79,80 @@ if (!empty($_POST)) {
 
 
 
+
+   if ( (empty($_POST['/other-medical-treatment-end-date/medical-treatment-not-ended']))  ) {
+
+        if ( (!empty($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-estimated'])) && ($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-estimated'] == 'Yes') ) {
+
+
+                if (empty($treatmentyear['data'])) {
+                    $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+                    $treatmentyear['error'] = 'govuk-form-group--error';
+                    $treatmentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
+                     </span>';
+
+                } elseif (!yearInFuture($treatmentyear['data'])) {
+
+                    $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered cannot be in the future</a>';
+                    $treatmentyear['error'] = 'govuk-form-group--error';
+                    $treatmentyeare['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> The date entered cannot be in the future
+                     </span>';
+                }
+
+
+
+            } else {
+
+
+                if ( (empty($treatmentday['data'])) || (empty($treatmentmonth['data'])) || (empty($treatmentyear['data'])) ) {
+
+                   $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
+                    $treatmentyear['error'] = 'govuk-form-group--error';
+                    $treatmentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year
+                     </span>';
+
+
+                }  elseif (!yearInFuture($treatmentyear['data'])) {
+
+                 $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered cannot be in the future</a>';
+                    $treatmentyear['error'] = 'govuk-form-group--error';
+                    $treatmentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> The date entered cannot be in the future
+                     </span>';
+
+
+                } elseif ( (!checkDate($treatmentmonth['data'], $treatmentday['data'], $treatmentyear['data']) )  ) {
+
+                  $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                    $treatmentyear['error'] = 'govuk-form-group--error';
+                    $treatmentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>The date entered must be a real date
+                     </span>';
+
+                }
+
+            }
+
+    }
+
+
+
+
+
+
     if (empty($_POST['/other-medical-treatment-end-date/medical-treatment-not-ended'])) {
 
         $data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['waiting-list'] = '';
@@ -94,23 +168,7 @@ if (!empty($_POST)) {
 
 
 
-    if (empty($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-year'])) {
-
-        if (empty($waitingchk)) {
-            $errors = 'Y';
-            $errorsList[] = '<a href="#/other-medical-treatment-end-date/medical-treatment-end-date">Enter an approximate year</a>';
-            $treatmentyear['error'] = 'govuk-form-group--error';
-            $treatmentyear['errorLabel'] =
-            '<span id="/other-medical-treatment-end-date/medical-treatment-end-date-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
-             </span>';
-        }
-    } else {
-
-        $data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['year'] = cleanTextData($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-year']);
-
-    }
-
+    $data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['year'] = cleanTextData($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-year']);
     $data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['month'] = cleanTextData($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-month']);
     $data['sections']['medical-treatment']['records'][$thisRecord]['treatment-end']['day'] = cleanTextData($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-day']);
 
@@ -176,6 +234,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'When did this treatment end?';
+
 @endphp
 
 
@@ -193,7 +253,6 @@ echo $errorMessage;
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">When did this treatment end?</h1>
 </legend>
-                                <p class="govuk-body">If you’re still receiving treatment, tick "This treatment has not yet ended"</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -202,7 +261,7 @@ echo $errorMessage;
 </div>
 
                                     <div
-    class="govuk-form-group "
+    class="govuk-form-group {{$treatmentyear['error'] ?? ''}}"
     aria-describedby="/other-medical-treatment-end-date/medical-treatment-end-date-hint  ">
 
 @php echo $treatmentyear['errorLabel']; @endphp
@@ -210,7 +269,7 @@ echo $errorMessage;
 
 
 
-        <div id="/other-medical-treatment-end-date/medical-treatment-end-date-hint" class="govuk-hint">For example 27 3 2007. If you are not sure, just enter a year.</div>
+        <div id="/other-medical-treatment-end-date/medical-treatment-end-date-hint" class="govuk-hint">For example 27 3 2007. If you cannot remember, enter an approximate year.</div>
 
         <div class="govuk-date-input" id="/other-medical-treatment-end-date/medical-treatment-end-date">
                                                 <div class="govuk-date-input__item">

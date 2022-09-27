@@ -35,11 +35,11 @@ $lastname = md5(simplify($_POST['lastname']));
 
         if ( (!is_numeric($dobday['data'])) || (!is_numeric($dobmonth['data'])) || (!is_numeric($dobyear['data'])) ) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#/applicant/nominee-details/nominee-details">Please enter your date of birth in numeric format</a>';
+            $errorsList[] = '<a href="#/applicant/nominee-details/nominee-details">Enter your date of birth in numeric format</a>';
             $dob['error'] = 'govuk-form-group--error';
             $dob['errorLabel'] =
             '<span id="/applicant/nominee-details/nominee-details" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> Please enter your date of birth in numeric format
+                <span class="govuk-visually-hidden">Error:</span> Enter your date of birth in numeric format
              </span>';
 
 
@@ -192,7 +192,7 @@ echo $errorMessage;
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/last-name">
         Surname or family name (required)
     </label>
-    <input  class="govuk-input govuk-!-width-two-thirds " id="last-name" name="lastname" type="text" value="" required>
+    <input  class="govuk-input govuk-!-width-two-thirds " id="last-name" name="lastname" type="text" value="">
 </div>
 
 
@@ -261,7 +261,7 @@ echo $errorMessage;
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/lastname">
         National Insurance Number (required)
     </label>
-    <input  class="govuk-input govuk-!-width-two-thirds " id="last-name" name="ninumber" type="text" value="" required>
+    <input  class="govuk-input govuk-!-width-two-thirds " id="last-name" name="ninumber" type="text" value="">
 </div>
 
 

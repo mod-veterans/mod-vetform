@@ -51,7 +51,7 @@ if ( (!empty($_GET['action'])) && ($_GET['action'] == 'complete') ) {
             $treatmentList .='
             <div>
              <dt class="govuk-summary-list__value">
-                            Hospital / Facility '.$count.'
+                            Treatment centre '.$count.'
             </dt>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link govuk-warning govuk-!-margin-right-5" href="/applicant/other-details/other-medical-treatment?delRecord='.$k.'">Delete<span class="govuk-visually-hidden"> name</span>
@@ -90,7 +90,7 @@ if ( (!empty($_GET['action'])) && ($_GET['action'] == 'complete') ) {
 //END STACK / RECORD HANDLING
 /////////////////////////////
 
-echo $data['settings']['medical-treatment-record-num'];
+//echo $data['settings']['medical-treatment-record-num'];
 
 
 if ($lastRecID < 2) {
@@ -176,11 +176,11 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type">Tell us if you received medical treatment</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type">Tell us if you received further medical treatment</a>';
         $treatment['error'] = 'govuk-form-group--error';
         $treatment['errorLabel'] =
         '<span id="/other-compensation/claim-payment-type/claim-outcome-payment-type-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Tell us if you received medical treatment
+            <span class="govuk-visually-hidden">Error:</span> Tell us if you received further medical treatment
          </span>';
 
     }
@@ -234,6 +234,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'Have you had any further hospital or specialist treatment for conditions on this application?';
+
 @endphp
 
 
@@ -249,26 +252,15 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Further hospital or medical treatment</h1>
+                                <h1 class="govuk-heading-xl">Have you had any further hospital or specialist treatment for conditions on this application?</h1>
 </legend>
 
 @php
 if ($lastRecID < 2) {
 @endphp
 
-                                <p class="govuk-body">Tell us if you have been treated at any other hospitals or medical facilities for the conditions on this application. This includes if you’re on a waiting list for treatment to start.</p>
-                                <div class="govuk-inset-text">
-                                    You do not need to tell us again about hospitals or facilities you entered in the claim section.
-                                </div>
-
-
-                                <p class="govuk-body">If you’ve visited the same hospital or facility several times, you only need to tell us the details once. </p>
-
-                                <p class="govuk-body">
-You can add as many hospitals or facilities as needed.  You’ll be asked if you want to ‘add another hospital/facility’ at the end of this section.
-</p>
-
-<p class="govuk-body"><strong>Have you received, or are waiting for, treatment at any other hospitals or medical facilities?</strong></p>
+                                <p class="govuk-body">This includes if you’re on a waiting list. You can add as many treatment centres as needed.  You’ll be asked if you want to ‘add another hospital/facility’ at the end of this section. If you’ve visited the same treatment centre several times, you only need to tell us once</p>
+<p class="govuk-body">You do not need to tell us again about treatment centres you entered in the claim section.</p>
 
 
                                 <form method="post" enctype="multipart/form-data" novalidate >
@@ -287,7 +279,7 @@ You can add as many hospitals or facilities as needed.  You’ll be asked if you
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/treatment-status/treatment-status-no" name="/treatment-status/treatment-status" type="radio"
            value="No"      {{$treatmentchk['No'] ?? ''}}      >
-    <label class="govuk-label govuk-radios__label" for="/treatment-status/treatment-status-no">No - I’ve not had further treatment for the conditions on this application.</label>
+    <label class="govuk-label govuk-radios__label" for="/treatment-status/treatment-status-no">No</label>
 </div>
 
                     </div>
@@ -314,10 +306,11 @@ echo $treatmentList;
                             </dl>
 
                 <div class="govuk-form-group govuk-!-margin-top-4">
-            <a class="govuk-button" href="/applicant/other-details/other-medical-treatment/hospital-address?medicalrecord={{$lastRecID}}">
-                Add another Hospital / Medical Facility            </a>
-            <br>
-            <a class="govuk-link" href="/applicant/other-details/other-medical-treatment?action=complete">Return to Task List</a>
+            <a class="govuk-button govuk-button--secondary" href="/applicant/other-details/other-medical-treatment/hospital-address?medicalrecord={{$lastRecID}}">
+                Add another treatment centre           </a><br /><br />
+                <a class="govuk-button govuk-button" href="/tasklist">Save and continue</a>
+
+           @include('framework.bottombuttons')
         </div>
 
 

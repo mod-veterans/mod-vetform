@@ -1,5 +1,13 @@
 @include('framework.functions')
+@php
+
+    $userID = $_SESSION['vets-user'];
+    $data = getData($userID);
+
+@endphp
+
 @include('framework.header')
+
 
 <form name="{Route::currentRouteName()}" action="POST">
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
@@ -14,11 +22,29 @@
 <p class="govuk-body">
 <strong>To come back, you'll need your:</strong><br />
 </p>
-    <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-        <li>Last name or family name</li>
-        <li>Date of birth</li>
-        <li>National Insurance Number</li>
-    </ul>
+<dl class="govuk-summary-list govuk-!-margin-bottom-9">
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Surname</dt>
+                <dd class="govuk-summary-list__value">
+                    {{$data['sections']['about-you']['name']['lastname'] ?? '' }}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">Date of birth</dt>
+                <dd class="govuk-summary-list__value">
+                    {{$data['sections']['about-you']['dob']['day']}} / {{$data['sections']['about-you']['dob']['month']}} / {{$data['sections']['about-you']['dob']['year']}}
+                </dd>
+            </div>
+            <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">National Insurance Number</dt>
+                <dd class="govuk-summary-list__value">
+                    {{$data['sections']['about-you']['ninumber'] ?? '' }}
+                </dd>
+            </div>
+
+    </dl>
+
+<div class="govuk-body">You may want to make a note of these details now.  If you need to amend them, select ‘Return to tasklist’ below and go back to the ‘Personal Details’ section.</div>
 
 
 <div class="govuk-warning-text">

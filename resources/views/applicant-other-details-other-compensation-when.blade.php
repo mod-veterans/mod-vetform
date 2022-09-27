@@ -54,21 +54,79 @@ if (!empty($_POST)) {
     $paymentyear['data'] = cleanTextData($_POST['/other-compensation/claim-payment-date/claim-payment-date-year']);
 
 
-    if (empty($_POST['/other-compensation/claim-payment-date/claim-payment-date-year'])) {
-        $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
-        $paymentyear['error'] = 'govuk-form-group--error';
-        $paymentyear['errorLabel'] =
-        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
-         </span>';
 
-    } else {
 
-        $data['sections']['other-compensation']['payment-date']['year'] = cleanTextData($_POST['/other-compensation/claim-payment-date/claim-payment-date-year']);
+        if ( (!empty($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-estimated'])) && ($_POST['/other-medical-treatment-end-date/medical-treatment-end-date-estimated'] == 'Yes') ) {
 
-    }
 
+                if (empty($paymentyear['data'])) {
+                    $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+                    $paymentyear['error'] = 'govuk-form-group--error';
+                    $paymentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
+                     </span>';
+
+                } elseif (!yearInFuture($paymentyear['data'])) {
+
+                    $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+                    $paymentyear['error'] = 'govuk-form-group--error';
+                    $paymentyeare['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+                     </span>';
+                }
+
+
+
+            } else {
+
+
+                if ( (empty($paymentday['data'])) || (empty($paymentmonth['data'])) || (empty($paymentyear['data'])) ) {
+
+                   $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date</a>';
+                    $paymentyear['error'] = 'govuk-form-group--error';
+                    $paymentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Enter a valid date
+                     </span>';
+
+
+                }  elseif (!yearInFuture($paymentyear['data'])) {
+
+                 $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+                    $paymentyear['error'] = 'govuk-form-group--error';
+                    $paymentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
+                     </span>';
+
+
+                } elseif ( (!checkDate($paymentmonth['data'], $paymentday['data'], $paymentyear['data']) )  ) {
+
+                  $errors = 'Y';
+                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                    $paymentyear['error'] = 'govuk-form-group--error';
+                    $paymentyear['errorLabel'] =
+                    '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>The date entered must be a real date
+                     </span>';
+
+                }
+
+            }
+
+
+
+
+
+
+
+    $data['sections']['other-compensation']['payment-date']['year'] = cleanTextData($_POST['/other-compensation/claim-payment-date/claim-payment-date-year']);
     $data['sections']['other-compensation']['payment-date']['month'] = cleanTextData($_POST['/other-compensation/claim-payment-date/claim-payment-date-month']);
     $data['sections']['other-compensation']['payment-date']['day'] = cleanTextData($_POST['/other-compensation/claim-payment-date/claim-payment-date-day']);
 
@@ -157,7 +215,7 @@ echo $errorMessage;
     <input name="/other-compensation/claim-payment-date/claim-payment-date-year" type="hidden" value="">
 </div>
                                     <div
-    class="govuk-form-group "
+    class="govuk-form-group {{$paymentyear['error'] ?? ''}}"
     aria-describedby="/other-compensation/claim-payment-date/claim-payment-date-hint  ">
 
     <fieldset class="govuk-fieldset">

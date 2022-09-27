@@ -81,7 +81,7 @@ if ( (!ctype_alnum($bigCode)) || (!ctype_alnum($theCode)) ) {
           </h2>
           <div class="govuk-error-summary__body">
             <ul class="govuk-list govuk-error-summary__list">
-           We are sorry, the access code you’ve entered has not been accepted. <a href="/retrieve-application">Please try again</a>  or <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">contact us</a>.
+           The access code you’ve entered is not correct. <a href="/retrieve-application">Try again</a>  or <a href="https://www.gov.uk/guidance/veterans-uk-contact-us" target="_New">contact us</a>.
             </ul>
           </div>
         </div>
@@ -89,6 +89,8 @@ if ( (!ctype_alnum($bigCode)) || (!ctype_alnum($theCode)) ) {
     }
 
 }
+
+$page_title = 'Enter your access code';
 
 @endphp
 

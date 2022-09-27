@@ -145,6 +145,8 @@ die();
 }
 }
 
+$page_title = 'Complete your application';
+
 @endphp
 
 
@@ -174,46 +176,46 @@ You will not be able to access your completed application again after it is subm
 <p class="govuk-body"><strong>Declaration</strong></p>
 <p class="govuk-body">
 
-I confirm that if I have signed a UKSF Confidentiality Contract, I have been careful not to make unauthorised disclosures. I have sought advice from the Disclosure Cell and have Express Prior Authority in Writing (EPAW) to make such statements.</p>
+I confirm that if I have signed a UK Special Forces (UKSF) Confidentiality Contract, I have been careful not to make unauthorised disclosures. I have sought advice from the Disclosure Cell and have Express Prior Authority in Writing (EPAW) to make such statements.</p>
 
 <p class="govuk-body">I confirm the information I have given is accurate and complete to the best of my knowledge and belief.</p>
 
 <p class="govuk-body">I understand that the information and personal data I have provided on this form, and any information and personal data I provide subsequently may be:</p>
 <ul  class="govuk-list govuk-list--bullet">
-<li>Used by the MOD in connection with my claim, or any subsequent reconsideration, review or appeal, under the Armed Forces Compensation Scheme (AFCS) or the Service Pensions Order (SPO) or any other schemes administered by Veterans UK.</li>
-<li>Passed to any organisation contracted to provide medical services to the MOD and any qualified medical practitioner asked by the MOD to provide specialist advice</li>
-<li>Passed to the DWP.</li>
-<li>Used by the MOD and its agents in connection with all matters relating to this or future claims, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or other schemes administered by Veterans UK, and other claims against the MOD, and by other Government Departments, which have a legitimate interest in this information, for example, for the prevention and detection of crime.</li>
+<li>used by the MOD in connection with my claim, or any subsequent reconsideration, review or appeal, under the Armed Forces Compensation Scheme (AFCS) or the Service Pensions Order (SPO) or any other schemes administered by Veterans UK</li>
+<li>passed to any organisation contracted to provide medical services to the MOD and any qualified medical practitioner asked by the MOD to provide specialist advice</li>
+<li>passed to the Department of Work and Pensions (DWP)</li>
+<li>used by the MOD and its agents in connection with all matters relating to this or future claims, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or other schemes administered by Veterans UK, and other claims against the MOD, and by other Government Departments, which have a legitimate interest in this information, for example, for the prevention and detection of crime</li>
 </ul>
 <ul  class="govuk-list govuk-list--bullet">
 
 
 <p class="govuk-body"><strong>I understand that:</strong></p>
-<li>I must immediately tell the MOD of anything that may affect my entitlement to, or the amount of, an award under the AFCS, a war pension, a supplementary allowance or any survivors’ benefits paid under the SPO, or an award paid under any other scheme administered by Veterans UK, including any changes of address.</li>
-<li>If I knowingly give false information, I may be liable to prosecution.</li>
+<li>I must immediately tell the MOD of anything that may affect my entitlement to, or the amount of, an award under the AFCS, a war pension, a supplementary allowance or any survivors’ benefits paid under the SPO, or an award paid under any other scheme administered by Veterans UK, including any changes of address</li>
+<li>if I knowingly give false information, I may be liable to prosecution</li>
 </ul>
 
-<p class="govuk-body"><strong>In order to process your application</strong></p>
+<p class="govuk-body"><strong>In order to process your application:</strong></p>
 <ul  class="govuk-list govuk-list--bullet">
-<li>The MOD and,
-<li>any doctor advising the MOD and,
-<li>any organisation contracted to provide medical services to the MOD and any doctor providing services to that organisation.</li>
+<li>The MOD
+<li>any doctor advising the MOD
+<li>any organisation contracted to provide medical services to the MOD and any doctor providing services to that organisation</li>
 </ul>
 <p class="govuk-body"><strong>maybe required to contact:</strong></p>
 <ul  class="govuk-list govuk-list--bullet">
-<li>any doctor who has provided treatment and,</li>
-<li>any hospital or similar place and,</li>
-<li>anyone else who has provided investigation or treatment (such as a physiotherapist) for copies of all medical records (including those in sealed envelopes) and any other information required to consider my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK.</li>
+<li>any doctor who has provided treatment</li>
+<li>any hospital or similar place</li>
+<li>anyone else who has provided investigation or treatment (such as a physiotherapist) for copies of all medical records (including those in sealed envelopes) and any other information required to consider my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK</li>
 </ul>
 
-<p class="govuk-body"><strong>And that the MOD may</strong></p>
+<p class="govuk-body"><strong>And that the MOD may:</strong></p>
 <ul  class="govuk-list govuk-list--bullet">
-<li>Disclose medical records, and any information about my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK, to any organisation contracted to provide medical services to the MOD and any qualified medical practitioner or consultant asked by the MOD to provide specialist advice. I also agree that the MOD may send copies of medical information obtained for the purposes of my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK to my General Practitioner. I understand that the information will be retained by the MOD, either as a written record, or on a secure database, and may be used in future if it is necessary to reconsider or review my claim and any award made.</li>
+<li>disclose medical records, and any information about my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK, to any organisation contracted to provide medical services to the MOD and any qualified medical practitioner or consultant asked by the MOD to provide specialist advice. I also agree that the MOD may send copies of medical information obtained for the purposes of my claim, or any subsequent reconsideration, review or appeal, under the AFCS or the SPO or any other schemes administered by Veterans UK to my General Practitioner. I understand that the information will be retained by the MOD, either as a written record, or on a secure database, and may be used in future if it is necessary to reconsider or review my claim and any award made</li>
 </ul>
 
-<p clas="govuk-body"><strong>I agree</strong></p>
+<p clas="govuk-body"><strong>I agree:</strong></p>
 <ul  class="govuk-list govuk-list--bullet">
-<li>To repay any sum paid as a result of this claim in the event that an overpayment is made for any reason.</li>
+<li>to repay any sum paid as a result of this claim in the event that an overpayment is made for any reason</li>
 </ul>
   </div>
 
@@ -231,7 +233,7 @@ I confirm that if I have signed a UKSF Confidentiality Contract, I have been car
 
 
                 <div class="govuk-form-group">
-   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">SUBMIT YOUR CLAIM</button>
+   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Submit your application</button>
 @include('framework.bottombuttons')
 
     </div>

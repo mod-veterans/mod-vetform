@@ -462,7 +462,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['downgraded'] == 'Yes') 
 
     </dl>
 
-   <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
+   <a class="govuk-button govuk-!-margin-top-5 govuk-button--secondary" data-module="govuk-button"
                href="/applicant/claims">
                 Add another claim
             </a>
@@ -475,6 +475,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['downgraded'] == 'Yes') 
             <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and Continue</button>
         </div>
     </form>
+    @include('framework.bottombuttons')
             </div>
         </div>
     </main>

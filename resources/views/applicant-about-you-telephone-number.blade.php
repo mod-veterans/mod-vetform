@@ -93,7 +93,7 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
                 $mobile['error'] = 'govuk-form-group--error';
                 $mobile['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Enter a number number with the correct number of digits (11)
+                    <span class="govuk-visually-hidden">Error:</span> Enter a number with the correct number of digits (11)
                  </span>';
                  $numHidden = '';
 

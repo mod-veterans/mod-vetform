@@ -35,6 +35,8 @@ if (!empty($_POST)) {
     die();
 }
 
+$page_title = 'Check your answers';
+
 @endphp
 
 @include('framework.header')
@@ -50,13 +52,13 @@ if (!empty($_POST)) {
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
 @if (!empty($data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['name']))
             <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">Hospital/Medical facility</dt>
+            <dt class="govuk-summary-list__key">Treatment Centre</dt>
             <dd class="govuk-summary-list__value">
                                     {{$data['sections']['medical-treatment']['records'][$thisRecord]['hospital-address']['name'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/other-details/other-medical-treatment/hospital-address/?return=/applicant/other-details/other-medical-treatment/check-answers#/other-medical-treatment-address/hospital-name">Change<span
-                        class="govuk-visually-hidden"> Hospital name if known</span></a>
+                        class="govuk-visually-hidden"> Treatment centre name if known</span></a>
             </dd>
         </div>
 @endif
@@ -260,9 +262,9 @@ if (!empty($_POST)) {
 @endif
 
     </dl>
-                    <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
+                    <a class="govuk-button govuk-!-margin-top-5 govuk-button--secondary" data-module="govuk-button"
                href="/applicant/other-details/other-medical-treatment">
-                Add another hospital/medical facility
+                Add another treatment centre
             </a>
             <br>
             Or
@@ -273,6 +275,7 @@ if (!empty($_POST)) {
             <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Save and continue</button>
         </div>
     </form>
+   @include('framework.bottombuttons')
             </div>
         </div>
     </main>

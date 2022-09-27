@@ -23,17 +23,13 @@ if (empty($_GET['servicerecord'])) {
 
 
 
+//mark this section as complete now
+$data['sections']['service-details']['completed'] = TRUE;
+storeData($userID,$data);
 
 
-if (!empty($_POST)) {
 
-    $data['sections']['service-details']['completed'] = TRUE;
 
-    storeData($userID,$data);
-
-    header("Location: /tasklist");
-    die();
-}
 
 $page_title = 'Check your answers';
 
@@ -425,20 +421,17 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
         </div>
 @endif
     </dl>
-                    <a class="govuk-button govuk-!-margin-top-5" data-module="govuk-button"
+                    <a class="govuk-button govuk-!-margin-top-5 govuk-button--secondary" data-module="govuk-button"
                href="/applicant/about-you/service-details">
                 Add another period of service
             </a>
             <p class="govuk-body">or</p>
-    <form method="post" enctype="multipart/form-data" novalidate>
-    @csrf
-        <div class="govuk-form-group">
-            <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button" name="save and continue" value="save and continue">Save and continue</button>
+
+
+            <a class="govuk-button govuk-!-margin-right-2" data-module="govuk-button" href="/tasklist">Save and continue</a>
+            @include('framework.bottombuttons')
         </div>
-    </form>
-            </div>
-        </div>
-    </main>
+    </div>
 </div>
 
 

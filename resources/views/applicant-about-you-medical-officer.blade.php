@@ -237,7 +237,7 @@ $page_title = 'Details of your current Doctor';
 </p>
 
 <div class="govuk-inset-text">
-If you’re not registered with a surgery or practice, "not registered" in "Practice name" below.
+If you’re not registered with a surgery or practice, write "not registered" in "practice name" below.
 </div>
 
 <p class="govuk-body">You can tell us about other consultants or specialists later in the claim.</p>

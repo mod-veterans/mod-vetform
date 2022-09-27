@@ -74,15 +74,86 @@ if (!empty($_POST)) {
 
 
     //set the entered field names
-    $enlistmentday['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-day']);
-    $enlistmentmonth['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-month']);
-    $enlistmentyear['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year']);
+    $dischargeday['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-day']);
+    $dischargemonth['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-month']);
+    $dischargeyear['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year']);
 
 
 if (empty($_POST['afcs/about-you/service-details/service-discharge/service-is-serving'])) {
 
         $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['stillserving'] = '';
         $theURL = '/applicant/about-you/service-details/add-service/discharge-reason';
+
+
+        if ( (!empty($_POST['afcs/about-you/service-details/service-discharge/date-is-approximate'])) && ($_POST['afcs/about-you/service-details/service-discharge/date-is-approximate'] == 'Yes') ) {
+
+
+            if (empty($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year'])) {
+                $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+                $dischargeyear['error'] = 'govuk-form-group--error';
+                $dischargeyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
+                 </span>';
+
+            } elseif (!year2YearsFuture($dischargeyear['data'])) {
+
+                $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be more than 2 years in the future</a>';
+                $dischargeyear['error'] = 'govuk-form-group--error';
+                $dischargeyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> The year entered cannot be more than 2 years in the future
+                 </span>';
+            }
+
+
+
+        } else {
+
+
+            if ( (empty($dischargeday['data'])) || (empty($dischargemonth['data'])) || (empty($dischargeyear['data'])) ) {
+
+               $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
+                $dischargeyear['error'] = 'govuk-form-group--error';
+                $dischargeyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year
+                 </span>';
+
+
+            }  elseif (!year2YearsFuture($dischargeyear['data'])) {
+
+             $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be more than 2 years in the future</a>';
+                $dischargeyear['error'] = 'govuk-form-group--error';
+                $dischargeyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> The year entered cannot be more than 2 years in the future
+                 </span>';
+
+
+            } elseif ( (!checkDate($dischargemonth['data'], $dischargeday['data'], $dischargeyear['data']) )  ) {
+
+              $errors = 'Y';
+                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                $dischargeyear['error'] = 'govuk-form-group--error';
+                $dischargeyear['errorLabel'] =
+                '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span>The date entered must be a real date
+                 </span>';
+
+            }
+
+
+
+
+
+
+        }
+
 
     } else {
 
@@ -95,47 +166,9 @@ if (empty($_POST['afcs/about-you/service-details/service-discharge/service-is-se
     }
 
 
-    if ($enlistmentyear['data'] > date('Y')) {
-
-     $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
-        $enlistmentyear['error'] = 'govuk-form-group--error';
-        $enlistmentyear['errorLabel'] =
-        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
-         </span>';
-
-
-    } elseif ( (!is_numeric($enlistmentyear['data'])) || (strlen($enlistmentyear['data']) != 4) ) {
-
-      $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered must be a real date</a>';
-        $enlistmentyear['error'] = 'govuk-form-group--error';
-        $enlistmentyear['errorLabel'] =
-        '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> The year entered must be a real date
-         </span>';
-
-    } elseif (empty($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year'])) {
-        $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] = '';
-        $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
-        $dischargeyear['error'] = 'govuk-form-group--error';
-        $dischargeyear['errorLabel'] =
-        '<span id="afcs/about-you/service-details/service-discharge/date-of-discharge-year-error" class="govuk-error-message">
-            <span class="govuk-visually-hidden">Error:</span> Enter an approximate year
-         </span>';
-
-    } else {
-
-        $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year']);
-
-    }
-
+    $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['year'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-year']);
     $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['month'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-month']);
     $data['sections']['service-details']['records'][$thisRecord]['service-dischargedate']['day'] = cleanTextData($_POST['afcs/about-you/service-details/service-discharge/date-of-discharge-day']);
-
-
 
 
 
@@ -150,15 +183,6 @@ if (empty($_POST['afcs/about-you/service-details/service-discharge/service-is-se
         $approximatechk = ' checked';
 
     }
-
-
-
-    if ($servingValidation == 'N') {
-    //this means we don't need the validation, so can skip any errors
-    //doing thsi means we still update the fields if they have been previously populated
-        $errors = 'N';
-    }
-
 
 
     if ($errors == 'Y') {
@@ -225,7 +249,7 @@ echo $errorMessage;
 @endphp
 
                                 <h1 class="govuk-heading-xl">What was your discharge date?</h1>
-                                <p class="govuk-body">Tell us the date this period of service ended, unless still serving. </p>
+                                <p class="govuk-body">Tell us the date this period of service ended.  If you’re still serving, tick ‘I am still serving’. </p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
