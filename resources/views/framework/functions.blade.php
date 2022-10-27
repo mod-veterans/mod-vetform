@@ -1,8 +1,8 @@
 <?php
+
 session_start();
 
 //DB Connection Details
-
 
 
 if (empty (getenv('DB_PASSWORD'))) {
@@ -25,7 +25,26 @@ if (empty (getenv('DB_PASSWORD'))) {
     $_ENV['DB_DATABASE']     = getenv('DB_DATABASE');
     $_ENV['DB_USERNAME'] = getenv('DB_USERNAME');
     $_ENV['DB_PASSWORD'] = getenv('DB_PASSWORD');
+    $_ENV['DATABASE_TABLE'] = getenv('DATABASE_TABLE');
 }
+
+
+//do we have a DB connection? Show a friendly non-DB page if not
+if (!@$db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."")) {
+    //cannot connect to DB
+    header("Location: /maintenance");
+    die();
+}
+
+if (!@pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']."")) {
+    //cannot connect to table
+    header("Location: /maintenance");
+    die();
+}
+
+
+
+
 
 
 if (empty($_SESSION['vets-user'])) {
@@ -76,9 +95,9 @@ function storeData($userID, $data, $type='UPDATE') {
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
 
     if ($type == 'INSERT') {
-        pg_query($db, "INSERT INTO modvetdevusertable(datetimeadded,data,userid) VALUES(now(),'$data','$userID')");
+        pg_query($db, "INSERT INTO ".$_ENV['DATABASE_TABLE']."(datetimeadded,data,userid) VALUES(now(),'$data','$userID')");
     } elseif ($type == 'UPDATE') {
-        pg_query($db, "UPDATE modvetdevusertable SET datelastaccessed = now(), data = '$data' WHERE userid = '$userID'");
+        pg_query($db, "UPDATE ".$_ENV['DATABASE_TABLE']." SET datelastaccessed = now(), data = '$data' WHERE userid = '$userID'");
     } else {
         return FALSE;
     }
@@ -101,7 +120,7 @@ function getData($userID) {
     }
 
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
-    $result = pg_query($db, "SELECT * FROM modvetdevusertable WHERE userid = '$userID'");
+    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE userid = '$userID'");
     if ($row = pg_fetch_assoc($result)) {
 
         $data = $row['data'];
@@ -193,6 +212,27 @@ function deleteData($userid) {
     //TODO DELETE DATA FROM DB
 }
 
+function houseKeeping($which='devtable') {
+
+    //DELETE records more than 93 days old
+    $days93 = strtotime('-93 days');
+    $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
+    $result = pg_query($db, "DELETE FROM ".$_ENV['DATABASE_TABLE']." WHERE extract(epoch from datelastaccessed) < ".$days93."");
+    if ($row = pg_fetch_assoc($result)) {
+    var_dump($row);
+
+    die;
+}
+
+    //DELETE FILES from S3
+
+
+
+
+
+}
+
+
 
 function cookiesOK($type='GA') {
     switch ($type) {
@@ -280,7 +320,7 @@ function yearInFuture($year) {
 function dateInFuture($month,$day,$year) {
 
 
-    $theirDate = strtotime($year.'-'.$month.'-'.$day);
+    $theirDate = strtotime($year.'-'.$month.'- '.$day);
     $now = strtotime(date('Y-m-d'));
     if ($theirDate > $now) {
         return FALSE;

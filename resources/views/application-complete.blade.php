@@ -705,9 +705,21 @@ $emailContent .='
 
 Did you have a different name during this period of service?
 
+▐ '.$serviceRecord['nameinservice'].'
+
+';
+
+}
+
+if ( (!empty($serviceRecord['nameinservice'])) && ($serviceRecord['nameinservice'] == 'Yes') ) {
+
+$emailContent .='
+
+Enter the full name in service
 
 ▐ '.$nameshow ?? 'Would rather not disclose';
 }
+
 
 if(!empty($serviceRecord['servicenumber'])) {
 $emailContent .='

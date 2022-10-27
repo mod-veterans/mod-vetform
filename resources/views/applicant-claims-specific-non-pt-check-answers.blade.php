@@ -261,7 +261,7 @@ if (!empty($_POST)) {
             </dd>
         </div>
 
-@endif
+
 
 @php
 if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['report-incident'] == 'Yes') {
@@ -281,7 +281,7 @@ if ($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['r
 @php
 }
 @endphp
-
+@endif
          @if(!empty($data['sections']['claims']['records'][$thisRecord]['specific']['non-pt']['accident-form']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Was an accident form completed?</dt>

@@ -103,12 +103,9 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'])) {
-        $_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'] = 'No';
-        $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = 'No';
+        $_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'] = '';
+        $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = '';
     } else {
-        $data['sections']['service-details']['records'][$thisRecord]['nameinservice'] = 'No';
-        $_POST['afcs/about-you/service-details/service-name/name-in-service'] = 'No';
-
 
 
     }
@@ -122,13 +119,12 @@ if (!empty($_POST)) {
 
         if (empty($_POST['afcs/about-you/service-details/service-name/name-in-service'])) {
 
-            $data['sections']['service-details']['records'][$thisRecord]['nameinservice'] = 'No';
+            $data['sections']['service-details']['records'][$thisRecord]['nameinservice'] = '';
 
             if ($_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'] == 'Yes') {
 
                 $donotwanttodisclose['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-name/donotwanttodisclose']);
                 $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = 'Yes';
-                $data['sections']['service-details']['records'][$thisRecord]['nameinservice'] = 'Yes';
                 $donotwanttodisclosechk = 'checked';
 
             } else {

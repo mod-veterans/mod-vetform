@@ -255,7 +255,7 @@ $page_title = 'Check your answers';
                                     {{$data['sections']['medical-treatment']['records'][$thisRecord]['type'] ?? ''}}
                             </dd>
             <dd class="govuk-summary-list__actions">
-                <a class="govuk-link" href="/applicant/other-details/other-medical-treatment/condition/type/?return=/applicant/other-details/other-medical-treatment/check-answers#/other-medical-treatment-type/other-medical-treatment-type">Change<span
+                <a class="govuk-link" href="/applicant/other-details/other-medical-treatment/received/?return=/applicant/other-details/other-medical-treatment/check-answers#/other-medical-treatment-type/other-medical-treatment-type">Change<span
                         class="govuk-visually-hidden"> What type of medical treatment did you receive?</span></a>
             </dd>
         </div>

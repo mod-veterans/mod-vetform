@@ -62,11 +62,11 @@ if (!empty($_FILES)) {
         if (empty($filepath)) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#/documents/document/file">There was an issue uploading your file, try again</a>';
+            $errorsList[] = '<a href="#/documents/document/file">Your file has not been uploaded.  Choose a valid file or press \'Continue without uploading a document\'</a>';
             $fileupload['error'] = 'govuk-form-group--error';
             $fileupload['errorLabel'] =
             '<span id="/documents/document/file-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> There was an issue uploading your file, try again
+                <span class="govuk-visually-hidden">Error:</span> Your file has not been uploaded.  Choose a valid file or press \'Continue without uploading a document\'
              </span>';
 
         }
@@ -87,16 +87,16 @@ if (!empty($_FILES)) {
         */
 
 
-        $allowed = array('gif', 'png','jpg','jpeg','pdf');
+        $allowed = array('gif', 'png','jpg','jpeg','pdf', 'heic');
         $filename = strtolower($filename);
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
         if (!in_array($ext, $allowed)) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#/documents/document/file">You can only upload the following file types: gif, png, jpg, jpeg, pdf</a>';
+            $errorsList[] = '<a href="#/documents/document/file">You can only upload the following file types: gif, png, jpg, jpeg, heic, pdf</a>';
             $fileupload['error'] = 'govuk-form-group--error';
             $fileupload['errorLabel'] =
             '<span id="/documents/document/file-error" class="govuk-error-message">
-                <span class="govuk-visually-hidden">Error:</span> You can only upload the following file types: gif, png, jpg, jpeg, pdf
+                <span class="govuk-visually-hidden">Error:</span> You can only upload the following file types: gif, png, jpg, jpeg, heic, pdf
              </span>';
         }
 
@@ -203,7 +203,7 @@ $page_title = 'Upload a document';
                                  <h1 class="govuk-heading-xl">Upload a document</h1>
 
 
-<p class="govuk-body">You can only upload GIF, PNG, JPG and PDF files directly from your device.</p>
+<p class="govuk-body">You can only upload GIF, PNG, JPG, HEIC or PDF files directly from your device.</p>
 
 <p class="govuk-body">Send a print of other file types to us in the post. A freepost address is on the email you’ll receive when you submit your claim.</p>
 
@@ -212,8 +212,7 @@ $page_title = 'Upload a document';
 
                 <div class="govuk-inset-text">
 Only upload one file at a time<br /><br />
-Your file must be no larger than 5Mb<br /><br />
-Apple users must not upload .heic image files
+Your file must be no larger than 5Mb<br />
 
                 </div>
 
@@ -236,7 +235,7 @@ Reminder: If the person named in this application has ever served with the Unite
 
     <div class="govuk-form-group {{$fileupload['error']}} ">
     <label class="govuk-label" for="/documents/document/file">
-        <span class="govuk-visually-hidden">Upload file</span>
+        Upload file
     </label>
     @php echo $fileupload['errorLabel']; @endphp
             <input class="govuk-file-upload" id="/documents/document/file"

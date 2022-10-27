@@ -36,8 +36,8 @@ if (!empty($_POST)) {
 
 
     //set the entered field names
-        $email['data']            = $_POST['afcs/about-you/personal-details/email-address/email-address'];
-        $emailconfirm['data']            = $_POST['afcs/about-you/personal-details/email-address/email-address-confirm'];
+        $email['data']            = @$_POST['afcs/about-you/personal-details/email-address/email-address'];
+        $emailconfirm['data']            = @$_POST['afcs/about-you/personal-details/email-address/email-address-confirm'];
 
         if (($_POST['afcs/about-you/personal-details/email-address/email-address'] != $_POST['afcs/about-you/personal-details/email-address/email-address-confirm'])) {
 

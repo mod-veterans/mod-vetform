@@ -23,9 +23,19 @@ $dob = array('data'=>'', 'error'=>'', 'errorLabel'=>'');
 if (!empty($_POST)) {
 
 
-$ninumber = md5(simplify($_POST['ninumber']));
-$lastname = md5(simplify($_POST['lastname']));
 
+if (!empty($_POST['ninumber'])) {
+    $ninumber = md5(simplify($_POST['ninumber']));
+
+} else {
+    $ninumber = 'JIBBERISH';
+}
+
+if (!empty($_POST['lastname'])) {
+    $lastname = md5(simplify($_POST['lastname']));
+} else {
+    $lastname = 'JIBBERISH';
+}
 
 
         $dobday['data']            = @$_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-day'];
@@ -58,7 +68,7 @@ $lastname = md5(simplify($_POST['lastname']));
 
 
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
-    $result = pg_query($db, "SELECT * FROM modvetdevusertable WHERE emailhash = '$email' AND surnamehash = '$lastname' AND nihash = '$ninumber' order by datetimeadded DESC LIMIT 1");
+    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE emailhash = '$email' AND surnamehash = '$lastname' AND nihash = '$ninumber' order by datetimeadded DESC LIMIT 1");
     if ($row = pg_fetch_assoc($result)) {
 
 
@@ -96,7 +106,7 @@ $lastname = md5(simplify($_POST['lastname']));
 
     $theID = $row['id'];
 
-    pg_query($db, "UPDATE modvetdevusertable SET userref = '$tempHash', accesscode = '$tempNum', accessuseby = '$dateExpire' WHERE id = '$theID'");
+    pg_query($db, "UPDATE ".$_ENV['DATABASE_TABLE']." SET userref = '$tempHash', accesscode = '$tempNum', accessuseby = '$dateExpire' WHERE id = '$theID'");
 
 
 
@@ -132,6 +142,9 @@ $lastname = md5(simplify($_POST['lastname']));
 
 
     } else {
+
+    \Sentry\captureMessage('SABCL Failure');
+
         $errors = 'Y';
             $errorsList[] = '<a href="#">We cannot find an existing record matching those details.<br /><br />
 Check you have entered your details correctly and try again.<br /><br />

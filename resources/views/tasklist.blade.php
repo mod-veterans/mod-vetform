@@ -1,6 +1,8 @@
 @include('framework.functions')
 @php
 
+houseKeeping();
+
 $userID = $_SESSION['vets-user'];
 
 
@@ -102,7 +104,7 @@ If you need a break, you can <a href="/save-and-come-back-later">save and come b
                                 </strong>
  @php } elseif (!empty($data['sections']['things-to-know']))  { @endphp
 
-                                 <strong class="govuk-tag govuk-tag app-task-list__tag" id="things-to-know-status">
+                                 <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="things-to-know-status">
                                 IN PROGRESS
                                 </strong>
 
@@ -154,7 +156,7 @@ If you need a break, you can <a href="/save-and-come-back-later">save and come b
                                     Who is making this application?
                                     </a>
                                 </span>
-                                 <strong class="govuk-tag govuk-tag- app-task-list__tag" id="applicant-status">IN PROGRESS</strong>
+                                 <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="applicant-status">IN PROGRESS</strong>
   @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                  <a href="/applicant" class="govuk-link" aria-describedby="eligibility-status">
@@ -188,7 +190,7 @@ If you need a break, you can <a href="/save-and-come-back-later">save and come b
                                      Nominating a representative
                                     </a>
                                 </span>
-                                <strong class="govuk-tag govuk-tag app-task-list__tag" id="representative-status">IN PROGRESS</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="representative-status">IN PROGRESS</strong>
   @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                     <a href="/applicant/nominate-a-representative" class="govuk-link" aria-describedby="eligibility-status">
@@ -238,7 +240,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                     Personal details
                                 </a>
                                 </span>
-                                <strong class="govuk-tag govuk-tag app-task-list__tag" id="personal-details-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="personal-details-status">in progress</strong>
     @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                 <a href="/applicant/about-you/name" class="govuk-link" aria-describedby="eligibility-status">
@@ -289,7 +291,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                      Doctor's details
                                 </a>
                                 </span>
-                                <strong class="govuk-tag app-task-list__tag" id="medical-officer-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="medical-officer-status">in progress</strong>
    @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                 <a href="/applicant/about-you/medical-officer" class="govuk-link" aria-describedby="eligibility-status">
@@ -336,7 +338,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                 Service details
                                 </a>
                                 </span>
-                                <strong class="govuk-tag app-task-list__tag" id="service-details-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="service-details-status">in progress</strong>
    @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                 <a href="/applicant/about-you/service-details" class="govuk-link" aria-describedby="eligibility-status">
@@ -389,7 +391,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                 Claim details
                                 </a>
                                 </span>
-                                <strong class="govuk-tag app-task-list__tag" id="claim-details-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="claim-details-status">in progress</strong>
    @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                 <a href="/applicant/claims" class="govuk-link" aria-describedby="eligibility-status">
@@ -442,7 +444,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                 Other medical treatment
                                  </a>
                                 </span>
-                                <strong class="govuk-tag app-task-list__tag" id="other-medical-treatment-status">IN PROGRESS</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="other-medical-treatment-status">IN PROGRESS</strong>
    @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                 <a href="/applicant/other-details/other-medical-treatment" class="govuk-link" aria-describedby="eligibility-status">
@@ -485,7 +487,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                  Other compensation
                                  </a>
                                  </span>
-                                <strong class="govuk-tag app-task-list__tag" id="other-compensation-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="other-compensation-status">in progress</strong>
     @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                 <a href="/applicant/other-details/other-compensation" class="govuk-link" aria-describedby="eligibility-status">
@@ -526,7 +528,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                 Other benefits, allowances or entitlement
                                  </a>
                                  </span>
-                                <strong class="govuk-tag app-task-list__tag" id="other-benefits-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="other-benefits-status">in progress</strong>
     @php } else { @endphp
                                 <span class="app-task-list__task-name">
                                <a href="/applicant/other-details/benefits" class="govuk-link" aria-describedby="eligibility-status">
@@ -577,7 +579,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                 </a>
                                  </span>
 
-                                <strong class="govuk-tag app-task-list__tag" id="payment-details-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="payment-details-status">in progress</strong>
     @php } else { @endphp
 
                                 <span class="app-task-list__task-name">
@@ -626,7 +628,7 @@ if (($canSkip != 'Y')&&(empty($data['sections']['nominate-representative']['comp
                                  Supporting documents
                                  </a>
                                  </span>
-                                <strong class="govuk-tag app-task-list__tag" id="documents-status">in progress</strong>
+                                <strong class="govuk-tag govuk-tag--blue app-task-list__tag" id="documents-status">in progress</strong>
     @php }  else { @endphp
                                 <span class="app-task-list__task-name">
                                  <a href="/applicant/supporting-documents/" class="govuk-link" aria-describedby="eligibility-status">

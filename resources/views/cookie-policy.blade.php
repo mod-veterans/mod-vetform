@@ -99,11 +99,11 @@ if ($cookiechoice == 'Y') {
     <p class="govuk-body">
         Cookies are small files saved on your phone, tablet or computer when you visit a website.
     </p>
-    <p class="govuk-body">We use cookies to make AFCS work and collect information about how you use our service.</p>
+    <p class="govuk-body">We use cookies to make 'Apply for Armed Forces Compensation or a War Pension' (‘our service’) work and collect information about how you use our service.</p>
 
     <h2 class="heading-medium" id="essential-cookies">Essential cookies</h2>
     <p class="govuk-body">
-      Essential cookies keep your information secure while you use AFCS. We do not need to ask permission to use them.
+      Essential cookies keep your information secure while you use 'our service'. We do not need to ask permission to use them.
     </p>
 
     <style>
@@ -200,7 +200,7 @@ if ($cookiechoice == 'Y') {
 
     <h2 class="heading-medium" id="analytics-cookies">Analytics cookies (optional)</h2>
     <p class="govuk-body">
-      With your permission, we use Google Analytics to collect data about how you use AFCS. This information helps us to improve our service.
+      With your permission, we use Google Analytics to collect data about how you use 'our service'. This information helps us to improve our service.
     </p>
     <p class="govuk-body">
       Google is not allowed to use or share our analytics data with anyone.
@@ -209,9 +209,9 @@ if ($cookiechoice == 'Y') {
       Google Analytics stores anonymised information about:
     </p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>how you got to AFCS</li>
-      <li>the pages you visit on AFCS and how long you spend on them</li>
-      <li>any errors you see while using AFCS</li>
+      <li>how you got to 'our service'</li>
+      <li>the pages you visit on 'our service' and how long you spend on them</li>
+      <li>any errors you see while using 'our service'</li>
     </ul>
     <table>
         <caption class="govuk-visually-hidden">Google Analytics cookies</caption>
@@ -228,7 +228,7 @@ if ($cookiechoice == 'Y') {
                   _ga
                 </td>
                 <td width="70%" >
-                  Checks if you’ve visited AFCS before. This helps us count how many people visit our site.
+                  Checks if you’ve visited 'our service' before. This helps us count how many people visit our site.
                 </td>
                 <td width="10%">
                   2 years
@@ -239,7 +239,7 @@ if ($cookiechoice == 'Y') {
                   _gid
                 </td>
                 <td >
-                  Checks if you’ve visited AFCS before. This helps us count how many people visit our site.
+                  Checks if you’ve visited 'our service' before. This helps us count how many people visit our site.
                 </td>
                 <td>
                   24 hours

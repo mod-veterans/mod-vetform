@@ -54,13 +54,10 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
     if ($data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] == 'Yes') {
         $nameshow = 'Would rather not disclose';
     }
-} else {
-    $nameshow = 'no different name';
 }
 
 @endphp
 
- @if(!empty($data['sections']['service-details']['records'][$thisRecord]['nameinservice']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Did you have a different name during this period of service?</dt>
             <dd class="govuk-summary-list__value">
@@ -68,10 +65,11 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/name/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-name/name-in-service">Change<span
-                        class="govuk-visually-hidden"> Enter the full name in service</span></a>
+                        class="govuk-visually-hidden"> Did you have a different name during this period of service?</span></a>
             </dd>
         </div>
 
+@if ($data['sections']['service-details']['records'][$thisRecord]['differentname'] == 'Yes')
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Enter the full name in service</dt>
             <dd class="govuk-summary-list__value">
@@ -82,7 +80,9 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
                         class="govuk-visually-hidden"> Enter the full name in service</span></a>
             </dd>
         </div>
+
 @endif
+
  @if(!empty($data['sections']['service-details']['records'][$thisRecord]['servicenumber']))
 
 

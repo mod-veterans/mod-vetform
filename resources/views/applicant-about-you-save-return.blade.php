@@ -31,7 +31,7 @@ $email = md5(simplify($dobData));
 
 
 $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
-pg_query($db, "UPDATE modvetdevusertable SET emailhash = '$email', surnamehash = '$surname', nihash = '$ninumber' WHERE userid = '$userID'");
+pg_query($db, "UPDATE ".$_ENV['DATABASE_TABLE']." SET emailhash = '$email', surnamehash = '$surname', nihash = '$ninumber' WHERE userid = '$userID'");
 
 
 

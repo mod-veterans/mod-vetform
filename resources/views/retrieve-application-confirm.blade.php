@@ -41,7 +41,7 @@ if ( (!ctype_alnum($bigCode)) || (!ctype_alnum($theCode)) ) {
     $rightnow = date('Y-m-d H:i:s');
 
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
-    $result = pg_query($db, "SELECT * FROM modvetdevusertable WHERE userref = '$bigCode' AND accesscode = '$theCode'");
+    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE userref = '$bigCode' AND accesscode = '$theCode'");
     if ($row = pg_fetch_assoc($result)) {
         if (strtotime($row['accessuseby']) >= strtotime($rightnow)) {
 
@@ -50,7 +50,7 @@ if ( (!ctype_alnum($bigCode)) || (!ctype_alnum($theCode)) ) {
 
             //blank out the code so it cannot be used again
             $blankCode = genHash();
-            pg_query($db, "UPDATE modvetdevusertable SET userref = '$blankCode', accesscode = '-----', accessuseby = '1999-12-31 00:00:00' WHERE id = '$theID'");
+            pg_query($db, "UPDATE ".$_ENV['DATABASE_TABLE']." SET userref = '$blankCode', accesscode = '-----', accessuseby = '1999-12-31 00:00:00' WHERE id = '$theID'");
 
 
             $userid = $row['userid'];

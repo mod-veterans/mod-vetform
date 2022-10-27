@@ -711,9 +711,17 @@ Route::match(['get', 'post'],'/code-broken', function () {
     return view('code-broken');
 });
 
-Route::match(['get', 'post'],'/dump-blob', function () {
-    return view('dump-blob');
+Route::match(['get', 'post'],'/demo', function () {
+    return view('demo');
 });
 
+
+Route::match(['get', 'post'],'/all/urls', function () {
+    return view('all-urls');
+});
+
+Route::match(['get', 'post'],'/maintenance', function () {
+    return view('maintenance');
+});
 
 

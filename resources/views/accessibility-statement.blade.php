@@ -51,7 +51,7 @@ $page_title = 'Accessibility statement for Apply for Armed Forces Compensation o
 <p class="govuk-body">This website is fully compliant with the Web Content Accessibility Guidelines version 2.1 AA standard. <a href="https://www.w3.org/TR/WCAG21/" target="_New">Web Content Accessibility Guidelines version 2.1</a> AA standard (opens in a new tab).
 
 <h2>Preparation of this accessibility statement</h2>
-<p class="govuk-body">This statement was prepared on 16th September 2022. It was last reviewed on 16th December 2022.</p>
+<p class="govuk-body">This statement was prepared on 16th September 2022. It was last reviewed on 16th September 2022.</p>
 
 <p class="govuk-body">This website was last tested on TBC. The test was carried out by Digital Accessibility Centre (DAC) Ltd.</p>
 <p class="govuk-body">We used this approach to deciding on a sample of pages to test. The test combines technical auditing with disabled user feedback. The test does not list each specific area that requires change but highlights patterns of problems where they exist. The test covered the end-to-end digital service.</p>

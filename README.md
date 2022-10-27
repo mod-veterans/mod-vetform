@@ -24,12 +24,19 @@ The root directory for your apache config is:
 You will need to set up the following as environment variables:
 
 SetEnv DATA_PASS_PHRASE - a unique value that is used to encrypt data within the service
+
 SetEnv DATA_PASS_SEED - a unique seed value that is used to encrypt data within the service
+
 SetEnv DB_HOST - Postgres DB host
+
 SetEnv DB_PORT - Postgres DB Port
+
 SetEnv DB_DATABASE - Name of the Postgres database to use
+
 SetEnv DB_USERNAME - Name of the Postgres username
+
 SetEnv DB_PASSWORD Postgres access password
+
 SetEnv APP_STAGE - your environment (used to control availability of some online-only services): LOCAL/DEV/UAT/LIVE
 
 
@@ -43,6 +50,11 @@ The services uses standard Laravel Blade templates, though each contains a large
 All templates are here: /resources/views
 
 Page structure / URLS are here: /routes/web.php
+
+
+There are various files that exist to support deployment to Gov.UK PaaS which are not required to host locally.
+
+
 
 
 
