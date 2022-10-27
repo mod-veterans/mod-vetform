@@ -48,7 +48,18 @@ if (!empty($_POST)) {
         $dobyear['data']            = $_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-year'];
 
 
-        if (!checkdate($dobmonth['data'],$dobday['data'],$dobyear['data'])) {
+        if ( (!is_numeric($dobday['data'])) || (!is_numeric($dobmonth['data'])) || (!is_numeric($dobyear['data'])) ) {
+
+
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Date of birth must only contain numbers</a>';
+            $dob['error'] = 'govuk-form-group--error';
+            $dob['errorLabel'] =
+            '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Date of birth must only contain numbers
+             </span>';
+
+        }elseif (@checkdate($dobmonth['data'],$dobday['data'],$dobyear['data']) == FALSE) {
 
 
             $errors = 'Y';
