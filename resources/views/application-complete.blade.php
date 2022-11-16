@@ -689,36 +689,40 @@ $emailContent .='
 ---
 ';
 
-if (!empty($serviceRecord['nameinservice'])) {
-    $nameshow = $serviceRecord['nameinservice'].'
 
-';
-    if ($serviceRecord['donotwanttodisclose'] == 'Yes') {
-        $nameshow = 'Would rather not disclose';
-    }
-} else {
-    $nameshow = 'No';
-}
-
-if(!empty($serviceRecord['nameinservice'])) {
+if(!empty($serviceRecord['differentname'])) {
 $emailContent .='
 
 Did you have a different name during this period of service?
 
-▐ '.$serviceRecord['nameinservice'].'
+▐ '.$serviceRecord['differentname'].'
 
 ';
 
 }
 
-if ( (!empty($serviceRecord['nameinservice'])) && ($serviceRecord['nameinservice'] == 'Yes') ) {
+if (!empty($serviceRecord['nameinservice'])) {
 
 $emailContent .='
 
 Enter the full name in service
 
-▐ '.$nameshow ?? 'Would rather not disclose';
+▐ '.$serviceRecord['nameinservice'];
+
 }
+
+if (!empty($serviceRecord['donotwanttodisclose'])) {
+
+$emailContent .='
+
+Do not want to disclose
+
+▐ '.$serviceRecord['donotwanttodisclose'];
+
+}
+
+
+
 
 
 if(!empty($serviceRecord['servicenumber'])) {
@@ -2866,7 +2870,7 @@ $fullContent = returnData($data);
 
 $appstage = getenv('APP_STAGE');
 if (empty($appstage)) {
-    $appstage = 'UAT';
+    $appstage = 'PROD';
 }
 
 
@@ -2907,7 +2911,7 @@ if (!empty($data['sections']['about-you']['email'])) {
 
 
 
-if ($appstage == 'UAT') {
+if ( ($appstage == 'UAT') || ($appstage == 'PROD') )  {
 
 
 if (!empty($data['settings']['time_started'])) {
@@ -2915,12 +2919,16 @@ if (!empty($data['settings']['time_started'])) {
     Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $emailContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
     Notify::getInstance()->setData(['reference_number' => $reference_number,'content' => $fullContent])->sendEmail('dbsvets-modernisation-contactus@mod.gov.uk', env('NOTIFY_CLAIM_SUBMITTED'));
 
-}
 
     unset($data);
     $data = array();
     storeData($userID,$data);
     $_SESSION['vets-user'] = '';
+
+
+}
+
+
 
 } else {
 

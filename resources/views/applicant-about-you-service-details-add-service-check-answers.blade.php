@@ -48,15 +48,6 @@ $page_title = 'Check your answers';
                                 <h1 class="govuk-heading-xl">Check your answers</h1>
                                 <h2 class="govuk-heading-m">Service details</h2>
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-@php
-if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameinservice'])) {
-    $nameshow = $data['sections']['service-details']['records'][$thisRecord]['nameinservice'];
-    if ($data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] == 'Yes') {
-        $nameshow = 'Would rather not disclose';
-    }
-}
-
-@endphp
 
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Did you have a different name during this period of service?</dt>
@@ -69,11 +60,11 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
             </dd>
         </div>
 
-@if ($data['sections']['service-details']['records'][$thisRecord]['differentname'] == 'Yes')
+@if (!empty($data['sections']['service-details']['records'][$thisRecord]['differentname']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Enter the full name in service</dt>
             <dd class="govuk-summary-list__value">
-                                    {{$nameshow ?? 'Would rather not disclose' }}
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['nameinservice'] ?? '' }}
                             </dd>
             <dd class="govuk-summary-list__actions">
                 <a class="govuk-link" href="/applicant/about-you/service-details/add-service/name/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-name/name-in-service">Change<span
@@ -82,6 +73,22 @@ if (!empty($data['sections']['service-details']['records'][$thisRecord]['nameins
         </div>
 
 @endif
+
+@if (!empty($data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose']))
+            <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">I do not want to disclose</dt>
+            <dd class="govuk-summary-list__value">
+                                    {{$data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] ?? '' }}
+                            </dd>
+            <dd class="govuk-summary-list__actions">
+                <a class="govuk-link" href="/applicant/about-you/service-details/add-service/name/?return=/applicant/about-you/service-details/add-service/check-answers&amp;stack=1ec28038-9ec7-6d98-bcbf-eeee0aff0985#afcs/about-you/service-details/service-name/name-in-service">Change<span
+                        class="govuk-visually-hidden"> Enter the full name in service</span></a>
+            </dd>
+        </div>
+
+@endif
+
+
 
  @if(!empty($data['sections']['service-details']['records'][$thisRecord]['servicenumber']))
 

@@ -9,7 +9,10 @@ $userID = $_SESSION['vets-user'];
     $completed = 0;
     $canSkip = 'N';
 
-if ($_SERVER['SERVER_NAME'] == 'modvets-uat.london.cloudapps.digital') {
+
+$appstage = getenv('APP_STAGE');
+
+if ( ($appstage == 'PROD') || ($appstage == 'UAT') ) {
 
 $needComplete = 11;
 

@@ -59,6 +59,20 @@ if (!empty($_POST)) {
                 <span class="govuk-visually-hidden">Error:</span> Date of birth must only contain numbers
              </span>';
 
+        }elseif ( (strlen($dobday['data']) != 2) || (strlen($dobmonth['data']) != 2) || (strlen($dobyear['data']) != 4) ) {
+
+            $errors = 'Y';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Date of birth must be in the format DD MM YYYY (for example, 07 03 1995)</a>';
+            $dob['error'] = 'govuk-form-group--error';
+            $dob['errorLabel'] =
+            '<span id="afcs/about-you/personal-details/date-of-birth/date-of-birth-day-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Date of birth must be in the format DD MM YYYY (for example, 07 03 1995)
+             </span>';
+
+
+
+
+
         }elseif (@checkdate($dobmonth['data'],$dobday['data'],$dobyear['data']) == FALSE) {
 
 
@@ -189,7 +203,7 @@ echo $errorMessage;
     @php echo $dob['errorLabel']; @endphp
 
 
-        <div id="afcs/about-you/personal-details/date-of-birth/date-of-birth-hint" class="govuk-hint">For example 27 3 2007</div>
+        <div id="afcs/about-you/personal-details/date-of-birth/date-of-birth-hint" class="govuk-hint">For example 07 03 1995</div>
 
         <div class="govuk-date-input" id="afcs/about-you/personal-details/date-of-birth/date-of-birth">
                                                 <div class="govuk-date-input__item">

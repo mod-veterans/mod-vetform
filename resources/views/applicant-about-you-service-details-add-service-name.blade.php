@@ -80,8 +80,6 @@ if (!empty($_POST)) {
 
     //set the entered field names
 
-    $nameinservice['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-name/name-in-service']);
-
 
     if (empty($_POST['afcs/about-you/service-details/service-name/differentname'])) {
 
@@ -103,18 +101,19 @@ if (!empty($_POST)) {
 
 
     if (empty($_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'])) {
-        $_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'] = '';
-        $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = '';
+        $_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'] = 'unticked';
+        $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = 'unticked';
     } else {
 
 
     }
 
 
-
-
     if ((!empty($_POST['afcs/about-you/service-details/service-name/differentname']))&&($_POST['afcs/about-you/service-details/service-name/differentname'] == 'Yes')) {
 
+
+        $differentname['data'] = cleanTextData($_POST['afcs/about-you/service-details/service-name/differentname']);
+        $data['sections']['service-details']['records'][$thisRecord]['differentname'] = $differentname['data'];
         $differentnamechk['Yes'] = 'checked';
 
         if (empty($_POST['afcs/about-you/service-details/service-name/name-in-service'])) {
@@ -142,6 +141,14 @@ if (!empty($_POST)) {
 
         } else {
             $data['sections']['service-details']['records'][$thisRecord]['nameinservice'] = cleanTextData($_POST['afcs/about-you/service-details/service-name/name-in-service']);
+
+            if (empty($_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'])) {
+                $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = 'unticked';
+            } else {
+                $data['sections']['service-details']['records'][$thisRecord]['donotwanttodisclose'] = $_POST['afcs/about-you/service-details/service-name/donotwanttodisclose'];
+            }
+
+
         }
 
 

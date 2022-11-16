@@ -1,8 +1,5 @@
 <?php
-
 die();
-
-
 namespace App\Http\Controllers;
 use App\Services\Application;
 use App\Services\Forms\BaseForm;
@@ -33,6 +30,40 @@ if (empty (getenv('DB_PASSWORD'))) {
 
 
 
+
+$db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
+
+
+//initial DB creation
+if (pg_query($db, "CREATE SEQUENCE IF NOT EXISTS userdatatable_id_seq")) {
+    echo 'table sequence created<br />';
+}
+
+if (
+pg_query($db, 'CREATE TABLE "public"."userdatatable" (
+    "id" int4 NOT NULL DEFAULT nextval(\'userdatatable_id_seq\'::regclass),
+    "datetimeadded" timestamp,
+    "datelastaccessed" timestamp DEFAULT now(),
+    "data" varchar,
+    "surnamehash" text,
+    "emailhash" text,
+    "nihash" text,
+    "userid" varchar,
+    "userref" text,
+    "accesscode" text,
+    "accessuseby" timestamp,
+    PRIMARY KEY ("id")
+)'
+
+
+    )) {
+    echo 'table created<br />';
+}
+
+
+
+/*
+
 if  ( (!empty($_GET['doInstall'])) && ($_GET['doInstall'] == 'InstallPaul') ) {
 
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
@@ -54,7 +85,7 @@ if  ( (!empty($_GET['doInstall'])) && ($_GET['doInstall'] == 'InstallPaul') ) {
 
 echo strtotime("-93 days");
 
-
+*/
 
 
 /*

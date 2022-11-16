@@ -4,6 +4,12 @@
     $userID = $_SESSION['vets-user'];
     $data = getData($userID);
 
+
+    if (empty($data['sections'])) {
+        header("Location: /");
+        die();
+    }
+
 @endphp
 
 @include('framework.header')

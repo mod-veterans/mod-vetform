@@ -1,6 +1,15 @@
 @include('framework.functions')
 @php
 $page_title = 'Home';
+
+if ( (!empty(getenv('APP_STAGE'))) && (getenv('APP_STAGE') == 'PROD') ) {
+
+header("Location: /tasklist");
+die();
+
+}
+
+
 @endphp
 
 @include('framework.header')

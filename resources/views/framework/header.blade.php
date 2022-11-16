@@ -76,11 +76,11 @@ if (!empty($_COOKIE['vet-COOKIE'])) {
 
 $appstage = getenv('APP_STAGE');
 if (empty($appstage)) {
-    $appstage = 'UAT';
+    $appstage = 'PROD';
 }
 
 
-if ($appstage == 'UAT') {
+if ($appstage == 'PROD') {
 @endphp
 
 <!-- Google Tag Manager (noscript) -->

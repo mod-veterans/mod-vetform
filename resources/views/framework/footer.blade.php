@@ -55,7 +55,7 @@ if (empty($appstage)) {
 }
 
 
-//if ($appstage == 'UAT') {
+//if ($appstage == 'PROD') {
 @endphp
 
 <!-- Google Tag Manager -->
@@ -85,7 +85,7 @@ if (!empty($_COOKIE['vet-GA'])) {
 
 
 
-//if ($appstage == 'UAT') {
+//if ($appstage == 'PROD') {
 @endphp
 
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JKZ35PF27Q"></script>

@@ -143,13 +143,44 @@ if (!empty($_POST['lastname'])) {
 
     } else {
 
-    \Sentry\captureMessage('SABCL Failure');
+    $sentryMessage = '';
+    //lets run individual tests for reporting
+
+    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE emailhash = '$email' order by datetimeadded DESC LIMIT 1");
+    if ($row = pg_fetch_assoc($result)) {
+    $sentryMessage .= 'DOB MATCHED. ';
+    } else {
+    $sentryMessage .= 'DOB NOT MATCHED. ';
+    }
+
+
+
+    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE surnamehash = '$lastname' order by datetimeadded DESC LIMIT 1");
+    if ($row = pg_fetch_assoc($result)) {
+    $sentryMessage .= 'SURNAME MATCHED. ';
+    } else {
+    $sentryMessage .= 'SURNAME NOT MATCHED. ';
+    }
+
+
+    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE nihash = '$ninumber' order by datetimeadded DESC LIMIT 1");
+    if ($row = pg_fetch_assoc($result)) {
+    $sentryMessage .= 'NINUM MATCHED. ';
+    } else {
+    $sentryMessage .= 'NINUM NOT MATCHED. ';
+    }
+
+
+
+    \Sentry\captureMessage('SABCL Failure '.$sentryMessage);
 
         $errors = 'Y';
             $errorsList[] = '<a href="#">We cannot find an existing record matching those details.<br /><br />
-Check you have entered your details correctly and try again.<br /><br />
+Check you have entered your details correctly and try again. Date of birth must be in the format DD MM YYYY, for example 07 03 1995.<br /><br />
 You can only return to an application within three months of the date you started it.  <br /><br />
-For help call 0808 1914 218 (Mon-Fri)
+For help, click \'give feedback or get help\' at the
+top of the page and we\'ll get in touch within 24
+hours (Mon-Fri)
 </a>';
 
     }
@@ -218,7 +249,7 @@ echo $errorMessage;
     <label class="govuk-label" for="">
         Date of birth (required)
     </label>
-        <div id="afcs/about-you/personal-details/date-of-birth/date-of-birth-hint" class="govuk-hint">For example 27 3 2007</div>
+        <div id="afcs/about-you/personal-details/date-of-birth/date-of-birth-hint" class="govuk-hint">For example 07 03 1995</div>
 
         <div class="govuk-date-input" id="afcs/about-you/personal-details/date-of-birth/date-of-birth">
                                                 <div class="govuk-date-input__item">

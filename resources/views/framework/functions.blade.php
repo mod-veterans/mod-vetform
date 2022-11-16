@@ -212,7 +212,7 @@ function deleteData($userid) {
     //TODO DELETE DATA FROM DB
 }
 
-function houseKeeping($which='devtable') {
+function houseKeeping() {
 
     //DELETE records more than 93 days old
     $days93 = strtotime('-93 days');
