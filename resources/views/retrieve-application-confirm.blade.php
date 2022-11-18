@@ -1,3 +1,6 @@
+<?php
+$skipCheck = 'Y';
+?>
 @include('framework.functions')
 @php
 

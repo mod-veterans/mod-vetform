@@ -45,43 +45,43 @@ if (!@pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']."")) {
 
 
 
+if (empty($skipCheck)) {
 
-
-if (empty($_SESSION['vets-user'])) {
-    $userID = md5(rand(0,65535).microtime().rand(0,65535));
-    $_SESSION['vets-user'] = $userID;
-    $data = array();
-    $data['bigBang'] = date('Y-m-d H:i:s');
-    storeData($userID,$data,'INSERT');
-    // \Sentry\captureMessage('User session was started');
-    header('Location: /');
-    die();
-} else {
-    $userID = $_SESSION['vets-user'];
-}
-
-
-
-$data = getData($userID);
-if ($data == 'NOPE') {
-
-        //we have no matching user ID, reset
-        unset($_SESSION['vets-user']);
-       // \Sentry\captureMessage('User was booted back to start because of no data match assigned to this ID');
-        header("Location: /");
-        die();
-
-} else {
-    if (empty($data['settings']['customer_ref'])) {
-        $data['settings']['customer_ref'] = substr($userID,0,10);
-        storeData($userID,$data,'UPDATE');
-        // \Sentry\captureMessage('User has been given a customer ref');
+    if (empty($_SESSION['vets-user'])) {
+        $userID = md5(rand(0,65535).microtime().rand(0,65535));
+        $_SESSION['vets-user'] = $userID;
+        $data = array();
+        $data['bigBang'] = date('Y-m-d H:i:s');
+        storeData($userID,$data,'INSERT');
+        // \Sentry\captureMessage('User session was started');
         header('Location: /');
         die();
+    } else {
+        $userID = $_SESSION['vets-user'];
     }
+
+
+
+    $data = getData($userID);
+    if ($data == 'NOPE') {
+
+            //we have no matching user ID, reset
+            unset($_SESSION['vets-user']);
+           // \Sentry\captureMessage('User was booted back to start because of no data match assigned to this ID');
+            header("Location: /");
+            die();
+
+    } else {
+        if (empty($data['settings']['customer_ref'])) {
+            $data['settings']['customer_ref'] = substr($userID,0,10);
+            storeData($userID,$data,'UPDATE');
+            // \Sentry\captureMessage('User has been given a customer ref');
+            header('Location: /');
+            die();
+        }
+    }
+
 }
-
-
 
 function storeData($userID, $data, $type='UPDATE') {
 
@@ -199,9 +199,15 @@ function genHash($len=32) {
 
 
 function simplify($content) {
+    $content = strtolower(preg_replace("/[^A-Za-z0-9]/", '', $content));
+    return $content;
+}
+
+function simplify_w_spaces($content) {
     $content = strtolower(preg_replace("/[^A-Za-z0-9 ]/", '', $content));
     return $content;
 }
+
 
 
 function deleteData($userid) {

@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 use App\Services\Notify;
+$skipCheck = 'Y';
 ?>
+
 @include('framework.functions')
 @php
 
@@ -26,6 +28,8 @@ if (!empty($_POST)) {
 
 if (!empty($_POST['ninumber'])) {
     $ninumber = md5(simplify($_POST['ninumber']));
+    $ninumber_spaces = md5(simplify_w_spaces($_POST['ninumber']));
+
 
 } else {
     $ninumber = 'JIBBERISH';
@@ -68,7 +72,7 @@ if (!empty($_POST['lastname'])) {
 
 
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
-    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE emailhash = '$email' AND surnamehash = '$lastname' AND nihash = '$ninumber' order by datetimeadded DESC LIMIT 1");
+    $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE emailhash = '$email' AND surnamehash = '$lastname' AND ( (nihash = '$ninumber') OR (nihash = '$ninumber_spaces') ) order by datetimeadded DESC LIMIT 1");
     if ($row = pg_fetch_assoc($result)) {
 
 

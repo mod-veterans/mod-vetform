@@ -1,28 +1,27 @@
 ---
 applications:
-  - name: modforms-prod
-    Instances: 1
+  - name: modforms-dev
     memory: 256M
     buildpacks:
       - https://github.com/andy-paine/env-map-buildpack
       - https://github.com/cloudfoundry/php-buildpack.git#v4.4.65
     routes:
-      - route: modvets-prod.london.cloudapps.digital
+      - route: modvets-dev2.london.cloudapps.digital
     services:
-      - modforms-prod-db
+      - mod-veterans-db
       - mod-veterans-s3
     env:
       CF_STAGING_TIMEOUT: 15
       CF_STARTUP_TIMEOUT: 15
       APP_NAME: "MoD Veterans"
-      APP_ENV: prod
+      APP_ENV: local
       APP_KEY: base64:DykIILG50laGHJBYv78MSCx+LEahCgMxYsSPpqPSgOM=
-      APP_DEBUG: FALSE
-      APP_URL: https://modvets-prod.london.cloudapps.digital
-      APP_STAGE: PROD
+      APP_DEBUG: true
+      APP_URL: https://modvets-dev2.london.cloudapps.digital
+      APP_STAGE: DEV
       LOG_CHANNEL: stack
       LOG_LEVEL: debug
-      SESSION_DRIVER: file
+      SESSION_DRIVER: database
       SESSION_LIFETIME: 120
       SESSION_CONNECTION: pgsql
       BROADCAST_DRIVER: log
