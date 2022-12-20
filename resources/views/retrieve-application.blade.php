@@ -33,6 +33,7 @@ if (!empty($_POST['ninumber'])) {
 
 } else {
     $ninumber = 'JIBBERISH';
+    $ninumber_spaces = 'JIBBERISH';
 }
 
 if (!empty($_POST['lastname'])) {
@@ -134,7 +135,10 @@ if (!empty($_POST['lastname'])) {
 
 
 
+    if (!empty($_SESSION['modVETSRA'])) {
+        \Sentry\captureMessage('SABCL Failure became a success!. Failure code: '.$_SESSION['modVETSRA']);
 
+    }
 
 
 
@@ -147,7 +151,14 @@ if (!empty($_POST['lastname'])) {
 
     } else {
 
-    $sentryMessage = '';
+
+
+    if ( ( (!empty($_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-day'])) && (!empty($_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-month'])) && (!empty($_POST['afcs/about-you/personal-details/date-of-birth/date-of-birth-year'])) ) && (!empty($_POST['ninumber'])) & (!empty($_POST['lastname'])) ) {
+
+
+    $_SESSION['modVETSRA'] = genHash();
+
+    $sentryMessage = 'Failure code: '.$_SESSION['modVETSRA'].' ';
     //lets run individual tests for reporting
 
     $result = pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']." WHERE emailhash = '$email' order by datetimeadded DESC LIMIT 1");
@@ -177,6 +188,10 @@ if (!empty($_POST['lastname'])) {
 
 
     \Sentry\captureMessage('SABCL Failure '.$sentryMessage);
+
+
+}
+
 
         $errors = 'Y';
             $errorsList[] = '<a href="#">We cannot find an existing record matching those details.<br /><br />
