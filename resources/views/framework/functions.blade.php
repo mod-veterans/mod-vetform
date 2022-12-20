@@ -211,24 +211,24 @@ function simplify_w_spaces($content) {
 
 
 function deleteData($userid) {
+    $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
+    $result = pg_query($db, "DELETE FROM ".$_ENV['DATABASE_TABLE']." WHERE userid = '".$userid."'");
+    if ($row = pg_fetch_assoc($result)) {
+        //it was done
+    }
     unset ($_SESSION[$userid]);
     unset ($_SESSION['vets-user']);
     return TRUE;
-
-    //TODO DELETE DATA FROM DB
 }
 
 function houseKeeping() {
-
     //DELETE records more than 93 days old
     $days93 = strtotime('-93 days');
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
-    $result = pg_query($db, "DELETE FROM ".$_ENV['DATABASE_TABLE']." WHERE extract(epoch from datelastaccessed) < ".$days93."");
+    $result = pg_query($db, "DELETE FROM ".$_ENV['DATABASE_TABLE']." WHERE extract(epoch from datetimeadded) < ".$days93."");
     if ($row = pg_fetch_assoc($result)) {
-    var_dump($row);
-
-    die;
-}
+        //it was done
+    }
 
     //DELETE FILES from S3
 
