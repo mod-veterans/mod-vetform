@@ -132,7 +132,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/application-complete';
+        $theURL = '/application-complete-send';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
