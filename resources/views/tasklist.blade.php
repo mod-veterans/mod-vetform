@@ -61,7 +61,7 @@ $page_title = 'Tasklist';
                                 <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Application incomplete</h2>
 
   <div class="govuk-inset-text">
-  If you’ve already started an application and it’s not displaying below, you may be able to <a href="https://apply-armed-forces-compensation-or-war-pension.service.gov.uk/retrieve-application">return to a saved application</a>
+  If you’ve already started an application and it’s not displaying below, you may be able to <a href="/retrieve-application">return to a saved application</a>
 </div>
 
         <p class="govuk-body govuk-!-margin-bottom-7">You have completed {{$completed}} of 13 sections.</p>
