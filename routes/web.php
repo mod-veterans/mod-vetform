@@ -659,6 +659,11 @@ Route::match(['get', 'post'],'/applicant/declaration', function () {
     return view('applicant-supporting-declaration');
 });
 
+Route::match(['get', 'post'],'/application-complete-send', function () {
+    return view('application-complete-send');
+});
+
+
 Route::match(['get', 'post'],'/application-complete', function () {
     return view('application-complete');
 });
@@ -677,6 +682,10 @@ Route::match(['get', 'post'],'/feedback', function () {
 
 Route::match(['get', 'post'],'/privacy-policy', function () {
     return view('/privacy-policy');
+});
+
+Route::match(['get', 'post'],'/cookie-process', function () {
+    return view('/cookie-process');
 });
 
 Route::match(['get', 'post'],'/cancel', function () {

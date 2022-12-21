@@ -10,22 +10,6 @@ if (empty($page_title)) {
 }
 
 
-
-if (!empty($_POST['cookies'])) {
-
-    if ($_POST['cookies'] == 'Y') {
-       setcookie('vet-COOKIE', 'Y', time() + (86400 * 30 * 365), '/');
-       setcookie('vet-GA', 'Y', time() + (86400 * 30 * 365), '/');
-       $showcookie = 'N';
-
-    }
-
-    if ($_POST['cookies'] == 'N') {
-       setcookie('vet-COOKIE', 'N', time() + (86400 * 30 * 365), '/');
-       $showcookie = 'N';
-    }
-}
-
 if (!empty($_COOKIE['vet-COOKIE'])) {
     $showcookie = 'N';
 }
@@ -43,6 +27,7 @@ if (!empty($_COOKIE['vet-COOKIE'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="robots" content="noindex,nofollow">
     <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/favicon.ico" type="image/x-icon">
     <link rel="mask-icon" href="/images/govuk-mask-icon.svg" color="#0b0c0c">
     <link rel="apple-touch-icon" sizes="180x180" href="h/images/govuk-apple-touch-icon-180x180.png">
@@ -88,6 +73,14 @@ if ($appstage == 'PROD') {
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 @php
+} else {
+@endphp
+
+
+<!--header GTM would be here GTM-K4C9DZ7-->
+
+
+@php
 }
 @endphp
 
@@ -114,7 +107,7 @@ if ($showcookie == 'Y') {
       </div>
     </div>
 
-    <form method="POST" enctype="multipart/form-data" novalidate>
+    <form method="POST" enctype="multipart/form-data" novalidate action="/cookie-process">
     @csrf
     <div class="govuk-button-group">
       <button value="Y" type="submit" name="cookies" class="govuk-button" data-module="govuk-button">
@@ -125,6 +118,7 @@ if ($showcookie == 'Y') {
       </button>
       <a class="govuk-link" href="/cookie-policy">View cookies</a>
     </div>
+    <input type="hidden" name="refURL" value="<?php echo urlencode($_SERVER['REQUEST_URI']); ?>" />
     </form>
   </div>
 </div>
