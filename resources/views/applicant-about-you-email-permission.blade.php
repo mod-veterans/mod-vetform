@@ -45,7 +45,7 @@ if (!empty($_POST)) {
 if (empty($_POST['afcs/about-you/personal-details/email-address/emailpermission'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/email-address/email-permission">Tell us if you want us to contact you about your claim by email</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/email-address/email-permission-yes">Tell us if you want us to contact you about your claim by email</a>';
                 $emailpermission['error'] = 'govuk-form-group--error';
                 $emailpermission['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/email-address/email-permission-error" class="govuk-error-message">
@@ -133,9 +133,8 @@ $page_title = 'Using email to contact you';
   @php
 echo $errorMessage;
 @endphp
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Using email to contact you</h1>
-    </legend>
+
                                 <p class="govuk-body">Veterans UK will conduct correspondence with customers about their claim using a nominated email address if that is their preference. There are some types of personal information we would not be able to include in email correspondence.</p>
 
 <p class="govuk-body">Read the information below if you would like us to use email to contact you:
@@ -155,22 +154,25 @@ echo $errorMessage;
             @csrf
 
 
-                                <h2 class="govuk-heading-m">Do you want us to contact you about your claim by email?</h2>
-
 <div class="govuk-form-group {{$emailpermission['error'] ?? ''}}">
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+ <legend id="contact-hint">
+ <h2 class="govuk-heading-m">Do you want us to contact you about your claim by email?</h2>
+</legend>
+
+
           @php echo $emailpermission['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="afcs/about-you/personal-details/email-address/email-permission" name="afcs/about-you/personal-details/email-address/emailpermission" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$emailpermissionchk['Yes'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact">
+        <input class="govuk-radios__input" id="afcs/about-you/personal-details/email-address/email-permission-yes" name="afcs/about-you/personal-details/email-address/emailpermission" type="radio" value="Yes"  {{$emailpermissionchk['Yes'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/email-address/email-permission-yes">
           Yes
         </label>
       </div>
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="afcs/about-you/personal-details/email-address/email-permission" name="afcs/about-you/personal-details/email-address/emailpermission" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$emailpermissionchk['No'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact-2">
+        <input class="govuk-radios__input" id="afcs/about-you/personal-details/email-address/email-permission-no" name="afcs/about-you/personal-details/email-address/emailpermission" type="radio" value="No"  {{$emailpermissionchk['No'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/email-address/email-permission-no">
           No
         </label>
       </div>

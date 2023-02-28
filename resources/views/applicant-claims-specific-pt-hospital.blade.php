@@ -108,7 +108,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-hospital-facility/sporting-hospital-facility">Tell us if you were taken to a hospital or medical facility</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-hospital-facility/sporting-hospital-facility-yes">Tell us if you were taken to a hospital or medical facility</a>';
         $hospital['error'] = 'govuk-form-group--error';
         $hospital['errorLabel'] =
         '<span id="/claim-details/claim-accident-hospital-facility/sporting-hospital-facility-error" class="govuk-error-message">
@@ -165,6 +165,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Did you go to a hospital or medical facility?';
+
 @endphp
 
 
@@ -180,17 +182,18 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Did you go to a hospital or medical facility?</h1>
-</legend>
-                                <p class="govuk-body">For example, for treatment or assessment soon after the incident.  We will ask about further hospital treatment later.</p>
-                                <p class="govuk-body">Only tell us about treatment received for the injury/conditions you are claiming for.</p>
+
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
                                                     <div class="govuk-form-group {{$hospital['error']}}">
     <a id="/claim-details/claim-accident-hospital-facility/sporting-hospital-facility"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Did you go to a hospital or medical facility?</h1>
+</legend>
+                                <p class="govuk-body">For example, for treatment or assessment soon after the incident.  We will ask about further hospital treatment later.</p>
+                                <p class="govuk-body">Only tell us about treatment received for the injury/conditions you are claiming for.</p>
 @php echo $hospital['errorLabel']; @endphp
                                             <div
             class="govuk-radios govuk-radios--inline"

@@ -200,8 +200,9 @@ $page_title = 'Upload a document';
             <div class="govuk-grid-column-two-thirds">
  @php echo $errorMessage; @endphp
 
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                  <h1 class="govuk-heading-xl">Upload a document</h1>
-
+    </legend>
 
 <p class="govuk-body">You can only upload GIF, PNG, JPG, HEIC or PDF files directly from your device.</p>
 
@@ -240,7 +241,7 @@ Reminder: If the person named in this application has ever served with the Unite
     @php echo $fileupload['errorLabel']; @endphp
             <input class="govuk-file-upload" id="/documents/document/file"
            name="/documents/document/file" type="file"
-           aria-describedby="/documents/document/file-hint">
+          >
 </div>
 
 

@@ -82,7 +82,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-leave/sporting-leave">Tell us if you were on authorised leave</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-leave/sporting-leave-yes">Tell us if you were on authorised leave</a>';
         $authorised['error'] = 'govuk-form-group--error';
         $authorised['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-leave/sporting-leave-error" class="govuk-error-message">
@@ -140,6 +140,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Were you on authorised leave at the time of the accident?';
+
 @endphp
 
 
@@ -155,14 +157,14 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Were you on authorised leave at the time of the accident?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$authorised['error']}} ">
-    <a id="/claim-details/claim-accident-non-sporting-leave/sporting-leave"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Were you on authorised leave at the time of the accident?</h1>
+</legend>
 @php echo $authorised['errorLabel']; @endphp
 
                                             <div

@@ -194,7 +194,7 @@ if (!empty($_POST)) {
 
     if (empty($_POST['afcs/about-you/service-details/service-trade/specialism1'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-trade/service-trade">Tell us at least one service trade or specialism for this period of service</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-trade/specialism1">Tell us at least one service trade or specialism for this period of service</a>';
         $specialism['error'] = 'govuk-form-group--error';
         $specialism['errorLabel'] =
         '<span id="afcs/about-you/service-details/service-trade/service-trade-error" class="govuk-error-message">
@@ -414,12 +414,12 @@ echo $errorMessage;
 
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-half">
-            <label class="govuk-label" for="afcs/about-you/service-details/service-trade/service-trade">
+            <label class="govuk-label"
                 Trade or profession
             </label>
         </div>
         <div class="govuk-grid-column-one-half">
-            <label class="govuk-label" for="afcs/about-you/service-details/service-trade/service-trade">
+            <label class="govuk-label">
                 How long for, for example 6 months?
             </label>
         </div>

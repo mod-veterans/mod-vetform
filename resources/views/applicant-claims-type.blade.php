@@ -108,7 +108,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness">Tell us what type of medical condition, injury or illness you are claiming for</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-illness/claim-illness-a-condition,-injury-or-illness-that-is-the-result-of-a-specific-accident-or-incident">Tell us what type of medical condition, injury or illness you are claiming for</a>';
         $claim['error'] = 'govuk-form-group--error';
         $claim['errorLabel'] =
         '<span id="/claim-details/claim-illness/claim-illness-error" class="govuk-error-message">
@@ -182,14 +182,13 @@ $page_title = 'What was the cause of the medical condition, injury or illness yo
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What was the cause of the medical condition, injury or illness you are claiming for?</h1>
-    </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$claim['error']}}">
-    <a id="/claim-details/claim-illness/claim-illness"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">What was the cause of the medical condition, injury or illness you are claiming for?</h1>
+    </legend>
 @php echo $claim['errorLabel']; @endphp
                             <div id="/claim-details/claim-illness/claim-illness-hint" class="govuk-hint">Select the option that applies to your claim</div>
                 <div

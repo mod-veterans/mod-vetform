@@ -129,7 +129,9 @@ $page_title = 'What is your National Insurance number?';
 @php
 echo $errorMessage;
 @endphp
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What is your National Insurance number?</h1>
+                                </legend>
                                 <p class="govuk-body">The UK national insurance number of the person with the injury, illness or disability.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

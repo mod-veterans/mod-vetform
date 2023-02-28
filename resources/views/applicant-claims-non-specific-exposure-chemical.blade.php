@@ -127,6 +127,9 @@ if (!empty($_POST)) {
 
 }
 
+
+$page_title = 'Chemical exposure';
+
 @endphp
 
 
@@ -143,16 +146,17 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Chemical exposure</h1>
-    </legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                     <div class="govuk-form-group {{$exposureyear['error'] ?? ''}} ">
  <div class="govuk-form-group">
+  <legend>
         <label class="govuk-label" for="/claim-details/claim-accident-sporting-medical-condition/claim-accident-sporting-medical-condition">
        Tell us what substances you’ve been exposed to, the dates this happened and how long for.
     </label>
+    </legend>
 
 <details class="govuk-details" data-module="govuk-details">
   <summary class="govuk-details__summary">

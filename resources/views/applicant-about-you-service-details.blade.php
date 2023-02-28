@@ -101,7 +101,9 @@ $page_title = 'Service details';
 @if(!empty($serviceList))
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Service details</h1>
+                                </legend>
                                 <dl class="govuk-summary-list">
                                     <div class="govuk-summary-list__row">
                         @php echo $serviceList; @endphp
@@ -124,7 +126,9 @@ $page_title = 'Service details';
         <div class="govuk-grid-row">
 
             <div class="govuk-grid-column-two-thirds">
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Service details</h1>
+                                </legend>
                                 <p class="govuk-body">We need to know about each period of service you have had in HM Armed Forces.</p>
 <p class="govuk-body">Tell us about each period separately if you’ve:</p>
 <ul class="govuk-list govuk-list--bullet govuk-list--spaced">

@@ -54,7 +54,7 @@ if (!empty($_POST)) {
     if (empty( $_POST['did-you-report-the-incident'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#did-you-report-the-incident">Tell us if you reported the incident.</a>';
+            $errorsList[] = '<a href="#did-you-report-the-incident-yes">Tell us if you reported the incident.</a>';
             $whoreported['error'] = 'govuk-form-group--error';
             $whoreported['errorLabel'] =
             '<span id="/did-you-report-the-incident-error" class="govuk-error-message">
@@ -137,7 +137,7 @@ $reportedchk[$reported['data']] = ' checked';
 
 
 
-
+$page_title = 'Did you report the incident?';
 
 @endphp
 
@@ -155,13 +155,14 @@ $reportedchk[$reported['data']] = ' checked';
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Did you report the incident?</h1>
- </legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$reported['error']}}">
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Did you report the incident?</h1>
+ </legend>
 @php echo $reported['errorLabel']; @endphp
 
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">

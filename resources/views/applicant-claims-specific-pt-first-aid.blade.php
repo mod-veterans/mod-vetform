@@ -82,7 +82,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-first-aid/sporting-first-aid">Tell us if you recieved first aid treatment</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-first-aid/sporting-first-aid-yes">Tell us if you recieved first aid treatment</a>';
         $firstaid['error'] = 'govuk-form-group--error';
         $firstaid['errorLabel'] =
         '<span id="/claim-details/claim-accident-first-aid/sporting-first-aid-error" class="govuk-error-message">
@@ -140,6 +140,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Did you receive first aid treatment at the time?';
+
 @endphp
 
 
@@ -156,16 +158,15 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Did you receive first aid treatment at the time?</h1>
-    </legend>
-                                <p class="govuk-body">Only tell us about treatment you received for the injury/conditions you are claiming for.</p>
-
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
                                                     <div class="govuk-form-group {{$firstaid['error']}} ">
     <a id="/claim-details/claim-accident-first-aid/sporting-first-aid"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Did you receive first aid treatment at the time?</h1>
+    </legend>
+                                <p class="govuk-body">Only tell us about treatment you received for the injury/conditions you are claiming for.</p>
 @php echo $firstaid['errorLabel']; @endphp
 
                                             <div

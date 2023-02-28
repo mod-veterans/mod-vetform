@@ -128,6 +128,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What was the reason for your discharge?';
+
 @endphp
 
 @include('framework.header')
@@ -142,8 +144,9 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What was the reason for your discharge?</h1>
-
+</legend>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -156,7 +159,7 @@ echo $errorMessage;
                <strong> Discharge reason</strong>
             </h2>
     </label>
-        <div id="afcs/about-you/service-details/service-enlistment-date/enlistment-date-hint" class="govuk-hint">For example, end of engagement.</div>
+        <div id="afcs/about-you/service-details/service-discharge/service-discharge-hint" class="govuk-hint">For example, end of engagement.</div>
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/service-details/service-discharge/service-discharge-reason" name="afcs/about-you/service-details/service-discharge/service-discharge-reason" type="text"

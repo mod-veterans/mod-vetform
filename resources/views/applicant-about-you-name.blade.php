@@ -63,7 +63,7 @@ if (!empty($_POST)) {
 
     if (empty($_POST['/afcs/about-you/personal-details/your-name/other-names'])) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-address/address-line-1">Enter your first name</a>';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/your-name/other-names">Enter your first name</a>';
         $firstname['error'] = 'govuk-form-group--error';
         $firstname['errorLabel'] =
         '<span id="/afcs/about-you/personal-details/your-name/other-names-error" class="govuk-error-message">
@@ -158,7 +158,18 @@ echo $errorMessage;
                                 <p class="govuk-body">Include your title, for example Mr, Mrs, Dr, if you want us to use this when we write to you</p>
                                 <form method="post" enctype="multipart/form-data">
                                 @csrf
-                                                    <div class="govuk-form-group {{$lastname['error']}} ">
+
+
+<div class="govuk-form-group {{$title['error']}} ">
+    <label class="govuk-label" for="afcs/about-you/personal-details/your-name/title">
+        Title (optional)
+    </label>
+    @php echo $title['errorLabel']; @endphp
+    <input class="govuk-input govuk-!-width-two-thirds" id="afcs/about-you/personal-details/your-name/title" name="/afcs/about-you/personal-details/your-name/title" type="text" value="{{$title['data']}}" maxlength="20" >
+</div>
+
+
+ <div class="govuk-form-group {{$lastname['error']}} ">
     <label class="govuk-label" for="afcs/about-you/personal-details/your-name/last-name">
         Last name or family name
     </label>
@@ -166,7 +177,7 @@ echo $errorMessage;
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/your-name/last-name" name="/afcs/about-you/personal-details/your-name/last-name" type="text"
-         autocomplete="family_name"
+         autocomplete="family-name"
                   value="{{$lastname['data']}}"
             >
 </div>
@@ -181,15 +192,6 @@ echo $errorMessage;
                    value="{{$firstname['data']}}"
             >
 </div>
-
-<div class="govuk-form-group {{$title['error']}} ">
-    <label class="govuk-label" for="afcs/about-you/personal-details/your-name/title">
-        Title (optional)
-    </label>
-    @php echo $title['errorLabel']; @endphp
-    <input class="govuk-input govuk-!-width-two-thirds" id="afcs/about-you/personal-details/your-name/title" name="/afcs/about-you/personal-details/your-name/title" type="text" value="{{$title['data']}}" maxlength="20" >
-</div>
-
 
 
 

@@ -161,19 +161,19 @@ $page_title = 'What is or was your service type?';
 echo $errorMessage;
 @endphp
 
-<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is or was your service type?</h1>
-</legend>
-<p class="govuk-body">For this period of service</p>
+
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$servicetype['error']}}">
     <a id="afcs/about-you/service-details/service-type/service-type"></a>
     <fieldset class="govuk-fieldset">
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">What is or was your service type?</h1>
+</legend>
+<p class="govuk-body">For this period of service</p>
 @php echo $servicetype['errorLabel']; @endphp
-                                            <div
-            class="govuk-radios govuk-radios--inline"
-            >
+                                            <div class="govuk-radios govuk-radios--inline" >
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="afcs/about-you/service-details/service-type/service-type-regular" name="afcs/about-you/service-details/service-type/service-type" type="radio"
            value="Regular"      @php echo @$rolechk['Regular']; @endphp      >

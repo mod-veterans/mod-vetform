@@ -165,6 +165,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What medical categories were you downgraded from/to?';
+
 @endphp
 
 

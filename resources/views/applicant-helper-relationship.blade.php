@@ -103,7 +103,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/applicant/helper-details/helper-name">Tell us your relationship to the person making the claim</a>';
+        $errorsList[] = '<a href="#/applicant/helper-relationship/helper-relationship-Spouse-civil-partner-partner">Tell us your relationship to the person making the claim</a>';
         $relationship['error'] = 'govuk-form-group--error';
         $relationship['errorLabel'] =
         '<span id="/applicant/helper-relationship/helper-relationship-error" class="govuk-error-message">
@@ -180,14 +180,15 @@ $page_title = 'What is your relationship to the person making the claim?';
 @php
 echo $errorMessage;
 @endphp
- <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is your relationship to the person making the claim?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
    <div class="govuk-form-group {{$relationship['error']}} ">
     <a id="/applicant/helper-relationship/helper-relationship"></a>
     <fieldset class="govuk-fieldset">
+ <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">What is your relationship to the person making the claim?</h1>
+</legend>
 @php echo $relationship['errorLabel']; @endphp
    <div class="govuk-radios" >
 

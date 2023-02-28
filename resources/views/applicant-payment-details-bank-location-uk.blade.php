@@ -199,6 +199,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'UK bank or building society account details';
+
 @endphp
 
 
@@ -215,7 +217,9 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">UK bank or building society account details</h1>
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                  <h1 class="govuk-heading-xl">UK bank or building society account details</h1>
+                                  </legend>
                                 <div class="govuk-body">You can ask your bank or check your bank statement for these details.</div>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

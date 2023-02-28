@@ -95,10 +95,10 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/service-details/unit-address/address-line-1'])) {
        /*
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/unit-address//address-line-1">Please give us the first line of your service unit address</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/unit-address/address-line-1">Please give us the first line of your service unit address</a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
-        '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
+        '<span id="afcs/about-you/personal-details/contact-address/address-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Please give us the first line your service unit address
          </span>';
          */
@@ -207,6 +207,9 @@ if (!empty($_POST)) {
     }
 
 }
+
+
+$page_title = 'What was your last Unit address?';
 
 @endphp
 

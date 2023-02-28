@@ -61,7 +61,7 @@ if (!empty($_POST)) {
 
                 if (empty($paymentyear['data'])) {
                     $errors = 'Y';
-                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+                    $errorsList[] = '<a href="#/other-compensation/claim-payment-date/claim-payment-date-year">Enter an approximate year</a>';
                     $paymentyear['error'] = 'govuk-form-group--error';
                     $paymentyear['errorLabel'] =
                     '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -71,7 +71,7 @@ if (!empty($_POST)) {
                 } elseif (!yearInFuture($paymentyear['data'])) {
 
                     $errors = 'Y';
-                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+                    $errorsList[] = '<a href="#/other-compensation/claim-payment-date/claim-payment-date-year">The year entered cannot be in the future</a>';
                     $paymentyear['error'] = 'govuk-form-group--error';
                     $paymentyeare['errorLabel'] =
                     '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -87,7 +87,7 @@ if (!empty($_POST)) {
                 if ( (empty($paymentday['data'])) || (empty($paymentmonth['data'])) || (empty($paymentyear['data'])) ) {
 
                    $errors = 'Y';
-                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date</a>';
+                    $errorsList[] = '<a href="#/other-compensation/claim-payment-date/claim-payment-date-day">Enter a valid date</a>';
                     $paymentyear['error'] = 'govuk-form-group--error';
                     $paymentyear['errorLabel'] =
                     '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -98,7 +98,7 @@ if (!empty($_POST)) {
                 }  elseif (!yearInFuture($paymentyear['data'])) {
 
                  $errors = 'Y';
-                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+                    $errorsList[] = '<a href="#/other-compensation/claim-payment-date/claim-payment-date-day">The year entered cannot be in the future</a>';
                     $paymentyear['error'] = 'govuk-form-group--error';
                     $paymentyear['errorLabel'] =
                     '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -109,7 +109,7 @@ if (!empty($_POST)) {
                 } elseif ( (!checkDate($paymentmonth['data'], $paymentday['data'], $paymentyear['data']) )  ) {
 
                   $errors = 'Y';
-                    $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                    $errorsList[] = '<a href="#/other-compensation/claim-payment-date/claim-payment-date-day">The date entered must be a real date</a>';
                     $paymentyear['error'] = 'govuk-form-group--error';
                     $paymentyear['errorLabel'] =
                     '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -191,6 +191,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'When did you get this payment?';
+
 @endphp
 
 
@@ -206,9 +208,7 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">When did you get this payment?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$paymentyear['error']}}">
@@ -219,6 +219,9 @@ echo $errorMessage;
     aria-describedby="/other-compensation/claim-payment-date/claim-payment-date-hint  ">
 
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">When did you get this payment?</h1>
+</legend>
 @php echo $paymentyear['errorLabel']; @endphp
 
 

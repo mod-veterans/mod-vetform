@@ -48,7 +48,7 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/personal-details/have-lpa-code'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/have-lpa-code">Tell us if you have an LPA access code</a>';
+                $errorsList[] = '<a href="#contact-2">Tell us if you have an LPA access code</a>';
                 $served['error'] = 'govuk-form-group--error';
                 $served['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/have-lpa-code-error" class="govuk-error-message">
@@ -117,6 +117,8 @@ if (!empty($_POST)) {
     }
 
 }
+
+$page_title = 'Do you have a Lasting Power of Attorney (LPA) Access Code?';
 
 
 @endphp

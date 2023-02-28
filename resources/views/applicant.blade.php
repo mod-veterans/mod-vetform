@@ -2,7 +2,7 @@
 @php
 
 $errorWhoLabel = '';
-$errorWhoMessage = '';
+$errorMessage = '';
 $errorWhoShow = '';
 
 
@@ -83,7 +83,7 @@ if (!empty($_POST)) {
     <span class="govuk-visually-hidden">Error:</span> Select who is making this application
 </span>';
 
-        $errorWhoMessage = '
+        $errorMessage = '
  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
   <h2 class="govuk-error-summary__title" id="error-summary-title">
     There is a problem
@@ -91,7 +91,7 @@ if (!empty($_POST)) {
   <div class="govuk-error-summary__body">
     <ul class="govuk-list govuk-error-summary__list">
       <li>
-        <a href="#/applicant/applicant-selection/nominated-applicant-error">Select who is making this application</a>
+        <a href="#/applicant/applicant-selection/nominated-applicant-the-person-named-on-this-claim-is-making-the-application.">Select who is making this application</a>
       </li>
     </ul>
   </div>
@@ -122,10 +122,8 @@ $page_title = 'Who is applying?';
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 @php
-echo $errorWhoMessage;
+echo $errorMessage;
 @endphp
-
-                                <h1 class="govuk-heading-xl">Who is applying?</h1>
 
 
             <form method="post" enctype="multipart/form-data" novalidate>
@@ -134,6 +132,13 @@ echo $errorWhoMessage;
     <div class="govuk-form-group {{$errorWhoShow}} ">
     <a id="/applicant/"></a>
     <fieldset class="govuk-fieldset">
+
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-heading-xl">
+      Who is applying?
+    </h1>
+</legend>
+
 
 @php
 echo $errorWhoLabel;

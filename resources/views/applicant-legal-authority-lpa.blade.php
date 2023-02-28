@@ -63,7 +63,7 @@ if (!empty($_POST)) {
 
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">the LPA Access Code you provided does not appear to be valid</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/lpacode">the LPA Access Code you provided does not appear to be valid</a>';
                 $lpacode['error'] = 'govuk-form-group--error';
                 $lpacode['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
@@ -171,6 +171,7 @@ The donor may have given you the wrong code. Ask them to go to <a href="https://
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
 
         <div class="govuk-form-group">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <label class="govuk-label" for="contact-by-email">
             LPA Access Code
           </label>

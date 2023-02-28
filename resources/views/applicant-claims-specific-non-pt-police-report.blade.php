@@ -106,7 +106,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-reported-to/non-sporting-reported-to">Tell us if the incident was reported</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-reported-to/non-sporting-reported-to-yes">Tell us if the incident was reported</a>';
         $reported['error'] = 'govuk-form-group--error';
         $reported['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-reported-to/non-sporting-reported-to-error" class="govuk-error-message">
@@ -163,6 +163,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Was the incident reported to the civilian or military police?';
+
 @endphp
 
 
@@ -180,12 +182,13 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">Was the incident reported to the civilian or military police?</h1>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$reported['error']}}">
-    <a id="/claim-details/claim-accident-non-sporting-reported-to/non-sporting-reported-to"></a>
     <fieldset class="govuk-fieldset">
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                  <h1 class="govuk-heading-xl">Was the incident reported to the civilian or military police?</h1>
+                                  </legend>
 @php echo $reported['errorLabel']; @endphp
 
                                             <div

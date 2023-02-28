@@ -143,7 +143,7 @@ if (!empty($_POST)) {
 
         $errors = 'Y';
         $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-address/postcode">Tell us your postcode</a>';
-        $posstcode['error'] = 'govuk-form-group--error';
+        $postcode['error'] = 'govuk-form-group--error';
         $postcode['errorLabel'] =
         '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
             <span class="govuk-visually-hidden">Error:</span> Tell us your postcode
@@ -279,12 +279,12 @@ echo $errorMessage;
             >
 </div>
 
-
-                                    <div class="govuk-form-group {{$postcode['error']}}">
+@php echo $postcode['errorLabel']; @endphp
+     <div class="govuk-form-group {{$postcode['error']}}">
     <label class="govuk-label" for="afcs/about-you/personal-details/contact-address/postcode">
         Postcode
     </label>
-    @php echo $postcode['errorLabel']; @endphp
+
             <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-address/postcode" name="afcs/about-you/personal-details/contact-address/postcode" type="text"

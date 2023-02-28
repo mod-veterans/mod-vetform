@@ -131,7 +131,9 @@ $page_title = 'Why is your condition related to your armed forces service?';
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 @php echo $errorMessage; @endphp
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Why is your condition related to your armed forces service?</h1>
+                                </legend>
                                 <p class="govuk-body">In your own words, tell us why you feel your claimed medical condition or injury is caused or made worse by your service in the armed forces.</p>
                                 <div class="govuk-warning-text">
                                   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -170,7 +172,7 @@ Reminder: If the person named in this application has ever served with the Unite
     </label>
                 <textarea class="govuk-textarea " id="/claim-details/claim-illness-note/claim-illness-note"
                   name="/claim-details/claim-illness-note/claim-illness-note" rows="5" maxlength="3500"
-                                    aria-describedby="">{{$condition['data'] ?? ''}}</textarea>
+                                    >{{$condition['data'] ?? ''}}</textarea>
   <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
     You can enter up to 3,500 characters
   </div>

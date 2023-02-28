@@ -112,7 +112,7 @@ if (!empty($_POST)) {
     if (empty($_POST['/other-medical-treatment-address/address-line-1'])) {
        /*
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-medical-treatment-address//address-line-1">Tell us the first line of your hospital address</a>';
+        $errorsList[] = '<a href="#/other-medical-treatment-address/address-line-1">Tell us the first line of your hospital address</a>';
         $address1['error'] = 'govuk-form-group--error';
         $address1['errorLabel'] =
         '<span id="afcs/about-you/personal-details/contact-address/-error" class="govuk-error-message">
@@ -325,7 +325,7 @@ You can leave blank any sections you cannot remember.
     </label>
             <select class="govuk-select govuk-!-width-two-thirds " id="/other-medical-treatment-address/country"
             name="/other-medical-treatment-address/country"
-            aria-describedby=" "
+
             autocomplete="new-password">
 @php if (!empty($country['data'])) {
 echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';

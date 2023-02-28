@@ -131,7 +131,9 @@ $page_title = 'Why is your condition related to your armed forces service?';
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
 @php echo $errorMessage; @endphp
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Why is your condition related to your armed forces service?</h1>
+                                </legend>
                                 <p class="govuk-body"> In your own words, tell us why you feel your claimed medical condition or injury is caused or made worse by your service in the armed forces. </p>
                                <div class="govuk-inset-text">
 If you’re claiming for a road traffic accident and you were not on a direct route between your starting point and destination, tell us why here.

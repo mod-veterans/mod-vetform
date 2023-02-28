@@ -85,7 +85,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-selection/nominated-representative">Tell us if you want to nominate a representative</a>';
+        $errorsList[] = '<a href="#/representative/representative-selection/nominated-representative-yes">Tell us if you want to nominate a representative</a>';
         $nominate['error'] = 'govuk-form-group--error';
         $nominate['errorLabel'] =
         '<span id="/representative/representative-selection/nominated-representative-error" class="govuk-error-message">

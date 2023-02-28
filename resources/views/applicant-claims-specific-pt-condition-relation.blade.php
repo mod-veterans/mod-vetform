@@ -60,7 +60,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-related/sporting-related">Where were you were when the incident happened</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-related/sporting-related-duties--operations-overseas">Where were you were when the incident happened</a>';
         $where['error'] = 'govuk-form-group--error';
         $where['errorLabel'] =
         '<span id="/claim-details/claim-accident-sporting-related/sporting-related-error" class="govuk-error-message">
@@ -118,6 +118,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Where were you when the incident happened?';
+
 @endphp
 
 
@@ -134,14 +136,14 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Where were you when the incident happened?</h1>
-</legend>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group{{$where['error']}} ">
-    <a id="/claim-details/claim-accident-sporting-related/sporting-related"></a>
+
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Where were you when the incident happened?</h1>
+</legend>
     @php echo $where['errorLabel'];@endphp
 
                                             <div

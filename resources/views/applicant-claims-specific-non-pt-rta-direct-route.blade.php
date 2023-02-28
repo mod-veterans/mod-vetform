@@ -64,7 +64,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-direct-route/non-sporting-direct-route">Tell us if you were on a direct route</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-direct-route/non-sporting-direct-route-yes">Tell us if you were on a direct route</a>';
         $directroute['error'] = 'govuk-form-group--error';
         $directroute['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-direct-route/non-sporting-direct-route-error" class="govuk-error-message">
@@ -122,6 +122,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Were you on a direct route?';
+
 @endphp
 
 
@@ -138,18 +140,18 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
+
+
+            <form method="post" enctype="multipart/form-data" novalidate>
+            @csrf
+                                                    <div class="govuk-form-group {{$directroute['error']}}">
+    <fieldset class="govuk-fieldset">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Were you on a direct route?</h1>
 </legend>
                                 <p class="govuk-body">A direct route means you took a reasonable route from start to end, taking account of traffic conditions. </p>
 <p class="govuk-body">You did not divert for other reasons, for example visiting a friend.
 </p>
-
-            <form method="post" enctype="multipart/form-data" novalidate>
-            @csrf
-                                                    <div class="govuk-form-group {{$directroute['error']}}">
-    <a id="/claim-details/claim-accident-non-sporting-direct-route/non-sporting-direct-route"></a>
-    <fieldset class="govuk-fieldset">
 @php echo $directroute['errorLabel']; @endphp
 
                                             <div

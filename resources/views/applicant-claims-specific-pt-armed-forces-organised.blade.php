@@ -81,7 +81,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Tell us if the activity was authorised or organised by the Armed Forces</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-sporting-authorise/sporting-authorise-yes">Tell us if the activity was authorised or organised by the Armed Forces</a>';
         $organised['error'] = 'govuk-form-group--error';
         $organised['errorLabel'] =
         '<span id="/claim-details/claim-accident-condition/claim-accident-condition-error" class="govuk-error-message">
@@ -139,6 +139,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Was the activity authorised or organised by the Armed Forces?';
+
 @endphp
 
 
@@ -155,14 +157,15 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-<h1 class="govuk-heading-xl">Was the activity authorised or organised by the Armed Forces?</h1>
-    </legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$organised['error']}} ">
     <a id="/claim-details/claim-accident-sporting-authorise/sporting-authorise"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+<h1 class="govuk-heading-xl">Was the activity authorised or organised by the Armed Forces?</h1>
+    </legend>
 @php echo $organised['errorLabel']; @endphp
                                             <div
             class="govuk-radios govuk-radios--inline"

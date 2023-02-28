@@ -80,6 +80,8 @@ if ($cookiechoice == 'Y') {
     $cookiechk['N'] = '';
     $cookiechk['Y'] = 'checked';
 }
+
+$page_title = 'Cookies';
 @endphp
 
 

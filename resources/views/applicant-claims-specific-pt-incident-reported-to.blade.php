@@ -54,7 +54,7 @@ if (!empty($_POST)) {
     if (empty( $_POST['/claim-details/claim-accident-non-sporting-report-to/claim-accident-non-sporting-report-to'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-report-to/claim-accident-non-sporting-report-to">Tell us who you reported the incident to.</a>';
+            $errorsList[] = '<a href="#61666fc5b995f">Tell us who you reported the incident to.</a>';
             $whoreported['error'] = 'govuk-form-group--error';
             $whoreported['errorLabel'] =
             '<span id="/claim-details/claim-accident-non-sporting-report-to/claim-accident-non-sporting-report-to-error" class="govuk-error-message">
@@ -138,7 +138,7 @@ foreach ($showArr as $cur) {
 }
 
 
-
+$page_title = 'Who did you report the incident to?';
 
 
 @endphp
@@ -157,13 +157,14 @@ foreach ($showArr as $cur) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Who did you report the incident to?</h1>
- </legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$whoreported['error']}}">
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Who did you report the incident to?</h1>
+ </legend>
 @php echo $whoreported['errorLabel']; @endphp
 
                 <div id="contact-hint" class="govuk-hint">Select all that apply.</div>

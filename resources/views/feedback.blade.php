@@ -162,6 +162,7 @@ if (!empty($data['settings']['feedback_return_url'])) {
     $wherefrom =  '<a href="'.$data['settings']['feedback_return_url'].'" class="govuk-button">Return to application</a>';
 }
 
+$page_title = 'Give feedback on Apply for Armed Forces Compensation or a War Pension';
 
 ?>
 
@@ -188,6 +189,7 @@ if ($success == 'Y') {
 
 @php
 } else {
+
 @endphp
 
 

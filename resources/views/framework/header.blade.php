@@ -14,6 +14,11 @@ if (!empty($_COOKIE['vet-COOKIE'])) {
     $showcookie = 'N';
 }
 
+$errorTitle = '';
+if ( (!empty($errorMessage)) ) {
+    $errorTitle = 'Error: ';
+}
+
 
 
 
@@ -23,7 +28,7 @@ if (!empty($_COOKIE['vet-COOKIE'])) {
 
 <head>
     <meta charset="utf-8">
-    <title>{{$page_title}} - Apply for Armed Forces Compensation or a War Pension - GOV.UK</title>
+    <title>{{$errorTitle}}{{$page_title}} - Apply for Armed Forces Compensation or a War Pension - GOV.UK</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

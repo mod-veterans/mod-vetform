@@ -56,7 +56,7 @@ if (!empty($_POST)) {
 
 
              $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/contact-number/mobile-number">Enter an email address in the correct format, like name@example.com</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/email-address/email-address">Enter an email address in the correct format, like name@example.com</a>';
             $email['error'] = 'govuk-form-group--error';
             $email['errorLabel'] =
             '<span id="afcs/about-you/personal-details/contact-number/mobile-number-error" class="govuk-error-message">
@@ -160,10 +160,12 @@ $page_title = 'What is your email address?';
  @php
  echo $errorMessage;
  @endphp
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What is your email address?</h1>
+                                </legend>
                                 <p class="govuk-body">We’ll only use this to get in touch about your claim.</p>
 
-<p class="govuk-body">Using an MOD email address, if you have one, means messages are more secure.</p>
+<p class="govuk-body" id="afcs/about-you/personal-details/email-address/email-address-hint">Using an MOD email address, if you have one, means messages are more secure.</p>
 
 
             <form method="post" enctype="multipart/form-data" novalidate>

@@ -10,6 +10,9 @@
         die();
     }
 
+$page_title = 'Save and come back later';
+
+
 @endphp
 
 @include('framework.header')

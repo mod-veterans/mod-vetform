@@ -85,7 +85,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/personal-details/previous-claim/previous-claim">Tell us if you have made a previous claim</a>';
+        $errorsList[] = '<a href="#afcs/about-you/personal-details/previous-claim/previous-claim-yes">Tell us if you have made a previous claim</a>';
         $previous['error'] = 'govuk-form-group--error';
         $previous['errorLabel'] =
         '<span id="/representative/representative-selection/nominated-representative-error" class="govuk-error-message">
@@ -161,21 +161,19 @@ $page_title = 'Have you made a claim before?';
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Have you made a claim before?</h1>
-</legend>
 
- <p class="govuk-body">We only need to know about previous war pension or armed forces compensation scheme claims.</p>
 
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$previous['error']}} ">
     <a id="afcs/about-you/personal-details/previous-claim/previous-claim"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Have you made a claim before?</h1>
+</legend>
+ <p class="govuk-body">We only need to know about previous war pension or armed forces compensation scheme claims.</p>
 @php echo $previous['errorLabel']; @endphp
-                                            <div
-            class="govuk-radios govuk-radios--inline"
-            >
+                                            <div class="govuk-radios govuk-radios--inline">
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="afcs/about-you/personal-details/previous-claim/previous-claim-yes" name="afcs/about-you/personal-details/previous-claim/previous-claim" type="radio"
            value="Yes"   @php echo @$previouschk['Yes']; @endphp         >

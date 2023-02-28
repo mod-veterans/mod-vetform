@@ -106,10 +106,10 @@ if (!empty($_POST)) {
         if ( (empty($enlistmentday['data'])) || (empty($enlistmentmonth['data'])) || (empty($enlistmentyear['data'])) ) {
 
            $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-enlistment-date/enlistment-date-day">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
             $enlistmentyear['error'] = 'govuk-form-group--error';
             $enlistmentyear['errorLabel'] =
-            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+            '<span id="afcs/about-you/service-details/enlistment-date-error" class="govuk-error-message">
                 <span class="govuk-visually-hidden">Error:</span> Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year
              </span>';
 
@@ -117,10 +117,10 @@ if (!empty($_POST)) {
         }  elseif (!yearInFuture($enlistmentyear['data'])) {
 
          $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-enlistment-date/enlistment-date-year">The year entered cannot be in the future</a>';
             $enlistmentyear['error'] = 'govuk-form-group--error';
             $enlistmentyear['errorLabel'] =
-            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+            '<span id="afcs/about-you/service-details/enlistment-date-error" class="govuk-error-message">
                 <span class="govuk-visually-hidden">Error:</span> The year entered cannot be in the future
              </span>';
 
@@ -128,10 +128,10 @@ if (!empty($_POST)) {
         } elseif ( (!checkDate($_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-month'], $_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-day'], $_POST['afcs/about-you/service-details/service-enlistment-date/enlistment-date-year']) )  ) {
 
           $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+            $errorsList[] = '<a href="#afcs/about-you/service-details/service-enlistment-date/enlistment-date-day">The date entered must be a real date</a>';
             $enlistmentyear['error'] = 'govuk-form-group--error';
             $enlistmentyear['errorLabel'] =
-            '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
+            '<span id="afcs/about-you/service-details/enlistment-date-error" class="govuk-error-message">
                 <span class="govuk-visually-hidden">Error:</span>The date entered must be a real date
              </span>';
 
@@ -228,8 +228,9 @@ $page_title = 'What was your enlistment date?';
 @php
 echo $errorMessage;
 @endphp
-
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What was your enlistment date?</h1>
+                            </legend>
                                 <p class="govuk-body">Tell us the date this period of service started.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
@@ -293,7 +294,7 @@ echo $errorMessage;
 <br />
         <div class="govuk-checkboxes__item">
 
-        <input class="govuk-checkboxes__input" id="615ff47dd0131" name="afcs/about-you/service-details/service-enlistment-date/approximate-date" type="checkbox"
+        <input class="govuk-checkboxes__input" id="afcs/about-you/service-details/service-enlistment-date/approximate-date" name="afcs/about-you/service-details/service-enlistment-date/approximate-date" type="checkbox"
            value="Yes"     @php echo @$approximatechk; @endphp       >
     <label class="govuk-label govuk-checkboxes__label" for="afcs/about-you/service-details/service-enlistment-date/approximate-date">Tick if this date is approximate</label>
 </div>

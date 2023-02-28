@@ -54,7 +54,7 @@ if (!empty($_POST)) {
     if (empty( $_POST['/claim-details/claim-illness-related/claim-illness-related'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#/claim-details/claim-illness-related/claim-illness-related">Where were you when the incident happened.</a>';
+            $errorsList[] = '<a href="#/616680a3c4ce7">Where were you when the incident happened.</a>';
             $wherewere['error'] = 'govuk-form-group--error';
             $wherewere['errorLabel'] =
             '<span id="/claim-details/claim-illness-related/claim-illness-related-error" class="govuk-error-message">
@@ -138,7 +138,7 @@ foreach ($showArr as $cur) {
 }
 
 
-
+$page_title = 'Where were you when the incident happened?';
 
 
 @endphp
@@ -158,14 +158,15 @@ foreach ($showArr as $cur) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Where were you when the incident happened?</h1>
-    </legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group {{$wherewere['error']}}">
     <a id="/claim-details/claim-accident-non-sporting-location/non-sporting-location"></a>
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Where were you when the incident happened?</h1>
+    </legend>
 @php echo $wherewere['errorLabel'] @endphp
 
                 <div id="contact-hint" class="govuk-hint">Tick all that apply.</div>

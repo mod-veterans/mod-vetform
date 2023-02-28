@@ -85,7 +85,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-benefits/receiving-payments/payments">Select if you have been paid under these schemes</a>';
+        $errorsList[] = '<a href="#/other-benefits/receiving-payments/payments-yes">Select if you have been paid under these schemes</a>';
         $otherpaid['error'] = 'govuk-form-group--error';
         $otherpaid['errorLabel'] =
         '<span id="/other-benefits/receiving-payments/payments-error" class="govuk-error-message">
@@ -141,6 +141,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'Have you ever been paid any of the following?';
+
 @endphp
 
 
@@ -160,22 +163,26 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Have you ever been paid any of the following?</h1>
-                                <p class="govuk-body">These schemes make payments for certain illnesses caused by exposure to asbestos and dust.</p>
-  </legend>
-                       <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
-                         <li>Diffuse Mesothelioma 2014 Scheme</li>
-                         <li>Diffuse Mesothelioma 2008 Scheme</li>
-                         <li>The Workers Compensation 1979 Pneumoconiosis Act</li>
-                       </ul>
+
+
+
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf
                                                     <div class="govuk-form-group {{$otherpaid['error']}} ">
     <a id="/other-benefits/receiving-payments/payments"></a>
     <fieldset class="govuk-fieldset">
-@php//echo @$otherpaid['errorLabel']; @endphp
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Have you ever been paid any of the following?</h1>
+  </legend>
+                                <p class="govuk-body">These schemes make payments for certain illnesses caused by exposure to asbestos and dust.</p>
+                       <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
+                         <li>Diffuse Mesothelioma 2014 Scheme</li>
+                         <li>Diffuse Mesothelioma 2008 Scheme</li>
+                         <li>The Workers Compensation 1979 Pneumoconiosis Act</li>
+                       </ul>
+
+@php echo @$otherpaid['errorLabel']; @endphp
                                             <div
             class="govuk-radios govuk-radios--inline"
             >

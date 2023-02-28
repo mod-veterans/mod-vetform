@@ -144,6 +144,10 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
 
 }
 
+
+
+$page_title = 'Is there another number you can be contacted on?';
+
 @endphp
 
 
@@ -161,10 +165,6 @@ if (empty($_POST['afcs/about-you/personal-details/contact-number/do-you-have']))
   @php
 echo $errorMessage;
 @endphp
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Is there another number you can be contacted on?</h1>
-    </legend>
-                                <p class="govuk-body">We'll use this to contact you if we have any questions about this claim.</p>
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
@@ -172,17 +172,21 @@ echo $errorMessage;
 
 <div class="govuk-form-group {{$doyouhavemobile['error'] ?? ''}}">
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l" id="contact-hint">
+                                <h1 class="govuk-heading-xl">Is there another number you can be contacted on?</h1>
+    </legend>
+                                <p class="govuk-body">We'll use this to contact you if we have any questions about this claim.</p>
           @php echo $doyouhavealternative['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$doyouhavealternativechk['Yes'] ?? ''}}>
+        <input class="govuk-radios__input" id="contact-yes" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$doyouhavealternativechk['Yes'] ?? ''}}>
         <label class="govuk-label govuk-radios__label" for="contact">
           Yes
         </label>
       </div>
       <div class="govuk-radios__conditional {{$numHidden ?? ''}}" id="conditional-contact">
         <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-by-email">
+          <label class="govuk-label" for="afcs/about-you/personal-details/contact-number/mobile-number">
             Telephone number
           </label>
           @php echo $telephone['errorLabel']; @endphp
@@ -190,16 +194,12 @@ echo $errorMessage;
                  <input
         class="govuk-input govuk-!-width-two-thirds "
         id="afcs/about-you/personal-details/contact-number/mobile-number" name="afcs/about-you/personal-details/contact-number/mobile-number" type="tel"
-         autocomplete="tel"
-           inputmode="numeric" pattern="[0-9]*"
-                value="{{$telephone['data']}}"
-                aria-describedby="afcs/about-you/personal-details/contact-number/mobile-number-hint"
-            >
+         autocomplete="tel" inputmode="numeric" pattern="[0-9]*" value="{{$telephone['data']}}" aria-describedby="afcs/about-you/personal-details/contact-number/mobile-number-hint">
 
       </div>
       </div>
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$doyouhavealternativechk['No'] ?? ''}}>
+        <input class="govuk-radios__input" id="contact-no" name="afcs/about-you/personal-details/contact-number/do-you-have" type="radio" value="No"  {{$doyouhavealternativechk['No'] ?? ''}}>
         <label class="govuk-label govuk-radios__label" for="contact-2">
           No
         </label>

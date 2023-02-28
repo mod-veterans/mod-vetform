@@ -108,7 +108,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition">Tell us if the incident or accident was related to sport, adventure training or physical training</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-condition/claim-accident-condition-yes">Tell us if the incident or accident was related to sport, adventure training or physical training</a>';
         $claim['error'] = 'govuk-form-group--error';
         $claim['errorLabel'] =
         '<span id="/claim-details/claim-accident-condition/claim-accident-condition-error" class="govuk-error-message">
@@ -182,14 +182,15 @@ $page_title = 'Was the incident or accident due to sporting, adventure or physic
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Was the incident or accident due to sporting, adventure or physical training?</h1>
-    </legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$claim['error']}} ">
     <a id="/claim-details/claim-accident-condition/claim-accident-condition"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Was the incident or accident due to sporting, adventure or physical training?</h1>
+    </legend>
 @php echo $claim['errorLabel']; @endphp
 
           <div class="govuk-radios govuk-radios--inline">

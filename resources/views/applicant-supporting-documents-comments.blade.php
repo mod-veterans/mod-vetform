@@ -61,7 +61,9 @@ $page_title = 'Do you want to tell us anything about your documents?';
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Do you want to tell us anything about your documents?</h1>
+                                </legend>
                                 <p class="govuk-body">If you want to tell us anything about the images you have uploaded, use the space below.</p>
                                 <div class="govuk-inset-text">
  If for any reason you have chosen to send us any images of your condition/illness, you should tell us here.  </div>

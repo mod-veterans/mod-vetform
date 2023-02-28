@@ -133,6 +133,7 @@ foreach ($showArr as $cur) {
 
 
 
+$page_title = 'What is your Illness/condition related to?';
 
 
 @endphp
@@ -147,14 +148,13 @@ foreach ($showArr as $cur) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is your Illness/condition related to?</h1>
-    </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group">
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">What is your Illness/condition related to?</h1>
+    </legend>
                 <div id="contact-hint" class="govuk-hint">Select all that apply.</div>
                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">

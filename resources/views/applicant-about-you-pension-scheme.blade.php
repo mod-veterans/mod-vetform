@@ -37,7 +37,7 @@ if (!empty($_POST)) {
     if (empty( $_POST['afcs/about-you/personal-details/pension-scheme/pension-scheme'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/personal-details/pension-scheme/pension-scheme">Tell us which armed forces pension scheme(s) you are a member of.</a>';
+            $errorsList[] = '<a href="#615fda2278b0d">Tell us which armed forces pension scheme(s) you are a member of.</a>';
             $pensionscheme['error'] = 'govuk-form-group--error';
             $pensionscheme['errorLabel'] =
             '<span id="afcs/about-you/personal-details/national-insurance/ni-number" class="govuk-error-message">
@@ -139,11 +139,14 @@ $page_title = 'Which armed forces pension scheme(s) are you a member of?';
 @php
 echo $errorMessage;
 @endphp
-                                <h1 class="govuk-heading-xl">Which armed forces pension scheme(s) are you a member of?</h1>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$pensionscheme['error']}}">
-    <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <fieldset class="govuk-fieldset">
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Which armed forces pension scheme(s) are you a member of?</h1>
+                                </legend>
 @php echo $pensionscheme['errorLabel']; @endphp
                 <div id="contact-hint" class="govuk-hint">Tick all that apply.</div>
 

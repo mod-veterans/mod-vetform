@@ -135,7 +135,7 @@ echo $errorMessage;
 @endphp
 
                                 <h1 class="govuk-heading-xl">Using text messages to contact you</h1>
-                               <p class="govuk-body">Veterans UK is planning to introduce text messaging to update customers as their claim progresses.</p>
+                               <p class="govuk-body" id="contact-hint">Veterans UK is planning to introduce text messaging to update customers as their claim progresses.</p>
 
 <p class="govuk-body">If you want us to use the number you have just provided to send you text message updates about your claim, read the information below:
 </p>
@@ -167,15 +167,15 @@ echo $errorMessage;
           @php echo $mobilepermission['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="afcs/about-you/personal-details/contact-number/mobilepermission" name="afcs/about-you/personal-details/contact-number/mobilepermission" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$mobilepermissionchk['Yes'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact">
+        <input class="govuk-radios__input" id="afcs/about-you/personal-details/contact-number/mobilepermission-yes" name="afcs/about-you/personal-details/contact-number/mobilepermission" type="radio" value="Yes" {{$mobilepermissionchk['Yes'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/contact-number/mobilepermission-yes">
           Yes
         </label>
       </div>
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="afcs/about-you/personal-details/contact-number/mobilepermission" name="afcs/about-you/personal-details/contact-number/mobilepermission" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$mobilepermissionchk['No'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact-2">
+        <input class="govuk-radios__input" id="afcs/about-you/personal-details/contact-number/mobilepermission-no" name="afcs/about-you/personal-details/contact-number/mobilepermission" type="radio" value="No" {{$mobilepermissionchk['No'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/contact-number/mobilepermission-no">
           No
         </label>
       </div>

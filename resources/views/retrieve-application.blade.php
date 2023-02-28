@@ -50,7 +50,7 @@ if (!empty($_POST['lastname'])) {
 
         if ( (!is_numeric($dobday['data'])) || (!is_numeric($dobmonth['data'])) || (!is_numeric($dobyear['data'])) ) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#/applicant/nominee-details/nominee-details">Enter your date of birth in numeric format</a>';
+            $errorsList[] = '<a href="#afcs/about-you/personal-details/date-of-birth/date-of-birth-day">Enter your date of birth in numeric format</a>';
             $dob['error'] = 'govuk-form-group--error';
             $dob['errorLabel'] =
             '<span id="/applicant/nominee-details/nominee-details" class="govuk-error-message">
@@ -229,6 +229,8 @@ hours (Mon-Fri)
 
 }
 
+$page_title = 'Return to a saved application';
+
 @endphp
 
 
@@ -245,9 +247,10 @@ hours (Mon-Fri)
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
                                 <h1 class="govuk-heading-xl">Return to a saved application</h1>
-  </legend>
+
+  <p class="govuk-body" style="color: red;">Due to a system error, it may not be possible to return to some applications saved between 20 and 23 December and a new application will need to be started.  We sincerely apologise for the inconvenience caused to those affected.  </p>
                                 <p class="govuk-body">Enter the details below so we can find your application.</p>
                                 <form method="post" enctype="multipart/form-data">
                                 @csrf
@@ -260,12 +263,14 @@ echo $errorMessage;
 
 
     <fieldset class="govuk-fieldset">
-
+  <legend class="govuk-visually-hidden">
+                                <h2 class="govuk-heading-xl">Return to a saved application</h2>
+  </legend>
 
     @php echo $dob['errorLabel']; @endphp
 
 
-    <label class="govuk-label" for="">
+    <label class="govuk-label" for="afcs/about-you/personal-details/date-of-birth/date-of-birth-day">
         Date of birth (required)
     </label>
         <div id="afcs/about-you/personal-details/date-of-birth/date-of-birth-hint" class="govuk-hint">For example 07 03 1995</div>
@@ -321,10 +326,10 @@ echo $errorMessage;
 
 
 <div class="govuk-form-group">
-    <label class="govuk-label" for="afcs/about-you/personal-details/your-name/lastname">
+    <label class="govuk-label" for="ninumber">
         National Insurance Number (required)
     </label>
-    <input  class="govuk-input govuk-!-width-two-thirds " id="last-name" name="ninumber" type="text" value="">
+    <input  class="govuk-input govuk-!-width-two-thirds " id="ninumber" name="ninumber" type="text" value="">
 </div>
 
 

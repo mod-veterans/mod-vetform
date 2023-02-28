@@ -104,7 +104,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic">Tell us if the incident was a road traffic accident</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic-yes">Tell us if the incident was a road traffic accident</a>';
         $rta['error'] = 'govuk-form-group--error';
         $rta['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic-error" class="govuk-error-message">
@@ -161,6 +161,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Was the incident a road traffic accident?';
+
 @endphp
 
 
@@ -175,14 +177,15 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Was the incident a road traffic accident?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$rta['error']}}">
-    <a id="/claim-details/claim-accident-non-sporting-road-traffic/non-sporting-road-traffic"></a>
+
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Was the incident a road traffic accident?</h1>
+</legend>
 @php echo $rta['errorLabel']; @endphp
 
                                             <div

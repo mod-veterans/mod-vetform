@@ -60,7 +60,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-witness/sporting-witnesses">Tell if there were any witnesses</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-witness/sporting-witnesses-yes-detail">Tell if there were any witnesses</a>';
         $witnesses['error'] = 'govuk-form-group--error';
         $witnesses['errorLabel'] =
         '<span id="/claim-details/claim-accident-witness/sporting-witnesses-error" class="govuk-error-message">
@@ -118,6 +118,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Were there any witnesses?';
+
 @endphp
 
 
@@ -133,13 +135,14 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-                                <h1 class="govuk-heading-xl">Were there any witnesses?</h1>
-                                <p class="govuk-body">Witnesses could be to the incident itself or immediate aftermath.  We do not need anyone’s details at this stage.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group {{$witnesses['error']}} ">
-    <a id="/claim-details/claim-accident-witness/sporting-witnesses"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+    <h1 class="govuk-heading-xl">Were there any witnesses?</h1>
+</legend>
+                                <p class="govuk-body">Witnesses could be to the incident itself or immediate aftermath.  We do not need anyone’s details at this stage.</p>
 @php echo $witnesses['errorLabel']; @endphp
 
                                             <div

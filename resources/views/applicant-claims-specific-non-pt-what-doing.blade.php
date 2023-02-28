@@ -8,6 +8,7 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What were you doing at the time the incident occurred? (required)';
 
 
 @endphp
@@ -23,16 +24,14 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">What were you doing at the time the incident occurred?</h1>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">
-    <a id="/claim-details/claim-accident-non-sporting-activity/non-sporting-activity"></a>
     <fieldset class="govuk-fieldset">
                                     <legend
                     class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-visually-hidden">
-                    <h1 class
-                    ="govuk-fieldset__heading">What were you doing at the time the incident occurred? (required)</h1>
+                    <h1 class="govuk-fieldset__heading">What were you doing at the time the incident occurred? (required)</h1>
                 </legend>
                                             <div
             class="govuk-radios"

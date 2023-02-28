@@ -86,7 +86,7 @@ if (!empty($_POST)) {
 
         if (empty($datefromyear['data'])) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+            $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-year"">Enter an approximate year</a>';
             $datefromyear['error'] = 'govuk-form-group--error';
             $datefromyear['errorLabel'] =
             '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -96,7 +96,7 @@ if (!empty($_POST)) {
         } elseif (!yearInFuture($datefromyear['data'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+            $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-year"">The year entered cannot be in the future</a>';
             $datefromyear['error'] = 'govuk-form-group--error';
             $datefromyear['errorLabel'] =
             '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -113,7 +113,7 @@ if (!empty($_POST)) {
             if ( (empty($datefromday['data'])) || (empty($datefrommonth['data'])) || (empty($datefromyear['data'])) ) {
 
                $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
+                $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-day">Enter a valid date. If you do not know the date, tick \'this date is approximate\' and enter a year</a>';
                 $datefromyear['error'] = 'govuk-form-group--error';
                 $datefromyear['errorLabel'] =
                 '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -124,7 +124,7 @@ if (!empty($_POST)) {
             } elseif ( (!checkDate($datefrommonth['data'], $datefromday['data'], $datefromyear['data']) )  ) {
 
               $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-day">The date entered must be a real date</a>';
                 $datefromyear['error'] = 'govuk-form-group--error';
                 $datefromyear['errorLabel'] =
                 '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -136,7 +136,7 @@ if (!empty($_POST)) {
             if (!dateInFuture($datefrommonth['data'],$datefromday['data'],$datefromyear['data'])) {
 
              $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered cannot be in the future</a>';
+                $errorsList[] = '<a href="#/claim-details/claim-downgraded-dates/date-from-day">The date entered cannot be in the future</a>';
                 $datefromyear['error'] = 'govuk-form-group--error';
                 $datefromyear['errorLabel'] =
                 '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -218,6 +218,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'When did your downgrading start?';
+
 @endphp
 
 
@@ -234,20 +236,19 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">When did your downgrading start?</h1>
-    </legend>
-    <p class="govuk-body">If you were downgraded and upgraded more than once, enter the date you were first downgraded.<br /><br />For example 27 3 2007. If you cannot remember, enter an approximate year.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$datetoday['error'] ?? ''}} {{$datetoyear['error'] ?? ''}} ">
     <input name="/claim-details/claim-downgraded-dates/date-from-year" type="hidden" value="">
 </div>
                                     <div
-    class="govuk-form-group {{$datefromyear['error'] ?? ''}}"
-    aria-describedby="/claim-details/claim-downgraded-dates/date-from-hint  ">
+    class="govuk-form-group {{$datefromyear['error'] ?? ''}}">
 
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">When did your downgrading start?</h1>
+    </legend>
+    <p class="govuk-body">If you were downgraded and upgraded more than once, enter the date you were first downgraded.<br /><br />For example 27 3 2007. If you cannot remember, enter an approximate year.</p>
 @php echo $datefromyear['errorLabel']; @endphp
 
         <div id="/claim-details/claim-downgraded-dates/date-from-hint" class="govuk-hint"></div>

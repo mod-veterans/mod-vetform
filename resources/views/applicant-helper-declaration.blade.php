@@ -135,7 +135,9 @@ $page_title = 'Helping someone make a claim';
 @php
 echo $errorMessage;
 @endphp
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Helping someone make a claim</h1>
+                                </legend>
 
                                 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>

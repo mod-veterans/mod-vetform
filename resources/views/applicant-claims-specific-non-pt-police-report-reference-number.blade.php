@@ -140,6 +140,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Tell us the police reference number (if known)';
+
 @endphp
 
 
@@ -156,7 +158,9 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Tell us the police reference number (if known)</h1>
+                                </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group ">

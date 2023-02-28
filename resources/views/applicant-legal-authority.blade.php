@@ -194,6 +194,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What are your own details?';
+
 @endphp
 
 
@@ -210,7 +212,9 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What are your own details?</h1>
+                                </legend>
                                 <p class="govuk-body">You have told us you are making this claim on behalf of someone else because you have legal authority to act for them. If you do not have legal authority, go back and select ‘I’m helping someone apply’.</p>
            <p class="govuk-body">
            Tell us your own details.</p>
@@ -270,7 +274,6 @@ echo $errorMessage;
     @php echo $country['errorLabel']; @endphp
             <select class="govuk-select govuk-!-width-two-thirds " id="/applicant/nominee-address/country"
             name="/applicant/nominee-address/country"
-            aria-describedby=" "
             autocomplete="new-password">
 
 @php if (!empty($country['data'])) {

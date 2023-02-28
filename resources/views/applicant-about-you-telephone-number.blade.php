@@ -192,17 +192,18 @@ $page_title ='Do you have a UK mobile telephone number?';
   @php
 echo $errorMessage;
 @endphp
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Do you have a UK mobile telephone number?</h1>
-    </legend>
-                                <p class="govuk-body">We'll use this to contact you if we have any questions about this claim.</p>
+
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
 
 
 <div class="govuk-form-group {{$doyouhavemobile['error'] ?? ''}}">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <fieldset class="govuk-fieldset" aria-describedby="afcs/about-you/personal-details/contact-number/mobile-number-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Do you have a UK mobile telephone number?</h1>
+    </legend>
+                                <p class="govuk-body" id="afcs/about-you/personal-details/contact-number/mobile-number-hint">We'll use this to contact you if we have any questions about this claim.</p>
           @php echo $doyouhavemobile['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
       <div class="govuk-radios__item">
@@ -214,7 +215,7 @@ echo $errorMessage;
       <div class="govuk-radios__conditional {{$numHidden ?? ''}}" id="conditional-contact">
         <div class="govuk-form-group">
           <label class="govuk-label" for="contact-by-email">
-            Mobile telephone number
+            UK mobile telephone number
           </label>
           @php echo $mobile['errorLabel']; @endphp
                  <input

@@ -97,7 +97,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/representative/representative-role/representative-role">Tell us your representative\'s role</a>';
+        $errorsList[] = '<a href="#/representative/representative-role/representative-role-Spouse-civil-partner-partner">Tell us your representative\'s role</a>';
         $role['error'] = 'govuk-form-group--error';
         $role['errorLabel'] =
         '<span id="/representative/representative-role/representative-role-error" class="govuk-error-message">
@@ -154,6 +154,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'What is your representative\'s role?';
+
 @endphp
 
 
@@ -170,14 +173,14 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is your representative&#039;s role?</h1>
-    </legend>
+
 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$role['error']}} ">
-    <a id="/representative/representative-role/representative-role"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">What is your representative's role?</h1>
+    </legend>
 @php echo $role['errorLabel']; @endphp
                                             <div
             class="govuk-radios"  >

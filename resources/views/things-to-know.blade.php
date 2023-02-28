@@ -28,11 +28,10 @@ $page_title = 'Things you need to know before you start';
                                <ul class="govuk-list govuk-list--bullet govuk-list--spaced">
     <li>you can make one or more claims for injuries or illnesses with different causes in one application</li>
     <li>a single claim should take around 45 minutes to complete but some may take longer</li>
-    <li>once you’ve completed the 'Personal Details' section you can take a break an return to an application later</li>
-
-    <li>you can use the ‘supporting documents’ section to upload image of any documents you want to send us</li>
+    <li>once you’ve completed the 'Personal Details' section you can take a break and return to an application later</li>
+    <li>you can use the ‘supporting documents’ section to upload images of any documents you want to send us</li>
     <li>answer all the questions to the best of your knowledge. If you cannot remember, you can leave blank any sections not marked 'required'</li>
-    <li>if you have a problem, click on ‘give feedback or get help’ at the top of every page.  We’ll get back to you within 24 hours (Mon to Fri) </li>
+    <li>if you have a problem, click on ‘give feedback or get help’ at the top of every page.  We’ll get back to you within 24 hours (Monday to Friday) </li>
     <li>after you’ve submitted your application, you cannot access your claim again online. You can contact us later with changes or new information if you need to</li>
 </ul>
 

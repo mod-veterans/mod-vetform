@@ -164,6 +164,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'Were you medically downgraded?';
+
 @endphp
 
 
@@ -179,15 +182,15 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Were you medically downgraded? </h1>
-  </legend>
-                                <p class="govuk-body">Tell us only about downgrading for the medical conditions on this claim.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$downgraded['error'] ?? ''}} ">
     <a id="/claim-details/claim-downgraded/claim-illness-downgraded"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Were you medically downgraded? </h1>
+  </legend>
+                                <p class="govuk-body">Tell us only about downgrading for the medical conditions on this claim.</p>
 @php echo $downgraded['errorLabel']; @endphp
 
                                             <div

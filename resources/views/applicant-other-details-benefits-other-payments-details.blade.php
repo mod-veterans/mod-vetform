@@ -124,6 +124,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What was the date you received payment and the amount?';
+
 @endphp
 
 

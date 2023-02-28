@@ -85,7 +85,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/received-compensation/received-compensation">Tell us if you have received other compensation</a>';
+        $errorsList[] = '<a href="#/other-compensation/received-compensation/received-compensation-yes">Tell us if you have received other compensation</a>';
         $compensation['error'] = 'govuk-form-group--error';
         $compensation['errorLabel'] =
         '<span id="/other-compensation/received-compensation/received-compensation-error" class="govuk-error-message">
@@ -179,7 +179,7 @@ echo $errorMessage;
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
                                                     <div class="govuk-form-group {{$compensation['error']}}">
-    <a id="/other-compensation/received-compensation/received-compensation"></a>
+
     <fieldset class="govuk-fieldset">
                                     <legend
                     class="govuk-fieldset__legend govuk-fieldset__legend--m">

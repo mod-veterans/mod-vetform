@@ -85,7 +85,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/payment-details/bank-location/bank-location">Select where your bank is located</a>';
+        $errorsList[] = '<a href="#/payment-details/bank-location/bank-location-in-the-united-kingdom">Select where your bank is located</a>';
         $banklocation['error'] = 'govuk-form-group--error';
         $banklocation['errorLabel'] =
         '<span id="/payment-details/bank-location/bank-location-error" class="govuk-error-message">
@@ -141,6 +141,8 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'Where is your bank account?';
 @endphp
 
 
@@ -155,12 +157,13 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-                                <h1 class="govuk-heading-xl">Where is your bank account?</h1>
+
                                 <form method="post" enctype="multipart/form-data" novalidate >
                                 @csrf
                                                     <div class="govuk-form-group {{$banklocation['error']}} ">
-    <a id="/payment-details/bank-location/bank-location"></a>
     <fieldset class="govuk-fieldset">
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"><h1 class="govuk-heading-xl">Where is your bank account?</h1>
+                                  </legend>
     @php echo $banklocation['errorLabel']; @endphp
 
                                             <div

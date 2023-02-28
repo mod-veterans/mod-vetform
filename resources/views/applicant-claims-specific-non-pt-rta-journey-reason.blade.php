@@ -64,7 +64,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason">Tell us the reason for your journey</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-duties--operations">Tell us the reason for your journey</a>';
         $journeyreason['error'] = 'govuk-form-group--error';
         $journeyreason['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason-error" class="govuk-error-message">
@@ -122,6 +122,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'What was the reason for your journey?';
+
 @endphp
 
 
@@ -135,14 +137,15 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What was the reason for your journey?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$journeyreason['error']}}">
-    <a id="/claim-details/claim-accident-non-sporting-journey-reason/non-sporting-journey-reason"></a>
+
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">What was the reason for your journey?</h1>
+</legend>
 @php echo $journeyreason['errorLabel']; @endphp
                                             <div
             class="govuk-radios"

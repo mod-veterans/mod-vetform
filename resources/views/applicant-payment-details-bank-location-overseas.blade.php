@@ -199,6 +199,9 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Overseas bank account details';
+
+
 @endphp
 
 
@@ -213,7 +216,9 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Overseas bank account details</h1>
+                                </legend>
                                 <p class="govuk-body">You can ask your bank or check your bank statement for these details.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

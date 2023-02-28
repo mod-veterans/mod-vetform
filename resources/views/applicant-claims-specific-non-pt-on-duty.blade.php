@@ -81,7 +81,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-duty/non-sporting-duty">Tell us if you were on duty at the time</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-yes">Tell us if you were on duty at the time</a>';
         $duty['error'] = 'govuk-form-group--error';
         $duty['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty-error" class="govuk-error-message">
@@ -139,6 +139,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Were you on duty at the time of incident?';
+
 @endphp
 
 
@@ -155,14 +157,15 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                               <h1 class="govuk-heading-xl">Were you on duty at the time of incident?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$duty['error']}}">
     <a id="/claim-details/claim-accident-non-sporting-duty/non-sporting-duty"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                               <h1 class="govuk-heading-xl">Were you on duty at the time of incident?</h1>
+</legend>
 @php echo $duty['errorLabel']; @endphp
 
                                             <div

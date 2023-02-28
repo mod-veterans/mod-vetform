@@ -45,8 +45,6 @@ if (!@pg_query($db, "SELECT * FROM ".$_ENV['DATABASE_TABLE']."")) {
 
 
 
-if (empty($skipCheck)) {
-
     if (empty($_SESSION['vets-user'])) {
         $userID = md5(rand(0,65535).microtime().rand(0,65535));
         $_SESSION['vets-user'] = $userID;
@@ -60,7 +58,7 @@ if (empty($skipCheck)) {
         $userID = $_SESSION['vets-user'];
     }
 
-
+if (empty($skipCheck)) {
 
     $data = getData($userID);
     if ($data == 'NOPE') {
@@ -209,12 +207,20 @@ function simplify_w_spaces($content) {
 }
 
 
+function clearSessionData($userid) {
+    unset ($_SESSION[$userid]);
+    unset ($_SESSION['vets-user']);
+    return TRUE;
+}
+
+
 
 function deleteData($userid) {
     $db = pg_connect("host=".$_ENV['DB_HOST']." port=".$_ENV['DB_PORT']." dbname=".$_ENV['DB_DATABASE']." user=".$_ENV['DB_USERNAME']." password=".$_ENV['DB_PASSWORD']."");
     $result = pg_query($db, "DELETE FROM ".$_ENV['DATABASE_TABLE']." WHERE userid = '".$userid."'");
     if ($row = pg_fetch_assoc($result)) {
         //it was done
+
     }
     unset ($_SESSION[$userid]);
     unset ($_SESSION['vets-user']);

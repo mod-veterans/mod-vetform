@@ -83,7 +83,7 @@ if (!empty($_POST)) {
 
         if (empty($conditionyear['data'])) {
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter an approximate year</a>';
+            $errorsList[] = '<a href="#/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year">Enter an approximate year</a>';
             $conditionyear['error'] = 'govuk-form-group--error';
             $conditionyear['errorLabel'] =
             '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -93,7 +93,7 @@ if (!empty($_POST)) {
         } elseif (!yearInFuture($conditionyear['data'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The year entered cannot be in the future</a>';
+            $errorsList[] = '<a href="#/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-year">The year entered cannot be in the future</a>';
             $conditionyear['error'] = 'govuk-form-group--error';
             $conditionyear['errorLabel'] =
             '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -110,7 +110,7 @@ if (!empty($_POST)) {
             if ( (empty($conditionday['data'])) || (empty($conditionmonth['data'])) || (empty($conditionyear['data'])) ) {
 
                $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">Enter a valid date</a>';
+                $errorsList[] = '<a href="#/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day">Enter a valid date</a>';
                 $conditionyear['error'] = 'govuk-form-group--error';
                 $conditionyear['errorLabel'] =
                 '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -121,7 +121,7 @@ if (!empty($_POST)) {
             } elseif ( (!checkDate($conditionmonth['data'], $conditionday['data'], $conditionyear['data']) )  ) {
 
               $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered must be a real date</a>';
+                $errorsList[] = '<a href="#/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day">The date entered must be a real date</a>';
                 $conditionyear['error'] = 'govuk-form-group--error';
                 $conditionyear['errorLabel'] =
                 '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -133,7 +133,7 @@ if (!empty($_POST)) {
             if (!dateInFuture($conditionmonth['data'],$conditionday['data'],$conditionyear['data'])) {
 
              $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/service-details/service-rank/service-rank">The date entered cannot be in the future</a>';
+                $errorsList[] = '<a href="#/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-day">The date entered cannot be in the future</a>';
                 $conditionyear['error'] = 'govuk-form-group--error';
                 $conditionyear['errorLabel'] =
                 '<span id="afcs/about-you/service-details/service-rank/service-rank-error" class="govuk-error-message">
@@ -234,10 +234,6 @@ $page_title = 'When did you first seek medical attention?';
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">When did you first seek medical attention?</h1>
-  </legend>
-  <p class="govuk-body">Only tell us about the conditions you're claiming for.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$conditionyear['error'] ?? ''}}">
@@ -248,6 +244,10 @@ echo $errorMessage;
     aria-describedby="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-hint  ">
 
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">When did you first seek medical attention?</h1>
+  </legend>
+  <p class="govuk-body">Only tell us about the conditions you're claiming for.</p>
 @php echo $conditionyear['errorLabel']; @endphp
 
         <div id="/claim-details/claim-illness-first-medical-attention-date/claim-surgery-treatment-date-hint" class="govuk-hint">For example 27 3 2007. If you can’t remember, enter an approximate year.</div>

@@ -101,6 +101,8 @@ if (!empty($_POST)) {
     }
 }
 
+$page_title = 'Who did you claim from?';
+
 @endphp
 
 
@@ -117,7 +119,9 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Who did you claim from?</h1>
+                                </legend>
                                 <p class="govuk-body">Include any reference numbers you have.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
@@ -125,8 +129,7 @@ echo $errorMessage;
     <div class="govuk-form-group {{$details['error']}}">
 @php echo $details['errorLabel']; @endphp
                 <textarea class="govuk-textarea  govuk-js-character-count " id="/other-compensation/claim-outcome/claim-outcome-benefactor"
-                  name="/other-compensation/claim-outcome/claim-outcome-benefactor" rows="5" maxlength="500"
-                                    aria-describedby="/other-compensation/claim-outcome/claim-outcome-benefactor-info ">{{$details['data']}}</textarea>
+                  name="/other-compensation/claim-outcome/claim-outcome-benefactor" rows="5" maxlength="500">{{$details['data']}}</textarea>
                     <div id="/other-compensation/claim-outcome/claim-outcome-benefactor-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
                 You can enter up to 500 characters
             </div>

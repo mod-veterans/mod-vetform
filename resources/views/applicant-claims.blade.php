@@ -94,7 +94,8 @@ $page_title = 'Claim details';
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                <h1 class="govuk-heading-xl">Claim details</h1>
+                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l"> <h1 class="govuk-heading-xl">Claim details</h1>
+                 </legend>
                 <p class="govuk-body">You can use this section to make one or more claims for different injuries, illnesses, disorders or conditions caused by your service.</p>
 
 

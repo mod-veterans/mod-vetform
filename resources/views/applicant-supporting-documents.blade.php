@@ -52,7 +52,9 @@ $page_title = 'Uploading supporting documents';
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Uploading supporting documents</h1>
+                                </legend>
                                 <p class="govuk-body">If you have documents or evidence already in your possession you would like us to see, you can upload images of them here.</p>
                                 <div class="govuk-inset-text">
   Do not delay your claim by getting evidence you do not already have.
@@ -113,7 +115,7 @@ $page_title = 'Uploading supporting documents';
                                                     </p>
 
  <div class="govuk-inset-text">
-Please include a covering letter and write the name and National Insurance Number of the person applying on every document.
+Include a covering letter and write the name and National Insurance Number of the person applying on every document.
  You do not need a stamp.
 </div>
 

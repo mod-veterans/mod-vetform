@@ -101,6 +101,8 @@ if (!empty($_POST)) {
     }
 }
 
+$page_title = 'How much did you get?';
+
 @endphp
 
 
@@ -116,7 +118,9 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-                                <h1 class="govuk-heading-xl">How much did you get?</h1>
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                               <h1 class="govuk-heading-xl">How much did you get?</h1>
+                               </legend>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$amount['error']}}">

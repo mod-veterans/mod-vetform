@@ -165,7 +165,9 @@ $page_title = 'Uploading supporting documents';
 @php
 echo $errorMessage;
 @endphp
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Uploading supporting documents</h1>
+                                </legend>
                                 <dl class="govuk-summary-list">
                                     @php echo $fileList; @endphp
                             </dl>

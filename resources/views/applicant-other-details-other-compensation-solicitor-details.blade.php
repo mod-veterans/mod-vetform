@@ -208,6 +208,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Which solicitor helped you?';
+
 @endphp
 
 
@@ -219,7 +221,9 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
-                                <h1 class="govuk-heading-xl">Which solicitor helped you?</h1>
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                  <h1 class="govuk-heading-xl">Which solicitor helped you?</h1>
+                                  </legend>
                                 <p class="govuk-body">You can leave blank any sections you cannot remember.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
@@ -283,7 +287,7 @@ if (!empty($_POST)) {
     </label>
             <select class="govuk-select govuk-!-width-two-thirds " id="/other-compensation/claim-solicitor-details/claim-solicitor__country"
             name="/other-compensation/claim-solicitor-details/claim-solicitor__country"
-            aria-describedby=" "
+
             autocomplete="new-password">
 @php if (!empty($country['data'])) {
 echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';

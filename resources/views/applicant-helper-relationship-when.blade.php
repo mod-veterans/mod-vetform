@@ -70,7 +70,7 @@ if (!empty($_POST)) {
 
     if ((empty($_POST['dontknow'])) && ( (empty($_POST['date-contacted-year'])) || (empty($_POST['date-contacted-month'])) || (empty($_POST['date-contacted-day'])) ) ) {
         $errors = 'Y';
-        $errorsList[] = '<a href="#date-contacted-year">Please give us a full, valid date</a>';
+        $errorsList[] = '<a href="#date-contacted-day">Please give us a full, valid date</a>';
         $whenyear['error'] = 'govuk-form-group--error';
         $whenyear['errorLabel'] =
         '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
@@ -82,7 +82,7 @@ if (!empty($_POST)) {
         if (!checkdate($_POST['date-contacted-month'],$_POST['date-contacted-day'],$_POST['date-contacted-year'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#date-contacted-year">Please give us a valid date</a>';
+            $errorsList[] = '<a href="#date-contacted-day">Please give us a valid date</a>';
             $whenyear['error'] = 'govuk-form-group--error';
             $whenyear['errorLabel'] =
             '<span id="/applicant/helper-details/helper-name-error" class="govuk-error-message">
@@ -151,6 +151,9 @@ if (!empty($_POST)) {
         }
 }
 
+
+$page_title = 'When did the person you are helping first contact you?';
+
 @endphp
 
 
@@ -167,15 +170,16 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                    <h1 class="govuk-heading-xl">When did the person you are helping first contact you?</h1>
-                </legend>
-                <p class="govuk-body">Date the person you are helping first contacted you about claiming</p>
+
                 <form method="post" enctype="multipart/form-data" novalidate>
                 @csrf
                    <div class="govuk-form-group">
 @php echo $whenyear['errorLabel']; @endphp
                       <fieldset class="govuk-fieldset" role="group" aria-describedby="date-contacted-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                    <h1 class="govuk-heading-xl">When did the person you are helping first contact you?</h1>
+                </legend>
+                <p class="govuk-body">Date the person you are helping first contacted you about claiming</p>
                         <div id="date-contacted-hint" class="govuk-hint">
                           For example, 27 3 2007
                         </div>

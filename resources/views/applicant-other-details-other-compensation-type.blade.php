@@ -66,7 +66,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type">Tell us what type of payment</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-payment-type/claim-outcome-payment-type-interim-settlement">Tell us what type of payment</a>';
         $type['error'] = 'govuk-form-group--error';
         $type['errorLabel'] =
         '<span id="/other-compensation/claim-payment-type/claim-outcome-payment-type-error" class="govuk-error-message">
@@ -123,6 +123,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'What type of payment was this?';
+
 @endphp
 
 
@@ -139,15 +142,16 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
+
+                                <form method="post" enctype="multipart/form-data" novalidate>
+                                @csrf
+                                                    <div class="govuk-form-group {{$type['error']}} ">
+
+    <fieldset class="govuk-fieldset">
 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What type of payment was this?</h1>
 </legend>
                                 <p class="govuk-body">Was this a final settlement or an interim payment made before a full and final decision.</p>
-                                <form method="post" enctype="multipart/form-data" novalidate>
-                                @csrf
-                                                    <div class="govuk-form-group {{$type['error']}} ">
-    <a id="/other-compensation/claim-payment-type/claim-outcome-payment-type"></a>
-    <fieldset class="govuk-fieldset">
 @php echo $type['errorLabel']; @endphp
      <div
             class="govuk-radios govuk-radios--inline">

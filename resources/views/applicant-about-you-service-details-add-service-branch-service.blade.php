@@ -172,14 +172,15 @@ $page_title = 'What is or was your service branch?';
 echo $errorMessage;
 @endphp
 
-<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">What is or was your service branch?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$servicebranch['error']}}">
     <a id="afcs/about-you/service-details/service-branch/service-branch"></a>
     <fieldset class="govuk-fieldset">
+<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">What is or was your service branch?</h1>
+</legend>
 @php echo $servicebranch['errorLabel']; @endphp
                                             <div
             class="govuk-radios"

@@ -101,6 +101,8 @@ if (!empty($_POST)) {
     }
 }
 
+$page_title = 'What medical conditions have you claimed or received compensation for?';
+
 @endphp
 
 
@@ -118,7 +120,9 @@ if (!empty($_POST)) {
  echo $errorMessage;
  @endphp
 
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">What medical conditions have you claimed or received compensation for?</h1>
+                                </legend>
                                 <p class="govuk-body">For example, deafness.</p>
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf

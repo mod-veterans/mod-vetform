@@ -2,7 +2,6 @@
 @php
 
 
-
 //error handling setup
 $errorWhoLabel = '';
 $errorMessage = '';
@@ -54,7 +53,7 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/personal-details/served-special-forces'])) {
 
                 $errors = 'Y';
-                $errorsList[] = '<a href="#afcs/about-you/personal-details/served-special-forces">Tell us if you have served in or supported the Special Forces</a>';
+                $errorsList[] = '<a href="#afcs/about-you/personal-details/served-special-forces-no">Tell us if you have served in or supported the Special Forces</a>';
                 $served['error'] = 'govuk-form-group--error';
                 $served['errorLabel'] =
                 '<span id="afcs/about-you/personal-details/served-special-forces-error" class="govuk-error-message">
@@ -186,30 +185,31 @@ echo $errorMessage;
 
 
 <div class="govuk-form-group {{$served['error'] ?? ''}}">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-          @php echo $served['errorLabel']; @endphp
-    <div class="govuk-radios" data-module="govuk-radios">
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+  <fieldset class="govuk-fieldset" aria-describedby="served-special-forces">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="served-special-forces">
 Have you ever served in or supported the Special Forces?
 </legend>
+          @php echo $served['errorLabel']; @endphp
+    <div class="govuk-radios" data-module="govuk-radios">
+
 
        <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="afcs/about-you/personal-details/served-special-forces" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$servedchk['No'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact-2">
+        <input class="govuk-radios__input" id="afcs/about-you/personal-details/served-special-forces-no" name="afcs/about-you/personal-details/served-special-forces" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$servedchk['No'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/served-special-forces-no">
           No
         </label>
       </div>
 
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="afcs/about-you/personal-details/served-special-forces" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$servedchk['Yes'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact">
+        <input class="govuk-radios__input" id="afcs/about-you/personal-details/served-special-forces-yes" name="afcs/about-you/personal-details/served-special-forces" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$servedchk['Yes'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/personal-details/served-special-forces-yes">
           Yes
         </label>
       </div>
       <div class="govuk-radios__conditional {{$numHidden ?? ''}}" id="conditional-contact">
         <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-by-email">
+          <label class="govuk-label" for="afcs/about-you/personal-details/epaw-reference-1" id="afcs/about-you/personal-details/epaw-reference">
             EPAW reference
           </label>
           @php echo $epawref1['errorLabel']; @endphp

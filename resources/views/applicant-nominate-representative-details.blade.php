@@ -332,7 +332,6 @@ echo $errorMessage;
     @php echo $country['errorLabel']; @endphp
             <select class="govuk-select govuk-!-width-two-thirds " id="/representative/representative-address/country"
             name="/representative/representative-address/country"
-            aria-describedby=" "
             autocomplete="new-password">
 @php if (!empty($country['data'])) {
 echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';

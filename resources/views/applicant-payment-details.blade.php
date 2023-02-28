@@ -163,7 +163,7 @@ echo $errorMessage;
 @endphp
 
 
-                                <p class="govuk-heading-xl">Your bank details</p>
+                                <h1 class="govuk-heading-xl">Your bank details</h1>
 
                                 <p class="govuk-body">Telling us your bank details now means we can make a payment faster if your claim is successful.</p>
 
@@ -175,15 +175,16 @@ echo $errorMessage;
 </div>
 
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-l">Do you want to tell us your bank details now?</h1>
-    </legend>
+
 
             <form method="post" enctype="multipart/form-data" novalidate>
             @csrf
                                                     <div class="govuk-form-group {{$providebank['error']}} ">
     <a id="/payment-details/bank-details/bank-details"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h2 class="govuk-heading-l">Do you want to tell us your bank details now?</h2>
+    </legend>
 @php echo $providebank['errorLabel']; @endphp
 
                                             <div

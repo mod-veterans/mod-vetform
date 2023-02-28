@@ -84,7 +84,7 @@ if (!empty($_POST)) {
     if (empty($_POST['afcs/about-you/service-details/service-name/differentname'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#afcs/about-you/service-details/service-name/differentname">Tell us if you had a different name</a>';
+        $errorsList[] = '<a href="#afcs/about-you/service-details/service-name/differentname-no">Tell us if you had a different name</a>';
         $differentname['error'] = 'govuk-form-group--error';
         $differentname['errorLabel'] =
         '<span id="afcs/about-you/service-details/service-name/differentname-error" class="govuk-error-message">
@@ -222,35 +222,35 @@ $page_title = 'Did you have a different name during this period of service?';
 echo $errorMessage;
 @endphp
 
- <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Did you have a different name during this period of service?</h1>
-</legend>
 
             <form method="post" enctype="multipart/form-data" novalidate >
             @csrf
 
-<div class="govuk-form-group {{$served['error'] ?? ''}}">
-  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+<div class="govuk-form-group {{$differentname['error'] ?? ''}}">
+  <fieldset class="govuk-fieldset">
+ <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Did you have a different name during this period of service?</h1>
+</legend>
           @php echo $differentname['errorLabel']; @endphp
     <div class="govuk-radios" data-module="govuk-radios">
 
        <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact-2" name="afcs/about-you/service-details/service-name/differentname" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$differentnamechk['No'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact-2">
+        <input class="govuk-radios__input" id="afcs/about-you/service-details/service-name/differentname-no" name="afcs/about-you/service-details/service-name/differentname" type="radio" value="No" data-aria-controls="conditional-contact-2" {{$differentnamechk['No'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/service-details/service-name/differentname-no">
           No
         </label>
       </div>
 
 
       <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="contact" name="afcs/about-you/service-details/service-name/differentname" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$differentnamechk['Yes'] ?? ''}}>
-        <label class="govuk-label govuk-radios__label" for="contact">
+        <input class="govuk-radios__input" id="afcs/about-you/service-details/service-name/differentname-yes" name="afcs/about-you/service-details/service-name/differentname" type="radio" value="Yes" data-aria-controls="conditional-contact"  {{$differentnamechk['Yes'] ?? ''}}>
+        <label class="govuk-label govuk-radios__label" for="afcs/about-you/service-details/service-name/differentname-yes">
           Yes
         </label>
       </div>
       <div class="govuk-radios__conditional {{$numHidden ?? ''}}" id="conditional-contact">
         <div class="govuk-form-group">
-          <label class="govuk-label" for="contact-by-email">
+          <label class="govuk-label" for="afcs/about-you/service-details/service-name/name-in-service">
             Tell us the names on your service records for this period of service.  We do not need to know about nicknames.
           </label>
           @php echo $nameinservice['errorLabel']; @endphp

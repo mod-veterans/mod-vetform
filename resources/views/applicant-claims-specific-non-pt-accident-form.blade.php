@@ -88,7 +88,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-form/non-sporting-form">Tell us if an accident form was completed</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-form/non-sporting-form-yes">Tell us if an accident form was completed</a>';
         $accident['error'] = 'govuk-form-group--error';
         $accident['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-form/non-sporting-form-error" class="govuk-error-message">
@@ -146,6 +146,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Was an accident form completed?';
+
 @endphp
 
 
@@ -161,20 +163,17 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Was an accident form completed?</h1>
-</legend>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$accident['error']}} ">
-    <a id="/claim-details/claim-accident-non-sporting-form/non-sporting-form"></a>
-
-
-
 
 
 <div class="govuk-form-group">
   <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Was an accident form completed?</h1>
+</legend>
 @php echo $accident['errorLabel']; @endphp
     <div id="contact-hint" class="govuk-hint">
       Select one option.

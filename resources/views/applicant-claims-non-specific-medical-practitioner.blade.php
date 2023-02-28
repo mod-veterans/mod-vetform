@@ -211,6 +211,7 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Who gave you this diagnosis?';
 @endphp
 
 
@@ -222,7 +223,9 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Who gave you this diagnosis?</h1>
+                                </legend>
                                 <p class="govuk-body">The doctor or medical officer who first told you the name of your condition(s).</p>
 
                                 <div class="govuk-inset-text">
@@ -289,9 +292,7 @@ Enter details to your best knowledge, even if this is just a hospital or practic
         Country
     </label>
             <select class="govuk-select govuk-!-width-two-thirds " id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country"
-            name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country"
-            aria-describedby=" "
-            autocomplete="new-password">
+            name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country">
 @php if (!empty($country['data'])) {
 echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';
 } else {

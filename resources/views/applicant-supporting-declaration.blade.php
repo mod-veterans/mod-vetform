@@ -132,7 +132,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/application-complete-send';
+        $theURL = '/application-complete';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -162,9 +162,9 @@ $page_title = 'Complete your application';
 @php
 echo $errorMessage;
 @endphp
-
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Complete your application</h1>
-
+    </legend>
     <p class="govuk-body">After you press the ‘Submit your application’ button below, your claim will automatically be sent to Veterans UK securely and your details will be deleted from this digital service. </p>
 
                                 <div class="govuk-inset-text">

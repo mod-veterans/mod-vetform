@@ -64,7 +64,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from">Tell us where your journey started</a>';
+        $errorsList[] = '<a href="#/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-operations-location-overseas">Tell us where your journey started</a>';
         $journeystart['error'] = 'govuk-form-group--error';
         $journeystart['errorLabel'] =
         '<span id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from-error" class="govuk-error-message">
@@ -122,6 +122,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Where did your journey start?';
+
 @endphp
 
 
@@ -137,15 +139,15 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
+
+                                <form method="post" enctype="multipart/form-data" novalidate>
+                                @csrf
+                                                    <div class="govuk-form-group {{$journeystart['error']}} ">
+    <fieldset class="govuk-fieldset">
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Where did your journey start?</h1>
 </legend>
                                 <p class="govuk-body">Select the option that best applies</p>
-                                <form method="post" enctype="multipart/form-data" novalidate>
-                                @csrf
-                                                    <div class="govuk-form-group {{$journeystart['error']}} ">
-    <a id="/claim-details/claim-accident-non-sporting-journey-from/non-sporting-journey-from"></a>
-    <fieldset class="govuk-fieldset">
 @php echo $journeystart['errorLabel']; @endphp
 
                                             <div

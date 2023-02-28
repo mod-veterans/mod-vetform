@@ -96,7 +96,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/claim-outcome/claim-outcome-payment-result">Tell us if you have received a payment</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-outcome/claim-outcome-payment-result-yes">Tell us if you have received a payment</a>';
         $payment['error'] = 'govuk-form-group--error';
         $payment['errorLabel'] =
         '<span id="/other-compensation/claim-outcome/claim-outcome-payment-result-error" class="govuk-error-message">
@@ -152,6 +152,9 @@ if (!empty($_POST)) {
 }
 
 }
+
+$page_title = 'Did you get a payment?';
+
 @endphp
 
 
@@ -168,15 +171,18 @@ if (!empty($_POST)) {
 @php
 echo $errorMessage;
 @endphp
-                                <h1 class="govuk-heading-xl">Did you get a payment? </h1>
+
                                 <form method="post" enctype="multipart/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="500">
 
     </div>
                                     <div class="govuk-form-group {{$payment['error']}} ">
-    <a id="/other-compensation/claim-outcome/claim-outcome-payment-result"></a>
+
     <fieldset class="govuk-fieldset">
+                                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                  <h1 class="govuk-heading-xl">Did you get a payment? </h1>
+                                  </legend>
 @php echo $payment['errorLabel']; @endphp
                                             <div
             class="govuk-radios govuk-radios--inline"

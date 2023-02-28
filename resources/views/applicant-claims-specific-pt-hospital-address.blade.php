@@ -219,6 +219,8 @@ if (!empty($_POST)) {
 
 }
 
+$page_title = 'Which hospital or medical facility were you taken to?';
+
 @endphp
 
 
@@ -230,7 +232,9 @@ if (!empty($_POST)) {
     <main class="govuk-main-wrapper govuk-main-wrapper--auto-spacing" id="main-content" role="main">
         <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
+                                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                                 <h1 class="govuk-heading-xl">Which hospital or medical facility were you taken to?</h1>
+                                </legend>
                                 <p class="govuk-body">Tell us the details to the best of your knowledge.  If you cannot remember, you can leave this page or any sections blank.</p>
 
                                 <form method="post" enctype="multipart/form-data" novalidate>
@@ -294,7 +298,7 @@ if (!empty($_POST)) {
     </label>
             <select class="govuk-select govuk-!-width-two-thirds " id="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country"
             name="/claim-details/claim-accident-non-sporting-surgery-address/claim-accident-non-sporting-surgery-address__country"
-            aria-describedby=" "
+
             autocomplete="new-password">
 @php if (!empty($country['data'])) {
 echo '<option value="'.$country['data'].'" selected>'.$country['data'].'</option>';

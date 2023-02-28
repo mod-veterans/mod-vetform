@@ -85,7 +85,7 @@ if (!empty($_POST)) {
     } else {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/other-compensation/received-compensation/received-compensation">Did a solicitor help you?</a>';
+        $errorsList[] = '<a href="#/other-compensation/claim-solicitor-help/claim-solicitor-help-yes">Did a solicitor help you?</a>';
         $solicitorhelp['error'] = 'govuk-form-group--error';
         $solicitorhelp['errorLabel'] =
         '<span id="/other-compensation/received-compensation/received-compensation-error" class="govuk-error-message">
@@ -141,6 +141,8 @@ if (!empty($_POST)) {
 }
 
 }
+$page_title = 'Did a solicitor help you?';
+
 @endphp
 
 
@@ -157,14 +159,15 @@ if (!empty($_POST)) {
 echo $errorMessage;
 @endphp
 
-  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                                <h1 class="govuk-heading-xl">Did a solicitor help you?</h1>
-</legend>
+
                                 <form method="post" enctype="multip art/form-data" novalidate>
                                 @csrf
                                                     <div class="govuk-form-group {{$solicitorhelp['error']}}">
     <a id="/other-compensation/claim-solicitor-help/claim-solicitor-help"></a>
     <fieldset class="govuk-fieldset">
+  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                                <h1 class="govuk-heading-xl">Did a solicitor help you?</h1>
+</legend>
 @php echo $solicitorhelp['errorLabel']; @endphp
                                             <div
             class="govuk-radios govuk-radios--inline"

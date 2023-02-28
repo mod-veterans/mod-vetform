@@ -37,7 +37,7 @@ if (!empty($_POST)) {
     if (empty( $_POST['/other-benefits/receiving-other-benefits/receiving-benefits'])) {
 
             $errors = 'Y';
-            $errorsList[] = '<a href="#/other-benefits/receiving-other-benefits/receiving-benefits">Select if you are receiving or applying for any of these benefits .</a>';
+            $errorsList[] = '<a href="#61668e5b34e44">Select if you are receiving or applying for any of these benefits .</a>';
             $benefits['error'] = 'govuk-form-group--error';
             $benefits['errorLabel'] =
             '<span id="/other-benefits/receiving-other-benefits/receiving-benefits-error" class="govuk-error-message">
@@ -122,7 +122,7 @@ foreach ($showArr as $cur) {
 
 
 
-
+$page_title = 'Do you get or have you applied for any of the following?';
 
 @endphp
 
@@ -149,11 +149,12 @@ echo $errorMessage;
             @csrf
                                                     <div class="govuk-form-group" {{$benefits['error']}};>
     <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
-@php echo $benefits['errorLabel']; @endphp
-
   <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                                 <h1 class="govuk-heading-l">Do you get or have you applied for any of the following? </h1>
     </legend>
+@php echo $benefits['errorLabel']; @endphp
+
+
         <div id="contact-hint" class="govuk-hint">Tick all that apply.</div>
                                 <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
