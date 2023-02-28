@@ -36,7 +36,7 @@ if (!empty($_POST)) {
     if (empty($_POST['cancel-application'])) {
 
         $errors = 'Y';
-        $errorsList[] = '<a href="#/cancel-yes">Please confirm if you would like to cancel your application or return to the task list</a>';
+        $errorsList[] = '<a href="#cancel-yes">Please confirm if you would like to cancel your application or return to the task list</a>';
         $cancelapplication['error'] = 'govuk-form-group--error';
         $cancelapplication['errorLabel'] =
         '<span id="/cancel-yes-error" class="govuk-error-message">
