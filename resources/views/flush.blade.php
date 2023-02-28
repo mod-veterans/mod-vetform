@@ -3,7 +3,7 @@
 
 if (!empty($_SESSION['vets-user'])) {
     if ($userID = $_SESSION['vets-user']) {
-        deleteData($userID);
+        clearSessionData($userID);
     }
 }
 
