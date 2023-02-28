@@ -733,4 +733,8 @@ Route::match(['get', 'post'],'/maintenance', function () {
     return view('maintenance');
 });
 
+Route::match(['get', 'post'],'/pdf-test', function () {
+    return view('pdf');
+});
+
 
