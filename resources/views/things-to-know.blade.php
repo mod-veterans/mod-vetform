@@ -32,7 +32,7 @@ $page_title = 'Things you need to know before you start';
     <li>you can use the ‘supporting documents’ section to upload images of any documents you want to send us</li>
     <li>answer all the questions to the best of your knowledge. If you cannot remember, you can leave blank any sections not marked 'required'</li>
     <li>if you have a problem, click on ‘give feedback or get help’ at the top of every page.  We’ll get back to you within 24 hours (Monday to Friday) </li>
-    <li>you can download and save a copy of your completed application before you submit</li>
+    <!--<li>you can download and save a copy of your completed application before you submit</li>-->
     <li>after you’ve submitted your application, you cannot access your claim again online. You can contact us later with changes or new information if you need to</li>
 </ul>
 

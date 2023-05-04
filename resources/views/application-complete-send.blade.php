@@ -2913,6 +2913,14 @@ if ( (!empty($data['sections']['about-you']['telephonenumber']['mobilepermission
 }
 
 
+if (empty($data['sections']['about-you']['name']['lastname'])) {
+    $reference_number = 'BLANK '.$reference_number;
+}
+
+
+
+
+
 if ($appstage != 'LOCAL') {
 
 

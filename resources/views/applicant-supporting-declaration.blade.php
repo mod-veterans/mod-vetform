@@ -132,7 +132,8 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/would-you-like-to-download-a-pdf';
+        //$theURL = '/would-you-like-to-download-a-pdf';
+        $theURL = '/application-complete';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
