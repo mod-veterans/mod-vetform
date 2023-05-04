@@ -205,7 +205,7 @@ echo $errorMessage;
                             <div class="govuk-radios__item">
     <input class="govuk-radios__input" id="/payment-details/bank-details/bank-details-no-i-do-not-want-to-provide-details-now.-please-contact-me-again-if-my-claim-is-successful" name="/payment-details/bank-details/bank-details" type="radio"
            value="No I do not want to provide details now.  Please contact me again if my claim is successful"    {{$providebankchk['No I do not want to provide details now.  Please contact me again if my claim is successful'] ?? ''}}        >
-    <label class="govuk-label govuk-radios__label" for="/payment-details/bank-details/bank-details-no-i-do-not-want-to-provide-details-now.-please-contact-me-again-if-my-claim-is-successful">No I do not want to provide details now.  Please contact me again if my claim is successful</label>
+    <label class="govuk-label govuk-radios__label" for="/payment-details/bank-details/bank-details-no-i-do-not-want-to-provide-details-now.-please-contact-me-again-if-my-claim-is-successful">No I do not want to provide details now.  Contact me again if my claim is successful</label>
 </div>
 
                     </div>

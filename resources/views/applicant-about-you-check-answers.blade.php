@@ -188,7 +188,7 @@ $page_title = 'Check your answers';
         </div>
         @endif
 
-
+        @if ($data['sections']['about-you']['telephonenumber']['doyouhavemobile'] == 'No')
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">Alternative telephone number:</dt>
             <dd class="govuk-summary-list__value">
@@ -203,6 +203,9 @@ $page_title = 'Check your answers';
                         class="govuk-visually-hidden"> alternative number</span></a>
             </dd>
         </div>
+        @endif
+
+
         @if(!empty($data['sections']['about-you']['email']))
             <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">What is your email address</dt>

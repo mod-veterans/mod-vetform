@@ -10,6 +10,7 @@ $data = getData($userID);
 $content = '';
 $reference_number = 'WPS/AFCS/MOD/'.$data['settings']['customer_ref'];
 
+
 //set the user ref for the application complete page, as we unset data on this page
 $_SESSION['userRef'] = $reference_number;
 

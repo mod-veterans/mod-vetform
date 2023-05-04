@@ -11,6 +11,7 @@ if (!empty($_POST)) {
     $data = getData($userID);
 
     $data['sections']['about-you']['medical-officer']['completed'] = TRUE;
+    $data['sections']['medical-officer']['completed'] = TRUE;
 
     storeData($userID,$data);
 

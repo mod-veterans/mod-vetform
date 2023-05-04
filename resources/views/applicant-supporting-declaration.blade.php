@@ -132,7 +132,7 @@ if (!empty($_POST)) {
 
         storeData($userID,$data);
 
-        $theURL = '/application-complete';
+        $theURL = '/would-you-like-to-download-a-pdf';
         if (!empty($_GET['return'])) {
             if ($rURL = cleanURL($_GET['return'])) {
                 $theURL = $rURL;
@@ -233,7 +233,7 @@ I confirm that if I have signed a UK Special Forces (UKSF) Confidentiality Contr
 
 
                 <div class="govuk-form-group">
-   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Submit your application</button>
+   <button class="govuk-button govuk-!-margin-right-2" data-module="govuk-button">Confirm and continue</button>
 @include('framework.bottombuttons')
 
     </div>

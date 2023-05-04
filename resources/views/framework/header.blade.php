@@ -32,6 +32,11 @@ if ( (!empty($errorMessage)) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<?php if (!empty($headMeta)) {
+    echo $headMeta;
+}
+?>
     <meta name="robots" content="noindex,nofollow">
     <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/favicon.ico" type="image/x-icon">
     <link rel="mask-icon" href="/images/govuk-mask-icon.svg" color="#0b0c0c">
